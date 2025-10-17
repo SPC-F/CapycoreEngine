@@ -28,12 +28,12 @@ root
     └── CMakeLists.txt
 ```
 
-### Note for linux users
-Currently even linux users have to do the copy thing for freetype. This is because the repository 
+### Note for Linux users
+Currently even Linux users have to do the copy thing for freetype. This is because the repository 
 is primarily intended for Windows users who have a hard time building freetype from source. In 
 this case it was done like this so Windows users do not have to build freetype themselves. It will 
 be included in the engine so end-users have nothing to do with it.
 
-In the future, we may make it so linux users can just link the freetype library normally. This change 
+In the future, we may make it so Linux users can just link the freetype library normally. This change 
 may not affect Windows users in any way shape or form, meaning that Windows users will still be able to
 use the prebuilt binaries from the freetype-win-build repository regardless.
