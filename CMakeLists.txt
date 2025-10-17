@@ -34,21 +34,26 @@ FetchContent_MakeAvailable(SDL3_image)
 # =========================================================
 # FreeType (local package install, sibling folder)
 # =========================================================
-set(FREETYPE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../freetype-win-build")
-set(FREETYPE_INCLUDE_DIR "${FREETYPE_ROOT}/include/freetype2")
-set(FREETYPE_LIBRARY "${FREETYPE_ROOT}/lib/freetype.lib")
-set(FREETYPE_DLL "${FREETYPE_ROOT}/bin/freetype.dll")
+if(WIN32)
+    set(FREETYPE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../freetype-win-build")
+    set(FREETYPE_INCLUDE_DIR "${FREETYPE_ROOT}/include/freetype2")
+    set(FREETYPE_LIBRARY "${FREETYPE_ROOT}/lib/freetype.lib")
+    set(FREETYPE_DLL "${FREETYPE_ROOT}/bin/freetype.dll")
 
-add_library(Freetype::Freetype UNKNOWN IMPORTED)
-set_target_properties(Freetype::Freetype PROPERTIES
+    add_library(Freetype::Freetype UNKNOWN IMPORTED)
+    set_target_properties(Freetype::Freetype PROPERTIES
         IMPORTED_LOCATION "${FREETYPE_LIBRARY}"
         INTERFACE_INCLUDE_DIRECTORIES "${FREETYPE_INCLUDE_DIR}"
-)
+    )
 
-# Pass these into SDL_ttf
-set(FREETYPE_INCLUDE_DIRS "${FREETYPE_INCLUDE_DIR}")
-set(FREETYPE_LIBRARIES "${FREETYPE_LIBRARY}")
-
+    # Pass these into SDL_ttf
+    set(FREETYPE_INCLUDE_DIRS "${FREETYPE_INCLUDE_DIR}")
+    set(FREETYPE_LIBRARIES "${FREETYPE_LIBRARY}")
+else()
+    find_package(Freetype REQUIRED)
+    set(FREETYPE_INCLUDE_DIRS "${FREETYPE_INCLUDE_DIRS}") # Provided by find_package
+    set(FREETYPE_LIBRARIES Freetype::Freetype)
+endif()
 # =========================================================
 # SDL3_ttf (needs FreeType)
 # =========================================================
