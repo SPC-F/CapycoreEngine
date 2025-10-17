@@ -1,0 +1,23 @@
+{
+  "version": 8,
+  "configurePresets": [
+    {
+      "name": "msys-ucrt64",
+      "displayName": "MSYS2 UCRT64 GCC",
+      "description": "Using MSYS2 GCC 15.2.0 (ucrt64)",
+      "generator": "MinGW Makefiles",
+      "inherits": "default",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "c:/msys64/ucrt64/bin/gcc.exe",
+        "CMAKE_CXX_COMPILER": "c:/msys64/ucrt64/bin/g++.exe"
+      }
+    },
+    {
+      "name": "local-ninja",
+      "displayName": "Local Ninja Build (gcc/clang)",
+      "description": "Uses Ninja with developer’s default compiler",
+      "generator": "Ninja",
+      "inherits": "ninja"
+    }
+  ]
+}
