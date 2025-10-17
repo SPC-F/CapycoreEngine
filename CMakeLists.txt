@@ -53,8 +53,6 @@ set(FREETYPE_LIBRARIES "${FREETYPE_LIBRARY}")
 # SDL3_ttf (needs FreeType)
 # =========================================================
 set(SDL3TTF_VENDORED OFF)
-set(FREETYPE_INCLUDE_DIRS "${FREETYPE_INCLUDE_DIR}")
-set(FREETYPE_LIBRARIES "${FREETYPE_LIBRARY}")
 
 FetchContent_Declare(
         SDL3_ttf
