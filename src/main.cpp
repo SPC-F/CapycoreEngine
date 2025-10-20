@@ -1,6 +1,6 @@
-#include <iostream>
+#include <engine/core/engine.h>
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Engine engine;
     return 0;
 }

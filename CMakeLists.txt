@@ -46,7 +46,6 @@ if(WIN32)
         INTERFACE_INCLUDE_DIRECTORIES "${FREETYPE_INCLUDE_DIR}"
     )
 
-    # Pass these into SDL_ttf
     set(FREETYPE_INCLUDE_DIRS "${FREETYPE_INCLUDE_DIR}")
     set(FREETYPE_LIBRARIES "${FREETYPE_LIBRARY}")
 else()
@@ -54,11 +53,11 @@ else()
     set(FREETYPE_INCLUDE_DIRS "${FREETYPE_INCLUDE_DIRS}") # Provided by find_package
     set(FREETYPE_LIBRARIES Freetype::Freetype)
 endif()
+
 # =========================================================
 # SDL3_ttf (needs FreeType)
 # =========================================================
 set(SDL3TTF_VENDORED OFF)
-
 FetchContent_Declare(
         SDL3_ttf
         GIT_REPOSITORY https://github.com/libsdl-org/SDL_ttf.git
@@ -70,12 +69,10 @@ FetchContent_MakeAvailable(SDL3_ttf)
 # ENet
 # =========================================================
 set(ENET_VERSION 1.3.18)
-
 FetchContent_Declare(
         ENet
         URL http://enet.bespin.org/download/enet-${ENET_VERSION}.tar.gz
 )
-
 FetchContent_MakeAvailable(ENet)
 
 # =========================================================
@@ -88,7 +85,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(box2d)
 
-
 # =========================================================
 # ImGui (Dear ImGui) via FetchContent
 # =========================================================
@@ -99,7 +95,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(imgui)
 
-# ImGui sources (core + SDL3 + OpenGL3 backends)
 set(IMGUI_SOURCES
         ${imgui_SOURCE_DIR}/imgui.cpp
         ${imgui_SOURCE_DIR}/imgui_draw.cpp
@@ -112,34 +107,39 @@ set(IMGUI_SOURCES
 # =========================================================
 # Sources
 # =========================================================
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
-        src/*.cpp src/*.h
-        lib/*.cpp lib/*.h
-        include/*.cpp include/*.h)
+file(GLOB_RECURSE ENGINE_SOURCES CONFIGURE_DEPENDS src/*.cpp)
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${IMGUI_SOURCES})
+add_library(engine ${ENGINE_SOURCES} ${IMGUI_SOURCES})
+
+target_include_directories(engine
+    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+    PRIVATE ${imgui_SOURCE_DIR} ${imgui_SOURCE_DIR}/backends
+)
+
+target_link_libraries(engine
+    PRIVATE SDL3::SDL3 enet box2d
+)
 
 # =========================================================
 # Linking
 # =========================================================
-
-target_include_directories(${PROJECT_NAME}
-        PRIVATE
-        ${ENet_SOURCE_DIR}/include
-        ${imgui_SOURCE_DIR}
-        ${imgui_SOURCE_DIR}/backends)
+add_executable(${PROJECT_NAME} src/main.cpp)
 
 target_link_libraries(${PROJECT_NAME}
         PRIVATE
-        #sdl + freetype
+        engine
         SDL3::SDL3
         SDL3_image::SDL3_image
         SDL3_ttf::SDL3_ttf
         Freetype::Freetype
-        #enet
         enet
-        #box2d
         box2d
+)
+
+target_include_directories(${PROJECT_NAME} PRIVATE
+        ${ENet_SOURCE_DIR}/include
+        ${imgui_SOURCE_DIR}
+        ${imgui_SOURCE_DIR}/backends
 )
 
 # =========================================================
@@ -154,14 +154,12 @@ if(WIN32)
         )
     endforeach()
 
-    # Copy freetype.dll too
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
             "${FREETYPE_DLL}"
             $<TARGET_FILE_DIR:${PROJECT_NAME}>
     )
 
-    # Copy resources
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_directory
             ${CMAKE_CURRENT_SOURCE_DIR}/resources
