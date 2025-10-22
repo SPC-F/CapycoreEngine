@@ -25,4 +25,4 @@ public:
 };
 
 template<typename T>
-    concept IsComponent = std::is_base_of<Component, T>::type;
+    concept IsComponent = std::is_base_of<Component, T>::value;
