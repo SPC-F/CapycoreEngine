@@ -51,7 +51,7 @@ public:
     std::optional<std::reference_wrapper<T>> getComponent() const noexcept {
         for (auto& component : components_) {
             if (auto& casted = dynamic_cast<T*>(component.get())) {
-                return std::ref(casted);
+                return std::ref(*casted);
             }
         }
         return std::nullopt;
