@@ -1,7 +1,7 @@
 #include <engine/public/gameObject.h>
 #include <engine/public/component.h>
 
-GameObject::GameObject(const Scene &scene) : scene(const_cast<Scene&>(scene)) {}
+GameObject::GameObject(Scene &scene) : scene(scene) {}
 GameObject::~GameObject() {
     if (parent_.has_value()) {
         parent_->get().removeChild(*this);
