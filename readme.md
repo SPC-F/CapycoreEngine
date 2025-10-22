@@ -20,7 +20,7 @@ Your structure should end up like this:
 ```
 root
 │
-├── capycore-engine
+├── CapycoreEngine
 │   └── ...
 ├── freetype-win-build
 │   └── ...
