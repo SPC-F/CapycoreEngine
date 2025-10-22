@@ -9,14 +9,13 @@ include(FetchContent)
 # =========================================================
 # SDL3
 # =========================================================
-set(SDL_VERSION 3.2.22)
 set(SDL_TEST OFF CACHE BOOL "Disable SDL3 internal tests")
 set(SDL_SHARED ON CACHE BOOL "Build SDL3 as shared library")
 
 FetchContent_Declare(
         SDL3
         GIT_REPOSITORY https://github.com/libsdl-org/SDL.git
-        GIT_TAG release-${SDL_VERSION}
+        GIT_TAG release-3.2.24
 )
 FetchContent_MakeAvailable(SDL3)
 
@@ -27,7 +26,7 @@ set(SDL3IMAGE_VENDORED ON)
 FetchContent_Declare(
         SDL3_image
         GIT_REPOSITORY https://github.com/libsdl-org/SDL_image.git
-        GIT_TAG main
+        GIT_TAG release-3.2.4
 )
 FetchContent_MakeAvailable(SDL3_image)
 
@@ -61,7 +60,7 @@ set(SDL3TTF_VENDORED OFF)
 FetchContent_Declare(
         SDL3_ttf
         GIT_REPOSITORY https://github.com/libsdl-org/SDL_ttf.git
-        GIT_TAG main
+        GIT_TAG release-3.2.2
 )
 FetchContent_MakeAvailable(SDL3_ttf)
 
