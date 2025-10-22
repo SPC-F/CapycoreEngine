@@ -10,7 +10,7 @@ Systems Programming minor in C++ ('s-Hertogenbosch, Netherlands).
 ```shell
 git clone <engine-repo-url>
 git clone <freetype-win-build-repo-url>
-cd capycore-engine
+cd CapycoreEngine
 
 # Example using CMake with Ninja generator from CLion
 cmake -G "Ninja" -S . -B build
