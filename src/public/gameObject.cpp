@@ -1,11 +1,47 @@
 #include <engine/public/gameObject.h>
 #include <engine/public/component.h>
 
-GameObject::GameObject(Scene& scene) : scene(scene) {}
+GameObject::GameObject(Scene& scene) : scene_(scene) {}
 GameObject::~GameObject() {
     if (parent_.has_value()) {
         parent_->get().removeChild(*this);
     }
+}
+
+GameObject& GameObject::name(const std::string& name) {
+    name_ = name;
+    return *this;
+}
+const std::string& GameObject::name() const {
+    return name_;
+}
+
+GameObject& GameObject::tag(std::string& tag) {
+    tag_ = tag;
+    return *this;
+}
+const std::string& GameObject::tag() const {
+    return tag_;
+}
+
+GameObject& GameObject::layer(int layer) {
+    layer_ = layer;
+    return *this;
+}
+int GameObject::layer() const {
+    return layer_;
+}
+
+GameObject& GameObject::transform(Transform transform) {
+    transform_ = transform;
+    return *this;
+}
+Transform& GameObject::transform() {
+    return transform_;
+}
+
+const Scene& GameObject::scene() const noexcept {
+    return scene_;
 }
 
 void GameObject::setInactive() noexcept {

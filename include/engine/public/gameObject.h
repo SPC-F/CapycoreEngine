@@ -27,26 +27,42 @@ private:
     bool isActive_ {true};
     bool isActiveInWorld_ {true};
 
+    std::string name_;
+    std::string tag_;
+    int layer_ {};
+    Scene& scene_;
+    Transform transform_;
+
 public:
     // TODO: Could we for the love of god make some of these immutable and private? I do not know if these have to be public or mutable right now...
-    std::string name;
-    std::string tag;
-    int layer {};
-    Scene& scene;
-    Transform transform;
 
     explicit GameObject(Scene& scene);
     virtual ~GameObject();
 
+    GameObject& parent(GameObject& parent);
+    GameObject& parent(std::nullopt_t);
+
     [[nodiscard]] bool isActiveInWorld() const noexcept;
     [[nodiscard]] bool isActive() const noexcept;
+
     void setInactive() noexcept;
     void setActive() noexcept;
     void setActiveInWorld() noexcept;
     void setInactiveInWorld() noexcept;
 
-    GameObject& parent(GameObject& parent);
-    GameObject& parent(std::nullopt_t);
+    GameObject& name(const std::string& name);
+    [[nodiscard]] const std::string& name() const;
+
+    GameObject& tag(std::string& tag);
+    [[nodiscard]] const std::string& tag() const;
+
+    GameObject& layer(int layer);
+    [[nodiscard]] int layer() const;
+
+    GameObject& transform(Transform transform);
+    [[nodiscard]] Transform& transform();
+
+    const Scene& scene() const noexcept;
 
     std::vector<std::reference_wrapper<GameObject>>& children();
     GameObject& addChild(GameObject& child);
