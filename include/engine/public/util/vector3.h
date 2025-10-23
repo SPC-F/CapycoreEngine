@@ -6,4 +6,10 @@ public:
     float x;
     float y;
     float z;
+
+    Vector3 operator+(const Vector3& right) const noexcept;
+    Vector3 operator-(const Vector3& right) const noexcept;
+
+    Vector3& operator+=(const Vector3&& right) noexcept;
+    Vector3 operator-=(const Vector3&& right) noexcept;
 };
