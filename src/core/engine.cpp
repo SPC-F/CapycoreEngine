@@ -1,6 +1,4 @@
 #include <engine/core/engine.h>
-#include <iostream>
 
-Engine::Engine() {
-    std::cout << "Engine created" << std::endl; // Temporary
-}
+Engine::Engine() :
+    services(std::make_unique<ServiceContainer>()) {}
