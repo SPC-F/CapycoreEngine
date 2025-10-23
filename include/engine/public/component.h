@@ -9,13 +9,17 @@
  * If it is not used for the same reason, make the naming more specific to avoid confusion.
  * I could not tell what it was for, so I left it out for now.
  */
-class Component : public GameObject {
+class Component {
 private:
-    std::weak_ptr<GameObject> _parent;
+    std::optional<std::reference_wrapper<GameObject>> parent_;
+    bool active_ = true;
     // TODO: Maybe add the active property back with a more specific name if needed.
 public:
-    explicit Component(const Scene& scene);
-    ~Component() override = default;
+    explicit Component(GameObject& parent);
+    virtual ~Component() = default;
+
+    [[nodiscard]] bool active() const noexcept;
+    Component& active(bool value) noexcept;
 
     virtual void update() = 0;
     virtual void onAttach() = 0;
