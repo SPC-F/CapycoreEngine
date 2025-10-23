@@ -34,7 +34,7 @@ public:
     Scene& scene;
     Transform transform;
 
-    explicit GameObject(const Scene& scene);
+    explicit GameObject(Scene& scene);
     virtual ~GameObject();
 
     [[nodiscard]] bool isActiveInWorld() const noexcept;
@@ -61,14 +61,14 @@ public:
         Note that it does NOT include the components attached to the
         child objects. Those can be retrieved with GameObject::getComponentsInChildren */
     template<IsComponent T>
-    std::vector<std::weak_ptr<T>> getComponents() const {
+    std::vector<std::reference_wrapper<T>> getComponents() const {
         auto filtered = components_
             | std::views::filter([](auto& c) { return dynamic_cast<T*>(c.get()); })
             | std::views::transform([](auto& c) -> std::reference_wrapper<T> {
                 return std::ref(*static_cast<T*>(c.get()));
             });
 
-        return std::vector<std::weak_ptr<T>>(filtered.begin(), filtered.end());
+        return std::vector<std::reference_wrapper<T>>(filtered.begin(), filtered.end());
     }
 
     template<IsComponent T>
