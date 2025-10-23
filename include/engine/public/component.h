@@ -1,7 +1,8 @@
 #pragma once
 #include <memory>
+#include <optional>
 
-#include <engine/public/gameObject.h>
+class GameObject;
 
 /**
  * @brief Base class for all components that can be attached to GameObjects.
@@ -29,4 +30,4 @@ public:
 };
 
 template<typename T>
-    concept IsComponent = std::is_base_of<Component, T>::value;
+    concept IsComponent = std::is_base_of_v<Component, T>;

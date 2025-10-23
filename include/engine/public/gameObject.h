@@ -5,9 +5,9 @@
 #include <string>
 #include <vector>
 
-#include "component.h"
-#include "scene.h"
-#include "transform.h"
+#include <engine/public/scene.h>
+#include <engine/public/transform.h>
+#include <engine/public/component.h>
 
 class GameObject {
 private:
@@ -21,10 +21,11 @@ private:
         want to happen. A shared_ptr would also not work because you would get weird undefined behaviors.
         In this case its paramount that a GameObject is destroyed with the intention to keep its
         children alive, or to have them be destroyed all together on destruction. */
-    std::vector<std::weak_ptr<GameObject>> children_ {};
+    std::vector<std::reference_wrapper<GameObject>> children_ {};
 
     std::optional<std::reference_wrapper<GameObject>> parent_;
     bool isActive_ {true};
+    bool isActiveInWorld_ {true};
 
 public:
     // TODO: Could we for the love of god make some of these immutable and private? I do not know if these have to be public or mutable right now...
@@ -39,12 +40,16 @@ public:
 
     [[nodiscard]] bool isActiveInWorld() const noexcept;
     [[nodiscard]] bool isActive() const noexcept;
+    void setInactive() noexcept;
+    void setActive() noexcept;
+    void setActiveInWorld() noexcept;
+    void setInactiveInWorld() noexcept;
 
     GameObject& parent(GameObject& parent);
     GameObject& parent(std::nullopt_t);
 
-    std::vector<std::weak_ptr<GameObject>>& children();
-    GameObject& addChild(const std::shared_ptr<GameObject>& child);
+    std::vector<std::reference_wrapper<GameObject>>& children();
+    GameObject& addChild(GameObject& child);
     GameObject& removeChild(GameObject& child);
 
     template<IsComponent T>
@@ -75,11 +80,9 @@ public:
     std::vector<std::reference_wrapper<T>> getComponentsFromChildren() const {
         std::vector<std::reference_wrapper<T>> result {};
 
-        for (auto& childWeak : children_) {
-            if (const auto child = childWeak.lock()) {
-                auto childComponents = child->getComponentsFromChildren<T>();
-                result.insert(result.end(), childComponents.begin(), childComponents.end());
-            }
+        for (auto& child : children_) {
+            auto childComponents = child.get().getComponentsFromChildren<T>();
+            result.insert(result.end(), childComponents.begin(), childComponents.end());
         }
 
         return result;

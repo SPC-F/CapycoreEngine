@@ -2,7 +2,7 @@
 #include <memory>
 #include <optional>
 
-#include "util/vector3.h"
+#include <engine/public/util/vector3.h>
 
 class Transform {
 private:

@@ -1,4 +1,5 @@
 #include <engine/public/component.h>
+#include <engine/public/gameObject.h>
 
 Component::Component(GameObject& parent)
     : parent_(std::ref(parent)), active_(true) {}

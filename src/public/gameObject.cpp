@@ -8,18 +8,23 @@ GameObject::~GameObject() {
     }
 }
 
-
-// TODO: Discuss whether this should be recursive (i.e., check parents' active states)
-// TODO: Discuss if a GameObject its active state should be determined by its parent
-bool GameObject::isActiveInWorld() const noexcept {
-    if (parent_.has_value()) {
-        return parent_->get().isActiveInWorld() && isActive_;
-    }
-    return isActive_;
+void GameObject::setInactive() noexcept {
+    isActive_ = false;
+}
+void GameObject::setActive() noexcept {
+    isActive_ = true;
+}
+void GameObject::setActiveInWorld() noexcept {
+    isActiveInWorld_ = true;
+}
+void GameObject::setInactiveInWorld() noexcept {
+    isActiveInWorld_ = false;
 }
 
-// TODO: Discuss whether this should be recursive (i.e., check parents' active states)
-// TODO: Discuss if a GameObject its active state should be determined by its parent
+bool GameObject::isActiveInWorld() const noexcept {
+    return isActiveInWorld_;
+}
+
 bool GameObject::isActive() const noexcept {
     return isActive_;
 }
@@ -38,26 +43,19 @@ GameObject& GameObject::parent(std::nullopt_t) {
     return *this;
 }
 
-std::vector<std::weak_ptr<GameObject>>& GameObject::children() {
+std::vector<std::reference_wrapper<GameObject>>& GameObject::children() {
     return children_;
 }
 
-GameObject& GameObject::addChild(const std::shared_ptr<GameObject>& child) {
-    children_.push_back(child);
-    child->parent(*this);
+GameObject& GameObject::addChild(GameObject& child) {
+    children_.emplace_back(child);
     return *this;
 }
 
 GameObject& GameObject::removeChild(GameObject& child) {
-    std::erase_if(
-        children_,
-        [&child](const std::weak_ptr<GameObject>& ptr) {
-            if (const auto locked = ptr.lock()) {
-                return locked.get() == &child;
-            }
-            return false;
-        }
-    );
+    std::erase_if(children_, [&](auto& ref) {
+        return &ref.get() == &child;
+    });
     child.parent(std::nullopt);
     return *this;
 }
