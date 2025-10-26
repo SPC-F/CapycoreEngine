@@ -17,9 +17,9 @@ public:
     Transform(Vector3 position, float rotation, int scale);
     Transform(Vector3 position, float rotation, int scale, std::optional<std::reference_wrapper<Transform>> parent);
 
-    Transform& relativePosition(const Vector3& pos) noexcept;
-    [[nodiscard]] Vector3 relativePosition() const noexcept;
-    [[nodiscard]] Vector3 absolutePosition() const noexcept;
+    Transform& relative_position(const Vector3& pos) noexcept;
+    [[nodiscard]] Vector3 relative_position() const noexcept;
+    [[nodiscard]] Vector3 absolute_position() const noexcept;
 
     Transform& rotation(float rot) noexcept;
     [[nodiscard]] float rotation() const noexcept;

@@ -4,7 +4,7 @@
 GameObject::GameObject(Scene& scene) : scene_(scene) {}
 GameObject::~GameObject() {
     if (parent_.has_value()) {
-        parent_->get().removeChild(*this);
+        parent_->get().remove_child(*this);
     }
 }
 
@@ -16,7 +16,7 @@ const std::string& GameObject::name() const {
     return name_;
 }
 
-GameObject& GameObject::tag(std::string& tag) {
+GameObject& GameObject::tag(const std::string& tag) {
     tag_ = tag;
     return *this;
 }
@@ -24,7 +24,7 @@ const std::string& GameObject::tag() const {
     return tag_;
 }
 
-GameObject& GameObject::layer(int layer) {
+GameObject& GameObject::layer(const int layer) {
     layer_ = layer;
     return *this;
 }
@@ -44,25 +44,25 @@ const Scene& GameObject::scene() const noexcept {
     return scene_;
 }
 
-void GameObject::setInactive() noexcept {
-    isActive_ = false;
+void GameObject::set_inactive() noexcept {
+    is_active_ = false;
 }
-void GameObject::setActive() noexcept {
-    isActive_ = true;
+void GameObject::set_active() noexcept {
+    is_active_ = true;
 }
-void GameObject::setActiveInWorld() noexcept {
-    isActiveInWorld_ = true;
+void GameObject::set_active_in_world() noexcept {
+    is_active_in_world_ = true;
 }
-void GameObject::setInactiveInWorld() noexcept {
-    isActiveInWorld_ = false;
-}
-
-bool GameObject::isActiveInWorld() const noexcept {
-    return isActiveInWorld_;
+void GameObject::set_inactive_in_world() noexcept {
+    is_active_in_world_ = false;
 }
 
-bool GameObject::isActive() const noexcept {
-    return isActive_;
+bool GameObject::is_active_in_world() const noexcept {
+    return is_active_in_world_;
+}
+
+bool GameObject::is_active() const noexcept {
+    return is_active_;
 }
 
 GameObject& GameObject::parent(GameObject& parent) {
@@ -83,12 +83,12 @@ std::vector<std::reference_wrapper<GameObject>>& GameObject::children() {
     return children_;
 }
 
-GameObject& GameObject::addChild(GameObject& child) {
+GameObject& GameObject::add_child(GameObject& child) {
     children_.emplace_back(child);
     return *this;
 }
 
-GameObject& GameObject::removeChild(GameObject& child) {
+GameObject& GameObject::remove_child(GameObject& child) {
     std::erase_if(children_, [&](auto& ref) {
         return &ref.get() == &child;
     });

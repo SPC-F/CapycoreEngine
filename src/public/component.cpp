@@ -8,7 +8,7 @@ bool Component::active() const noexcept {
     return active_;
 }
 
-Component& Component::active(bool value) noexcept {
+Component& Component::active(const bool value) noexcept {
     active_ = value;
     return *this;
 }

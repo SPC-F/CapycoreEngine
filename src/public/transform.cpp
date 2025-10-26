@@ -12,20 +12,20 @@ Transform::Transform(const Vector3 position, const float rotation, const int sca
 Transform::Transform(const Vector3 position, const float rotation, const int scale, std::optional<std::reference_wrapper<Transform>> parent)
     : position_(position), rotation_(rotation), scale_(scale), parent_(parent){}
 
-Transform& Transform::relativePosition(const Vector3& pos) noexcept {
+Transform& Transform::relative_position(const Vector3& pos) noexcept {
     position_ = pos;
     return *this;
 }
 
-Vector3 Transform::relativePosition() const noexcept {
+Vector3 Transform::relative_position() const noexcept {
     return position_;
 }
 
-Vector3 Transform::absolutePosition() const noexcept {
+Vector3 Transform::absolute_position() const noexcept {
     if (!parent_.has_value()) {
         return position_;
     }
-    const auto& parentPos = parent_.value().get().absolutePosition();
+    const auto& parentPos = parent_.value().get().absolute_position();
     return position_ + parentPos;
 }
 
