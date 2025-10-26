@@ -60,7 +60,7 @@ public:
     template<IsComponent T>
     std::optional<std::reference_wrapper<T>> get_component() const noexcept {
         for (auto& component : components_) {
-            if (auto& casted = dynamic_cast<T*>(component.get())) {
+            if (auto* casted = dynamic_cast<T*>(component.get())) {
                 return std::ref(*casted);
             }
         }
