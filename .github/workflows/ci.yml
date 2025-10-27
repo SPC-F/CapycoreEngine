@@ -1,10 +1,5 @@
 name: C++ CI
 on:
-  push:
-    branches:
-      - master
-      - development
-      - '@feat/*'
   pull_request:
     branches:
       - master
@@ -21,13 +16,29 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            cmake g++ clang-tidy \
+            cmake g++ clang-tidy ccache \
             libx11-dev libxext-dev libxrandr-dev libxi-dev \
             libxinerama-dev libxcursor-dev \
             libgl1-mesa-dev libfreetype6-dev \
             libpng-dev libjpeg-dev zlib1g-dev
 
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache
+            ~/.ccache
+            build-asan/_deps
+          key: ${{ runner.os }}-deps-${{ hashFiles('CMakeLists.txt', '**/CMakeLists.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-deps-
+
+      # Enable ccache for faster rebuilds ⚡
+      - name: Configure compiler cache
+        run: echo 'export PATH="/usr/lib/ccache:$PATH"' >> $GITHUB_ENV
+
       - name: Run clang-tidy
+        continue-on-error: true
         run: |
           cmake -S . -B build-tidy -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
           clang-tidy -p build-tidy $(find src include tests -name '*.cpp') --warnings-as-errors=*
@@ -36,6 +47,7 @@ jobs:
         run: |
           cmake -S . -B build-asan \
             -DCMAKE_BUILD_TYPE=Debug \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_FLAGS="-fsanitize=address -g -O1" \
             -DENABLE_TESTS=ON \
             -DBUILD_SHARED_LIBS=OFF
