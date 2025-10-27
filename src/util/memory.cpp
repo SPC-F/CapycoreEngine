@@ -5,7 +5,17 @@
 
 #include <engine/util/memory.h>
 
-#include <tracy/Tracy.hpp>
+#ifdef TRACY_ENABLE
+    #include <tracy/Tracy.hpp>
+#endif
+
+#ifdef TRACY_ENABLE
+    #define TRACY_ALLOC(ptr, sz) TracyAlloc(ptr, sz)
+    #define TRACY_FREE(ptr)      TracyFree(ptr)
+    #else
+    #define TRACY_ALLOC(ptr, sz) ((void)0)
+    #define TRACY_FREE(ptr)      ((void)0)
+#endif
 
 namespace {
     std::recursive_mutex g_mutex;
@@ -65,7 +75,7 @@ void* operator new(std::size_t sz)
             {
                 std::lock_guard<std::recursive_mutex> lock(g_mutex);
                 g_allocations[ptr] = sz;
-                TracyAlloc(ptr, sz);
+                TRACY_ALLOC(ptr, sz);
             }
             g_tracking_enabled = true;
         }
@@ -92,7 +102,7 @@ void* operator new[](std::size_t sz)
             {
                 std::lock_guard<std::recursive_mutex> lock(g_mutex);
                 g_allocations[ptr] = sz;
-                TracyAlloc(ptr, sz);
+                TRACY_ALLOC(ptr, sz);
             }
             g_tracking_enabled = true;
         }
@@ -113,7 +123,7 @@ void operator delete(void* ptr) noexcept
             auto it = g_allocations.find(ptr);
             if (it != g_allocations.end())
             {
-                TracyFree(ptr);
+                TRACY_FREE(ptr);
                 g_allocations.erase(it);
             }
         }
@@ -133,7 +143,7 @@ void operator delete(void* ptr, std::size_t size) noexcept
             auto it = g_allocations.find(ptr);
             if (it != g_allocations.end())
             {
-                TracyFree(ptr);
+                TRACY_FREE(ptr);
                 g_allocations.erase(it);
             }
         }
@@ -153,7 +163,7 @@ void operator delete[](void* ptr) noexcept
             auto it = g_allocations.find(ptr);
             if (it != g_allocations.end())
             {
-                TracyFree(ptr);
+                TRACY_FREE(ptr);
                 g_allocations.erase(it);
             }
         }
@@ -173,7 +183,7 @@ void operator delete[](void* ptr, std::size_t size) noexcept
             auto it = g_allocations.find(ptr);
             if (it != g_allocations.end())
             {
-                TracyFree(ptr);
+                TRACY_FREE(ptr);
                 g_allocations.erase(it);
             }
         }
