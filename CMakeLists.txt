@@ -104,6 +104,20 @@ set(IMGUI_SOURCES
 )
 
 # =========================================================
+# Testing
+# =========================================================
+set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
+set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/refs/heads/main.zip
+)
+FetchContent_MakeAvailable(googletest)
+
+# =========================================================
 # Sources
 # =========================================================
 file(GLOB_RECURSE ENGINE_SOURCES CONFIGURE_DEPENDS src/*.cpp)
@@ -202,6 +216,20 @@ endif()
 # =========================================================
 target_compile_definitions(${PROJECT_NAME} PRIVATE SDL_MAIN_HANDLED)
 
+# Tracy
 if(ENABLE_TRACY)
         target_compile_definitions(engine PUBLIC TRACY_ENABLE TRACY_MEMORY_CALLSTACK=16)
+endif()
+
+# =========================================================
+# Enable testing
+# =========================================================
+option(ENABLE_TESTS "Enable building tests" ON)
+
+if(ENABLE_TESTS)
+    enable_testing()
+    file(GLOB TEST_SOURCES CONFIGURE_DEPENDS tests/*.cpp)
+    add_executable(tests ${TEST_SOURCES})
+    target_link_libraries(tests PRIVATE engine gtest_main)
+    add_test(NAME all_tests COMMAND tests)
 endif()
