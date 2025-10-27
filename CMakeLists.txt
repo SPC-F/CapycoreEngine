@@ -104,6 +104,18 @@ set(IMGUI_SOURCES
 )
 
 # =========================================================
+# Tracy Profiler
+# =========================================================
+FetchContent_Declare(
+    tracy
+    GIT_REPOSITORY https://github.com/wolfpld/tracy.git
+    GIT_TAG v0.12.2
+    GIT_SHALLOW TRUE
+    GIT_PROGRESS TRUE
+)
+FetchContent_MakeAvailable(tracy)
+
+# =========================================================
 # Sources
 # =========================================================
 file(GLOB_RECURSE ENGINE_SOURCES CONFIGURE_DEPENDS src/*.cpp)
@@ -111,13 +123,29 @@ file(GLOB_RECURSE ENGINE_SOURCES CONFIGURE_DEPENDS src/*.cpp)
 add_library(engine ${ENGINE_SOURCES} ${IMGUI_SOURCES})
 
 target_include_directories(engine
-    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
-    PRIVATE ${imgui_SOURCE_DIR} ${imgui_SOURCE_DIR}/backends
+    PUBLIC 
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${tracy_SOURCE_DIR}/public
+    PRIVATE 
+        ${imgui_SOURCE_DIR} 
+        ${imgui_SOURCE_DIR}/backends
 )
 
+# Add Tracy client CPP
+target_sources(engine PRIVATE ${tracy_SOURCE_DIR}/public/TracyClient.cpp)
+
 target_link_libraries(engine
-    PRIVATE SDL3::SDL3 enet box2d
+    PRIVATE 
+        SDL3::SDL3 
+        enet 
+        box2d
 )
+
+# Link DbgHelp on Windows
+if(WIN32)
+        target_link_libraries(engine PRIVATE DbgHelp)
+endif()
+
 
 # =========================================================
 # Linking
@@ -170,3 +198,6 @@ endif()
 # Avoid SDL_main issues
 # =========================================================
 target_compile_definitions(${PROJECT_NAME} PRIVATE SDL_MAIN_HANDLED)
+
+# Enable Tracy
+target_compile_definitions(engine PUBLIC TRACY_ENABLE TRACY_MEMORY_CALLSTACK=16)
