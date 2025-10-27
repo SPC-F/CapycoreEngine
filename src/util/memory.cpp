@@ -1,7 +1,7 @@
-#include <unordered_map>
-#include <mutex>
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
+#include <mutex>
+#include <unordered_map>
 
 #include <engine/util/memory.h>
 
@@ -10,7 +10,7 @@
 namespace {
     std::recursive_mutex g_mutex;
     std::unordered_map<void*, size_t> g_allocations;
-    bool g_trackingEnabled = true;
+    bool g_tracking_enabled = true;
 } 
 
 void tracy_dump_leaks()
@@ -36,13 +36,13 @@ void tracy_dump_leaks()
 void tracy_memory_init()
 {
     std::lock_guard<std::recursive_mutex> lock(g_mutex);
-    g_trackingEnabled = true;
+    g_tracking_enabled = true;
 }
 
 void tracy_memory_shutdown()
 {
     std::lock_guard<std::recursive_mutex> lock(g_mutex);
-    g_trackingEnabled = false;
+    g_tracking_enabled = false;
     tracy_dump_leaks();
 }
 
@@ -58,16 +58,16 @@ void* operator new(std::size_t sz)
  
     if (void *ptr = std::malloc(sz))
     {
-        if (g_trackingEnabled)
+        if (g_tracking_enabled)
         {
             // We temporarily disable tracking to prevent recursion
-            g_trackingEnabled = false;
+            g_tracking_enabled = false;
             {
                 std::lock_guard<std::recursive_mutex> lock(g_mutex);
                 g_allocations[ptr] = sz;
                 TracyAlloc(ptr, sz);
             }
-            g_trackingEnabled = true;
+            g_tracking_enabled = true;
         }
 
         return ptr;
@@ -85,16 +85,16 @@ void* operator new[](std::size_t sz)
  
     if (void *ptr = std::malloc(sz))
     {
-        if (g_trackingEnabled)
+        if (g_tracking_enabled)
         {
             // We temporarily disable tracking to prevent recursion
-            g_trackingEnabled = false;
+            g_tracking_enabled = false;
             {
                 std::lock_guard<std::recursive_mutex> lock(g_mutex);
                 g_allocations[ptr] = sz;
                 TracyAlloc(ptr, sz);
             }
-            g_trackingEnabled = true;
+            g_tracking_enabled = true;
         }
 
         return ptr;
@@ -105,9 +105,9 @@ void* operator new[](std::size_t sz)
  
 void operator delete(void* ptr) noexcept
 {
-    if (g_trackingEnabled && ptr)
+    if (g_tracking_enabled && ptr)
     {
-        g_trackingEnabled = false;
+        g_tracking_enabled = false;
         {
             std::lock_guard<std::recursive_mutex> lock(g_mutex);
             auto it = g_allocations.find(ptr);
@@ -117,7 +117,7 @@ void operator delete(void* ptr) noexcept
                 g_allocations.erase(it);
             }
         }
-        g_trackingEnabled = true;
+        g_tracking_enabled = true;
     }
 
     std::free(ptr);
@@ -125,9 +125,9 @@ void operator delete(void* ptr) noexcept
  
 void operator delete(void* ptr, std::size_t size) noexcept
 {
-    if (g_trackingEnabled && ptr)
+    if (g_tracking_enabled && ptr)
     {
-        g_trackingEnabled = false;
+        g_tracking_enabled = false;
         {
             std::lock_guard<std::recursive_mutex> lock(g_mutex);
             auto it = g_allocations.find(ptr);
@@ -137,7 +137,7 @@ void operator delete(void* ptr, std::size_t size) noexcept
                 g_allocations.erase(it);
             }
         }
-        g_trackingEnabled = true;
+        g_tracking_enabled = true;
     }
 
     std::free(ptr);
@@ -145,9 +145,9 @@ void operator delete(void* ptr, std::size_t size) noexcept
  
 void operator delete[](void* ptr) noexcept
 {
-    if (g_trackingEnabled && ptr)
+    if (g_tracking_enabled && ptr)
     {
-        g_trackingEnabled = false;
+        g_tracking_enabled = false;
         {
             std::lock_guard<std::recursive_mutex> lock(g_mutex);
             auto it = g_allocations.find(ptr);
@@ -157,7 +157,7 @@ void operator delete[](void* ptr) noexcept
                 g_allocations.erase(it);
             }
         }
-        g_trackingEnabled = true;
+        g_tracking_enabled = true;
     }
 
     std::free(ptr);
@@ -165,9 +165,9 @@ void operator delete[](void* ptr) noexcept
  
 void operator delete[](void* ptr, std::size_t size) noexcept
 {
-    if (g_trackingEnabled && ptr)
+    if (g_tracking_enabled && ptr)
     {
-        g_trackingEnabled = false;
+        g_tracking_enabled = false;
         {
             std::lock_guard<std::recursive_mutex> lock(g_mutex);
             auto it = g_allocations.find(ptr);
@@ -177,7 +177,7 @@ void operator delete[](void* ptr, std::size_t size) noexcept
                 g_allocations.erase(it);
             }
         }
-        g_trackingEnabled = true;
+        g_tracking_enabled = true;
     }
 
     std::free(ptr);

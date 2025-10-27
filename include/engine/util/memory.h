@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef MEMORY_H
-#define MEMORY_H
-
 #include <cstddef>
 
 void tracy_dump_leaks();
@@ -14,5 +11,3 @@ void* operator new(std::size_t size);
 void operator delete(void* ptr) noexcept;
 void* operator new[](std::size_t size);
 void operator delete[](void* ptr) noexcept;
-
-#endif // MEMORY_H
