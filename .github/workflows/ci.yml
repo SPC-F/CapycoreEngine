@@ -3,12 +3,13 @@ on:
   push:
     branches:
       - master
-      - 'development/**'
+      - development
+      - '@feat/*'
   pull_request:
     branches:
       - master
-      - 'development/**'
-
+      - development
+      - '@feat/*'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,7 +27,7 @@ jobs:
         run: |
             cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
             clang-tidy -p build $(find . -name '*.cpp') --warnings-as-errors=*
-            
+
       # Step 2: Build with AddressSanitizer enabled
       - name: Configure (ASan)
         run: cmake -S . -B build-asan -DCMAKE_CXX_FLAGS="-fsanitize=address -g -O1"
