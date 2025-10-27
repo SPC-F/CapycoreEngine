@@ -14,29 +14,36 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      # Install build + lint dependencies
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake g++ clang-tidy
+          sudo apt-get install -y \
+            cmake g++ clang-tidy \
+            libx11-dev libxext-dev libxrandr-dev libxi-dev \
+            libxinerama-dev libxcursor-dev \
+            libgl1-mesa-dev libfreetype6-dev \
+            libpng-dev libjpeg-dev zlib1g-dev
 
-      # Step 1: Lint with clang-tidy
       - name: Run clang-tidy
         run: |
-            cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-            clang-tidy -p build $(find . -name '*.cpp') --warnings-as-errors=*
+          cmake -S . -B build-tidy -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          clang-tidy -p build-tidy $(find src include tests -name '*.cpp') --warnings-as-errors=*
 
-      # Step 2: Build with AddressSanitizer enabled
       - name: Configure (ASan)
-        run: cmake -S . -B build-asan -DCMAKE_CXX_FLAGS="-fsanitize=address -g -O1"
+        run: |
+          cmake -S . -B build-asan \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DCMAKE_CXX_FLAGS="-fsanitize=address -g -O1" \
+            -DENABLE_TESTS=ON \
+            -DBUILD_SHARED_LIBS=OFF
 
       - name: Build (ASan)
-        run: cmake --build build-asan
+        run: cmake --build build-asan --parallel --target all
 
-      # Step 3: Run memory-leak tests (ASan will fail on leak)
-      - name: Run with ASan
+      - name: Run tests (ASan)
         run: |
           export ASAN_OPTIONS=detect_leaks=1
           ctest --test-dir build-asan --output-on-failure
