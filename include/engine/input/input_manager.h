@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include <engine/input/i_input_provider.h>
 
 /**
@@ -8,8 +10,8 @@
 class InputManager {
 public:
     IInputProvider* provider() const noexcept;
-    void set_provider(IInputProvider* provider) noexcept;
+    void set_provider(std::unique_ptr<IInputProvider> provider) noexcept;
 
 private:
-    IInputProvider* _provider = nullptr;
+    std::unique_ptr<IInputProvider> _provider = nullptr;
 };
