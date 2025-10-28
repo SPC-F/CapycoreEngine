@@ -1,11 +1,16 @@
 #pragma once
+#include <memory>
 
-#ifndef ENGINE_CORE_ENGINE_H
-#define ENGINE_CORE_ENGINE_H
+#include <engine/core/serviceContainer.h>
 
 class Engine {
+private:
+    Engine();
 public:
-    Engine(); // Temporary
-};
+    static Engine& instance() {
+        static Engine engine {};
+        return engine;
+    }
 
-#endif // ENGINE_CORE_ENGINE_H
+    const std::unique_ptr<ServiceContainer> services;
+};

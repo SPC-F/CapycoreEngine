@@ -13,8 +13,6 @@
 int main() {
     TRACY_INIT();
 
-    Engine engine;
-
     TRACY_SHUTDOWN();
     return 0;
 }
