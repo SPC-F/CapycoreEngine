@@ -5,8 +5,8 @@
 #include "engine/core/rendering/Texture.h"
 
 Renderer::Renderer(SDL_Renderer* renderer, SDL_Window* window):
-        renderer_(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>{renderer, SDL_DestroyRenderer}),
-        window_(std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)>{window, SDL_DestroyWindow}) {
+        renderer_(SdlRendererPtr{renderer, SDL_DestroyRenderer}),
+        window_(SdlWindowPtr{window, SDL_DestroyWindow}) {
     SDL_SetRenderDrawColor(renderer_.get(), 0, 0, 0, 255);
 }
 Renderer::Renderer(SdlRendererPtr renderer, SdlWindowPtr window):
@@ -38,7 +38,7 @@ void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
         const auto& transform = gameObj.transform();
         const auto& absolutePosition = transform.absolute_position();
 
-        for (auto spriteWrapper : gameObj.get_components<Sprite>()) {
+        for (const auto spriteWrapper : gameObj.get_components<Sprite>()) {
             const Sprite& sprite = spriteWrapper.get();
             const Texture& texture = *sprite.texture;
             auto const source = SDL_FRect {
