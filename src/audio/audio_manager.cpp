@@ -7,13 +7,13 @@ bool AudioManager::unregister_sound(const std::string& name) {
     // 
 }
 
-SoundInstance* AudioManager::get_sound(const std::string& name) noexcept {
-    // 
-}
-std::vector<SoundInstance*> AudioManager::get_all_sounds() {
+SoundInstance* AudioManager::get_sound(const std::string& name) const noexcept {
     //
 }
-std::vector<SoundInstance*> AudioManager::get_all_playing_sounds() noexcept {
+std::vector<SoundInstance*> AudioManager::get_all_sounds() const noexcept {
+    //
+}
+std::vector<SoundInstance*> AudioManager::get_all_playing_sounds() const noexcept {
     //
 }
 
