@@ -1,4 +1,5 @@
 #pragma once
+#include <format>
 #include <memory>
 #include <optional>
 #include <typeindex>
@@ -31,7 +32,7 @@ public:
     std::reference_wrapper<T> getService() const {
         const auto it = services_.find(std::type_index(typeid(T)));
         if (it == services_.end()) {
-            throw std::runtime_error("Service not found: " + std::string(typeid(T).name()));
+            throw std::runtime_error(std::format("Service not found: {}", typeid(T).name()));
         }
         // So we get an EngineServiceBase, but we know it's actually a T. We do not use dynamic cast because we are not storing subtypes of T
         return std::ref(*static_cast<T*>(it->second.get()));
