@@ -1,8 +1,8 @@
 #include <map>
 
-#include "engine/input/i_input_provider.h"
-#include "engine/input/key_code.h"
-#include "engine/input/key_state.h"
+#include <engine/input/i_input_provider.h>
+#include <engine/input/key_code.h>
+#include <engine/input/key_state.h>
 
 /**
  * @brief SDL-backed implementation of the input provider interface.

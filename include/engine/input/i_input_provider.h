@@ -2,7 +2,7 @@
 
 #include <optional>
 
-#include "engine/input/key_code.h"
+#include <engine/input/key_code.h>
 
 /**
  * @brief Interface for querying low-level keyboard input.

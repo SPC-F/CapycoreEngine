@@ -1,6 +1,6 @@
 #pragma once
 
-#include "engine/input/i_input_provider.h"
+#include <engine/input/i_input_provider.h>
 
 /**
  * @brief Centralized input manager that delegates to an external input provider.
