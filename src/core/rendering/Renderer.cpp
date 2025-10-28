@@ -4,56 +4,62 @@
 
 #include "engine/core/rendering/Texture.h"
 
-Renderer::Renderer(SDL_Renderer* renderer)
-    : _renderer(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>{renderer, SDL_DestroyRenderer}) {
-    SDL_SetRenderDrawColor(_renderer.get(), 0, 0, 0, 255);
+Renderer::Renderer(SDL_Renderer* renderer, SDL_Window* window):
+        renderer_(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>{renderer, SDL_DestroyRenderer}),
+        window_(std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)>{window, SDL_DestroyWindow}) {
+    SDL_SetRenderDrawColor(renderer_.get(), 0, 0, 0, 255);
 }
-Renderer::Renderer(SdlRendererPtr renderer)
-    : _renderer(std::move(renderer)) {
+Renderer::Renderer(SdlRendererPtr renderer, SdlWindowPtr window):
+    renderer_(std::move(renderer)),
+    window_(std::move(window)){
 }
 
 void Renderer::clear() const {
-    SDL_RenderClear(_renderer.get());
+    SDL_RenderClear(renderer_.get());
 }
-void Renderer::render() const {
-    SDL_RenderPresent(_renderer.get());
+
+void Renderer::update() {
+    // TODO: Implement
 }
 
 // TODO: Remove dummy when implementing Sprite component, and implement the RenderObject method accordingly...
 class Sprite : public Component {
     public:
-    Texture* texture;
+    Texture* texture{};
     explicit Sprite(GameObject& parent) : Component(parent) {
 
     }
 };
 
 // TODO: Reimplement this when implementing the renderer
-void Renderer::renderObject(GameObject& gameObj) const{
-    const auto& transform = gameObj.transform();
-    const auto& absolutePosition = transform.absolute_position();
+void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& objects) const{
+    for (auto gameObjWrapper : objects) {
+        auto& gameObj = gameObjWrapper.get();
+        const auto& transform = gameObj.transform();
+        const auto& absolutePosition = transform.absolute_position();
 
-    for (auto spriteWrapper : gameObj.get_components<Sprite>()) {
-        const Sprite& sprite = spriteWrapper.get();
-        const Texture& texture = *sprite.texture;
-        auto const source = SDL_FRect {
-            .x = 0,
-            .y = 0,
-            .w = texture.width(),
-            .h = texture.height()
-        };
-        auto const target = SDL_FRect {
-            .x = absolutePosition.x,
-            .y = absolutePosition.y,
-            .w = texture.width(),
-            .h = texture.height()
-        };
+        for (auto spriteWrapper : gameObj.get_components<Sprite>()) {
+            const Sprite& sprite = spriteWrapper.get();
+            const Texture& texture = *sprite.texture;
+            auto const source = SDL_FRect {
+                .x = 0,
+                .y = 0,
+                .w = texture.width(),
+                .h = texture.height()
+            };
+            auto const target = SDL_FRect {
+                .x = absolutePosition.x,
+                .y = absolutePosition.y,
+                .w = texture.width(),
+                .h = texture.height()
+            };
 
-        SDL_RenderTextureTiled(
-            _renderer.get(),
-            sprite.texture->_texture.get(),
-            &source,
-            1,
-            &target);
+            SDL_RenderTextureTiled(
+                renderer_.get(),
+                sprite.texture->texture_.get(),
+                &source,
+                1,
+                &target);
+        }
     }
 }
