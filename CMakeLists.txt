@@ -134,7 +134,8 @@ target_include_directories(engine
 
 target_link_libraries(engine
     PRIVATE 
-        SDL3::SDL3 
+        SDL3::SDL3
+        SDL3_image::SDL3_image
         enet 
         box2d
 )
