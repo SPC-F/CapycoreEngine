@@ -2,18 +2,18 @@
 #include <memory>
 
 class SDL_Texture;
-class Renderer;
+class renderer;
 
-class Texture final {
+class texture final {
 private:
     float width_{0}, height_{0};
 
-    friend class Renderer;
+    friend class renderer;
     friend class RenderingManager;
     friend class AssetManager;
 
     std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)> texture_; // custom deleter
-    explicit Texture(SDL_Texture* texture);
+    explicit texture(SDL_Texture* texture);
 
 public:
     [[nodiscard]] float width() const;
