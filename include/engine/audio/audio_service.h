@@ -6,8 +6,9 @@
 #include <vector>
 #include <string>
 
-#include <engine/audio/sound/sound_instance.h>
 #include <engine/core/iEngineService.h>
+#include <engine/audio/sound/sound_instance.h>
+#include <engine/audio/sound/sound_resource.h>
 
 /**
  * @brief Manages audio playback and sound instances within the engine.
@@ -17,21 +18,22 @@ public:
     AudioService() = default;
     ~AudioService() override = default;
 
-    SoundInstance* register_sound(const std::string& file_path, const std::string& name);
+    SoundResource* register_sound(const std::string& file_path, const std::string& name);
     bool unregister_sound(const std::string& name);
 
-    [[nodiscard]] SoundInstance* get_sound(const std::string& name) const noexcept;
-    [[nodiscard]] std::vector<SoundInstance*> get_all_sounds() const noexcept;
+    [[nodiscard]] SoundResource* get_sound_resource(const std::string& name) const noexcept;
+    [[nodiscard]] SoundInstance* get_sound_instance(const std::string& name) const noexcept;
     [[nodiscard]] std::vector<SoundInstance*> get_all_playing_sounds() const noexcept;
 
-    void play_sound(const SoundInstance& sound_instance);
+    void play_sound(const SoundResource& sound_resource);
     void play_sound(const std::string& name);
 
     void stop_sound(const SoundInstance& sound_instance);
     void stop_sound(const std::string& name);
     void stop_all_sounds();
 
-    void set_sound_volume(SoundInstance& sound_instance, float volume) noexcept;
+    void set_sound_resource_volume(SoundResource& sound_resource, float volume) noexcept;
+    void set_sound_instance_volume(SoundInstance& sound_instance, float volume) noexcept;
     void set_sound_volume(const std::string& name, float volume) noexcept;
 
     /**
@@ -40,6 +42,6 @@ public:
     void update();
 
 private:
-    std::unordered_map<std::string, std::unique_ptr<SoundInstance>> sound_instances_;
-    std::vector<SoundInstance*> playing_sounds;
+    std::unordered_map<std::string, std::unique_ptr<SoundResource>> sound_resources;
+    std::vector<std::unique_ptr<SoundInstance>> active_instances;
 };
