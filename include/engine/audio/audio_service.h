@@ -12,10 +12,10 @@
 /**
  * @brief Manages audio playback and sound instances within the engine.
  */
-class AudioManager : public IEngineService {
+class AudioService : public IEngineService {
 public:
-    AudioManager() = default;
-    ~AudioManager() override = default;
+    AudioService() = default;
+    ~AudioService() override = default;
 
     SoundInstance* register_sound(const std::string& file_path, const std::string& name);
     bool unregister_sound(const std::string& name);
