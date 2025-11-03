@@ -12,7 +12,7 @@
  */
 class SDLSoundInstance : public SoundInstance {
 public:
-    SDLSoundInstance(SDLSoundResource* resource, float volume = 1.0f);
+    SDLSoundInstance(std::shared_ptr<SDLSoundResource> resource, float volume = 1.0f);
     ~SDLSoundInstance() override = default;
 
     void play() override;

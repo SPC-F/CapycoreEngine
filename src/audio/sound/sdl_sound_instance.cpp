@@ -1,6 +1,6 @@
 #include <engine/audio/sound/sdl_sound_instance.h>
 
-SDLSoundInstance::SDLSoundInstance(SDLSoundResource* resource, float volume)
+SDLSoundInstance::SDLSoundInstance(std::shared_ptr<SDLSoundResource> resource, float volume)
     : SoundInstance(resource, volume) {
     // Initialize SDL AudioStream here using the SoundResource data
 }

@@ -4,6 +4,7 @@
 #include <SDL3/SDL_audio.h>
 
 #include <engine/audio/sound/sound_resource.h>
+#include <engine/audio/sound/sound_type.h>
 
 /**
  * @brief Represents a SDL-specific resource.
@@ -11,7 +12,7 @@
  */
 class SDLSoundResource : public SoundResource {
 public:
-    SDLSoundResource(const std::string& name, const std::string& file_path, float volume = 1.0f);
+    SDLSoundResource(const std::string& name, const std::string& file_path, SoundType type = SoundType::SDL_MIXER);
     ~SDLSoundResource() override = default;
 
     const SDL_AudioSpec& getAudioSpec() const;

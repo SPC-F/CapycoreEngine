@@ -13,18 +13,23 @@
  */
 class SoundInstance {
 public:
-    explicit SoundInstance(SoundResource* resource, float volume = 1.0f)
-        : resource_(resource), volume_(volume) {}
+    explicit SoundInstance(std::shared_ptr<SoundResource> resource, float volume = 1.0f);
     virtual ~SoundInstance() = default;
 
-    virtual void play() = 0;
-    virtual void pause() = 0;
-    virtual void stop() = 0;
-    virtual void set_volume(float volume) = 0;
-    virtual bool is_playing() const = 0;
+    virtual void play() {}
+    virtual void pause() {}
+    virtual void stop() {}
+    virtual void set_volume(float volume);
+    virtual bool is_playing() const;
 
+    const std::shared_ptr<SoundResource>& resource() const noexcept;
+    const float volume() const noexcept;
+    void volume(float volume) noexcept;
+    
 protected:
-    SoundResource* resource_;
-    float volume_{1.0f};
+    std::shared_ptr<SoundResource> resource_;
+
+    int loops_{0};
     bool playing_{false};
+    float volume_{1.0f};
 };

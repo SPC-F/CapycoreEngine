@@ -1,7 +1,7 @@
 #include <engine/audio/sound/sdl_sound_resource.h>
 
-SDLSoundResource::SDLSoundResource(const std::string& name, const std::string& file_path, float volume)
-    : SoundResource(name, file_path, volume) {
+SDLSoundResource::SDLSoundResource(const std::string& name, const std::string& file_path, SoundType type)
+    : SoundResource(name, file_path, type) {
     // Load WAV file
 }
 
