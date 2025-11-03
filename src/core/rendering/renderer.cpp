@@ -1,8 +1,8 @@
 #include <engine/core/rendering/renderer.h>
 #include <engine/public/gameObject.h>
-#include <SDL3_image/SDL_image.h>
+#include <engine/core/rendering/texture.h>
 
-#include "engine/core/rendering/texture.h"
+#include <SDL3_image/SDL_image.h>
 
 renderer::renderer(SDL_Renderer* renderer, SDL_Window* window):
         renderer_(SdlRendererPtr{renderer, SDL_DestroyRenderer}),
@@ -25,7 +25,7 @@ void renderer::update() {
 // TODO: Remove dummy when implementing Sprite component, and implement the RenderObject method accordingly...
 class Sprite : public Component {
     public:
-    texture* texture{};
+    Texture* texture{};
     explicit Sprite(GameObject& parent) : Component(parent) {
 
     }
@@ -40,7 +40,7 @@ void renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
 
         for (const auto spriteWrapper : gameObj.get_components<Sprite>()) {
             const Sprite& sprite = spriteWrapper.get();
-            const texture& texture = *sprite.texture;
+            const Texture& texture = *sprite.texture;
             auto const source = SDL_FRect {
                 .x = 0,
                 .y = 0,
