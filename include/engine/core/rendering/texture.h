@@ -2,13 +2,12 @@
 #include <memory>
 
 class SDL_Texture;
-class renderer;
 
 class Texture final {
 private:
     float width_{0}, height_{0};
 
-    friend class renderer;
+    friend class Renderer;
     friend class RenderingManager;
     friend class AssetManager;
 

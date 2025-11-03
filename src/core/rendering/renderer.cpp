@@ -4,21 +4,21 @@
 
 #include <SDL3_image/SDL_image.h>
 
-renderer::renderer(SDL_Renderer* renderer, SDL_Window* window):
+Renderer::Renderer(SDL_Renderer* renderer, SDL_Window* window):
         renderer_(SdlRendererPtr{renderer, SDL_DestroyRenderer}),
         window_(SdlWindowPtr{window, SDL_DestroyWindow}) {
     SDL_SetRenderDrawColor(renderer_.get(), 0, 0, 0, 255);
 }
-renderer::renderer(SdlRendererPtr renderer, SdlWindowPtr window):
+Renderer::Renderer(SdlRendererPtr renderer, SdlWindowPtr window):
     renderer_(std::move(renderer)),
     window_(std::move(window)){
 }
 
-void renderer::clear() const {
+void Renderer::clear() const {
     SDL_RenderClear(renderer_.get());
 }
 
-void renderer::update() {
+void Renderer::update() {
     // TODO: Implement
 }
 
@@ -32,7 +32,7 @@ class Sprite : public Component {
 };
 
 // TODO: Reimplement this when implementing the renderer
-void renderer::render(const std::vector<std::reference_wrapper<GameObject>>& objects) const{
+void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& objects) const{
     for (auto gameObjWrapper : objects) {
         auto& gameObj = gameObjWrapper.get();
         const auto& transform = gameObj.transform();
