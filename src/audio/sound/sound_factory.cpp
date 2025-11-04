@@ -1,7 +1,8 @@
 #include <engine/audio/sound/sound_factory.h>
-#include <engine/audio/sound/sdl_sound_resource.h>
-#include <engine/audio/sound/sdl_sound_instance.h>
-#include <engine/audio/sound/generic_sound_instance.h>
+
+#include <engine/audio/sound/instance/generic_sound_instance.h>
+#include <engine/audio/sound/instance/sdl_sound_instance.h>
+#include <engine/audio/sound/resource/sdl_sound_resource.h>
 
 std::shared_ptr<SoundResource> SoundFactory::create_sound_resource(const std::string& file_path, const std::string& name, SoundType type) {
     switch (type) {

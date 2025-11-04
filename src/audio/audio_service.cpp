@@ -11,16 +11,28 @@ std::shared_ptr<SoundResource> AudioService::register_sound(const std::string& f
         return it->second;
     }
 
-    auto resource = SoundFactory::create_sound_resource(file_path, name, type);
-    sound_resources_[name] = resource;
-    return resource;
-}
-
-std::shared_ptr<SoundResource> AudioService::register_sdl_sound(const std::string& file_path, const std::string& name) {
-    return register_sound(file_path, name, SoundType::SDL_MIXER);
+    try {
+        auto resource = SoundFactory::create_sound_resource(file_path, name, type);
+        sound_resources_[name] = resource;
+        return resource;
+    } 
+    catch (const std::exception& e) {
+        return nullptr;
+    }
 }
 
 bool AudioService::unregister_sound(const std::string& name) {
+    active_instances_.erase(
+        std::remove_if(
+            active_instances_.begin(), active_instances_.end(),
+            [&name](const std::shared_ptr<SoundInstance>& instance)
+            {
+                return instance->resource()->name() == name;
+            }
+        ),
+        active_instances_.end()
+    );
+
     return sound_resources_.erase(name) > 0;
 }
 
@@ -34,23 +46,24 @@ std::shared_ptr<SoundResource> AudioService::get_sound_resource(const std::strin
     return nullptr;
 }
 
-std::shared_ptr<SoundInstance> AudioService::play_sound(std::shared_ptr<SoundResource> sound_resource) {
+std::shared_ptr<SoundInstance> AudioService::play_sound(std::shared_ptr<SoundResource> sound_resource, float volume, bool loop) {
     if (!sound_resource) {
         return nullptr;
     }
 
-    auto instance = SoundFactory::create_sound_instance(sound_resource);
+    auto instance = SoundFactory::create_sound_instance(sound_resource, volume);
+    instance->loop(loop);
     instance->play();
-    active_instances_.push_back(instance);
 
+    active_instances_.push_back(instance);
     return instance;
 }
 
-std::shared_ptr<SoundInstance> AudioService::play_sound(const std::string& name) {
-    return play_sound(get_sound_resource(name));
+std::shared_ptr<SoundInstance> AudioService::play_sound(const std::string& name, float volume, bool loop) {
+    return play_sound(get_sound_resource(name), volume, loop);
 }
 
-void AudioService::stop_sound(std::shared_ptr<SoundInstance> sound_instance) {
+void AudioService::stop_sound(std::shared_ptr<SoundInstance>&& sound_instance) {
     if (!sound_instance) {
         return;
     }
@@ -61,6 +74,8 @@ void AudioService::stop_sound(std::shared_ptr<SoundInstance> sound_instance) {
         std::remove(active_instances_.begin(), active_instances_.end(), sound_instance),
         active_instances_.end()
     );
+
+    sound_instance.reset();
 }
 
 void AudioService::stop_sound(const std::string& name) {
@@ -107,7 +122,7 @@ void AudioService::set_sound_volume(std::shared_ptr<SoundInstance> sound_instanc
         return;
     }
 
-    sound_instance->set_volume(volume);
+    sound_instance->volume(volume);
 }
 
 void AudioService::set_sound_volume(const std::string& name, float volume) noexcept {
@@ -119,7 +134,7 @@ void AudioService::update() {
         std::remove_if(
             active_instances_.begin(), active_instances_.end(),
             [](const std::shared_ptr<SoundInstance>& instance) {
-                return !instance->is_playing();
+                return instance->is_finished();
             }
         ),
         active_instances_.end()

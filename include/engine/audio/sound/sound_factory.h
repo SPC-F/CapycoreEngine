@@ -3,9 +3,9 @@
 #include <memory>
 #include <string>
 
+#include <engine/audio/sound/instance/sound_instance.h>
+#include <engine/audio/sound/resource/sound_resource.h>
 #include <engine/audio/sound/sound_type.h>
-#include <engine/audio/sound/sound_resource.h>
-#include <engine/audio/sound/sound_instance.h>
 
 /**
  * @brief Factory class for creating SoundResource instances based on SoundType.

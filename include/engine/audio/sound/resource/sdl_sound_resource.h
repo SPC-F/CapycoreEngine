@@ -3,7 +3,7 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_audio.h>
 
-#include <engine/audio/sound/sound_resource.h>
+#include <engine/audio/sound/resource/sound_resource.h>
 #include <engine/audio/sound/sound_type.h>
 
 /**
@@ -15,12 +15,12 @@ public:
     SDLSoundResource(const std::string& name, const std::string& file_path, SoundType type = SoundType::SDL_MIXER);
     ~SDLSoundResource() override = default;
 
-    const SDL_AudioSpec& getAudioSpec() const;
-    const Uint8* getAudioBuffer() const;
-    Uint32 getDurationInMs() const;
+    const SDL_AudioSpec& audio_spec() const;
+    const Uint8* audio_buffer() const;
+    Uint32 length() const;
 
 private:
-    SDL_AudioSpec spec;
-    Uint32 duration_in_ms{0};
-    std::unique_ptr<Uint8, decltype(&SDL_free)> audio_buffer{nullptr, &SDL_free};
+    SDL_AudioSpec spec_;
+    Uint32 audio_length_{0};
+    std::unique_ptr<Uint8, decltype(&SDL_free)> audio_buffer_{nullptr, &SDL_free};
 };
