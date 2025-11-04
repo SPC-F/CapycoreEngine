@@ -14,9 +14,9 @@
  */
 class SoundFactory {
 public:
-    SoundFactory() = default;
-    ~SoundFactory() = default;
+    SoundFactory() = delete;
+    ~SoundFactory() = delete;
 
     static std::shared_ptr<SoundResource> create_sound_resource(const std::string& file_path, const std::string& name, SoundType type = SoundType::GENERIC);
-    static std::shared_ptr<SoundInstance> create_sound_instance(std::shared_ptr<SoundResource> resource, float volume = 1.0f);
+    static std::unique_ptr<SoundInstance> create_sound_instance(std::shared_ptr<SoundResource> resource, float volume = 1.0f);
 };  

@@ -17,24 +17,24 @@
 class AudioService : public IEngineService {
 public:
     AudioService() = default;
-    ~AudioService() override = default;
 
     std::shared_ptr<SoundResource> register_sound(const std::string& file_path, const std::string& name, SoundType type = SoundType::GENERIC);
     bool unregister_sound(const std::string& name);
     
     std::shared_ptr<SoundResource> get_sound_resource(const std::string& name) const noexcept;
 
-    std::shared_ptr<SoundInstance> play_sound(std::shared_ptr<SoundResource> sound_resource, float volume = 1.0f, bool loop = false);
-    std::shared_ptr<SoundInstance> play_sound(const std::string& name, float volume = 1.0f, bool loop = false);
+    std::reference_wrapper<SoundInstance> play_sound(std::shared_ptr<SoundResource> sound_resource, float volume = 1.0f, bool loop = false);
+    std::reference_wrapper<SoundInstance> play_sound(const std::string& name, float volume = 1.0f, bool loop = false);
 
-    void stop_sound(std::shared_ptr<SoundInstance>&& sound_instance);
+    void stop_sound(std::unique_ptr<SoundInstance>&& sound_instance);
     void stop_sound(const std::string& name);
     void stop_all_sounds();
 
-    std::shared_ptr<SoundInstance> get_sound_instance(const std::string& name) const noexcept;
-    std::vector<std::shared_ptr<SoundInstance>> get_all_playing_sounds() const noexcept;
+    bool has_sound_instance(const std::string& name) const noexcept;
+    std::optional<std::reference_wrapper<SoundInstance>> get_sound_instance(const std::string& name) const;
+    std::vector<std::reference_wrapper<SoundInstance>> get_all_playing_sounds() const;
 
-    void set_sound_volume(std::shared_ptr<SoundInstance> sound_instance, float volume) noexcept;
+    void set_sound_volume(std::unique_ptr<SoundInstance>&& sound_instance, float volume) noexcept;
     void set_sound_volume(const std::string& name, float volume) noexcept;
 
     /**
@@ -44,5 +44,5 @@ public:
 
 private:
     std::unordered_map<std::string, std::shared_ptr<SoundResource>> sound_resources_;
-    std::vector<std::shared_ptr<SoundInstance>> active_instances_;
+    std::vector<std::unique_ptr<SoundInstance>> active_instances_;
 };
