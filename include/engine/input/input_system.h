@@ -21,6 +21,22 @@ public:
     float key_hold_duration(KeyCode key) const override;
     std::optional<KeyCode> last_key_pressed() const override;
 
+    bool is_mouse_held(MouseButton button) const override;
+    bool is_mouse_pressed(MouseButton button) const override;
+    bool is_mouse_released(MouseButton button) const override;
+    bool any_mouse_held() const override;
+    bool any_mouse_pressed() const override;
+    bool any_mouse_released() const override;
+    size_t mouse_hold_duration(MouseButton button) const override;
+    std::optional<MouseButton> last_mouse_pressed() const override;
+
+    const Point mouse_position() const override;
+    const std::pair<float, float> mouse_delta() const override;
+    bool mouse_moved() const override;
+    const std::pair<float, float> mouse_scroll() const override;
+    const std::pair<float, float> mouse_scroll_delta() const override;
+    MouseDirection mouse_scroll_direction() const override;
+
     void reset_state() override;
     void update() override;
 
@@ -32,4 +48,13 @@ private:
      * Internal only—consumers should query through the public interface.
      */
     std::map<KeyCode, KeyState> key_states_;
+
+    /**
+    * @brief Mouse state cache for frame-level input tracking.
+    *
+    * Tracks button states, cursor position, movement deltas, and scroll information.
+    * Indexed by logical mouse button to decouple backend events from engine logic.
+    * Internal only—consumers should query through the public interface.
+    */
+    MouseState mouse_state_;
 };
