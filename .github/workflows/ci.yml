@@ -10,7 +10,7 @@ on:
 jobs:
   # Full build and ASan tests for master and development branches 🚀
   full-build:
-    if: github.base_ref == 'master' || github.base_ref == 'development'
+    if: startsWith(github.head_ref, '@feat/')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -86,18 +86,18 @@ jobs:
             libgl1-mesa-dev libfreetype6-dev \
             libpng-dev libjpeg-dev zlib1g-dev
 
-      - name: Configure (fast build, tests enabled)
+      - name: Configure and build tests (Debug)
         run: |
-          cmake -S . -B build \
-            -DCMAKE_BUILD_TYPE=Release \
+          cmake -S . -B build-light \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DENABLE_TESTS=ON \
             -DBUILD_SHARED_LIBS=OFF
-
-      - name: Build tests
-        run: cmake --build build --parallel --target all
+          cmake --build build-light --parallel --target all
 
       - name: Run tests (headless SDL)
         run: |
           export SDL_VIDEODRIVER=dummy
           export SDL_AUDIODRIVER=dummy
-          ctest --test-dir build --output-on-failure
+          ctest --test-dir build-light --output-on-failure
+
