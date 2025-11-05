@@ -6,18 +6,27 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(FetchContent)
 
+set(PREBUILT_DEPS_DIR "${CMAKE_BINARY_DIR}/_deps")
+
 # =========================================================
 # SDL3
 # =========================================================
-set(SDL_TEST OFF CACHE BOOL "Disable SDL3 internal tests")
-set(SDL_SHARED ON CACHE BOOL "Build SDL3 as shared library")
+if(EXISTS "${PREBUILT_DEPS_DIR}/sdl3-build/SDL3Config.cmake")
+        message(STATUS "Using prebuilt SDL3 from _deps")
+        set(SDL3_DIR "${PREBUILT_DEPS_DIR}/sdl3-build")
+        find_package(SDL3 REQUIRED)
+else()
+        message(STATUS "Fetching SDL3 from GitHub")
+        set(SDL_TEST OFF CACHE BOOL "Disable SDL3 internal tests")
+        set(SDL_SHARED ON CACHE BOOL "Build SDL3 as shared library")
 
-FetchContent_Declare(
-        SDL3
-        GIT_REPOSITORY https://github.com/libsdl-org/SDL.git
-        GIT_TAG release-3.2.24
-)
-FetchContent_MakeAvailable(SDL3)
+        FetchContent_Declare(
+                SDL3
+                GIT_REPOSITORY https://github.com/libsdl-org/SDL.git
+                GIT_TAG release-3.2.24
+        )
+        FetchContent_MakeAvailable(SDL3)
+endif()
 
 # =========================================================
 # SDL3_image
@@ -29,6 +38,7 @@ FetchContent_Declare(
         GIT_TAG release-3.2.4
 )
 FetchContent_MakeAvailable(SDL3_image)
+
 
 # =========================================================
 # FreeType (local package install, sibling folder)
@@ -62,6 +72,7 @@ FetchContent_Declare(
         GIT_REPOSITORY https://github.com/libsdl-org/SDL_ttf.git
         GIT_TAG release-3.2.2
 )
+
 FetchContent_MakeAvailable(SDL3_ttf)
 
 # =========================================================
