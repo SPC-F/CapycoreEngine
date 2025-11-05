@@ -3,14 +3,10 @@ name: C++ CI
 on:
   workflow_dispatch:
   pull_request:
-    types: [opened, reopened, ready_for_review]
     branches:
       - master
       - development
       - '@feat/*'
-  push:
-    branches-ignore:
-      - '**'
 
 jobs:
   build:
