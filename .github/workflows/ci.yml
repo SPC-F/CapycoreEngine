@@ -21,6 +21,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             cmake g++ clang-tidy ccache \
+            libsdl2-dev \
             libx11-dev libxext-dev libxrandr-dev libxi-dev \
             libxinerama-dev libxcursor-dev \
             libgl1-mesa-dev libfreetype6-dev \
@@ -62,7 +63,6 @@ jobs:
       - name: Run tests (ASan, headless SDL)
         run: |
           export ASAN_OPTIONS=detect_leaks=1
-          # Optionally export dummy drivers globally, though main.cpp already does it
           export SDL_VIDEODRIVER=dummy
           export SDL_AUDIODRIVER=dummy
           ctest --test-dir build-asan --output-on-failure
@@ -80,6 +80,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             cmake g++ ccache \
+            libsdl2-dev \
             libx11-dev libxext-dev libxrandr-dev libxi-dev \
             libxinerama-dev libxcursor-dev \
             libgl1-mesa-dev libfreetype6-dev \
