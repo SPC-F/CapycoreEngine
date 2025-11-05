@@ -8,8 +8,7 @@ on:
       - '@feat/*'
 
 jobs:
-  # We only run the full build on master and development branches
-  # The building is simply too expensive to run on every feature branch PR
+  # Full build and ASan tests for master and development branches 🚀
   full-build:
     if: github.base_ref == 'master' || github.base_ref == 'development'
     runs-on: ubuntu-latest
@@ -22,6 +21,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             cmake g++ clang-tidy ccache \
+            libsdl3-dev \
             libx11-dev libxext-dev libxrandr-dev libxi-dev \
             libxinerama-dev libxcursor-dev \
             libgl1-mesa-dev libfreetype6-dev \
@@ -47,7 +47,7 @@ jobs:
           cmake -S . -B build-tidy -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
           clang-tidy -p build-tidy $(find src include tests -name '*.cpp') --warnings-as-errors=*
 
-      - name: Configure (ASan)
+      - name: Configure (ASan, tests enabled)
         run: |
           cmake -S . -B build-asan \
             -DCMAKE_BUILD_TYPE=Debug \
@@ -60,12 +60,15 @@ jobs:
       - name: Build (ASan)
         run: cmake --build build-asan --parallel --target all
 
-      - name: Run tests (ASan)
+      - name: Run tests (ASan, headless SDL)
         run: |
           export ASAN_OPTIONS=detect_leaks=1
+          # Optionally export dummy drivers globally, though main.cpp already does it
+          export SDL_VIDEODRIVER=dummy
+          export SDL_AUDIODRIVER=dummy
           ctest --test-dir build-asan --output-on-failure
 
-  # Lightweight tests for @feat branches
+  # Lightweight tests for @feat branches ⚡
   light-test:
     if: startsWith(github.head_ref, '@feat/')
     runs-on: ubuntu-latest
@@ -76,13 +79,15 @@ jobs:
       - name: Install test dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake g++ libgtest-dev ccache \
+          sudo apt-get install -y \
+            cmake g++ ccache \
+            libsdl3-dev \
             libx11-dev libxext-dev libxrandr-dev libxi-dev \
             libxinerama-dev libxcursor-dev \
             libgl1-mesa-dev libfreetype6-dev \
             libpng-dev libjpeg-dev zlib1g-dev
 
-      - name: Configure (fast build)
+      - name: Configure (fast build, tests enabled)
         run: |
           cmake -S . -B build \
             -DCMAKE_BUILD_TYPE=Release \
@@ -92,5 +97,8 @@ jobs:
       - name: Build tests
         run: cmake --build build --parallel --target all
 
-      - name: Run tests
-        run: ctest --test-dir build --output-on-failure
+      - name: Run tests (headless SDL)
+        run: |
+          export SDL_VIDEODRIVER=dummy
+          export SDL_AUDIODRIVER=dummy
+          ctest --test-dir build --output-on-failure

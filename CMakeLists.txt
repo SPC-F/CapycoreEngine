@@ -106,16 +106,15 @@ set(IMGUI_SOURCES
 # =========================================================
 # Testing
 # =========================================================
-set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
-set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
-
-FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/refs/heads/main.zip
-)
-FetchContent_MakeAvailable(googletest)
+Set("ENABLE_TESTS" ON CACHE BOOL "Enable building tests")
+if (ENABLE_TESTS)
+        FetchContent_Declare(
+        Catch2
+        GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+        GIT_TAG        v3.8.1 # or a later release
+        )
+        FetchContent_MakeAvailable(Catch2)
+endif()
 
 # =========================================================
 # Sources
@@ -133,8 +132,11 @@ target_include_directories(engine
 )
 
 target_link_libraries(engine
-    PRIVATE 
+    PUBLIC 
         SDL3::SDL3 
+        SDL3_image::SDL3_image
+        SDL3_ttf::SDL3_ttf
+        Freetype::Freetype
         enet 
         box2d
 )
@@ -224,12 +226,23 @@ endif()
 # =========================================================
 # Enable testing
 # =========================================================
-option(ENABLE_TESTS "Enable building tests" ON)
-
 if(ENABLE_TESTS)
-    enable_testing()
-    file(GLOB TEST_SOURCES CONFIGURE_DEPENDS tests/*.cpp)
-    add_executable(tests ${TEST_SOURCES})
-    target_link_libraries(tests PRIVATE engine gtest_main)
-    add_test(NAME all_tests COMMAND tests)
+        file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS tests/*.cpp)
+        list(FILTER TEST_SOURCES EXCLUDE REGEX ".*/main.cpp$")
+
+        add_executable(tests
+                tests/main.cpp
+                ${TEST_SOURCES}
+        )
+
+        target_link_libraries(tests
+        PRIVATE
+                engine
+                Catch2::Catch2
+        )
+
+        target_include_directories(tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+
+        enable_testing()
+        add_test(NAME engine_tests COMMAND tests)
 endif()
