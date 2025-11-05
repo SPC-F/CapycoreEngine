@@ -11,6 +11,7 @@ on:
   push:
     branches-ignore:
       - '**'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,16 +32,18 @@ jobs:
             libgl1-mesa-dev libfreetype6-dev \
             libpng-dev libjpeg-dev zlib1g-dev
 
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache
-            ~/.ccache
-            build-asan/_deps
-          key: ${{ runner.os }}-deps-${{ hashFiles('CMakeLists.txt', '**/CMakeLists.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-deps-
+      - name: Download prebuilt _deps from GitHub Release if missing
+        shell: bash
+        run: |
+          if [ ! -d build/_deps ]; then
+            mkdir -p build
+            echo ">>> Downloading prebuilt _deps from GitHub Release..."
+            curl -L -o build/_deps.tar.gz "https://github.com/SPC-F/CapycoreEngine/releases/download/v0.1.0-deps/_deps.tar.gz"
+            tar xzf build/_deps.tar.gz -C build
+            echo ">>> _deps ready"
+          else
+            echo ">>> _deps already exists, skipping download"
+          fi
 
       - name: Configure compiler cache
         shell: bash
