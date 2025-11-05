@@ -27,18 +27,18 @@ jobs:
             libgl1-mesa-dev libfreetype6-dev \
             libpng-dev libjpeg-dev zlib1g-dev
 
-      - name: Download prebuilt full build
+      - name: Download prebuilt _deps if missing
         shell: bash
         run: |
-          if [ ! -d build ]; then
-            echo ">>> Downloading prebuilt full build..."
-            curl -L -o build.tar.gz "https://github.com/SPC-F/CapycoreEngine/releases/download/v0.1.0-deps/build.tar.gz"
-            mkdir build
-            tar xzf build.tar.gz -C build --strip-components=1
-            echo ">>> Prebuilt build ready"
+          if [ ! -d build/_deps ]; then
+            mkdir -p build
+            curl -L -o build/_deps.tar.gz "https://github.com/your/repo/releases/download/v0.1.0/_deps-linux.tar.gz"
+            tar xzf build/_deps.tar.gz -C build
+            echo ">>> _deps ready"
           else
-            echo ">>> Build folder exists, skipping download"
+            echo ">>> _deps already exists, skipping download"
           fi
+
 
       - name: Configure compiler cache
         shell: bash
