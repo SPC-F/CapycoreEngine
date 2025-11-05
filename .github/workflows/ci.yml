@@ -27,13 +27,14 @@ jobs:
             libgl1-mesa-dev libfreetype6-dev \
             libpng-dev libjpeg-dev zlib1g-dev
 
-      - name: Download prebuilt build folder (full build tar)
+      - name: Download prebuilt full build
         shell: bash
         run: |
           if [ ! -d build ]; then
             echo ">>> Downloading prebuilt full build..."
             curl -L -o build.tar.gz "https://github.com/SPC-F/CapycoreEngine/releases/download/v0.1.0-deps/build.tar.gz"
-            tar xzf build.tar.gz
+            mkdir build
+            tar xzf build.tar.gz -C build --strip-components=1
             echo ">>> Prebuilt build ready"
           else
             echo ">>> Build folder exists, skipping download"
@@ -47,12 +48,14 @@ jobs:
         shell: bash
         continue-on-error: true
         run: |
+          # Only re-run cmake to refresh compile_commands if needed
           cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
           clang-tidy -p build $(find src include tests -name '*.cpp') --warnings-as-errors=*
 
       - name: Build & Test (ASan)
         shell: bash
         run: |
+          # CMake will skip targets that are already built
           cmake -S . -B build \
             -DCMAKE_BUILD_TYPE=Debug \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -60,6 +63,7 @@ jobs:
             -DENABLE_TESTS=ON \
             -DENABLE_TRACY=OFF \
             -DBUILD_SHARED_LIBS=OFF
+
           cmake --build build --parallel --target all
 
           export ASAN_OPTIONS=detect_leaks=1
