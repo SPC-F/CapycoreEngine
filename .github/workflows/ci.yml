@@ -30,11 +30,11 @@ jobs:
       - name: Download prebuilt _deps from GitHub Release if missing
         shell: bash
         run: |
-          if [ ! -d build-asan/_deps ]; then
-            mkdir -p build-asan
+          if [ ! -d build/_deps ]; then
+            mkdir -p build
             echo ">>> Downloading prebuilt _deps from GitHub Release..."
-            curl -L -o build-asan/_deps.tar.gz "https://github.com/SPC-F/CapycoreEngine/releases/download/v0.1.0-deps/_deps.tar.gz"
-            tar xzf build-asan/_deps.tar.gz -C build-asan
+            curl -L -o build/_deps.tar.gz "https://github.com/SPC-F/CapycoreEngine/releases/download/v0.1.0-deps/_deps.tar.gz"
+            tar xzf build/_deps.tar.gz -C build
             echo ">>> _deps ready"
           else
             echo ">>> _deps already exists, skipping download"

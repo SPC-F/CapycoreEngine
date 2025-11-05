@@ -6,7 +6,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(FetchContent)
 
-set(PREBUILT_DEPS_DIR "${CMAKE_BINARY_DIR}/_deps")
+set(PREBUILT_DEPS_DIR "${CMAKE_SOURCE_DIR}/build/_deps")
 
 # =========================================================
 # SDL3
