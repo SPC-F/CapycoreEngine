@@ -8,7 +8,9 @@ on:
       - master
       - development
       - '@feat/*'
-
+  push:
+    branches-ignore:
+      - '**'
 jobs:
   build:
     runs-on: ubuntu-latest
