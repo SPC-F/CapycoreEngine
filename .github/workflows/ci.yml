@@ -1,12 +1,17 @@
 name: C++ CI
+
 on:
   pull_request:
     branches:
       - master
       - development
       - '@feat/*'
+
 jobs:
-  build:
+  # We only run the full build on master and development branches
+  # The building is simply too expensive to run on every feature branch PR
+  full-build:
+    if: github.base_ref == 'master' || github.base_ref == 'development'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -33,7 +38,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-deps-
 
-      # Enable ccache for faster rebuilds ⚡
       - name: Configure compiler cache
         run: echo 'export PATH="/usr/lib/ccache:$PATH"' >> $GITHUB_ENV
 
@@ -54,9 +58,39 @@ jobs:
             -DBUILD_SHARED_LIBS=OFF
 
       - name: Build (ASan)
-        run: cmake --build build-asan --parallel --target all || echo "Skill issue 🤡"
+        run: cmake --build build-asan --parallel --target all
 
       - name: Run tests (ASan)
         run: |
           export ASAN_OPTIONS=detect_leaks=1
           ctest --test-dir build-asan --output-on-failure
+
+  # Lightweight tests for @feat branches
+  light-test:
+    if: startsWith(github.head_ref, '@feat/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install test dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ libgtest-dev ccache \
+            libx11-dev libxext-dev libxrandr-dev libxi-dev \
+            libxinerama-dev libxcursor-dev \
+            libgl1-mesa-dev libfreetype6-dev \
+            libpng-dev libjpeg-dev zlib1g-dev
+
+      - name: Configure (fast build)
+        run: |
+          cmake -S . -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DENABLE_TESTS=ON \
+            -DBUILD_SHARED_LIBS=OFF
+
+      - name: Build tests
+        run: cmake --build build --parallel --target all
+
+      - name: Run tests
+        run: ctest --test-dir build --output-on-failure
