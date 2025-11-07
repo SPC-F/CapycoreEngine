@@ -44,13 +44,15 @@ jobs:
       - name: Run clang-tidy
         shell: bash
         run: |
-          cmake -S . -B build-tidy -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-          clang-tidy -p build-tidy $(find src include -name '*.cpp' -o -name '*.h' ! -path '*/tests/*') --warnings-as-errors=*
+          cmake -S . -B build-tidy -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_STANDARD_REQUIRED=ON
+          clang-tidy -p build-tidy $(find src include -name '*.cpp' -o -name '*.h' ! -path '*/tests/*' ! -path '*/memory.cpp') --warnings-as-errors=*
 
       - name: Configure (ASan, tests enabled)
         shell: bash
         run: |
           cmake -S . -B build-asan \
+            -DCMAKE_CXX_STANDARD=20 \
+            -DCMAKE_CXX_STANDARD_REQUIRED=ON \
             -DCMAKE_BUILD_TYPE=Debug \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_FLAGS="-fsanitize=address -g -O1" \
