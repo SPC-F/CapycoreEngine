@@ -63,10 +63,7 @@ jobs:
             $(find src include -type f \( -name '*.cpp' -o -name '*.h' \) \
               ! -path '*/tests/*' \
               ! -path '*/util/memory.cpp') \
-            --warnings-as-errors=* \
-            --extra-arg=-std=c++20 \
-            --extra-arg=-I/usr/include/c++/$(g++ -dumpversion) \
-            --extra-arg=-I/usr/include/x86_64-linux-gnu/c++/$(g++ -dumpversion)
+            --warnings-as-errors=*
       
       - name: Build (ASan)
         shell: bash
