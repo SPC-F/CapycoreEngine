@@ -41,12 +41,11 @@ jobs:
         shell: bash
         run: echo 'export PATH="/usr/lib/ccache:$PATH"' >> $GITHUB_ENV
 
-      - name: Run clang-tidy (non-blocking)
+      - name: Run clang-tidy
         shell: bash
-        continue-on-error: true
         run: |
           cmake -S . -B build-tidy -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-          clang-tidy -p build-tidy $(find src include tests -name '*.cpp') --warnings-as-errors=*
+          clang-tidy -p build-tidy $(find src include -name '*.cpp' -o -name '*.h' ! -path '*/tests/*') --warnings-as-errors=*
 
       - name: Configure (ASan, tests enabled)
         shell: bash
