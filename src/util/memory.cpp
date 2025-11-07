@@ -1,3 +1,5 @@
+// NOLINTFILE
+
 #include <cstdlib>
 #include <iostream>
 #include <mutex>

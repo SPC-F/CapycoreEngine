@@ -7,7 +7,7 @@ class GameObject;
 class Component {
 private:
     std::optional<std::reference_wrapper<GameObject>> parent_;
-    bool active_ = true;
+    bool active_ {true};
 public:
     explicit Component(GameObject& parent);
     virtual ~Component() = default;

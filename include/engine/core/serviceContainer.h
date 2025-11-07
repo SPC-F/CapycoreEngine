@@ -13,7 +13,7 @@ public:
 
     template<typename T, typename... Args>
         requires EngineService<T>
-    T& registerService(Args&&... args) {
+    T& register_service(Args&&... args) {
         auto service = std::make_unique<T>(std::forward<Args>(args)...);
         T& ref = *service;
         services_[std::type_index(typeid(T))] = std::move(service);
@@ -22,13 +22,13 @@ public:
 
     template<typename T>
         requires EngineService<T>
-    void unregisterService() {
+    void unregister_service() {
         services_.erase(std::type_index(typeid(T)));
     }
 
     template<typename T>
     requires EngineService<T>
-    std::reference_wrapper<T> getService() const {
+    std::reference_wrapper<T> get_service() const {
         const auto it = services_.find(std::type_index(typeid(T)));
         if (it == services_.end()) {
             throw std::runtime_error("Service not found: " + std::string(typeid(T).name()));
@@ -39,7 +39,7 @@ public:
 
     template <typename T>
         requires EngineService<T>
-    std::optional<std::reference_wrapper<T>> tryGetService() const {
+    std::optional<std::reference_wrapper<T>> try_get_service() const {
         const auto it = services_.find(std::type_index(typeid(T)));
         if (it == services_.end()) {
             return std::nullopt;
