@@ -9,4 +9,6 @@
 struct KeyState {
     bool current  = false;  ///< True if the key is down this frame.
     bool previous = false;  ///< True if the key was down in the previous frame.
+
+    void reset();
 };
