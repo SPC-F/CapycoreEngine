@@ -48,7 +48,6 @@ struct MouseWheelState {
     MouseDirection last_scroll_direction = MouseDirection::none;
 
     void reset();
-    void update(float delta_x, float delta_y);
 };
 
 /**
@@ -69,7 +68,4 @@ struct MouseState {
     MouseWheelState wheel;
 
     void reset();
-    void update_position(float new_x, float new_y);
-    void update_button(MouseButton button, bool pressed);
-    void update_wheel(float delta_x, float delta_y);
 };
