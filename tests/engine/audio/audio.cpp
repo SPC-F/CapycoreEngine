@@ -3,182 +3,182 @@
 #include <engine/audio/audio_service.h>
 #include <engine/audio/sound/sound_factory.h>
 
-TEST_CASE("AudioService registers and retrieves sound resources", "[AudioService]") {
-    AudioService audioService;
-    auto filePath = "./resources/sounds/bonetrousle.wav";
-    auto soundName = "Bonetrousle";
+TEST_CASE("audio_service_register_should_return_resource_when_registering_valid_sound", "[AudioService]") {
+    AudioService audio_service;
+    auto file_path = "./resources/sounds/bonetrousle.wav";
+    auto sound_name = "Bonetrousle";
 
-    auto resource = audioService.register_sound(filePath, soundName, SoundType::SDL_MIXER);
+    auto resource = audio_service.register_sound(file_path, sound_name, SoundType::SDL_MIXER);
     REQUIRE(resource != nullptr);
 
-    SECTION("Double registration returns the same resource") {
-        auto second = audioService.register_sound(filePath, soundName, SoundType::SDL_MIXER);
+    SECTION("registering_same_sound_name_returns_existing_resource") {
+        auto second = audio_service.register_sound(file_path, sound_name, SoundType::SDL_MIXER);
         REQUIRE(resource == second);
     }
 
-    SECTION("Retrieving a registered sound works") {
-        auto retrieved = audioService.get_sound_resource(soundName);
+    SECTION("retrieving_registered_sound_returns_correct_resource") {
+        auto retrieved = audio_service.get_sound_resource(sound_name);
         REQUIRE(retrieved != nullptr);
-        REQUIRE(retrieved->name() == soundName);
+        REQUIRE(retrieved->name() == sound_name);
     }
 
-    SECTION("Retrieving an unknown sound returns nullptr") {
-        REQUIRE(audioService.get_sound_resource("Nonexistent") == nullptr);
+    SECTION("retrieving_unregistered_sound_returns_nullptr") {
+        REQUIRE(audio_service.get_sound_resource("Nonexistent") == nullptr);
     }
 }
 
-TEST_CASE("AudioService unregisters sound resources correctly", "[AudioService]") {
-    AudioService audioService;
-    auto soundName = "Bonetrousle";
-    audioService.register_sound("./resources/sounds/bonetrousle.wav", soundName, SoundType::SDL_MIXER);
+TEST_CASE("audio_service_unregisters_sound_resources_correctly", "[AudioService]") {
+    AudioService audio_service;
+    auto sound_name = "Bonetrousle";
+    audio_service.register_sound("./resources/sounds/bonetrousle.wav", sound_name, SoundType::SDL_MIXER);
 
-    SECTION("Unregister removes resource and instances") {
-        audioService.play_sound(soundName, 0.5f, false);
-        REQUIRE(audioService.has_sound_instance(soundName));
+    SECTION("unregistering_existing_sound_removes_resource_and_instances") {
+        audio_service.play_sound(sound_name, 0.5f, false);
+        REQUIRE(audio_service.has_sound_instance(sound_name));
 
-        bool removed = audioService.unregister_sound(soundName);
-        
+        bool removed = audio_service.unregister_sound(sound_name);
+
         REQUIRE(removed);
-        REQUIRE_FALSE(audioService.has_sound_instance(soundName));
-        REQUIRE(audioService.get_sound_resource(soundName) == nullptr);
+        REQUIRE_FALSE(audio_service.has_sound_instance(sound_name));
+        REQUIRE(audio_service.get_sound_resource(sound_name) == nullptr);
     }
 
-    SECTION("Unregistering non-existent sound returns false") {
-        REQUIRE_FALSE(audioService.unregister_sound("NoSound"));
+    SECTION("unregistering_non_existent_sound_returns_false") {
+        REQUIRE_FALSE(audio_service.unregister_sound("NoSound"));
     }
 }
 
-TEST_CASE("AudioService plays and stops sounds", "[AudioService]") {
-    AudioService audioService;
+TEST_CASE("audio_service_plays_and_stops_sounds", "[AudioService]") {
+    AudioService audio_service;
     auto name = "Bonetrousle";
-    audioService.register_sound("./resources/sounds/bonetrousle.wav", name, SoundType::SDL_MIXER);
+    audio_service.register_sound("./resources/sounds/bonetrousle.wav", name, SoundType::SDL_MIXER);
 
-    SECTION("Playing sound from a resource works") {
-        auto resource = audioService.get_sound_resource(name);
-        auto instance = audioService.play_sound(resource, 0.8f, false);
+    SECTION("playing_sound_by_resource_works") {
+        auto resource = audio_service.get_sound_resource(name);
+        auto instance = audio_service.play_sound(resource, 0.8f, false);
         REQUIRE(instance.get().resource()->name() == name);
     }
 
-    SECTION("Playing sound by name works") {
-        auto instance = audioService.play_sound(name, 0.8f, false);
+    SECTION("playing_sound_by_name_works") {
+        auto instance = audio_service.play_sound(name, 0.8f, false);
         REQUIRE(instance.get().resource()->name() == name);
     }
 
-    SECTION("Stopping specific sound by name removes it") {
-        audioService.play_sound(name, 0.5f, false);
-        REQUIRE(audioService.has_sound_instance(name));
+    SECTION("stopping_specific_sound_by_name_removes_it") {
+        audio_service.play_sound(name, 0.5f, false);
+        REQUIRE(audio_service.has_sound_instance(name));
 
-        audioService.stop_sound(name);
-        REQUIRE_FALSE(audioService.has_sound_instance(name));
+        audio_service.stop_sound(name);
+        REQUIRE_FALSE(audio_service.has_sound_instance(name));
     }
 
-    SECTION("Stopping via unique_ptr removes instance") {
-        auto resource = audioService.get_sound_resource(name);
+    SECTION("stopping_via_unique_ptr_removes_instance") {
+        auto resource = audio_service.get_sound_resource(name);
         auto instance = SoundFactory::create_sound_instance(resource, 0.5f);
 
         REQUIRE(instance != nullptr);
 
-        audioService.play_sound(resource, 0.5f, false);
-        audioService.stop_sound(std::move(instance));
+        audio_service.play_sound(resource, 0.5f, false);
+        audio_service.stop_sound(std::move(instance));
         REQUIRE(instance == nullptr);
     }
 
-    SECTION("Stopping all sounds clears active list") {
-        audioService.play_sound(name, 0.5f, true);
-        audioService.play_sound(name, 0.7f, false);
-        REQUIRE(audioService.get_all_playing_sounds().size() == 2);
+    SECTION("stopping_all_sounds_clears_active_list") {
+        audio_service.play_sound(name, 0.5f, true);
+        audio_service.play_sound(name, 0.7f, false);
+        REQUIRE(audio_service.get_all_playing_sounds().size() == 2);
 
-        audioService.stop_all_sounds();
-        REQUIRE(audioService.get_all_playing_sounds().empty());
+        audio_service.stop_all_sounds();
+        REQUIRE(audio_service.get_all_playing_sounds().empty());
     }
 }
 
-TEST_CASE("AudioService manages volumes correctly", "[AudioService]") {
-    AudioService audioService;
+TEST_CASE("audio_service_manages_volumes_correctly", "[AudioService]") {
+    AudioService audio_service;
     auto name = "Bonetrousle";
-    audioService.register_sound("./resources/sounds/bonetrousle.wav", name, SoundType::SDL_MIXER);
+    audio_service.register_sound("./resources/sounds/bonetrousle.wav", name, SoundType::SDL_MIXER);
 
-    auto instance = audioService.play_sound(name, 0.5f, false);
+    auto instance = audio_service.play_sound(name, 0.5f, false);
     REQUIRE(instance.get().volume() == 0.5f);
 
-    SECTION("Setting volume by name works") {
-        audioService.set_sound_volume(name, 0.9f);
+    SECTION("setting_volume_by_name_works") {
+        audio_service.set_sound_volume(name, 0.9f);
         REQUIRE(instance.get().volume() == 0.9f);
     }
 
-    SECTION("Setting volume on moved instance works") {
-        auto resource = audioService.get_sound_resource(name);
+    SECTION("setting_volume_on_moved_instance_works") {
+        auto resource = audio_service.get_sound_resource(name);
         auto tmp = SoundFactory::create_sound_instance(resource, 0.3f);
-        audioService.set_sound_volume(std::move(tmp), 0.8f);
+        audio_service.set_sound_volume(std::move(tmp), 0.8f);
 
         REQUIRE(tmp.get()->volume() == 0.8f);
     }
 
-    SECTION("Setting volume for non-existent sound does nothing") {
-        audioService.set_sound_volume("GhostSound", 0.5f);
+    SECTION("setting_volume_for_non_existent_sound_does_nothing") {
+        audio_service.set_sound_volume("GhostSound", 0.5f);
         REQUIRE(true);
     }
 }
 
-TEST_CASE("AudioService reports and retrieves sound instances", "[AudioService]") {
-    AudioService audioService;
+TEST_CASE("audio_service_reports_and_retrieves_sound_instances", "[AudioService]") {
+    AudioService audio_service;
     auto name = "Bonetrousle";
-    audioService.register_sound("./resources/sounds/bonetrousle.wav", name, SoundType::SDL_MIXER);
+    audio_service.register_sound("./resources/sounds/bonetrousle.wav", name, SoundType::SDL_MIXER);
 
     SECTION("has_sound_instance works") {
-        REQUIRE_FALSE(audioService.has_sound_instance(name));
-        audioService.play_sound(name, 0.5f, false);
-        REQUIRE(audioService.has_sound_instance(name));
+        REQUIRE_FALSE(audio_service.has_sound_instance(name));
+        audio_service.play_sound(name, 0.5f, false);
+        REQUIRE(audio_service.has_sound_instance(name));
     }
 
     SECTION("get_sound_instance returns reference when active") {
-        audioService.play_sound(name, 0.5f, false);
-        auto ref = audioService.get_sound_instance(name);
+        audio_service.play_sound(name, 0.5f, false);
+        auto ref = audio_service.get_sound_instance(name);
 
         REQUIRE(ref.has_value());
         REQUIRE(ref->get().resource()->name() == name);
     }
 
     SECTION("get_sound_instance returns nullopt for inactive sounds") {
-        REQUIRE_FALSE(audioService.get_sound_instance(name).has_value());
+        REQUIRE_FALSE(audio_service.get_sound_instance(name).has_value());
     }
 }
 
-TEST_CASE("AudioService update removes finished instances", "[AudioService]") {
-    AudioService audioService;
+TEST_CASE("audio_service_updates_sound_instances_correctly", "[AudioService]") {
+    AudioService audio_service;
     auto name = "Bonetrousle";
-    audioService.register_sound("./resources/sounds/bonetrousle.wav", name, SoundType::SDL_MIXER);
-    auto instance = audioService.play_sound(name, 1.0f, false);
+    audio_service.register_sound("./resources/sounds/bonetrousle.wav", name, SoundType::SDL_MIXER);
+    auto instance = audio_service.play_sound(name, 1.0f, false);
 
-    REQUIRE_FALSE(audioService.get_all_playing_sounds().empty());
+    REQUIRE_FALSE(audio_service.get_all_playing_sounds().empty());
 
-    SECTION("update removes stopped sounds") {
+    SECTION("update_removes_finished_sounds") {
         instance.get().stop();
-        audioService.update();
+        audio_service.update();
 
-        REQUIRE(audioService.get_all_playing_sounds().empty());
+        REQUIRE(audio_service.get_all_playing_sounds().empty());
     }
 
-    SECTION("update keeps active sounds") {
-        audioService.update();
-        REQUIRE_FALSE(audioService.get_all_playing_sounds().empty());
+    SECTION("update_keeps_playing_sounds") {
+        audio_service.update();
+        REQUIRE_FALSE(audio_service.get_all_playing_sounds().empty());
     }
 }
 
-TEST_CASE("AudioService handles invalid inputs safely", "[AudioService]") {
-    AudioService audioService;
+TEST_CASE("audio_service_handles_invalid_inputs_safely", "[AudioService]") {
+    AudioService audio_service;
 
-    SECTION("play_sound throws on null resource") {
-        REQUIRE_THROWS_AS(audioService.play_sound("", 0.5f, false), std::invalid_argument);
+    SECTION("play_sound_throws_on_null_resource") {
+        REQUIRE_THROWS_AS(audio_service.play_sound("", 0.5f, false), std::invalid_argument);
     }
 
-    SECTION("stop_sound handles null unique_ptr gracefully") {
+    SECTION("stop_sound_handles_null_unique_ptr_gracefully") {
         std::unique_ptr<SoundInstance> nullInstance;
-        REQUIRE_NOTHROW(audioService.stop_sound(std::move(nullInstance)));
+        REQUIRE_NOTHROW(audio_service.stop_sound(std::move(nullInstance)));
     }
 
-    SECTION("set_sound_volume handles null unique_ptr gracefully") {
+    SECTION("set_sound_volume_handles_null_unique_ptr_gracefully") {
         std::unique_ptr<SoundInstance> nullInstance;
-        REQUIRE_NOTHROW(audioService.set_sound_volume(std::move(nullInstance), 0.5f));
+        REQUIRE_NOTHROW(audio_service.set_sound_volume(std::move(nullInstance), 0.5f));
     }
 }
