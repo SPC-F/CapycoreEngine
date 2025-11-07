@@ -32,7 +32,7 @@ jobs:
           path: |
             ~/.cache
             ~/.ccache
-            build-asan/_deps
+            build/_deps
           key: ${{ runner.os }}-deps-${{ hashFiles('CMakeLists.txt', '**/CMakeLists.txt') }}
           restore-keys: |
             ${{ runner.os }}-deps-
@@ -45,6 +45,8 @@ jobs:
         shell: bash
         run: |
           cmake -S . -B build \
+            -DCMAKE_CXX_COMPILER=clang++ \
+            -DCMAKE_C_COMPILER=clang \
             -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
             -DCMAKE_CXX_STANDARD=20 \
             -DCMAKE_CXX_STANDARD_REQUIRED=ON \

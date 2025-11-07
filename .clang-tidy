@@ -53,15 +53,10 @@ FormatStyle: file
 InheritParentConfig: false
 
 CheckOptions:
- # Private members
   - key: readability-identifier-naming.PrivateMemberSuffix
     value: "_"
-  
-  # Protected members (if you want the same rule)
   - key: readability-identifier-naming.ProtectedMemberSuffix
     value: "_"
-    
-  # Naming rules — matches your guidelines
   - key: readability-identifier-naming.VariableCase
     value: lower_case
   - key: readability-identifier-naming.MemberCase
@@ -74,6 +69,8 @@ CheckOptions:
     value: CamelCase
   - key: readability-identifier-naming.StructCase
     value: CamelCase
+  - key: readability-identifier-naming.ClassIgnoredRegexp
+    value: '^I[A-Z].*'
 
   # Force explicit constructors
   - key: cppcoreguidelines-explicit-constructors
