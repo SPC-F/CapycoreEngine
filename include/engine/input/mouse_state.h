@@ -28,6 +28,8 @@ enum class MouseDirection {
 struct MouseButtonState {
     bool current  = false;  ///< True if the button is down this frame.
     bool previous = false;  ///< True if the button was down in the previous frame.
+
+    void reset();
 };
 
 /**
