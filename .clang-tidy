@@ -53,6 +53,14 @@ FormatStyle: file
 InheritParentConfig: false
 
 CheckOptions:
+ # Private members
+  - key: readability-identifier-naming.PrivateMemberSuffix
+    value: "_"
+  
+  # Protected members (if you want the same rule)
+  - key: readability-identifier-naming.ProtectedMemberSuffix
+    value: "_"
+    
   # Naming rules — matches your guidelines
   - key: readability-identifier-naming.VariableCase
     value: lower_case

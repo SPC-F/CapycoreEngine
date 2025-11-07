@@ -29,7 +29,7 @@ public:
     virtual ~GameObject();
 
     GameObject& parent(GameObject& parent);
-    GameObject& parent(std::nullopt_t);
+    GameObject& parent(std::nullopt_t nullopt);
 
     [[nodiscard]] bool is_active_in_world() const noexcept;
     [[nodiscard]] bool is_active() const noexcept;
