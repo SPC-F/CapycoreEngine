@@ -10,7 +10,7 @@
  */
 class InputManager : public IEngineService {
 public:
-    IInputProvider* provider() const noexcept;
+    const IInputProvider& provider() const;
     void set_provider(std::unique_ptr<IInputProvider> provider) noexcept;
 
 private:
