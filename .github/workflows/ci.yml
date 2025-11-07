@@ -19,12 +19,16 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y \
-            cmake g++ clang-tidy ccache \
+            cmake g++-12 clang-14 clang-tidy-14 ccache \
             libsdl2-dev \
             libx11-dev libxext-dev libxrandr-dev libxi-dev \
             libxinerama-dev libxcursor-dev \
             libgl1-mesa-dev libfreetype6-dev \
             libpng-dev libjpeg-dev zlib1g-dev
+          # Create symlink so 'clang-tidy' refers to the installed clang-tidy-14
+          if command -v clang-tidy-14 >/dev/null 2>&1; then
+            sudo ln -sf "$(command -v clang-tidy-14)" /usr/local/bin/clang-tidy
+          fi
 
       - name: Cache dependencies
         uses: actions/cache@v4
@@ -58,12 +62,17 @@ jobs:
       - name: Run clang-tidy
         shell: bash
         run: |
-          echo "Running clang-tidy..."
-          clang-tidy -p build \
-            $(find src include -type f \( -name '*.cpp' -o -name '*.h' \) \
-              ! -path '*/tests/*' \
-              ! -path '*/util/memory.cpp') \
-            --warnings-as-errors=*
+          echo "Running clang-tidy (robust) on translation units..."
+          # run only on source files so compile_commands.json entries match
+          files=$(find src include -type f \( -name '*.cpp' -o -name '*.cxx' -o -name '*.cc' \) \
+            ! -path '*/tests/*' \
+            ! -path '*/util/memory.cpp')
+          if [ -z "$files" ]; then
+            echo "No source files found for clang-tidy."
+          else
+            # -p build tells clang-tidy to read build/compile_commands.json
+            clang-tidy -p build $files --warnings-as-errors=*
+          fi
       
       - name: Build (ASan)
         shell: bash
