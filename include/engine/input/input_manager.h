@@ -14,5 +14,5 @@ public:
     void set_provider(std::unique_ptr<IInputProvider> provider) noexcept;
 
 private:
-    std::unique_ptr<IInputProvider> _provider = nullptr;
+    std::unique_ptr<IInputProvider> provider_ = nullptr;
 };
