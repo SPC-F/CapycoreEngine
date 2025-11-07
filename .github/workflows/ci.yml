@@ -41,30 +41,37 @@ jobs:
         shell: bash
         run: echo 'export PATH="/usr/lib/ccache:$PATH"' >> $GITHUB_ENV
 
-      - name: Run clang-tidy
+      - name: Configure (CMake)
         shell: bash
         run: |
-          cmake -S . -B build-tidy -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_STANDARD=20 -DCMAKE_CXX_STANDARD_REQUIRED=ON
-          clang-tidy -p build-tidy $(find src include -name '*.cpp' -o -name '*.h' ! -path '*/tests/*' ! -path '*/memory.cpp') --warnings-as-errors=*
-
-      - name: Configure (ASan, tests enabled)
-        shell: bash
-        run: |
-          cmake -S . -B build-asan \
+          cmake -S . -B build \
+            -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
             -DCMAKE_CXX_STANDARD=20 \
             -DCMAKE_CXX_STANDARD_REQUIRED=ON \
             -DCMAKE_BUILD_TYPE=Debug \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_FLAGS="-fsanitize=address -g -O1" \
             -DENABLE_TESTS=ON \
             -DENABLE_TRACY=OFF \
-            -DBUILD_SHARED_LIBS=OFF
-
-
+            -DBUILD_SHARED_LIBS=OFF \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+      
+      - name: Run clang-tidy
+        shell: bash
+        run: |
+          echo "Running clang-tidy..."
+          clang-tidy -p build \
+            $(find src include -type f \( -name '*.cpp' -o -name '*.h' \) \
+              ! -path '*/tests/*' \
+              ! -path '*/util/memory.cpp') \
+            --warnings-as-errors=* \
+            --extra-arg=-std=c++20 \
+            --extra-arg=-I/usr/include/c++/$(g++ -dumpversion) \
+            --extra-arg=-I/usr/include/x86_64-linux-gnu/c++/$(g++ -dumpversion)
+      
       - name: Build (ASan)
         shell: bash
-        run: cmake --build build-asan --parallel --target all
-
+        run: cmake --build build --parallel --target all
+    
       - name: Run tests (ASan, headless SDL)
         shell: bash
         run: |
@@ -74,8 +81,8 @@ jobs:
           export SDL_AUDIODRIVER=dummy
 
           echo ">>> Running headless SDL tests under ASan..."
-          ctest --test-dir build-asan --output-on-failure || {
+          ctest --test-dir build --output-on-failure || {
             echo ">>> Test suite failed — printing CTest logs"
-            find build-asan -name 'LastTest.log' -exec cat {} \; || true
+            find build -name 'LastTest.log' -exec cat {} \; || true
             exit 1
           }
