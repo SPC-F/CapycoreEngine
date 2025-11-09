@@ -3,6 +3,7 @@
 #include <engine/core/assetManager.h>
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/engine.h>
+#include <format>
 
 AssetManager::AssetManager()
     : textures_(), namedAssets_() {
@@ -17,9 +18,39 @@ std::optional<std::reference_wrapper<const std::vector<std::reference_wrapper<Te
 }
 
 std::expected<
-        std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>>,
-        std::string> AssetManager::create_texture_for(const std::string& source, const std::string& name, size_t from, size_t to){
+    std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>>,
+    std::string> AssetManager::create_texture_for(
+        const std::string& source,
+        const std::string& name,
+        size_t from,
+        size_t to) {
 
+    const auto maybeResource = try_get_resource(source);
+
+    if(!maybeResource.has_value()) {
+        throw std::invalid_argument(std::format("The given argument for {} has no associated resource registered.", source));
+    }
+
+    const std::vector<std::reference_wrapper<Texture>>& resource = *maybeResource;
+
+    if (from >= resource.size() || to > resource.size()) {
+        throw std::out_of_range("Invalid range for creating texture subset");
+    }
+    if (from > to) {
+        throw std::out_of_range("'from' index must not be greater than 'to'");
+    }
+
+    const size_t diff = to - from;
+
+    namedAssets_.emplace(
+            name,
+            std::vector(
+                    resource.begin() + static_cast<int>(from),
+                    resource.begin() + static_cast<int>(to)
+            )
+    );
+
+    return namedAssets_.at(name);
 }
 
 std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
@@ -27,6 +58,7 @@ std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
         const std::string& name,
         int rows,
         int cols) {
+
     const std::string filePath = "resources/" + file;
 
     const auto& rendererService = Engine::instance()
