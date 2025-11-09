@@ -5,23 +5,22 @@ on:
     branches:
       - master
       - development
-      - '@feat/*'
 
 jobs:
-  # We only run the full build on master and development branches
-  # The building is simply too expensive to run on every feature branch PR
-  full-build:
-    if: github.base_ref == 'master' || github.base_ref == 'development'
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Install dependencies
+        shell: bash
         run: |
-          sudo apt-get update
+          sudo apt-get update -qq
           sudo apt-get install -y \
             cmake g++ clang-tidy ccache \
+            libsdl2-dev \
             libx11-dev libxext-dev libxrandr-dev libxi-dev \
             libxinerama-dev libxcursor-dev \
             libgl1-mesa-dev libfreetype6-dev \
@@ -39,15 +38,18 @@ jobs:
             ${{ runner.os }}-deps-
 
       - name: Configure compiler cache
+        shell: bash
         run: echo 'export PATH="/usr/lib/ccache:$PATH"' >> $GITHUB_ENV
 
-      - name: Run clang-tidy
+      - name: Run clang-tidy (non-blocking)
+        shell: bash
         continue-on-error: true
         run: |
           cmake -S . -B build-tidy -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
           clang-tidy -p build-tidy $(find src include tests -name '*.cpp') --warnings-as-errors=*
 
-      - name: Configure (ASan)
+      - name: Configure (ASan, tests enabled)
+        shell: bash
         run: |
           cmake -S . -B build-asan \
             -DCMAKE_BUILD_TYPE=Debug \
@@ -57,36 +59,22 @@ jobs:
             -DENABLE_TRACY=OFF \
             -DBUILD_SHARED_LIBS=OFF
 
+
       - name: Build (ASan)
+        shell: bash
         run: cmake --build build-asan --parallel --target all
 
-      - name: Run tests (ASan)
+      - name: Run tests (ASan, headless SDL)
+        shell: bash
         run: |
+          set -e
           export ASAN_OPTIONS=detect_leaks=1
-          ctest --test-dir build-asan --output-on-failure
+          export SDL_VIDEODRIVER=dummy
+          export SDL_AUDIODRIVER=dummy
 
-  # Lightweight tests for @feat branches
-  light-test:
-    if: startsWith(github.head_ref, '@feat/')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install test dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y cmake g++ libgtest-dev
-
-      - name: Configure (fast build)
-        run: |
-          cmake -S . -B build \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DENABLE_TESTS=ON \
-            -DBUILD_SHARED_LIBS=OFF
-
-      - name: Build tests
-        run: cmake --build build --parallel --target all
-
-      - name: Run tests
-        run: ctest --test-dir build --output-on-failure
+          echo ">>> Running headless SDL tests under ASan..."
+          ctest --test-dir build-asan --output-on-failure || {
+            echo ">>> Test suite failed — printing CTest logs"
+            find build-asan -name 'LastTest.log' -exec cat {} \; || true
+            exit 1
+          }
