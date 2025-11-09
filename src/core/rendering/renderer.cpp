@@ -36,7 +36,7 @@ void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
     for (auto gameObjWrapper : objects) {
         auto& gameObj = gameObjWrapper.get();
         const auto& transform = gameObj.transform();
-        const auto& absolutePosition = transform.absolute_position();
+        const auto& position = transform.position();
 
         for (const auto spriteWrapper : gameObj.get_components<Sprite>()) {
             const Sprite& sprite = spriteWrapper.get();
@@ -48,8 +48,8 @@ void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
                 .h = texture.height()
             };
             auto const target = SDL_FRect {
-                .x = absolutePosition.x,
-                .y = absolutePosition.y,
+                .x = position.x,
+                .y = position.y,
                 .w = texture.width(),
                 .h = texture.height()
             };
