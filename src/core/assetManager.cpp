@@ -1,6 +1,7 @@
 #include <SDL3/SDL_render.h>
 #include <SDL3_image/SDL_image.h>
 #include <engine/core/assetManager.h>
+#include <engine/core/rendering/renderingService.h>
 #include <engine/core/engine.h>
 
 AssetManager::AssetManager()
@@ -30,10 +31,12 @@ std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
 
     const auto& rendererService = Engine::instance()
         .services
-        ->getService<RenderingManager>()
+        ->getService<RenderingService>()
         .get();
 
-    SDL_Renderer* renderer = rendererService.getSDLRenderer();
+    SDL_Renderer* renderer = rendererService.renderer_
+        ->renderer_
+        .get();
 
     SDL_Surface* image = IMG_Load(filePath.c_str());
     SDL_Texture* textureSheet = SDL_CreateTextureFromSurface(renderer, image);

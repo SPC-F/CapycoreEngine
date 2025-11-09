@@ -11,6 +11,7 @@ using SdlWindowPtr = std::unique_ptr<SDL_Window, void(*)(SDL_Window*)>;
 class Renderer final : public IEngineService {
 private:
     friend class RenderingManager;
+    friend class AssetManager;
     SdlRendererPtr renderer_;
     SdlWindowPtr window_;
 
