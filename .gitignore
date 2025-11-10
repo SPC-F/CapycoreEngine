@@ -59,3 +59,5 @@ CMakeUserPresets.json
 
 # visual studio code files
 .vscode/
+
+docs/
