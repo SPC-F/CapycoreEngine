@@ -5,7 +5,7 @@
 
 #include <engine/audio/sound/sound_factory.h>
 
-std::shared_ptr<SoundResource> AudioService::register_sound(const std::string& file_path, const std::string& name, SoundType type) {
+std::optional<std::shared_ptr<SoundResource>> AudioService::register_sound(const std::string& file_path, const std::string& name, SoundType type) {
     auto it = sound_resources_.find(name);
 
     if (it != sound_resources_.end()) {
@@ -18,7 +18,7 @@ std::shared_ptr<SoundResource> AudioService::register_sound(const std::string& f
 
         return resource;
     } catch (...) {
-        return nullptr;
+        return std::nullopt;
     }
 }
 
@@ -35,14 +35,14 @@ bool AudioService::unregister_sound(const std::string& name) {
     return sound_resources_.erase(name) > 0;
 }
 
-std::shared_ptr<SoundResource> AudioService::get_sound_resource(const std::string& name) const noexcept {
+std::optional<std::shared_ptr<SoundResource>> AudioService::get_sound_resource(const std::string& name) const noexcept {
     auto it = sound_resources_.find(name);
 
     if (it != sound_resources_.end()) {
         return it->second;
     }
 
-    return nullptr;
+    return std::nullopt;
 }
 
 std::reference_wrapper<SoundInstance> AudioService::play_sound(std::shared_ptr<SoundResource> sound_resource, float volume, bool loop) {
@@ -72,7 +72,7 @@ std::reference_wrapper<SoundInstance> AudioService::play_sound(const std::string
         throw std::invalid_argument("Sound resource not found: " + name);
     }
 
-    return play_sound(sound_resource, volume, loop);
+    return play_sound(*sound_resource, volume, loop);
 }
 
 void AudioService::stop_sound(std::unique_ptr<SoundInstance>&& sound_instance) {
