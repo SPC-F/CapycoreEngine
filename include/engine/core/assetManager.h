@@ -32,5 +32,5 @@ public:
             int cols);
 private:
     std::vector<std::unique_ptr<Texture>> textures_;
-    std::map<std::string, std::vector<std::reference_wrapper<Texture>>> namedAssets_;
+    std::map<std::string, std::vector<std::reference_wrapper<Texture>>> named_assets_;
 };
