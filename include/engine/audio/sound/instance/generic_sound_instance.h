@@ -18,7 +18,10 @@ public:
     void resume() override;
     void stop() override;
     
+    [[nodiscard]]
     bool is_playing() const noexcept override;
+    [[nodiscard]]
     bool is_paused() const noexcept override;
+    [[nodiscard]]
     bool is_finished() override;
 };

@@ -1,7 +1,7 @@
 #include <engine/audio/sound/instance/generic_sound_instance.h>
 
 GenericSoundInstance::GenericSoundInstance(std::shared_ptr<SoundResource> resource, float volume)
-    : SoundInstance(resource, volume) {}
+    : SoundInstance(std::move(resource), volume) {}
 
 void GenericSoundInstance::play() {
     playing_ = true;

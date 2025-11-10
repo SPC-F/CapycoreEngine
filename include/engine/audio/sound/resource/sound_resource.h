@@ -11,11 +11,14 @@
  */
 class SoundResource {
 public:
-    SoundResource(const std::string& name, const std::string& file_path, SoundType type = SoundType::GENERIC);
+    SoundResource(std::string name, std::string file_path, SoundType type = SoundType::GENERIC);
     virtual ~SoundResource() = default;
 
+    [[nodiscard]]
     const SoundType& type() const noexcept;
+    [[nodiscard]]
     const std::string& name() const noexcept;
+    [[nodiscard]]
     const std::string& file_path() const noexcept;
 
 protected:

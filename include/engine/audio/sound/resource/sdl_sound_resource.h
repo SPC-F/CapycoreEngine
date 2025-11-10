@@ -15,12 +15,15 @@ public:
     SDLSoundResource(const std::string& name, const std::string& file_path, SoundType type = SoundType::SDL_MIXER);
     ~SDLSoundResource() override = default;
 
+    [[nodiscard]]
     const SDL_AudioSpec& audio_spec() const;
+    [[nodiscard]]
     const Uint8* audio_buffer() const;
+    [[nodiscard]]
     Uint32 length() const;
 
 private:
-    SDL_AudioSpec spec_;
+    SDL_AudioSpec spec_{};
     Uint32 audio_length_{0};
     std::unique_ptr<Uint8, decltype(&SDL_free)> audio_buffer_{nullptr, &SDL_free};
 };

@@ -102,21 +102,16 @@ TEST_CASE("audio_service_manages_volumes_correctly", "[AudioService]") {
     REQUIRE(instance.get().volume() == 0.5f);
 
     SECTION("setting_volume_by_name_works") {
-        audio_service.set_sound_volume(name, 0.9f);
+        instance.get().volume(0.9f);
         REQUIRE(instance.get().volume() == 0.9f);
     }
 
     SECTION("setting_volume_on_moved_instance_works") {
         auto resource = audio_service.get_sound_resource(name);
         auto tmp = SoundFactory::create_sound_instance(resource, 0.3f);
-        audio_service.set_sound_volume(std::move(tmp), 0.8f);
+        tmp.get()->volume(0.8f);
 
         REQUIRE(tmp.get()->volume() == 0.8f);
-    }
-
-    SECTION("setting_volume_for_non_existent_sound_does_nothing") {
-        audio_service.set_sound_volume("GhostSound", 0.5f);
-        REQUIRE(true);
     }
 }
 
@@ -175,10 +170,5 @@ TEST_CASE("audio_service_handles_invalid_inputs_safely", "[AudioService]") {
     SECTION("stop_sound_handles_null_unique_ptr_gracefully") {
         std::unique_ptr<SoundInstance> nullInstance;
         REQUIRE_NOTHROW(audio_service.stop_sound(std::move(nullInstance)));
-    }
-
-    SECTION("set_sound_volume_handles_null_unique_ptr_gracefully") {
-        std::unique_ptr<SoundInstance> nullInstance;
-        REQUIRE_NOTHROW(audio_service.set_sound_volume(std::move(nullInstance), 0.5f));
     }
 }

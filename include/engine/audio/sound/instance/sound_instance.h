@@ -21,18 +21,25 @@ public:
     virtual void resume() {}
     virtual void stop() {}
 
+    [[nodiscard]]
     virtual bool is_playing() const noexcept;
+    [[nodiscard]]
     virtual bool is_paused() const noexcept;
+    [[nodiscard]]
     virtual bool is_finished();
 
+    [[nodiscard]]
     const std::shared_ptr<SoundResource>& resource() const noexcept;
-    const float volume() const noexcept;
+    [[nodiscard]]
+    float volume() const noexcept;
     void volume(float volume) noexcept;
 
-    const bool finished() const noexcept;
+    [[nodiscard]]
+    bool finished() const noexcept;
     void finished(bool finished) noexcept;
 
-    const bool loop() const noexcept;
+    [[nodiscard]]
+    bool loop() const noexcept;
     void loop(bool loop) noexcept;
     
 protected:

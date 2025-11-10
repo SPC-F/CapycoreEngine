@@ -14,11 +14,11 @@ std::shared_ptr<SoundResource> SoundFactory::create_sound_resource(const std::st
     }
 }
 
-std::unique_ptr<SoundInstance> SoundFactory::create_sound_instance(std::shared_ptr<SoundResource> resource, float volume) {
+std::unique_ptr<SoundInstance> SoundFactory::create_sound_instance(std::shared_ptr<SoundResource>& resource, float volume) {
     switch (resource->type())
     {
         case SoundType::SDL_MIXER:
-            return std::make_unique<SDLSoundInstance>(std::dynamic_pointer_cast<SDLSoundResource>(resource), volume);
+            return std::make_unique<SDLSoundInstance>(resource, volume);
         case SoundType::GENERIC:
         default:
             return std::make_unique<GenericSoundInstance>(resource, volume);

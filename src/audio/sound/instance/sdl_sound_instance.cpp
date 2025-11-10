@@ -3,13 +3,17 @@
 #include <algorithm>
 #include <vector>
 
-SDLSoundInstance::SDLSoundInstance(std::shared_ptr<SDLSoundResource> resource, float volume)
-    : SoundInstance(resource, volume) {
+constexpr float sample_clamp_range = 32768.0f;
+
+SDLSoundInstance::SDLSoundInstance(std::shared_ptr<SoundResource> resource, float volume)
+    : SoundInstance(std::move(resource), volume) {
     // The instance already has the sound buffer and SDL spec from the resource
 }
 
 SDLSoundInstance::~SDLSoundInstance() {
-    stop();
+    SDL_PauseAudioStreamDevice(stream_.get());
+    SDL_ClearAudioStream(stream_.get());
+    stream_.reset();
 }
 
 void SDLSoundInstance::play() {
@@ -25,22 +29,22 @@ void SDLSoundInstance::play() {
     std::vector<Uint8> temp(src_buffer, src_buffer + length);
 
     if (spec.format == SDL_AUDIO_S16LE || spec.format == SDL_AUDIO_S16BE) {
-        Sint16* samples = reinterpret_cast<Sint16*>(temp.data());
+        auto* samples = reinterpret_cast<Sint16*>(temp.data());
         size_t count = length / sizeof(Sint16);
 
         for (size_t i = 0; i < count; ++i) {
             float scaled = static_cast<float>(samples[i]) * volume_;
-            samples[i] = static_cast<Sint16>(std::clamp(scaled, -32768.0f, 32767.0f));
+            samples[i] = static_cast<Sint16>(std::clamp(scaled, -sample_clamp_range, sample_clamp_range - 1));
         }
     }
 
-    stream.reset(SDL_OpenAudioDeviceStream(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &spec, nullptr, nullptr));
-    if (!stream) {
+    stream_.reset(SDL_OpenAudioDeviceStream(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &spec, nullptr, nullptr));
+    if (!stream_) {
         throw std::runtime_error("Failed to open SDL audio stream.");
     }
 
-    SDL_ResumeAudioStreamDevice(stream.get());
-    SDL_PutAudioStreamData(stream.get(), temp.data(), static_cast<int>(temp.size()));
+    SDL_ResumeAudioStreamDevice(stream_.get());
+    SDL_PutAudioStreamData(stream_.get(), temp.data(), static_cast<int>(temp.size()));
     
     playing_ = true;
     paused_ = false;
@@ -51,7 +55,7 @@ void SDLSoundInstance::pause() {
         return;
     }
 
-    SDL_PauseAudioStreamDevice(stream.get());
+    SDL_PauseAudioStreamDevice(stream_.get());
     playing_ = false;
     paused_ = true;
 }
@@ -61,7 +65,7 @@ void SDLSoundInstance::resume() {
         return;
     }
 
-    SDL_ResumeAudioStreamDevice(stream.get());
+    SDL_ResumeAudioStreamDevice(stream_.get());
     playing_ = true;
     paused_ = false;
 }
@@ -71,9 +75,9 @@ void SDLSoundInstance::stop() {
         return;
     }
 
-    SDL_PauseAudioStreamDevice(stream.get());
-    SDL_ClearAudioStream(stream.get());
-    stream.reset();
+    SDL_PauseAudioStreamDevice(stream_.get());
+    SDL_ClearAudioStream(stream_.get());
+    stream_.reset();
 
     playing_ = false;
     paused_ = false;
@@ -89,11 +93,11 @@ bool SDLSoundInstance::is_paused() const noexcept {
 }
 
 bool SDLSoundInstance::is_finished() {
-    if (!stream || !playing_) {
+    if (!stream_ || !playing_) {
         return finished_;
     }
 
-    if (SDL_GetAudioStreamAvailable(stream.get()) > 0) {
+    if (SDL_GetAudioStreamAvailable(stream_.get()) > 0) {
         return false;
     }
 

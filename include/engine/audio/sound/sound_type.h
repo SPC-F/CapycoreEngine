@@ -1,6 +1,8 @@
 #pragma once
 
-enum class SoundType {
-    GENERIC,
-    SDL_MIXER
+#include <cstdint>
+
+enum class SoundType : uint8_t {
+    GENERIC = 0,
+    SDL_MIXER = 1
 };

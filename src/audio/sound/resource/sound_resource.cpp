@@ -1,7 +1,7 @@
 #include <engine/audio/sound/resource/sound_resource.h>
 
-SoundResource::SoundResource(const std::string& name, const std::string& file_path, SoundType type)
-    : name_(name), file_path_(file_path), type_(type) {}
+SoundResource::SoundResource(std::string name, std::string file_path, SoundType type)
+    : name_(std::move(name)), file_path_(std::move(file_path)), type_(type) {}
 
 const SoundType& SoundResource::type() const noexcept {
     return type_;

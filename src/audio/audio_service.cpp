@@ -1,5 +1,6 @@
 #include <engine/audio/audio_service.h>
 
+#include <ranges>
 #include <algorithm>
 
 #include <engine/audio/sound/sound_factory.h>
@@ -65,7 +66,13 @@ std::reference_wrapper<SoundInstance> AudioService::play_sound(std::shared_ptr<S
 }
 
 std::reference_wrapper<SoundInstance> AudioService::play_sound(const std::string& name, float volume, bool loop) {
-    return play_sound(get_sound_resource(name), volume, loop);
+    auto sound_resource = get_sound_resource(name);
+
+    if (!sound_resource) {
+        throw std::invalid_argument("Sound resource not found: " + name);
+    }
+
+    return play_sound(sound_resource, volume, loop);
 }
 
 void AudioService::stop_sound(std::unique_ptr<SoundInstance>&& sound_instance) {
@@ -73,18 +80,20 @@ void AudioService::stop_sound(std::unique_ptr<SoundInstance>&& sound_instance) {
         return;
     }
 
-    sound_instance->stop();
+    auto instance = std::move(sound_instance);
+
+    instance->stop();
 
     active_instances_.erase(
         std::remove_if(
             active_instances_.begin(), active_instances_.end(),
-            [&sound_instance](const std::unique_ptr<SoundInstance>& inst) {
-                return inst.get() == sound_instance.get();
+            [&instance](const std::unique_ptr<SoundInstance>& inst) {
+                return inst.get() == instance.get();
             }),
         active_instances_.end()
     );
 
-    sound_instance.reset();
+    instance.reset();
 }
 
 void AudioService::stop_sound(const std::string& name) {
@@ -146,22 +155,6 @@ std::vector<std::reference_wrapper<SoundInstance>> AudioService::get_all_playing
     }
 
     return instances;
-}
-
-void AudioService::set_sound_volume(std::unique_ptr<SoundInstance>&& sound_instance, float volume) noexcept {
-    if (!sound_instance) {
-        return;
-    }
-
-    sound_instance->volume(volume);
-}
-
-void AudioService::set_sound_volume(const std::string& name, float volume) noexcept {
-    auto possible_instance = get_sound_instance(name);
-
-    if (possible_instance) {
-        possible_instance->get().volume(volume);
-    }
 }
 
 void AudioService::update() {

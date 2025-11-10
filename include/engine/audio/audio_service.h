@@ -34,9 +34,6 @@ public:
     std::optional<std::reference_wrapper<SoundInstance>> get_sound_instance(const std::string& name) const;
     std::vector<std::reference_wrapper<SoundInstance>> get_all_playing_sounds() const;
 
-    void set_sound_volume(std::unique_ptr<SoundInstance>&& sound_instance, float volume) noexcept;
-    void set_sound_volume(const std::string& name, float volume) noexcept;
-
     /**
      * @brief Updates the audio manager, meaning it cleans up finished sounds.
      */

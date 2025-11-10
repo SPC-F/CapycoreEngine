@@ -5,7 +5,7 @@
 SDLSoundResource::SDLSoundResource(const std::string& name, const std::string& file_path, SoundType type)
     : SoundResource(name, file_path, type) {
     if (SDL_WasInit(SDL_INIT_AUDIO) == 0) {
-        if (SDL_InitSubSystem(SDL_INIT_AUDIO) != 0) {
+        if (!SDL_InitSubSystem(SDL_INIT_AUDIO)) {
             throw std::runtime_error("Failed to initialize SDL audio subsystem: " + std::string(SDL_GetError()));
         }
     }
