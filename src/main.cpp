@@ -12,7 +12,6 @@
 
 int main() {
     TRACY_INIT();
-
     TRACY_SHUTDOWN();
     return 0;
 }
