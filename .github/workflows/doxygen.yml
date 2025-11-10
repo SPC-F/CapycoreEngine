@@ -8,6 +8,9 @@ on:
         branches:
             - development
 
+permissions:
+  contents: write
+
 jobs:
     doxygen:
         runs-on: ubuntu-latest
