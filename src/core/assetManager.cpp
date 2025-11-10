@@ -6,11 +6,11 @@
 #include <format>
 
 AssetManager::AssetManager()
-    : textures_(), namedAssets_() {
+    : textures_(), named_assets_() {
 }
 
 std::optional<std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>>> AssetManager::try_get_resource(const std::string& key) const {
-    if (const auto it = namedAssets_.find(key); it != namedAssets_.end()) {
+    if (const auto it = named_assets_.find(key); it != named_assets_.end()) {
         // const ref, not c ref. constructor functions for these things are called ref and cref respectively.
         return std::cref(it->second);
     }
@@ -27,11 +27,11 @@ std::expected<
 
     const auto maybe_resource = try_get_resource(source);
 
-    if(!maybeResource.has_value()) {
+    if(!maybe_resource.has_value()) {
         throw std::invalid_argument(std::format("The given argument for {} has no associated resource registered.", source));
     }
 
-    const std::vector<std::reference_wrapper<Texture>>& resource = *maybeResource;
+    const std::vector<std::reference_wrapper<Texture>>& resource = *maybe_resource;
 
     if (from >= resource.size() || to > resource.size()) {
         throw std::out_of_range("Invalid range for creating texture subset");
@@ -42,7 +42,7 @@ std::expected<
 
     const size_t diff = to - from;
 
-    namedAssets_.emplace(
+    named_assets_.emplace(
             name,
             std::vector(
                     resource.begin() + static_cast<int>(from),
@@ -50,7 +50,7 @@ std::expected<
             )
     );
 
-    return namedAssets_.at(name);
+    return named_assets_.at(name);
 }
 
 std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
@@ -80,8 +80,8 @@ std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
     SDL_FRect src_rect{0, 0, width, height};
     const SDL_FRect dst_rect{0, 0, width, height};
 
-    namedAssets_.emplace(name, std::vector<std::reference_wrapper<Texture>>());
-    auto& resource = namedAssets_.at(name); // <-- reference to actual stored vector
+    named_assets_.emplace(name, std::vector<std::reference_wrapper<Texture>>());
+    auto& resource = named_assets_.at(name); // <-- reference to actual stored vector
 
     for (int r = 0; r < rows; ++r) {
         src_rect.x = 0;
