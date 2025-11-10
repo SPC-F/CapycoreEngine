@@ -25,7 +25,7 @@ std::expected<
         size_t from,
         size_t to) {
 
-    const auto maybeResource = try_get_resource(source);
+    const auto maybe_resource = try_get_resource(source);
 
     if(!maybeResource.has_value()) {
         throw std::invalid_argument(std::format("The given argument for {} has no associated resource registered.", source));
