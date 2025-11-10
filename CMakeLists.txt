@@ -256,6 +256,7 @@ if(ENABLE_TESTS)
                 tests/main.cpp
                 ${TEST_SOURCES}
         )
+        target_compile_definitions(tests PRIVATE PROJECT_ROOT="${CMAKE_SOURCE_DIR}")
 
         target_link_libraries(tests
         PRIVATE

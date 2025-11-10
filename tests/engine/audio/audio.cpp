@@ -3,9 +3,10 @@
 #include <engine/audio/audio_service.h>
 #include <engine/audio/sound/sound_factory.h>
 
+auto file_path = std::string(PROJECT_ROOT) + "/resources/sounds/bonetrousle.wav";
+
 TEST_CASE("audio_service_register_should_return_resource_when_registering_valid_sound", "[AudioService]") {
     AudioService audio_service;
-    auto file_path = "./resources/sounds/bonetrousle.wav";
     auto sound_name = "Bonetrousle";
 
     auto resource = audio_service.register_sound(file_path, sound_name, SoundType::SDL_MIXER);
