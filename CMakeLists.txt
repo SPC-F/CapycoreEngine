@@ -265,6 +265,7 @@ if(ENABLE_TESTS)
         )
 
         target_include_directories(tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+        file(COPY "${CMAKE_SOURCE_DIR}/resources" DESTINATION "${CMAKE_BINARY_DIR}")
 
         enable_testing()
         add_test(NAME engine_tests COMMAND tests)
