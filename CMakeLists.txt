@@ -217,6 +217,26 @@ if(WIN32)
 endif()
 
 # =========================================================
+# Clang-Tidy target
+# =========================================================
+find_program(CLANG_TIDY clang-tidy)
+if(CLANG_TIDY)
+    file(GLOB_RECURSE PROJECT_SOURCES
+        "${CMAKE_SOURCE_DIR}/src/*.cpp"
+    )
+    
+    list(FILTER PROJECT_SOURCES EXCLUDE REGEX ".*/tests/.*")
+    list(FILTER PROJECT_SOURCES EXCLUDE REGEX ".*/util/memory.*")
+
+    add_custom_target(
+        clang_tidy
+        COMMAND ${CLANG_TIDY} -p ${CMAKE_BINARY_DIR} ${PROJECT_SOURCES} --warnings-as-errors=*
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Running clang-tidy on the entire project..."
+    )
+endif()
+
+# =========================================================
 # Avoid SDL_main issues
 # =========================================================
 target_compile_definitions(${PROJECT_NAME} PRIVATE SDL_MAIN_HANDLED)

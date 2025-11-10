@@ -70,7 +70,7 @@ GameObject& GameObject::parent(GameObject& parent) {
     return *this;
 }
 
-GameObject& GameObject::parent(std::nullopt_t) {
+GameObject& GameObject::parent(std::nullopt_t nullopt) {
     if (!parent_.has_value()) {
         return *this;
     }
@@ -96,9 +96,11 @@ GameObject& GameObject::remove_child(GameObject& child) {
     return *this;
 }
 
+// NOLINTBEGIN
 void GameObject::serialize() const {
     throw std::runtime_error("Not implemented");
 }
 void GameObject::deserialize() const {
     throw std::runtime_error("Not implemented");
 }
+// NOLINTEND
