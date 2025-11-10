@@ -24,8 +24,8 @@ void MouseState::reset()
     delta_x = 0.0f;
     delta_y = 0.0f;
 
-    for (std::pair<const MouseButton, MouseButtonState>& button : buttons)
-        button.second.reset();
+    for (auto& [_, state] : buttons)
+        state.reset();
 
     wheel.reset();
 }
