@@ -12,7 +12,7 @@ Texture& get_texture_for(const std::string& sprite) {
     return resource.get();
 }
 
-Sprite::Sprite(GameObject& parent, const std::string& sprite, const Color color, int const flipX, const int flipY, const int sortingLayer, const int orderingLayer)
+Sprite::Sprite(GameObject& parent, const std::string& sprite, const Color color, const int flipX, const int flipY, const int sortingLayer, const int orderingLayer)
     : Component(parent),
     texture_(get_texture_for(sprite)),
     flipX_(flipX),
