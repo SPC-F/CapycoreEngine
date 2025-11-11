@@ -14,10 +14,8 @@ private:
     friend class AssetManager;
     SdlRendererPtr renderer_;
     SdlWindowPtr window_;
-
-    explicit Renderer(SDL_Renderer* renderer, SDL_Window* window);
-    explicit Renderer(SdlRendererPtr renderer, SdlWindowPtr window);
 public:
+    explicit Renderer();
     void update();
     void render(const std::vector<std::reference_wrapper<GameObject>>& objects) const;
     void clear() const;
