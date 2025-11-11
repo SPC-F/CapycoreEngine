@@ -28,6 +28,27 @@ public:
      */
     void update();
 
+    /** 
+     * @brief Accessor for the physics world instance.
+     * 
+     * @return std::unique_ptr<PhysicsWorld>& Reference to the physics world instance.
+     */
+    std::unique_ptr<PhysicsWorld>& world() noexcept;
+
+    /**
+     * @brief Accessor for the physics raycaster instance.
+     * 
+     * @return std::unique_ptr<PhysicsRaycaster>& Reference to the physics raycaster instance.
+     */
+    std::unique_ptr<PhysicsRaycaster>& raycaster() noexcept;
+
+    /**
+     * @brief Accessor for the physics creation factory instance.
+     * 
+     * @return std::unique_ptr<PhysicsCreationFactory>& Reference to the physics creation factory instance.
+     */
+    std::unique_ptr<PhysicsCreationFactory>& factory() noexcept;
+
 private:
     std::unique_ptr<PhysicsWorld> physics_world_{nullptr};
     std::unique_ptr<PhysicsRaycaster> physics_raycaster_{nullptr};

@@ -9,3 +9,15 @@ PhysicsService::PhysicsService() {
 void PhysicsService::update() {
     physics_world_->step();
 }
+
+std::unique_ptr<PhysicsWorld>& PhysicsService::world() noexcept {
+    return physics_world_;
+}
+
+std::unique_ptr<PhysicsRaycaster>& PhysicsService::raycaster() noexcept {
+    return physics_raycaster_;
+}
+
+std::unique_ptr<PhysicsCreationFactory>& PhysicsService::factory() noexcept {
+    return physics_creation_factory_;
+}
