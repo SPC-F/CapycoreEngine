@@ -4,12 +4,8 @@
 #include <engine/public/components/sprite.h>
 #include <SDL3_image/SDL_image.h>
 
-Renderer::Renderer() : renderer_(nullptr, SDL_DestroyRenderer), window_(nullptr, SDL_DestroyWindow) {
-    SDL_Window* window = SDL_CreateWindow("Capycore", 500, 500, SDL_WINDOW_BORDERLESS | SDL_WINDOW_FULLSCREEN);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, "DefaultRenderer");
-    SDL_SetRenderDrawColor(renderer_.get(), 0, 0, 0, 255);
-    renderer_.reset(renderer);
-    window_.reset(window);
+Renderer::Renderer() : Renderer(800, 600, "DefaultRenderer", RendererFlags::Borderless) {
+
 }
 
 Renderer::Renderer(int min_aspect_width, int min_aspect_height, const std::string& title, RendererFlags flags)
@@ -32,6 +28,13 @@ Renderer::Renderer(int min_aspect_width, int min_aspect_height, const std::strin
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     renderer_.reset(renderer);
     window_.reset(window);
+
+    window_controller_.emplace(min_aspect_width, min_aspect_height);
+    window_controller_->init(window);
+}
+
+Window& Renderer::window() {
+    return window_controller_.value();
 }
 
 void Renderer::clear() const {
@@ -71,29 +74,4 @@ void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
                 SDL_FLIP_NONE);
         }
     }
-}
-
-Renderer& Renderer::set_window_fullscreen() {
-    SDL_SetWindowFullscreen(window_.get(), true);
-    return *this;
-}
-Renderer& Renderer::set_window_windowed() {
-    SDL_SetWindowFullscreen(window_.get(), false);
-    return *this;
-}
-Renderer& Renderer::set_window_borderless() {
-    SDL_SetWindowBordered(window_.get(), true);
-    return *this;
-}
-Renderer& Renderer::set_window_bordered() {
-    SDL_SetWindowBordered(window_.get(), false);
-    return *this;
-}
-Renderer& Renderer::set_window_resizable() {
-    SDL_SetWindowResizable(window_.get(), true);
-    return *this;
-}
-Renderer& Renderer::set_window_unresizable() {
-    SDL_SetWindowResizable(window_.get(), false);
-    return *this;
 }
