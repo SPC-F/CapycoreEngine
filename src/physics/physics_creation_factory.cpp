@@ -3,12 +3,17 @@
 PhysicsCreationFactory::PhysicsCreationFactory(b2WorldId world_id)
     : world_id_(world_id) {}
 
-std::unique_ptr<b2BodyId, decltype(&b2DestroyBody)> 
-PhysicsCreationFactory::create_box_body(Point position, float width, float height, PhysicsCreationFlags flags) {
+b2BodyId PhysicsCreationFactory::create_box_body(Point position, float width, float height, PhysicsCreationFlags flags) {
     // Implementation...
+    return b2BodyId{};    
 }
 
-std::unique_ptr<b2BodyId, decltype(&b2DestroyBody)> 
-PhysicsCreationFactory::create_circle_body(Point position, float radius, PhysicsCreationFlags flags) {
+
+b2BodyId PhysicsCreationFactory::create_circle_body(Point position, float radius, PhysicsCreationFlags flags) {
+    // Implementation...
+    return b2BodyId{};
+}
+
+void PhysicsCreationFactory::destroy_body(b2BodyId body_id) {
     // Implementation...
 }
