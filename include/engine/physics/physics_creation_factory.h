@@ -3,6 +3,7 @@
 #include <box2d/box2d.h>
 #include <memory>
 
+#include <engine/public/component.h>
 #include <engine/public/util/point.h>
 
 /**
@@ -30,9 +31,9 @@ public:
     PhysicsCreationFactory(b2WorldId world_id);
 
     /** @brief Create a box body with specified parameters and flags */
-    static b2BodyId create_box_body(Point position, float width, float height, PhysicsCreationFlags flags);
+    b2BodyId create_box_body(Point position, float width, float height, PhysicsCreationFlags flags, Component* component);
     /** @brief Create a circle body with specified parameters and flags */
-    static b2BodyId create_circle_body(Point position, float radius, PhysicsCreationFlags flags);
+    b2BodyId create_circle_body(Point position, float radius, PhysicsCreationFlags flags, Component* component);
 
     /** @brief Destroy a body given its identifier */
     static void destroy_body(b2BodyId body_id);

@@ -54,6 +54,9 @@ public:
     float pixel_to_meter_ratio() const noexcept;
     float pixel_to_meter_ratio(float ratio) noexcept;
 
+    [[nodiscard]]
+    bool world_exists() const noexcept;
+
 private:
     /**
      * @brief Unique identifier for the Box2D world instance.

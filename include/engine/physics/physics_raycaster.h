@@ -2,6 +2,7 @@
 
 #include <box2d/box2d.h>
 #include <memory>
+#include <vector>
 
 /**
  * @brief Class responsible for raycasting in the physics world.
@@ -13,8 +14,43 @@ class PhysicsRaycaster {
 public:
     PhysicsRaycaster(b2WorldId world_id);
 
-    /** @brief Perform a raycast from the origin in the direction of the translation vector */
-    b2RayResult raycast(const b2Vec2& origin, const b2Vec2& translation);
+    /**
+     * @brief Closest hit
+     * 
+     * @param origin The starting point of the ray.
+     * @param translation The direction and length of the ray.
+     * @return b2RayResult The result of the closest hit.
+     */
+    b2RayResult raycast_closest(const b2Vec2& origin, const b2Vec2& translation);
+
+   /**
+    * @brief All hits
+    * 
+    * @param origin The starting point of the ray.
+    * @param translation The direction and length of the ray.
+    * @param filter The query filter to apply.
+    * @return std::vector<b2RayResult> A vector of all raycast results.
+    */
+    std::vector<b2RayResult> raycast_all(const b2Vec2& origin, const b2Vec2& translation, b2QueryFilter filter = {});
+
+    /**
+     * @brief Filtered hits by category mask
+     * 
+     * @param origin The starting point of the ray.
+     * @param translation The direction and length of the ray.
+     * @param category_mask The category mask to filter results.
+     * @return std::vector<b2RayResult> A vector of filtered raycast results
+     */
+    std::vector<b2RayResult> raycast_filtered(const b2Vec2& origin, const b2Vec2& translation, uint16_t category_mask);
+
+    /**
+     * @brief Raycast segment
+     * 
+     * @param start The starting point of the segment.
+     * @param end The ending point of the segment.
+     * @return b2RayResult The result of the segment raycast.
+     */
+    b2RayResult raycast_segment(const b2Vec2& start, const b2Vec2& end);
 
 private:
     b2WorldId world_id_;
