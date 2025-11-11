@@ -23,18 +23,18 @@ Sprite::Sprite(GameObject& parent, const std::string& sprite, const Color color,
     color_(color) {
 }
 
-int Sprite::flipX() const {
+int Sprite::flip_x() const {
     return flipX_;
 }
-Sprite& Sprite::flipX(const int val) {
+Sprite& Sprite::flip_x(const int val) {
     flipX_ = val;
     return *this;
 }
 
-int Sprite::flipY() const {
+int Sprite::flip_y() const {
     return flipY_;
 }
-Sprite& Sprite::flipY(const int val) {
+Sprite& Sprite::flip_y(const int val) {
     flipY_ = val;
     return *this;
 }

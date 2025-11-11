@@ -17,11 +17,11 @@ private:
 public:
     Sprite(GameObject& parent, const std::string& sprite, Color color, int flipX, int flipY, int sortingLayer, int orderingLayer);
 
-    [[nodiscard]] int flipX() const;
-    Sprite& flipX(int val);
+    [[nodiscard]] int flip_x() const;
+    Sprite& flip_x(int val);
 
-    [[nodiscard]] int flipY() const;
-    Sprite& flipY(int val);
+    [[nodiscard]] int flip_y() const;
+    Sprite& flip_y(int val);
 
     [[nodiscard]] int sortingLayer() const;
     Sprite& sortingLayer(int val);

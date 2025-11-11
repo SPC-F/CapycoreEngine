@@ -59,67 +59,67 @@ std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
     int rows,
     int cols) {
 
-const std::string filePath = "resources/" + file;
+    const std::string file_path = "resources/" + file;
 
-const auto& rendererService = Engine::instance()
-    .services
-    ->getService<RenderingService>()
-    .get();
+    const auto& renderer_service = Engine::instance()
+        .services
+        ->getService<RenderingService>()
+        .get();
 
-SDL_Renderer* renderer = rendererService.renderer_
-    ->renderer_
-    .get();
+    SDL_Renderer* renderer = renderer_service.renderer_
+        ->renderer_
+        .get();
 
-SDL_Surface* image = IMG_Load(filePath.c_str());
-if (!image) {
-    SDL_Log("Failed to load image '%s': %s", filePath.c_str(), IMG_GetError());
-    return {};
-}
-SDL_Texture* textureSheet = SDL_CreateTextureFromSurface(renderer, image);
-SDL_DestroySurface(image);
-if (!textureSheet) {
-    SDL_Log("Failed to create texture from surface for '%s': %s", filePath.c_str(), SDL_GetError());
-    return {};
-}
-
-const auto width = float(textureSheet->w) / float(cols);
-const auto height = float(textureSheet->h) / float(rows);
-
-SDL_FRect src_rect{0, 0, width, height};
-const SDL_FRect dst_rect{0, 0, width, height};
-
-named_assets_.emplace(name, std::vector<std::reference_wrapper<Texture>>());
-auto& resource = named_assets_.at(name); // <-- reference to actual stored vector
-
-for (int r = 0; r < rows; ++r) {
-    src_rect.x = 0;
-    for (int c = 0; c < cols; ++c) {
-        SDL_Texture* frame = SDL_CreateTexture(
-                renderer,
-                SDL_PIXELFORMAT_RGBA8888,
-                SDL_TEXTUREACCESS_TARGET,
-                static_cast<int>(width),
-                static_cast<int>(height));
-
-        SDL_SetRenderTarget(renderer, frame);
-        SDL_RenderTextureTiled(renderer, textureSheet, &src_rect, 1, &dst_rect);
-
-        // Create a unique_ptr and store it in _textures
-        auto newTexture = std::unique_ptr<Texture>(new Texture(frame));
-        textures_.emplace_back(std::move(newTexture));
-
-        // Add a reference to the stored Texture in the namedAssets vector
-        resource.emplace_back(*textures_.back());
-
-        src_rect.x += width;
+    SDL_Surface* image = IMG_Load(file_path.c_str());
+    if (!image) {
+        SDL_Log("Failed to load image '%s': %s", file_path.c_str(), SDL_GetError());
+        return {};
     }
-    src_rect.y += height;
-}
+    SDL_Texture* textureSheet = SDL_CreateTextureFromSurface(renderer, image);
+    SDL_DestroySurface(image);
+    if (!textureSheet) {
+        SDL_Log("Failed to create texture from surface for '%s': %s", file_path.c_str(), SDL_GetError());
+        return {};
+    }
 
-SDL_DestroyTexture(textureSheet);
-SDL_SetRenderTarget(renderer, nullptr);
+    const auto width = float(textureSheet->w) / float(cols);
+    const auto height = float(textureSheet->h) / float(rows);
 
-return resource; // returns a copy of reference_wrapper vector
+    SDL_FRect src_rect{0, 0, width, height};
+    const SDL_FRect dst_rect{0, 0, width, height};
+
+    named_assets_.emplace(name, std::vector<std::reference_wrapper<Texture>>());
+    auto& resource = named_assets_.at(name); // <-- reference to actual stored vector
+
+    for (int r = 0; r < rows; ++r) {
+        src_rect.x = 0;
+        for (int c = 0; c < cols; ++c) {
+            SDL_Texture* frame = SDL_CreateTexture(
+                    renderer,
+                    SDL_PIXELFORMAT_RGBA8888,
+                    SDL_TEXTUREACCESS_TARGET,
+                    static_cast<int>(width),
+                    static_cast<int>(height));
+
+            SDL_SetRenderTarget(renderer, frame);
+            SDL_RenderTextureTiled(renderer, textureSheet, &src_rect, 1, &dst_rect);
+
+            // Create a unique_ptr and store it in _textures
+            auto newTexture = std::unique_ptr<Texture>(new Texture(frame));
+            textures_.emplace_back(std::move(newTexture));
+
+            // Add a reference to the stored Texture in the namedAssets vector
+            resource.emplace_back(*textures_.back());
+
+            src_rect.x += width;
+        }
+        src_rect.y += height;
+    }
+
+    SDL_DestroyTexture(textureSheet);
+    SDL_SetRenderTarget(renderer, nullptr);
+
+    return resource; // returns a copy of reference_wrapper vector
 }
 
 std::optional<std::reference_wrapper<Texture>> AssetManager::try_get_texture(const std::string& sprite) const {
@@ -136,13 +136,13 @@ std::optional<std::reference_wrapper<Texture>> AssetManager::try_get_texture(con
 
 
 std::expected<std::reference_wrapper<Texture>, std::string> AssetManager::register_texture(
-    const std::string& resourceName,
-    const std::string& textureName,
+    const std::string& resource_name,
+    const std::string& texture_name,
     const size_t index) {
 
-    auto const maybe_resource = this->try_get_spritesheet(resourceName);
+    auto const maybe_resource = this->try_get_spritesheet(resource_name);
     if(!maybe_resource.has_value()) {
-        throw std::invalid_argument(std::format("The given argument for {} has no associated resource registered.", resourceName));
+        throw std::invalid_argument(std::format("The given argument for {} has no associated resource registered.", resource_name));
     }
 
     const std::vector<std::reference_wrapper<Texture>>& resource = *maybe_resource;
@@ -152,7 +152,7 @@ std::expected<std::reference_wrapper<Texture>, std::string> AssetManager::regist
 
     auto texture = resource.at(index);
     named_assets_.emplace(
-        textureName,
+        texture_name,
         std::vector{texture}
     );
 

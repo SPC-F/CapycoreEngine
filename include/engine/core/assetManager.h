@@ -30,8 +30,8 @@ public:
 
     [[nodiscard]]
     std::expected<std::reference_wrapper<Texture>, std::string> register_texture(
-        const std::string& resourceName,
-        const std::string& textureName,
+        const std::string& resource_name,
+        const std::string& texture_name,
         size_t index);
 
     std::vector<std::reference_wrapper<Texture>> load_from_resource(
