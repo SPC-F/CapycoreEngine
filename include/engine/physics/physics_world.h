@@ -29,6 +29,8 @@ public:
 
     /** @brief Advances the physics simulation by one time step. */
     void step();
+    /** @brief Checks for collisions in the physics world. */
+    void check_collision();
 
     b2WorldId world_id() noexcept;
 

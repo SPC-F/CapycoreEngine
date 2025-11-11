@@ -15,6 +15,11 @@ b2WorldId PhysicsWorld::world_id() noexcept {
 
 void PhysicsWorld::step() {
     // Implementation...
+    check_collision();
+}
+
+void PhysicsWorld::check_collision() {
+    // Implementation...
 }
 
 float PhysicsWorld::time_step() const noexcept {
