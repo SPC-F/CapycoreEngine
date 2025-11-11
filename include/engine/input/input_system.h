@@ -40,7 +40,7 @@ public:
     void reset_state() override;
     void update() override;
 
-private:
+protected:
     /**
      * @brief Per-key state cache for frame-level input tracking.
      *
