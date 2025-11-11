@@ -30,6 +30,11 @@ Vector3 Transform::position() const noexcept {
 }
 
 Transform& Transform::rotation(const float rot) noexcept {
+    if(rot > 360.0f) {
+        rotation_ = rot - 360.0f;
+        return *this;
+    }
+
     rotation_ = rot;
     return *this;
 }

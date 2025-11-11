@@ -53,6 +53,7 @@ void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
                 .w = texture.width(),
                 .h = texture.height()
             };
+
             auto const target = SDL_FRect {
                 .x = position.x,
                 .y = position.y,
@@ -60,13 +61,14 @@ void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
                 .h = texture.height()
             };
 
-            constexpr int scale = 1;
-            SDL_RenderTextureTiled(
+            SDL_RenderTextureRotated(
                 renderer_.get(),
                 sprite.texture().texture_.get(),
                 &source,
-                scale,
-                &target);
+                &target,
+                transform.rotation(),
+                nullptr, // default is center of target square
+                SDL_FLIP_NONE);
         }
     }
 }
