@@ -9,7 +9,7 @@ AssetManager::AssetManager()
     : textures_(), named_assets_() {
 }
 
-std::optional<std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>>> AssetManager::try_get_resource(const std::string& key) const {
+std::optional<std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>>> AssetManager::try_get_spritesheet(const std::string& key) const {
     if (const auto it = named_assets_.find(key); it != named_assets_.end()) {
         // const ref, not c ref. constructor functions for these things are called ref and cref respectively.
         return std::cref(it->second);
@@ -19,13 +19,13 @@ std::optional<std::reference_wrapper<const std::vector<std::reference_wrapper<Te
 
 std::expected<
     std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>>,
-    std::string> AssetManager::create_texture_for(
+    std::string> AssetManager::create_spritesheet_for(
         const std::string& source,
         const std::string& name,
         size_t from,
         size_t to) {
 
-    const auto maybe_resource = try_get_resource(source);
+    const auto maybe_resource = try_get_spritesheet(source);
 
     if(!maybe_resource.has_value()) {
         throw std::invalid_argument(std::format("The given argument for {} has no associated resource registered.", source));
@@ -54,25 +54,33 @@ std::expected<
 }
 
 std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
-        const std::string& file,
-        const std::string& name,
-        int rows,
-        int cols) {
+    const std::string& file,
+    const std::string& name,
+    int rows,
+    int cols) {
 
-    const std::string filePath = "resources/" + file;
+    const std::string file_path = "resources/" + file;
 
-    const auto& rendererService = Engine::instance()
+    const auto& renderer_service = Engine::instance()
         .services
         ->getService<RenderingService>()
         .get();
 
-    SDL_Renderer* renderer = rendererService.renderer_
+    SDL_Renderer* renderer = renderer_service.renderer_
         ->renderer_
         .get();
 
-    SDL_Surface* image = IMG_Load(filePath.c_str());
+    SDL_Surface* image = IMG_Load(file_path.c_str());
+    if (!image) {
+        SDL_Log("Failed to load image '%s': %s", file_path.c_str(), SDL_GetError());
+        return {};
+    }
     SDL_Texture* textureSheet = SDL_CreateTextureFromSurface(renderer, image);
     SDL_DestroySurface(image);
+    if (!textureSheet) {
+        SDL_Log("Failed to create texture from surface for '%s': %s", file_path.c_str(), SDL_GetError());
+        return {};
+    }
 
     const auto width = float(textureSheet->w) / float(cols);
     const auto height = float(textureSheet->h) / float(rows);
@@ -112,4 +120,41 @@ std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
     SDL_SetRenderTarget(renderer, nullptr);
 
     return resource; // returns a copy of reference_wrapper vector
+}
+
+std::optional<std::reference_wrapper<Texture>> AssetManager::try_get_texture(const std::string& sprite) const {
+    auto const maybe_resource = this->try_get_spritesheet(sprite);
+    if (!maybe_resource.has_value()) {
+        return std::nullopt;
+    }
+    const auto resource = *maybe_resource;
+    if (resource.get().empty()) {
+        return std::nullopt;
+    }
+    return std::ref(resource.get().at(0));
+}
+
+
+std::expected<std::reference_wrapper<Texture>, std::string> AssetManager::register_texture(
+    const std::string& resource_name,
+    const std::string& texture_name,
+    const size_t index) {
+
+    auto const maybe_resource = this->try_get_spritesheet(resource_name);
+    if(!maybe_resource.has_value()) {
+        throw std::invalid_argument(std::format("The given argument for {} has no associated resource registered.", resource_name));
+    }
+
+    const std::vector<std::reference_wrapper<Texture>>& resource = *maybe_resource;
+    if (index >= resource.size()) {
+        throw std::invalid_argument(std::format("Invalid range for creating texture subset"));
+    }
+
+    auto texture = resource.at(index);
+    named_assets_.emplace(
+        texture_name,
+        std::vector{texture}
+    );
+
+    return resource.at(index);
 }
