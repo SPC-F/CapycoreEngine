@@ -2,9 +2,9 @@
 
 class Color {
 public:
-    int r;
-    int g;
-    int b;
-    int a;
-    Color(int r, int g, int b, int a);
+    unsigned short r;
+    unsigned short g;
+    unsigned short b;
+    unsigned short a;
+    Color(unsigned short r, unsigned short g, unsigned short b, unsigned short a);
 };
