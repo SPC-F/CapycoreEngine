@@ -8,12 +8,11 @@ PhysicsRaycaster::PhysicsRaycaster(b2WorldId world_id)
     : world_id_(world_id) {}
 
 b2RayResult PhysicsRaycaster::raycast_closest(const b2Vec2& origin, const b2Vec2& translation) {
-    b2RayCastInput input;
-    input.origin = origin;
-    input.translation = translation;
-    input.maxFraction = 1.0f;
+    b2QueryFilter filter{};
+    filter.categoryBits = all_categories;
+    filter.maskBits = all_categories;
 
-    return b2World_CastRayClosest(world_id_, input.origin, input.translation, {});
+    return b2World_CastRayClosest(world_id_, origin, translation, filter);
 }
 
 std::vector<b2RayResult> PhysicsRaycaster::raycast_all(const b2Vec2& origin, const b2Vec2& translation, b2QueryFilter filter) {
@@ -55,7 +54,10 @@ std::vector<b2RayResult> PhysicsRaycaster::raycast_filtered(const b2Vec2& origin
 
 b2RayResult PhysicsRaycaster::raycast_segment(const b2Vec2& start, const b2Vec2& end) {
     b2Vec2 translation = end - start;
-    b2QueryFilter filter{};
+    
+    b2QueryFilter filter;
+    filter.categoryBits = all_categories;
+    filter.maskBits = all_categories;
     
     return b2World_CastRayClosest(world_id_, start, translation, filter);
 }

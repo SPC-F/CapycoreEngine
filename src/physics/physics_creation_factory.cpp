@@ -9,20 +9,38 @@ PhysicsCreationFactory::PhysicsCreationFactory(b2WorldId world_id)
     : world_id_(world_id) {}
 
 b2BodyId PhysicsCreationFactory::create_box_body(Point position, float width, float height, PhysicsCreationFlags flags, Component* component) {
+    if (width <= 0.0f || height <= 0.0f)
+    {
+        throw std::invalid_argument("Width and height must be positive values.");
+    }
+
     b2BodyDef body_def = b2DefaultBodyDef();
     body_def.type = flags.dynamic ? b2BodyType::b2_dynamicBody : b2BodyType::b2_staticBody;
     body_def.position = b2Vec2{position.x, position.y};
     body_def.userData = component;
     
     b2BodyId body_id = b2CreateBody(world_id_, &body_def);
+    if (!b2Body_IsValid(body_id)) {
+        throw std::runtime_error("Failed to create body in Box2D world.");
+    }
 
     b2Polygon box = b2MakeBox(width / default_box_divisor, height / default_box_divisor);
+    
     b2ShapeDef shape_def = b2DefaultShapeDef();
-
     shape_def.enableContactEvents = flags.enable_contact_events;
     shape_def.isSensor = flags.sensor;
 
     b2ShapeId shape_id = b2CreatePolygonShape(body_id, &shape_def, &box);
+    
+    b2Filter filter{};
+    filter.categoryBits = flags.category;
+    filter.maskBits = flags.mask;
+    b2Shape_SetFilter(shape_id, filter);
+
+    if (!b2Shape_IsValid(shape_id)) {
+        b2DestroyBody(body_id);
+        throw std::runtime_error("Failed to create shape for body in Box2D world.");
+    }
 
     if (flags.enable_contact_events) {
         b2Shape_EnableContactEvents(shape_id, true);
@@ -42,12 +60,21 @@ b2BodyId PhysicsCreationFactory::create_box_body(Point position, float width, fl
 }
 
 b2BodyId PhysicsCreationFactory::create_circle_body(Point position, float radius, PhysicsCreationFlags flags, Component* component) {
+    if (radius <= 0.0f)
+    {
+        throw std::invalid_argument("Radius must be a positive value.");
+    }
+
+
     b2BodyDef body_def = b2DefaultBodyDef();
     body_def.type = flags.dynamic ? b2BodyType::b2_dynamicBody : b2BodyType::b2_staticBody;
     body_def.position = b2Vec2{position.x, position.y};
     body_def.userData = component;
     
     b2BodyId body_id = b2CreateBody(world_id_, &body_def);
+    if (!b2Body_IsValid(body_id)) {
+        throw std::runtime_error("Failed to create body in Box2D world.");
+    }
 
     b2Circle circle;
     circle.center = b2Vec2{0.0f, 0.0f};
@@ -59,6 +86,16 @@ b2BodyId PhysicsCreationFactory::create_circle_body(Point position, float radius
     shape_def.isSensor = flags.sensor;
 
     b2ShapeId shape_id = b2CreateCircleShape(body_id, &shape_def, &circle);
+
+    b2Filter filter{};
+    filter.categoryBits = flags.category;
+    filter.maskBits = flags.mask;
+    b2Shape_SetFilter(shape_id, filter);
+    
+    if (!b2Shape_IsValid(shape_id)) {
+        b2DestroyBody(body_id);
+        throw std::runtime_error("Failed to create shape for body in Box2D world.");
+    }
 
     if (flags.enable_contact_events) {
         b2Shape_EnableContactEvents(shape_id, true);

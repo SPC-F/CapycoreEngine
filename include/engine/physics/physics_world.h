@@ -6,7 +6,7 @@
 constexpr float default_step = 1.0f / 60.0f;
 constexpr int32_t default_velocity_iterations = 6;
 constexpr float default_gravity_x = 0.0f;
-constexpr float default_gravity_y = 30.0f;
+constexpr float default_gravity_y = -30.0f;
 constexpr float default_pixel_to_meter_ratio = 16.0f;
 
 /**
@@ -27,12 +27,25 @@ public:
     
     ~PhysicsWorld();
 
-    /** @brief Advances the physics simulation by one time step. */
+    /**
+     * @brief Steps the physics simulation forward by the fixed time step.
+     * 
+     * This method advances the physics world by the configured time step,
+     * applying velocity and position updates to all bodies in the world.
+     */
     void step();
-    /** @brief Checks for collisions in the physics world. */
+    
+    /**
+     * @brief Checks for collisions in the physics world.
+     * 
+     * This method processes collision detection and resolution
+     * for the current state of the physics world. Its based on
+     * Box2D's internal collision handling and objects
+     */
     void check_collision();
 
-    b2WorldId world_id() noexcept;
+    [[nodiscard]]
+    b2WorldId world_id() const noexcept;
 
     [[nodiscard]]
     float time_step() const noexcept;

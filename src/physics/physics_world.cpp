@@ -5,13 +5,17 @@ PhysicsWorld::PhysicsWorld() {
     b2WorldDef world_def = b2DefaultWorldDef();
     world_def.gravity = b2Vec2{gravity_x_, gravity_y_};
     world_id_ = b2CreateWorld(&world_def);
+
+    if (!b2World_IsValid(world_id_)) {
+        throw std::runtime_error("Failed to create Box2D world.");
+    }
 }
 
 PhysicsWorld::~PhysicsWorld() {
     b2DestroyWorld(world_id_);
 }
 
-b2WorldId PhysicsWorld::world_id() noexcept {
+b2WorldId PhysicsWorld::world_id() const noexcept {
     return world_id_;
 }
 

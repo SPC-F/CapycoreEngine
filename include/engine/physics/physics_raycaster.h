@@ -17,6 +17,8 @@ public:
     /**
      * @brief Closest hit
      * 
+     * Meant for simple raycasts where only the closest hit is needed.
+     * 
      * @param origin The starting point of the ray.
      * @param translation The direction and length of the ray.
      * @return b2RayResult The result of the closest hit.
@@ -25,6 +27,8 @@ public:
 
    /**
     * @brief All hits
+    * 
+    * Returns all hits along the ray, sorted by distance from the origin.
     * 
     * @param origin The starting point of the ray.
     * @param translation The direction and length of the ray.
@@ -36,6 +40,8 @@ public:
     /**
      * @brief Filtered hits by category mask
      * 
+     * Returns all hits along the ray that match the given category mask.
+     * 
      * @param origin The starting point of the ray.
      * @param translation The direction and length of the ray.
      * @param category_mask The category mask to filter results.
@@ -45,6 +51,8 @@ public:
 
     /**
      * @brief Raycast segment
+     * 
+     * Performs a raycast between two points, returning the first hit encountered.
      * 
      * @param start The starting point of the segment.
      * @param end The ending point of the segment.

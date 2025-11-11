@@ -11,10 +11,13 @@
 namespace PhysicsMath {
     /** @brief Convert pixels to meters using the specified ratio */
     float to_meters(float pixels, float ratio) noexcept;
+
     /** @brief Convert meters to pixels using the specified ratio */
     float to_pixels(float meters, float ratio) noexcept;
+
     /** @brief Convert degrees to radians */
     float to_radians(float degrees) noexcept;
+    
     /** @brief Convert radians to degrees */
     float to_degrees(float radians) noexcept;
 };
