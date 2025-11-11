@@ -128,6 +128,9 @@ std::optional<std::reference_wrapper<Texture>> AssetManager::try_get_texture(con
         return std::nullopt;
     }
     const auto resource = *maybe_resource;
+    if (resource.get().empty()) {
+        return std::nullopt;
+    }
     return std::ref(resource.get().at(0));
 }
 
