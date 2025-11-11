@@ -1,0 +1,36 @@
+#pragma once
+#include <string>
+#include <engine/public/util/color.h>
+#include <engine/core/rendering/texture.h>
+#include <engine/public/component.h>
+
+class Sprite : public Component {
+private:
+    const Texture& texture_;
+
+    int flipX_;
+    int flipY_;
+    int sortingLayer_;
+    int orderingLayer_;
+    Color color_;
+
+public:
+    Sprite(GameObject& parent, const std::string& sprite, Color color, int flipX, int flipY, int sortingLayer, int orderingLayer);
+
+    [[nodiscard]] int flipX() const;
+    Sprite& flipX(int val);
+
+    [[nodiscard]] int flipY() const;
+    Sprite& flipY(int val);
+
+    [[nodiscard]] int sortingLayer() const;
+    Sprite& sortingLayer(int val);
+
+    [[nodiscard]] int orderingLayer() const;
+    Sprite& orderingLayer(int val);
+
+    [[nodiscard]] Color color() const;
+    Sprite& color(Color color);
+
+    [[nodiscard]] const Texture& texture() const;
+};

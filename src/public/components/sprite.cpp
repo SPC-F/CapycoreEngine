@@ -1,0 +1,68 @@
+#include <engine/public/components/sprite.h>
+#include <engine/core/assetManager.h>
+#include <engine/core/engine.h>
+
+Texture& get_texture_for(const std::string& sprite) {
+    const auto& service = Engine::instance().services->getService<AssetManager>().get();
+    const auto maybe_texture = service.try_get_texture(sprite);
+    if (!maybe_texture.has_value()) {
+        throw std::runtime_error("Failed to get texture from sprite");
+    }
+    auto const resource = maybe_texture.value();
+    return resource.get();
+}
+
+Sprite::Sprite(GameObject& parent, const std::string& sprite, const Color color, int const flipX, const int flipY, const int sortingLayer, const int orderingLayer)
+    : Component(parent),
+    texture_(get_texture_for(sprite)),
+    flipX_(flipX),
+    flipY_(flipY),
+    sortingLayer_(sortingLayer),
+    orderingLayer_(orderingLayer),
+    color_(color) {
+}
+
+int Sprite::flipX() const {
+    return flipX_;
+}
+Sprite& Sprite::flipX(const int val) {
+    flipX_ = val;
+    return *this;
+}
+
+int Sprite::flipY() const {
+    return flipY_;
+}
+Sprite& Sprite::flipY(const int val) {
+    flipY_ = val;
+    return *this;
+}
+
+int Sprite::sortingLayer() const {
+    return sortingLayer_;
+}
+Sprite& Sprite::sortingLayer(const int val) {
+    sortingLayer_ = val;
+    return *this;
+}
+
+int Sprite::orderingLayer() const {
+    return orderingLayer_;
+}
+Sprite& Sprite::orderingLayer(const int val) {
+    orderingLayer_ = val;
+    return *this;
+}
+
+Color Sprite::color() const {
+    return color_;
+}
+
+Sprite& Sprite::color(const Color color) {
+    this->color_ = color;
+    return *this;
+}
+
+const Texture& Sprite::texture() const {
+    return texture_;
+}
