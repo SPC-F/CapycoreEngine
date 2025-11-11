@@ -56,8 +56,8 @@ private:
     /**
      * @brief Unique identifier for the Box2D world instance.
      *
-     * Stored as a smart pointer with a custom deleter that
-     * automatically calls `b2DestroyWorld` when the world is destroyed.
+     * Stored as a simple value as Box2D does not allow copying or moving
+     * of its world instances. Meaning a pointer or reference cannot be used here without more complex management.
      */
     b2WorldId world_id_{};
 
