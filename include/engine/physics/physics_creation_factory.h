@@ -30,12 +30,12 @@ public:
     PhysicsCreationFactory(b2WorldId world_id);
 
     /** @brief Create a box body with specified parameters and flags */
-    b2BodyId create_box_body(Point position, float width, float height, PhysicsCreationFlags flags);
+    static b2BodyId create_box_body(Point position, float width, float height, PhysicsCreationFlags flags);
     /** @brief Create a circle body with specified parameters and flags */
-    b2BodyId create_circle_body(Point position, float radius, PhysicsCreationFlags flags);
+    static b2BodyId create_circle_body(Point position, float radius, PhysicsCreationFlags flags);
 
     /** @brief Destroy a body given its identifier */
-    void destroy_body(b2BodyId body_id);
+    static void destroy_body(b2BodyId body_id);
 
 private:
     b2WorldId& world_id_;
