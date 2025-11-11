@@ -256,6 +256,7 @@ if(ENABLE_TESTS)
                 tests/main.cpp
                 ${TEST_SOURCES}
         )
+        target_compile_definitions(tests PRIVATE PROJECT_ROOT="${CMAKE_SOURCE_DIR}")
 
         target_link_libraries(tests
         PRIVATE
@@ -264,6 +265,7 @@ if(ENABLE_TESTS)
         )
 
         target_include_directories(tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+        file(COPY "${CMAKE_SOURCE_DIR}/resources" DESTINATION "${CMAKE_BINARY_DIR}")
 
         enable_testing()
         add_test(NAME engine_tests COMMAND tests)
