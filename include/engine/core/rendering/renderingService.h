@@ -9,6 +9,13 @@ public:
     ~RenderingService() override = default;
     void draw(const std::vector<std::reference_wrapper<GameObject>>& objects);
 
+    RenderingService& set_window_fullscreen();
+    RenderingService& set_window_windowed();
+    RenderingService& set_window_bordered();
+    RenderingService& set_window_borderless();
+    RenderingService& set_window_unresizable();
+    RenderingService& set_window_resizable();
+
 private:
     friend class AssetManager;
     const std::unique_ptr<Renderer> renderer_;

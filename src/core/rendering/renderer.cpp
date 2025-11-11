@@ -12,6 +12,28 @@ Renderer::Renderer() : renderer_(nullptr, SDL_DestroyRenderer), window_(nullptr,
     window_.reset(window);
 }
 
+Renderer::Renderer(int min_aspect_width, int min_aspect_height, const std::string& title, RendererFlags flags)
+    : renderer_(nullptr, SDL_DestroyRenderer), window_(nullptr, SDL_DestroyWindow) {
+
+    SDL_WindowFlags sdl_window_flags {SDL_WINDOWPOS_CENTERED};
+
+    if (flags & RendererFlags::Fullscreen) {
+        sdl_window_flags |= SDL_WINDOW_FULLSCREEN;
+    }
+    if (flags & RendererFlags::Borderless) {
+        sdl_window_flags |= SDL_WINDOW_BORDERLESS;
+    }
+    if(flags & RendererFlags::Resizable) {
+        sdl_window_flags |= SDL_WINDOW_RESIZABLE;
+    }
+
+    SDL_Window* window = SDL_CreateWindow(title.c_str(), min_aspect_width, min_aspect_height, sdl_window_flags);
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, "DefaultRenderer");
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    renderer_.reset(renderer);
+    window_.reset(window);
+}
+
 void Renderer::clear() const {
     SDL_RenderClear(renderer_.get());
 }
@@ -51,4 +73,29 @@ void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
                 &target);
         }
     }
+}
+
+Renderer& Renderer::set_window_fullscreen() {
+    SDL_SetWindowFullscreen(window_.get(), true);
+    return *this;
+}
+Renderer& Renderer::set_window_windowed() {
+    SDL_SetWindowFullscreen(window_.get(), false);
+    return *this;
+}
+Renderer& Renderer::set_window_borderless() {
+    SDL_SetWindowBordered(window_.get(), true);
+    return *this;
+}
+Renderer& Renderer::set_window_bordered() {
+    SDL_SetWindowBordered(window_.get(), false);
+    return *this;
+}
+Renderer& Renderer::set_window_resizable() {
+    SDL_SetWindowResizable(window_.get(), true);
+    return *this;
+}
+Renderer& Renderer::set_window_unresizable() {
+    SDL_SetWindowResizable(window_.get(), false);
+    return *this;
 }
