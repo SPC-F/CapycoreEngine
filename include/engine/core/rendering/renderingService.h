@@ -3,7 +3,6 @@
 #include <engine/core/iEngineService.h>
 #include <engine/core/rendering/renderer.h>
 
-class SDL_Renderer;
 class RenderingService : public IEngineService {
 public:
     explicit RenderingService(Renderer* renderer);
@@ -12,5 +11,5 @@ public:
 
 private:
     friend class AssetManager;
-    const std::unique_ptr<Renderer> renderer_; // owns SDL_Renderer*
+    const std::unique_ptr<Renderer> renderer_;
 };

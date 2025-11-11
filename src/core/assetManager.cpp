@@ -63,7 +63,7 @@ std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
 
     const auto& renderer_service = Engine::instance()
         .services
-        ->getService<RenderingService>()
+        ->get_service<RenderingService>()
         .get();
 
     SDL_Renderer* renderer = renderer_service.renderer_

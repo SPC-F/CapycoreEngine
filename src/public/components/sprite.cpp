@@ -4,7 +4,7 @@
 #include <format>
 
 Texture& get_texture_for(const std::string& sprite) {
-    const auto& service = Engine::instance().services->getService<AssetManager>().get();
+    const auto& service = Engine::instance().services->get_service<AssetManager>().get();
     const auto maybe_texture = service.try_get_texture(sprite);
     if (!maybe_texture.has_value()) {
         throw std::runtime_error(std::format("Failed to get texture for sprite: {}", sprite));
@@ -12,45 +12,45 @@ Texture& get_texture_for(const std::string& sprite) {
     return maybe_texture.value();
 }
 
-Sprite::Sprite(GameObject& parent, const std::string& sprite, const Color color, const int flipX, const int flipY, const int sortingLayer, const int orderingLayer)
+Sprite::Sprite(GameObject& parent, const std::string& sprite, const Color color, const int flip_x, const int flip_y, const int sorting_layer, const int ordering_layer)
     : Component(parent),
     texture_(get_texture_for(sprite)),
-    flipX_(flipX),
-    flipY_(flipY),
-    sortingLayer_(sortingLayer),
-    orderingLayer_(orderingLayer),
+    flip_x_(flip_x),
+    flip_y_(flip_y),
+    sorting_layer_(sorting_layer),
+    ordering_layer_(ordering_layer),
     color_(color) {
 }
 
 int Sprite::flip_x() const {
-    return flipX_;
+    return flip_x_;
 }
 Sprite& Sprite::flip_x(const int val) {
-    flipX_ = val;
+    flip_x_ = val;
     return *this;
 }
 
 int Sprite::flip_y() const {
-    return flipY_;
+    return flip_y_;
 }
 Sprite& Sprite::flip_y(const int val) {
-    flipY_ = val;
+    flip_y_ = val;
     return *this;
 }
 
-int Sprite::sortingLayer() const {
-    return sortingLayer_;
+int Sprite::sorting_layer() const {
+    return sorting_layer_;
 }
-Sprite& Sprite::sortingLayer(const int val) {
-    sortingLayer_ = val;
+Sprite& Sprite::sorting_layer(const int val) {
+    sorting_layer_ = val;
     return *this;
 }
 
-int Sprite::orderingLayer() const {
-    return orderingLayer_;
+int Sprite::ordering_layer() const {
+    return ordering_layer_;
 }
-Sprite& Sprite::orderingLayer(const int val) {
-    orderingLayer_ = val;
+Sprite& Sprite::ordering_layer(const int val) {
+    ordering_layer_ = val;
     return *this;
 }
 

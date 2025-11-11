@@ -3,5 +3,5 @@
 
 Engine::Engine() :
     services(std::make_unique<ServiceContainer>()) {
-    services->registerService<AssetManager>();
+    services->register_service<AssetManager>();
 }

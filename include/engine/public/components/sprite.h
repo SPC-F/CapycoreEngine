@@ -8,14 +8,14 @@ class Sprite : public Component {
 private:
     std::reference_wrapper<Texture> texture_;
 
-    int flipX_;
-    int flipY_;
-    int sortingLayer_;
-    int orderingLayer_;
+    int flip_x_;
+    int flip_y_;
+    int sorting_layer_;
+    int ordering_layer_;
     Color color_;
 
 public:
-    Sprite(GameObject& parent, const std::string& sprite, Color color, int flipX, int flipY, int sortingLayer, int orderingLayer);
+    Sprite(GameObject& parent, const std::string& sprite, Color color, int flip_x, int flip_y, int sorting_layer, int ordering_layer);
 
     [[nodiscard]] int flip_x() const;
     Sprite& flip_x(int val);
@@ -23,11 +23,11 @@ public:
     [[nodiscard]] int flip_y() const;
     Sprite& flip_y(int val);
 
-    [[nodiscard]] int sortingLayer() const;
-    Sprite& sortingLayer(int val);
+    [[nodiscard]] int sorting_layer() const;
+    Sprite& sorting_layer(int val);
 
-    [[nodiscard]] int orderingLayer() const;
-    Sprite& orderingLayer(int val);
+    [[nodiscard]] int ordering_layer() const;
+    Sprite& ordering_layer(int val);
 
     [[nodiscard]] Color color() const;
     Sprite& color(Color color);
