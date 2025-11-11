@@ -6,7 +6,7 @@
 
 class Sprite : public Component {
 private:
-    const Texture& texture_;
+    std::reference_wrapper<Texture> texture_;
 
     int flipX_;
     int flipY_;
@@ -33,4 +33,6 @@ public:
     Sprite& color(Color color);
 
     [[nodiscard]] const Texture& texture() const;
+    Sprite& texture(const std::string& name);
+    Sprite& texture(Texture& texture);
 };

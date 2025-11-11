@@ -9,8 +9,7 @@ Texture& get_texture_for(const std::string& sprite) {
     if (!maybe_texture.has_value()) {
         throw std::runtime_error(std::format("Failed to get texture for sprite: {}", sprite));
     }
-    auto const resource = maybe_texture.value();
-    return resource.get();
+    return maybe_texture.value();
 }
 
 Sprite::Sprite(GameObject& parent, const std::string& sprite, const Color color, const int flipX, const int flipY, const int sortingLayer, const int orderingLayer)
@@ -66,4 +65,12 @@ Sprite& Sprite::color(const Color color) {
 
 const Texture& Sprite::texture() const {
     return texture_;
+}
+Sprite& Sprite::texture(const std::string& name) {
+    texture_ = get_texture_for(name);
+    return *this;
+}
+Sprite& Sprite::texture(Texture& texture) {
+    texture_ = texture;
+    return *this;
 }
