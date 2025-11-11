@@ -71,8 +71,16 @@ SDL_Renderer* renderer = rendererService.renderer_
     .get();
 
 SDL_Surface* image = IMG_Load(filePath.c_str());
+if (!image) {
+    SDL_Log("Failed to load image '%s': %s", filePath.c_str(), IMG_GetError());
+    return {};
+}
 SDL_Texture* textureSheet = SDL_CreateTextureFromSurface(renderer, image);
 SDL_DestroySurface(image);
+if (!textureSheet) {
+    SDL_Log("Failed to create texture from surface for '%s': %s", filePath.c_str(), SDL_GetError());
+    return {};
+}
 
 const auto width = float(textureSheet->w) / float(cols);
 const auto height = float(textureSheet->h) / float(rows);
