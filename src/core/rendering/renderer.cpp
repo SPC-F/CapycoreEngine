@@ -38,10 +38,6 @@ void Renderer::clear() const {
     SDL_RenderClear(renderer_.get());
 }
 
-void Renderer::update() {
-    // TODO: Implement
-}
-
 void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& objects) const{
     for (auto gameObjWrapper : objects) {
         auto& gameObj = gameObjWrapper.get();

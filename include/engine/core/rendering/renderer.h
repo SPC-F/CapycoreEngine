@@ -19,7 +19,6 @@ public:
     explicit Renderer();
     explicit Renderer(int min_aspect_width, int min_aspect_height, const std::string& title, RendererFlags flags);
 
-    void update();
     void render(const std::vector<std::reference_wrapper<GameObject>>& objects) const;
     void clear() const;
 
