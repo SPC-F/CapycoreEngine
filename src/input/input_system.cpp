@@ -149,5 +149,5 @@ void InputSystem::update()
     for (auto& [_, state] : mouse_state_.buttons)
         state.previous = state.current;
 
-    // TODO: Use SDL to determine the new states.
+    input().update(key_states_, mouse_state_);
 }
