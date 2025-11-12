@@ -11,7 +11,7 @@ private:
 
     Engine();
 
-    static std::unique_ptr<Engine, Deleter> engine_instance;
+    static std::unique_ptr<Engine, Deleter> engine_instance_;
 public:
     static Engine& instance();
     static void quit();
