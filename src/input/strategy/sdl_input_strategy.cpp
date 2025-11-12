@@ -26,22 +26,27 @@ void SDLInputStrategy::update(std::map<KeyCode, KeyState>& key_states, MouseStat
         case SDL_EVENT_MOUSE_MOTION:
             mouse_state.position.x = event.motion.x;
             mouse_state.position.y = event.motion.y;
-            mouse_state.delta_x += static_cast<float>(event.motion.xrel);
-            mouse_state.delta_y += static_cast<float>(event.motion.yrel);
+            mouse_state.delta_x = event.motion.xrel;
+            mouse_state.delta_y = event.motion.yrel;
             break;
 
         case SDL_EVENT_MOUSE_WHEEL:
-            mouse_state.wheel.x_delta += static_cast<float>(event.wheel.x);
-            mouse_state.wheel.y_delta += static_cast<float>(event.wheel.y);
-            mouse_state.wheel.x_scroll += static_cast<float>(event.wheel.x);
-            mouse_state.wheel.y_scroll += static_cast<float>(event.wheel.y);
+            mouse_state.wheel.x_delta = event.wheel.x;
+            mouse_state.wheel.y_delta = event.wheel.y;
+            mouse_state.wheel.x_scroll += event.wheel.x;
+            mouse_state.wheel.y_scroll += event.wheel.y;
 
-            mouse_state.wheel.last_scroll_direction =
-                (event.wheel.y > 0) ? MouseDirection::up :
-                (event.wheel.y < 0) ? MouseDirection::down :
-                (event.wheel.x > 0) ? MouseDirection::right :
-                (event.wheel.x < 0) ? MouseDirection::left :
-                                      MouseDirection::none;
+            if (event.wheel.y > 0) {
+                mouse_state.wheel.last_scroll_direction = MouseDirection::up;
+            } else if (event.wheel.y < 0) {
+                mouse_state.wheel.last_scroll_direction = MouseDirection::down;
+            } else if (event.wheel.x > 0) {
+                mouse_state.wheel.last_scroll_direction = MouseDirection::right;
+            } else if (event.wheel.x < 0) {
+                mouse_state.wheel.last_scroll_direction = MouseDirection::left;
+            } else {
+                mouse_state.wheel.last_scroll_direction = MouseDirection::none;
+            }
             break;
 
         default:
