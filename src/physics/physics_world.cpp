@@ -1,4 +1,7 @@
 #include <engine/physics/physics_world.h>
+
+#include <stdexcept>
+
 #include <engine/public/gameObject.h>
 
 PhysicsWorld::PhysicsWorld() {
