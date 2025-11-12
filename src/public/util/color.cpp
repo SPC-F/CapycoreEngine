@@ -5,7 +5,7 @@ Color::Color() : Color(
     default_color_value,
     default_color_value,
     default_color_value,
-    0) {
+    default_color_value) {
 }
 
 Color::Color(

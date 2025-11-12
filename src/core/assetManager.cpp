@@ -99,6 +99,7 @@ std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
                     static_cast<int>(width),
                     static_cast<int>(height));
 
+            SDL_SetTextureScaleMode(frame, SDL_SCALEMODE_NEAREST);
             SDL_SetRenderTarget(renderer, frame);
             SDL_RenderTextureTiled(renderer, texture_sheet, &src_rect, 1, &dst_rect);
 

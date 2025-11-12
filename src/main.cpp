@@ -33,6 +33,9 @@ void run_game_loop() {
     assetManager.register_texture(texture_name, "pingu1", 0);
 
     GameObject pingu = GameObject(scene);
+    pingu.transform().position({50, 50, 1});
+    pingu.transform().scale({ 10, 10, 1});
+    pingu.transform().rotation(369.0f);
     pingu.add_component<Sprite>(pingu, "pingu1", Color(), 0, 0, 0, 0);
 
     bool run = true;
