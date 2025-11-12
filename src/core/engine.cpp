@@ -7,17 +7,17 @@ Engine::Engine() : services(std::make_unique<ServiceContainer>()) {
 }
 
 Engine& Engine::instance() {
-    if (!engine_instance) {
+    if (!engine_instance_) {
         SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
-        engine_instance = std::unique_ptr<Engine, Deleter>(new Engine());
+        engine_instance_ = std::unique_ptr<Engine, Deleter>(new Engine());
     }
 
-    return *engine_instance;
+    return *engine_instance_;
 }
 
 void Engine::quit() {
-    engine_instance.reset();
+    engine_instance_.reset();
     SDL_Quit();
 }
 
-std::unique_ptr<Engine, Engine::Deleter> Engine::engine_instance = nullptr;
+std::unique_ptr<Engine, Engine::Deleter> Engine::engine_instance_ = nullptr;
