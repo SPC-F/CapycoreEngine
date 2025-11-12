@@ -1,8 +1,6 @@
 #pragma once
 
 #include <memory>
-#include <iostream>
-
 #include <engine/core/serviceContainer.h>
 
 class Engine {
