@@ -8,7 +8,7 @@ class Transform {
 private:
     Vector3 local_position_;
     float rotation_{};
-    Vector3 scale_{};
+    Vector3 scale_;
     std::optional<std::reference_wrapper<Transform>> parent_;
 public:
 

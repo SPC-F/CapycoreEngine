@@ -4,7 +4,9 @@
 #include <engine/public/components/sprite.h>
 #include <SDL3_image/SDL_image.h>
 
-Renderer::Renderer() : Renderer(800, 600, "DefaultRenderer", RendererFlags::Borderless) {
+constexpr int default_min_aspect_width = 800;
+constexpr int default_min_aspect_height = 600;
+Renderer::Renderer() : Renderer(default_min_aspect_width, default_min_aspect_height, "DefaultRenderer", RendererFlags::Borderless) {
 
 }
 
@@ -27,7 +29,7 @@ Renderer::Renderer(int min_aspect_width, int min_aspect_height, const std::strin
 
     SDL_Window* window = SDL_CreateWindow(title.c_str(), min_aspect_width, min_aspect_height, sdl_window_flags);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, "DefaultRenderer");
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
     sdl_renderer_.reset(renderer);
     sdl_window_.reset(window);
 
@@ -44,13 +46,13 @@ void Renderer::clear() const {
 }
 
 void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& objects) const{
-    for (auto gameObjWrapper : objects) {
-        auto& gameObj = gameObjWrapper.get();
-        const auto& transform = gameObj.transform();
+    for (auto game_obj_wrapper : objects) {
+        auto& game_obj = game_obj_wrapper.get();
+        const auto& transform = game_obj.transform();
         const auto& position = transform.position();
 
-        for (const auto spriteWrapper : gameObj.get_components<Sprite>()) {
-            const Sprite& sprite = spriteWrapper.get();
+        for (const auto sprite_wrapper : game_obj.get_components<Sprite>()) {
+            const Sprite& sprite = sprite_wrapper.get();
             const Texture& texture = sprite.texture();
 
             auto const source = SDL_FRect {

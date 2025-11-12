@@ -35,13 +35,13 @@ Window& Window::set_window_unresizable() {
 }
 
 Window& Window::set_window_width(unsigned width) {
-    int current_height;
+    int current_height {};
     SDL_GetWindowSize(window_, nullptr, &current_height);
     SDL_SetWindowSize(window_, static_cast<int>(width), current_height);
     return *this;
 }
 Window& Window::set_window_height(unsigned height) {
-    int current_width;
+    int current_width {};
     SDL_GetWindowSize(window_, &current_width, nullptr);
     SDL_SetWindowSize(window_, current_width, static_cast<int>(height));
     return *this;

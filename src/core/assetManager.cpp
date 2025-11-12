@@ -5,9 +5,7 @@
 #include <engine/core/engine.h>
 #include <format>
 
-AssetManager::AssetManager()
-    : textures_(), named_assets_() {
-}
+AssetManager::AssetManager() = default;
 
 std::optional<std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>>> AssetManager::try_get_spritesheet(const std::string& key) const {
     if (const auto it = named_assets_.find(key); it != named_assets_.end()) {
@@ -75,15 +73,15 @@ std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
         SDL_Log("Failed to load image '%s': %s", file_path.c_str(), SDL_GetError());
         return {};
     }
-    SDL_Texture* textureSheet = SDL_CreateTextureFromSurface(renderer, image);
+    SDL_Texture* texture_sheet = SDL_CreateTextureFromSurface(renderer, image);
     SDL_DestroySurface(image);
-    if (!textureSheet) {
+    if (!texture_sheet) {
         SDL_Log("Failed to create texture from surface for '%s': %s", file_path.c_str(), SDL_GetError());
         return {};
     }
 
-    const auto width = float(textureSheet->w) / float(cols);
-    const auto height = float(textureSheet->h) / float(rows);
+    const auto width = float(texture_sheet->w) / float(cols);
+    const auto height = float(texture_sheet->h) / float(rows);
 
     SDL_FRect src_rect{0, 0, width, height};
     const SDL_FRect dst_rect{0, 0, width, height};
@@ -102,11 +100,11 @@ std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
                     static_cast<int>(height));
 
             SDL_SetRenderTarget(renderer, frame);
-            SDL_RenderTextureTiled(renderer, textureSheet, &src_rect, 1, &dst_rect);
+            SDL_RenderTextureTiled(renderer, texture_sheet, &src_rect, 1, &dst_rect);
 
             // Create a unique_ptr and store it in _textures
-            auto newTexture = std::unique_ptr<Texture>(new Texture(frame));
-            textures_.emplace_back(std::move(newTexture));
+            auto new_texture = std::unique_ptr<Texture>(new Texture(frame));
+            textures_.emplace_back(std::move(new_texture));
 
             // Add a reference to the stored Texture in the namedAssets vector
             resource.emplace_back(*textures_.back());
@@ -116,7 +114,7 @@ std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
         src_rect.y += height;
     }
 
-    SDL_DestroyTexture(textureSheet);
+    SDL_DestroyTexture(texture_sheet);
     SDL_SetRenderTarget(renderer, nullptr);
 
     return resource; // returns a copy of reference_wrapper vector

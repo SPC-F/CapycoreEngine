@@ -5,7 +5,8 @@ class SDL_Texture;
 
 class Texture final {
 private:
-    float width_{0}, height_{0};
+    float width_;
+    float height_;
 
     friend class Renderer;
     friend class RenderingManager;
