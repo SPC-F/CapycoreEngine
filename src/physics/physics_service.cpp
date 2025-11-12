@@ -6,8 +6,8 @@ PhysicsService::PhysicsService() {
     physics_creation_factory_ = std::make_unique<PhysicsCreationFactory>(physics_world_->world_id());
 }
 
-void PhysicsService::update() {
-    physics_world_->step();
+void PhysicsService::update(float dt) {
+    physics_world_->step(dt);
 }
 
 std::unique_ptr<PhysicsWorld>& PhysicsService::world() noexcept {

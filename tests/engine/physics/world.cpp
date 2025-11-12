@@ -25,16 +25,14 @@ TEST_CASE("physics_world_sets_and_gets_gravity", "[PhysicsWorld]") {
     REQUIRE(world.gravity_y() == -9.81f);
 }
 
-TEST_CASE("physics_world_sets_and_gets_timestep_and_velocity_iterations", "[PhysicsWorld]") {
+TEST_CASE("physics_world_sets_and_gets_velocity_iterations", "[PhysicsWorld]") {
     // arrange
     PhysicsWorld world;
 
     // act
-    world.time_step(1.0f / 30.0f);
     world.velocity_iterations(12);
 
     // assert
-    REQUIRE(world.time_step() == 1.0f / 30.0f);
     REQUIRE(world.velocity_iterations() == 12);
 }
 
@@ -69,7 +67,7 @@ TEST_CASE("physics_world_step_and_check_collision", "[PhysicsWorld]") {
     PhysicsWorld world;
 
     // act & assert
-    REQUIRE_NOTHROW(world.step());
+    REQUIRE_NOTHROW(world.step(1.0f / 60.0f));
     REQUIRE_NOTHROW(world.check_collision());
 }
 
@@ -92,7 +90,7 @@ TEST_CASE("physics_world_step_updates_dynamic_body", "[PhysicsWorld]") {
     // act
     int steps = 5; // step ~5 frames
     for (int i = 0; i < steps; ++i) {
-        world.step();
+        world.step(1.0f / 60.0f);
     }
     b2Vec2 new_pos = b2Body_GetPosition(body);
 

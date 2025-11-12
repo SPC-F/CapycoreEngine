@@ -19,8 +19,8 @@ b2WorldId PhysicsWorld::world_id() const noexcept {
     return world_id_;
 }
 
-void PhysicsWorld::step() {
-    b2World_Step(world_id_, time_step_, velocity_iterations_);
+void PhysicsWorld::step(float dt) {
+    b2World_Step(world_id_, dt, velocity_iterations_);
     check_collision();
 }
 
@@ -43,15 +43,6 @@ void PhysicsWorld::check_collision() {
         // auto* game_object_b = static_cast<Component*>(b2Body_GetUserData(body_b));
 
     }
-}
-
-float PhysicsWorld::time_step() const noexcept {
-    return time_step_;
-}
-
-float PhysicsWorld::time_step(float timestep) noexcept {
-    time_step_ = timestep;
-    return time_step_;
 }
 
 int32_t PhysicsWorld::velocity_iterations() const noexcept {

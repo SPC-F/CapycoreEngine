@@ -25,8 +25,10 @@ public:
      * 
      * This method advances the physics simulation by one time step,
      * applying all physics calculations and updating object states.
+     * 
+     * @param dt The (deltatime) time step duration for the physics update.
      */
-    void update();
+    void update(float dt);
 
     /** 
      * @brief Accessor for the physics world instance.

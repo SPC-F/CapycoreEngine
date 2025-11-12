@@ -27,7 +27,7 @@ TEST_CASE("physics_raycaster_closest_returns_valid_result", "[PhysicsRaycaster]"
     b2Vec2 translation{0.0f, 10.0f};
 
     // act
-    world.step();
+    world.step(1.0f / 60.0f);
     b2RayResult result = raycaster.raycast_closest(origin, translation);
 
     // assert
@@ -59,7 +59,7 @@ TEST_CASE("physics_raycaster_all_returns_sorted_results", "[PhysicsRaycaster]") 
     filter.maskBits = 0xFFFF;
 
     // act
-    world.step();
+    world.step(1.0f / 60.0f);
     auto results = raycaster.raycast_all(origin, translation, filter);
 
     // assert
@@ -84,7 +84,7 @@ TEST_CASE("physics_raycaster_filtered_respects_category_mask", "[PhysicsRaycaste
     auto box1 = factory.create_box_body({0.0f, 3.0f}, 2.0f, 2.0f, flags, nullptr);
     auto box2 = factory.create_box_body({0.0f, 6.0f}, 2.0f, 2.0f, flags, nullptr);
 
-    world.step();
+    world.step(1.0f / 60.0f);
 
     // act & assert (hits both)
     uint16_t matching_mask = 0x0002;
@@ -162,7 +162,7 @@ TEST_CASE("physics_raycaster_closest_static_behind_dynamic", "[PhysicsRaycaster]
     b2Vec2 origin{0.0f, 0.0f};
     b2Vec2 translation{0.0f, 10.0f};
 
-    world.step();
+    world.step(1.0f / 60.0f);
 
     auto result = raycaster.raycast_closest(origin, translation);
 
@@ -193,7 +193,7 @@ TEST_CASE("physics_raycaster_misses_static_hits_dynamic", "[PhysicsRaycaster]") 
     b2Vec2 origin{0.0f, 0.0f};
     b2Vec2 translation{0.0f, 10.0f};
 
-    world.step();
+    world.step(1.0f / 60.0f);
 
     auto result = raycaster.raycast_closest(origin, translation);
 
@@ -222,7 +222,7 @@ TEST_CASE("physics_raycaster_all_multiple_bodies_at_angle", "[PhysicsRaycaster]"
     filter.categoryBits = 0xFFFF;
     filter.maskBits = 0xFFFF;
 
-    world.step();
+    world.step(1.0f / 60.0f);
 
     auto results = raycaster.raycast_all(origin, translation, filter);
 

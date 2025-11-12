@@ -3,7 +3,6 @@
 #include <box2d/box2d.h>
 #include <memory>
 
-constexpr float default_step = 1.0f / 60.0f;
 constexpr int32_t default_velocity_iterations = 6;
 constexpr float default_gravity_x = 0.0f;
 constexpr float default_gravity_y = -30.0f;
@@ -32,8 +31,10 @@ public:
      * 
      * This method advances the physics world by the configured time step,
      * applying velocity and position updates to all bodies in the world.
+     * 
+     * @param dt The (deltatime) time step duration for the physics update.
      */
-    void step();
+    void step(float dt);
     
     /**
      * @brief Checks for collisions in the physics world.
@@ -46,10 +47,6 @@ public:
 
     [[nodiscard]]
     b2WorldId world_id() const noexcept;
-
-    [[nodiscard]]
-    float time_step() const noexcept;
-    float time_step(float timestep) noexcept;
 
     [[nodiscard]]
     int32_t velocity_iterations() const noexcept;
@@ -78,9 +75,6 @@ private:
      * of its world instances. Meaning a pointer or reference cannot be used here without more complex management.
      */
     b2WorldId world_id_{};
-
-    /** @brief Fixed time step for physics updates. */
-    float time_step_{default_step};
 
     /** @brief Number of velocity iterations for the Box2D solver. */
     int32_t velocity_iterations_{default_velocity_iterations};
