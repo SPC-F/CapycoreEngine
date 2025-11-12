@@ -77,6 +77,10 @@ CheckOptions:
     value: CamelCase
   - key: readability-identifier-naming.ClassIgnoredRegexp
     value: '^(?:I)?[A-Z][A-Za-z]*(?:_[A-Z][A-Za-z]*)*$'
+  - key: readability-identifier-naming.StaticMemberCase
+    value: lower_case
+  - key: readability-identifier-naming.StaticMemberSuffix
+    value: "_"
 
   # Force explicit constructors
   - key: cppcoreguidelines-explicit-constructors

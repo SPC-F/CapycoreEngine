@@ -20,9 +20,10 @@ namespace {
 #include <engine/public/components/sprite.h>
 
 void run_game_loop() {
+
     const std::string file_name = "Fred_Sprites_REDO.png";
     const std::string texture_name = "pingu";
-    Engine& engine = Engine::instance();
+    auto& engine = Engine::instance();
     Scene scene = Scene();
 
     auto& renderService = engine.services->get_service<RenderingService>().get();
@@ -51,6 +52,8 @@ void run_game_loop() {
 
         renderService.draw({pingu});
     }
+
+    Engine::quit();
 }
 
 int main() {
