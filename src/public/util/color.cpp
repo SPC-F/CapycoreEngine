@@ -1,5 +1,13 @@
 #include <engine/public/util/color.h>
 
+constexpr int default_color_value = 255;
+Color::Color() : Color(
+    default_color_value,
+    default_color_value,
+    default_color_value,
+    default_color_value) {
+};
+
 Color::Color(
     const unsigned short r,
     const unsigned short g,

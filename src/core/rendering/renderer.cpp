@@ -45,6 +45,24 @@ void Renderer::clear() const {
     SDL_RenderClear(sdl_renderer_.get());
 }
 
+Color get_default_color(SDL_Texture* texture) {
+    Color color;
+    SDL_GetTextureColorMod(texture,
+                           reinterpret_cast<Uint8*>(&color.r),
+                           reinterpret_cast<Uint8*>(&color.g),
+                           reinterpret_cast<Uint8*>(&color.b));
+    SDL_GetTextureAlphaMod(texture, reinterpret_cast<Uint8*>(&color.a));
+    return color;
+}
+
+void set_color(const Color& color, SDL_Texture* texture) {
+    SDL_SetTextureColorMod(texture,
+                           static_cast<Uint8>(color.r),
+                           static_cast<Uint8>(color.g),
+                           static_cast<Uint8>(color.b));
+    SDL_SetTextureAlphaMod(texture, static_cast<Uint8>(color.a));
+}
+
 void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& objects) const{
     for (auto game_obj_wrapper : objects) {
         auto& game_obj = game_obj_wrapper.get();
@@ -68,6 +86,9 @@ void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
                 .h = texture.height() * transform.scale().y
             };
 
+            Color original_color = get_default_color(texture.texture_.get());
+            set_color(sprite.color(), texture.texture_.get());
+
             SDL_RenderTextureRotated(
                     sdl_renderer_.get(),
                     sprite.texture().texture_.get(),
@@ -76,6 +97,8 @@ void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
                     transform.rotation(),
                     nullptr, // default is center of target square
                 SDL_FLIP_NONE);
+
+            set_color(original_color, texture.texture_.get());
         }
     }
 }
