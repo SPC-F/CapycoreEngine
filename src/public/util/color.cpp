@@ -6,7 +6,7 @@ Color::Color() : Color(
     default_color_value,
     default_color_value,
     default_color_value) {
-};
+}
 
 Color::Color(
     const unsigned short r,
