@@ -74,3 +74,19 @@ Sprite& Sprite::texture(Texture& texture) {
     texture_ = texture;
     return *this;
 }
+
+void Sprite::update() {
+
+}
+void Sprite::on_attach() {
+
+}
+void Sprite::on_detach() {
+
+}
+void Sprite::on_serialize() {
+
+}
+void Sprite::on_deserialize() {
+
+}

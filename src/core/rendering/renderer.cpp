@@ -6,30 +6,42 @@
 
 constexpr int default_min_aspect_width = 800;
 constexpr int default_min_aspect_height = 600;
-Renderer::Renderer() : Renderer(default_min_aspect_width, default_min_aspect_height, "DefaultRenderer", RendererFlags::Borderless) {
+Renderer::Renderer() : Renderer(default_min_aspect_width, default_min_aspect_height, "CapyCore", RendererFlags::None) {
 
 }
 
 Renderer::Renderer(int min_aspect_width, int min_aspect_height, const std::string& title, RendererFlags flags)
     : sdl_renderer_(nullptr, SDL_DestroyRenderer), sdl_window_(nullptr, SDL_DestroyWindow) {
 
-    SDL_WindowFlags sdl_window_flags {SDL_WINDOWPOS_CENTERED};
+    Uint32 sdl_window_flags = 0;
 
-    if (flags & RendererFlags::Fullscreen) {
+    if (flags & RendererFlags::Fullscreen)
         sdl_window_flags |= SDL_WINDOW_FULLSCREEN;
-    }
-    if (flags & RendererFlags::Borderless) {
+    if (flags & RendererFlags::Borderless)
         sdl_window_flags |= SDL_WINDOW_BORDERLESS;
-    }
-    if(flags & RendererFlags::Resizable) {
+    if (flags & RendererFlags::Resizable)
         sdl_window_flags |= SDL_WINDOW_RESIZABLE;
-    }
 
-    SDL_Init(SDL_INIT_VIDEO);
+    if(!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
+        throw std::runtime_error("Failed to initialize renderer: SDL_Init failed with error: " + std::string(SDL_GetError()));
+    }
 
     SDL_Window* window = SDL_CreateWindow(title.c_str(), min_aspect_width, min_aspect_height, sdl_window_flags);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, "DefaultRenderer");
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    if(window == nullptr) {
+        throw std::runtime_error("Failed to create window: SDL_CreateWindow failed with error: " + std::string(SDL_GetError()));
+    }
+
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, nullptr);
+    if(renderer == nullptr) {
+        throw std::runtime_error("Failed to create renderer: SDL_CreateRenderer failed with error: " + std::string(SDL_GetError()));
+    }
+
+    constexpr int default_color = 213;
+
+    SDL_SetRenderDrawColor(renderer, default_color, default_color, default_color, SDL_ALPHA_OPAQUE);
+    SDL_RenderClear(renderer);
+    SDL_RenderPresent(renderer);
+
     sdl_renderer_.reset(renderer);
     sdl_window_.reset(window);
 
@@ -64,6 +76,8 @@ void set_color(const Color& color, SDL_Texture* texture) {
 }
 
 void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& objects) const{
+    SDL_RenderClear(sdl_renderer_.get());
+
     for (auto game_obj_wrapper : objects) {
         auto& game_obj = game_obj_wrapper.get();
         const auto& transform = game_obj.transform();
@@ -101,4 +115,6 @@ void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
             set_color(original_color, texture.texture_.get());
         }
     }
+
+    SDL_RenderPresent(sdl_renderer_.get());
 }

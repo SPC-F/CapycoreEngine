@@ -35,4 +35,10 @@ public:
     [[nodiscard]] const Texture& texture() const;
     Sprite& texture(const std::string& name);
     Sprite& texture(Texture& texture);
+
+    void update() override;
+    void on_attach() override;
+    void on_detach() override;
+    void on_serialize() override;
+    void on_deserialize() override;
 };
