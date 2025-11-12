@@ -11,7 +11,7 @@ private:
 
     Engine();
 
-    static std::unique_ptr<Engine, Deleter> engine_instance_;
+    static std::unique_ptr<Engine, Deleter> engine_instance_; // NOLINT(readability-identifier-naming)
 public:
     static Engine& instance();
     static void quit();
