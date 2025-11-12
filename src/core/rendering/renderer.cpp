@@ -52,18 +52,18 @@ void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
         for (const auto spriteWrapper : gameObj.get_components<Sprite>()) {
             const Sprite& sprite = spriteWrapper.get();
             const Texture& texture = sprite.texture();
+
             auto const source = SDL_FRect {
                 .x = 0,
                 .y = 0,
                 .w = texture.width(),
                 .h = texture.height()
             };
-
             auto const target = SDL_FRect {
                 .x = position.x,
                 .y = position.y,
-                .w = texture.width(),
-                .h = texture.height()
+                .w = texture.width() * transform.scale().x,
+                .h = texture.height() * transform.scale().y
             };
 
             SDL_RenderTextureRotated(

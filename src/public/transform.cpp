@@ -1,15 +1,15 @@
 #include <engine/public/transform.h>
 
 Transform::Transform()
-    : Transform(Vector3(0.0f, 0.0f, 0.0f), 0.0f, 1) {}
+    : Transform(Vector3(0.0f, 0.0f, 0.0f), 0.0f, {1, 1, 1}) {}
 
 Transform::Transform(const Vector3 position)
-    : Transform(position, 0.0f, 1) {}
+    : Transform(position, 0.0f, {1, 1, 1}) {}
 
-Transform::Transform(const Vector3 position, const float rotation, const int scale)
+Transform::Transform(const Vector3 position, const float rotation, const Vector3 scale)
     : Transform(position, rotation, scale, std::nullopt) {}
 
-Transform::Transform(const Vector3 position, const float rotation, const int scale, std::optional<std::reference_wrapper<Transform>> parent)
+Transform::Transform(const Vector3 position, const float rotation, const Vector3 scale, std::optional<std::reference_wrapper<Transform>> parent)
     : local_position_(position), rotation_(rotation), scale_(scale), parent_(parent){}
 
 Transform& Transform::position(const Vector3& pos) noexcept {
@@ -43,12 +43,12 @@ float Transform::rotation() const noexcept {
     return rotation_;
 }
 
-Transform& Transform::scale(const int scale) noexcept {
+Transform& Transform::scale(const Vector3 scale) noexcept {
     scale_ = scale;
     return *this;
 }
 
-int Transform::scale() const noexcept {
+Vector3 Transform::scale() const noexcept {
     return scale_;
 }
 
