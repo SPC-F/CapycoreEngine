@@ -25,8 +25,8 @@ Vector3 Transform::position() const noexcept {
     if (!parent_.has_value()) {
         return local_position_;
     }
-    const auto& parentPos = parent_.value().get().position();
-    return local_position_ + parentPos;
+    const auto& parent_pos = parent_.value().get().position();
+    return local_position_ + parent_pos;
 }
 
 Transform& Transform::rotation(const float rot) noexcept {

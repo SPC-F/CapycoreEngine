@@ -1,3 +1,3 @@
 #include <engine/core/serviceContainer.h>
 
-ServiceContainer::ServiceContainer() : services_() {}
+ServiceContainer::ServiceContainer() = default;

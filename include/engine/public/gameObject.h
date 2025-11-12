@@ -11,8 +11,8 @@
 
 class GameObject {
 private:
-    std::vector<std::unique_ptr<Component>> components_ {};
-    std::vector<std::reference_wrapper<GameObject>> children_ {};
+    std::vector<std::unique_ptr<Component>> components_;
+    std::vector<std::reference_wrapper<GameObject>> children_;
 
     std::optional<std::reference_wrapper<GameObject>> parent_;
     bool is_active_ {true};
@@ -29,7 +29,7 @@ public:
     virtual ~GameObject();
 
     GameObject& parent(GameObject& parent);
-    GameObject& parent(std::nullopt_t);
+    GameObject& parent(std::nullopt_t nullopt);
 
     [[nodiscard]] bool is_active_in_world() const noexcept;
     [[nodiscard]] bool is_active() const noexcept;
@@ -59,7 +59,7 @@ public:
 
     template<IsComponent T>
     std::optional<std::reference_wrapper<T>> get_component() const noexcept {
-        for (auto& component : components_) {
+        for (const auto& component : components_) {
             if (auto* casted = dynamic_cast<T*>(component.get())) {
                 return std::ref(*casted);
             }
@@ -85,9 +85,9 @@ public:
     std::vector<std::reference_wrapper<T>> get_components_from_children() const {
         std::vector<std::reference_wrapper<T>> result {};
 
-        for (auto& child : children_) {
-            auto childComponents = child.get().get_components_from_children<T>();
-            result.insert(result.end(), childComponents.begin(), childComponents.end());
+        for (const auto& child : children_) {
+            auto child_components = child.get().get_components_from_children<T>();
+            result.insert(result.end(), child_components.begin(), child_components.end());
         }
 
         return result;

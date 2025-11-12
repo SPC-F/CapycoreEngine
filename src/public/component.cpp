@@ -2,7 +2,7 @@
 #include <engine/public/gameObject.h>
 
 Component::Component(GameObject& parent)
-    : parent_(std::ref(parent)), active_(true) {}
+    : parent_(std::ref(parent)) {}
 
 bool Component::active() const noexcept {
     return active_;

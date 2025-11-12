@@ -1,3 +1,4 @@
+// NOLINTFILE
 #pragma once
 
 #include <cstddef>

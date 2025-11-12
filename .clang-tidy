@@ -1,0 +1,122 @@
+# ==========================================
+# .clang-tidy — Clean, Modern, RAII-focused
+# ==========================================
+
+Checks: >
+  -*,
+  bugprone-*,
+  clang-analyzer-*,
+  cppcoreguidelines-*,
+  modernize-*,
+  performance-*,
+  readability-*,
+
+  # selectively allow a few HICPP and CERT checks that overlap safely
+  hicpp-exception-baseclass,
+  hicpp-multiway-paths-covered,
+  hicpp-use-auto,
+  cert-dcl21-cpp,
+
+  
+  # disable some noisy or redundant ones
+  # -cppcoreguidelines-avoid-magic-numbers,
+  # -readability-magic-numbers,
+
+  -readability-uppercase-literal-suffix,
+  -readability-identifier-length,
+  -readability-function-cognitive-complexity,
+  -readability-redundant-declaration,
+
+  -cppcoreguidelines-avoid-const-or-ref-data-members,
+  -cppcoreguidelines-avoid-c-arrays,
+  -cppcoreguidelines-avoid-non-const-global-variables,
+  -cppcoreguidelines-owning-memory,
+  -cppcoreguidelines-pro-type-vararg,
+  -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+  -cppcoreguidelines-pro-type-union-access,
+  -cppcoreguidelines-pro-type-const-cast,
+  -cppcoreguidelines-special-member-functions,
+  -cppcoreguidelines-non-private-member-variables-in-classes,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -cppcoreguidelines-pro-type-reinterpret-cast,
+
+  -modernize-use-ranges,
+  -modernize-use-discard,
+  -modernize-use-trailing-return-type,
+  -modernize-use-auto,
+  -modernize-use-noexcept,
+  
+  -hicpp-explicit-conversions,
+  -hicpp-no-assembler,
+
+  -misc-include-cleaner,
+
+  -bugprone-easily-swappable-parameters
+
+WarningsAsErrors: ''
+HeaderFilterRegex: '.*engine/.*'
+FormatStyle: file
+InheritParentConfig: false
+
+CheckOptions:
+  - key: readability-identifier-naming.PrivateMemberSuffix
+    value: "_"
+  - key: readability-identifier-naming.ProtectedMemberSuffix
+    value: "_"
+  - key: readability-identifier-naming.VariableCase
+    value: lower_case
+  - key: readability-identifier-naming.MemberCase
+    value: lower_case
+  - key: readability-identifier-naming.PrivateMemberSuffix
+    value: '_'
+  - key: readability-identifier-naming.FunctionCase
+    value: lower_case
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+  - key: readability-identifier-naming.StructCase
+    value: CamelCase
+  - key: readability-identifier-naming.ClassIgnoredRegexp
+    value: '^I[A-Z].*'
+
+  # Force explicit constructors
+  - key: cppcoreguidelines-explicit-constructors
+    value: 'true'
+
+  # Require RAII and discourage raw new/delete
+  - key: cppcoreguidelines-owning-memory.StrictMode
+    value: 'true'
+
+  # Force 'override' on overrides
+  - key: modernize-use-override.AllowOverrideAndFinal
+    value: 'true'
+
+  # Warn about dangerous casts
+  - key: cppcoreguidelines-pro-type-reinterpret-cast.StrictMode
+    value: 'true'
+
+  # Prefer braces around control statements
+  - key: readability-braces-around-statements.ShortStatementLines
+    value: '1'
+
+  # Check for missing member initialization
+  - key: cppcoreguidelines-pro-type-member-init.StrictMode
+    value: 'true'
+
+  # Range-for copy checks
+  - key: performance-for-range-copy.WarnOnAllAutoCopies
+    value: 'true'
+
+  - key: readability-identifier-length.VariableMinLength
+    value: '1'
+
+  # Identifier length minimums
+  - key: readability-identifier-length.ParameterMinLength
+    value: '0'
+    
+  # Identifier length minimums
+  - key: readability-identifier-length.FunctionMinLength
+    value: '2'
+  
+  # Identifier length minimums
+  - key: readability-identifier-length.ClassMinLength
+    value: '2'
