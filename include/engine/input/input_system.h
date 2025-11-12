@@ -18,8 +18,6 @@ public:
     bool any_key_held() const override;
     bool any_key_pressed() const override;
     bool any_key_released() const override;
-    float key_hold_duration(KeyCode key) const override;
-    std::optional<KeyCode> last_key_pressed() const override;
 
     bool is_mouse_held(MouseButton button) const override;
     bool is_mouse_pressed(MouseButton button) const override;
@@ -27,8 +25,6 @@ public:
     bool any_mouse_held() const override;
     bool any_mouse_pressed() const override;
     bool any_mouse_released() const override;
-    size_t mouse_hold_duration(MouseButton button) const override;
-    std::optional<MouseButton> last_mouse_pressed() const override;
 
     const Point mouse_position() const override;
     const std::pair<float, float> mouse_delta() const override;
