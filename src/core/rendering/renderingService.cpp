@@ -1,5 +1,9 @@
 #include <engine/core/rendering/renderingService.h>
 
+RenderingService::RenderingService()
+    : renderer_{new Renderer()} {
+}
+
 RenderingService::RenderingService(Renderer* renderer)
     : renderer_{renderer}{
 }

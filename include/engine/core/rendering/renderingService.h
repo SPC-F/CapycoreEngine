@@ -6,6 +6,7 @@
 
 class RenderingService : public IEngineService {
 public:
+    explicit RenderingService();
     explicit RenderingService(Renderer* renderer);
     ~RenderingService() override = default;
     void draw(const std::vector<std::reference_wrapper<GameObject>>& objects);

@@ -67,7 +67,7 @@ std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
         .get();
 
     SDL_Renderer* renderer = renderer_service.renderer_
-        ->renderer_
+        ->sdl_renderer_
         .get();
 
     SDL_Surface* image = IMG_Load(file_path.c_str());

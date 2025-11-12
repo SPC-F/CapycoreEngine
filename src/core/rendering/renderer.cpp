@@ -9,7 +9,7 @@ Renderer::Renderer() : Renderer(800, 600, "DefaultRenderer", RendererFlags::Bord
 }
 
 Renderer::Renderer(int min_aspect_width, int min_aspect_height, const std::string& title, RendererFlags flags)
-    : renderer_(nullptr, SDL_DestroyRenderer), window_(nullptr, SDL_DestroyWindow) {
+    : sdl_renderer_(nullptr, SDL_DestroyRenderer), sdl_window_(nullptr, SDL_DestroyWindow) {
 
     SDL_WindowFlags sdl_window_flags {SDL_WINDOWPOS_CENTERED};
 
@@ -23,22 +23,24 @@ Renderer::Renderer(int min_aspect_width, int min_aspect_height, const std::strin
         sdl_window_flags |= SDL_WINDOW_RESIZABLE;
     }
 
+    SDL_Init(SDL_INIT_VIDEO);
+
     SDL_Window* window = SDL_CreateWindow(title.c_str(), min_aspect_width, min_aspect_height, sdl_window_flags);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, "DefaultRenderer");
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    renderer_.reset(renderer);
-    window_.reset(window);
+    sdl_renderer_.reset(renderer);
+    sdl_window_.reset(window);
 
-    window_controller_.emplace(min_aspect_width, min_aspect_height);
-    window_controller_->init(window);
+    window_.emplace(min_aspect_width, min_aspect_height);
+    window_->init(window);
 }
 
 Window& Renderer::window() {
-    return window_controller_.value();
+    return window_.value();
 }
 
 void Renderer::clear() const {
-    SDL_RenderClear(renderer_.get());
+    SDL_RenderClear(sdl_renderer_.get());
 }
 
 void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& objects) const{
@@ -65,12 +67,12 @@ void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
             };
 
             SDL_RenderTextureRotated(
-                renderer_.get(),
-                sprite.texture().texture_.get(),
-                &source,
-                &target,
-                transform.rotation(),
-                nullptr, // default is center of target square
+                    sdl_renderer_.get(),
+                    sprite.texture().texture_.get(),
+                    &source,
+                    &target,
+                    transform.rotation(),
+                    nullptr, // default is center of target square
                 SDL_FLIP_NONE);
         }
     }

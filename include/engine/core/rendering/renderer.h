@@ -14,10 +14,10 @@ class Renderer final : public IEngineService {
 private:
     friend class RenderingManager;
     friend class AssetManager;
-    SdlRendererPtr renderer_;
-    SdlWindowPtr window_;
+    SdlRendererPtr sdl_renderer_;
+    SdlWindowPtr sdl_window_;
     // I tried just storing a Window& here, but that caused issues because the can never be a proper init value...
-    std::optional<Window> window_controller_;
+    std::optional<Window> window_;
 public:
     explicit Renderer();
     explicit Renderer(int min_aspect_width, int min_aspect_height, const std::string& title, RendererFlags flags);
