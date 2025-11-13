@@ -65,6 +65,21 @@ struct PhysicsCreationFlags
     uint16_t mask = default_collision_mask;
 };
 
+struct BodyType2D
+{
+    enum Type
+    {
+        Static,
+        Dynamic,
+        Kinematic
+    };
+};
+
+/** @brief A simple 2D body representation */
+struct Body2D {
+    b2BodyId id;
+};
+
 /**
  * @brief Factory class for creating physics bodies in the Box2D world.
  * 
@@ -76,27 +91,36 @@ public:
     PhysicsCreationFactory(b2WorldId world_id);
 
     /**
-     * @brief Create a box body with specified parameters and flags
+     * @brief Create a physics body in the Box2D world.
      * 
-     * @param position The position of the box body
-     * @param width The width of the box body
-     * @param height The height of the box body
-     * @param flags The creation flags for the body
+     * @param position The initial position of the body
+     * @param type The type of the body (static, dynamic, kinematic)
      * @param component The component associated with the body
-     * @return The identifier of the created box body
+     * @return b2BodyId The identifier of the created body
      */
-    b2BodyId create_box_body(Point position, float width, float height, PhysicsCreationFlags flags, Component* component);
+    b2BodyId create_body(Point position, b2BodyType type, Component* component);
+    
+    /**
+     * @brief Create a box-shaped fixture for a given body.
+     * 
+     * @param body The identifier of the body to attach the fixture to
+     * @param width The width of the box
+     * @param height The height of the box
+     * @param flags The creation flags for the fixture
+     * @return b2BodyId The identifier of the created fixture
+     */
+    b2BodyId create_box_fixture(b2BodyId body, float width, float height, PhysicsCreationFlags flags);
 
     /**
-     * @brief Create a circle body with specified parameters and flags
+     * @brief Create a circle-shaped fixture for a given body.
      * 
-     * @param position The position of the circle body
-     * @param radius The radius of the circle body
-     * @param flags The creation flags for the body
-     * @param component The component associated with the body
-     * @return The identifier of the created circle body
+     * @param body The identifier of the body to attach the fixture to
+     * @param radius The radius of the circle
+     * @param flags The creation flags for the fixture
+     * @param component The component associated with the fixture
+     * @return b2BodyId The identifier of the created fixture
      */
-    b2BodyId create_circle_body(Point position, float radius, PhysicsCreationFlags flags, Component* component);
+    b2BodyId create_circle_fixture(b2BodyId body, float radius, PhysicsCreationFlags flags);
 
     /**
      * @brief Destroy a body given its identifier

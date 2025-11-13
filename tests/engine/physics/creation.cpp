@@ -24,8 +24,30 @@ struct DummyComponent : public Component {
     void on_deserialize() override {}
 };
 
+TEST_CASE("physics_creation_factory_creates_body", "[PhysicsCreationFactory]") {
+    // arrange
+    PhysicsWorld world;
+    PhysicsCreationFactory factory(world.world_id());
 
-TEST_CASE("physics_creation_factory_creates_box_body", "[PhysicsCreationFactory]") {
+    Point position{0.0f, 0.0f};
+
+    DummyScene dummy_scene;
+    DummyGameObject dummy_game_object(dummy_scene);
+    DummyComponent dummy_component(dummy_game_object);
+
+    // act
+    b2BodyId body_id = factory.create_body(position, b2BodyType::b2_staticBody, &dummy_component);
+
+    // assert
+    REQUIRE(b2Body_IsValid(body_id));
+    b2Vec2 pos = b2Body_GetPosition(body_id);
+    REQUIRE(pos.x == position.x);
+    REQUIRE(pos.y == position.y);
+    REQUIRE(b2Body_GetType(body_id) == b2BodyType::b2_staticBody);
+}
+
+
+TEST_CASE("physics_creation_factory_creates_box_fixture", "[PhysicsCreationFactory]") {
     // arrange
     PhysicsWorld world;
     PhysicsCreationFactory factory(world.world_id());
@@ -43,8 +65,9 @@ TEST_CASE("physics_creation_factory_creates_box_body", "[PhysicsCreationFactory]
     DummyComponent dummy_component(dummy_game_object);
 
     // act
-    b2BodyId body_id = factory.create_box_body(position, 2.0f, 4.0f, flags, &dummy_component);
-
+    b2BodyId body_id = factory.create_body(position, b2BodyType::b2_dynamicBody, &dummy_component);
+    body_id = factory.create_box_fixture(body_id, 2.0f, 4.0f, flags);
+    
     // assert
     REQUIRE(b2Body_IsValid(body_id));
     b2Vec2 pos = b2Body_GetPosition(body_id);
@@ -53,7 +76,7 @@ TEST_CASE("physics_creation_factory_creates_box_body", "[PhysicsCreationFactory]
     REQUIRE(b2Body_GetType(body_id) == b2BodyType::b2_dynamicBody);
 }
 
-TEST_CASE("physics_creation_factory_creates_circle_body", "[PhysicsCreationFactory]") {
+TEST_CASE("physics_creation_factory_creates_circle_fixture", "[PhysicsCreationFactory]") {
     // arrange
     PhysicsWorld world;
     PhysicsCreationFactory factory(world.world_id());
@@ -71,7 +94,8 @@ TEST_CASE("physics_creation_factory_creates_circle_body", "[PhysicsCreationFacto
 
 
     // act
-    b2BodyId body_id = factory.create_circle_body(position, 1.0f, flags, &dummy_component);
+    b2BodyId body_id = factory.create_body(position, b2BodyType::b2_staticBody, &dummy_component);
+    body_id = factory.create_circle_fixture(body_id, 1.0f, flags);
 
     // assert
     REQUIRE(b2Body_IsValid(body_id));
@@ -94,7 +118,8 @@ TEST_CASE("physics_creation_factory_creates_bullet_body_with_mass_data", "[Physi
     DummyComponent dummy_component(dummy_game_object);
 
     // act
-    b2BodyId body_id = factory.create_circle_body(position, 0.5f, flags, &dummy_component);
+    b2BodyId body_id = factory.create_body(position, b2BodyType::b2_dynamicBody, &dummy_component);
+    body_id = factory.create_circle_fixture(body_id, 0.5f, flags);
 
     // assert
     REQUIRE(b2Body_IsValid(body_id));
@@ -113,7 +138,9 @@ TEST_CASE("physics_creation_factory_destroys_body", "[PhysicsCreationFactory]") 
     flags.dynamic = true;
 
     Point position{1.0f, 1.0f};
-    b2BodyId body_id = factory.create_box_body(position, 2.0f, 2.0f, flags, nullptr);
+
+    b2BodyId body_id = factory.create_body(position, b2BodyType::b2_dynamicBody, nullptr);
+    body_id = factory.create_box_fixture(body_id, 2.0f, 2.0f, flags);
     REQUIRE(b2Body_IsValid(body_id));
 
     // act

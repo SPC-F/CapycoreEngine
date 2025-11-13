@@ -21,7 +21,8 @@ TEST_CASE("physics_raycaster_closest_returns_valid_result", "[PhysicsRaycaster]"
     flags.sensor = false;
     flags.is_bullet = false;
 
-    b2BodyId box = factory.create_box_body({0.0f, 5.0f}, 2.0f, 2.0f, flags, nullptr);
+    b2BodyId box = factory.create_body({0.0f, 5.0f}, b2BodyType::b2_staticBody, nullptr);
+    box = factory.create_box_fixture(box, 2.0f, 2.0f, flags);
 
     b2Vec2 origin{0.0f, 0.0f};
     b2Vec2 translation{0.0f, 10.0f};
@@ -48,8 +49,11 @@ TEST_CASE("physics_raycaster_all_returns_sorted_results", "[PhysicsRaycaster]") 
     flags.sensor = false;
     flags.is_bullet = false;
 
-    factory.create_box_body({0.0f, 3.0f}, 2.0f, 2.0f, flags, nullptr);
-    factory.create_box_body({0.0f, 6.0f}, 2.0f, 2.0f, flags, nullptr);
+    b2BodyId box1 = factory.create_body({0.0f, 3.0f}, b2BodyType::b2_staticBody, nullptr);
+    box1 = factory.create_box_fixture(box1, 2.0f, 2.0f, flags);
+
+    b2BodyId box2 = factory.create_body({0.0f, 6.0f}, b2BodyType::b2_staticBody, nullptr);
+    box2 = factory.create_box_fixture(box2, 2.0f, 2.0f, flags);
 
     b2Vec2 origin{0.0f, 0.0f};
     b2Vec2 translation{0.0f, 10.0f};
@@ -81,8 +85,10 @@ TEST_CASE("physics_raycaster_filtered_respects_category_mask", "[PhysicsRaycaste
     flags.category = 0x0002; // assign category 2
     flags.mask = 0xFFFF;     // collides with all
 
-    auto box1 = factory.create_box_body({0.0f, 3.0f}, 2.0f, 2.0f, flags, nullptr);
-    auto box2 = factory.create_box_body({0.0f, 6.0f}, 2.0f, 2.0f, flags, nullptr);
+    b2BodyId box1 = factory.create_body({0.0f, 3.0f}, b2BodyType::b2_staticBody, nullptr);
+    box1 = factory.create_box_fixture(box1, 2.0f, 2.0f, flags);
+    b2BodyId box2 = factory.create_body({0.0f, 6.0f}, b2BodyType::b2_staticBody, nullptr);
+    box2 = factory.create_box_fixture(box2, 2.0f, 2.0f, flags);
 
     world.step(1.0f / 60.0f);
 
@@ -112,7 +118,8 @@ TEST_CASE("physics_raycaster_segment_matches_closest", "[PhysicsRaycaster]") {
     PhysicsCreationFlags flags{};
     flags.dynamic = false;
 
-    factory.create_box_body({0.0f, 5.0f}, 2.0f, 2.0f, flags, nullptr);
+    b2BodyId body = factory.create_body({0.0f, 5.0f}, b2BodyType::b2_staticBody, nullptr);
+    body = factory.create_box_fixture(body, 2.0f, 2.0f, flags);
 
     b2Vec2 start{0.0f, 0.0f};
     b2Vec2 end{0.0f, 10.0f};
@@ -155,9 +162,11 @@ TEST_CASE("physics_raycaster_closest_static_behind_dynamic", "[PhysicsRaycaster]
     dynamic_flags.dynamic = true;
     dynamic_flags.sensor = false;
 
-    factory.create_box_body({0.0f, 3.0f}, 2.0f, 2.0f, static_flags, nullptr);
+    b2BodyId static_body = factory.create_body({0.0f, 3.0f}, b2BodyType::b2_staticBody, nullptr);
+    static_body = factory.create_box_fixture(static_body, 2.0f, 2.0f, static_flags);
 
-    factory.create_box_body({0.0f, 6.0f}, 2.0f, 2.0f, dynamic_flags, nullptr);
+    b2BodyId dynamic_body = factory.create_body({0.0f, 6.0f}, b2BodyType::b2_dynamicBody, nullptr);
+    dynamic_body = factory.create_box_fixture(dynamic_body, 2.0f, 2.0f, dynamic_flags);
 
     b2Vec2 origin{0.0f, 0.0f};
     b2Vec2 translation{0.0f, 10.0f};
@@ -185,10 +194,12 @@ TEST_CASE("physics_raycaster_misses_static_hits_dynamic", "[PhysicsRaycaster]") 
     dynamic_flags.sensor = false;
 
     // static box off to the side
-    factory.create_box_body({5.0f, 5.0f}, 2.0f, 2.0f, static_flags, nullptr);
+    b2BodyId static_body = factory.create_body({5.0f, 5.0f}, b2BodyType::b2_staticBody, nullptr);
+    static_body = factory.create_box_fixture(static_body, 2.0f, 2.0f, static_flags);
 
     // dynamic box directly in the path
-    factory.create_box_body({0.0f, 5.0f}, 2.0f, 2.0f, dynamic_flags, nullptr);
+    b2BodyId dynamic_body = factory.create_body({0.0f, 5.0f}, b2BodyType::b2_dynamicBody, nullptr);
+    dynamic_body = factory.create_box_fixture(dynamic_body, 2.0f, 2.0f, dynamic_flags);
 
     b2Vec2 origin{0.0f, 0.0f};
     b2Vec2 translation{0.0f, 10.0f};
@@ -212,8 +223,11 @@ TEST_CASE("physics_raycaster_all_multiple_bodies_at_angle", "[PhysicsRaycaster]"
     flags.sensor = false;
 
     // two boxes offset diagonally
-    factory.create_box_body({1.0f, 2.0f}, 2.0f, 2.0f, flags, nullptr);
-    factory.create_box_body({3.0f, 4.0f}, 2.0f, 2.0f, flags, nullptr);
+    b2BodyId body1 = factory.create_body({1.0f, 2.0f}, b2BodyType::b2_dynamicBody, nullptr);
+    body1 = factory.create_box_fixture(body1, 2.0f, 2.0f, flags);
+
+    b2BodyId body2 = factory.create_body({4.0f, 5.0f}, b2BodyType::b2_dynamicBody, nullptr);
+    body2 = factory.create_box_fixture(body2, 2.0f, 2.0f, flags);
 
     b2Vec2 origin{0.0f, 0.0f};
     b2Vec2 translation{5.0f, 5.0f};

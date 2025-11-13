@@ -84,7 +84,8 @@ TEST_CASE("physics_world_step_updates_dynamic_body", "[PhysicsWorld]") {
     flags.is_bullet = false;
 
     Point position{0.0f, 10.0f};
-    b2BodyId body = factory.create_box_body(position, 1.0f, 1.0f, flags, nullptr);
+    b2BodyId body = factory.create_body(position, b2BodyType::b2_dynamicBody, nullptr);
+    body = factory.create_box_fixture(body, 1.0f, 1.0f, flags);
     b2Vec2 initial_pos = b2Body_GetPosition(body);
 
     // act
