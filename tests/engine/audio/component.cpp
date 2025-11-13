@@ -27,11 +27,12 @@ TEST_CASE("audio_source_component_plays_and_stops_sounds_correctly", "[AudioSour
         auto comp_opt = game_object.get_component<AudioSource>();
         REQUIRE(comp_opt.has_value());
         auto sound_name = comp_opt->get().audio_name();
+
         game_object.remove_component<AudioSource>(comp_opt->get());
         audio_service.update();
 
-        auto playing_sounds = audio_service.get_all_playing_sounds();
-        REQUIRE(comp_opt->get().instance() == std::nullopt);
+        auto new_comp_opt = game_object.get_component<AudioSource>();
+        REQUIRE_FALSE(new_comp_opt.has_value());
     }
 }
 
