@@ -3,9 +3,9 @@
 #include <engine/audio/audio_service.h>
 #include <engine/audio/sound/sound_factory.h>
 
-auto file_path = std::string(PROJECT_ROOT) + "/resources/sounds/bonetrousle.wav";
-
 TEST_CASE("audio_service_register_should_return_resource_when_registering_valid_sound", "[AudioService]") {
+    auto file_path = std::string(PROJECT_ROOT) + "/resources/sounds/bonetrousle.wav";
+    
     AudioService audio_service;
     auto sound_name = "Bonetrousle";
 
@@ -29,6 +29,8 @@ TEST_CASE("audio_service_register_should_return_resource_when_registering_valid_
 }
 
 TEST_CASE("audio_service_unregisters_sound_resources_correctly", "[AudioService]") {
+    auto file_path = std::string(PROJECT_ROOT) + "/resources/sounds/bonetrousle.wav";
+    
     AudioService audio_service;
     auto sound_name = "Bonetrousle";
     audio_service.register_sound("./resources/sounds/bonetrousle.wav", sound_name, SoundType::SDL_MIXER);
@@ -50,6 +52,8 @@ TEST_CASE("audio_service_unregisters_sound_resources_correctly", "[AudioService]
 }
 
 TEST_CASE("audio_service_plays_and_stops_sounds", "[AudioService]") {
+    auto file_path = std::string(PROJECT_ROOT) + "/resources/sounds/bonetrousle.wav";
+    
     AudioService audio_service;
     auto name = "Bonetrousle";
     audio_service.register_sound("./resources/sounds/bonetrousle.wav", name, SoundType::SDL_MIXER);
@@ -93,6 +97,8 @@ TEST_CASE("audio_service_plays_and_stops_sounds", "[AudioService]") {
 }
 
 TEST_CASE("audio_service_manages_volumes_correctly", "[AudioService]") {
+    auto file_path = std::string(PROJECT_ROOT) + "/resources/sounds/bonetrousle.wav";
+    
     AudioService audio_service;
     auto name = "Bonetrousle";
     audio_service.register_sound("./resources/sounds/bonetrousle.wav", name, SoundType::SDL_MIXER);

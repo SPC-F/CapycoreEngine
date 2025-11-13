@@ -50,6 +50,12 @@ public:
     bool play_on_awake() const noexcept;
     void play_on_awake(bool value) noexcept;
 
+    [[nodiscard]]
+    std::string audio_name() const noexcept;
+
+    [[nodiscard]]
+    std::optional<std::reference_wrapper<SoundInstance>> instance() const noexcept;
+
 private:
     std::shared_ptr<SoundResource> get_or_register_resource();
     std::optional<std::reference_wrapper<SoundInstance>> instance_opt_;

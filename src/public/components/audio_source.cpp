@@ -1,6 +1,5 @@
 #include <engine/public/components/audio_source.h>
 
-#include <iostream>
 #include <algorithm>
 #include <filesystem>
 
@@ -141,4 +140,14 @@ bool AudioSource::play_on_awake() const noexcept
 void AudioSource::play_on_awake(bool value) noexcept
 {
     play_on_awake_ = value;
+}
+
+std::string AudioSource::audio_name() const noexcept
+{
+    return audio_name_;
+}
+
+std::optional<std::reference_wrapper<SoundInstance>> AudioSource::instance() const noexcept
+{
+    return instance_opt_;
 }
