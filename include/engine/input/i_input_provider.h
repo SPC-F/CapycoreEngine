@@ -1,9 +1,11 @@
 #pragma once
 
 #include <cstddef>
+#include <memory>
 #include <optional>
 #include <utility>
 
+#include <engine/input/i_input.h>
 #include <engine/input/key_code.h>
 #include <engine/input/mouse_button.h>
 #include <engine/input/mouse_state.h>
@@ -18,6 +20,9 @@
 class IInputProvider {
 public:
     virtual ~IInputProvider() = default;
+
+    void set_input(std::unique_ptr<IInput> input);
+    IInput& input() const;
 
     /**
      * @brief Returns whether the specified key is currently held down.
@@ -181,4 +186,7 @@ public:
      * Usually called once per frame before querying input state.
      */
     virtual void update() = 0;
+
+private:
+    std::unique_ptr<IInput> input_;
 };

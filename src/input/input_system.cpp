@@ -41,18 +41,6 @@ bool InputSystem::any_key_released() const
         [](const auto& kv) { return !kv.second.current && kv.second.previous; });
 }
 
-float InputSystem::key_hold_duration(KeyCode /*key*/) const
-{
-    // TODO: More complex logic; implement later.
-    return 0.0f;
-}
-
-std::optional<KeyCode> InputSystem::last_key_pressed() const
-{
-    // TODO: More complex logic; implement later.
-    return std::nullopt;
-}
-
 bool InputSystem::is_mouse_held(MouseButton button) const
 {
     auto it = mouse_state_.buttons.find(button);
@@ -90,18 +78,6 @@ bool InputSystem::any_mouse_released() const
 {
     return std::any_of(mouse_state_.buttons.begin(), mouse_state_.buttons.end(),
         [](const auto& kv) { return !kv.second.current && kv.second.previous; });
-}
-
-size_t InputSystem::mouse_hold_duration(MouseButton /*button*/) const
-{
-    // TODO: More complex logic; implement later.
-    return 0;
-}
-
-std::optional<MouseButton> InputSystem::last_mouse_pressed() const
-{
-    // TODO: More complex logic; implement later.
-    return std::nullopt;
 }
 
 const Point InputSystem::mouse_position() const
@@ -149,5 +125,5 @@ void InputSystem::update()
     for (auto& [_, state] : mouse_state_.buttons)
         state.previous = state.current;
 
-    // TODO: Use SDL to determine the new states.
+    input().update(key_states_, mouse_state_);
 }
