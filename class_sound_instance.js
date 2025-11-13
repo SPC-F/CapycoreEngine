@@ -1,0 +1,25 @@
+var class_sound_instance =
+[
+    [ "SoundInstance", "class_sound_instance.html#a4dcabfcaa67d3080dd0ab23b1cf3acca", null ],
+    [ "~SoundInstance", "class_sound_instance.html#aae84fc61fb24512d7506a3c4b4c14279", null ],
+    [ "finished", "class_sound_instance.html#aada09f653405d2f3446c478fa9c6081d", null ],
+    [ "finished", "class_sound_instance.html#a2b5a0b87e6a976a30ebebda3216282ac", null ],
+    [ "is_finished", "class_sound_instance.html#afc62edc90831b5b3dd691ffcf63e6c05", null ],
+    [ "is_paused", "class_sound_instance.html#afd6f97cdca9f4676bf67f747094406a5", null ],
+    [ "is_playing", "class_sound_instance.html#adf8680c7da38360c77040f323cecab48", null ],
+    [ "loop", "class_sound_instance.html#a9e884b12172be825f3df9a3fa44b299e", null ],
+    [ "loop", "class_sound_instance.html#ac0a06044f52108cc44723b9a0f443d89", null ],
+    [ "pause", "class_sound_instance.html#aeb96c18910195a625528c20853975250", null ],
+    [ "play", "class_sound_instance.html#a8f39a1c2ba6496e219fbeeb9668718a9", null ],
+    [ "resource", "class_sound_instance.html#a814b69df625d2961766159e28782d5bf", null ],
+    [ "resume", "class_sound_instance.html#ac92895aa87db942dc7859fe7ced8a293", null ],
+    [ "stop", "class_sound_instance.html#ae8fc6b171c9a2a874af13aba5439bc96", null ],
+    [ "volume", "class_sound_instance.html#a9bc731467d70b71bad3cddaf8d9d47e3", null ],
+    [ "volume", "class_sound_instance.html#a3df519722ea0e4c67b096bb2b80b5b7e", null ],
+    [ "finished_", "class_sound_instance.html#a23f3ebfaf1dcb7f0e79559a740e12d2d", null ],
+    [ "loop_", "class_sound_instance.html#a6c43e95ae3cd823630d725a07a7bd5b1", null ],
+    [ "paused_", "class_sound_instance.html#ab011202ef6be5a339995eba2bbef6e44", null ],
+    [ "playing_", "class_sound_instance.html#a8b154235f4a9a36866751a92c90ef5ee", null ],
+    [ "resource_", "class_sound_instance.html#ad9e446d5a32791f91847f2ebb9d72191", null ],
+    [ "volume_", "class_sound_instance.html#ade1399c32a6050425db1f9bff6192576", null ]
+];

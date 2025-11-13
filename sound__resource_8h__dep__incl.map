@@ -1,0 +1,18 @@
+<map id="include/engine/audio/sound/resource/sound_resource.h" name="include/engine/audio/sound/resource/sound_resource.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="297,5,465,60"/>
+<area shape="rect" id="Node000002" href="$audio__service_8h.html" title=" " alt="" coords="5,218,163,258"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="285,61,233,82,184,110,156,136,131,165,96,219,92,216,127,162,152,132,181,106,231,77,283,56"/>
+<area shape="rect" id="Node000003" href="$sound__instance_8h.html" title=" " alt="" coords="195,108,362,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="347,72,307,110,304,106,343,68"/>
+<area shape="rect" id="Node000006" href="$sound__factory_8h.html" title=" " alt="" coords="605,218,776,258"/>
+<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="480,53,539,74,595,106,624,132,649,162,683,216,679,219,645,165,620,136,592,110,537,79,478,58"/>
+<area shape="rect" id="Node000007" href="$sdl__sound__resource_8h.html" title=" " alt="" coords="387,108,581,163"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="420,68,459,106,455,110,416,72"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="217,171,122,220,120,215,215,167"/>
+<area shape="rect" id="Node000004" href="$generic__sound__instance_8h.html" title=" " alt="" coords="187,211,363,265"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="280,177,278,211,273,210,274,176"/>
+<area shape="rect" id="Node000005" href="$sdl__sound__instance_8h.html" title=" " alt="" coords="387,211,581,265"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="345,166,432,208,429,213,343,171"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="376,160,594,208,623,215,622,221,593,213,375,165"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="487,176,487,211,481,211,481,176"/>
+</map>

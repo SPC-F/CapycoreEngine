@@ -1,0 +1,11 @@
+<map id="include/engine/audio/sound/instance/sound_instance.h" name="include/engine/audio/sound/instance/sound_instance.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="295,5,462,60"/>
+<area shape="rect" id="Node000002" href="$audio__service_8h.html" title=" " alt="" coords="5,115,163,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="290,67,140,118,138,113,288,62"/>
+<area shape="rect" id="Node000003" href="$generic__sound__instance_8h.html" title=" " alt="" coords="187,108,363,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="343,72,304,110,300,106,340,68"/>
+<area shape="rect" id="Node000004" href="$sdl__sound__instance_8h.html" title=" " alt="" coords="387,108,581,163"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="418,68,458,106,455,110,414,72"/>
+<area shape="rect" id="Node000005" href="$sound__factory_8h.html" title=" " alt="" coords="605,115,776,155"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="474,62,633,113,631,118,472,67"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="SDLSoundInstance" name="SDLSoundInstance">
+<area shape="rect" id="Node000001" title="Represents a SDL&#45;specific implementation of a sound instance. Inherits from the generic SoundInstance..." alt="" coords="5,79,148,104"/>
+<area shape="rect" id="Node000002" href="$class_sound_instance.html" title="Represents an instance of a generic sound within the audio system. The reason for separating SoundIns..." alt="" coords="18,5,135,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,44,79,79,74,79,74,44"/>
+</map>

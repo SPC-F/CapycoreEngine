@@ -1,0 +1,5 @@
+<map id="SoundResource" name="SoundResource">
+<area shape="rect" id="Node000001" title="Represents a generic sound resource in the audio engine. This class serves as a base for specific sou..." alt="" coords="17,5,140,31"/>
+<area shape="rect" id="Node000002" href="$class_s_d_l_sound_resource.html" title="Represents a SDL&#45;specific resource. Inherits from the generic SoundResource class and contains SDL&#45;sp..." alt="" coords="5,79,152,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,44,81,79,76,79,76,44"/>
+</map>

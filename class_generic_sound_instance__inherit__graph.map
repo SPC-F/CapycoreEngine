@@ -1,0 +1,5 @@
+<map id="GenericSoundInstance" name="GenericSoundInstance">
+<area shape="rect" id="Node000001" title="A generic implementation of a sound instance. Provides the basic functionality while not tied to any ..." alt="" coords="5,79,172,104"/>
+<area shape="rect" id="Node000002" href="$class_sound_instance.html" title="Represents an instance of a generic sound within the audio system. The reason for separating SoundIns..." alt="" coords="30,5,147,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,44,91,79,86,79,86,44"/>
+</map>
