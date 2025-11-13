@@ -3,6 +3,10 @@
 
 class SDL_Texture;
 
+/**
+ * @brief Represents a texture used in rendering game objects.
+ * Encapsulates an SDL_Texture and provides access to its dimensions.
+ */
 class Texture final {
 private:
     float width_;
@@ -17,6 +21,5 @@ private:
 
 public:
     [[nodiscard]] float width() const;
-
     [[nodiscard]] float height() const;
 };

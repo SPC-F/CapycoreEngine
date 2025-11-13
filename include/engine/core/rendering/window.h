@@ -4,6 +4,12 @@
 
 class SDL_Window; // forward declaration to keep SDL include out of headers
 
+/**
+ * @brief Represents the game window and provides methods to modify its properties.
+ * The window encapsulates an SDL_Window, but it does not own it. The Window class is less of a wrapper and more of a controller. The actual owning is done by the Renderer.<br>
+ * <br>
+ * Note that the Window class provides explicit set_xyz methods. This is to avoid juggling with boolean parameters. You describe the desired state, you do not tell it how to get there.
+ */
 class Window {
 private:
     unsigned min_width_;
