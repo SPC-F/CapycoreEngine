@@ -16,8 +16,8 @@ struct DummyGameObject : public GameObject {
 };
 
 struct DummyComponent : public Component {
-    explicit DummyComponent(GameObject& parent) : Component(parent) {}
-    void update() override {}
+    explicit DummyComponent() : Component() {}
+    void update(float dt) override {}
     void on_attach() override {}
     void on_detach() override {}
     void on_serialize() override {}
@@ -40,7 +40,8 @@ TEST_CASE("physics_creation_factory_creates_box_body", "[PhysicsCreationFactory]
 
     DummyScene dummy_scene;
     DummyGameObject dummy_game_object(dummy_scene);
-    DummyComponent dummy_component(dummy_game_object);
+    DummyComponent dummy_component;
+    dummy_component.parent(dummy_game_object);
 
     // act
     b2BodyId body_id = factory.create_box_body(position, 2.0f, 4.0f, flags, &dummy_component);
@@ -67,8 +68,8 @@ TEST_CASE("physics_creation_factory_creates_circle_body", "[PhysicsCreationFacto
 
     DummyScene dummy_scene;
     DummyGameObject dummy_game_object(dummy_scene);
-    DummyComponent dummy_component(dummy_game_object);
-
+    DummyComponent dummy_component;
+    dummy_component.parent(dummy_game_object);
 
     // act
     b2BodyId body_id = factory.create_circle_body(position, 1.0f, flags, &dummy_component);
@@ -91,7 +92,8 @@ TEST_CASE("physics_creation_factory_creates_bullet_body_with_mass_data", "[Physi
 
     DummyScene dummy_scene;
     DummyGameObject dummy_game_object(dummy_scene);
-    DummyComponent dummy_component(dummy_game_object);
+    DummyComponent dummy_component;
+    dummy_component.parent(dummy_game_object);
 
     // act
     b2BodyId body_id = factory.create_circle_body(position, 0.5f, flags, &dummy_component);
