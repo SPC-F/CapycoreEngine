@@ -1,13 +1,13 @@
-#include <SDL3/SDL_render.h>
-#include <SDL3_image/SDL_image.h>
-#include <engine/core/assetManager.h>
-#include <engine/core/rendering/renderingService.h>
-#include <engine/core/engine.h>
+#include "SDL3/SDL_render.h"
+#include "SDL3_image/SDL_image.h"
+#include "engine/core/rendering/assetService.h"
+#include "engine/core/rendering/renderingService.h"
+#include "engine/core/engine.h"
 #include <format>
 
-AssetManager::AssetManager() = default;
+AssetService::AssetService() = default;
 
-std::optional<std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>>> AssetManager::try_get_spritesheet(const std::string& key) const {
+std::optional<std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>>> AssetService::try_get_spritesheet(const std::string& key) const {
     if (const auto it = named_assets_.find(key); it != named_assets_.end()) {
         // const ref, not c ref. constructor functions for these things are called ref and cref respectively.
         return std::cref(it->second);
@@ -15,13 +15,11 @@ std::optional<std::reference_wrapper<const std::vector<std::reference_wrapper<Te
     return std::nullopt;
 }
 
-std::expected<
-    std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>>,
-    std::string> AssetManager::create_spritesheet_for(
-        const std::string& source,
-        const std::string& name,
-        size_t from,
-        size_t to) {
+std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>> AssetService::create_spritesheet_for(
+    const std::string& source,
+    const std::string& name,
+    size_t from,
+    size_t to) {
 
     const auto maybe_resource = try_get_spritesheet(source);
 
@@ -41,23 +39,23 @@ std::expected<
     const size_t diff = to - from;
 
     named_assets_.emplace(
-            name,
-            std::vector(
-                    resource.begin() + static_cast<int>(from),
-                    resource.begin() + static_cast<int>(to)
-            )
+        name,
+        std::vector(
+                resource.begin() + static_cast<int>(from),
+                resource.begin() + static_cast<int>(to)
+        )
     );
 
     return named_assets_.at(name);
 }
 
-std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
+std::vector<std::reference_wrapper<Texture>> AssetService::load_from_resource(
     const std::string& file,
     const std::string& name,
     int rows,
     int cols) {
 
-    const std::string file_path = "resources/" + file;
+    const std::string file_path = AssetService::resource_path + file;
 
     const auto& renderer_service = Engine::instance()
         .services
@@ -93,11 +91,11 @@ std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
         src_rect.x = 0;
         for (int c = 0; c < cols; ++c) {
             SDL_Texture* frame = SDL_CreateTexture(
-                    renderer,
-                    SDL_PIXELFORMAT_RGBA8888,
-                    SDL_TEXTUREACCESS_TARGET,
-                    static_cast<int>(width),
-                    static_cast<int>(height));
+                renderer,
+                SDL_PIXELFORMAT_RGBA8888,
+                SDL_TEXTUREACCESS_TARGET,
+                static_cast<int>(width),
+                static_cast<int>(height));
 
             SDL_SetTextureScaleMode(frame, SDL_SCALEMODE_NEAREST);
             SDL_SetRenderTarget(renderer, frame);
@@ -121,7 +119,7 @@ std::vector<std::reference_wrapper<Texture>> AssetManager::load_from_resource(
     return resource; // returns a copy of reference_wrapper vector
 }
 
-std::optional<std::reference_wrapper<Texture>> AssetManager::try_get_texture(const std::string& sprite) const {
+std::optional<std::reference_wrapper<Texture>> AssetService::try_get_texture(const std::string& sprite) const {
     auto const maybe_resource = this->try_get_spritesheet(sprite);
     if (!maybe_resource.has_value()) {
         return std::nullopt;
@@ -133,8 +131,7 @@ std::optional<std::reference_wrapper<Texture>> AssetManager::try_get_texture(con
     return std::ref(resource.get().at(0));
 }
 
-
-std::expected<std::reference_wrapper<Texture>, std::string> AssetManager::register_texture(
+std::reference_wrapper<Texture> AssetService::register_texture(
     const std::string& resource_name,
     const std::string& texture_name,
     const size_t index) {

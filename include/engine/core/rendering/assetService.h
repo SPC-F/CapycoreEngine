@@ -5,31 +5,27 @@
 #include <expected>
 #include <optional>
 
-#include <engine/core/rendering/texture.h>
-#include <engine/core/iEngineService.h>
+#include "texture.h"
+#include "engine/core/iEngineService.h"
 
-class AssetManager : public IEngineService{
+class AssetService : public IEngineService{
 public:
-    AssetManager();
-    AssetManager(const AssetManager&) = delete;
-    AssetManager& operator=(const AssetManager&) = delete;
+    AssetService();
+    AssetService(const AssetService&) = delete;
+    AssetService& operator=(const AssetService&) = delete;
 
-    AssetManager(AssetManager&&) = default; // allow move
-    AssetManager& operator=(AssetManager&&) = default;
+    AssetService(AssetService&&) = default; // allow move
+    AssetService& operator=(AssetService&&) = default;
 
     [[nodiscard]]
     std::optional<std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>>> try_get_spritesheet(const std::string& key) const;
 
-    [[nodiscard]]
-    std::expected<
-        std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>>,
-        std::string> create_spritesheet_for(const std::string& source, const std::string& name, size_t from, size_t to);
+    std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>> create_spritesheet_for(const std::string& source, const std::string& name, size_t from, size_t to);
 
     [[nodiscard]]
     std::optional<std::reference_wrapper<Texture>> try_get_texture(const std::string& sprite) const;
 
-    [[nodiscard]]
-    std::expected<std::reference_wrapper<Texture>, std::string> register_texture(
+    std::reference_wrapper<Texture> register_texture(
         const std::string& resource_name,
         const std::string& texture_name,
         size_t index);
@@ -41,6 +37,7 @@ public:
             int cols);
 
 private:
+    static constexpr const char * const resource_path = "resources/sprites/";
     std::vector<std::unique_ptr<Texture>> textures_;
     std::map<std::string, std::vector<std::reference_wrapper<Texture>>> named_assets_;
 };

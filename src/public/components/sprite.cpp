@@ -1,10 +1,10 @@
 #include <engine/public/components/sprite.h>
-#include <engine/core/assetManager.h>
+#include "engine/core/rendering/assetService.h"
 #include <engine/core/engine.h>
 #include <format>
 
 Texture& get_texture_for(const std::string& sprite) {
-    const auto& service = Engine::instance().services->get_service<AssetManager>().get();
+    const auto& service = Engine::instance().services->get_service<AssetService>().get();
     const auto maybe_texture = service.try_get_texture(sprite);
     if (!maybe_texture.has_value()) {
         throw std::runtime_error(std::format("Failed to get texture for sprite: {}", sprite));

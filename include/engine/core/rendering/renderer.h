@@ -13,7 +13,7 @@ using SdlWindowPtr = std::unique_ptr<SDL_Window, void(*)(SDL_Window*)>;
 class Renderer final : public IEngineService {
 private:
     friend class RenderingManager;
-    friend class AssetManager;
+    friend class AssetService;
     SdlRendererPtr sdl_renderer_;
     SdlWindowPtr sdl_window_;
     // I tried just storing a Window& here, but that caused issues because the can never be a proper init value...

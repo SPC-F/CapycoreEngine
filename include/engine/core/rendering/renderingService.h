@@ -13,6 +13,6 @@ public:
     Window& window();
 
 private:
-    friend class AssetManager;
+    friend class AssetService;
     const std::unique_ptr<Renderer> renderer_;
 };
