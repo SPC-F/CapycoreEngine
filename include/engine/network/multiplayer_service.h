@@ -20,10 +20,10 @@ public:
     /* @brief Unregister handler of given message type */
     void unregister_handler(const MessageType type);
 
-    /* @brief Register self as host. */
+    /* @brief Register self as host (mutually exclusive with client). */
     void set_host();
 
-    /* @brief Register self as client. */
+    /* @brief Register self as client (mutually exclusive with host). */
     void set_client();
 
     /* @brief Poll network for new messages. */
