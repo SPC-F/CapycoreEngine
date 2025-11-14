@@ -36,8 +36,6 @@ std::reference_wrapper<const std::vector<std::reference_wrapper<Texture>>> Asset
         throw std::out_of_range("'from' index must not be greater than 'to'");
     }
 
-    const size_t diff = to - from;
-
     named_assets_.emplace(
         name,
         std::vector(
