@@ -5,9 +5,10 @@
 #include <string>
 #include <vector>
 
-#include <engine/public/scene.h>
 #include <engine/public/transform.h>
 #include <engine/public/component.h>
+
+class Scene;
 
 class GameObject {
 private:
