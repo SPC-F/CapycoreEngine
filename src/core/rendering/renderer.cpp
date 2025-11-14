@@ -15,12 +15,15 @@ Renderer::Renderer(int min_aspect_width, int min_aspect_height, const std::strin
 
     Uint32 sdl_window_flags = 0;
 
-    if (flags & RendererFlags::Fullscreen)
+    if (flags & RendererFlags::Fullscreen) {
         sdl_window_flags |= SDL_WINDOW_FULLSCREEN;
-    if (flags & RendererFlags::Borderless)
+    }
+    if (flags & RendererFlags::Borderless) {
         sdl_window_flags |= SDL_WINDOW_BORDERLESS;
-    if (flags & RendererFlags::Resizable)
+    }
+    if (flags & RendererFlags::Resizable){
         sdl_window_flags |= SDL_WINDOW_RESIZABLE;
+    }
 
     if(!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
         throw std::runtime_error("Failed to initialize renderer: SDL_Init failed with error: " + std::string(SDL_GetError()));
@@ -50,6 +53,9 @@ Renderer::Renderer(int min_aspect_width, int min_aspect_height, const std::strin
 }
 
 Window& Renderer::window() {
+    if(!window_.has_value()) {
+        throw std::runtime_error("Window is not initialized in Renderer.");
+    }
     return window_.value();
 }
 

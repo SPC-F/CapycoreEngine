@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 
-class SDL_Texture;
+class SDL_Texture; // NOLINT
 
 /**
  * @brief Represents a texture used in rendering game objects.
