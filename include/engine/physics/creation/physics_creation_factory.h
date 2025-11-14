@@ -5,8 +5,8 @@
 #include <vector>
 
 #include <engine/physics/creation/physics_creation_flags.h>
-#include <engine/physics/world/body_type_2d.h>
-#include <engine/physics/world/body_2d.h>
+#include <engine/physics/world/body/body_type_2d.h>
+#include <engine/physics/world/body/body_2d.h>
 #include <engine/public/component.h>
 #include <engine/public/util/vector3.h>
 

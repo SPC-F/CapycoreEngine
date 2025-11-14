@@ -77,7 +77,7 @@ void PhysicsWorld::check_collision(const std::vector<std::reference_wrapper<Game
     }
 }
 
-ColliderDistance PhysicsWorld::distance(const Body2DTransform& a, const Body2DTransform& b) 
+BodyDistance2D PhysicsWorld::distance(const Body2DTransform& a, const Body2DTransform& b) 
 {
     Point normal {0.0f, 0.0f};
     Point point_a {a.position.x, a.position.y};
@@ -92,7 +92,7 @@ ColliderDistance PhysicsWorld::distance(const Body2DTransform& a, const Body2DTr
         normal.y = dy / length;
     }
 
-    ColliderDistance result{};
+    BodyDistance2D result{};
     result.distance = length;
     result.normal = normal;
     result.point_a = point_a;
@@ -101,9 +101,9 @@ ColliderDistance PhysicsWorld::distance(const Body2DTransform& a, const Body2DTr
     return result;
 }
 
-ColliderDistance PhysicsWorld::fixture_distance(const Body2DTransform& a, const Body2DTransform& b) 
+BodyDistance2D PhysicsWorld::fixture_distance(const Body2DTransform& a, const Body2DTransform& b) 
 {
-    ColliderDistance result{};
+    BodyDistance2D result{};
     result.distance = FLT_MAX; // minimum distance search
     result.normal = Point{0.0f, 0.0f};
 
@@ -151,11 +151,11 @@ ColliderDistance PhysicsWorld::fixture_distance(const Body2DTransform& a, const 
         return proxy;
     };
 
-    for (b2ShapeId id_a : a.body.shapes) {
-        b2ShapeProxy proxy_a = create_shape_proxy(id_a);
+    for (const auto& shape_a : a.body.shapes) {
+        b2ShapeProxy proxy_a = create_shape_proxy(shape_a.id);
 
-        for (b2ShapeId id_b : b.body.shapes) {
-            b2ShapeProxy proxy_b = create_shape_proxy(id_b);
+        for (const auto& shape_b : b.body.shapes) {
+            b2ShapeProxy proxy_b = create_shape_proxy(shape_b.id);
 
             b2DistanceInput input{};
             input.proxyA = proxy_a;
@@ -176,30 +176,6 @@ ColliderDistance PhysicsWorld::fixture_distance(const Body2DTransform& a, const 
     }
 
     return result;
-}
-
-Body2DTransform PhysicsWorld::get_body_transform(const Body2D& body) 
-{
-    b2Vec2 pos = b2Body_GetPosition(body.id);
-    b2Rot rotation = b2Body_GetRotation(body.id);
-    float angle = PhysicsMath::convert_box2d_angle_to_radians(rotation.s, rotation.c);
-
-    Body2DTransform transform{};
-    transform.body = body;
-    transform.position = Vector3{pos.x, pos.y, 0.0f};
-    transform.rotation = angle;
-
-    return transform;
-}
-
-void PhysicsWorld::set_body_transform(const Body2DTransform& transform) 
-{
-
-    b2Vec2 position {transform.position.x, transform.position.y};
-    b2Rot rotation {PhysicsMath::convert_radians_to_box2d_cosine(transform.rotation),
-                    PhysicsMath::convert_radians_to_box2d_sine(transform.rotation)};
-
-    b2Body_SetTransform(transform.body.id, position, rotation);
 }
 
 int32_t PhysicsWorld::velocity_iterations() const noexcept 

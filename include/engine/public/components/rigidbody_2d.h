@@ -15,8 +15,7 @@ public:
     Rigidbody2D(BodyType2D::Type type = BodyType2D::Dynamic, 
                 float mass = 1.0f,
                 bool use_gravity = true,
-                float gravity_scale_x = 1.0f,
-                float gravity_scale_y = 1.0f);
+                float gravity_scale = 1.0f);
     ~Rigidbody2D() override;
 
     void update() override;
@@ -36,15 +35,12 @@ public:
     Rigidbody2D& use_gravity(bool value) noexcept;
 
     [[nodiscard]] 
-    float gravity_scale_x() const noexcept;
-    Rigidbody2D& gravity_scale_x(float value) noexcept;
-
-    [[nodiscard]] 
-    float gravity_scale_y() const noexcept;
-    Rigidbody2D& gravity_scale_y(float value) noexcept;
+    float gravity_scale() const noexcept;
+    Rigidbody2D& gravity_scale(float value) noexcept;
 
     [[nodiscard]]
     Body2D body() const noexcept;
+    void body(const Body2D& value) noexcept;
 
 private:
     Body2D body_ {};
@@ -52,7 +48,6 @@ private:
     float mass_ {1.0f};
     
     bool use_gravity_ {true};
-    float gravity_scale_x_ {1.0f};
-    float gravity_scale_y_ {1.0f};
+    float gravity_scale_ {1.0f};
 
 };

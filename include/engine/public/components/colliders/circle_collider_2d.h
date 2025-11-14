@@ -15,8 +15,7 @@ class CircleCollider2D : public Collider2D
 public:
     CircleCollider2D(
         float friction, 
-        float bounciness, 
-        float mass,
+        float bounciness,
         float radius = default_circle_collider_radius
     );
     ~CircleCollider2D() override = default;
@@ -29,6 +28,9 @@ public:
     [[nodiscard]]
     float radius() const noexcept;
     CircleCollider2D& radius(float value) noexcept;
+
+    CircleCollider2D& friction(float value) noexcept override;
+    CircleCollider2D& bounciness(float value) noexcept override;
 
 private:
     float radius_;

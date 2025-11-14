@@ -145,7 +145,7 @@ TEST_CASE("physics_world_gets_body_transform", "[PhysicsWorld]") {
     body = factory.create_box_fixture(body, 1.0f, 1.0f, flags);
 
     // act
-    Body2DTransform transform = world.get_body_transform(body);
+    Body2DTransform transform = Body2D::get_body_transform(body);
 
     // assert
     REQUIRE(transform.position.x == 5.0f);
@@ -173,9 +173,9 @@ TEST_CASE("physics_world_sets_body_transform", "[PhysicsWorld]") {
 
     // act
     Body2DTransform transform{body, new_position, new_rotation};
-    world.set_body_transform(transform);
+    Body2D::set_body_transform(transform);
 
-    Body2DTransform updated_transform = world.get_body_transform(body);
+    Body2DTransform updated_transform = Body2D::get_body_transform(body);
 
     // assert
     REQUIRE(updated_transform.position.x == 10.0f);
@@ -227,11 +227,11 @@ TEST_CASE("physics_world_calculates_distance_between_bodies", "[PhysicsWorld]") 
     Body2D body_b = factory.create_body(position_b, BodyType2D::Static, nullptr);
     body_b = factory.create_box_fixture(body_b, 1.0f, 1.0f, flags);
 
-    Body2DTransform transform_a = world.get_body_transform(body_a);
-    Body2DTransform transform_b = world.get_body_transform(body_b);
+    Body2DTransform transform_a = Body2D::get_body_transform(body_a);
+    Body2DTransform transform_b = Body2D::get_body_transform(body_b);
 
     // act
-    ColliderDistance distance_info = world.distance(transform_a, transform_b);
+    BodyDistance2D distance_info = world.distance(transform_a, transform_b);
 
     // assert
     REQUIRE(distance_info.distance == 5.0f);
@@ -260,11 +260,11 @@ TEST_CASE("physics_world_calculates_fixture_distance_between_bodies", "[PhysicsW
     Body2D body_b = factory.create_body(position_b, BodyType2D::Static, nullptr);
     body_b = factory.create_box_fixture(body_b, 1.0f, 1.0f, flags);
 
-    Body2DTransform transform_a = world.get_body_transform(body_a);
-    Body2DTransform transform_b = world.get_body_transform(body_b);
+    Body2DTransform transform_a = Body2D::get_body_transform(body_a);
+    Body2DTransform transform_b = Body2D::get_body_transform(body_b);
 
     // act
-    ColliderDistance distance_info = world.fixture_distance(transform_a, transform_b);
+    BodyDistance2D distance_info = world.fixture_distance(transform_a, transform_b);
 
     // assert
     REQUIRE(distance_info.distance == 4.0f);

@@ -11,11 +11,9 @@
 
 Collider2D::Collider2D(
     float friction, 
-    float bounciness, 
-    float mass
+    float bounciness
 ) : friction_(friction), 
-    bounciness_(bounciness),
-    mass_(mass) 
+    bounciness_(bounciness) 
 {
     if (!parent().has_value()) {
         throw std::runtime_error("Collider2D has no parent GameObject.");
@@ -47,7 +45,7 @@ void Collider2D::update()
     auto& physics_service = Engine::instance().services->get_service<PhysicsService>().get();
     auto& physics_world = physics_service.world();
 
-    Body2DTransform transform = PhysicsWorld::get_body_transform(rigidbody.body());
+    Body2DTransform transform = Body2D::get_body_transform(rigidbody.body());
     gameobject.transform().position(transform.position);
     gameobject.transform().rotation(transform.rotation);
 }
@@ -80,7 +78,7 @@ void Collider2D::on_collision_exit(Collider2D& other)
     }
 }
 
-ColliderDistance Collider2D::distance(Collider2D& other, bool use_fixture) 
+BodyDistance2D Collider2D::distance(Collider2D& other, bool use_fixture) 
 {
     auto& physics_service = Engine::instance().services->get_service<PhysicsService>().get();
     auto& physics_world = physics_service.world();   
@@ -88,8 +86,8 @@ ColliderDistance Collider2D::distance(Collider2D& other, bool use_fixture)
     auto rigidbody_a = get_rigidbody().get();
     auto rigidbody_b = other.get_rigidbody().get();
 
-    Body2DTransform transform_a = PhysicsWorld::get_body_transform(rigidbody_a.body());
-    Body2DTransform transform_b = PhysicsWorld::get_body_transform(rigidbody_b.body());
+    Body2DTransform transform_a = Body2D::get_body_transform(rigidbody_a.body());
+    Body2DTransform transform_b = Body2D::get_body_transform(rigidbody_b.body());
 
     if (use_fixture) {
         return PhysicsWorld::fixture_distance(transform_a, transform_b);
@@ -104,7 +102,7 @@ ColliderRayResult Collider2D::raycast(const Point& direction, float max_distance
     auto& physics_raycaster = physics_service.raycaster();
 
     auto rigidbody = get_rigidbody().get();
-    Body2DTransform body_transform = PhysicsWorld::get_body_transform(rigidbody.body());
+    Body2DTransform body_transform = Body2D::get_body_transform(rigidbody.body());
     b2Vec2 origin {body_transform.position.x, body_transform.position.y};
     b2Vec2 translation {direction.x * max_distance, direction.y * max_distance};
 
@@ -144,11 +142,11 @@ Collider2D& Collider2D::bounciness(float value) noexcept {
     return *this;
 }
 
-float Collider2D::mass() const noexcept {
-    return mass_;
+PhysicsCreationFlags& Collider2D::creation_flags() noexcept {
+    return creation_flags_;
 }
 
-Collider2D& Collider2D::mass(float value) noexcept {
-    mass_ = value;
+Collider2D& Collider2D::creation_flags(PhysicsCreationFlags value) noexcept {
+    creation_flags_ = value;
     return *this;
 }

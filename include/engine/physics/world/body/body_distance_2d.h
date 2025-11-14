@@ -8,7 +8,7 @@
  * This struct encapsulates the distance, normal vector, and contact points
  * between two physics bodies in the world.
  */
-struct ColliderDistance 
+struct BodyDistance2D 
 {
     float distance {0.0f};
     Point normal {0.0f, 0.0f};

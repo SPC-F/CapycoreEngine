@@ -3,15 +3,15 @@
 #include <functional>
 #include <vector>
 
-#include <engine/public/component.h>
-#include <engine/public/util/point.h>
+#include <engine/physics/creation/physics_creation_flags.h>
 #include <engine/physics/raycast/physics_raycaster.h>
 #include <engine/physics/world/physics_world.h>
+#include <engine/public/component.h>
 #include <engine/public/components/rigidbody_2d.h>
+#include <engine/public/util/point.h>
 
 constexpr float default_friction_2d = 0.5f;
 constexpr float default_bounciness_2d = 0.5f;
-constexpr float default_mass_2d = 1.0f;
 
 /**
  * @brief A 2D collider base that defines the shape and physical properties of a GameObject for collision detection.
@@ -25,8 +25,7 @@ class Collider2D : public Component
 public:
     Collider2D(
         float friction = default_friction_2d, 
-        float bounciness = default_bounciness_2d, 
-        float mass = default_mass_2d
+        float bounciness = default_bounciness_2d
     );
     ~Collider2D() override = default;
 
@@ -63,9 +62,9 @@ public:
      * 
      * @param other The other collider to measure distance to.
      * @param use_fixture Whether to use fixture shapes for distance calculation.
-     * @return ColliderDistance The distance information between the two colliders.
+     * @return BodyDistance2D The distance information between the two colliders.
      */
-    ColliderDistance distance(Collider2D& other, bool use_fixture = false);
+    BodyDistance2D distance(Collider2D& other, bool use_fixture = false);
 
     /**
      * @brief Perform a raycast from this collider in a specified direction.
@@ -81,20 +80,20 @@ public:
 
     [[nodiscard]]
     float friction() const noexcept;
-    Collider2D& friction(float value) noexcept;
+    virtual Collider2D& friction(float value) noexcept;
 
     [[nodiscard]]
     float bounciness() const noexcept;
-    Collider2D& bounciness(float value) noexcept;
+    virtual Collider2D& bounciness(float value) noexcept;
 
-    [[nodiscard]]
-    float mass() const noexcept;
-    Collider2D& mass(float value) noexcept;
+    PhysicsCreationFlags& creation_flags() noexcept;
+    Collider2D& creation_flags(PhysicsCreationFlags value) noexcept;
+
     
 private:
+    PhysicsCreationFlags creation_flags_ {};
     float friction_;
     float bounciness_;
-    float mass_;
 
     std::vector<std::function<void(Collider2D&, Collider2D&)>> on_trigger_enter_actions_;
     std::vector<std::function<void(Collider2D&, Collider2D&)>> on_trigger_exit_actions_;

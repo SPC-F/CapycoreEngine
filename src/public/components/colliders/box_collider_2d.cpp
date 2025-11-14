@@ -6,11 +6,10 @@
 
 BoxCollider2D::BoxCollider2D(
     float friction, 
-    float bounciness, 
-    float mass,
+    float bounciness,
     float width,
     float height
-) : Collider2D(friction, bounciness, mass), width_(width), height_(height) 
+) : Collider2D(friction, bounciness), width_(width), height_(height) 
 {
     if (!parent().has_value()) {
         throw std::runtime_error("BoxCollider2D has no parent GameObject.");
@@ -18,14 +17,26 @@ BoxCollider2D::BoxCollider2D(
 
     if (auto gameobject_opt = parent(); gameobject_opt.has_value()) {
         auto& gameobject = gameobject_opt->get();
+        
+        auto rigidbody_opt = gameobject.get_component<Rigidbody2D>();
+        auto box_collider_opt = gameobject.get_component<BoxCollider2D>();
 
-        if (!gameobject.get_component<Rigidbody2D>().has_value()) {
+        if (!rigidbody_opt.has_value()) {
             throw std::runtime_error("BoxCollider2D requires a Rigidbody2D component on the same GameObject.");
         }
 
-        if (gameobject.get_component<BoxCollider2D>().has_value()) {
+        if (box_collider_opt.has_value()) {
             throw std::runtime_error("GameObject cannot have multiple BoxCollider2D components.");
         }
+        
+        auto& rigidbody = rigidbody_opt->get();
+        auto body = rigidbody.body();
+        rigidbody.body(PhysicsCreationFactory::create_box_fixture(
+            body, 
+            width_, 
+            height_,
+            Collider2D::creation_flags()
+        ));        
     }
 }
 
@@ -48,6 +59,10 @@ float BoxCollider2D::width() const noexcept
 BoxCollider2D& BoxCollider2D::width(float value) noexcept 
 {
     width_ = value;
+
+    auto& rigidbody = get_rigidbody().get();
+    Body2D::set_body_size(rigidbody.body(), {width_, height_, 0.0f});
+
     return *this;
 }
 
@@ -59,5 +74,29 @@ float BoxCollider2D::height() const noexcept
 BoxCollider2D& BoxCollider2D::height(float value) noexcept 
 {
     height_ = value;
+
+    auto& rigidbody = get_rigidbody().get();
+    Body2D::set_body_size(rigidbody.body(), {width_, height_, 0.0f});
+
+    return *this;
+}
+
+BoxCollider2D& BoxCollider2D::friction(float value) noexcept 
+{
+    Collider2D::friction(value);
+    
+    auto& rigidbody = get_rigidbody().get();
+    Body2D::set_body_friction(rigidbody.body(), value, ShapeType2D::Polygon);
+
+    return *this;
+}
+
+BoxCollider2D& BoxCollider2D::bounciness(float value) noexcept 
+{
+    Collider2D::bounciness(value);
+    
+    auto& rigidbody = get_rigidbody().get();
+    Body2D::set_body_bounciness(rigidbody.body(), value, ShapeType2D::Polygon);
+
     return *this;
 }

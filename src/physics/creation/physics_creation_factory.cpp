@@ -1,6 +1,7 @@
 #include <engine/physics/creation/physics_creation_factory.h>
 
 #include <stdexcept>
+#include <engine/physics/world/body/shape_type_2d.h>
 
 /* Very small base mass to avoid zero mass issues */
 constexpr float base_mass = 0.000001f;
@@ -57,7 +58,7 @@ Body2D PhysicsCreationFactory::create_box_fixture(Body2D body, float width, floa
     shape_def.isSensor = flags.sensor;
 
     b2ShapeId shape_id = b2CreatePolygonShape(body.id, &shape_def, &box);
-    body.shapes.push_back(shape_id);
+    body.shapes.push_back({ shape_id, b2ShapeType::b2_polygonShape });
     
     b2Filter filter{};
     filter.categoryBits = flags.category;
@@ -102,7 +103,7 @@ Body2D PhysicsCreationFactory::create_circle_fixture(Body2D body, float radius, 
     shape_def.isSensor = flags.sensor;
 
     b2ShapeId shape_id = b2CreateCircleShape(body.id, &shape_def, &circle);
-    body.shapes.push_back(shape_id);
+    body.shapes.push_back({ shape_id, b2ShapeType::b2_circleShape });
 
     b2Filter filter{};
     filter.categoryBits = flags.category;

@@ -13,8 +13,7 @@ class BoxCollider2D : public Collider2D
 public:
     BoxCollider2D(
         float friction, 
-        float bounciness, 
-        float mass,
+        float bounciness,
         float width = 1.0f,
         float height = 1.0f
     );
@@ -32,6 +31,9 @@ public:
     [[nodiscard]]
     float height() const noexcept;
     BoxCollider2D& height(float value) noexcept;
+
+    BoxCollider2D& friction(float value) noexcept override;
+    BoxCollider2D& bounciness(float value) noexcept override;
 
 private:
     float width_ {1.0f};

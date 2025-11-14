@@ -11,13 +11,11 @@ Rigidbody2D::Rigidbody2D(
     BodyType2D::Type type,
     float mass,
     bool use_gravity,
-    float gravity_scale_x,
-    float gravity_scale_y
+    float gravity_scale
 ) : type_(type),
     mass_(mass),
     use_gravity_(use_gravity),
-    gravity_scale_x_(gravity_scale_x),
-    gravity_scale_y_(gravity_scale_y) 
+    gravity_scale_(gravity_scale) 
 {
     add_on_attach([this](Component& comp) {
         auto& physics_service = Engine::instance().services->get_service<PhysicsService>().get();
@@ -49,7 +47,7 @@ void Rigidbody2D::update()
     
     if (auto parent_opt = parent(); parent_opt.has_value()) {
         auto& gameobject = parent_opt->get();
-        Body2DTransform transform = PhysicsWorld::get_body_transform(body_);
+        Body2DTransform transform = Body2D::get_body_transform(body_);
 
         gameobject.transform().position(transform.position);
         gameobject.transform().rotation(transform.rotation);
@@ -74,6 +72,7 @@ BodyType2D::Type Rigidbody2D::type() const noexcept
 Rigidbody2D& Rigidbody2D::type(BodyType2D::Type value) noexcept 
 {
     type_ = value;
+    Body2D::set_body_type(body_, type_);
     return *this;
 }
 
@@ -85,6 +84,7 @@ float Rigidbody2D::mass() const noexcept
 Rigidbody2D& Rigidbody2D::mass(float value) noexcept 
 {
     mass_ = value;
+    Body2D::set_body_mass(body_, mass_);
     return *this;
 }
 
@@ -96,32 +96,29 @@ bool Rigidbody2D::use_gravity() const noexcept
 Rigidbody2D& Rigidbody2D::use_gravity(bool value) noexcept 
 {
     use_gravity_ = value;
+    Body2D::set_body_gravity_scale(body_, use_gravity_ ? gravity_scale_ : 0.0f);
     return *this;
 }
 
-float Rigidbody2D::gravity_scale_x() const noexcept 
+float Rigidbody2D::gravity_scale() const noexcept 
 {
-    return gravity_scale_x_;
+    return gravity_scale_;
 }
 
-Rigidbody2D& Rigidbody2D::gravity_scale_x(float value) noexcept 
+Rigidbody2D& Rigidbody2D::gravity_scale(float value) noexcept 
 {
-    gravity_scale_x_ = value;
+    gravity_scale_ = value;
+    Body2D::set_body_gravity_scale(body_, gravity_scale_);
     return *this;
 }
 
-float Rigidbody2D::gravity_scale_y() const noexcept 
-{
-    return gravity_scale_y_;
-}
-
-Rigidbody2D& Rigidbody2D::gravity_scale_y(float value) noexcept 
-{
-    gravity_scale_y_ = value;
-    return *this;
-}
 
 Body2D Rigidbody2D::body() const noexcept 
 {
     return body_;
+}
+
+void Rigidbody2D::body(const Body2D& value) noexcept 
+{
+    body_ = value;
 }
