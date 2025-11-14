@@ -22,11 +22,13 @@ public:
 
     /** 
      * @brief Updates the physics world by stepping the simulation.
+     * @note Delta time (dt) should potentially be fixed for consistent physics behavior.
      * 
      * This method advances the physics simulation by one time step,
      * applying all physics calculations and updating object states.
      * 
      * @param dt The (deltatime) time step duration for the physics update.
+     * @param objects The list of game objects to check for collisions.
      */
     void update(float dt, const std::vector<std::reference_wrapper<GameObject>>& objects);
 

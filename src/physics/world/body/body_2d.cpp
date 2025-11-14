@@ -37,10 +37,12 @@ void Body2D::set_body_type(const Body2D& body, BodyType2D::Type type)
 void Body2D::set_body_size(const Body2D& body, const Vector3& size) 
 {
     for (const auto& shape : body.shapes) {
-        if (shape.type == b2ShapeType::b2_polygonShape) {
-            b2Polygon box = b2MakeBox(size.x / default_box_divisor, size.y / default_box_divisor);
-            b2Shape_SetPolygon(shape.id, &box);
+        if (shape.type != b2ShapeType::b2_polygonShape) {
+            continue;
         }
+
+        b2Polygon box = b2MakeBox(size.x / default_box_divisor, size.y / default_box_divisor);
+        b2Shape_SetPolygon(shape.id, &box);
     } 
 }
 
@@ -48,14 +50,16 @@ void Body2D::set_body_size(const Body2D& body, const Vector3& size)
 void Body2D::set_body_radius(const Body2D& body, float radius) 
 {
     for (const auto& shape : body.shapes) {
-        if (shape.type == b2ShapeType::b2_circleShape) {
-            b2Circle circle;
-            
-            circle.center = b2Vec2{0.0f, 0.0f};
-            circle.radius = radius;
-
-            b2Shape_SetCircle(shape.id, &circle);
+        if (shape.type != b2ShapeType::b2_circleShape) {
+            continue;
         }
+
+        b2Circle circle;
+            
+        circle.center = b2Vec2{0.0f, 0.0f};
+        circle.radius = radius;
+
+        b2Shape_SetCircle(shape.id, &circle);
     }
 }
 
@@ -75,17 +79,21 @@ void Body2D::set_body_mass(const Body2D& body, float mass)
 void Body2D::set_body_bounciness(const Body2D& body, float bounciness, ShapeType2D::Type type) 
 {
     for (const auto& shape : body.shapes) {
-        if (shape.type == ShapeType2D::to_box2d_type(type)) {
-            b2Shape_SetRestitution(shape.id, bounciness);
+        if (shape.type != ShapeType2D::to_box2d_type(type)) {
+            continue;
         }
+
+        b2Shape_SetRestitution(shape.id, bounciness);
     }
 }
 
 void Body2D::set_body_friction(const Body2D& body, float friction, ShapeType2D::Type type) 
 {
     for (const auto& shape : body.shapes) {
-        if (shape.type == ShapeType2D::to_box2d_type(type)) {
-            b2Shape_SetFriction(shape.id, friction);
+        if (shape.type != ShapeType2D::to_box2d_type(type)) {
+            continue;
         }
+        
+        b2Shape_SetFriction(shape.id, friction);
     }
 }

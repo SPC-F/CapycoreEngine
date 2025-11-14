@@ -18,6 +18,7 @@ struct BodyType2D
         Kinematic = 2
     };
 
+    /** @brief Converts the custom BodyType2D::Type to the corresponding Box2D body type. */
     static b2BodyType to_box2d_body_type(BodyType2D::Type type) 
     {
         switch (type) {

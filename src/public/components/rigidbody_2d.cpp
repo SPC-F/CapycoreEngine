@@ -120,5 +120,6 @@ Body2D Rigidbody2D::body() const noexcept
 
 void Rigidbody2D::body(const Body2D& value) noexcept 
 {
+    PhysicsCreationFactory::destroy_body(body_);
     body_ = value;
 }
