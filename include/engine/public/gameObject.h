@@ -53,11 +53,12 @@ public:
 
     [[nodiscard]] const Scene& scene() const noexcept;
 
-    std::vector<std::reference_wrapper<GameObject>>& children();
+    [[nodiscard]] std::vector<std::reference_wrapper<GameObject>>& children();
     GameObject& add_child(GameObject& child);
     GameObject& remove_child(GameObject& child);
 
     template<IsComponent T>
+    [[nodiscard]]
     std::optional<std::reference_wrapper<T>> get_component() const noexcept {
         for (const auto& component : components_) {
             if (auto* casted = dynamic_cast<T*>(component.get())) {
@@ -71,6 +72,7 @@ public:
         Note that it does NOT include the components attached to the
         child objects. Those can be retrieved with GameObject::getComponentsInChildren */
     template<IsComponent T>
+    [[nodiscard]]
     std::vector<std::reference_wrapper<T>> get_components() const {
         auto filtered = components_
             | std::views::filter([](auto& c) { return dynamic_cast<T*>(c.get()); })
