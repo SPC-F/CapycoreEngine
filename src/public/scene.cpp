@@ -1,4 +1,5 @@
 #include <engine/public/scene.h>
+#include <SDL3/SDL.h>
 
 Scene::Scene(const std::string& name)
     : is_running_(false), time_modifier_(1.0f), game_objects_ {}, name_{name} {
@@ -16,8 +17,34 @@ void Scene::destroy() {
 
 }
 
+void Scene::game_loop() {
+    float accumulator = 0.0f;
+    const float fixed_step = 1.0f / 60.0f; // ~60 fps
+    float speed = 1.0f;
+
+    Uint64 last = SDL_GetPerformanceCounter();
+    float freq = static_cast<float>(SDL_GetPerformanceFrequency());
+
+    while (true) {
+        Uint64 now = SDL_GetPerformanceCounter();
+        float frame_dt = static_cast<float>(now - last) / freq * speed;
+        last = now;
+
+        accumulator += frame_dt;
+
+        while (accumulator >= fixed_step) {
+            //physics(fixed_step, 8, 3);
+            accumulator -= fixed_step;
+        }
+
+        // render();
+    }
+
+}
+
 void Scene::run() {
     is_running_ = true;
+    game_loop();
 }
 
 void Scene::stop() {

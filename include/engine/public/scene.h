@@ -12,6 +12,8 @@ private:
     float time_modifier_;
     std::vector<std::unique_ptr<GameObject>> game_objects_;
 
+    void game_loop();
+
 public:
     Scene(const std::string& name);
     virtual ~Scene();
