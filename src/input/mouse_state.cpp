@@ -24,8 +24,9 @@ void MouseState::reset()
     delta_x = 0.0f;
     delta_y = 0.0f;
 
-    for (auto& [_, state] : buttons)
+    for (auto& [_, state] : buttons) {
         state.reset();
+    }
 
     wheel.reset();
 }

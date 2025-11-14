@@ -1,6 +1,8 @@
 #pragma once
 
-enum class MouseButton {
+#include <cstdint>
+
+enum class MouseButton : std::uint8_t {
     // Primary buttons
     left, right, middle,
 

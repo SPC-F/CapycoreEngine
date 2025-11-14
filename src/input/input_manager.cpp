@@ -3,8 +3,9 @@
 
 const IInputProvider& InputManager::provider() const
 {
-    if (!provider_)
+    if (!provider_) {
         throw std::runtime_error("Input provider is not set.");
+    }
     return *provider_;
 }
 

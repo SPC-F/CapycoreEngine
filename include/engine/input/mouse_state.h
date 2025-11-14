@@ -11,7 +11,7 @@
  * Used for querying the last scroll direction of the mouse.
  * Can be combined with per-frame deltas for precise scroll handling.
  */
-enum class MouseDirection {
+enum class MouseDirection : std::uint8_t {
     none,   ///< No scroll detected (this frame).
     up,     ///< Scroll wheel moved upward (away from the user).
     down,   ///< Scroll wheel moved downward (toward the user).

@@ -18,7 +18,7 @@ private:
      * This method maps an SDL keycode to a platform-independent KeyCode, enabling
      * translation between SDL input events and the internal key representation.
      */
-    KeyCode sdl_to_keycode(SDL_Keycode key);
+    static KeyCode sdl_to_keycode(SDL_Keycode key);
 
     /**
      * @brief Converts an SDL mouse button ID to a MouseButton enum.
@@ -26,5 +26,5 @@ private:
      * This method maps an SDL mouse button (e.g., SDL_BUTTON_LEFT) to a platform-independent
      * MouseButton enum value, enabling consistent mouse button handling across different platforms.
      */
-    MouseButton sdl_to_mouse_button(Uint8 button);
+    static MouseButton sdl_to_mouse_button(Uint8 button);
 };

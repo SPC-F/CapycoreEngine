@@ -12,26 +12,26 @@
  */
 class InputSystem : public IInputProvider {
 public:
-    bool is_key_held(KeyCode key) const override;
-    bool is_key_pressed(KeyCode key) const override;
-    bool is_key_released(KeyCode key) const override;
-    bool any_key_held() const override;
-    bool any_key_pressed() const override;
-    bool any_key_released() const override;
+    [[nodiscard]] bool is_key_held(KeyCode key) const override;
+    [[nodiscard]] bool is_key_pressed(KeyCode key) const override;
+    [[nodiscard]] bool is_key_released(KeyCode key) const override;
+    [[nodiscard]] bool any_key_held() const override;
+    [[nodiscard]] bool any_key_pressed() const override;
+    [[nodiscard]] bool any_key_released() const override;
 
-    bool is_mouse_held(MouseButton button) const override;
-    bool is_mouse_pressed(MouseButton button) const override;
-    bool is_mouse_released(MouseButton button) const override;
-    bool any_mouse_held() const override;
-    bool any_mouse_pressed() const override;
-    bool any_mouse_released() const override;
+    [[nodiscard]] bool is_mouse_held(MouseButton button) const override;
+    [[nodiscard]] bool is_mouse_pressed(MouseButton button) const override;
+    [[nodiscard]] bool is_mouse_released(MouseButton button) const override;
+    [[nodiscard]] bool any_mouse_held() const override;
+    [[nodiscard]] bool any_mouse_pressed() const override;
+    [[nodiscard]] bool any_mouse_released() const override;
 
-    const Point mouse_position() const override;
-    const std::pair<float, float> mouse_delta() const override;
-    bool mouse_moved() const override;
-    const std::pair<float, float> mouse_scroll() const override;
-    const std::pair<float, float> mouse_scroll_delta() const override;
-    MouseDirection mouse_scroll_direction() const override;
+    [[nodiscard]] const Point& mouse_position() const override;
+    [[nodiscard]] std::pair<float, float> mouse_delta() const override;
+    [[nodiscard]] bool mouse_moved() const override;
+    [[nodiscard]] std::pair<float, float> mouse_scroll() const override;
+    [[nodiscard]] std::pair<float, float> mouse_scroll_delta() const override;
+    [[nodiscard]] MouseDirection mouse_scroll_direction() const override;
 
     void reset_state() override;
     void update() override;
