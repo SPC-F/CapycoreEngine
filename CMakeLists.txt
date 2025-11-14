@@ -134,8 +134,8 @@ target_include_directories(engine
 )
 
 target_link_libraries(engine
-    PUBLIC 
-        SDL3::SDL3 
+    PUBLIC
+        SDL3::SDL3
         SDL3_image::SDL3_image
         SDL3_ttf::SDL3_ttf
         Freetype::Freetype
