@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['generic_0',['GENERIC',['../sound__type_8h.html#ae1b5d244e51a186490107bd5850d1753ac942dc2a9f958acddc67e11472d3ca0b',1,'sound_type.h']]]
+  ['borderless_0',['Borderless',['../renderer_flags_8h.html#a38ee5c69c90472e460192941b5c680f1a366ce330ee2b16fe09f49c5b937dc307',1,'rendererFlags.h']]]
 ];

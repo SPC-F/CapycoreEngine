@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mask_0',['mask',['../struct_physics_creation_flags.html#a5fbdfb193ea1a113cba0334034622835',1,'PhysicsCreationFlags']]]
+  ['g_0',['g',['../class_color.html#a88b0a0667f31694665642f2754fe2e86',1,'Color']]]
 ];

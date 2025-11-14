@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['scale_0',['scale',['../class_transform.html#ab8b1891f2c696874f9b884d7964d6afb',1,'Transform::scale() const noexcept'],['../class_transform.html#a2ec327e2ef7d7a765f8e215fcf40a154',1,'Transform::scale(int scale) noexcept']]],
+  ['scale_0',['scale',['../class_transform.html#a819d2db2c59e95f64e0990880daed47a',1,'Transform::scale() const noexcept'],['../class_transform.html#a40a9ab54c04146731f3c164b82a4464e',1,'Transform::scale(Vector3 scale) noexcept']]],
   ['scene_1',['scene',['../class_game_object.html#a2289c71a95125871640a379f9afb7a3d',1,'GameObject']]],
   ['sdlsoundinstance_2',['SDLSoundInstance',['../class_s_d_l_sound_instance.html#ad9420e4c95087e0b8fdadc05d261478c',1,'SDLSoundInstance']]],
   ['sdlsoundresource_3',['SDLSoundResource',['../class_s_d_l_sound_resource.html#ad88dadcddef53b412a5243eaa8be5199',1,'SDLSoundResource']]],
@@ -10,11 +10,21 @@ var searchData=
   ['set_5factive_5fin_5fworld_7',['set_active_in_world',['../class_game_object.html#a6a7270b73a9b7563955de841b52cf01a',1,'GameObject']]],
   ['set_5finactive_8',['set_inactive',['../class_game_object.html#a2b0aeee100e2ec643c5d468c5a658a12',1,'GameObject']]],
   ['set_5finactive_5fin_5fworld_9',['set_inactive_in_world',['../class_game_object.html#a88c1407381108c349d1ebaf38d02c1e7',1,'GameObject']]],
-  ['soundfactory_10',['SoundFactory',['../class_sound_factory.html#ae7c7e608a726c110af1c7632fd8d1705',1,'SoundFactory']]],
-  ['soundinstance_11',['SoundInstance',['../class_sound_instance.html#a4dcabfcaa67d3080dd0ab23b1cf3acca',1,'SoundInstance']]],
-  ['soundresource_12',['SoundResource',['../class_sound_resource.html#a36b401113d895625f3b5f56defc9ec96',1,'SoundResource']]],
-  ['step_13',['step',['../class_physics_world.html#a7cdf3bfd913d3dbb770e1404bebd80a1',1,'PhysicsWorld']]],
-  ['stop_14',['stop',['../class_generic_sound_instance.html#a07bd55ae2e5b885559f522b3df228ebe',1,'GenericSoundInstance::stop()'],['../class_s_d_l_sound_instance.html#ac99f527154046a5b8f23db8ace5ae5a9',1,'SDLSoundInstance::stop()'],['../class_sound_instance.html#ae8fc6b171c9a2a874af13aba5439bc96',1,'SoundInstance::stop()']]],
-  ['stop_5fall_5fsounds_15',['stop_all_sounds',['../class_audio_service.html#ae08fa94ffa7f5ad1c2792d6e39f3c280',1,'AudioService']]],
-  ['stop_5fsound_16',['stop_sound',['../class_audio_service.html#a64a3120430b645ea2b49b65c428d2bb2',1,'AudioService::stop_sound(std::unique_ptr&lt; SoundInstance &gt; &amp;&amp;sound_instance)'],['../class_audio_service.html#ae794777ca0e019940e3308af84564195',1,'AudioService::stop_sound(const std::string &amp;name)']]]
+  ['set_5fwindow_5fbordered_10',['set_window_bordered',['../class_window.html#aaa1a58c66a030c44c6774d6f95a8ec84',1,'Window']]],
+  ['set_5fwindow_5fborderless_11',['set_window_borderless',['../class_window.html#ae054ed188cf7ebe78f7da3d65967055a',1,'Window']]],
+  ['set_5fwindow_5ffullscreen_12',['set_window_fullscreen',['../class_window.html#abd38cc1183bbd5086442b3ccaaf3ba90',1,'Window']]],
+  ['set_5fwindow_5fheight_13',['set_window_height',['../class_window.html#ab0b3b335e0dd0280c32cd029bae2f814',1,'Window']]],
+  ['set_5fwindow_5fresizable_14',['set_window_resizable',['../class_window.html#aa67dcaae197312c4120e0aebeee944fe',1,'Window']]],
+  ['set_5fwindow_5funresizable_15',['set_window_unresizable',['../class_window.html#abaf810c81a776f3f0175080ad8e16079',1,'Window']]],
+  ['set_5fwindow_5fwidth_16',['set_window_width',['../class_window.html#a18eb614bee69dfdc31df4e405abb9524',1,'Window']]],
+  ['set_5fwindow_5fwindowed_17',['set_window_windowed',['../class_window.html#a527335d9133a96ad796539a41113b360',1,'Window']]],
+  ['sorting_5flayer_18',['sorting_layer',['../class_sprite.html#a0974aa89ad9cd8bb27ba00f6971d37fd',1,'Sprite::sorting_layer() const'],['../class_sprite.html#a3390a59159655a5008c4e67f2befbaf4',1,'Sprite::sorting_layer(int val)']]],
+  ['soundfactory_19',['SoundFactory',['../class_sound_factory.html#ae7c7e608a726c110af1c7632fd8d1705',1,'SoundFactory']]],
+  ['soundinstance_20',['SoundInstance',['../class_sound_instance.html#a4dcabfcaa67d3080dd0ab23b1cf3acca',1,'SoundInstance']]],
+  ['soundresource_21',['SoundResource',['../class_sound_resource.html#a36b401113d895625f3b5f56defc9ec96',1,'SoundResource']]],
+  ['sprite_22',['Sprite',['../class_sprite.html#ac87d22f49b5d37aedee3d8f4f697994a',1,'Sprite']]],
+  ['step_23',['step',['../class_physics_world.html#a7cdf3bfd913d3dbb770e1404bebd80a1',1,'PhysicsWorld']]],
+  ['stop_24',['stop',['../class_generic_sound_instance.html#a07bd55ae2e5b885559f522b3df228ebe',1,'GenericSoundInstance::stop()'],['../class_s_d_l_sound_instance.html#ac99f527154046a5b8f23db8ace5ae5a9',1,'SDLSoundInstance::stop()'],['../class_sound_instance.html#ae8fc6b171c9a2a874af13aba5439bc96',1,'SoundInstance::stop()']]],
+  ['stop_5fall_5fsounds_25',['stop_all_sounds',['../class_audio_service.html#ae08fa94ffa7f5ad1c2792d6e39f3c280',1,'AudioService']]],
+  ['stop_5fsound_26',['stop_sound',['../class_audio_service.html#a64a3120430b645ea2b49b65c428d2bb2',1,'AudioService::stop_sound(std::unique_ptr&lt; SoundInstance &gt; &amp;&amp;sound_instance)'],['../class_audio_service.html#ae794777ca0e019940e3308af84564195',1,'AudioService::stop_sound(const std::string &amp;name)']]]
 ];

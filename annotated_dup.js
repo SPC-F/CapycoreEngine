@@ -1,6 +1,8 @@
 var annotated_dup =
 [
+    [ "AssetService", "class_asset_service.html", "class_asset_service" ],
     [ "AudioService", "class_audio_service.html", "class_audio_service" ],
+    [ "Color", "class_color.html", "class_color" ],
     [ "Component", "class_component.html", "class_component" ],
     [ "Engine", "class_engine.html", "class_engine" ],
     [ "GameObject", "class_game_object.html", "class_game_object" ],
@@ -12,6 +14,8 @@ var annotated_dup =
     [ "PhysicsService", "class_physics_service.html", "class_physics_service" ],
     [ "PhysicsWorld", "class_physics_world.html", "class_physics_world" ],
     [ "Point", "class_point.html", "class_point" ],
+    [ "Renderer", "class_renderer.html", "class_renderer" ],
+    [ "RenderingService", "class_rendering_service.html", "class_rendering_service" ],
     [ "Scene", "class_scene.html", null ],
     [ "SDLSoundInstance", "class_s_d_l_sound_instance.html", "class_s_d_l_sound_instance" ],
     [ "SDLSoundResource", "class_s_d_l_sound_resource.html", "class_s_d_l_sound_resource" ],
@@ -19,6 +23,9 @@ var annotated_dup =
     [ "SoundFactory", "class_sound_factory.html", "class_sound_factory" ],
     [ "SoundInstance", "class_sound_instance.html", "class_sound_instance" ],
     [ "SoundResource", "class_sound_resource.html", "class_sound_resource" ],
+    [ "Sprite", "class_sprite.html", "class_sprite" ],
+    [ "Texture", "class_texture.html", "class_texture" ],
     [ "Transform", "class_transform.html", "class_transform" ],
-    [ "Vector3", "class_vector3.html", "class_vector3" ]
+    [ "Vector3", "class_vector3.html", "class_vector3" ],
+    [ "Window", "class_window.html", "class_window" ]
 ];

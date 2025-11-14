@@ -1,7 +1,13 @@
 <map id="IEngineService" name="IEngineService">
-<area shape="rect" id="Node000001" title=" " alt="" coords="67,5,186,31"/>
-<area shape="rect" id="Node000002" href="$class_audio_service.html" title="Manages audio playback and sound instances within the engine." alt="" coords="5,79,112,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,42,72,80,68,77,104,39"/>
-<area shape="rect" id="Node000003" href="$class_physics_service.html" title="Service responsible for managing the physics world." alt="" coords="137,79,255,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="149,39,187,77,183,80,146,43"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="267,5,386,31"/>
+<area shape="rect" id="Node000002" href="$class_asset_service.html" title="Service responsible for managing game assets such as textures and spritesheets." alt="" coords="5,79,112,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="271,37,103,81,101,76,269,32"/>
+<area shape="rect" id="Node000003" href="$class_audio_service.html" title="Manages audio playback and sound instances within the engine." alt="" coords="136,79,243,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="294,39,213,81,211,76,291,34"/>
+<area shape="rect" id="Node000004" href="$class_physics_service.html" title="Service responsible for managing the physics world." alt="" coords="267,79,386,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="329,44,329,79,324,79,324,44"/>
+<area shape="rect" id="Node000005" href="$class_renderer.html" title="Service responsible for rendering game objects to the screen." alt="" coords="410,79,491,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="360,35,432,76,429,81,357,40"/>
+<area shape="rect" id="Node000006" href="$class_rendering_service.html" title="Service responsible for rendering game objects to the window. This service functions as a manager for..." alt="" coords="516,79,652,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="382,32,543,76,542,81,380,37"/>
 </map>

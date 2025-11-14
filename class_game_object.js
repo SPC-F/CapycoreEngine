@@ -16,7 +16,7 @@ var class_game_object =
     [ "name", "class_game_object.html#a0dbc751921e81aee5b113524400922a4", null ],
     [ "name", "class_game_object.html#a72fb34f46d0a462cc277454b7b1324bc", null ],
     [ "parent", "class_game_object.html#a8d38c7b8d740577e21589fe396dccdcb", null ],
-    [ "parent", "class_game_object.html#abdcc725bb9b0e25dca6c019a864adc05", null ],
+    [ "parent", "class_game_object.html#acd98b680d1b17b20b75dd37b3cfef4ee", null ],
     [ "remove_child", "class_game_object.html#a0f2f5be33d65a8270d319679270f407d", null ],
     [ "remove_component", "class_game_object.html#a145a87b82daf92c17e8ae6f1417f56b8", null ],
     [ "scene", "class_game_object.html#a2289c71a95125871640a379f9afb7a3d", null ],

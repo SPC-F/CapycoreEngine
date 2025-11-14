@@ -164,7 +164,7 @@ $(document).ready(function(){initNavTree('game_object_8h_source.html',''); initR
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="class_game_object.html#a224d4f6d9dd75c8a6f9d022eaf586fd9">   29</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_game_object.html#a224d4f6d9dd75c8a6f9d022eaf586fd9">~GameObject</a>();</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="class_game_object.html#a8d38c7b8d740577e21589fe396dccdcb">   31</a></span>    <a class="code hl_class" href="class_game_object.html">GameObject</a>&amp; <a class="code hl_function" href="class_game_object.html#a8d38c7b8d740577e21589fe396dccdcb">parent</a>(<a class="code hl_class" href="class_game_object.html">GameObject</a>&amp; <a class="code hl_function" href="class_game_object.html#a8d38c7b8d740577e21589fe396dccdcb">parent</a>);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="class_game_object.html#abdcc725bb9b0e25dca6c019a864adc05">   32</a></span>    <a class="code hl_class" href="class_game_object.html">GameObject</a>&amp; <a class="code hl_function" href="class_game_object.html#abdcc725bb9b0e25dca6c019a864adc05">parent</a>(std::nullopt_t nullopt);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="class_game_object.html#acd98b680d1b17b20b75dd37b3cfef4ee">   32</a></span>    <a class="code hl_class" href="class_game_object.html">GameObject</a>&amp; <a class="code hl_function" href="class_game_object.html#acd98b680d1b17b20b75dd37b3cfef4ee">parent</a>(std::nullopt_t null_opt);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="class_game_object.html#a3ba32ed8f5e202a537cad8a4f0fd7d2d">   34</a></span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game_object.html#a3ba32ed8f5e202a537cad8a4f0fd7d2d">is_active_in_world</a>() const noexcept;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="class_game_object.html#a56047ef342a5a2b87938a2982346e2d0">   35</a></span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game_object.html#a56047ef342a5a2b87938a2982346e2d0">is_active</a>() const noexcept;</div>
@@ -188,84 +188,86 @@ $(document).ready(function(){initNavTree('game_object_8h_source.html',''); initR
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="class_game_object.html#a2289c71a95125871640a379f9afb7a3d">   54</a></span>    [[nodiscard]] const <a class="code hl_class" href="class_scene.html">Scene</a>&amp; <a class="code hl_function" href="class_game_object.html#a2289c71a95125871640a379f9afb7a3d">scene</a>() const noexcept;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="class_game_object.html#a48374de753f04fdf2327aa035570bb11">   56</a></span>    std::vector&lt;std::reference_wrapper&lt;<a class="code hl_class" href="class_game_object.html">GameObject</a>&gt;&gt;&amp; <a class="code hl_function" href="class_game_object.html#a48374de753f04fdf2327aa035570bb11">children</a>();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="class_game_object.html#a48374de753f04fdf2327aa035570bb11">   56</a></span>    [[nodiscard]] std::vector&lt;std::reference_wrapper&lt;<a class="code hl_class" href="class_game_object.html">GameObject</a>&gt;&gt;&amp; <a class="code hl_function" href="class_game_object.html#a48374de753f04fdf2327aa035570bb11">children</a>();</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="class_game_object.html#a578a85d302051c29389c4a17babe8254">   57</a></span>    <a class="code hl_class" href="class_game_object.html">GameObject</a>&amp; <a class="code hl_function" href="class_game_object.html#a578a85d302051c29389c4a17babe8254">add_child</a>(<a class="code hl_class" href="class_game_object.html">GameObject</a>&amp; child);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_game_object.html#a0f2f5be33d65a8270d319679270f407d">   58</a></span>    <a class="code hl_class" href="class_game_object.html">GameObject</a>&amp; <a class="code hl_function" href="class_game_object.html#a0f2f5be33d65a8270d319679270f407d">remove_child</a>(<a class="code hl_class" href="class_game_object.html">GameObject</a>&amp; child);</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    template&lt;<a class="code hl_concept" href="concept_is_component.html">IsComponent</a> T&gt;</div>
-<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">   61</a></span>    std::optional&lt;std::reference_wrapper&lt;T&gt;&gt; <a class="code hl_function" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">get_component</a>() const noexcept {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; component : components_) {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span>* casted = <span class="keyword">dynamic_cast&lt;</span>T*<span class="keyword">&gt;</span>(component.get())) {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                <span class="keywordflow">return</span> std::ref(*casted);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            }</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        }</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    [[nodiscard]]</div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">   62</a></span>    std::optional&lt;std::reference_wrapper&lt;T&gt;&gt; <a class="code hl_function" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">get_component</a>() const noexcept {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; component : components_) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span>* casted = <span class="keyword">dynamic_cast&lt;</span>T*<span class="keyword">&gt;</span>(component.get())) {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                <span class="keywordflow">return</span> std::ref(*casted);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    }</div>
 </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keyword">template</span>&lt;IsComponent T&gt;</div>
-<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="class_game_object.html#aef31e6fca036256ac8eee5cc1b0963c4">   74</a></span>    std::vector&lt;std::reference_wrapper&lt;T&gt;&gt; <a class="code hl_function" href="class_game_object.html#aef31e6fca036256ac8eee5cc1b0963c4">get_components</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keyword">auto</span> filtered = components_</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            | std::views::filter([](<span class="keyword">auto</span>&amp; c) { <span class="keywordflow">return</span> <span class="keyword">dynamic_cast&lt;</span>T*<span class="keyword">&gt;</span>(c.get()); })</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            | std::views::transform([](<span class="keyword">auto</span>&amp; c) -&gt; std::reference_wrapper&lt;T&gt; {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                <span class="keywordflow">return</span> std::ref(*<span class="keyword">static_cast&lt;</span>T*<span class="keyword">&gt;</span>(c.get()));</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            });</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">return</span> std::vector&lt;std::reference_wrapper&lt;T&gt;&gt;(filtered.begin(), filtered.end());</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keyword">template</span>&lt;IsComponent T&gt;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    [[nodiscard]]</div>
+<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="class_game_object.html#aef31e6fca036256ac8eee5cc1b0963c4">   76</a></span>    std::vector&lt;std::reference_wrapper&lt;T&gt;&gt; <a class="code hl_function" href="class_game_object.html#aef31e6fca036256ac8eee5cc1b0963c4">get_components</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keyword">auto</span> filtered = components_</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            | std::views::filter([](<span class="keyword">auto</span>&amp; c) { <span class="keywordflow">return</span> <span class="keyword">dynamic_cast&lt;</span>T*<span class="keyword">&gt;</span>(c.get()); })</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            | std::views::transform([](<span class="keyword">auto</span>&amp; c) -&gt; std::reference_wrapper&lt;T&gt; {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                <span class="keywordflow">return</span> std::ref(*<span class="keyword">static_cast&lt;</span>T*<span class="keyword">&gt;</span>(c.get()));</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            });</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">return</span> std::vector&lt;std::reference_wrapper&lt;T&gt;&gt;(filtered.begin(), filtered.end());</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
 </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keyword">template</span>&lt;IsComponent T&gt;</div>
-<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="class_game_object.html#aa58c30b6156e37604a5e318b728a22e5">   85</a></span>    std::vector&lt;std::reference_wrapper&lt;T&gt;&gt; <a class="code hl_function" href="class_game_object.html#aa58c30b6156e37604a5e318b728a22e5">get_components_from_children</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        std::vector&lt;std::reference_wrapper&lt;T&gt;&gt; result {};</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; child : children_) {</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="keyword">auto</span> child_components = child.get().get_components_from_children&lt;T&gt;();</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            result.insert(result.end(), child_components.begin(), child_components.end());</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        }</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">template</span>&lt;IsComponent T&gt;</div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="class_game_object.html#aa58c30b6156e37604a5e318b728a22e5">   87</a></span>    std::vector&lt;std::reference_wrapper&lt;T&gt;&gt; <a class="code hl_function" href="class_game_object.html#aa58c30b6156e37604a5e318b728a22e5">get_components_from_children</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        std::vector&lt;std::reference_wrapper&lt;T&gt;&gt; result {};</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; child : children_) {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="keyword">auto</span> child_components = child.get().get_components_from_children&lt;T&gt;();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            result.insert(result.end(), child_components.begin(), child_components.end());</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    }</div>
 </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">template</span>&lt;<a class="code hl_concept" href="concept_is_component.html">IsComponent</a> T, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="class_game_object.html#a722d01ebba40763eed4eb9243d8715e3">   97</a></span>    T&amp; <a class="code hl_function" href="class_game_object.html#a722d01ebba40763eed4eb9243d8715e3">add_component</a>(Args&amp;&amp;... args) {</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keyword">auto</span> component = std::make_unique&lt;T&gt;(std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        T&amp; ref = *component;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        components_.emplace_back(std::move(component));</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordflow">return</span> ref;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keyword">template</span>&lt;<a class="code hl_concept" href="concept_is_component.html">IsComponent</a> T, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="class_game_object.html#a722d01ebba40763eed4eb9243d8715e3">   99</a></span>    T&amp; <a class="code hl_function" href="class_game_object.html#a722d01ebba40763eed4eb9243d8715e3">add_component</a>(Args&amp;&amp;... args) {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keyword">auto</span> component = std::make_unique&lt;T&gt;(std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        T&amp; ref = *component;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        components_.emplace_back(std::move(component));</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">return</span> ref;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    }</div>
 </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keyword">template</span>&lt;IsComponent T&gt;</div>
-<div class="foldopen" id="foldopen00105" data-start="{" data-end="}">
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="class_game_object.html#a145a87b82daf92c17e8ae6f1417f56b8">  105</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_object.html#a145a87b82daf92c17e8ae6f1417f56b8">remove_component</a>(T&amp; component) {</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        components_.erase(</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            std::remove_if(</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                components_.begin(),</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                components_.end(),</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                [&amp;component](<span class="keyword">const</span> std::unique_ptr&lt;Component&gt;&amp; c) {</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                    return c.get() == &amp;component;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                }</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            ),</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            components_.end()</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        );</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    }</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keyword">template</span>&lt;IsComponent T&gt;</div>
+<div class="foldopen" id="foldopen00107" data-start="{" data-end="}">
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="class_game_object.html#a145a87b82daf92c17e8ae6f1417f56b8">  107</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_object.html#a145a87b82daf92c17e8ae6f1417f56b8">remove_component</a>(T&amp; component) {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        components_.erase(</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            std::remove_if(</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                components_.begin(),</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                components_.end(),</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                [&amp;component](<span class="keyword">const</span> std::unique_ptr&lt;Component&gt;&amp; c) {</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                    return c.get() == &amp;component;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            ),</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            components_.end()</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        );</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    }</div>
 </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="class_game_object.html#ab68354244559c1d941c79aa58429e002">  118</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_object.html#ab68354244559c1d941c79aa58429e002">serialize</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="class_game_object.html#abe51776495ad4bd011802c7a74dd8927">  119</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_object.html#abe51776495ad4bd011802c7a74dd8927">deserialize</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>};</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="class_game_object.html#ab68354244559c1d941c79aa58429e002">  120</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_object.html#ab68354244559c1d941c79aa58429e002">serialize</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="class_game_object.html#abe51776495ad4bd011802c7a74dd8927">  121</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_object.html#abe51776495ad4bd011802c7a74dd8927">deserialize</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>};</div>
 </div>
 <div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdef"><b>Definition</b> gameObject.h:12</div></div>
 <div class="ttc" id="aclass_game_object_html_a0dbc751921e81aee5b113524400922a4"><div class="ttname"><a href="class_game_object.html#a0dbc751921e81aee5b113524400922a4">GameObject::name</a></div><div class="ttdeci">const std::string &amp; name() const</div></div>
 <div class="ttc" id="aclass_game_object_html_a0ed7c62875e7dd6c83fb1c78f4ba373f"><div class="ttname"><a href="class_game_object.html#a0ed7c62875e7dd6c83fb1c78f4ba373f">GameObject::transform</a></div><div class="ttdeci">Transform &amp; transform()</div></div>
 <div class="ttc" id="aclass_game_object_html_a0f2f5be33d65a8270d319679270f407d"><div class="ttname"><a href="class_game_object.html#a0f2f5be33d65a8270d319679270f407d">GameObject::remove_child</a></div><div class="ttdeci">GameObject &amp; remove_child(GameObject &amp;child)</div></div>
-<div class="ttc" id="aclass_game_object_html_a145a87b82daf92c17e8ae6f1417f56b8"><div class="ttname"><a href="class_game_object.html#a145a87b82daf92c17e8ae6f1417f56b8">GameObject::remove_component</a></div><div class="ttdeci">void remove_component(T &amp;component)</div><div class="ttdef"><b>Definition</b> gameObject.h:105</div></div>
+<div class="ttc" id="aclass_game_object_html_a145a87b82daf92c17e8ae6f1417f56b8"><div class="ttname"><a href="class_game_object.html#a145a87b82daf92c17e8ae6f1417f56b8">GameObject::remove_component</a></div><div class="ttdeci">void remove_component(T &amp;component)</div><div class="ttdef"><b>Definition</b> gameObject.h:107</div></div>
 <div class="ttc" id="aclass_game_object_html_a224d4f6d9dd75c8a6f9d022eaf586fd9"><div class="ttname"><a href="class_game_object.html#a224d4f6d9dd75c8a6f9d022eaf586fd9">GameObject::~GameObject</a></div><div class="ttdeci">virtual ~GameObject()</div></div>
 <div class="ttc" id="aclass_game_object_html_a2289c71a95125871640a379f9afb7a3d"><div class="ttname"><a href="class_game_object.html#a2289c71a95125871640a379f9afb7a3d">GameObject::scene</a></div><div class="ttdeci">const Scene &amp; scene() const noexcept</div></div>
 <div class="ttc" id="aclass_game_object_html_a2b0aeee100e2ec643c5d468c5a658a12"><div class="ttname"><a href="class_game_object.html#a2b0aeee100e2ec643c5d468c5a658a12">GameObject::set_inactive</a></div><div class="ttdeci">void set_inactive() noexcept</div></div>
@@ -275,18 +277,18 @@ $(document).ready(function(){initNavTree('game_object_8h_source.html',''); initR
 <div class="ttc" id="aclass_game_object_html_a56047ef342a5a2b87938a2982346e2d0"><div class="ttname"><a href="class_game_object.html#a56047ef342a5a2b87938a2982346e2d0">GameObject::is_active</a></div><div class="ttdeci">bool is_active() const noexcept</div></div>
 <div class="ttc" id="aclass_game_object_html_a578a85d302051c29389c4a17babe8254"><div class="ttname"><a href="class_game_object.html#a578a85d302051c29389c4a17babe8254">GameObject::add_child</a></div><div class="ttdeci">GameObject &amp; add_child(GameObject &amp;child)</div></div>
 <div class="ttc" id="aclass_game_object_html_a6a7270b73a9b7563955de841b52cf01a"><div class="ttname"><a href="class_game_object.html#a6a7270b73a9b7563955de841b52cf01a">GameObject::set_active_in_world</a></div><div class="ttdeci">void set_active_in_world() noexcept</div></div>
-<div class="ttc" id="aclass_game_object_html_a722d01ebba40763eed4eb9243d8715e3"><div class="ttname"><a href="class_game_object.html#a722d01ebba40763eed4eb9243d8715e3">GameObject::add_component</a></div><div class="ttdeci">T &amp; add_component(Args &amp;&amp;... args)</div><div class="ttdef"><b>Definition</b> gameObject.h:97</div></div>
+<div class="ttc" id="aclass_game_object_html_a722d01ebba40763eed4eb9243d8715e3"><div class="ttname"><a href="class_game_object.html#a722d01ebba40763eed4eb9243d8715e3">GameObject::add_component</a></div><div class="ttdeci">T &amp; add_component(Args &amp;&amp;... args)</div><div class="ttdef"><b>Definition</b> gameObject.h:99</div></div>
 <div class="ttc" id="aclass_game_object_html_a88c1407381108c349d1ebaf38d02c1e7"><div class="ttname"><a href="class_game_object.html#a88c1407381108c349d1ebaf38d02c1e7">GameObject::set_inactive_in_world</a></div><div class="ttdeci">void set_inactive_in_world() noexcept</div></div>
 <div class="ttc" id="aclass_game_object_html_a8d38c7b8d740577e21589fe396dccdcb"><div class="ttname"><a href="class_game_object.html#a8d38c7b8d740577e21589fe396dccdcb">GameObject::parent</a></div><div class="ttdeci">GameObject &amp; parent(GameObject &amp;parent)</div></div>
-<div class="ttc" id="aclass_game_object_html_aa58c30b6156e37604a5e318b728a22e5"><div class="ttname"><a href="class_game_object.html#aa58c30b6156e37604a5e318b728a22e5">GameObject::get_components_from_children</a></div><div class="ttdeci">std::vector&lt; std::reference_wrapper&lt; T &gt; &gt; get_components_from_children() const</div><div class="ttdef"><b>Definition</b> gameObject.h:85</div></div>
+<div class="ttc" id="aclass_game_object_html_aa58c30b6156e37604a5e318b728a22e5"><div class="ttname"><a href="class_game_object.html#aa58c30b6156e37604a5e318b728a22e5">GameObject::get_components_from_children</a></div><div class="ttdeci">std::vector&lt; std::reference_wrapper&lt; T &gt; &gt; get_components_from_children() const</div><div class="ttdef"><b>Definition</b> gameObject.h:87</div></div>
 <div class="ttc" id="aclass_game_object_html_ab2c6683579548906dc8432bbd823fd76"><div class="ttname"><a href="class_game_object.html#ab2c6683579548906dc8432bbd823fd76">GameObject::GameObject</a></div><div class="ttdeci">GameObject(Scene &amp;scene)</div></div>
 <div class="ttc" id="aclass_game_object_html_ab68354244559c1d941c79aa58429e002"><div class="ttname"><a href="class_game_object.html#ab68354244559c1d941c79aa58429e002">GameObject::serialize</a></div><div class="ttdeci">void serialize() const</div></div>
 <div class="ttc" id="aclass_game_object_html_ab8b2152385ce0474103245a680aa864b"><div class="ttname"><a href="class_game_object.html#ab8b2152385ce0474103245a680aa864b">GameObject::layer</a></div><div class="ttdeci">int layer() const</div></div>
 <div class="ttc" id="aclass_game_object_html_aba89ba2fc29fc6f518da20035719c402"><div class="ttname"><a href="class_game_object.html#aba89ba2fc29fc6f518da20035719c402">GameObject::set_active</a></div><div class="ttdeci">void set_active() noexcept</div></div>
-<div class="ttc" id="aclass_game_object_html_abdcc725bb9b0e25dca6c019a864adc05"><div class="ttname"><a href="class_game_object.html#abdcc725bb9b0e25dca6c019a864adc05">GameObject::parent</a></div><div class="ttdeci">GameObject &amp; parent(std::nullopt_t nullopt)</div></div>
 <div class="ttc" id="aclass_game_object_html_abe51776495ad4bd011802c7a74dd8927"><div class="ttname"><a href="class_game_object.html#abe51776495ad4bd011802c7a74dd8927">GameObject::deserialize</a></div><div class="ttdeci">void deserialize() const</div></div>
-<div class="ttc" id="aclass_game_object_html_ad2dd34468bb631e7fb291fec0f2d39fc"><div class="ttname"><a href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">GameObject::get_component</a></div><div class="ttdeci">std::optional&lt; std::reference_wrapper&lt; T &gt; &gt; get_component() const noexcept</div><div class="ttdef"><b>Definition</b> gameObject.h:61</div></div>
-<div class="ttc" id="aclass_game_object_html_aef31e6fca036256ac8eee5cc1b0963c4"><div class="ttname"><a href="class_game_object.html#aef31e6fca036256ac8eee5cc1b0963c4">GameObject::get_components</a></div><div class="ttdeci">std::vector&lt; std::reference_wrapper&lt; T &gt; &gt; get_components() const</div><div class="ttdef"><b>Definition</b> gameObject.h:74</div></div>
+<div class="ttc" id="aclass_game_object_html_acd98b680d1b17b20b75dd37b3cfef4ee"><div class="ttname"><a href="class_game_object.html#acd98b680d1b17b20b75dd37b3cfef4ee">GameObject::parent</a></div><div class="ttdeci">GameObject &amp; parent(std::nullopt_t null_opt)</div></div>
+<div class="ttc" id="aclass_game_object_html_ad2dd34468bb631e7fb291fec0f2d39fc"><div class="ttname"><a href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">GameObject::get_component</a></div><div class="ttdeci">std::optional&lt; std::reference_wrapper&lt; T &gt; &gt; get_component() const noexcept</div><div class="ttdef"><b>Definition</b> gameObject.h:62</div></div>
+<div class="ttc" id="aclass_game_object_html_aef31e6fca036256ac8eee5cc1b0963c4"><div class="ttname"><a href="class_game_object.html#aef31e6fca036256ac8eee5cc1b0963c4">GameObject::get_components</a></div><div class="ttdeci">std::vector&lt; std::reference_wrapper&lt; T &gt; &gt; get_components() const</div><div class="ttdef"><b>Definition</b> gameObject.h:76</div></div>
 <div class="ttc" id="aclass_scene_html"><div class="ttname"><a href="class_scene.html">Scene</a></div><div class="ttdef"><b>Definition</b> scene.h:3</div></div>
 <div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdef"><b>Definition</b> transform.h:7</div></div>
 <div class="ttc" id="acomponent_8h_html"><div class="ttname"><a href="component_8h.html">component.h</a></div></div>

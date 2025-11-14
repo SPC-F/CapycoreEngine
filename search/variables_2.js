@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['enable_5fcontact_5fevents_0',['enable_contact_events',['../struct_physics_creation_flags.html#acb6b1acfeb240a1e6c4216042daeb948',1,'PhysicsCreationFlags']]]
+  ['category_0',['category',['../struct_physics_creation_flags.html#a9c19f0924389c01175ea5936a0f092f8',1,'PhysicsCreationFlags']]]
 ];

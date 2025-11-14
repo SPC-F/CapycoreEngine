@@ -1,11 +1,17 @@
 var hierarchy =
 [
-    [ "Component", "class_component.html", null ],
+    [ "Color", "class_color.html", null ],
+    [ "Component", "class_component.html", [
+      [ "Sprite", "class_sprite.html", null ]
+    ] ],
     [ "Engine", "class_engine.html", null ],
     [ "GameObject", "class_game_object.html", null ],
     [ "IEngineService", "class_i_engine_service.html", [
+      [ "AssetService", "class_asset_service.html", null ],
       [ "AudioService", "class_audio_service.html", null ],
-      [ "PhysicsService", "class_physics_service.html", null ]
+      [ "PhysicsService", "class_physics_service.html", null ],
+      [ "Renderer", "class_renderer.html", null ],
+      [ "RenderingService", "class_rendering_service.html", null ]
     ] ],
     [ "PhysicsCreationFactory", "class_physics_creation_factory.html", null ],
     [ "PhysicsCreationFlags", "struct_physics_creation_flags.html", null ],
@@ -22,6 +28,8 @@ var hierarchy =
     [ "SoundResource", "class_sound_resource.html", [
       [ "SDLSoundResource", "class_s_d_l_sound_resource.html", null ]
     ] ],
+    [ "Texture", "class_texture.html", null ],
     [ "Transform", "class_transform.html", null ],
-    [ "Vector3", "class_vector3.html", null ]
+    [ "Vector3", "class_vector3.html", null ],
+    [ "Window", "class_window.html", null ]
 ];
