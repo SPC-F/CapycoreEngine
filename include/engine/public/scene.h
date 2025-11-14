@@ -9,7 +9,7 @@ class Scene {
 private:
     const std::string& name_;
     bool is_running_;
-    float time_modifier_;
+    float time_scale_;
     std::vector<std::unique_ptr<GameObject>> game_objects_;
 
     void game_loop();
@@ -23,8 +23,8 @@ public:
     void run();
     void stop();
 
-    Scene& time_modifier(float modifier);
-    [[nodiscard]] float time_modifier() const;
+    Scene& time_scale(float modifier);
+    [[nodiscard]] float time_scale() const;
 
     [[nodiscard]] const std::string& name() const;
     [[nodiscard]] bool is_running() const;

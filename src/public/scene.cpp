@@ -2,7 +2,7 @@
 #include <SDL3/SDL.h>
 
 Scene::Scene(const std::string& name)
-    : is_running_(false), time_modifier_(1.0f), game_objects_ {}, name_{name} {
+    : is_running_(false), time_scale_(1.0f), game_objects_ {}, name_{name} {
 }
 
 Scene::~Scene() {
@@ -20,14 +20,13 @@ void Scene::destroy() {
 void Scene::game_loop() {
     float accumulator = 0.0f;
     const float fixed_step = 1.0f / 60.0f; // ~60 fps
-    float speed = 1.0f;
 
     Uint64 last = SDL_GetPerformanceCounter();
     float freq = static_cast<float>(SDL_GetPerformanceFrequency());
 
     while (true) {
         Uint64 now = SDL_GetPerformanceCounter();
-        float frame_dt = static_cast<float>(now - last) / freq * speed;
+        float frame_dt = static_cast<float>(now - last) / freq * time_scale_;
         last = now;
 
         accumulator += frame_dt;
@@ -51,12 +50,12 @@ void Scene::stop() {
     is_running_ = false;
 }
 
-Scene& Scene::time_modifier(float modifier) {
-    time_modifier_ = modifier;
+Scene& Scene::time_scale(float modifier) {
+    time_scale_ = modifier;
     return *this;
 }
-float Scene::time_modifier() const {
-    return time_modifier_;
+float Scene::time_scale() const {
+    return time_scale_;
 }
 
 const std::string& Scene::name() const {
