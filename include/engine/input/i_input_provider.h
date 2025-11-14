@@ -66,20 +66,6 @@ public:
      */
     [[nodiscard]] virtual bool any_key_released() const = 0;
 
-    /**
-     * @brief Returns the time (in seconds) that a key has been held down.
-     *
-     * Useful for charging mechanics, input timing, or long-press detection.
-     */
-    [[nodiscard]] virtual float key_hold_duration(KeyCode key) const = 0;
-
-    /**
-     * @brief Returns the last key pressed since the last update.
-     *
-     * Commonly used in keybinding configuration menus.
-     */
-    [[nodiscard]] virtual std::optional<KeyCode> last_key_pressed() const = 0;
-
     /** @brief Returns whether the specified mouse button is currently held down.
      *
      * Suitable for continuous input such as aiming or dragging.
@@ -115,18 +101,6 @@ public:
      * Helps detect end of drag or click-release events.
      */
     [[nodiscard]] virtual bool any_mouse_released() const = 0;
-
-    /** @brief Returns the time (in milliseconds) that a mouse button has been held down.
-     *
-     * Enables charge actions, long-click detection, or drag timing.
-     */
-    [[nodiscard]] virtual size_t mouse_hold_duration(MouseButton button) const = 0;
-
-    /** @brief Returns the last mouse button pressed since the last update.
-     *
-     * Useful for input remapping or UI debugging.
-     */
-    [[nodiscard]] virtual std::optional<MouseButton> last_mouse_pressed() const = 0;
 
     /**
      * @brief Returns the current mouse cursor position (X, Y) in window coordinates.
