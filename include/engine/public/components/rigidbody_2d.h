@@ -1,7 +1,7 @@
 #pragma once
 
+#include <engine/physics/creation/physics_creation_factory.h>
 #include <engine/public/component.h>
-#include <engine/physics/physics_creation_factory.h>
 
 /**
  * @brief A 2D rigidbody component that adds physics properties to a GameObject.
@@ -12,12 +12,14 @@
 class Rigidbody2D : public Component
 {
 public:
-    Rigidbody2D();
+    Rigidbody2D(BodyType2D::Type type = BodyType2D::Dynamic, 
+                float mass = 1.0f,
+                bool use_gravity = true,
+                float gravity_scale_x = 1.0f,
+                float gravity_scale_y = 1.0f);
     ~Rigidbody2D() override;
 
     void update() override;
-    void on_attach() override;
-    void on_detach() override;
     void on_serialize() override;
     void on_deserialize() override;
 
@@ -41,9 +43,12 @@ public:
     float gravity_scale_y() const noexcept;
     Rigidbody2D& gravity_scale_y(float value) noexcept;
 
+    [[nodiscard]]
+    Body2D body() const noexcept;
+
 private:
     Body2D body_ {};
-    BodyType2D::Type type_ {BodyType2D::Dynamic};
+    BodyType2D::Type type_;
     float mass_ {1.0f};
     
     bool use_gravity_ {true};

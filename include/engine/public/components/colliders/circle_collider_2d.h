@@ -1,0 +1,35 @@
+#pragma once
+
+#include <engine/public/components/colliders/collider_2d.h>
+
+constexpr float default_circle_collider_radius = 0.5f;
+
+/**
+ * @brief A 2D circle collider component that defines a circular collision shape for a GameObject.
+ * 
+ * This component extends the Collider2D class to provide a circle-shaped collider,
+ * enabling circular collision detection and response within the physics engine.
+ */
+class CircleCollider2D : public Collider2D
+{
+public:
+    CircleCollider2D(
+        float friction, 
+        float bounciness, 
+        float mass,
+        float radius = default_circle_collider_radius
+    );
+    ~CircleCollider2D() override = default;
+
+    void update() override;
+
+    void on_serialize() override;
+    void on_deserialize() override;
+
+    [[nodiscard]]
+    float radius() const noexcept;
+    CircleCollider2D& radius(float value) noexcept;
+
+private:
+    float radius_;
+};

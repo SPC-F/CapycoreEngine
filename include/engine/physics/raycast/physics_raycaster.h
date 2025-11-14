@@ -4,6 +4,10 @@
 #include <memory>
 #include <vector>
 
+#include <engine/public/util/point.h>
+#include <engine/physics/raycast/collider_ray_result.h>
+
+
 /**
  * @brief Class responsible for raycasting in the physics world.
  * 
@@ -21,9 +25,9 @@ public:
      * 
      * @param origin The starting point of the ray.
      * @param translation The direction and length of the ray.
-     * @return b2RayResult The result of the closest hit.
+     * @return ColliderRayResult The result of the closest hit.
      */
-    b2RayResult raycast_closest(const b2Vec2& origin, const b2Vec2& translation);
+    ColliderRayResult raycast_closest(const b2Vec2& origin, const b2Vec2& translation);
 
    /**
     * @brief All hits
@@ -33,9 +37,9 @@ public:
     * @param origin The starting point of the ray.
     * @param translation The direction and length of the ray.
     * @param filter The query filter to apply.
-    * @return std::vector<b2RayResult> A vector of all raycast results.
+    * @return std::vector<ColliderRayResult> A vector of all raycast results.
     */
-    std::vector<b2RayResult> raycast_all(const b2Vec2& origin, const b2Vec2& translation, b2QueryFilter filter = {});
+    std::vector<ColliderRayResult> raycast_all(const b2Vec2& origin, const b2Vec2& translation, b2QueryFilter filter = {});
 
     /**
      * @brief Filtered hits by category mask
@@ -45,9 +49,9 @@ public:
      * @param origin The starting point of the ray.
      * @param translation The direction and length of the ray.
      * @param category_mask The category mask to filter results.
-     * @return std::vector<b2RayResult> A vector of filtered raycast results
+     * @return std::vector<ColliderRayResult> A vector of filtered raycast results
      */
-    std::vector<b2RayResult> raycast_filtered(const b2Vec2& origin, const b2Vec2& translation, uint16_t category_mask);
+    std::vector<ColliderRayResult> raycast_filtered(const b2Vec2& origin, const b2Vec2& translation, uint16_t category_mask);
 
     /**
      * @brief Raycast segment
@@ -56,9 +60,9 @@ public:
      * 
      * @param start The starting point of the segment.
      * @param end The ending point of the segment.
-     * @return b2RayResult The result of the segment raycast.
+     * @return ColliderRayResult The result of the segment raycast.
      */
-    b2RayResult raycast_segment(const b2Vec2& start, const b2Vec2& end);
+    ColliderRayResult raycast_segment(const b2Vec2& start, const b2Vec2& end);
 
 private:
     b2WorldId world_id_;

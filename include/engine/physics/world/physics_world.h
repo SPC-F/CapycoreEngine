@@ -3,6 +3,13 @@
 #include <box2d/box2d.h>
 #include <memory>
 
+#include <engine/physics/creation/physics_creation_factory.h>
+#include <engine/physics/world/body_2d.h>
+#include <engine/physics/world/body_2d_transform.h>
+#include <engine/physics/world/collider_distance.h>
+#include <engine/public/util/vector3.h>
+#include <engine/public/util/point.h>
+
 constexpr int32_t default_velocity_iterations = 6;
 constexpr float default_gravity_x = 0.0f;
 constexpr float default_gravity_y = -30.0f;
@@ -43,7 +50,38 @@ public:
      * for the current state of the physics world. Its based on
      * Box2D's internal collision handling and objects
      */
-    void check_collision();
+    void check_collision(const std::vector<std::reference_wrapper<GameObject>>& objects);
+
+    /**
+     * @brief Get the body transform
+     * 
+     * @param body The body to get the transform for.
+     * @return Body2DTransform The transform of the body.
+     */
+    [[nodiscard]]
+    static Body2DTransform get_body_transform(const Body2D& body);
+    static void set_body_transform(const Body2DTransform& transform);
+
+    /**
+     * @brief Calculate the distance between two bodies
+     * 
+     * @param a The first body's transform.
+     * @param b The second body's transform.
+     * @return ColliderDistance The distance information between the two bodies.
+     */
+    static ColliderDistance distance(const Body2DTransform& a, const Body2DTransform& b);
+
+    /**
+     * @brief Calculate the distance between two bodies using their fixtures
+     * 
+     * Fixture means the actual shapes attached to the bodies. So for instance a 
+     * box body with multiple box fixtures will calculate the distance based on the closest fixture.
+     * 
+     * @param a The first body's transform.
+     * @param b The second body's transform.
+     * @return ColliderDistance The distance information between the two bodies' fixtures.
+     */
+    static ColliderDistance fixture_distance(const Body2DTransform& a, const Body2DTransform& b);
 
     [[nodiscard]]
     b2WorldId world_id() const noexcept;

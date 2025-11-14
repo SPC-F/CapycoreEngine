@@ -4,10 +4,10 @@
 #include <memory>
 
 #include <engine/core/iEngineService.h>
-#include <engine/physics/physics_world.h>
-#include <engine/physics/physics_raycaster.h>
-#include <engine/physics/physics_creation_factory.h>
+#include <engine/physics/creation/physics_creation_factory.h>
+#include <engine/physics/raycast/physics_raycaster.h>
 #include <engine/physics/physics_math.h>
+#include <engine/physics/world/physics_world.h>
 
 /**
  * @brief Service responsible for managing the physics world.
@@ -28,7 +28,7 @@ public:
      * 
      * @param dt The (deltatime) time step duration for the physics update.
      */
-    void update(float dt);
+    void update(float dt, const std::vector<std::reference_wrapper<GameObject>>& objects);
 
     /** 
      * @brief Accessor for the physics world instance.

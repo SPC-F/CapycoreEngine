@@ -1,11 +1,11 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include <engine/physics/physics_creation_factory.h>
+#include <engine/physics/creation/physics_creation_factory.h>
 #include <engine/physics/physics_math.h>
-#include <engine/physics/physics_raycaster.h>
-#include <engine/physics/physics_world.h>
+#include <engine/physics/raycast/physics_raycaster.h>
+#include <engine/physics/raycast/collider_ray_result.h>
+#include <engine/physics/world/physics_world.h>
 
-#include <engine/public/util/point.h>
 #include <engine/public/component.h>
 #include <engine/public/gameObject.h>
 
@@ -21,7 +21,7 @@ TEST_CASE("physics_raycaster_closest_returns_valid_result", "[PhysicsRaycaster]"
     flags.sensor = false;
     flags.is_bullet = false;
 
-    b2BodyId box = factory.create_body({0.0f, 5.0f}, b2BodyType::b2_staticBody, nullptr);
+    Body2D box = factory.create_body({0.0f, 5.0f, 0.0f}, BodyType2D::Static, nullptr);
     box = factory.create_box_fixture(box, 2.0f, 2.0f, flags);
 
     b2Vec2 origin{0.0f, 0.0f};
@@ -29,10 +29,10 @@ TEST_CASE("physics_raycaster_closest_returns_valid_result", "[PhysicsRaycaster]"
 
     // act
     world.step(1.0f / 60.0f);
-    b2RayResult result = raycaster.raycast_closest(origin, translation);
+    ColliderRayResult result = raycaster.raycast_closest(origin, translation);
 
     // assert
-    REQUIRE(b2Shape_IsValid(result.shapeId));
+    REQUIRE(b2Shape_IsValid(result.shape_id));
     REQUIRE(result.fraction >= 0.0f);
     REQUIRE(result.fraction <= 1.0f);
 }
@@ -49,10 +49,10 @@ TEST_CASE("physics_raycaster_all_returns_sorted_results", "[PhysicsRaycaster]") 
     flags.sensor = false;
     flags.is_bullet = false;
 
-    b2BodyId box1 = factory.create_body({0.0f, 3.0f}, b2BodyType::b2_staticBody, nullptr);
+    Body2D box1 = factory.create_body({0.0f, 3.0f, 0.0f}, BodyType2D::Static, nullptr);
     box1 = factory.create_box_fixture(box1, 2.0f, 2.0f, flags);
 
-    b2BodyId box2 = factory.create_body({0.0f, 6.0f}, b2BodyType::b2_staticBody, nullptr);
+    Body2D box2 = factory.create_body({0.0f, 6.0f, 0.0f}, BodyType2D::Static, nullptr);
     box2 = factory.create_box_fixture(box2, 2.0f, 2.0f, flags);
 
     b2Vec2 origin{0.0f, 0.0f};
@@ -69,7 +69,7 @@ TEST_CASE("physics_raycaster_all_returns_sorted_results", "[PhysicsRaycaster]") 
     // assert
     REQUIRE(results.size() >= 2);
     REQUIRE(std::is_sorted(results.begin(), results.end(),
-                           [](const b2RayResult& a, const b2RayResult& b) {
+                           [](const ColliderRayResult& a, const ColliderRayResult& b) {
                                return a.fraction < b.fraction;
                            }));
 }
@@ -85,9 +85,9 @@ TEST_CASE("physics_raycaster_filtered_respects_category_mask", "[PhysicsRaycaste
     flags.category = 0x0002; // assign category 2
     flags.mask = 0xFFFF;     // collides with all
 
-    b2BodyId box1 = factory.create_body({0.0f, 3.0f}, b2BodyType::b2_staticBody, nullptr);
+    Body2D box1 = factory.create_body({0.0f, 3.0f, 0.0f}, BodyType2D::Static, nullptr);
     box1 = factory.create_box_fixture(box1, 2.0f, 2.0f, flags);
-    b2BodyId box2 = factory.create_body({0.0f, 6.0f}, b2BodyType::b2_staticBody, nullptr);
+    Body2D box2 = factory.create_body({0.0f, 6.0f, 0.0f}, BodyType2D::Static, nullptr);
     box2 = factory.create_box_fixture(box2, 2.0f, 2.0f, flags);
 
     world.step(1.0f / 60.0f);
@@ -98,7 +98,7 @@ TEST_CASE("physics_raycaster_filtered_respects_category_mask", "[PhysicsRaycaste
     REQUIRE(results_matching.size() >= 2);
 
     for (const auto& r : results_matching) {
-        auto filter = b2Shape_GetFilter(r.shapeId);
+        auto filter = b2Shape_GetFilter(r.shape_id);
         REQUIRE((filter.categoryBits & matching_mask) != 0);
     }
 
@@ -118,7 +118,7 @@ TEST_CASE("physics_raycaster_segment_matches_closest", "[PhysicsRaycaster]") {
     PhysicsCreationFlags flags{};
     flags.dynamic = false;
 
-    b2BodyId body = factory.create_body({0.0f, 5.0f}, b2BodyType::b2_staticBody, nullptr);
+    Body2D body = factory.create_body({0.0f, 5.0f, 0.0f}, BodyType2D::Static, nullptr);
     body = factory.create_box_fixture(body, 2.0f, 2.0f, flags);
 
     b2Vec2 start{0.0f, 0.0f};
@@ -129,8 +129,8 @@ TEST_CASE("physics_raycaster_segment_matches_closest", "[PhysicsRaycaster]") {
     auto closest_result = raycaster.raycast_closest(start, end - start);
 
     // assert
-    REQUIRE(segment_result.shapeId.index1 == closest_result.shapeId.index1);
-    REQUIRE(segment_result.shapeId.generation == closest_result.shapeId.generation);
+    REQUIRE(segment_result.shape_id.index1 == closest_result.shape_id.index1);
+    REQUIRE(segment_result.shape_id.generation == closest_result.shape_id.generation);
     REQUIRE(segment_result.fraction == closest_result.fraction);
 }
 
@@ -146,7 +146,7 @@ TEST_CASE("physics_raycaster_miss_returns_invalid", "[PhysicsRaycaster]") {
     auto result = raycaster.raycast_closest(origin, translation);
     
     // assert
-    REQUIRE_FALSE(b2Shape_IsValid(result.shapeId));
+    REQUIRE_FALSE(b2Shape_IsValid(result.shape_id));
 }
 
 TEST_CASE("physics_raycaster_closest_static_behind_dynamic", "[PhysicsRaycaster]") {
@@ -162,10 +162,10 @@ TEST_CASE("physics_raycaster_closest_static_behind_dynamic", "[PhysicsRaycaster]
     dynamic_flags.dynamic = true;
     dynamic_flags.sensor = false;
 
-    b2BodyId static_body = factory.create_body({0.0f, 3.0f}, b2BodyType::b2_staticBody, nullptr);
+    Body2D static_body = factory.create_body({0.0f, 3.0f, 0.0f}, BodyType2D::Static, nullptr);
     static_body = factory.create_box_fixture(static_body, 2.0f, 2.0f, static_flags);
 
-    b2BodyId dynamic_body = factory.create_body({0.0f, 6.0f}, b2BodyType::b2_dynamicBody, nullptr);
+    Body2D dynamic_body = factory.create_body({0.0f, 6.0f, 0.0f}, BodyType2D::Dynamic, nullptr);
     dynamic_body = factory.create_box_fixture(dynamic_body, 2.0f, 2.0f, dynamic_flags);
 
     b2Vec2 origin{0.0f, 0.0f};
@@ -175,7 +175,7 @@ TEST_CASE("physics_raycaster_closest_static_behind_dynamic", "[PhysicsRaycaster]
 
     auto result = raycaster.raycast_closest(origin, translation);
 
-    REQUIRE(b2Shape_IsValid(result.shapeId));
+    REQUIRE(b2Shape_IsValid(result.shape_id));
     REQUIRE(result.fraction >= 0.0f);
     REQUIRE(result.fraction <= 0.5f);
 };
@@ -194,11 +194,11 @@ TEST_CASE("physics_raycaster_misses_static_hits_dynamic", "[PhysicsRaycaster]") 
     dynamic_flags.sensor = false;
 
     // static box off to the side
-    b2BodyId static_body = factory.create_body({5.0f, 5.0f}, b2BodyType::b2_staticBody, nullptr);
+    Body2D static_body = factory.create_body({5.0f, 5.0f, 0.0f}, BodyType2D::Static, nullptr);
     static_body = factory.create_box_fixture(static_body, 2.0f, 2.0f, static_flags);
 
     // dynamic box directly in the path
-    b2BodyId dynamic_body = factory.create_body({0.0f, 5.0f}, b2BodyType::b2_dynamicBody, nullptr);
+    Body2D dynamic_body = factory.create_body({0.0f, 5.0f, 0.0f}, BodyType2D::Dynamic, nullptr);
     dynamic_body = factory.create_box_fixture(dynamic_body, 2.0f, 2.0f, dynamic_flags);
 
     b2Vec2 origin{0.0f, 0.0f};
@@ -208,7 +208,7 @@ TEST_CASE("physics_raycaster_misses_static_hits_dynamic", "[PhysicsRaycaster]") 
 
     auto result = raycaster.raycast_closest(origin, translation);
 
-    REQUIRE(b2Shape_IsValid(result.shapeId));
+    REQUIRE(b2Shape_IsValid(result.shape_id));
     REQUIRE(result.fraction >= 0.3f);
     REQUIRE(result.fraction <= 0.6f);
 };
@@ -223,10 +223,10 @@ TEST_CASE("physics_raycaster_all_multiple_bodies_at_angle", "[PhysicsRaycaster]"
     flags.sensor = false;
 
     // two boxes offset diagonally
-    b2BodyId body1 = factory.create_body({1.0f, 2.0f}, b2BodyType::b2_dynamicBody, nullptr);
+    Body2D body1 = factory.create_body({1.0f, 2.0f, 0.0f}, BodyType2D::Dynamic, nullptr);
     body1 = factory.create_box_fixture(body1, 2.0f, 2.0f, flags);
 
-    b2BodyId body2 = factory.create_body({4.0f, 5.0f}, b2BodyType::b2_dynamicBody, nullptr);
+    Body2D body2 = factory.create_body({4.0f, 5.0f, 0.0f}, BodyType2D::Dynamic, nullptr);
     body2 = factory.create_box_fixture(body2, 2.0f, 2.0f, flags);
 
     b2Vec2 origin{0.0f, 0.0f};

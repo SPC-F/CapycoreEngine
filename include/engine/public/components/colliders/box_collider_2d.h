@@ -1,6 +1,6 @@
 #pragma once
 
-#include <engine/public/components/collider_2d.h>
+#include <engine/public/components/colliders/collider_2d.h>
 
 /**
  * @brief A 2D box collider component that defines a rectangular collision shape for a GameObject.
@@ -10,22 +10,17 @@
  */
 class BoxCollider2D : public Collider2D
 {
-    BoxCollider2D();
-    ~BoxCollider2D() override;
-
-    void on_trigger_enter(Collider2D& other) override;
-    void on_trigger_exit(Collider2D& other) override;
-
-    void on_collision_enter(Collider2D& other) override;
-    void on_collision_exit(Collider2D& other) override;
-
-    ColliderDistance2D distance(Collider2D& other) override;
-    ColliderRayResult2D raycast(const Point& origin, const Point& direction, float max_distance) override;
+public:
+    BoxCollider2D(
+        float friction, 
+        float bounciness, 
+        float mass,
+        float width = 1.0f,
+        float height = 1.0f
+    );
+    ~BoxCollider2D() override = default;
 
     void update() override;
-
-    void on_attach() override;
-    void on_detach() override;
 
     void on_serialize() override;
     void on_deserialize() override;

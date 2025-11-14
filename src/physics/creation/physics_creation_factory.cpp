@@ -1,4 +1,6 @@
-#include <engine/physics/physics_creation_factory.h>
+#include <engine/physics/creation/physics_creation_factory.h>
+
+#include <stdexcept>
 
 /* Very small base mass to avoid zero mass issues */
 constexpr float base_mass = 0.000001f;
@@ -8,9 +10,24 @@ constexpr float default_box_divisor = 2.0f;
 PhysicsCreationFactory::PhysicsCreationFactory(b2WorldId world_id)
     : world_id_(world_id) {}
 
-b2BodyId PhysicsCreationFactory::create_body(Point position, b2BodyType type, Component* component) {
+Body2D PhysicsCreationFactory::create_body(Vector3 position, BodyType2D::Type type, Component* component) 
+{
     b2BodyDef body_def = b2DefaultBodyDef();
-    body_def.type = type;
+
+    switch (type)
+    {
+        case BodyType2D::Static:
+            body_def.type = b2_staticBody;
+            break;
+        case BodyType2D::Kinematic:
+            body_def.type = b2_kinematicBody;
+            break;
+        case BodyType2D::Dynamic:
+        default:
+            body_def.type = b2_dynamicBody;
+            break;
+    }
+
     body_def.position = b2Vec2{position.x, position.y};
     body_def.userData = component;
     
@@ -19,10 +36,15 @@ b2BodyId PhysicsCreationFactory::create_body(Point position, b2BodyType type, Co
         throw std::runtime_error("Failed to create body in Box2D world.");
     }
 
-    return body_id;
+    Body2D body;
+    body.id = body_id;
+    body.shapes = {};
+
+    return body;
 }
 
-b2BodyId PhysicsCreationFactory::create_box_fixture(b2BodyId body, float width, float height, PhysicsCreationFlags flags) {
+Body2D PhysicsCreationFactory::create_box_fixture(Body2D body, float width, float height, PhysicsCreationFlags flags) 
+{
     if (width <= 0.0f || height <= 0.0f)
     {
         throw std::invalid_argument("Width and height must be positive values.");
@@ -34,7 +56,8 @@ b2BodyId PhysicsCreationFactory::create_box_fixture(b2BodyId body, float width, 
     shape_def.enableContactEvents = flags.enable_contact_events;
     shape_def.isSensor = flags.sensor;
 
-    b2ShapeId shape_id = b2CreatePolygonShape(body, &shape_def, &box);
+    b2ShapeId shape_id = b2CreatePolygonShape(body.id, &shape_def, &box);
+    body.shapes.push_back(shape_id);
     
     b2Filter filter{};
     filter.categoryBits = flags.category;
@@ -55,14 +78,15 @@ b2BodyId PhysicsCreationFactory::create_box_fixture(b2BodyId body, float width, 
         mass_data.center = b2Vec2{0.0f, 0.0f};
         mass_data.rotationalInertia = default_inertia;
 
-        b2Body_SetMassData(body, mass_data);
-        b2Body_SetBullet(body, true);
+        b2Body_SetMassData(body.id, mass_data);
+        b2Body_SetBullet(body.id, true);
     }
 
     return body;
 }
 
-b2BodyId PhysicsCreationFactory::create_circle_fixture(b2BodyId body, float radius, PhysicsCreationFlags flags) {
+Body2D PhysicsCreationFactory::create_circle_fixture(Body2D body, float radius, PhysicsCreationFlags flags) 
+{
     if (radius <= 0.0f)
     {
         throw std::invalid_argument("Radius must be a positive value.");
@@ -77,7 +101,8 @@ b2BodyId PhysicsCreationFactory::create_circle_fixture(b2BodyId body, float radi
     shape_def.enableContactEvents = flags.enable_contact_events;
     shape_def.isSensor = flags.sensor;
 
-    b2ShapeId shape_id = b2CreateCircleShape(body, &shape_def, &circle);
+    b2ShapeId shape_id = b2CreateCircleShape(body.id, &shape_def, &circle);
+    body.shapes.push_back(shape_id);
 
     b2Filter filter{};
     filter.categoryBits = flags.category;
@@ -98,13 +123,16 @@ b2BodyId PhysicsCreationFactory::create_circle_fixture(b2BodyId body, float radi
         mass_data.center = b2Vec2{0.0f, 0.0f};
         mass_data.rotationalInertia = default_inertia;
 
-        b2Body_SetMassData(body, mass_data);
-        b2Body_SetBullet(body, true);
+        b2Body_SetMassData(body.id, mass_data);
+        b2Body_SetBullet(body.id, true);
     }
 
     return body;
 }
 
-void PhysicsCreationFactory::destroy_body(b2BodyId body_id) {
-    b2DestroyBody(body_id);
+void PhysicsCreationFactory::destroy_body(Body2D& body) 
+{
+    b2DestroyBody(body.id);
+    body.id = b2BodyId{};
+    body.shapes.clear();
 }
