@@ -130,13 +130,14 @@ target_include_directories(engine
     PUBLIC 
         ${CMAKE_CURRENT_SOURCE_DIR}/include
     PRIVATE 
+        ${enet_SOURCE_DIR}/include
         ${imgui_SOURCE_DIR} 
         ${imgui_SOURCE_DIR}/backends
 )
 
 target_link_libraries(engine
-    PUBLIC 
-        SDL3::SDL3 
+    PUBLIC
+        SDL3::SDL3
         SDL3_image::SDL3_image
         SDL3_ttf::SDL3_ttf
         Freetype::Freetype
@@ -186,7 +187,7 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
-        ${ENet_SOURCE_DIR}/include
+        ${enet_SOURCE_DIR}/include
         ${imgui_SOURCE_DIR}
         ${imgui_SOURCE_DIR}/backends
 )
@@ -257,6 +258,7 @@ if(ENABLE_TESTS)
                 tests/main.cpp
                 ${TEST_SOURCES}
         )
+        target_compile_definitions(tests PRIVATE PROJECT_ROOT="${CMAKE_SOURCE_DIR}")
 
         target_link_libraries(tests
         PRIVATE
@@ -265,6 +267,7 @@ if(ENABLE_TESTS)
         )
 
         target_include_directories(tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+        file(COPY "${CMAKE_SOURCE_DIR}/resources" DESTINATION "${CMAKE_BINARY_DIR}")
 
         enable_testing()
         add_test(NAME engine_tests COMMAND tests)
