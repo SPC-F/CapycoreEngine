@@ -4,10 +4,12 @@
 
 #include <engine/audio/audio_service.h>
 #include <engine/physics/physics_service.h>
+#include <engine/public/sceneService.h>
 
 Engine::Engine() : services(std::make_unique<ServiceContainer>()) {
     services->register_service<AudioService>();
     services->register_service<PhysicsService>();
+    services->register_service<SceneService>();
 }
 
 Engine& Engine::instance() {
