@@ -12,9 +12,8 @@ Texture& get_texture_for(const std::string& sprite) {
     return maybe_texture.value();
 }
 
-Sprite::Sprite(GameObject& parent, const std::string& sprite, const Color color, const int flip_x, const int flip_y, const int sorting_layer, const int ordering_layer)
-    : Component(parent),
-    texture_(get_texture_for(sprite)),
+Sprite::Sprite(const std::string& sprite, const Color color, const int flip_x, const int flip_y, const int sorting_layer, const int ordering_layer)
+    : texture_(get_texture_for(sprite)),
     flip_x_(flip_x),
     flip_y_(flip_y),
     sorting_layer_(sorting_layer),
@@ -75,7 +74,7 @@ Sprite& Sprite::texture(Texture& texture) {
     return *this;
 }
 
-void Sprite::update() {
+void Sprite::update(float dt) {
 
 }
 void Sprite::on_attach() {
