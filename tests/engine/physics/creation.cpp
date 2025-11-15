@@ -17,7 +17,7 @@ struct DummyGameObject : public GameObject {
 
 struct DummyComponent : public Component {
     explicit DummyComponent() : Component() {}
-    void update() override {}
+    void update(float dt) override {}
     void on_attach() override {}
     void on_detach() override {}
     void on_serialize() override {}

@@ -70,7 +70,7 @@ GameObject& GameObject::parent(GameObject& parent) {
     return *this;
 }
 
-GameObject& GameObject::parent(std::nullopt_t nullopt) {
+GameObject& GameObject::parent(std::nullopt_t null_opt) {
     if (!parent_.has_value()) {
         return *this;
     }

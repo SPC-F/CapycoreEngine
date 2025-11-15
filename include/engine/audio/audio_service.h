@@ -21,12 +21,12 @@ public:
     std::optional<std::shared_ptr<SoundResource>> register_sound(const std::string& file_path, const std::string& name, SoundType type = SoundType::GENERIC);
     bool unregister_sound(const std::string& name);
     
-    std::optional<std::shared_ptr<SoundResource>> get_sound_resource(const std::string& name) const noexcept;
+    std::optional<std::shared_ptr<SoundResource>> get_sound_resource(const std::string& file_path, const std::string& name = "") const noexcept;
 
     std::reference_wrapper<SoundInstance> play_sound(std::shared_ptr<SoundResource> sound_resource, float volume = 1.0f, bool loop = false);
     std::reference_wrapper<SoundInstance> play_sound(const std::string& name, float volume = 1.0f, bool loop = false);
 
-    void stop_sound(std::unique_ptr<SoundInstance>&& sound_instance);
+    void stop_sound(SoundInstance& instance);
     void stop_sound(const std::string& name);
     void stop_all_sounds();
 

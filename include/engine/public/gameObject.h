@@ -35,7 +35,7 @@ public:
     GameObject& operator=(GameObject&&) = default;
 
     GameObject& parent(GameObject& parent);
-    GameObject& parent(std::nullopt_t nullopt);
+    GameObject& parent(std::nullopt_t null_opt);
 
     [[nodiscard]] bool is_active_in_world() const noexcept;
     [[nodiscard]] bool is_active() const noexcept;
@@ -59,7 +59,7 @@ public:
 
     [[nodiscard]] const Scene& scene() const noexcept;
 
-    std::vector<std::reference_wrapper<GameObject>>& children();
+    [[nodiscard]] std::vector<std::reference_wrapper<GameObject>>& children();
     GameObject& add_child(GameObject& child);
     GameObject& remove_child(GameObject& child);
 
@@ -79,6 +79,7 @@ public:
         Note that it does NOT include the components attached to the
         child objects. Those can be retrieved with GameObject::getComponentsInChildren */
     template<IsComponent T>
+    [[nodiscard]]
     std::vector<std::reference_wrapper<T>> get_components() const {
         auto filtered = components_
             | std::views::filter([](auto& c) { return dynamic_cast<T*>(c.get()); })
