@@ -1,26 +1,86 @@
 #include <engine/public/util/vector3.h>
 
-Vector3::Vector3() : x(0.0f), y(0.0f), z(0.0f) {}
-Vector3::Vector3(const float x, const float y, const float z) : x(x), y(y), z(z) {}
+Vector3::Vector3()
+    : x(0.0f), y(0.0f), z(0.0f)
+{}
 
-Vector3 Vector3::operator+(const Vector3& right) const noexcept {
-    return {x + right.x, y + right.y, z + right.z};
+Vector3::Vector3(float x, float y, float z)
+    : x(x), y(y), z(z)
+{}
+
+Vector3 Vector3::operator+(const Vector3& other) const noexcept{
+    return Vector3{x + other.x, y + other.y, z + other.z};
 }
-Vector3 Vector3::operator-(const Vector3& right) const noexcept {
-    return {x - right.x, y - right.y, z - right.z};
+
+Vector3 Vector3::operator-(const Vector3& other) const noexcept
+{
+    return Vector3{x - other.x, y - other.y, z - other.z};
 }
 
-Vector3& Vector3::operator+=(const Vector3&& right) noexcept {
-    x += right.x;
-    y += right.y;
-    z += right.z;
+Vector3 Vector3::operator*(const Vector3& other) const noexcept
+{
+    return Vector3{x * other.x, y * other.y, z * other.z};
+}
 
+Vector3 Vector3::operator/(const Vector3& other) const noexcept
+{
+    return Vector3{x / other.x, y / other.y, z / other.z};
+}
+
+Vector3& Vector3::operator+=(const Vector3& other) noexcept
+{
+    x += other.x;
+    y += other.y;
+    z += other.z;
     return *this;
 }
-Vector3 Vector3::operator-=(const Vector3&& right) noexcept {
-    x = x - right.x;
-    y = y - right.y;
-    z = z - right.z;
 
+Vector3& Vector3::operator-=(const Vector3& other) noexcept
+{
+    x -= other.x;
+    y -= other.y;
+    z -= other.z;
+    return *this;
+}
+
+Vector3& Vector3::operator*=(const Vector3& other) noexcept
+{
+    x *= other.x;
+    y *= other.y;
+    z *= other.z;
+    return *this;
+}
+
+Vector3& Vector3::operator/=(const Vector3& other) noexcept
+{
+    x /= other.x;
+    y /= other.y;
+    z /= other.z;
+    return *this;
+}
+
+Vector3 Vector3::operator*(float v) const noexcept
+{
+    return Vector3{x * v, y * v, z * v};
+}
+
+Vector3 Vector3::operator/(float v) const noexcept
+{
+    return Vector3{x / v, y / v, z / v};
+}
+
+Vector3& Vector3::operator*=(float v) noexcept
+{
+    x *= v;
+    y *= v;
+    z *= v;
+    return *this;
+}
+
+Vector3& Vector3::operator/=(float v) noexcept
+{
+    x /= v;
+    y /= v;
+    z /= v;
     return *this;
 }
