@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['on_5fattach_0',['on_attach',['../class_sprite.html#ad85b1ffa41ea5e856e3665c816a268eb',1,'Sprite::on_attach()'],['../class_component.html#a45959ff679ae6fec15ece2619897c0a1',1,'Component::on_attach()=0']]],
-  ['on_5fdeserialize_1',['on_deserialize',['../class_component.html#a10c4042dfb9548ee865898eb55582f28',1,'Component::on_deserialize()'],['../class_sprite.html#a2ab98c7e39e9fba5c7bc2e24a505c76a',1,'Sprite::on_deserialize()']]],
-  ['on_5fdetach_2',['on_detach',['../class_component.html#ac40f75e6be1fa1c046398b75af9f98b1',1,'Component::on_detach()'],['../class_sprite.html#a4df95961ab20eff67c8806c11fc4728f',1,'Sprite::on_detach()']]],
-  ['on_5fserialize_3',['on_serialize',['../class_component.html#a431e94b7799fef4428fff6062f7d77aa',1,'Component::on_serialize()'],['../class_sprite.html#a9f2f24d5294b669a6573a91cf0a8a84a',1,'Sprite::on_serialize()']]],
+  ['on_5fattach_0',['on_attach',['../class_audio_source.html#aa1bc1be865174afa0eef3be9bf1f68dc',1,'AudioSource::on_attach()'],['../class_sprite.html#ad85b1ffa41ea5e856e3665c816a268eb',1,'Sprite::on_attach()'],['../class_component.html#a45959ff679ae6fec15ece2619897c0a1',1,'Component::on_attach()=0']]],
+  ['on_5fdeserialize_1',['on_deserialize',['../class_component.html#a10c4042dfb9548ee865898eb55582f28',1,'Component::on_deserialize()'],['../class_audio_source.html#a9fba7558de6e24ecad919b478b7d5ed7',1,'AudioSource::on_deserialize()'],['../class_sprite.html#a2ab98c7e39e9fba5c7bc2e24a505c76a',1,'Sprite::on_deserialize()']]],
+  ['on_5fdetach_2',['on_detach',['../class_component.html#ac40f75e6be1fa1c046398b75af9f98b1',1,'Component::on_detach()'],['../class_audio_source.html#a7c03665c2bca66864dc60efa4dfd7de5',1,'AudioSource::on_detach()'],['../class_sprite.html#a4df95961ab20eff67c8806c11fc4728f',1,'Sprite::on_detach()']]],
+  ['on_5fserialize_3',['on_serialize',['../class_component.html#a431e94b7799fef4428fff6062f7d77aa',1,'Component::on_serialize()'],['../class_audio_source.html#a1b495a1b83e3c4b69cea287455e1ef9b',1,'AudioSource::on_serialize()'],['../class_sprite.html#a9f2f24d5294b669a6573a91cf0a8a84a',1,'Sprite::on_serialize()']]],
   ['operator_20delete_4',['operator delete',['../memory_8h.html#afa145befcf5e7b83424408ca503c8637',1,'memory.h']]],
   ['operator_20delete_5b_5d_5',['operator delete[]',['../memory_8h.html#a22aea74a1155aa798d6032da46da2391',1,'memory.h']]],
   ['operator_20new_6',['operator new',['../memory_8h.html#acfad8f0764cf06b8abd170d8569a7b3f',1,'memory.h']]],

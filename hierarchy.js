@@ -2,6 +2,7 @@ var hierarchy =
 [
     [ "Color", "class_color.html", null ],
     [ "Component", "class_component.html", [
+      [ "AudioSource", "class_audio_source.html", null ],
       [ "Sprite", "class_sprite.html", null ]
     ] ],
     [ "Engine", "class_engine.html", null ],

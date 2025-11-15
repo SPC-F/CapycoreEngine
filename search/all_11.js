@@ -1,14 +1,14 @@
 var searchData=
 [
   ['scale_0',['scale',['../class_transform.html#a819d2db2c59e95f64e0990880daed47a',1,'Transform::scale() const noexcept'],['../class_transform.html#a40a9ab54c04146731f3c164b82a4464e',1,'Transform::scale(Vector3 scale) noexcept']]],
-  ['scene_1',['scene',['../class_game_object.html#a2289c71a95125871640a379f9afb7a3d',1,'GameObject::scene()'],['../class_scene.html',1,'Scene']]],
+  ['scene_1',['scene',['../class_scene.html',1,'Scene'],['../class_game_object.html#a2289c71a95125871640a379f9afb7a3d',1,'GameObject::scene()']]],
   ['scene_2eh_2',['scene.h',['../scene_8h.html',1,'']]],
   ['sdl_5fmixer_3',['SDL_MIXER',['../sound__type_8h.html#ae1b5d244e51a186490107bd5850d1753a81ab86250c5dd7eab645ba26195e3869',1,'sound_type.h']]],
   ['sdl_5fsound_5finstance_2eh_4',['sdl_sound_instance.h',['../sdl__sound__instance_8h.html',1,'']]],
   ['sdl_5fsound_5fresource_2eh_5',['sdl_sound_resource.h',['../sdl__sound__resource_8h.html',1,'']]],
   ['sdlrendererptr_6',['SdlRendererPtr',['../renderer_8h.html#a84b98363e6d5f539c4f2a33dc3773781',1,'renderer.h']]],
   ['sdlsoundinstance_7',['sdlsoundinstance',['../class_s_d_l_sound_instance.html',1,'SDLSoundInstance'],['../class_s_d_l_sound_instance.html#ad9420e4c95087e0b8fdadc05d261478c',1,'SDLSoundInstance::SDLSoundInstance()']]],
-  ['sdlsoundresource_8',['sdlsoundresource',['../class_s_d_l_sound_resource.html#ad88dadcddef53b412a5243eaa8be5199',1,'SDLSoundResource::SDLSoundResource()'],['../class_s_d_l_sound_resource.html',1,'SDLSoundResource']]],
+  ['sdlsoundresource_8',['sdlsoundresource',['../class_s_d_l_sound_resource.html',1,'SDLSoundResource'],['../class_s_d_l_sound_resource.html#ad88dadcddef53b412a5243eaa8be5199',1,'SDLSoundResource::SDLSoundResource()']]],
   ['sdlwindowptr_9',['SdlWindowPtr',['../renderer_8h.html#a53c873bfcb03383ed7d6088657ef8028',1,'renderer.h']]],
   ['sensor_10',['sensor',['../struct_physics_creation_flags.html#a78eba377685aebed3b169ef96ba7b8c2',1,'PhysicsCreationFlags']]],
   ['serialize_11',['serialize',['../class_game_object.html#ab68354244559c1d941c79aa58429e002',1,'GameObject']]],
@@ -39,7 +39,7 @@ var searchData=
   ['sprite_36',['sprite',['../class_sprite.html',1,'Sprite'],['../class_sprite.html#ac87d22f49b5d37aedee3d8f4f697994a',1,'Sprite::Sprite()']]],
   ['sprite_2eh_37',['sprite.h',['../sprite_8h.html',1,'']]],
   ['step_38',['step',['../class_physics_world.html#a7cdf3bfd913d3dbb770e1404bebd80a1',1,'PhysicsWorld']]],
-  ['stop_39',['stop',['../class_sound_instance.html#ae8fc6b171c9a2a874af13aba5439bc96',1,'SoundInstance::stop()'],['../class_s_d_l_sound_instance.html#ac99f527154046a5b8f23db8ace5ae5a9',1,'SDLSoundInstance::stop()'],['../class_generic_sound_instance.html#a07bd55ae2e5b885559f522b3df228ebe',1,'GenericSoundInstance::stop()']]],
+  ['stop_39',['stop',['../class_audio_source.html#ab3449cc8a764c0d15e9453d52610475e',1,'AudioSource::stop()'],['../class_sound_instance.html#ae8fc6b171c9a2a874af13aba5439bc96',1,'SoundInstance::stop()'],['../class_s_d_l_sound_instance.html#ac99f527154046a5b8f23db8ace5ae5a9',1,'SDLSoundInstance::stop()'],['../class_generic_sound_instance.html#a07bd55ae2e5b885559f522b3df228ebe',1,'GenericSoundInstance::stop()']]],
   ['stop_5fall_5fsounds_40',['stop_all_sounds',['../class_audio_service.html#ae08fa94ffa7f5ad1c2792d6e39f3c280',1,'AudioService']]],
-  ['stop_5fsound_41',['stop_sound',['../class_audio_service.html#a64a3120430b645ea2b49b65c428d2bb2',1,'AudioService::stop_sound(std::unique_ptr&lt; SoundInstance &gt; &amp;&amp;sound_instance)'],['../class_audio_service.html#ae794777ca0e019940e3308af84564195',1,'AudioService::stop_sound(const std::string &amp;name)']]]
+  ['stop_5fsound_41',['stop_sound',['../class_audio_service.html#a1d924616f5179225ae05f45ce97101ef',1,'AudioService::stop_sound(SoundInstance &amp;instance)'],['../class_audio_service.html#ae794777ca0e019940e3308af84564195',1,'AudioService::stop_sound(const std::string &amp;name)']]]
 ];

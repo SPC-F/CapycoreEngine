@@ -149,14 +149,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac8bc4573e599fcc41149681f2de0ff40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e97210743598d648689a35f976a7339" id="r_a8e97210743598d648689a35f976a7339"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_service.html#a8e97210743598d648689a35f976a7339">unregister_sound</a> (const std::string &amp;name)</td></tr>
 <tr class="separator:a8e97210743598d648689a35f976a7339"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe64b60f9e7a5bd0a5d972241586a79a" id="r_afe64b60f9e7a5bd0a5d972241586a79a"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::shared_ptr&lt; <a class="el" href="class_sound_resource.html">SoundResource</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_service.html#afe64b60f9e7a5bd0a5d972241586a79a">get_sound_resource</a> (const std::string &amp;name) const noexcept</td></tr>
-<tr class="separator:afe64b60f9e7a5bd0a5d972241586a79a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89ef9feb5ea0e3135374c654e1b868e1" id="r_a89ef9feb5ea0e3135374c654e1b868e1"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::shared_ptr&lt; <a class="el" href="class_sound_resource.html">SoundResource</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_service.html#a89ef9feb5ea0e3135374c654e1b868e1">get_sound_resource</a> (const std::string &amp;file_path, const std::string &amp;name=&quot;&quot;) const noexcept</td></tr>
+<tr class="separator:a89ef9feb5ea0e3135374c654e1b868e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68a73f1f576b09a6db54b0f732c5ef12" id="r_a68a73f1f576b09a6db54b0f732c5ef12"><td class="memItemLeft" align="right" valign="top">std::reference_wrapper&lt; <a class="el" href="class_sound_instance.html">SoundInstance</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_service.html#a68a73f1f576b09a6db54b0f732c5ef12">play_sound</a> (std::shared_ptr&lt; <a class="el" href="class_sound_resource.html">SoundResource</a> &gt; sound_resource, float volume=1.0f, bool loop=false)</td></tr>
 <tr class="separator:a68a73f1f576b09a6db54b0f732c5ef12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace34d0a4d554875dbdbe679eb7033492" id="r_ace34d0a4d554875dbdbe679eb7033492"><td class="memItemLeft" align="right" valign="top">std::reference_wrapper&lt; <a class="el" href="class_sound_instance.html">SoundInstance</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_service.html#ace34d0a4d554875dbdbe679eb7033492">play_sound</a> (const std::string &amp;name, float volume=1.0f, bool loop=false)</td></tr>
 <tr class="separator:ace34d0a4d554875dbdbe679eb7033492"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64a3120430b645ea2b49b65c428d2bb2" id="r_a64a3120430b645ea2b49b65c428d2bb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_service.html#a64a3120430b645ea2b49b65c428d2bb2">stop_sound</a> (std::unique_ptr&lt; <a class="el" href="class_sound_instance.html">SoundInstance</a> &gt; &amp;&amp;sound_instance)</td></tr>
-<tr class="separator:a64a3120430b645ea2b49b65c428d2bb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d924616f5179225ae05f45ce97101ef" id="r_a1d924616f5179225ae05f45ce97101ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_service.html#a1d924616f5179225ae05f45ce97101ef">stop_sound</a> (<a class="el" href="class_sound_instance.html">SoundInstance</a> &amp;instance)</td></tr>
+<tr class="separator:a1d924616f5179225ae05f45ce97101ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae794777ca0e019940e3308af84564195" id="r_ae794777ca0e019940e3308af84564195"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_service.html#ae794777ca0e019940e3308af84564195">stop_sound</a> (const std::string &amp;name)</td></tr>
 <tr class="separator:ae794777ca0e019940e3308af84564195"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae08fa94ffa7f5ad1c2792d6e39f3c280" id="r_ae08fa94ffa7f5ad1c2792d6e39f3c280"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_service.html#ae08fa94ffa7f5ad1c2792d6e39f3c280">stop_all_sounds</a> ()</td></tr>
@@ -238,8 +238,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="afe64b60f9e7a5bd0a5d972241586a79a" name="afe64b60f9e7a5bd0a5d972241586a79a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe64b60f9e7a5bd0a5d972241586a79a">&#9670;&#160;</a></span>get_sound_resource()</h2>
+<a id="a89ef9feb5ea0e3135374c654e1b868e1" name="a89ef9feb5ea0e3135374c654e1b868e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89ef9feb5ea0e3135374c654e1b868e1">&#9670;&#160;</a></span>get_sound_resource()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -251,8 +251,18 @@ Public Member Functions</h2></td></tr>
           <td class="memname">std::optional&lt; std::shared_ptr&lt; <a class="el" href="class_sound_resource.html">SoundResource</a> &gt; &gt; AudioService::get_sound_resource </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>file_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -427,8 +437,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a64a3120430b645ea2b49b65c428d2bb2" name="a64a3120430b645ea2b49b65c428d2bb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64a3120430b645ea2b49b65c428d2bb2">&#9670;&#160;</a></span>stop_sound() <span class="overload">[2/2]</span></h2>
+<a id="a1d924616f5179225ae05f45ce97101ef" name="a1d924616f5179225ae05f45ce97101ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d924616f5179225ae05f45ce97101ef">&#9670;&#160;</a></span>stop_sound() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -436,8 +446,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void AudioService::stop_sound </td>
           <td>(</td>
-          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="class_sound_instance.html">SoundInstance</a> &gt; &amp;&amp;&#160;</td>
-          <td class="paramname"><em>sound_instance</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_sound_instance.html">SoundInstance</a> &amp;&#160;</td>
+          <td class="paramname"><em>instance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

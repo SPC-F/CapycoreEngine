@@ -2,6 +2,7 @@ var annotated_dup =
 [
     [ "AssetService", "class_asset_service.html", "class_asset_service" ],
     [ "AudioService", "class_audio_service.html", "class_audio_service" ],
+    [ "AudioSource", "class_audio_source.html", "class_audio_source" ],
     [ "Color", "class_color.html", "class_color" ],
     [ "Component", "class_component.html", "class_component" ],
     [ "Engine", "class_engine.html", "class_engine" ],

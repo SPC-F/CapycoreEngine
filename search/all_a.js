@@ -5,6 +5,6 @@ var searchData=
   ['linux_20users_2',['Note for Linux users',['../index.html#autotoc_md2',1,'']]],
   ['load_5ffrom_5fresource_3',['load_from_resource',['../class_asset_service.html#a42d4e1cdea1e1d32aa178ffc004806f0',1,'AssetService']]],
   ['local_5fposition_4',['local_position',['../class_transform.html#a999b79d44bccd02f597938b330184540',1,'Transform']]],
-  ['loop_5',['loop',['../class_sound_instance.html#a9e884b12172be825f3df9a3fa44b299e',1,'SoundInstance::loop() const noexcept'],['../class_sound_instance.html#ac0a06044f52108cc44723b9a0f443d89',1,'SoundInstance::loop(bool loop) noexcept']]],
+  ['loop_5',['loop',['../class_sound_instance.html#a9e884b12172be825f3df9a3fa44b299e',1,'SoundInstance::loop() const noexcept'],['../class_sound_instance.html#ac0a06044f52108cc44723b9a0f443d89',1,'SoundInstance::loop(bool loop) noexcept'],['../class_audio_source.html#aabddc493fde6be960f7d76b857b3f997',1,'AudioSource::loop() const noexcept'],['../class_audio_source.html#ae28190dd8af0d8700f428e76728f25b8',1,'AudioSource::loop(bool value) noexcept']]],
   ['loop_5f_6',['loop_',['../class_sound_instance.html#a6c43e95ae3cd823630d725a07a7bd5b1',1,'SoundInstance']]]
 ];
