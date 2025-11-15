@@ -97,3 +97,27 @@ void Body2D::set_body_friction(const Body2D& body, float friction, ShapeType2D::
         b2Shape_SetFriction(shape.id, friction);
     }
 }
+
+void Body2D::apply_force(const Body2D& body, const Vector3& force) noexcept 
+{
+    b2Vec2 b2_force {force.x, force.y};
+    b2Vec2 local_center = b2Body_GetLocalCenterOfMass(body.id);
+    b2Vec2 world_center = b2Body_GetWorldPoint(body.id, local_center);
+
+    b2Body_ApplyForce(body.id, b2_force, world_center, true);
+}
+
+void Body2D::apply_impulse(const Body2D& body, const Vector3& impulse) noexcept 
+{
+    b2Vec2 b2_impulse {impulse.x, impulse.y};
+    b2Vec2 local_center = b2Body_GetLocalCenterOfMass(body.id);
+    b2Vec2 world_center = b2Body_GetWorldPoint(body.id, local_center);
+
+    b2Body_ApplyLinearImpulse(body.id, b2_impulse, world_center, true);
+}
+
+void Body2D::set_body_velocity(const Body2D& body, const Vector3& velocity) noexcept 
+{
+    b2Vec2 b2_velocity {velocity.x, velocity.y};
+    b2Body_SetLinearVelocity(body.id, b2_velocity);
+}

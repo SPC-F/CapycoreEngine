@@ -42,6 +42,24 @@ public:
     Body2D body() const noexcept;
     void body(const Body2D& value) noexcept;
 
+    /** @brief Applies a force to the rigidbody.
+     * 
+     * @param force The force vector to apply.
+     */
+    void apply_force(const Vector3& force) noexcept;
+
+    /** @brief Applies an impulse to the rigidbody.
+     * 
+     * @param impulse The impulse vector to apply.
+     */
+    void apply_impulse(const Vector3& impulse) noexcept;
+
+    /** @brief Retrieves the current velocity of the rigidbody.
+     * 
+     * @return Vector3 The current velocity vector.
+     */
+    void velocity(const Vector3& value) noexcept;
+
 private:
     Body2D body_ {};
     BodyType2D::Type type_;

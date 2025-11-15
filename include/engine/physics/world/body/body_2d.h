@@ -91,6 +91,27 @@ struct Body2D {
      * @param type The ShapeType2D::Type to apply the friction to.
      */
     static void set_body_friction(const Body2D& body, float friction, ShapeType2D::Type type);
+    
+    /** @brief Sets the velocity of the specified body.
+     * 
+     * @param body The Body2D instance to set the velocity for.
+     * @param velocity The new velocity vector.
+     */
+    static void set_body_velocity(const Body2D& body, const Vector3& velocity) noexcept;
+
+    /** @brief Applies a force to the specified body.
+     * 
+     * @param body The Body2D instance to apply the force to.
+     * @param force The force vector to apply.
+     */
+    static void apply_force(const Body2D& body, const Vector3& force) noexcept;
+
+    /** @brief Applies an impulse to the specified body.
+     * 
+     * @param body The Body2D instance to apply the impulse to.
+     * @param impulse The impulse vector to apply.
+     */
+    static void apply_impulse(const Body2D& body, const Vector3& impulse) noexcept;
 };
 
 /** 

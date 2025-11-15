@@ -123,3 +123,18 @@ void Rigidbody2D::body(const Body2D& value) noexcept
     PhysicsCreationFactory::destroy_body(body_);
     body_ = value;
 }
+
+void Rigidbody2D::apply_force(const Vector3& force) noexcept 
+{
+    Body2D::apply_force(body_, force);
+}
+
+void Rigidbody2D::apply_impulse(const Vector3& impulse) noexcept 
+{
+    Body2D::apply_impulse(body_, impulse);
+}
+
+void Rigidbody2D::velocity(const Vector3& value) noexcept 
+{
+    Body2D::set_body_velocity(body_, value);
+}
