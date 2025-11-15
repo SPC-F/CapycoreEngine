@@ -22,7 +22,7 @@ var searchData=
   ['soundfactory_19',['SoundFactory',['../class_sound_factory.html#ae7c7e608a726c110af1c7632fd8d1705',1,'SoundFactory']]],
   ['soundinstance_20',['SoundInstance',['../class_sound_instance.html#a4dcabfcaa67d3080dd0ab23b1cf3acca',1,'SoundInstance']]],
   ['soundresource_21',['SoundResource',['../class_sound_resource.html#a36b401113d895625f3b5f56defc9ec96',1,'SoundResource']]],
-  ['sprite_22',['Sprite',['../class_sprite.html#ac87d22f49b5d37aedee3d8f4f697994a',1,'Sprite']]],
+  ['sprite_22',['Sprite',['../class_sprite.html#ae93cbda2d3b18e1fc2ef2c067589540e',1,'Sprite']]],
   ['step_23',['step',['../class_physics_world.html#a7cdf3bfd913d3dbb770e1404bebd80a1',1,'PhysicsWorld']]],
   ['stop_24',['stop',['../class_generic_sound_instance.html#a07bd55ae2e5b885559f522b3df228ebe',1,'GenericSoundInstance::stop()'],['../class_s_d_l_sound_instance.html#ac99f527154046a5b8f23db8ace5ae5a9',1,'SDLSoundInstance::stop()'],['../class_sound_instance.html#ae8fc6b171c9a2a874af13aba5439bc96',1,'SoundInstance::stop()'],['../class_audio_source.html#ab3449cc8a764c0d15e9453d52610475e',1,'AudioSource::stop()']]],
   ['stop_5fall_5fsounds_25',['stop_all_sounds',['../class_audio_service.html#ae08fa94ffa7f5ad1c2792d6e39f3c280',1,'AudioService']]],

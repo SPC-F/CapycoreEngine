@@ -1,6 +1,6 @@
 var class_sprite =
 [
-    [ "Sprite", "class_sprite.html#ac87d22f49b5d37aedee3d8f4f697994a", null ],
+    [ "Sprite", "class_sprite.html#ae93cbda2d3b18e1fc2ef2c067589540e", null ],
     [ "color", "class_sprite.html#a99304af697307c4847c3e65ce8a3e768", null ],
     [ "color", "class_sprite.html#af874503eae32060ce4a3fe078f912d46", null ],
     [ "flip_x", "class_sprite.html#a627f95ef5ff440d95fe6e171bf23cd2a", null ],
@@ -18,5 +18,5 @@ var class_sprite =
     [ "texture", "class_sprite.html#a0e8eb065f100e39b505d849c12fd4581", null ],
     [ "texture", "class_sprite.html#ad700b58749fd1b52ccdfa9df2f3e6611", null ],
     [ "texture", "class_sprite.html#a34083165189ff72a52428474ffc656d6", null ],
-    [ "update", "class_sprite.html#a7ad75ce20bf33f41036ae65f1aa0801a", null ]
+    [ "update", "class_sprite.html#a482749d1b2f41f0e8e035e0d740f80e9", null ]
 ];
