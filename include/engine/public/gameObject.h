@@ -99,12 +99,19 @@ public:
     T& add_component(Args&&... args) {
         auto component = std::make_unique<T>(std::forward<Args>(args)...);
         T& ref = *component;
+
+        component->parent(std::ref(*this));
+        component->on_attach();
+
         components_.emplace_back(std::move(component));
         return ref;
     }
 
     template<IsComponent T>
     void remove_component(T& component) {
+        component.on_detach();
+        component.parent(std::nullopt);
+
         components_.erase(
             std::remove_if(
                 components_.begin(),

@@ -129,6 +129,7 @@ target_include_directories(engine
     PUBLIC 
         ${CMAKE_CURRENT_SOURCE_DIR}/include
     PRIVATE 
+        ${enet_SOURCE_DIR}/include
         ${imgui_SOURCE_DIR} 
         ${imgui_SOURCE_DIR}/backends
 )
@@ -185,7 +186,7 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
-        ${ENet_SOURCE_DIR}/include
+        ${enet_SOURCE_DIR}/include
         ${imgui_SOURCE_DIR}
         ${imgui_SOURCE_DIR}/backends
 )
