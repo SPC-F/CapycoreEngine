@@ -35,11 +35,22 @@ bool AudioService::unregister_sound(const std::string& name) {
     return sound_resources_.erase(name) > 0;
 }
 
-std::optional<std::shared_ptr<SoundResource>> AudioService::get_sound_resource(const std::string& name) const noexcept {
-    auto it = sound_resources_.find(name);
+std::optional<std::shared_ptr<SoundResource>> AudioService::get_sound_resource(const std::string& file_path, const std::string& name) const noexcept {
+     auto file_it = std::find_if(
+        sound_resources_.begin(), sound_resources_.end(),
+        [&file_path](const auto& pair) {
+            return pair.second && (pair.second->file_path() == file_path);
+        }
+    );
 
-    if (it != sound_resources_.end()) {
-        return it->second;
+    if (file_it != sound_resources_.end()) {
+        return file_it->second;
+    }
+
+    auto name_it = sound_resources_.find(name);
+
+    if (name_it != sound_resources_.end()) {
+        return name_it->second;
     }
 
     return std::nullopt;
@@ -51,8 +62,6 @@ std::reference_wrapper<SoundInstance> AudioService::play_sound(std::shared_ptr<S
     }
 
     auto instance = SoundFactory::create_sound_instance(sound_resource, volume);
-    auto ref = std::ref(*instance);
-
     if (!instance) {
         throw std::runtime_error("Failed to create sound instance");
     }
@@ -61,12 +70,11 @@ std::reference_wrapper<SoundInstance> AudioService::play_sound(std::shared_ptr<S
     instance->play();
 
     active_instances_.push_back(std::move(instance));
-
-    return ref;
+    return std::ref(*active_instances_.back());
 }
 
 std::reference_wrapper<SoundInstance> AudioService::play_sound(const std::string& name, float volume, bool loop) {
-    auto sound_resource = get_sound_resource(name);
+    auto sound_resource = get_sound_resource("", name);
 
     if (!sound_resource) {
         throw std::invalid_argument("Sound resource not found: " + name);
@@ -75,25 +83,18 @@ std::reference_wrapper<SoundInstance> AudioService::play_sound(const std::string
     return play_sound(*sound_resource, volume, loop);
 }
 
-void AudioService::stop_sound(std::unique_ptr<SoundInstance>&& sound_instance) {
-    if (!sound_instance) {
-        return;
-    }
-
-    auto instance = std::move(sound_instance);
-
-    instance->stop();
-
-    active_instances_.erase(
-        std::remove_if(
-            active_instances_.begin(), active_instances_.end(),
-            [&instance](const std::unique_ptr<SoundInstance>& inst) {
-                return inst.get() == instance.get();
-            }),
-        active_instances_.end()
+void AudioService::stop_sound(SoundInstance& instance) {
+    auto it = std::find_if(
+        active_instances_.begin(), active_instances_.end(),
+        [&instance](const std::unique_ptr<SoundInstance>& inst) {
+            return inst.get() == &instance;
+        }
     );
 
-    instance.reset();
+    if (it != active_instances_.end()) {
+        (*it)->stop();
+        active_instances_.erase(it);
+    }
 }
 
 void AudioService::stop_sound(const std::string& name) {

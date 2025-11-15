@@ -10,6 +10,7 @@ Checks: >
   modernize-*,
   performance-*,
   readability-*,
+  
 
   # selectively allow a few HICPP and CERT checks that overlap safely
   hicpp-exception-baseclass,
@@ -26,6 +27,7 @@ Checks: >
   -readability-identifier-length,
   -readability-function-cognitive-complexity,
   -readability-redundant-declaration,
+  -readability-implicit-bool-conversion
 
   -cppcoreguidelines-avoid-const-or-ref-data-members,
   -cppcoreguidelines-avoid-c-arrays,
@@ -39,12 +41,14 @@ Checks: >
   -cppcoreguidelines-non-private-member-variables-in-classes,
   -cppcoreguidelines-pro-bounds-pointer-arithmetic,
   -cppcoreguidelines-pro-type-reinterpret-cast,
+  -cppcoreguidelines-use-default-member-init
 
   -modernize-use-ranges,
   -modernize-use-discard,
   -modernize-use-trailing-return-type,
   -modernize-use-auto,
   -modernize-use-noexcept,
+  -modernize-use-default-member-init
   
   -hicpp-explicit-conversions,
   -hicpp-no-assembler,
@@ -76,7 +80,7 @@ CheckOptions:
   - key: readability-identifier-naming.StructCase
     value: CamelCase
   - key: readability-identifier-naming.ClassIgnoredRegexp
-    value: '^I[A-Z].*'
+    value: '^I?[A-Z][A-Za-z]*(_[A-Z][A-Za-z]*)*$'
   - key: readability-identifier-naming.StaticMemberCase
     value: lower_case
   - key: readability-identifier-naming.StaticMemberSuffix
