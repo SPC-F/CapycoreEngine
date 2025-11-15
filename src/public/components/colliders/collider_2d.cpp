@@ -28,7 +28,7 @@ Collider2D::Collider2D(
     }
 }
 
-void Collider2D::update() 
+void Collider2D::update(float dt) 
 {
     auto gameobject_opt = parent();
     if (!gameobject_opt.has_value()) {

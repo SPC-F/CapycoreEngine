@@ -38,9 +38,9 @@ CircleCollider2D::CircleCollider2D(
     }
 }
 
-void CircleCollider2D::update() 
+void CircleCollider2D::update(float dt) 
 {
-    Collider2D::update();   
+    Collider2D::update(dt);   
 }
 
 void CircleCollider2D::on_serialize() 

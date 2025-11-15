@@ -29,7 +29,7 @@ public:
     );
     ~Collider2D() override = default;
 
-    void update() override;
+    void update(float dt) override;
 
     /**
      * @brief Called when another collider enters this collider's trigger area.

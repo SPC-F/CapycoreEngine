@@ -20,7 +20,7 @@ private:
     Color color_;
 
 public:
-    Sprite(GameObject& parent, const std::string& sprite, Color color, int flip_x, int flip_y, int sorting_layer, int ordering_layer);
+    Sprite(const std::string& sprite, Color color, int flip_x, int flip_y, int sorting_layer, int ordering_layer);
 
     [[nodiscard]] int flip_x() const;
     Sprite& flip_x(int val);
@@ -41,9 +41,7 @@ public:
     Sprite& texture(const std::string& name);
     Sprite& texture(Texture& texture);
 
-    void update() override;
-    void on_attach() override;
-    void on_detach() override;
+    void update(float dt) override;
     void on_serialize() override;
     void on_deserialize() override;
 };

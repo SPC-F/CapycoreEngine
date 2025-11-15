@@ -18,7 +18,7 @@ public:
                 float gravity_scale = 1.0f);
     ~Rigidbody2D() override;
 
-    void update() override;
+    void update(float dt) override;
     void on_serialize() override;
     void on_deserialize() override;
 

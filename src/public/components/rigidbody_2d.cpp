@@ -41,7 +41,7 @@ Rigidbody2D::Rigidbody2D(
 
 Rigidbody2D::~Rigidbody2D() = default;
 
-void Rigidbody2D::update() 
+void Rigidbody2D::update(float dt) 
 {
     auto& physics_service = Engine::instance().services->get_service<PhysicsService>().get();
     

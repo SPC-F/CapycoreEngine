@@ -20,7 +20,7 @@ public:
     );
     ~CircleCollider2D() override = default;
 
-    void update() override;
+    void update(float dt) override;
 
     void on_serialize() override;
     void on_deserialize() override;

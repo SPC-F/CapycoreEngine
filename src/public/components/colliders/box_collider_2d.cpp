@@ -40,9 +40,9 @@ BoxCollider2D::BoxCollider2D(
     }
 }
 
-void BoxCollider2D::update() 
+void BoxCollider2D::update(float dt) 
 {
-    Collider2D::update();   
+    Collider2D::update(dt);   
 }
 
 void BoxCollider2D::on_serialize() 

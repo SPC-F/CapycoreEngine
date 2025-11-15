@@ -22,7 +22,7 @@ public:
     [[nodiscard]] bool active() const noexcept;
     Component& active(bool value) noexcept;
 
-    virtual void update() = 0;
+    virtual void update(float dt) = 0;
     
     virtual void on_attach();
     virtual void on_detach();
