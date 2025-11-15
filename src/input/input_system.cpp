@@ -128,5 +128,7 @@ void InputSystem::update()
         state.previous = state.current;
     }
 
-    input().update(key_states_, mouse_state_);
+    if (input().has_value()) {
+        input()->get().update(key_states_, mouse_state_);
+    }
 }

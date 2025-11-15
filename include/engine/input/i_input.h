@@ -18,5 +18,5 @@ public:
     * It updates the provided `key_states` and `mouse_state` with the latest input
     * information for the current frame.
     */
-    virtual void update(std::map<KeyCode, KeyState>& key_states, MouseState& mouse_state);
+    virtual void update(std::map<KeyCode, KeyState>& key_states, MouseState& mouse_state) = 0;
 };

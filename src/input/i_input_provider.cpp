@@ -5,7 +5,10 @@ void IInputProvider::set_input(std::unique_ptr<IInput> input)
     input_ = std::move(input);
 }
 
-IInput& IInputProvider::input() const
+std::optional<std::reference_wrapper<IInput>> IInputProvider::input() const
 {
-    return *input_;
+    if (input_) {
+        return std::ref(*input_);
+    }
+    return std::nullopt;
 }

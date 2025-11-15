@@ -22,7 +22,7 @@ public:
     virtual ~IInputProvider() = default;
 
     void set_input(std::unique_ptr<IInput> input);
-    [[nodiscard]] IInput& input() const;
+    [[nodiscard]] std::optional<std::reference_wrapper<IInput>> input() const;
 
     /**
      * @brief Returns whether the specified key is currently held down.
