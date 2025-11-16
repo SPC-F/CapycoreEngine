@@ -1,4 +1,6 @@
 #include <engine/public/scene.h>
+#include <engine/core/rendering/renderingService.h>
+#include <engine/core/engine.h>
 #include <SDL3/SDL.h>
 
 Scene::Scene(const std::string& name)
@@ -24,6 +26,11 @@ void Scene::game_loop() {
     Uint64 last = SDL_GetPerformanceCounter();
     float freq = static_cast<float>(SDL_GetPerformanceFrequency());
 
+    auto& rendering_service = Engine::instance()
+            .services
+            ->get_service<RenderingService>()
+            .get();
+
     while (true) {
         Uint64 now = SDL_GetPerformanceCounter();
         float frame_dt = static_cast<float>(now - last) / freq * time_scale_;
@@ -36,7 +43,7 @@ void Scene::game_loop() {
             accumulator -= fixed_step;
         }
 
-        // render();
+        rendering_service.draw(game_objects());
     }
 
 }
@@ -91,6 +98,14 @@ std::vector<std::reference_wrapper<GameObject>> Scene::game_objects() const {
 Scene& Scene::add_game_object(std::unique_ptr<GameObject> game_object) {
     game_objects_.emplace_back(std::move(game_object));
     return *this;
+}
+
+GameObject& Scene::add_game_object(const std::string& name) {
+    auto game_object = std::make_unique<GameObject>(*this);
+    game_object->name(name);
+    game_objects_.emplace_back(std::move(game_object));
+
+    return *game_object.get(); // could be done with a stored ref as well, but this makes it clearer what is returned
 }
 
 Scene& Scene::add_game_objects(std::vector<std::unique_ptr<GameObject>> game_objects) {

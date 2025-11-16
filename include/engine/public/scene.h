@@ -35,6 +35,7 @@ public:
     std::vector<std::reference_wrapper<GameObject>> game_objects() const;
 
     Scene& add_game_object(std::unique_ptr<GameObject> game_object);
+    GameObject& add_game_object(const std::string& name);
     Scene& add_game_objects(std::vector<std::unique_ptr<GameObject>> game_objects);
     Scene& remove_game_object(const std::string& name);
 };
