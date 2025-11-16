@@ -107,6 +107,20 @@ set(IMGUI_SOURCES
 )
 
 # =========================================================
+# Boost (header-only UUID + required sub-libs)
+# =========================================================
+set(BOOST_INCLUDE_LIBRARIES uuid random)   # Only what we need
+set(BOOST_ENABLE_CMAKE ON CACHE BOOL "Enable Boost CMake build")
+
+FetchContent_Declare(
+        boost
+        GIT_REPOSITORY https://github.com/boostorg/boost.git
+        GIT_TAG boost-1.86.0
+)
+
+FetchContent_MakeAvailable(boost)
+
+# =========================================================
 # Testing
 # =========================================================
 Set("ENABLE_TESTS" ON CACHE BOOL "Enable building tests")
@@ -137,6 +151,8 @@ target_include_directories(engine
 
 target_link_libraries(engine
     PUBLIC
+        Boost::uuid
+        Boost::random
         SDL3::SDL3
         SDL3_image::SDL3_image
         SDL3_ttf::SDL3_ttf
