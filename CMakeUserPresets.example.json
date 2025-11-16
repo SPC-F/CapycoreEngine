@@ -10,6 +10,11 @@
       "cacheVariables": {
         "CMAKE_C_COMPILER": "c:/msys64/ucrt64/bin/gcc.exe",
         "CMAKE_CXX_COMPILER": "c:/msys64/ucrt64/bin/g++.exe",
+        "CMAKE_CXX_STANDARD": "20",
+        "CMAKE_BUILD_TYPE": "Debug",
+        
+        "ENABLE_TRACY": "ON",
+        "ENABLE_TESTS": "ON",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       }
     },
@@ -22,3 +27,4 @@
     }
   ]
 }
+
