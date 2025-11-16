@@ -1,6 +1,8 @@
 #include <engine/public/scene.h>
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/engine.h>
+
+#include <algorithm>
 #include <SDL3/SDL.h>
 
 Scene::Scene(const std::string& name)
@@ -74,14 +76,11 @@ bool Scene::is_running() const {
 }
 
 std::reference_wrapper<GameObject> Scene::get_game_object(const std::string& name) const {
-    game_objects_
-    | std::views::filter([&name](const auto& game_object) {
-          return game_object->name() == name;
-      })
-    | std::views::take(1)
-    | std::views::transform([](const auto& game_object) -> std::reference_wrapper<GameObject> {
-          return *game_object;
-    });
+    for(const auto& game_object : game_objects_) {
+        if (game_object->name() == name) {
+            return *game_object;
+        }
+    }
 
     throw std::runtime_error("GameObject with name " + name + " not found in scene " + name_);
 }
@@ -115,17 +114,20 @@ Scene& Scene::add_game_objects(std::vector<std::unique_ptr<GameObject>> game_obj
     return *this;
 }
 
-Scene& Scene::remove_game_object(const std::string& name) {
-    auto it = std::remove_if(
+bool Scene::remove_game_object(GameObject& game_object) {
+
+    auto found_it = std::find_if(
         game_objects_.begin(),
         game_objects_.end(),
-         [&name](const auto& game_object) {
-             return game_object->name() == name;
-         });
+        [&game_object](const auto& param) {
+            return param.get() == &game_object;
+        });
 
-    if (it != game_objects_.end()) {
-        game_objects_.erase(it, game_objects_.end());
+    if (found_it == game_objects_.end()) {
+        return false; // not found
     }
 
-    return *this;
+    game_objects_.erase(found_it);
+
+    return true;
 }

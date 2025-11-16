@@ -1,10 +1,15 @@
 #include <engine/public/gameObject.h>
 #include <engine/public/component.h>
+#include <engine/public/scene.h>
 
 GameObject::GameObject(Scene& scene) : scene_(scene) {}
 GameObject::~GameObject() {
     if (parent_.has_value()) {
         parent_->get().remove_child(*this);
+    }
+
+    for(auto child : children_) {
+        scene_.remove_game_object(child);
     }
 }
 

@@ -2,7 +2,6 @@
 
 #include <vector>
 #include <memory>
-
 #include <engine/public/gameObject.h>
 
 class Scene {
@@ -37,5 +36,6 @@ public:
     Scene& add_game_object(std::unique_ptr<GameObject> game_object);
     GameObject& add_game_object(const std::string& name);
     Scene& add_game_objects(std::vector<std::unique_ptr<GameObject>> game_objects);
-    Scene& remove_game_object(const std::string& name);
+
+    bool remove_game_object(GameObject& game_object);
 };

@@ -7,7 +7,7 @@
 
 TEST_CASE("CreateScene_CreatesValidScene", "[Scene]") {
     // arrange & act
-    const auto& name = "Test Scene";
+    const std::string& name = "Test Scene";
     Scene scene(name);
 
     // assert
@@ -20,7 +20,7 @@ TEST_CASE("CreateScene_CreatesValidScene", "[Scene]") {
 TEST_CASE("AddGameObject_AddsGameObjectToScene_WhenExistingGameObject", "[Scene]") {
     // arrange
     Scene scene("Test Scene");
-    const char * const game_object_name = "Test GameObject";
+    const std::string& game_object_name = "Test GameObject";
     auto game_object = std::make_unique<GameObject>(scene);
     game_object->name(game_object_name);
 
@@ -35,7 +35,7 @@ TEST_CASE("AddGameObject_AddsGameObjectToScene_WhenExistingGameObject", "[Scene]
 TEST_CASE("AddGameObject_AddsGameObjectToScene_FromName", "[Scene]") {
     // arrange
     Scene scene("Test Scene");
-    const char * const game_object_name = "Test GameObject";
+    const std::string& game_object_name = "Test GameObject";
 
     // act
     scene.add_game_object(game_object_name);
@@ -48,8 +48,8 @@ TEST_CASE("AddGameObject_AddsGameObjectToScene_FromName", "[Scene]") {
 TEST_CASE("AddGameObjects_AddsMultipleGameObjectsToScene", "[Scene]") {
     // arrange
     Scene scene("Test Scene");
-    const char * const game_object_name_1 = "Test GameObject 1";
-    const char * const game_object_name_2 = "Test GameObject 2";
+    const std::string& game_object_name_1 = "Test GameObject 1";
+    const std::string& game_object_name_2 = "Test GameObject 2";
 
     auto game_object_1 = std::make_unique<GameObject>(scene);
     game_object_1->name(game_object_name_1);
@@ -73,16 +73,16 @@ TEST_CASE("AddGameObjects_AddsMultipleGameObjectsToScene", "[Scene]") {
 TEST_CASE("RemoveGameObject_RemovesRightGameObjectFromScene", "[Scene]") {
     // arrange
     Scene scene("Test Scene");
-    const char * const game_object_name_1 = "Test GameObject 1";
-    const char * const game_object_name_2 = "Test GameObject 2";
+    const std::string& game_object_name_1 = "Test GameObject 1";
+    const std::string& game_object_name_2 = "Test GameObject 2";
 
-    scene.add_game_object(game_object_name_1);
-    scene.add_game_object(game_object_name_2);
+    auto& obj1 = scene.add_game_object(game_object_name_1);
+    auto& obj2 = scene.add_game_object(game_object_name_2);
 
     REQUIRE(scene.game_objects().size() == 2);
 
     // act
-    scene.remove_game_object(game_object_name_1);
+    scene.remove_game_object(obj1);
 
     // assert
     REQUIRE(scene.game_objects().size() == 1);
@@ -92,17 +92,18 @@ TEST_CASE("RemoveGameObject_RemovesRightGameObjectFromScene", "[Scene]") {
 TEST_CASE("RemoveGameObject_RemovesAllWithSameName", "[Scene]") {
     // arrange
     Scene scene("Test Scene");
-    const char * const game_object_name = "Test GameObject";
+    const std::string& game_object_name = "Test GameObject";
+    const std::string& game_object_name_2 = "Test GameObject2";
 
-    scene.add_game_object(game_object_name);
-    scene.add_game_object(game_object_name);
+    auto& obj1 = scene.add_game_object(game_object_name);
+    auto& obj2 = scene.add_game_object(game_object_name_2);
 
     REQUIRE(scene.game_objects().size() == 2);
 
     // act
-    scene.remove_game_object(game_object_name);
+    scene.remove_game_object(obj1);
 
     // assert
     REQUIRE(scene.game_objects().size() == 1);
-    REQUIRE(scene.get_game_object(game_object_name).get().name() == game_object_name);
+    REQUIRE(scene.get_game_object(game_object_name_2).get().name() == game_object_name_2);
 }
