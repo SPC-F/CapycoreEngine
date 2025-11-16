@@ -1,0 +1,12 @@
+<map id="include/engine/input/i_input.h" name="include/engine/input/i_input.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="199,5,353,45"/>
+<area shape="rect" id="Node000002" href="$i__input__provider_8h.html" title=" " alt="" coords="95,93,249,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,56,197,95,193,91,241,52"/>
+<area shape="rect" id="Node000005" href="$sdl__input__strategy_8h.html" title=" " alt="" coords="274,93,489,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="311,52,360,91,356,95,308,56"/>
+<area shape="rect" id="Node000003" href="$input__manager_8h.html" title=" " alt="" coords="5,181,160,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="144,145,104,183,101,179,140,141"/>
+<area shape="rect" id="Node000004" href="$input__system_8h.html" title=" " alt="" coords="184,181,339,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="204,141,243,179,240,183,200,145"/>
+<area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="504,100,512,105,515,114,508,125,490,130,488,125,505,120,510,113,508,109,501,105"/>
+</map>

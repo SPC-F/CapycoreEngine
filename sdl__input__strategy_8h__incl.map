@@ -1,0 +1,25 @@
+<map id="include/engine/input/strategy/sdl_input_strategy.h" name="include/engine/input/strategy/sdl_input_strategy.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="548,5,763,45"/>
+<area shape="poly" id="edge12_Node000001_Node000001" title=" " alt="" coords="764,10,782,15,789,25,786,33,778,38,775,33,782,29,784,26,779,19,762,15"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="579,262,630,287"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="654,46,612,249,607,248,649,45"/>
+<area shape="rect" id="Node000003" href="$i__input_8h.html" title=" " alt="" coords="394,93,557,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="613,48,515,90,513,85,611,43"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="693,93,850,119"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="685,43,744,83,741,88,682,48"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="511,116,548,135,566,149,581,165,593,185,601,207,607,248,602,249,595,208,588,187,577,168,563,153,545,140,509,121"/>
+<area shape="rect" id="Node000004" href="$key__code_8h.html" title=" " alt="" coords="5,174,185,199"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="421,121,164,174,163,169,420,116"/>
+<area shape="rect" id="Node000006" href="$key__state_8h.html" title=" " alt="" coords="384,174,567,199"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="478,119,478,160,473,160,473,119"/>
+<area shape="rect" id="Node000007" href="$mouse__state_8h.html" title=" " alt="" coords="209,167,360,207"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="449,121,344,164,342,159,447,116"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="118,343,185,368"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="100,199,108,241,123,294,140,330,135,332,118,296,103,243,94,200"/>
+<area shape="poly" id="edge8_Node000007_Node000002" title=" " alt="" coords="356,204,567,261,566,266,354,209"/>
+<area shape="rect" id="Node000008" href="$mouse__button_8h.html" title=" " alt="" coords="133,255,284,295"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="270,209,237,246,233,242,266,205"/>
+<area shape="rect" id="Node000009" href="$point_8h.html" title=" " alt="" coords="308,255,443,295"/>
+<area shape="poly" id="edge11_Node000007_Node000009" title=" " alt="" coords="307,205,347,243,344,247,303,209"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="197,296,170,333,166,330,193,293"/>
+</map>

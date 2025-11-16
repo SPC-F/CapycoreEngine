@@ -10,10 +10,21 @@ var hierarchy =
     [ "IEngineService", "class_i_engine_service.html", [
       [ "AssetService", "class_asset_service.html", null ],
       [ "AudioService", "class_audio_service.html", null ],
+      [ "InputManager", "class_input_manager.html", null ],
       [ "PhysicsService", "class_physics_service.html", null ],
       [ "Renderer", "class_renderer.html", null ],
       [ "RenderingService", "class_rendering_service.html", null ]
     ] ],
+    [ "IInput", "class_i_input.html", [
+      [ "SDLInputStrategy", "class_s_d_l_input_strategy.html", null ]
+    ] ],
+    [ "IInputProvider", "class_i_input_provider.html", [
+      [ "InputSystem", "class_input_system.html", null ]
+    ] ],
+    [ "KeyState", "struct_key_state.html", null ],
+    [ "MouseButtonState", "struct_mouse_button_state.html", null ],
+    [ "MouseState", "struct_mouse_state.html", null ],
+    [ "MouseWheelState", "struct_mouse_wheel_state.html", null ],
     [ "PhysicsCreationFactory", "class_physics_creation_factory.html", null ],
     [ "PhysicsCreationFlags", "struct_physics_creation_flags.html", null ],
     [ "PhysicsRaycaster", "class_physics_raycaster.html", null ],

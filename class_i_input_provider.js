@@ -1,0 +1,26 @@
+var class_i_input_provider =
+[
+    [ "~IInputProvider", "class_i_input_provider.html#a7ae285d5e33d38193134b4cb2cadd7e9", null ],
+    [ "any_key_held", "class_i_input_provider.html#a47d0eb440e4e01e37830748cff2e4f85", null ],
+    [ "any_key_pressed", "class_i_input_provider.html#a38cc8e4323cc07234009eb43f527f333", null ],
+    [ "any_key_released", "class_i_input_provider.html#accb90bb04ecec68f79fae664bfa471e9", null ],
+    [ "any_mouse_held", "class_i_input_provider.html#a8c31b10331685d7f8e32258b9af8d4c4", null ],
+    [ "any_mouse_pressed", "class_i_input_provider.html#a63b288b6f3e93fb2c287ef7a02cfe562", null ],
+    [ "any_mouse_released", "class_i_input_provider.html#aecb38b94cea7300bb8694e994ed9698e", null ],
+    [ "input", "class_i_input_provider.html#a034ef9dd8f4603e586aeea5682a5c015", null ],
+    [ "is_key_held", "class_i_input_provider.html#a21ae7cabc62e78c68b7e020f0dfbc6c0", null ],
+    [ "is_key_pressed", "class_i_input_provider.html#a25ab2d3e8b9ae205b698fea86bdfec8a", null ],
+    [ "is_key_released", "class_i_input_provider.html#a23d70b1ecb62035e6eb2e81ca2e8835d", null ],
+    [ "is_mouse_held", "class_i_input_provider.html#ac9494377036bf4879486d2d42ac39584", null ],
+    [ "is_mouse_pressed", "class_i_input_provider.html#a003421518465d2f15640323044fb2d05", null ],
+    [ "is_mouse_released", "class_i_input_provider.html#a331daddb0983fd35c8bfa0422d3416e8", null ],
+    [ "mouse_delta", "class_i_input_provider.html#a15d40975912b8a7d94439f41ac09ad84", null ],
+    [ "mouse_moved", "class_i_input_provider.html#a962448f0523d3ce938f14cdb326a57a9", null ],
+    [ "mouse_position", "class_i_input_provider.html#acac4393f26a958048d214dc32b3b205a", null ],
+    [ "mouse_scroll", "class_i_input_provider.html#a0f0bde3cbee2f5f18259219c86b7569b", null ],
+    [ "mouse_scroll_delta", "class_i_input_provider.html#a5bc4aa5066d4fe185f155ac5e169da9e", null ],
+    [ "mouse_scroll_direction", "class_i_input_provider.html#ae944bf64a731db6590794125ec1b03e8", null ],
+    [ "reset_state", "class_i_input_provider.html#a87a6c1ecc8e5259edc2206088874049d", null ],
+    [ "set_input", "class_i_input_provider.html#a8b95c5f90ada0aa3a43789a33b0fcfbe", null ],
+    [ "update", "class_i_input_provider.html#af4932b6c72db4287d9705d0037ef883b", null ]
+];

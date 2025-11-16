@@ -1,0 +1,15 @@
+<map id="include/engine/input/mouse_state.h" name="include/engine/input/mouse_state.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="152,5,307,45"/>
+<area shape="rect" id="Node000002" href="$i__input_8h.html" title=" " alt="" coords="209,93,364,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="252,56,276,92,272,95,248,58"/>
+<area shape="rect" id="Node000003" href="$i__input__provider_8h.html" title=" " alt="" coords="95,181,249,221"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="215,59,200,94,186,141,178,182,173,181,181,140,195,92,210,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="252,144,199,183,196,179,249,140"/>
+<area shape="rect" id="Node000006" href="$sdl__input__strategy_8h.html" title=" " alt="" coords="274,181,489,221"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="320,141,362,179,359,183,316,145"/>
+<area shape="rect" id="Node000004" href="$input__manager_8h.html" title=" " alt="" coords="5,269,160,309"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="144,233,104,271,101,267,140,229"/>
+<area shape="rect" id="Node000005" href="$input__system_8h.html" title=" " alt="" coords="184,269,339,309"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="204,229,243,267,240,271,200,233"/>
+<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="504,188,512,193,515,202,508,213,490,218,488,213,505,208,510,201,508,197,501,193"/>
+</map>

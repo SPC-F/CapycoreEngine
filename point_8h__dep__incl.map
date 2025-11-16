@@ -1,7 +1,22 @@
 <map id="include/engine/public/util/point.h" name="include/engine/public/util/point.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="25,5,185,45"/>
-<area shape="rect" id="Node000002" href="$physics__creation__factory_8h.html" title=" " alt="" coords="5,93,204,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,59,107,93,102,93,102,59"/>
-<area shape="rect" id="Node000003" href="$physics__service_8h.html" title=" " alt="" coords="19,181,190,221"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="107,147,107,181,102,181,102,147"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="199,5,359,45"/>
+<area shape="rect" id="Node000002" href="$i__input__provider_8h.html" title=" " alt="" coords="95,269,249,309"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,55,209,73,192,95,175,140,168,189,168,234,171,269,166,269,163,234,163,189,169,139,187,92,205,69,227,51"/>
+<area shape="rect" id="Node000005" href="$mouse__state_8h.html" title=" " alt="" coords="201,93,356,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="281,59,281,93,276,93,276,59"/>
+<area shape="rect" id="Node000008" href="$physics__creation__factory_8h.html" title=" " alt="" coords="390,93,589,133"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="338,48,444,91,442,96,336,53"/>
+<area shape="rect" id="Node000003" href="$input__manager_8h.html" title=" " alt="" coords="5,357,160,397"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="144,321,104,359,101,355,140,317"/>
+<area shape="rect" id="Node000004" href="$input__system_8h.html" title=" " alt="" coords="184,357,339,397"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="204,317,243,355,240,359,200,321"/>
+<area shape="poly" id="edge9_Node000005_Node000002" title=" " alt="" coords="254,145,225,183,200,229,182,270,177,268,195,227,220,180,249,142"/>
+<area shape="rect" id="Node000006" href="$i__input_8h.html" title=" " alt="" coords="235,181,389,221"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="293,145,307,180,302,182,288,147"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="271,231,204,272,201,267,268,226"/>
+<area shape="rect" id="Node000007" href="$sdl__input__strategy_8h.html" title=" " alt="" coords="274,269,489,309"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="338,231,368,267,364,271,334,234"/>
+<area shape="poly" id="edge8_Node000007_Node000007" title=" " alt="" coords="504,276,512,281,515,290,508,301,490,306,488,301,505,296,510,289,508,285,501,281"/>
+<area shape="rect" id="Node000009" href="$physics__service_8h.html" title=" " alt="" coords="413,181,584,221"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="496,147,499,181,494,181,490,147"/>
 </map>

@@ -1,3 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_sound_factory.html" title="Factory class for creating SoundResource instances based on SoundType. The reason for shared pointers..." alt="" coords="5,5,115,31"/>
+<area shape="rect" id="Node000000" href="$struct_physics_creation_flags.html" title="Flags for creating physics bodies." alt="" coords="5,5,167,31"/>
 </map>
