@@ -9,6 +9,7 @@
 #include <engine/public/scene.h>
 
 struct DummyScene : public Scene {
+    DummyScene() : Scene("Dummy Scene") {}
 };
 
 struct DummyGameObject : public GameObject {
