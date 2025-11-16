@@ -1,5 +1,5 @@
 #pragma once
-#include <concepts>
+#include <concepts> // NOLINT
 
 class IEngineService {
 public:

@@ -11,8 +11,8 @@
 
 class GameObject {
 private:
-    std::vector<std::unique_ptr<Component>> components_ {};
-    std::vector<std::reference_wrapper<GameObject>> children_ {};
+    std::vector<std::unique_ptr<Component>> components_;
+    std::vector<std::reference_wrapper<GameObject>> children_;
 
     std::optional<std::reference_wrapper<GameObject>> parent_;
     bool is_active_ {true};
@@ -29,7 +29,7 @@ public:
     virtual ~GameObject();
 
     GameObject& parent(GameObject& parent);
-    GameObject& parent(std::nullopt_t);
+    GameObject& parent(std::nullopt_t null_opt);
 
     [[nodiscard]] bool is_active_in_world() const noexcept;
     [[nodiscard]] bool is_active() const noexcept;
@@ -53,13 +53,14 @@ public:
 
     [[nodiscard]] const Scene& scene() const noexcept;
 
-    std::vector<std::reference_wrapper<GameObject>>& children();
+    [[nodiscard]] std::vector<std::reference_wrapper<GameObject>>& children();
     GameObject& add_child(GameObject& child);
     GameObject& remove_child(GameObject& child);
 
     template<IsComponent T>
+    [[nodiscard]]
     std::optional<std::reference_wrapper<T>> get_component() const noexcept {
-        for (auto& component : components_) {
+        for (const auto& component : components_) {
             if (auto* casted = dynamic_cast<T*>(component.get())) {
                 return std::ref(*casted);
             }
@@ -71,6 +72,7 @@ public:
         Note that it does NOT include the components attached to the
         child objects. Those can be retrieved with GameObject::getComponentsInChildren */
     template<IsComponent T>
+    [[nodiscard]]
     std::vector<std::reference_wrapper<T>> get_components() const {
         auto filtered = components_
             | std::views::filter([](auto& c) { return dynamic_cast<T*>(c.get()); })
@@ -85,9 +87,9 @@ public:
     std::vector<std::reference_wrapper<T>> get_components_from_children() const {
         std::vector<std::reference_wrapper<T>> result {};
 
-        for (auto& child : children_) {
-            auto childComponents = child.get().get_components_from_children<T>();
-            result.insert(result.end(), childComponents.begin(), childComponents.end());
+        for (const auto& child : children_) {
+            auto child_components = child.get().get_components_from_children<T>();
+            result.insert(result.end(), child_components.begin(), child_components.end());
         }
 
         return result;
@@ -97,12 +99,19 @@ public:
     T& add_component(Args&&... args) {
         auto component = std::make_unique<T>(std::forward<Args>(args)...);
         T& ref = *component;
+
+        component->parent(std::ref(*this));
+        component->on_attach();
+
         components_.emplace_back(std::move(component));
         return ref;
     }
 
     template<IsComponent T>
     void remove_component(T& component) {
+        component.on_detach();
+        component.parent(std::nullopt);
+
         components_.erase(
             std::remove_if(
                 components_.begin(),

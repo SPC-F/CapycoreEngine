@@ -1,0 +1,74 @@
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/component.h:7: warning: Compound Component is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/core/engine.h:6: warning: Compound Engine is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:12: warning: Compound GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/core/iEngineService.h:4: warning: Compound IEngineService is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/util/point.h:2: warning: Compound Point is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/core/serviceContainer.h:9: warning: Compound ServiceContainer is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/transform.h:7: warning: Compound Transform is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/util/vector3.h:2: warning: Compound Vector3 is not documented.
+error: style sheet doxygen.css does not exist or is not readable!
+error: Style sheet 'doxygen.css' specified by HTML_STYLESHEET does not exist!
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/component.h:12: warning: Member Component(GameObject &parent) (function) of class Component is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/component.h:15: warning: Member active() const noexcept (function) of class Component is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/component.h:16: warning: Member active(bool value) noexcept (function) of class Component is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/component.h:18: warning: Member update()=0 (function) of class Component is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/component.h:19: warning: Member on_attach()=0 (function) of class Component is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/component.h:20: warning: Member on_detach()=0 (function) of class Component is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/component.h:21: warning: Member on_serialize()=0 (function) of class Component is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/component.h:22: warning: Member on_deserialize()=0 (function) of class Component is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/core/engine.h:10: warning: Member instance() (function) of class Engine is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/core/engine.h:15: warning: Member services (variable) of class Engine is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:28: warning: Member GameObject(Scene &scene) (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:31: warning: Member parent(GameObject &parent) (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:32: warning: Member parent(std::nullopt_t) (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:34: warning: Member is_active_in_world() const noexcept (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:35: warning: Member is_active() const noexcept (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:37: warning: Member set_inactive() noexcept (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:38: warning: Member set_active() noexcept (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:39: warning: Member set_active_in_world() noexcept (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:40: warning: Member set_inactive_in_world() noexcept (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:42: warning: Member name(const std::string &name) (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:43: warning: Member name() const (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:45: warning: Member tag(const std::string &tag) (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:46: warning: Member tag() const (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:48: warning: Member layer(int layer) (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:49: warning: Member layer() const (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:51: warning: Member transform(Transform transform) (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:52: warning: Member transform() (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:54: warning: Member scene() const noexcept (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:56: warning: Member children() (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:57: warning: Member add_child(GameObject &child) (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:58: warning: Member remove_child(GameObject &child) (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:61: warning: Member get_component() const noexcept (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:85: warning: Member get_components_from_children() const (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:97: warning: Member add_component(Args &&... args) (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:105: warning: Member remove_component(T &component) (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:118: warning: Member serialize() const (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/gameObject.h:119: warning: Member deserialize() const (function) of class GameObject is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/util/point.h:5: warning: Member Point(float x, float y) (function) of class Point is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/util/point.h:6: warning: Member x (variable) of class Point is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/util/point.h:7: warning: Member y (variable) of class Point is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/core/serviceContainer.h:16: warning: Member registerService(Args &&... args) (function) of class ServiceContainer is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/core/serviceContainer.h:25: warning: Member unregisterService() (function) of class ServiceContainer is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/core/serviceContainer.h:31: warning: Member getService() const (function) of class ServiceContainer is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/core/serviceContainer.h:42: warning: Member tryGetService() const (function) of class ServiceContainer is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/transform.h:16: warning: Member Transform(Vector3 position) (function) of class Transform is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/transform.h:17: warning: Member Transform(Vector3 position, float rotation, int scale) (function) of class Transform is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/transform.h:18: warning: Member Transform(Vector3 position, float rotation, int scale, std::optional< std::reference_wrapper< Transform > > parent) (function) of class Transform is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/transform.h:20: warning: Member local_position() const noexcept (function) of class Transform is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/transform.h:22: warning: Member position() const noexcept (function) of class Transform is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/transform.h:23: warning: Member position(const Vector3 &pos) noexcept (function) of class Transform is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/transform.h:25: warning: Member rotation(float rot) noexcept (function) of class Transform is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/transform.h:26: warning: Member rotation() const noexcept (function) of class Transform is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/transform.h:28: warning: Member scale(int scale) noexcept (function) of class Transform is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/transform.h:29: warning: Member scale() const noexcept (function) of class Transform is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/transform.h:31: warning: Member parent(std::optional< std::reference_wrapper< Transform > > parent) noexcept (function) of class Transform is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/transform.h:32: warning: Member parent() const noexcept (function) of class Transform is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/util/vector3.h:5: warning: Member Vector3(float x, float y, float z) (function) of class Vector3 is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/util/vector3.h:10: warning: Member operator+(const Vector3 &right) const noexcept (function) of class Vector3 is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/util/vector3.h:11: warning: Member operator-(const Vector3 &right) const noexcept (function) of class Vector3 is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/util/vector3.h:13: warning: Member operator+=(const Vector3 &&right) noexcept (function) of class Vector3 is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/util/vector3.h:14: warning: Member operator-=(const Vector3 &&right) noexcept (function) of class Vector3 is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/util/vector3.h:6: warning: Member x (variable) of class Vector3 is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/util/vector3.h:7: warning: Member y (variable) of class Vector3 is not documented.
+C:/Users/hiili/Projects/SEM7/CPP/CapycoreEngine/include/engine/public/util/vector3.h:8: warning: Member z (variable) of class Vector3 is not documented.

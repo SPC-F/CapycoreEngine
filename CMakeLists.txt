@@ -135,8 +135,8 @@ target_include_directories(engine
 )
 
 target_link_libraries(engine
-    PUBLIC 
-        SDL3::SDL3 
+    PUBLIC
+        SDL3::SDL3
         SDL3_image::SDL3_image
         SDL3_ttf::SDL3_ttf
         Freetype::Freetype
@@ -186,7 +186,7 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
-        ${ENet_SOURCE_DIR}/include
+        ${enet_SOURCE_DIR}/include
         ${imgui_SOURCE_DIR}
         ${imgui_SOURCE_DIR}/backends
 )
@@ -217,6 +217,26 @@ if(WIN32)
 endif()
 
 # =========================================================
+# Clang-Tidy target
+# =========================================================
+find_program(CLANG_TIDY clang-tidy)
+if(CLANG_TIDY)
+    file(GLOB_RECURSE PROJECT_SOURCES
+        "${CMAKE_SOURCE_DIR}/src/*.cpp"
+    )
+    
+    list(FILTER PROJECT_SOURCES EXCLUDE REGEX ".*/tests/.*")
+    list(FILTER PROJECT_SOURCES EXCLUDE REGEX ".*/util/memory.*")
+
+    add_custom_target(
+        clang_tidy
+        COMMAND ${CLANG_TIDY} -p ${CMAKE_BINARY_DIR} ${PROJECT_SOURCES} --warnings-as-errors=*
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Running clang-tidy on the entire project..."
+    )
+endif()
+
+# =========================================================
 # Avoid SDL_main issues
 # =========================================================
 target_compile_definitions(${PROJECT_NAME} PRIVATE SDL_MAIN_HANDLED)
@@ -237,6 +257,7 @@ if(ENABLE_TESTS)
                 tests/main.cpp
                 ${TEST_SOURCES}
         )
+        target_compile_definitions(tests PRIVATE PROJECT_ROOT="${CMAKE_SOURCE_DIR}")
 
         target_link_libraries(tests
         PRIVATE
@@ -245,6 +266,7 @@ if(ENABLE_TESTS)
         )
 
         target_include_directories(tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+        file(COPY "${CMAKE_SOURCE_DIR}/resources" DESTINATION "${CMAKE_BINARY_DIR}")
 
         enable_testing()
         add_test(NAME engine_tests COMMAND tests)
