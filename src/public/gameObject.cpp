@@ -2,8 +2,8 @@
 #include <engine/public/component.h>
 
 GameObject::GameObject(Scene& scene) :
-    ID_ {boost::uuids::random_generator()()},
-    scene_(scene) {
+        id_ {boost::uuids::random_generator()()},
+        scene_(scene) {
 
 }
 
@@ -13,8 +13,8 @@ GameObject::~GameObject() {
     }
 }
 
-boost::uuids::uuid GameObject::ID() const noexcept {
-    return ID_;
+boost::uuids::uuid GameObject::id() const noexcept {
+    return id_;
 }
 
 GameObject& GameObject::name(const std::string& name) {

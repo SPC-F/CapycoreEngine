@@ -21,7 +21,7 @@ TEST_CASE("GameObject default constructor initializes correctly", "[GameObject]"
     // Assert
     std::set<boost::uuids::uuid> ids {};
     for(const auto& obj : objects) {
-        ids.insert(obj.ID());
+        ids.insert(obj.id());
     }
 
     REQUIRE(ids.size() == object_count);
