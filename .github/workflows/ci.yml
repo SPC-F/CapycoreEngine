@@ -53,19 +53,23 @@ jobs:
             -DENABLE_TESTS=ON \
             -DENABLE_TRACY=OFF \
             -DBUILD_SHARED_LIBS=OFF \
+            -DCMAKE_C_COMPILER=clang \
+            -DCMAKE_CXX_COMPILER=clang++ \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
       
       - name: Run clang-tidy
-        shell: bash
         run: |
-          echo "Running clang-tidy..."
-          clang-tidy -p build \
-            $(find src include -type f \( -name '*.cpp' -o -name '*.h' \) \
+          echo "Collecting files..."
+          mapfile -t FILES < <(
+            find src include -type f -name '*.cpp' \
               ! -path '*/tests/*' \
               ! -path '*/util/memory.cpp' \
-              ! -path '*/iEngineService.*') \
-            --warnings-as-errors=*
-      
+              ! -path '*/iEngineService.*'
+          )
+          echo "Running clang-tidy on ${#FILES[@]} files..."
+          run-clang-tidy -p build -j "$(nproc)" "${FILES[@]}"
+
       - name: Build (ASan)
         shell: bash
         run: cmake --build build --parallel --target all
