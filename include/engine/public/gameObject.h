@@ -14,7 +14,7 @@
 
 class GameObject {
 private:
-    boost::uuids::uuid ID_ {boost::uuids::random_generator()()};
+    boost::uuids::uuid ID_;
 
     std::vector<std::unique_ptr<Component>> components_;
     std::vector<std::reference_wrapper<GameObject>> children_;

@@ -1,7 +1,12 @@
 #include <engine/public/gameObject.h>
 #include <engine/public/component.h>
 
-GameObject::GameObject(Scene& scene) : scene_(scene) {}
+GameObject::GameObject(Scene& scene) :
+    ID_ {boost::uuids::random_generator()()},
+    scene_(scene) {
+
+}
+
 GameObject::~GameObject() {
     if (parent_.has_value()) {
         parent_->get().remove_child(*this);
