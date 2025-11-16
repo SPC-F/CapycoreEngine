@@ -4,6 +4,9 @@
 #include <ranges>
 #include <string>
 #include <vector>
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
 
 #include <engine/public/scene.h>
 #include <engine/public/transform.h>
@@ -11,6 +14,8 @@
 
 class GameObject {
 private:
+    boost::uuids::uuid ID_ {boost::uuids::random_generator()()};
+
     std::vector<std::unique_ptr<Component>> components_;
     std::vector<std::reference_wrapper<GameObject>> children_;
 
@@ -30,6 +35,8 @@ public:
 
     GameObject& parent(GameObject& parent);
     GameObject& parent(std::nullopt_t null_opt);
+
+    [[nodiscard]] boost::uuids::uuid ID() const noexcept;
 
     [[nodiscard]] bool is_active_in_world() const noexcept;
     [[nodiscard]] bool is_active() const noexcept;

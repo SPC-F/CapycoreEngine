@@ -8,6 +8,10 @@ GameObject::~GameObject() {
     }
 }
 
+boost::uuids::uuid GameObject::ID() const noexcept {
+    return ID_;
+}
+
 GameObject& GameObject::name(const std::string& name) {
     name_ = name;
     return *this;
