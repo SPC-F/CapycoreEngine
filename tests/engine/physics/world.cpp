@@ -86,7 +86,7 @@ TEST_CASE("physics_world_step_updates_dynamic_body", "[PhysicsWorld]") {
 
     Vector3 position{0.0f, 10.0f, 0.0f};
     Body2D body = factory.create_body(position, BodyType2D::Dynamic, nullptr);
-    body = factory.create_box_fixture(body, 1.0f, 1.0f, flags);
+    body = factory.create_box_fixture(body, {0.0f, 0.0f}, 1.0f, 1.0f, flags);
     b2Vec2 initial_pos = b2Body_GetPosition(body.id);
 
     // act
@@ -140,7 +140,7 @@ TEST_CASE("physics_world_gets_body_transform", "[PhysicsWorld]") {
 
     Vector3 position{5.0f, 15.0f, 0.0f};
     Body2D body = factory.create_body(position, BodyType2D::Static, nullptr);
-    body = factory.create_box_fixture(body, 1.0f, 1.0f, flags);
+    body = factory.create_box_fixture(body, {0.0f, 0.0f}, 1.0f, 1.0f, flags);
 
     // act
     Body2DTransform transform = Body2D::get_body_transform(body);
@@ -164,7 +164,7 @@ TEST_CASE("physics_world_sets_body_transform", "[PhysicsWorld]") {
 
     Vector3 initial_position{0.0f, 0.0f, 0.0f};
     Body2D body = factory.create_body(initial_position, BodyType2D::Static, nullptr);
-    body = factory.create_box_fixture(body, 1.0f, 1.0f, flags);
+    body = factory.create_box_fixture(body, {0.0f, 0.0f}, 1.0f, 1.0f, flags);
 
     Vector3 new_position{10.0f, 20.0f, 0.0f};
     float new_rotation = PhysicsMath::to_radians(45.0f); // 45 degrees in radians
@@ -195,7 +195,7 @@ TEST_CASE("physics_world_destroys_body", "[PhysicsWorld]") {
 
     Vector3 position{0.0f, 0.0f, 0.0f};
     Body2D body = factory.create_body(position, BodyType2D::Static, nullptr);
-    body = factory.create_box_fixture(body, 1.0f, 1.0f, flags);
+    body = factory.create_box_fixture(body, {0.0f, 0.0f}, 1.0f, 1.0f, flags);
 
     // act
     REQUIRE(b2Body_IsValid(body.id) == true);
@@ -219,11 +219,11 @@ TEST_CASE("physics_world_calculates_distance_between_bodies", "[PhysicsWorld]") 
 
     Vector3 position_a{0.0f, 0.0f, 0.0f};
     Body2D body_a = factory.create_body(position_a, BodyType2D::Static, nullptr);
-    body_a = factory.create_box_fixture(body_a, 1.0f, 1.0f, flags);
+    body_a = factory.create_box_fixture(body_a, {0.0f, 0.0f}, 1.0f, 1.0f, flags);
 
     Vector3 position_b{5.0f, 0.0f, 0.0f};
     Body2D body_b = factory.create_body(position_b, BodyType2D::Static, nullptr);
-    body_b = factory.create_box_fixture(body_b, 1.0f, 1.0f, flags);
+    body_b = factory.create_box_fixture(body_b, {0.0f, 0.0f}, 1.0f, 1.0f, flags);
 
     Body2DTransform transform_a = Body2D::get_body_transform(body_a);
     Body2DTransform transform_b = Body2D::get_body_transform(body_b);
@@ -252,11 +252,11 @@ TEST_CASE("physics_world_calculates_fixture_distance_between_bodies", "[PhysicsW
 
     Vector3 position_a{0.0f, 0.0f, 0.0f};
     Body2D body_a = factory.create_body(position_a, BodyType2D::Static, nullptr);
-    body_a = factory.create_box_fixture(body_a, 1.0f, 1.0f, flags);
+    body_a = factory.create_box_fixture(body_a, {0.0f, 0.0f}, 1.0f, 1.0f, flags);
 
     Vector3 position_b{5.0f, 0.0f, 0.0f};
     Body2D body_b = factory.create_body(position_b, BodyType2D::Static, nullptr);
-    body_b = factory.create_box_fixture(body_b, 1.0f, 1.0f, flags);
+    body_b = factory.create_box_fixture(body_b, {0.0f, 0.0f}, 1.0f, 1.0f, flags);
 
     Body2DTransform transform_a = Body2D::get_body_transform(body_a);
     Body2DTransform transform_b = Body2D::get_body_transform(body_b);

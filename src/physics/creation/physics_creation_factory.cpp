@@ -44,14 +44,14 @@ Body2D PhysicsCreationFactory::create_body(Vector3 position, BodyType2D::Type ty
     return body;
 }
 
-Body2D PhysicsCreationFactory::create_box_fixture(Body2D body, float width, float height, PhysicsCreationFlags flags) 
+Body2D PhysicsCreationFactory::create_box_fixture(Body2D body, Point offset, float width, float height, PhysicsCreationFlags flags) 
 {
     if (width <= 0.0f || height <= 0.0f)
     {
         throw std::invalid_argument("Width and height must be positive values.");
     }
 
-    b2Polygon box = b2MakeBox(width / default_box_divisor, height / default_box_divisor);
+    b2Polygon box = b2MakeOffsetBox(width / default_box_divisor, height / default_box_divisor, b2Vec2{offset.x, offset.y}, b2MakeRot(0.0f));
     
     b2ShapeDef shape_def = b2DefaultShapeDef();
     shape_def.enableContactEvents = flags.enable_contact_events;
@@ -86,7 +86,7 @@ Body2D PhysicsCreationFactory::create_box_fixture(Body2D body, float width, floa
     return body;
 }
 
-Body2D PhysicsCreationFactory::create_circle_fixture(Body2D body, float radius, PhysicsCreationFlags flags) 
+Body2D PhysicsCreationFactory::create_circle_fixture(Body2D body, Point offset, float radius, PhysicsCreationFlags flags) 
 {
     if (radius <= 0.0f)
     {
@@ -94,8 +94,8 @@ Body2D PhysicsCreationFactory::create_circle_fixture(Body2D body, float radius, 
     }
 
     b2Circle circle;
-    circle.center = b2Vec2{0.0f, 0.0f};
     circle.radius = radius;
+    circle.center = b2Vec2{offset.x, offset.y};
 
     b2ShapeDef shape_def = b2DefaultShapeDef();
 
@@ -103,6 +103,7 @@ Body2D PhysicsCreationFactory::create_circle_fixture(Body2D body, float radius, 
     shape_def.isSensor = flags.sensor;
 
     b2ShapeId shape_id = b2CreateCircleShape(body.id, &shape_def, &circle);
+    
     body.shapes.push_back({ shape_id, b2ShapeType::b2_circleShape });
 
     b2Filter filter{};

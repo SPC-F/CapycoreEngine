@@ -22,7 +22,7 @@ TEST_CASE("physics_raycaster_closest_returns_valid_result", "[PhysicsRaycaster]"
     flags.is_bullet = false;
 
     Body2D box = factory.create_body({0.0f, 5.0f, 0.0f}, BodyType2D::Static, nullptr);
-    box = factory.create_box_fixture(box, 2.0f, 2.0f, flags);
+    box = factory.create_box_fixture(box, {0.0f, 0.0f}, 2.0f, 2.0f, flags);
 
     b2Vec2 origin{0.0f, 0.0f};
     b2Vec2 translation{0.0f, 10.0f};
@@ -50,10 +50,10 @@ TEST_CASE("physics_raycaster_all_returns_sorted_results", "[PhysicsRaycaster]") 
     flags.is_bullet = false;
 
     Body2D box1 = factory.create_body({0.0f, 3.0f, 0.0f}, BodyType2D::Static, nullptr);
-    box1 = factory.create_box_fixture(box1, 2.0f, 2.0f, flags);
+    box1 = factory.create_box_fixture(box1, {0.0f, 0.0f}, 2.0f, 2.0f, flags);
 
     Body2D box2 = factory.create_body({0.0f, 6.0f, 0.0f}, BodyType2D::Static, nullptr);
-    box2 = factory.create_box_fixture(box2, 2.0f, 2.0f, flags);
+    box2 = factory.create_box_fixture(box2, {0.0f, 0.0f}, 2.0f, 2.0f, flags);
 
     b2Vec2 origin{0.0f, 0.0f};
     b2Vec2 translation{0.0f, 10.0f};
@@ -86,9 +86,9 @@ TEST_CASE("physics_raycaster_filtered_respects_category_mask", "[PhysicsRaycaste
     flags.mask = 0xFFFF;     // collides with all
 
     Body2D box1 = factory.create_body({0.0f, 3.0f, 0.0f}, BodyType2D::Static, nullptr);
-    box1 = factory.create_box_fixture(box1, 2.0f, 2.0f, flags);
+    box1 = factory.create_box_fixture(box1, {0.0f, 0.0f}, 2.0f, 2.0f, flags);
     Body2D box2 = factory.create_body({0.0f, 6.0f, 0.0f}, BodyType2D::Static, nullptr);
-    box2 = factory.create_box_fixture(box2, 2.0f, 2.0f, flags);
+    box2 = factory.create_box_fixture(box2, {0.0f, 0.0f}, 2.0f, 2.0f, flags);
 
     world.step(1.0f / 60.0f);
 
@@ -119,7 +119,7 @@ TEST_CASE("physics_raycaster_segment_matches_closest", "[PhysicsRaycaster]") {
     flags.dynamic = false;
 
     Body2D body = factory.create_body({0.0f, 5.0f, 0.0f}, BodyType2D::Static, nullptr);
-    body = factory.create_box_fixture(body, 2.0f, 2.0f, flags);
+    body = factory.create_box_fixture(body, {0.0f, 0.0f}, 2.0f, 2.0f, flags);
 
     b2Vec2 start{0.0f, 0.0f};
     b2Vec2 end{0.0f, 10.0f};
@@ -163,10 +163,10 @@ TEST_CASE("physics_raycaster_closest_static_behind_dynamic", "[PhysicsRaycaster]
     dynamic_flags.sensor = false;
 
     Body2D static_body = factory.create_body({0.0f, 3.0f, 0.0f}, BodyType2D::Static, nullptr);
-    static_body = factory.create_box_fixture(static_body, 2.0f, 2.0f, static_flags);
+    static_body = factory.create_box_fixture(static_body, {0.0f, 0.0f}, 2.0f, 2.0f, static_flags);
 
     Body2D dynamic_body = factory.create_body({0.0f, 6.0f, 0.0f}, BodyType2D::Dynamic, nullptr);
-    dynamic_body = factory.create_box_fixture(dynamic_body, 2.0f, 2.0f, dynamic_flags);
+    dynamic_body = factory.create_box_fixture(dynamic_body, {0.0f, 0.0f}, 2.0f, 2.0f, dynamic_flags);
 
     b2Vec2 origin{0.0f, 0.0f};
     b2Vec2 translation{0.0f, 10.0f};
@@ -195,11 +195,11 @@ TEST_CASE("physics_raycaster_misses_static_hits_dynamic", "[PhysicsRaycaster]") 
 
     // static box off to the side
     Body2D static_body = factory.create_body({5.0f, 5.0f, 0.0f}, BodyType2D::Static, nullptr);
-    static_body = factory.create_box_fixture(static_body, 2.0f, 2.0f, static_flags);
+    static_body = factory.create_box_fixture(static_body, {0.0f, 0.0f}, 2.0f, 2.0f, static_flags);
 
     // dynamic box directly in the path
     Body2D dynamic_body = factory.create_body({0.0f, 5.0f, 0.0f}, BodyType2D::Dynamic, nullptr);
-    dynamic_body = factory.create_box_fixture(dynamic_body, 2.0f, 2.0f, dynamic_flags);
+    dynamic_body = factory.create_box_fixture(dynamic_body, {0.0f, 0.0f}, 2.0f, 2.0f, dynamic_flags);
 
     b2Vec2 origin{0.0f, 0.0f};
     b2Vec2 translation{0.0f, 10.0f};
@@ -224,10 +224,10 @@ TEST_CASE("physics_raycaster_all_multiple_bodies_at_angle", "[PhysicsRaycaster]"
 
     // two boxes offset diagonally
     Body2D body1 = factory.create_body({1.0f, 2.0f, 0.0f}, BodyType2D::Dynamic, nullptr);
-    body1 = factory.create_box_fixture(body1, 2.0f, 2.0f, flags);
+    body1 = factory.create_box_fixture(body1, {0.0f, 0.0f}, 2.0f, 2.0f, flags);
 
     Body2D body2 = factory.create_body({4.0f, 5.0f, 0.0f}, BodyType2D::Dynamic, nullptr);
-    body2 = factory.create_box_fixture(body2, 2.0f, 2.0f, flags);
+    body2 = factory.create_box_fixture(body2, {0.0f, 0.0f}, 2.0f, 2.0f, flags);
 
     b2Vec2 origin{0.0f, 0.0f};
     b2Vec2 translation{5.0f, 5.0f};

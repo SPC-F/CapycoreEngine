@@ -8,6 +8,7 @@
 #include <engine/physics/world/body/body_type_2d.h>
 #include <engine/physics/world/body/body_2d.h>
 #include <engine/public/component.h>
+#include <engine/public/util/point.h>
 #include <engine/public/util/vector3.h>
 
 /**
@@ -39,7 +40,7 @@ public:
      * @param flags The creation flags for the fixture
      * @return b2BodyId The identifier of the created fixture
      */
-    static Body2D create_box_fixture(Body2D body, float width, float height, PhysicsCreationFlags flags);
+    static Body2D create_box_fixture(Body2D body, Point offset, float width, float height, PhysicsCreationFlags flags);
 
     /**
      * @brief Create a circle-shaped fixture for a given body.
@@ -50,7 +51,7 @@ public:
      * @param component The component associated with the fixture
      * @return b2BodyId The identifier of the created fixture
      */
-    static Body2D create_circle_fixture(Body2D body, float radius, PhysicsCreationFlags flags);
+    static Body2D create_circle_fixture(Body2D body, Point offset, float radius, PhysicsCreationFlags flags);
 
     /**
      * @brief Destroy a body given its identifier

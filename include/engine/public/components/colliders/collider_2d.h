@@ -25,7 +25,8 @@ class Collider2D : public Component
 public:
     Collider2D(
         float friction = default_friction_2d, 
-        float bounciness = default_bounciness_2d
+        float bounciness = default_bounciness_2d,
+        Point offset = {0.0f, 0.0f}
     );
     ~Collider2D() override = default;
 
@@ -89,11 +90,15 @@ public:
     PhysicsCreationFlags& creation_flags() noexcept;
     Collider2D& creation_flags(PhysicsCreationFlags value) noexcept;
 
-    
+    [[nodiscard]]
+    Point offset() const noexcept;
+    Collider2D& offset(Point value) noexcept;
+
 private:
     PhysicsCreationFlags creation_flags_ {};
     float friction_;
     float bounciness_;
+    Point offset_;
 
     std::vector<std::function<void(Collider2D&, Collider2D&)>> on_trigger_enter_actions_;
     std::vector<std::function<void(Collider2D&, Collider2D&)>> on_trigger_exit_actions_;

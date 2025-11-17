@@ -11,9 +11,11 @@
 
 Collider2D::Collider2D(
     float friction, 
-    float bounciness
+    float bounciness,
+    Point offset
 ) : friction_(friction), 
-    bounciness_(bounciness) 
+    bounciness_(bounciness),
+    offset_(offset)
 {
     add_on_attach([this](Component& comp) {
         if (!parent().has_value()) {
@@ -133,5 +135,14 @@ PhysicsCreationFlags& Collider2D::creation_flags() noexcept {
 
 Collider2D& Collider2D::creation_flags(PhysicsCreationFlags value) noexcept {
     creation_flags_ = value;
+    return *this;
+}
+
+Point Collider2D::offset() const noexcept {
+    return offset_;
+}
+
+Collider2D& Collider2D::offset(Point value) noexcept {
+    offset_ = value;
     return *this;
 }

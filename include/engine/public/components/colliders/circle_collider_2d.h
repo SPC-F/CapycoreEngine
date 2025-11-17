@@ -1,6 +1,7 @@
 #pragma once
 
 #include <engine/public/components/colliders/collider_2d.h>
+#include <engine/public/util/point.h>
 
 constexpr float default_circle_collider_radius = 0.5f;
 
@@ -16,7 +17,8 @@ public:
     CircleCollider2D(
         float friction, 
         float bounciness,
-        float radius = default_circle_collider_radius
+        float radius = default_circle_collider_radius,
+        Point offset = {0.0f, 0.0f}
     );
     ~CircleCollider2D() override = default;
 

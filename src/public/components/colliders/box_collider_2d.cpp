@@ -8,10 +8,11 @@ BoxCollider2D::BoxCollider2D(
     float friction, 
     float bounciness,
     float width,
-    float height
-) : Collider2D(friction, bounciness), width_(width), height_(height) 
+    float height,
+    Point offset
+) : Collider2D(friction, bounciness, offset), width_(width), height_(height) 
 {
-    add_on_attach([this](Component& comp) {
+    auto on_awake = [this, offset](Component& comp) {
         if (!parent().has_value()) {
             throw std::runtime_error("BoxCollider2D has no parent GameObject.");
         }
@@ -34,12 +35,15 @@ BoxCollider2D::BoxCollider2D(
             auto body = rigidbody.body();
             rigidbody.body(PhysicsCreationFactory::create_box_fixture(
                 body, 
+                offset,
                 width_, 
                 height_,
                 Collider2D::creation_flags()
             ));        
         }
-    });
+    };
+
+    add_on_attach(on_awake);
 }
 
 void BoxCollider2D::update(float dt) 

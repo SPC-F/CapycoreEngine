@@ -68,7 +68,7 @@ TEST_CASE("physics_creation_factory_creates_box_fixture", "[PhysicsCreationFacto
 
     // act
     Body2D body = factory.create_body(position, BodyType2D::Dynamic, &dummy_component);
-    body = factory.create_box_fixture(body, 2.0f, 4.0f, flags);
+    body = factory.create_box_fixture(body, {0.0f, 0.0f}, 2.0f, 4.0f, flags);
     
     // assert
     REQUIRE(b2Body_IsValid(body.id));
@@ -97,7 +97,7 @@ TEST_CASE("physics_creation_factory_creates_circle_fixture", "[PhysicsCreationFa
 
     // act
     Body2D body = factory.create_body(position, BodyType2D::Static, &dummy_component);
-    body = factory.create_circle_fixture(body, 1.0f, flags);
+    body = factory.create_circle_fixture(body, {0.0f, 0.0f}, 1.0f, flags);
 
     // assert
     REQUIRE(b2Body_IsValid(body.id));
@@ -122,7 +122,7 @@ TEST_CASE("physics_creation_factory_creates_bullet_body_with_mass_data", "[Physi
 
     // act
     Body2D body = factory.create_body(position, BodyType2D::Dynamic, &dummy_component);
-    body = factory.create_circle_fixture(body, 0.5f, flags);
+    body = factory.create_circle_fixture(body, {0.0f, 0.0f}, 0.5f, flags);
 
     // assert
     REQUIRE(b2Body_IsValid(body.id));
@@ -143,7 +143,7 @@ TEST_CASE("physics_creation_factory_destroys_body", "[PhysicsCreationFactory]") 
     Vector3 position{1.0f, 1.0f, 0.0f};
 
     Body2D body = factory.create_body(position, BodyType2D::Dynamic, nullptr);
-    body = factory.create_box_fixture(body, 2.0f, 2.0f, flags);
+    body = factory.create_box_fixture(body, {0.0f, 0.0f}, 2.0f, 2.0f, flags);
 
     REQUIRE(b2Body_IsValid(body.id));
 

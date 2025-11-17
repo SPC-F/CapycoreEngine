@@ -17,7 +17,7 @@ Rigidbody2D::Rigidbody2D(
     use_gravity_(use_gravity),
     gravity_scale_(gravity_scale) 
 {
-    add_on_attach([this](Component& comp) {
+    auto on_awake = [this](Component& comp) {
         auto& physics_service = Engine::instance().services->get_service<PhysicsService>().get();
 
         if (auto parent_opt = parent(); !parent_opt.has_value()) {
@@ -32,11 +32,15 @@ Rigidbody2D::Rigidbody2D(
                 throw std::runtime_error("Failed to create Rigidbody2D body.");
             }
         }
-    });
+    };
+    
+    add_on_attach(on_awake);
 
-    add_on_detach([this](Component& comp) {
+    auto on_destroy = [this](Component& comp) {
         PhysicsCreationFactory::destroy_body(body_);
-    });
+    };
+    
+    add_on_detach(on_destroy);
 }
 
 Rigidbody2D::~Rigidbody2D() = default;

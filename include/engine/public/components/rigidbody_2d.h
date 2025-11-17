@@ -3,6 +3,10 @@
 #include <engine/physics/creation/physics_creation_factory.h>
 #include <engine/public/component.h>
 
+constexpr float default_rigidbody_mass = 1.0f;
+constexpr bool default_rigidbody_use_gravity = true;
+constexpr float default_rigidbody_gravity_scale = 1.0f;
+
 /**
  * @brief A 2D rigidbody component that adds physics properties to a GameObject.
  * 
@@ -13,9 +17,9 @@ class Rigidbody2D : public Component
 {
 public:
     Rigidbody2D(BodyType2D::Type type = BodyType2D::Dynamic, 
-                float mass = 1.0f,
-                bool use_gravity = true,
-                float gravity_scale = 1.0f);
+                float mass = default_rigidbody_mass,
+                bool use_gravity = default_rigidbody_use_gravity,
+                float gravity_scale = default_rigidbody_gravity_scale);
     ~Rigidbody2D() override;
 
     void update(float dt) override;
@@ -70,9 +74,9 @@ public:
 private:
     Body2D body_ {};
     BodyType2D::Type type_;
-    float mass_ {1.0f};
+    float mass_;
     
-    bool use_gravity_ {true};
-    float gravity_scale_ {1.0f};
+    bool use_gravity_;
+    float gravity_scale_;
 
 };

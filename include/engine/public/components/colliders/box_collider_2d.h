@@ -1,6 +1,10 @@
 #pragma once
 
 #include <engine/public/components/colliders/collider_2d.h>
+#include <engine/public/util/point.h>
+
+constexpr float default_box_collider_width = 1.0f;
+constexpr float default_box_collider_height = 1.0f;
 
 /**
  * @brief A 2D box collider component that defines a rectangular collision shape for a GameObject.
@@ -14,8 +18,9 @@ public:
     BoxCollider2D(
         float friction, 
         float bounciness,
-        float width = 1.0f,
-        float height = 1.0f
+        float width = default_box_collider_width,
+        float height = default_box_collider_height,
+        Point offset = {0.0f, 0.0f}
     );
     ~BoxCollider2D() override = default;
 
@@ -36,6 +41,6 @@ public:
     BoxCollider2D& bounciness(float value) noexcept override;
 
 private:
-    float width_ {1.0f};
-    float height_ {1.0f};
+    float width_;
+    float height_;
 };
