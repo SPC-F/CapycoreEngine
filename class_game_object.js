@@ -9,6 +9,7 @@ var class_game_object =
     [ "get_component", "class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc", null ],
     [ "get_components", "class_game_object.html#aef31e6fca036256ac8eee5cc1b0963c4", null ],
     [ "get_components_from_children", "class_game_object.html#aa58c30b6156e37604a5e318b728a22e5", null ],
+    [ "id", "class_game_object.html#afd556ea34cc2c55f84a486ac54619b5d", null ],
     [ "is_active", "class_game_object.html#a56047ef342a5a2b87938a2982346e2d0", null ],
     [ "is_active_in_world", "class_game_object.html#a3ba32ed8f5e202a537cad8a4f0fd7d2d", null ],
     [ "layer", "class_game_object.html#ab8b2152385ce0474103245a680aa864b", null ],

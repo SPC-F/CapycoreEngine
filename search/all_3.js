@@ -8,7 +8,7 @@ var searchData=
   ['children_5',['children',['../class_game_object.html#a48374de753f04fdf2327aa035570bb11',1,'GameObject']]],
   ['clang_20tidy_6',['Clang-tidy',['../index.html#autotoc_md3',1,'']]],
   ['clear_7',['clear',['../class_renderer.html#ab084c79787c3e2857ddc89a55d9955cf',1,'Renderer']]],
-  ['color_8',['color',['../class_sprite.html#a99304af697307c4847c3e65ce8a3e768',1,'Sprite::color() const'],['../class_sprite.html#af874503eae32060ce4a3fe078f912d46',1,'Sprite::color(Color color)'],['../class_color.html#a912df0cb52b88689ce6b721d3cee3966',1,'Color::Color(unsigned short r, unsigned short g, unsigned short b, unsigned short a)'],['../class_color.html#a9a742cbe9f9f4037f5d9f4e81a9b2428',1,'Color::Color()'],['../class_color.html',1,'Color']]],
+  ['color_8',['color',['../class_color.html#a912df0cb52b88689ce6b721d3cee3966',1,'Color::Color(unsigned short r, unsigned short g, unsigned short b, unsigned short a)'],['../class_color.html#a9a742cbe9f9f4037f5d9f4e81a9b2428',1,'Color::Color()'],['../class_sprite.html#a99304af697307c4847c3e65ce8a3e768',1,'Sprite::color() const'],['../class_sprite.html#af874503eae32060ce4a3fe078f912d46',1,'Sprite::color(Color color)'],['../class_color.html',1,'Color']]],
   ['color_2eh_9',['color.h',['../color_8h.html',1,'']]],
   ['comma_10',['comma',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44ab6d00dc1ba038e5901cd6c06b2daa192',1,'key_code.h']]],
   ['component_11',['component',['../class_component.html#a8775db6d1a2c1afc2e77cd3c8f39da6f',1,'Component::Component()'],['../class_component.html',1,'Component']]],
