@@ -1,11 +1,18 @@
 #include <engine/public/gameObject.h>
 #include <engine/public/component.h>
 
-GameObject::GameObject(Scene& scene) : scene_(scene) {}
+GameObject::GameObject(Scene& scene) :
+        scene_(scene) {
+}
+
 GameObject::~GameObject() {
     if (parent_.has_value()) {
         parent_->get().remove_child(*this);
     }
+}
+
+std::string GameObject::id() const noexcept {
+    return id_;
 }
 
 GameObject& GameObject::name(const std::string& name) {

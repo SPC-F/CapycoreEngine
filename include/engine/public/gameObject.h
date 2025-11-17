@@ -8,9 +8,12 @@
 #include <engine/public/scene.h>
 #include <engine/public/transform.h>
 #include <engine/public/component.h>
+#include <engine/util/uuid.h>
 
 class GameObject {
 private:
+    std::string id_ {uuid::generate_uuid_v4()};
+
     std::vector<std::unique_ptr<Component>> components_;
     std::vector<std::reference_wrapper<GameObject>> children_;
 
@@ -30,6 +33,8 @@ public:
 
     GameObject& parent(GameObject& parent);
     GameObject& parent(std::nullopt_t null_opt);
+
+    [[nodiscard]] std::string id() const noexcept;
 
     [[nodiscard]] bool is_active_in_world() const noexcept;
     [[nodiscard]] bool is_active() const noexcept;
