@@ -16,5 +16,5 @@ public:
     ~SceneService() override;
 
     SceneService& load_scene(std::unique_ptr<Scene> scene);
-    Scene& current_scene() const;
+    [[nodiscard]] Scene& current_scene() const;
 };

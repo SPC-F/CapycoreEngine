@@ -29,9 +29,9 @@ void Scene::game_loop() {
     float freq = static_cast<float>(SDL_GetPerformanceFrequency());
 
     auto& rendering_service = Engine::instance()
-            .services
-            ->get_service<RenderingService>()
-            .get();
+        .services
+        ->get_service<RenderingService>()
+        .get();
 
     while (true) {
         Uint64 now = SDL_GetPerformanceCounter();
@@ -75,14 +75,14 @@ bool Scene::is_running() const {
     return is_running_;
 }
 
-std::reference_wrapper<GameObject> Scene::get_game_object(const std::string& name) const {
+std::reference_wrapper<GameObject> Scene::get_game_object(const std::string& id) const {
     for(const auto& game_object : game_objects_) {
-        if (game_object->name() == name) {
+        if (game_object->id() == id) {
             return *game_object;
         }
     }
 
-    throw std::runtime_error("GameObject with name " + name + " not found in scene " + name_);
+    throw std::runtime_error("GameObject with id " + id + " not found in scene " + name_);
 }
 
 std::vector<std::reference_wrapper<GameObject>> Scene::game_objects() const {
@@ -101,10 +101,11 @@ Scene& Scene::add_game_object(std::unique_ptr<GameObject> game_object) {
 
 GameObject& Scene::add_game_object(const std::string& name) {
     auto game_object = std::make_unique<GameObject>(*this);
+    auto* object_ptr = game_object.get();
     game_object->name(name);
     game_objects_.emplace_back(std::move(game_object));
 
-    return *game_object.get(); // could be done with a stored ref as well, but this makes it clearer what is returned
+    return *object_ptr; // could be done with a stored ref as well, but this makes it clearer what is returned
 }
 
 Scene& Scene::add_game_objects(std::vector<std::unique_ptr<GameObject>> game_objects) {
@@ -115,19 +116,18 @@ Scene& Scene::add_game_objects(std::vector<std::unique_ptr<GameObject>> game_obj
 }
 
 bool Scene::remove_game_object(GameObject& game_object) {
-
-    auto found_it = std::find_if(
+    auto found_object = std::find_if(
         game_objects_.begin(),
         game_objects_.end(),
         [&game_object](const auto& param) {
             return param.get() == &game_object;
         });
 
-    if (found_it == game_objects_.end()) {
+    if (found_object == game_objects_.end()) {
         return false; // not found
     }
 
-    game_objects_.erase(found_it);
+    game_objects_.erase(found_object);
 
     return true;
 }

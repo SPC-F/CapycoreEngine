@@ -1,6 +1,6 @@
-#include <engine/public/sceneService.h>
+#include <engine/public/scene_service.h>
 
-constexpr const char * const default_scene_name = "default";
+const std::string& default_scene_name = "default";
 
 SceneService::SceneService()
     : scene_(std::make_unique<Scene>(default_scene_name)) {}

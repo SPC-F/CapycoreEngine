@@ -8,7 +8,7 @@
 TEST_CASE("GameObject default constructor initializes correctly", "[GameObject]") {
 
     // Arrange & Act
-    Scene scene {};
+    Scene scene { " Test Scene " };
     std::list<GameObject> objects {};
 
     constexpr size_t object_count = 1000;

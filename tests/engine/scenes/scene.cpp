@@ -21,15 +21,13 @@ TEST_CASE("AddGameObject_AddsGameObjectToScene_WhenExistingGameObject", "[Scene]
     // arrange
     Scene scene("Test Scene");
     const std::string& game_object_name = "Test GameObject";
-    auto game_object = std::make_unique<GameObject>(scene);
-    game_object->name(game_object_name);
 
     // act
-    scene.add_game_object(std::move(game_object));
+    auto& game_object = scene.add_game_object(game_object_name);
 
     // assert
     REQUIRE(scene.game_objects().size() == 1);
-    REQUIRE(scene.get_game_object(game_object_name).get().name() == game_object_name);
+    REQUIRE(scene.get_game_object(game_object.id()).get().id() == game_object.id());
 }
 
 TEST_CASE("AddGameObject_AddsGameObjectToScene_FromName", "[Scene]") {
@@ -38,25 +36,22 @@ TEST_CASE("AddGameObject_AddsGameObjectToScene_FromName", "[Scene]") {
     const std::string& game_object_name = "Test GameObject";
 
     // act
-    scene.add_game_object(game_object_name);
+    auto& game_object = scene.add_game_object(game_object_name);
 
+    auto& retrieved_game_object = scene.get_game_object(game_object.id()).get();
     // assert
     REQUIRE(scene.game_objects().size() == 1);
-    REQUIRE(scene.get_game_object(game_object_name).get().name() == game_object_name);
+    REQUIRE(retrieved_game_object.id() == game_object.id());
 }
 
 TEST_CASE("AddGameObjects_AddsMultipleGameObjectsToScene", "[Scene]") {
     // arrange
     Scene scene("Test Scene");
-    const std::string& game_object_name_1 = "Test GameObject 1";
-    const std::string& game_object_name_2 = "Test GameObject 2";
 
     auto game_object_1 = std::make_unique<GameObject>(scene);
-    game_object_1->name(game_object_name_1);
-
     auto game_object_2 = std::make_unique<GameObject>(scene);
-    game_object_2->name(game_object_name_2);
-
+    const auto game_object_1_id = game_object_1->id();
+    const auto game_object_2_id = game_object_2->id();
     std::vector<std::unique_ptr<GameObject>> game_objects;
     game_objects.emplace_back(std::move(game_object_1));
     game_objects.emplace_back(std::move(game_object_2));
@@ -66,8 +61,8 @@ TEST_CASE("AddGameObjects_AddsMultipleGameObjectsToScene", "[Scene]") {
 
     // assert
     REQUIRE(scene.game_objects().size() == 2);
-    REQUIRE(scene.get_game_object(game_object_name_1).get().name() == game_object_name_1);
-    REQUIRE(scene.get_game_object(game_object_name_2).get().name() == game_object_name_2);
+    REQUIRE(scene.get_game_object(game_object_1_id).get().id() == game_object_1_id);
+    REQUIRE(scene.get_game_object(game_object_2_id).get().id() == game_object_2_id);
 }
 
 TEST_CASE("RemoveGameObject_RemovesRightGameObjectFromScene", "[Scene]") {
@@ -86,24 +81,22 @@ TEST_CASE("RemoveGameObject_RemovesRightGameObjectFromScene", "[Scene]") {
 
     // assert
     REQUIRE(scene.game_objects().size() == 1);
-    REQUIRE(scene.get_game_object(game_object_name_2).get().name() == game_object_name_2);
+    REQUIRE(scene.get_game_object(obj2.id()).get().id() == obj2.id());
 }
 
-TEST_CASE("RemoveGameObject_RemovesAllWithSameName", "[Scene]") {
+TEST_CASE("RemoveGameObject_RemovesGameObjectWithAllChildObjects", "[Scene]") {
     // arrange
     Scene scene("Test Scene");
-    const std::string& game_object_name = "Test GameObject";
-    const std::string& game_object_name_2 = "Test GameObject2";
+    const std::string& parent_name = "Parent GameObject";
+    const std::string& child_name = "Child GameObject";
 
-    auto& obj1 = scene.add_game_object(game_object_name);
-    auto& obj2 = scene.add_game_object(game_object_name_2);
-
-    REQUIRE(scene.game_objects().size() == 2);
+    auto& parent = scene.add_game_object(parent_name);
+    auto& child = scene.add_game_object(child_name);
+    child.parent(parent);
 
     // act
-    scene.remove_game_object(obj1);
+    scene.remove_game_object(parent);
 
     // assert
-    REQUIRE(scene.game_objects().size() == 1);
-    REQUIRE(scene.get_game_object(game_object_name_2).get().name() == game_object_name_2);
+    REQUIRE(scene.game_objects().empty());
 }

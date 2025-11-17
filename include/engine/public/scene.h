@@ -6,7 +6,7 @@
 
 class Scene {
 private:
-    const std::string& name_;
+    const std::string name_;
     bool is_running_;
     float time_scale_;
     std::vector<std::unique_ptr<GameObject>> game_objects_;

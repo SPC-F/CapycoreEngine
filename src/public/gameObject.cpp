@@ -1,9 +1,11 @@
 #include <engine/public/gameObject.h>
 #include <engine/public/component.h>
 #include <engine/public/scene.h>
+#include <engine/util/uuid.h>
 
 GameObject::GameObject(Scene& scene) :
-        scene_(scene) {
+    id_(uuid::generate_uuid_v4()),
+    scene_(scene) {
 }
 
 GameObject::~GameObject() {
@@ -79,6 +81,11 @@ bool GameObject::is_active() const noexcept {
 
 GameObject& GameObject::parent(GameObject& parent) {
     parent_ = parent;
+    if(std::find_if(parent.children().begin(), parent.children().end(),[&](auto& ref) {
+        return &ref.get() == this;
+    }) == parent.children().end()) {
+        parent.add_child(*this);
+    }
     return *this;
 }
 
@@ -97,6 +104,7 @@ std::vector<std::reference_wrapper<GameObject>>& GameObject::children() {
 
 GameObject& GameObject::add_child(GameObject& child) {
     children_.emplace_back(child);
+    child.parent(*this);
     return *this;
 }
 
