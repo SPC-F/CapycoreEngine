@@ -12,7 +12,7 @@
 
 constexpr int32_t default_velocity_iterations = 6;
 constexpr float default_gravity_x = 0.0f;
-constexpr float default_gravity_y = -30.0f;
+constexpr float default_gravity_y = 1.0f;
 constexpr float default_pixel_to_meter_ratio = 16.0f;
 
 /**

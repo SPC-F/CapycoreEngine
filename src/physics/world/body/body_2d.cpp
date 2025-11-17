@@ -121,3 +121,9 @@ void Body2D::set_body_velocity(const Body2D& body, const Vector3& velocity) noex
     b2Vec2 b2_velocity {velocity.x, velocity.y};
     b2Body_SetLinearVelocity(body.id, b2_velocity);
 }
+
+Vector3 Body2D::get_body_velocity(const Body2D& body) noexcept 
+{
+    b2Vec2 vel = b2Body_GetLinearVelocity(body.id);
+    return Vector3{vel.x, vel.y, 0.0f};
+}

@@ -11,33 +11,35 @@ BoxCollider2D::BoxCollider2D(
     float height
 ) : Collider2D(friction, bounciness), width_(width), height_(height) 
 {
-    if (!parent().has_value()) {
-        throw std::runtime_error("BoxCollider2D has no parent GameObject.");
-    }
-
-    if (auto gameobject_opt = parent(); gameobject_opt.has_value()) {
-        auto& gameobject = gameobject_opt->get();
-        
-        auto rigidbody_opt = gameobject.get_component<Rigidbody2D>();
-        auto box_collider_opt = gameobject.get_component<BoxCollider2D>();
-
-        if (!rigidbody_opt.has_value()) {
-            throw std::runtime_error("BoxCollider2D requires a Rigidbody2D component on the same GameObject.");
+    add_on_attach([this](Component& comp) {
+        if (!parent().has_value()) {
+            throw std::runtime_error("BoxCollider2D has no parent GameObject.");
         }
 
-        if (box_collider_opt.has_value()) {
-            throw std::runtime_error("GameObject cannot have multiple BoxCollider2D components.");
+        if (auto gameobject_opt = parent(); gameobject_opt.has_value()) {
+            auto& gameobject = gameobject_opt->get();
+            
+            auto rigidbody_opt = gameobject.get_component<Rigidbody2D>();
+            auto box_collider_opt = gameobject.get_component<BoxCollider2D>();
+
+            if (!rigidbody_opt.has_value()) {
+                throw std::runtime_error("BoxCollider2D requires a Rigidbody2D component on the same GameObject.");
+            }
+
+            if (box_collider_opt.has_value()) {
+                throw std::runtime_error("GameObject cannot have multiple BoxCollider2D components.");
+            }
+
+            auto& rigidbody = rigidbody_opt->get();
+            auto body = rigidbody.body();
+            rigidbody.body(PhysicsCreationFactory::create_box_fixture(
+                body, 
+                width_, 
+                height_,
+                Collider2D::creation_flags()
+            ));        
         }
-        
-        auto& rigidbody = rigidbody_opt->get();
-        auto body = rigidbody.body();
-        rigidbody.body(PhysicsCreationFactory::create_box_fixture(
-            body, 
-            width_, 
-            height_,
-            Collider2D::creation_flags()
-        ));        
-    }
+    });
 }
 
 void BoxCollider2D::update(float dt) 

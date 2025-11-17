@@ -120,7 +120,10 @@ Body2D Rigidbody2D::body() const noexcept
 
 void Rigidbody2D::body(const Body2D& value) noexcept 
 {
-    PhysicsCreationFactory::destroy_body(body_);
+    if (body_.id.index1 != value.id.index1) {
+        PhysicsCreationFactory::destroy_body(body_);
+    }
+
     body_ = value;
 }
 
@@ -137,4 +140,10 @@ void Rigidbody2D::apply_impulse(const Vector3& impulse) noexcept
 void Rigidbody2D::velocity(const Vector3& value) noexcept 
 {
     Body2D::set_body_velocity(body_, value);
+}
+
+Vector3 Rigidbody2D::velocity() const noexcept
+{
+    Vector3 v = Body2D::get_body_velocity(body_);
+    return {v.x, v.y, 0.0f};
 }

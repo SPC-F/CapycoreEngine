@@ -60,6 +60,13 @@ public:
      */
     void velocity(const Vector3& value) noexcept;
 
+    /** @brief Retrieves the current velocity of the rigidbody.
+     * 
+     * @return Vector3 The current velocity vector.
+     */
+    [[nodiscard]]
+    Vector3 velocity() const noexcept;
+
 private:
     Body2D body_ {};
     BodyType2D::Type type_;

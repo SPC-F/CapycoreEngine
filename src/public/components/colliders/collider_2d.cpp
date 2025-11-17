@@ -15,39 +15,24 @@ Collider2D::Collider2D(
 ) : friction_(friction), 
     bounciness_(bounciness) 
 {
-    if (!parent().has_value()) {
-        throw std::runtime_error("Collider2D has no parent GameObject.");
-    }
-
-    if (auto gameobject_opt = parent(); gameobject_opt.has_value()) {
-        auto& gameobject = gameobject_opt->get();
-
-        if (!gameobject.get_component<Rigidbody2D>().has_value()) {
-            throw std::runtime_error("Collider2D requires a Rigidbody2D component on the same GameObject.");
+    add_on_attach([this](Component& comp) {
+        if (!parent().has_value()) {
+            throw std::runtime_error("Collider2D has no parent GameObject.");
         }
-    }
+
+        if (auto gameobject_opt = parent(); gameobject_opt.has_value()) {
+            auto& gameobject = gameobject_opt->get();
+
+            if (!gameobject.get_component<Rigidbody2D>().has_value()) {
+                throw std::runtime_error("Collider2D requires a Rigidbody2D component on the same GameObject.");
+            }
+        }
+    });
 }
 
 void Collider2D::update(float dt) 
 {
-    auto gameobject_opt = parent();
-    if (!gameobject_opt.has_value()) {
-        throw std::runtime_error("Collider2D has no parent GameObject.");
-    }
-    
-    auto& gameobject = gameobject_opt->get();
-    if (!gameobject.get_component<Rigidbody2D>().has_value()) {
-        throw std::runtime_error("Collider2D requires a Rigidbody2D component on the same GameObject.");
-    }
-
-    auto& rigidbody = get_rigidbody().get();
-
-    auto& physics_service = Engine::instance().services->get_service<PhysicsService>().get();
-    auto& physics_world = physics_service.world();
-
-    Body2DTransform transform = Body2D::get_body_transform(rigidbody.body());
-    gameobject.transform().position(transform.position);
-    gameobject.transform().rotation(transform.rotation);
+    // No reason to update for now
 }
 
 void Collider2D::on_trigger_enter(Collider2D& other) 

@@ -112,6 +112,13 @@ struct Body2D {
      * @param impulse The impulse vector to apply.
      */
     static void apply_impulse(const Body2D& body, const Vector3& impulse) noexcept;
+
+    /** @brief Retrieves the current velocity of the specified body.
+     * 
+     * @param body The Body2D instance to get the velocity for.
+     * @return Vector3 The current velocity vector.
+     */
+    static Vector3 get_body_velocity(const Body2D& body) noexcept;
 };
 
 /** 
