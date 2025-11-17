@@ -2,7 +2,10 @@
 #include <engine/public/component.h>
 #include <engine/public/scene.h>
 
-GameObject::GameObject(Scene& scene) : scene_(scene) {}
+GameObject::GameObject(Scene& scene) :
+        scene_(scene) {
+}
+
 GameObject::~GameObject() {
     if (parent_.has_value()) {
         parent_->get().remove_child(*this);
@@ -11,6 +14,10 @@ GameObject::~GameObject() {
     for(auto child : children_) {
         scene_.remove_game_object(child);
     }
+}
+
+std::string GameObject::id() const noexcept {
+    return id_;
 }
 
 GameObject& GameObject::name(const std::string& name) {
