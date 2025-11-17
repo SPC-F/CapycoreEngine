@@ -2,9 +2,7 @@
 #include <engine/public/component.h>
 
 GameObject::GameObject(Scene& scene) :
-        id_ {boost::uuids::random_generator()()},
         scene_(scene) {
-
 }
 
 GameObject::~GameObject() {
@@ -13,7 +11,7 @@ GameObject::~GameObject() {
     }
 }
 
-boost::uuids::uuid GameObject::id() const noexcept {
+std::string GameObject::id() const noexcept {
     return id_;
 }
 
