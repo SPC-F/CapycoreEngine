@@ -81,11 +81,15 @@ bool GameObject::is_active() const noexcept {
 
 GameObject& GameObject::parent(GameObject& parent) {
     parent_ = parent;
-    if(std::find_if(parent.children().begin(), parent.children().end(),[&](auto& ref) {
+
+    const auto found_child = std::find_if(parent.children().begin(), parent.children().end(),[&](auto& ref) {
         return &ref.get() == this;
-    }) == parent.children().end()) {
+    });
+
+    if(found_child == parent.children().end()) {
         parent.add_child(*this);
     }
+    
     return *this;
 }
 

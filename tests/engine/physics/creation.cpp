@@ -7,10 +7,7 @@
 #include <engine/public/gameObject.h>
 #include <engine/public/util/point.h>
 #include <engine/public/scene.h>
-
-struct DummyScene : public Scene {
-    DummyScene() : Scene("Dummy Scene") {}
-};
+#include <engine/public/scene_service.h>
 
 struct DummyGameObject : public GameObject {
     explicit DummyGameObject(Scene& scene) : GameObject(scene) {}
@@ -39,7 +36,10 @@ TEST_CASE("physics_creation_factory_creates_box_body", "[PhysicsCreationFactory]
 
     Point position{5.0f, 10.0f};
 
-    DummyScene dummy_scene;
+    const std::string& scene_name = "Test Scene";
+    auto scene_service = SceneService();
+    Scene& dummy_scene = scene_service.add_scene(scene_name);
+
     DummyGameObject dummy_game_object(dummy_scene);
     DummyComponent dummy_component;
     dummy_component.parent(dummy_game_object);
@@ -67,7 +67,10 @@ TEST_CASE("physics_creation_factory_creates_circle_body", "[PhysicsCreationFacto
 
     Point position{0.0f, 0.0f};
 
-    DummyScene dummy_scene;
+    const std::string& scene_name = "Test Scene";
+    auto scene_service = SceneService();
+    Scene& dummy_scene = scene_service.add_scene(scene_name);
+
     DummyGameObject dummy_game_object(dummy_scene);
     DummyComponent dummy_component;
     dummy_component.parent(dummy_game_object);
@@ -91,7 +94,10 @@ TEST_CASE("physics_creation_factory_creates_bullet_body_with_mass_data", "[Physi
 
     Point position{2.0f, 3.0f};
 
-    DummyScene dummy_scene;
+    const std::string& scene_name = "Test Scene";
+    auto scene_service = SceneService();
+    Scene& dummy_scene = scene_service.add_scene(scene_name);
+
     DummyGameObject dummy_game_object(dummy_scene);
     DummyComponent dummy_component;
     dummy_component.parent(dummy_game_object);

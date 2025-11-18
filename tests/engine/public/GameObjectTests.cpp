@@ -4,11 +4,15 @@
 #include <catch2/catch_test_macros.hpp>
 #include <engine/public/gameObject.h>
 #include <engine/public/scene.h>
+#include <engine/public/scene_service.h>
 
 TEST_CASE("GameObject default constructor initializes correctly", "[GameObject]") {
 
     // Arrange & Act
-    Scene scene { " Test Scene " };
+    const std::string& name = "Test Scene";
+    auto scene_service = SceneService();
+    Scene& scene = scene_service.add_scene(name);
+
     std::list<GameObject> objects {};
 
     constexpr size_t object_count = 1000;

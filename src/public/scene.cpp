@@ -10,20 +10,32 @@ Scene::Scene(const std::string& name)
 }
 
 Scene::~Scene() {
-    destroy();
+    execute_listeners(destroy_listeners_);
 }
 
-void Scene::on_awake() {
-
+void Scene::on_run(listener_function_t func) {
+    run_listeners_.push_back(func);
 }
 
-void Scene::destroy() {
+void Scene::on_stop(listener_function_t func) {
+    stop_listeners_.push_back(func);
+}
 
+void Scene::on_destroy(listener_function_t func) {
+    destroy_listeners_.push_back(func);
+}
+
+void Scene::execute_listeners(const std::vector<Scene::listener_function_t> &listeners) {
+    for (const auto& listener : listeners) {
+        listener(*this);
+    }
 }
 
 void Scene::game_loop() {
-    float accumulator = 0.0f;
-    const float fixed_step = 1.0f / 60.0f; // ~60 fps
+    constexpr float accumulator_default_value = 0.0f;
+    constexpr float fixed_step = 1.0f / 60.0f; // ~60 fps
+
+    float accumulator = accumulator_default_value;
 
     Uint64 last = SDL_GetPerformanceCounter();
     float freq = static_cast<float>(SDL_GetPerformanceFrequency());
@@ -33,7 +45,7 @@ void Scene::game_loop() {
         ->get_service<RenderingService>()
         .get();
 
-    while (true) {
+    while (is_running()) {
         Uint64 now = SDL_GetPerformanceCounter();
         float frame_dt = static_cast<float>(now - last) / freq * time_scale_;
         last = now;
@@ -47,16 +59,17 @@ void Scene::game_loop() {
 
         rendering_service.draw(game_objects());
     }
-
 }
 
 void Scene::run() {
     is_running_ = true;
+    execute_listeners(run_listeners_);
     game_loop();
 }
 
 void Scene::stop() {
     is_running_ = false;
+    execute_listeners(stop_listeners_);
 }
 
 Scene& Scene::time_scale(float modifier) {

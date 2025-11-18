@@ -2,13 +2,15 @@
 
 #include <engine/public/scene.h>
 #include <engine/public/gameObject.h>
+#include <engine/public/scene_service.h>
 #include <string>
 #include <memory>
 
 TEST_CASE("CreateScene_CreatesValidScene", "[Scene]") {
     // arrange & act
     const std::string& name = "Test Scene";
-    Scene scene(name);
+    auto scene_service = SceneService();
+    Scene& scene = scene_service.add_scene(name);
 
     // assert
     REQUIRE(scene.name() == name);
@@ -19,7 +21,10 @@ TEST_CASE("CreateScene_CreatesValidScene", "[Scene]") {
 
 TEST_CASE("AddGameObject_AddsGameObjectToScene_WhenExistingGameObject", "[Scene]") {
     // arrange
-    Scene scene("Test Scene");
+    const std::string& name = "Test Scene";
+    auto scene_service = SceneService();
+    Scene& scene = scene_service.add_scene(name);
+
     const std::string& game_object_name = "Test GameObject";
 
     // act
@@ -32,7 +37,10 @@ TEST_CASE("AddGameObject_AddsGameObjectToScene_WhenExistingGameObject", "[Scene]
 
 TEST_CASE("AddGameObject_AddsGameObjectToScene_FromName", "[Scene]") {
     // arrange
-    Scene scene("Test Scene");
+    const std::string& name = "Test Scene";
+    auto scene_service = SceneService();
+    Scene& scene = scene_service.add_scene(name);
+
     const std::string& game_object_name = "Test GameObject";
 
     // act
@@ -46,7 +54,9 @@ TEST_CASE("AddGameObject_AddsGameObjectToScene_FromName", "[Scene]") {
 
 TEST_CASE("AddGameObjects_AddsMultipleGameObjectsToScene", "[Scene]") {
     // arrange
-    Scene scene("Test Scene");
+    const std::string& name = "Test Scene";
+    auto scene_service = SceneService();
+    Scene& scene = scene_service.add_scene(name);
 
     auto game_object_1 = std::make_unique<GameObject>(scene);
     auto game_object_2 = std::make_unique<GameObject>(scene);
@@ -67,7 +77,10 @@ TEST_CASE("AddGameObjects_AddsMultipleGameObjectsToScene", "[Scene]") {
 
 TEST_CASE("RemoveGameObject_RemovesRightGameObjectFromScene", "[Scene]") {
     // arrange
-    Scene scene("Test Scene");
+    const std::string& name = "Test Scene";
+    auto scene_service = SceneService();
+    Scene& scene = scene_service.add_scene(name);
+
     const std::string& game_object_name_1 = "Test GameObject 1";
     const std::string& game_object_name_2 = "Test GameObject 2";
 
@@ -86,7 +99,10 @@ TEST_CASE("RemoveGameObject_RemovesRightGameObjectFromScene", "[Scene]") {
 
 TEST_CASE("RemoveGameObject_RemovesGameObjectWithAllChildObjects", "[Scene]") {
     // arrange
-    Scene scene("Test Scene");
+    const std::string& name = "Test Scene";
+    auto scene_service = SceneService();
+    Scene& scene = scene_service.add_scene(name);
+
     const std::string& parent_name = "Parent GameObject";
     const std::string& child_name = "Child GameObject";
 
@@ -100,3 +116,8 @@ TEST_CASE("RemoveGameObject_RemovesGameObjectWithAllChildObjects", "[Scene]") {
     // assert
     REQUIRE(scene.game_objects().empty());
 }
+
+// Do not make these tests. They will call the engine singleton and give you a big headache.
+//TEST_CASE("OnRunListeners_AreCalledWhenSceneRuns", "[Scene]")
+//TEST_CASE("OnStopListeners_AreCalledWhenSceneStops", "[Scene]")
+//TEST_CASE("OnDestroyListeners_AreCalledWhenSceneSceneDestroyed", "[Scene]")

@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <memory>
+#include <functional>
 #include <engine/public/gameObject.h>
 
 class Scene {
@@ -11,16 +12,26 @@ private:
     float time_scale_;
     std::vector<std::unique_ptr<GameObject>> game_objects_;
 
-    void game_loop();
-
-public:
     Scene(const std::string& name);
+
+    using listener_function_t = std::function<void(Scene&)>;
+    std::vector<listener_function_t> run_listeners_;
+    std::vector<listener_function_t> stop_listeners_;
+    std::vector<listener_function_t> destroy_listeners_;
+
+    void execute_listeners(const std::vector<listener_function_t>& listeners);
+
+    void game_loop();
+    friend class SceneService;
+    void run();
+
+    void stop();
+public:
     virtual ~Scene();
 
-    void on_awake();
-    void destroy();
-    void run();
-    void stop();
+    void on_run(listener_function_t);
+    void on_stop(listener_function_t);
+    void on_destroy(listener_function_t);
 
     Scene& time_scale(float modifier);
     [[nodiscard]] float time_scale() const;
@@ -29,7 +40,7 @@ public:
     [[nodiscard]] bool is_running() const;
 
     [[nodiscard]]
-    std::reference_wrapper<GameObject> get_game_object(const std::string& name) const;
+    std::reference_wrapper<GameObject> get_game_object(const std::string& id) const;
     [[nodiscard]]
     std::vector<std::reference_wrapper<GameObject>> game_objects() const;
 
