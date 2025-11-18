@@ -22,12 +22,12 @@ void UIButton::update(float dt) {
     // TODO: implement button state updates (hover, pressed, etc.)
 }
 
-void UIButton::add_on_click_handler(const std::function<void(UIButton&)>& handler) {
-    on_click_handlers_.emplace_back(handler);
+void UIButton::add_on_press(const std::function<void(UIButton&)>& handler) {
+    on_press_handlers_.emplace_back(handler);
 }
 
-void UIButton::trigger_on_click() {
-    for (const auto& handler : on_click_handlers_) {
+void UIButton::trigger_on_press() {
+    for (const auto& handler : on_press_handlers_) {
         handler(*this);
     }
 }
@@ -54,7 +54,7 @@ void UIButton::press() {
 
 void UIButton::release() {
     if (state_.is_pressed && state_.is_hovered && !state_.is_disabled) {
-        trigger_on_click();
+        trigger_on_press();
     }
 
     state_.is_pressed = false;

@@ -3,6 +3,13 @@
 #include <engine/public/components/ui/ui_object.h>
 #include <engine/public/util/color.h>
 
+/**
+ * @brief A UI text element.
+ * 
+ * UIText represents a text element in the user interface. It inherits from UIObject
+ * and adds properties specific to text rendering, such as the text content, font name,
+ * font size, and color.
+ */
 class UIText : public UIObject
 {
 public:
