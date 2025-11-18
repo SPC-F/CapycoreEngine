@@ -13,6 +13,14 @@ Component& Component::active(const bool value) noexcept {
     return *this;
 }
 
+bool Component::marked_for_deletion() const noexcept {
+    return marked_for_deletion_;
+}
+
+Component& Component::mark_for_deletion() noexcept {
+    marked_for_deletion_ = true;
+}
+
 Component& Component::parent(GameObject& parent) {
     parent_ = std::ref(parent);
     return *this;
