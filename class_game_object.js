@@ -14,6 +14,8 @@ var class_game_object =
     [ "is_active_in_world", "class_game_object.html#a3ba32ed8f5e202a537cad8a4f0fd7d2d", null ],
     [ "layer", "class_game_object.html#ab8b2152385ce0474103245a680aa864b", null ],
     [ "layer", "class_game_object.html#a73bc97d860ea942001cfcc1dd623854d", null ],
+    [ "mark_for_deletion", "class_game_object.html#a0b8eaeabeb64d42973a652d1cbd56a18", null ],
+    [ "marked_for_deletion", "class_game_object.html#ae11b48a198deb464b773f485a0a2a214", null ],
     [ "name", "class_game_object.html#a0dbc751921e81aee5b113524400922a4", null ],
     [ "name", "class_game_object.html#a72fb34f46d0a462cc277454b7b1324bc", null ],
     [ "parent", "class_game_object.html#a8d38c7b8d740577e21589fe396dccdcb", null ],
