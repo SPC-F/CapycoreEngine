@@ -147,11 +147,237 @@ Functions</h2></td></tr>
 <tr class="memitem:a56c2ad928f1306ea59540790fb0604e3" id="r_a56c2ad928f1306ea59540790fb0604e3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#a56c2ad928f1306ea59540790fb0604e3">to_degrees</a> (float radians) noexcept</td></tr>
 <tr class="memdesc:a56c2ad928f1306ea59540790fb0604e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert radians to degrees.  <br /></td></tr>
 <tr class="separator:a56c2ad928f1306ea59540790fb0604e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2529f79ad0f1215b032cc8d0d6604a55" id="r_a2529f79ad0f1215b032cc8d0d6604a55"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#a2529f79ad0f1215b032cc8d0d6604a55">convert_box2d_angle_to_radians</a> (float sine, float cosine) noexcept</td></tr>
+<tr class="memdesc:a2529f79ad0f1215b032cc8d0d6604a55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Box2D angle representation (sine, cosine) to radians.  <br /></td></tr>
+<tr class="separator:a2529f79ad0f1215b032cc8d0d6604a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6b294045dfa467d9f093bc65db91eed" id="r_aa6b294045dfa467d9f093bc65db91eed"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#aa6b294045dfa467d9f093bc65db91eed">convert_radians_to_box2d_sine</a> (float radians) noexcept</td></tr>
+<tr class="memdesc:aa6b294045dfa467d9f093bc65db91eed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert radians to Box2D sine value.  <br /></td></tr>
+<tr class="separator:aa6b294045dfa467d9f093bc65db91eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a956062e71dba22ff2ccfd0a983931b3d" id="r_a956062e71dba22ff2ccfd0a983931b3d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#a956062e71dba22ff2ccfd0a983931b3d">convert_radians_to_box2d_cosine</a> (float radians) noexcept</td></tr>
+<tr class="memdesc:a956062e71dba22ff2ccfd0a983931b3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert radians to Box2D cosine value.  <br /></td></tr>
+<tr class="separator:a956062e71dba22ff2ccfd0a983931b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafa599467749c7447527b6195cc65474" id="r_aafa599467749c7447527b6195cc65474"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#aafa599467749c7447527b6195cc65474">distance_between_points</a> (const <a class="el" href="class_point.html">Point</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a0cc175b9c0f1b6a831c399e269772661">a</a>, const <a class="el" href="class_point.html">Point</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a92eb5ffee6ae2fec3ad71c777531578f">b</a>) noexcept</td></tr>
+<tr class="memdesc:aafa599467749c7447527b6195cc65474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the distance between two 2D points.  <br /></td></tr>
+<tr class="separator:aafa599467749c7447527b6195cc65474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac45d273bd31cdde1d2b899c2675c9178" id="r_ac45d273bd31cdde1d2b899c2675c9178"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#ac45d273bd31cdde1d2b899c2675c9178">dx_between_points</a> (const <a class="el" href="class_point.html">Point</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a0cc175b9c0f1b6a831c399e269772661">a</a>, const <a class="el" href="class_point.html">Point</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a92eb5ffee6ae2fec3ad71c777531578f">b</a>) noexcept</td></tr>
+<tr class="memdesc:ac45d273bd31cdde1d2b899c2675c9178"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the difference in x-coordinates between two 2D points.  <br /></td></tr>
+<tr class="separator:ac45d273bd31cdde1d2b899c2675c9178"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dbef262e155ac3eab6a03abcae0c045" id="r_a5dbef262e155ac3eab6a03abcae0c045"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#a5dbef262e155ac3eab6a03abcae0c045">dy_between_points</a> (const <a class="el" href="class_point.html">Point</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a0cc175b9c0f1b6a831c399e269772661">a</a>, const <a class="el" href="class_point.html">Point</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a92eb5ffee6ae2fec3ad71c777531578f">b</a>) noexcept</td></tr>
+<tr class="memdesc:a5dbef262e155ac3eab6a03abcae0c045"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the difference in y-coordinates between two 2D points.  <br /></td></tr>
+<tr class="separator:a5dbef262e155ac3eab6a03abcae0c045"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Namespace containing mathematical utility functions for physics calculations. </p>
 <p>This namespace provides functions to convert between different units (pixels to meters, degrees to radians, etc.) commonly used in physics simulations. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a2529f79ad0f1215b032cc8d0d6604a55" name="a2529f79ad0f1215b032cc8d0d6604a55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2529f79ad0f1215b032cc8d0d6604a55">&#9670;&#160;</a></span>convert_box2d_angle_to_radians()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PhysicsMath::convert_box2d_angle_to_radians </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>sine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>cosine</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convert Box2D angle representation (sine, cosine) to radians. </p>
+
+</div>
+</div>
+<a id="a956062e71dba22ff2ccfd0a983931b3d" name="a956062e71dba22ff2ccfd0a983931b3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a956062e71dba22ff2ccfd0a983931b3d">&#9670;&#160;</a></span>convert_radians_to_box2d_cosine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PhysicsMath::convert_radians_to_box2d_cosine </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radians</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convert radians to Box2D cosine value. </p>
+
+</div>
+</div>
+<a id="aa6b294045dfa467d9f093bc65db91eed" name="aa6b294045dfa467d9f093bc65db91eed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6b294045dfa467d9f093bc65db91eed">&#9670;&#160;</a></span>convert_radians_to_box2d_sine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PhysicsMath::convert_radians_to_box2d_sine </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radians</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convert radians to Box2D sine value. </p>
+
+</div>
+</div>
+<a id="aafa599467749c7447527b6195cc65474" name="aafa599467749c7447527b6195cc65474"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafa599467749c7447527b6195cc65474">&#9670;&#160;</a></span>distance_between_points()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PhysicsMath::distance_between_points </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_point.html">Point</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_point.html">Point</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculate the distance between two 2D points. </p>
+
+</div>
+</div>
+<a id="ac45d273bd31cdde1d2b899c2675c9178" name="ac45d273bd31cdde1d2b899c2675c9178"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac45d273bd31cdde1d2b899c2675c9178">&#9670;&#160;</a></span>dx_between_points()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PhysicsMath::dx_between_points </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_point.html">Point</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_point.html">Point</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculate the difference in x-coordinates between two 2D points. </p>
+
+</div>
+</div>
+<a id="a5dbef262e155ac3eab6a03abcae0c045" name="a5dbef262e155ac3eab6a03abcae0c045"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dbef262e155ac3eab6a03abcae0c045">&#9670;&#160;</a></span>dy_between_points()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PhysicsMath::dy_between_points </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_point.html">Point</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_point.html">Point</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculate the difference in y-coordinates between two 2D points. </p>
+
+</div>
+</div>
 <a id="a56c2ad928f1306ea59540790fb0604e3" name="a56c2ad928f1306ea59540790fb0604e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a56c2ad928f1306ea59540790fb0604e3">&#9670;&#160;</a></span>to_degrees()</h2>
 

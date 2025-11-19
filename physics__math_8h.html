@@ -131,10 +131,11 @@ $(document).ready(function(){initNavTree('physics__math_8h.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;box2d/box2d.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="point_8h_source.html">engine/public/util/point.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for physics_math.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="physics__math_8h__incl.svg" width="182" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="physics__math_8h__incl.svg" width="288" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -164,6 +165,24 @@ Functions</h2></td></tr>
 <tr class="memitem:a56c2ad928f1306ea59540790fb0604e3" id="r_a56c2ad928f1306ea59540790fb0604e3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#a56c2ad928f1306ea59540790fb0604e3">PhysicsMath::to_degrees</a> (float radians) noexcept</td></tr>
 <tr class="memdesc:a56c2ad928f1306ea59540790fb0604e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert radians to degrees.  <br /></td></tr>
 <tr class="separator:a56c2ad928f1306ea59540790fb0604e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2529f79ad0f1215b032cc8d0d6604a55" id="r_a2529f79ad0f1215b032cc8d0d6604a55"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#a2529f79ad0f1215b032cc8d0d6604a55">PhysicsMath::convert_box2d_angle_to_radians</a> (float sine, float cosine) noexcept</td></tr>
+<tr class="memdesc:a2529f79ad0f1215b032cc8d0d6604a55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Box2D angle representation (sine, cosine) to radians.  <br /></td></tr>
+<tr class="separator:a2529f79ad0f1215b032cc8d0d6604a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6b294045dfa467d9f093bc65db91eed" id="r_aa6b294045dfa467d9f093bc65db91eed"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#aa6b294045dfa467d9f093bc65db91eed">PhysicsMath::convert_radians_to_box2d_sine</a> (float radians) noexcept</td></tr>
+<tr class="memdesc:aa6b294045dfa467d9f093bc65db91eed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert radians to Box2D sine value.  <br /></td></tr>
+<tr class="separator:aa6b294045dfa467d9f093bc65db91eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a956062e71dba22ff2ccfd0a983931b3d" id="r_a956062e71dba22ff2ccfd0a983931b3d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#a956062e71dba22ff2ccfd0a983931b3d">PhysicsMath::convert_radians_to_box2d_cosine</a> (float radians) noexcept</td></tr>
+<tr class="memdesc:a956062e71dba22ff2ccfd0a983931b3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert radians to Box2D cosine value.  <br /></td></tr>
+<tr class="separator:a956062e71dba22ff2ccfd0a983931b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafa599467749c7447527b6195cc65474" id="r_aafa599467749c7447527b6195cc65474"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#aafa599467749c7447527b6195cc65474">PhysicsMath::distance_between_points</a> (const <a class="el" href="class_point.html">Point</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a0cc175b9c0f1b6a831c399e269772661">a</a>, const <a class="el" href="class_point.html">Point</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a92eb5ffee6ae2fec3ad71c777531578f">b</a>) noexcept</td></tr>
+<tr class="memdesc:aafa599467749c7447527b6195cc65474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the distance between two 2D points.  <br /></td></tr>
+<tr class="separator:aafa599467749c7447527b6195cc65474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac45d273bd31cdde1d2b899c2675c9178" id="r_ac45d273bd31cdde1d2b899c2675c9178"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#ac45d273bd31cdde1d2b899c2675c9178">PhysicsMath::dx_between_points</a> (const <a class="el" href="class_point.html">Point</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a0cc175b9c0f1b6a831c399e269772661">a</a>, const <a class="el" href="class_point.html">Point</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a92eb5ffee6ae2fec3ad71c777531578f">b</a>) noexcept</td></tr>
+<tr class="memdesc:ac45d273bd31cdde1d2b899c2675c9178"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the difference in x-coordinates between two 2D points.  <br /></td></tr>
+<tr class="separator:ac45d273bd31cdde1d2b899c2675c9178"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dbef262e155ac3eab6a03abcae0c045" id="r_a5dbef262e155ac3eab6a03abcae0c045"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics_math.html#a5dbef262e155ac3eab6a03abcae0c045">PhysicsMath::dy_between_points</a> (const <a class="el" href="class_point.html">Point</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a0cc175b9c0f1b6a831c399e269772661">a</a>, const <a class="el" href="class_point.html">Point</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a92eb5ffee6ae2fec3ad71c777531578f">b</a>) noexcept</td></tr>
+<tr class="memdesc:a5dbef262e155ac3eab6a03abcae0c045"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the difference in y-coordinates between two 2D points.  <br /></td></tr>
+<tr class="separator:a5dbef262e155ac3eab6a03abcae0c045"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

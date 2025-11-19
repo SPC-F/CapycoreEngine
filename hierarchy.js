@@ -1,8 +1,18 @@
 var hierarchy =
 [
+    [ "Body2D", "struct_body2_d.html", null ],
+    [ "Body2DTransform", "struct_body2_d_transform.html", null ],
+    [ "BodyDistance2D", "struct_body_distance2_d.html", null ],
+    [ "BodyType2D", "struct_body_type2_d.html", null ],
+    [ "ColliderRayResult", "struct_collider_ray_result.html", null ],
     [ "Color", "class_color.html", null ],
     [ "Component", "class_component.html", [
       [ "AudioSource", "class_audio_source.html", null ],
+      [ "Collider2D", "class_collider2_d.html", [
+        [ "BoxCollider2D", "class_box_collider2_d.html", null ],
+        [ "CircleCollider2D", "class_circle_collider2_d.html", null ]
+      ] ],
+      [ "Rigidbody2D", "class_rigidbody2_d.html", null ],
       [ "Sprite", "class_sprite.html", null ]
     ] ],
     [ "Engine", "class_engine.html", null ],
@@ -32,6 +42,8 @@ var hierarchy =
     [ "Point", "class_point.html", null ],
     [ "Scene", "class_scene.html", null ],
     [ "ServiceContainer", "class_service_container.html", null ],
+    [ "Shape2D", "struct_shape2_d.html", null ],
+    [ "ShapeType2D", "struct_shape_type2_d.html", null ],
     [ "SoundFactory", "class_sound_factory.html", null ],
     [ "SoundInstance", "class_sound_instance.html", [
       [ "GenericSoundInstance", "class_generic_sound_instance.html", null ],

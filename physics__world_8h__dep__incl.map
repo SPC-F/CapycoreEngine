@@ -1,5 +1,11 @@
-<map id="include/engine/physics/physics_world.h" name="include/engine/physics/physics_world.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,176,45"/>
-<area shape="rect" id="Node000002" href="$physics__service_8h.html" title=" " alt="" coords="5,93,176,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,59,93,93,88,93,88,59"/>
+<map id="include/engine/physics/world/physics_world.h" name="include/engine/physics/world/physics_world.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="101,5,272,45"/>
+<area shape="rect" id="Node000002" href="$physics__service_8h.html" title=" " alt="" coords="5,101,176,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,57,112,103,108,99,156,53"/>
+<area shape="rect" id="Node000003" href="$collider__2d_8h.html" title=" " alt="" coords="200,93,365,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="218,53,257,91,254,95,214,57"/>
+<area shape="rect" id="Node000004" href="$box__collider__2d_8h.html" title=" " alt="" coords="105,196,271,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="251,160,215,198,211,194,247,156"/>
+<area shape="rect" id="Node000005" href="$circle__collider__2d_8h.html" title=" " alt="" coords="295,196,460,251"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="319,156,355,194,351,198,315,160"/>
 </map>

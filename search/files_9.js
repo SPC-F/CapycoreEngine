@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['scene_2eh_0',['scene.h',['../scene_8h.html',1,'']]],
-  ['sdl_5finput_5fstrategy_2eh_1',['sdl_input_strategy.h',['../sdl__input__strategy_8h.html',1,'']]],
-  ['sdl_5fsound_5finstance_2eh_2',['sdl_sound_instance.h',['../sdl__sound__instance_8h.html',1,'']]],
-  ['sdl_5fsound_5fresource_2eh_3',['sdl_sound_resource.h',['../sdl__sound__resource_8h.html',1,'']]],
-  ['servicecontainer_2eh_4',['serviceContainer.h',['../service_container_8h.html',1,'']]],
-  ['sound_5ffactory_2eh_5',['sound_factory.h',['../sound__factory_8h.html',1,'']]],
-  ['sound_5finstance_2eh_6',['sound_instance.h',['../sound__instance_8h.html',1,'']]],
-  ['sound_5fresource_2eh_7',['sound_resource.h',['../sound__resource_8h.html',1,'']]],
-  ['sound_5ftype_2eh_8',['sound_type.h',['../sound__type_8h.html',1,'']]],
-  ['sprite_2eh_9',['sprite.h',['../sprite_8h.html',1,'']]]
+  ['readme_2emd_0',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
+  ['renderer_2eh_1',['renderer.h',['../renderer_8h.html',1,'']]],
+  ['rendererflags_2eh_2',['rendererFlags.h',['../renderer_flags_8h.html',1,'']]],
+  ['renderingservice_2eh_3',['renderingService.h',['../rendering_service_8h.html',1,'']]],
+  ['rigidbody_5f2d_2eh_4',['rigidbody_2d.h',['../rigidbody__2d_8h.html',1,'']]]
 ];

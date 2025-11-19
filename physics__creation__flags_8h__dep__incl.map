@@ -1,0 +1,20 @@
+<map id="include/engine/physics/creation/physics_creation_flags.h" name="include/engine/physics/creation/physics_creation_flags.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="233,5,425,60"/>
+<area shape="rect" id="Node000002" href="$physics__creation__factory_8h.html" title=" " alt="" coords="163,108,355,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="305,73,279,109,275,106,301,70"/>
+<area shape="rect" id="Node000005" href="$collider__2d_8h.html" title=" " alt="" coords="283,299,448,353"/>
+<area shape="poly" id="edge10_Node000001_Node000005" title=" " alt="" coords="375,67,405,95,435,129,463,167,484,210,490,231,484,252,461,280,432,301,429,296,457,276,479,249,484,231,479,212,458,170,431,132,401,99,372,71"/>
+<area shape="rect" id="Node000003" href="$physics__service_8h.html" title=" " alt="" coords="5,306,176,346"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="150,153,98,175,75,192,57,212,49,235,53,259,64,284,78,304,73,307,59,286,48,261,44,234,52,209,72,188,95,171,148,148"/>
+<area shape="rect" id="Node000004" href="$physics__world_8h.html" title=" " alt="" coords="67,211,237,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="220,174,175,213,172,209,216,170"/>
+<area shape="rect" id="Node000008" href="$rigidbody__2d_8h.html" title=" " alt="" coords="262,211,469,251"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="301,170,346,209,342,213,297,174"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="134,264,105,307,101,304,130,261"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="209,254,306,296,304,301,206,259"/>
+<area shape="rect" id="Node000006" href="$box__collider__2d_8h.html" title=" " alt="" coords="188,401,353,456"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="333,365,297,403,293,399,329,361"/>
+<area shape="rect" id="Node000007" href="$circle__collider__2d_8h.html" title=" " alt="" coords="377,401,543,456"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="401,361,437,399,433,403,397,365"/>
+<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="368,264,368,299,363,299,363,264"/>
+</map>

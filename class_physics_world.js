@@ -4,7 +4,7 @@ var class_physics_world =
     [ "PhysicsWorld", "class_physics_world.html#ad693b06c5a8b6854d2e7a98f208d88ba", null ],
     [ "PhysicsWorld", "class_physics_world.html#aa8cb59749f5acf79c4cba91eaac98367", null ],
     [ "~PhysicsWorld", "class_physics_world.html#abf1573b008b52b60a83a8f36cbdd51bc", null ],
-    [ "check_collision", "class_physics_world.html#a89c7a466c498251dbdce979f1b7ece16", null ],
+    [ "check_collision", "class_physics_world.html#ade4255887b0a59c9c78aa1b87f41c384", null ],
     [ "gravity_x", "class_physics_world.html#a5763183d7f2c57ddfa12d171e0052585", null ],
     [ "gravity_x", "class_physics_world.html#a4eea68f69a725e5b94dea83c073e3d22", null ],
     [ "gravity_y", "class_physics_world.html#ab5fa8faad554bf39a00393a1c49de57e", null ],

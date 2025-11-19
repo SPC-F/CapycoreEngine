@@ -1,7 +1,15 @@
 <map id="Component" name="Component">
-<area shape="rect" id="Node000001" title=" " alt="" coords="60,5,157,31"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="191,5,288,31"/>
 <area shape="rect" id="Node000002" href="$class_audio_source.html" title="Component that plays audio using the AudioService." alt="" coords="5,79,108,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,43,67,80,63,77,90,40"/>
-<area shape="rect" id="Node000003" href="$class_sprite.html" title="Component that represents a 2D sprite to be rendered. The Sprite component holds a reference to a Tex..." alt="" coords="132,79,192,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,40,155,77,151,80,123,43"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,38,88,81,86,76,196,33"/>
+<area shape="rect" id="Node000003" href="$class_collider2_d.html" title="A 2D collider base that defines the shape and physical properties of a GameObject for collision detec..." alt="" coords="133,79,223,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="222,43,190,80,186,77,218,40"/>
+<area shape="rect" id="Node000006" href="$class_rigidbody2_d.html" title="A 2D rigidbody component that adds physics properties to a GameObject." alt="" coords="248,79,353,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="260,40,293,77,289,80,256,43"/>
+<area shape="rect" id="Node000007" href="$class_sprite.html" title="Component that represents a 2D sprite to be rendered. The Sprite component holds a reference to a Tex..." alt="" coords="377,79,437,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="280,34,381,76,379,81,278,38"/>
+<area shape="rect" id="Node000004" href="$class_box_collider2_d.html" title="A 2D box collider component that defines a rectangular collision shape for a GameObject." alt="" coords="47,152,162,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="158,116,118,154,115,150,154,112"/>
+<area shape="rect" id="Node000005" href="$class_circle_collider2_d.html" title="A 2D circle collider component that defines a circular collision shape for a GameObject." alt="" coords="187,152,313,177"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="202,112,240,150,236,154,198,116"/>
 </map>

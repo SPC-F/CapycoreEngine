@@ -2,6 +2,8 @@ var class_game_object =
 [
     [ "GameObject", "class_game_object.html#ab2c6683579548906dc8432bbd823fd76", null ],
     [ "~GameObject", "class_game_object.html#a224d4f6d9dd75c8a6f9d022eaf586fd9", null ],
+    [ "GameObject", "class_game_object.html#aae3335f16f4c318950ef8b9b5fd1d368", null ],
+    [ "GameObject", "class_game_object.html#aec073a2a8dd3d4874540cb8b650ff1e4", null ],
     [ "add_child", "class_game_object.html#a578a85d302051c29389c4a17babe8254", null ],
     [ "add_component", "class_game_object.html#a722d01ebba40763eed4eb9243d8715e3", null ],
     [ "children", "class_game_object.html#a48374de753f04fdf2327aa035570bb11", null ],
@@ -18,6 +20,9 @@ var class_game_object =
     [ "marked_for_deletion", "class_game_object.html#ae11b48a198deb464b773f485a0a2a214", null ],
     [ "name", "class_game_object.html#a0dbc751921e81aee5b113524400922a4", null ],
     [ "name", "class_game_object.html#a72fb34f46d0a462cc277454b7b1324bc", null ],
+    [ "operator=", "class_game_object.html#a0839af580baf87eb19faff2c996c0afd", null ],
+    [ "operator=", "class_game_object.html#af593d5fdc4daefe74d9f8c037f15d209", null ],
+    [ "parent", "class_game_object.html#a44e35c6ff49a258350c361828969d634", null ],
     [ "parent", "class_game_object.html#a8d38c7b8d740577e21589fe396dccdcb", null ],
     [ "parent", "class_game_object.html#acd98b680d1b17b20b75dd37b3cfef4ee", null ],
     [ "remove_child", "class_game_object.html#a0f2f5be33d65a8270d319679270f407d", null ],

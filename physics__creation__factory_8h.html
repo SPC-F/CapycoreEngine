@@ -10,7 +10,7 @@
 <meta property="og:description" content="A simple game engine written in C++ based on the Unity API architecture." />
 <meta property="og:url" content="https://spc-f.github.io/CapycoreEngine/index.html" />
 <!-- END opengraph metadata -->
-<title>Capycore Engine: include/engine/physics/physics_creation_factory.h File Reference</title>
+<title>Capycore Engine: include/engine/physics/creation/physics_creation_factory.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -125,95 +125,44 @@ $(document).ready(function(){initNavTree('physics__creation__factory_8h.html',''
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle"><div class="title">physics_creation_factory.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;box2d/box2d.h&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;<a class="el" href="physics__creation__flags_8h_source.html">engine/physics/creation/physics_creation_flags.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="body__type__2d_8h_source.html">engine/physics/world/body/body_type_2d.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="body__2d_8h_source.html">engine/physics/world/body/body_2d.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="component_8h_source.html">engine/public/component.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="point_8h_source.html">engine/public/util/point.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="vector3_8h_source.html">engine/public/util/vector3.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for physics_creation_factory.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="physics__creation__factory_8h__incl.svg" width="562" height="212"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="physics__creation__factory_8h__incl.svg" width="1174" height="315"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="physics__creation__factory_8h__dep__incl.svg" width="210" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="physics__creation__factory_8h__dep__incl.svg" width="507" height="359"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="physics__creation__factory_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_physics_creation_flags.html">PhysicsCreationFlags</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flags for creating physics bodies.  <a href="struct_physics_creation_flags.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_creation_factory.html">PhysicsCreationFactory</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory class for creating physics bodies in the Box2D world.  <a href="class_physics_creation_factory.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a504d96c73b7f4d6d74cd37a26fba2b03" id="r_a504d96c73b7f4d6d74cd37a26fba2b03"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="physics__creation__factory_8h.html#a504d96c73b7f4d6d74cd37a26fba2b03">default_collision_category</a> = 0x0001</td></tr>
-<tr class="separator:a504d96c73b7f4d6d74cd37a26fba2b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba246cce19122b684158a87e9b4e9353" id="r_aba246cce19122b684158a87e9b4e9353"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="physics__creation__factory_8h.html#aba246cce19122b684158a87e9b4e9353">default_collision_mask</a> = 0xFFFF</td></tr>
-<tr class="separator:aba246cce19122b684158a87e9b4e9353"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a504d96c73b7f4d6d74cd37a26fba2b03" name="a504d96c73b7f4d6d74cd37a26fba2b03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a504d96c73b7f4d6d74cd37a26fba2b03">&#9670;&#160;</a></span>default_collision_category</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr uint16_t default_collision_category = 0x0001</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aba246cce19122b684158a87e9b4e9353" name="aba246cce19122b684158a87e9b4e9353"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba246cce19122b684158a87e9b4e9353">&#9670;&#160;</a></span>default_collision_mask</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr uint16_t default_collision_mask = 0xFFFF</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7f531b1c37460085cedd304cb8df01d.html">engine</a></li><li class="navelem"><a class="el" href="dir_507eef3fc303406776132f4dfa1b45c0.html">physics</a></li><li class="navelem"><a class="el" href="physics__creation__factory_8h.html">physics_creation_factory.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7f531b1c37460085cedd304cb8df01d.html">engine</a></li><li class="navelem"><a class="el" href="dir_507eef3fc303406776132f4dfa1b45c0.html">physics</a></li><li class="navelem"><a class="el" href="dir_2fdd05c8b44becc61a6381da59ffda6c.html">creation</a></li><li class="navelem"><a class="el" href="physics__creation__factory_8h.html">physics_creation_factory.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

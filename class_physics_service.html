@@ -145,9 +145,9 @@ Inheritance diagram for PhysicsService:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2b102ba6ce80d762469c41d5147966bf" id="r_a2b102ba6ce80d762469c41d5147966bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_service.html#a2b102ba6ce80d762469c41d5147966bf">PhysicsService</a> ()</td></tr>
 <tr class="separator:a2b102ba6ce80d762469c41d5147966bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abeb34e2f4e8e31d0abd8152346357c5f" id="r_abeb34e2f4e8e31d0abd8152346357c5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_service.html#abeb34e2f4e8e31d0abd8152346357c5f">update</a> (float dt)</td></tr>
-<tr class="memdesc:abeb34e2f4e8e31d0abd8152346357c5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the physics world by stepping the simulation.  <br /></td></tr>
-<tr class="separator:abeb34e2f4e8e31d0abd8152346357c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaabcaa43549807e5a0ee3d9d85441c58" id="r_aaabcaa43549807e5a0ee3d9d85441c58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_service.html#aaabcaa43549807e5a0ee3d9d85441c58">update</a> (float dt, const std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;objects)</td></tr>
+<tr class="memdesc:aaabcaa43549807e5a0ee3d9d85441c58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the physics world by stepping the simulation.  <br /></td></tr>
+<tr class="separator:aaabcaa43549807e5a0ee3d9d85441c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43a33b5ea02a11cfb0dec5b9347b3351" id="r_a43a33b5ea02a11cfb0dec5b9347b3351"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_physics_world.html">PhysicsWorld</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_service.html#a43a33b5ea02a11cfb0dec5b9347b3351">world</a> () noexcept</td></tr>
 <tr class="memdesc:a43a33b5ea02a11cfb0dec5b9347b3351"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor for the physics world instance.  <br /></td></tr>
 <tr class="separator:a43a33b5ea02a11cfb0dec5b9347b3351"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -239,8 +239,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abeb34e2f4e8e31d0abd8152346357c5f" name="abeb34e2f4e8e31d0abd8152346357c5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abeb34e2f4e8e31d0abd8152346357c5f">&#9670;&#160;</a></span>update()</h2>
+<a id="aaabcaa43549807e5a0ee3d9d85441c58" name="aaabcaa43549807e5a0ee3d9d85441c58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaabcaa43549807e5a0ee3d9d85441c58">&#9670;&#160;</a></span>update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -249,17 +249,29 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void PhysicsService::update </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>dt</em></td><td>)</td>
+          <td class="paramname"><em>dt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>objects</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Updates the physics world by stepping the simulation. </p>
+<dl class="section note"><dt>Note</dt><dd>Delta time (dt) should potentially be fixed for consistent physics behavior.</dd></dl>
 <p>This method advances the physics simulation by one time step, applying all physics calculations and updating object states.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dt</td><td>The (deltatime) time step duration for the physics update. </td></tr>
+    <tr><td class="paramname">objects</td><td>The list of game objects to check for collisions. </td></tr>
   </table>
   </dd>
 </dl>

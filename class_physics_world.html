@@ -126,6 +126,7 @@ $(document).ready(function(){initNavTree('class_physics_world.html',''); initRes
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_physics_world-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">PhysicsWorld Class Reference</div></div>
 </div><!--header-->
@@ -154,9 +155,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7cdf3bfd913d3dbb770e1404bebd80a1" id="r_a7cdf3bfd913d3dbb770e1404bebd80a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#a7cdf3bfd913d3dbb770e1404bebd80a1">step</a> (float dt)</td></tr>
 <tr class="memdesc:a7cdf3bfd913d3dbb770e1404bebd80a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steps the physics simulation forward by the fixed time step.  <br /></td></tr>
 <tr class="separator:a7cdf3bfd913d3dbb770e1404bebd80a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89c7a466c498251dbdce979f1b7ece16" id="r_a89c7a466c498251dbdce979f1b7ece16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#a89c7a466c498251dbdce979f1b7ece16">check_collision</a> ()</td></tr>
-<tr class="memdesc:a89c7a466c498251dbdce979f1b7ece16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for collisions in the physics world.  <br /></td></tr>
-<tr class="separator:a89c7a466c498251dbdce979f1b7ece16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade4255887b0a59c9c78aa1b87f41c384" id="r_ade4255887b0a59c9c78aa1b87f41c384"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#ade4255887b0a59c9c78aa1b87f41c384">check_collision</a> (const std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;objects)</td></tr>
+<tr class="memdesc:ade4255887b0a59c9c78aa1b87f41c384"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for collisions in the physics world.  <br /></td></tr>
+<tr class="separator:ade4255887b0a59c9c78aa1b87f41c384"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae42f6df177998535486454b347a103f0" id="r_ae42f6df177998535486454b347a103f0"><td class="memItemLeft" align="right" valign="top">b2WorldId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#ae42f6df177998535486454b347a103f0">world_id</a> () const noexcept</td></tr>
 <tr class="separator:ae42f6df177998535486454b347a103f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15d9f4b69a1902f93b387aa4a678d213" id="r_a15d9f4b69a1902f93b387aa4a678d213"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#a15d9f4b69a1902f93b387aa4a678d213">velocity_iterations</a> () const noexcept</td></tr>
@@ -177,6 +178,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a68ecdf9bfae4bc9568509473df795b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a659fe2483ac7a9c902138ecabe798000" id="r_a659fe2483ac7a9c902138ecabe798000"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#a659fe2483ac7a9c902138ecabe798000">world_exists</a> () const noexcept</td></tr>
 <tr class="separator:a659fe2483ac7a9c902138ecabe798000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aedfde43af095a4c06d2b76f7d0f0febe" id="r_aedfde43af095a4c06d2b76f7d0f0febe"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_body_distance2_d.html">BodyDistance2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#aedfde43af095a4c06d2b76f7d0f0febe">distance</a> (const <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a0cc175b9c0f1b6a831c399e269772661">a</a>, const <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a92eb5ffee6ae2fec3ad71c777531578f">b</a>)</td></tr>
+<tr class="memdesc:aedfde43af095a4c06d2b76f7d0f0febe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the distance between two bodies.  <br /></td></tr>
+<tr class="separator:aedfde43af095a4c06d2b76f7d0f0febe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38ce0acd7870358efdd4f6e6848a4b31" id="r_a38ce0acd7870358efdd4f6e6848a4b31"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_body_distance2_d.html">BodyDistance2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#a38ce0acd7870358efdd4f6e6848a4b31">fixture_distance</a> (const <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a0cc175b9c0f1b6a831c399e269772661">a</a>, const <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a92eb5ffee6ae2fec3ad71c777531578f">b</a>)</td></tr>
+<tr class="memdesc:a38ce0acd7870358efdd4f6e6848a4b31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the distance between two bodies using their fixtures.  <br /></td></tr>
+<tr class="separator:a38ce0acd7870358efdd4f6e6848a4b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents the physics world using Box2D. </p>
@@ -271,8 +281,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a89c7a466c498251dbdce979f1b7ece16" name="a89c7a466c498251dbdce979f1b7ece16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89c7a466c498251dbdce979f1b7ece16">&#9670;&#160;</a></span>check_collision()</h2>
+<a id="ade4255887b0a59c9c78aa1b87f41c384" name="ade4255887b0a59c9c78aa1b87f41c384"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade4255887b0a59c9c78aa1b87f41c384">&#9670;&#160;</a></span>check_collision()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -280,7 +290,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void PhysicsWorld::check_collision </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>objects</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -288,6 +299,99 @@ Public Member Functions</h2></td></tr>
 
 <p>Checks for collisions in the physics world. </p>
 <p>This method processes collision detection and resolution for the current state of the physics world. Its based on Box2D's internal collision handling and objects </p>
+
+</div>
+</div>
+<a id="aedfde43af095a4c06d2b76f7d0f0febe" name="aedfde43af095a4c06d2b76f7d0f0febe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedfde43af095a4c06d2b76f7d0f0febe">&#9670;&#160;</a></span>distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_body_distance2_d.html">BodyDistance2D</a> PhysicsWorld::distance </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculate the distance between two bodies. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>The first body's transform. </td></tr>
+    <tr><td class="paramname">b</td><td>The second body's transform. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_body_distance2_d.html" title="Structure representing the distance information between two colliders.">BodyDistance2D</a> The distance information between the two bodies. </dd></dl>
+
+</div>
+</div>
+<a id="a38ce0acd7870358efdd4f6e6848a4b31" name="a38ce0acd7870358efdd4f6e6848a4b31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38ce0acd7870358efdd4f6e6848a4b31">&#9670;&#160;</a></span>fixture_distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_body_distance2_d.html">BodyDistance2D</a> PhysicsWorld::fixture_distance </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculate the distance between two bodies using their fixtures. </p>
+<p>Fixture means the actual shapes attached to the bodies. So for instance a box body with multiple box fixtures will calculate the distance based on the closest fixture.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>The first body's transform. </td></tr>
+    <tr><td class="paramname">b</td><td>The second body's transform. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_body_distance2_d.html" title="Structure representing the distance information between two colliders.">BodyDistance2D</a> The distance information between the two bodies' fixtures. </dd></dl>
 
 </div>
 </div>
@@ -625,7 +729,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/engine/physics/<a class="el" href="physics__world_8h_source.html">physics_world.h</a></li>
+<li>include/engine/physics/world/<a class="el" href="physics__world_8h_source.html">physics_world.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

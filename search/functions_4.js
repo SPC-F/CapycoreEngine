@@ -1,15 +1,10 @@
 var searchData=
 [
-  ['gameobject_0',['GameObject',['../class_game_object.html#ab2c6683579548906dc8432bbd823fd76',1,'GameObject']]],
-  ['generate_5fuuid_5fv4_1',['generate_uuid_v4',['../namespaceuuid.html#a9a1420474ea2cd2392dfc8703b0ab281',1,'uuid']]],
-  ['genericsoundinstance_2',['GenericSoundInstance',['../class_generic_sound_instance.html#aec39f381ddf4ebb0deb748fc4fe18b41',1,'GenericSoundInstance']]],
-  ['get_5fall_5fplaying_5fsounds_3',['get_all_playing_sounds',['../class_audio_service.html#a5133714b707abf09be07f41a1543d4f8',1,'AudioService']]],
-  ['get_5fcomponent_4',['get_component',['../class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc',1,'GameObject']]],
-  ['get_5fcomponents_5',['get_components',['../class_game_object.html#aef31e6fca036256ac8eee5cc1b0963c4',1,'GameObject']]],
-  ['get_5fcomponents_5ffrom_5fchildren_6',['get_components_from_children',['../class_game_object.html#aa58c30b6156e37604a5e318b728a22e5',1,'GameObject']]],
-  ['get_5fservice_7',['get_service',['../class_service_container.html#a3739f5de7c829e73fadd73cf6d7512ba',1,'ServiceContainer']]],
-  ['get_5fsound_5finstance_8',['get_sound_instance',['../class_audio_service.html#af828eb86dec0e61f02121b6130cc44e7',1,'AudioService']]],
-  ['get_5fsound_5fresource_9',['get_sound_resource',['../class_audio_service.html#a89ef9feb5ea0e3135374c654e1b868e1',1,'AudioService']]],
-  ['gravity_5fx_10',['gravity_x',['../class_physics_world.html#a5763183d7f2c57ddfa12d171e0052585',1,'PhysicsWorld::gravity_x() const noexcept'],['../class_physics_world.html#a4eea68f69a725e5b94dea83c073e3d22',1,'PhysicsWorld::gravity_x(float gx) noexcept']]],
-  ['gravity_5fy_11',['gravity_y',['../class_physics_world.html#ab5fa8faad554bf39a00393a1c49de57e',1,'PhysicsWorld::gravity_y() const noexcept'],['../class_physics_world.html#a494fa3f3ccb8210dae83e85d0cb7e1e1',1,'PhysicsWorld::gravity_y(float gy) noexcept']]]
+  ['factory_0',['factory',['../class_physics_service.html#a46a29675f4a1889ce4157a6894f115fe',1,'PhysicsService']]],
+  ['file_5fpath_1',['file_path',['../class_sound_resource.html#afdf35496bcf4e7bf4edeaa0a63b83b8f',1,'SoundResource']]],
+  ['finished_2',['finished',['../class_sound_instance.html#aada09f653405d2f3446c478fa9c6081d',1,'SoundInstance::finished() const noexcept'],['../class_sound_instance.html#a2b5a0b87e6a976a30ebebda3216282ac',1,'SoundInstance::finished(bool finished) noexcept']]],
+  ['fixture_5fdistance_3',['fixture_distance',['../class_physics_world.html#a38ce0acd7870358efdd4f6e6848a4b31',1,'PhysicsWorld']]],
+  ['flip_5fx_4',['flip_x',['../class_sprite.html#a627f95ef5ff440d95fe6e171bf23cd2a',1,'Sprite::flip_x() const'],['../class_sprite.html#a361a40b1e885cf6493c2062eaccb39f9',1,'Sprite::flip_x(int val)']]],
+  ['flip_5fy_5',['flip_y',['../class_sprite.html#ad6fc7fc54b172768b1749d430619a916',1,'Sprite::flip_y() const'],['../class_sprite.html#ae4d583f04c7698edd9bbde1eeed25506',1,'Sprite::flip_y(int val)']]],
+  ['friction_6',['friction',['../class_box_collider2_d.html#a530ad414562f8d3c341d00cf6f303ef6',1,'BoxCollider2D::friction()'],['../class_circle_collider2_d.html#ac8873bf7adb9e66ce1631c1459f12e5f',1,'CircleCollider2D::friction()'],['../class_collider2_d.html#a4f3fcf48b33f6c7a8339a14e3455e378',1,'Collider2D::friction() const noexcept'],['../class_collider2_d.html#a058fa64b1992f1e78ce5a90c28f42111',1,'Collider2D::friction(float value) noexcept']]]
 ];

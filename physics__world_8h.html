@@ -10,7 +10,7 @@
 <meta property="og:description" content="A simple game engine written in C++ based on the Unity API architecture." />
 <meta property="og:url" content="https://spc-f.github.io/CapycoreEngine/index.html" />
 <!-- END opengraph metadata -->
-<title>Capycore Engine: include/engine/physics/physics_world.h File Reference</title>
+<title>Capycore Engine: include/engine/physics/world/physics_world.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -132,15 +132,21 @@ $(document).ready(function(){initNavTree('physics__world_8h.html',''); initResiz
 <div class="contents">
 <div class="textblock"><code>#include &lt;box2d/box2d.h&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;<a class="el" href="physics__creation__factory_8h_source.html">engine/physics/creation/physics_creation_factory.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="body__2d_8h_source.html">engine/physics/world/body/body_2d.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="shape__type__2d_8h_source.html">engine/physics/world/body/shape_type_2d.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="body__distance__2d_8h_source.html">engine/physics/world/body/body_distance_2d.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="vector3_8h_source.html">engine/public/util/vector3.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="point_8h_source.html">engine/public/util/point.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for physics_world.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="physics__world_8h__incl.svg" width="231" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="physics__world_8h__incl.svg" width="1364" height="388"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="physics__world_8h__dep__incl.svg" width="182" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="physics__world_8h__dep__incl.svg" width="466" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="physics__world_8h_source.html">Go to the source code of this file.</a></p>
@@ -157,7 +163,7 @@ Variables</h2></td></tr>
 <tr class="separator:a5c4152c4dc59b9d61cf6e26b24a08322"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3657b67189ea9309273b110b600d9bb" id="r_ab3657b67189ea9309273b110b600d9bb"><td class="memItemLeft" align="right" valign="top">constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="physics__world_8h.html#ab3657b67189ea9309273b110b600d9bb">default_gravity_x</a> = 0.0f</td></tr>
 <tr class="separator:ab3657b67189ea9309273b110b600d9bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac313bd7ad203e1a841ec1a3e26e13ac4" id="r_ac313bd7ad203e1a841ec1a3e26e13ac4"><td class="memItemLeft" align="right" valign="top">constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="physics__world_8h.html#ac313bd7ad203e1a841ec1a3e26e13ac4">default_gravity_y</a> = -30.0f</td></tr>
+<tr class="memitem:ac313bd7ad203e1a841ec1a3e26e13ac4" id="r_ac313bd7ad203e1a841ec1a3e26e13ac4"><td class="memItemLeft" align="right" valign="top">constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="physics__world_8h.html#ac313bd7ad203e1a841ec1a3e26e13ac4">default_gravity_y</a> = 1.0f</td></tr>
 <tr class="separator:ac313bd7ad203e1a841ec1a3e26e13ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ccf45cc744b69bd76815971586f0a59" id="r_a7ccf45cc744b69bd76815971586f0a59"><td class="memItemLeft" align="right" valign="top">constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="physics__world_8h.html#a7ccf45cc744b69bd76815971586f0a59">default_pixel_to_meter_ratio</a> = 16.0f</td></tr>
 <tr class="separator:a7ccf45cc744b69bd76815971586f0a59"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,7 +201,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr float default_gravity_y = -30.0f</td>
+          <td class="memname">constexpr float default_gravity_y = 1.0f</td>
         </tr>
       </table>
   </td>
@@ -256,7 +262,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7f531b1c37460085cedd304cb8df01d.html">engine</a></li><li class="navelem"><a class="el" href="dir_507eef3fc303406776132f4dfa1b45c0.html">physics</a></li><li class="navelem"><a class="el" href="physics__world_8h.html">physics_world.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7f531b1c37460085cedd304cb8df01d.html">engine</a></li><li class="navelem"><a class="el" href="dir_507eef3fc303406776132f4dfa1b45c0.html">physics</a></li><li class="navelem"><a class="el" href="dir_9228928e920d3547c08edb1901b2c09a.html">world</a></li><li class="navelem"><a class="el" href="physics__world_8h.html">physics_world.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

@@ -18,8 +18,11 @@ var searchData=
   ['file_5fpath_5f_15',['file_path_',['../class_sound_resource.html#a1623716e3cc512cd7c0e7337b8aafa2a',1,'SoundResource']]],
   ['finished_16',['finished',['../class_sound_instance.html#a2b5a0b87e6a976a30ebebda3216282ac',1,'SoundInstance::finished(bool finished) noexcept'],['../class_sound_instance.html#aada09f653405d2f3446c478fa9c6081d',1,'SoundInstance::finished() const noexcept']]],
   ['finished_5f_17',['finished_',['../class_sound_instance.html#a23f3ebfaf1dcb7f0e79559a740e12d2d',1,'SoundInstance']]],
-  ['flip_5fx_18',['flip_x',['../class_sprite.html#a361a40b1e885cf6493c2062eaccb39f9',1,'Sprite::flip_x(int val)'],['../class_sprite.html#a627f95ef5ff440d95fe6e171bf23cd2a',1,'Sprite::flip_x() const']]],
-  ['flip_5fy_19',['flip_y',['../class_sprite.html#ae4d583f04c7698edd9bbde1eeed25506',1,'Sprite::flip_y(int val)'],['../class_sprite.html#ad6fc7fc54b172768b1749d430619a916',1,'Sprite::flip_y() const']]],
-  ['for_20linux_20users_20',['Note for Linux users',['../index.html#autotoc_md2',1,'']]],
-  ['fullscreen_21',['Fullscreen',['../renderer_flags_8h.html#a38ee5c69c90472e460192941b5c680f1a442ecc88f57a81fcf5161137646b031f',1,'rendererFlags.h']]]
+  ['fixture_5fdistance_18',['fixture_distance',['../class_physics_world.html#a38ce0acd7870358efdd4f6e6848a4b31',1,'PhysicsWorld']]],
+  ['flip_5fx_19',['flip_x',['../class_sprite.html#a361a40b1e885cf6493c2062eaccb39f9',1,'Sprite::flip_x(int val)'],['../class_sprite.html#a627f95ef5ff440d95fe6e171bf23cd2a',1,'Sprite::flip_x() const']]],
+  ['flip_5fy_20',['flip_y',['../class_sprite.html#ae4d583f04c7698edd9bbde1eeed25506',1,'Sprite::flip_y(int val)'],['../class_sprite.html#ad6fc7fc54b172768b1749d430619a916',1,'Sprite::flip_y() const']]],
+  ['for_20linux_20users_21',['Note for Linux users',['../index.html#autotoc_md2',1,'']]],
+  ['fraction_22',['fraction',['../struct_collider_ray_result.html#a6656a71509418846fcfbf3c4af392551',1,'ColliderRayResult']]],
+  ['friction_23',['friction',['../class_collider2_d.html#a058fa64b1992f1e78ce5a90c28f42111',1,'Collider2D::friction(float value) noexcept'],['../class_collider2_d.html#a4f3fcf48b33f6c7a8339a14e3455e378',1,'Collider2D::friction() const noexcept'],['../class_circle_collider2_d.html#ac8873bf7adb9e66ce1631c1459f12e5f',1,'CircleCollider2D::friction()'],['../class_box_collider2_d.html#a530ad414562f8d3c341d00cf6f303ef6',1,'BoxCollider2D::friction()']]],
+  ['fullscreen_24',['Fullscreen',['../renderer_flags_8h.html#a38ee5c69c90472e460192941b5c680f1a442ecc88f57a81fcf5161137646b031f',1,'rendererFlags.h']]]
 ];

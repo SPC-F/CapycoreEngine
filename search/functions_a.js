@@ -1,21 +1,4 @@
 var searchData=
 [
-  ['on_5fattach_0',['on_attach',['../class_audio_source.html#aa1bc1be865174afa0eef3be9bf1f68dc',1,'AudioSource::on_attach()'],['../class_sprite.html#ad85b1ffa41ea5e856e3665c816a268eb',1,'Sprite::on_attach()'],['../class_component.html#a45959ff679ae6fec15ece2619897c0a1',1,'Component::on_attach()=0']]],
-  ['on_5fdeserialize_1',['on_deserialize',['../class_component.html#a10c4042dfb9548ee865898eb55582f28',1,'Component::on_deserialize()'],['../class_audio_source.html#a9fba7558de6e24ecad919b478b7d5ed7',1,'AudioSource::on_deserialize()'],['../class_sprite.html#a2ab98c7e39e9fba5c7bc2e24a505c76a',1,'Sprite::on_deserialize()']]],
-  ['on_5fdetach_2',['on_detach',['../class_component.html#ac40f75e6be1fa1c046398b75af9f98b1',1,'Component::on_detach()'],['../class_audio_source.html#a7c03665c2bca66864dc60efa4dfd7de5',1,'AudioSource::on_detach()'],['../class_sprite.html#a4df95961ab20eff67c8806c11fc4728f',1,'Sprite::on_detach()']]],
-  ['on_5fserialize_3',['on_serialize',['../class_component.html#a431e94b7799fef4428fff6062f7d77aa',1,'Component::on_serialize()'],['../class_audio_source.html#a1b495a1b83e3c4b69cea287455e1ef9b',1,'AudioSource::on_serialize()'],['../class_sprite.html#a9f2f24d5294b669a6573a91cf0a8a84a',1,'Sprite::on_serialize()']]],
-  ['operator_20delete_4',['operator delete',['../memory_8h.html#afa145befcf5e7b83424408ca503c8637',1,'memory.h']]],
-  ['operator_20delete_5b_5d_5',['operator delete[]',['../memory_8h.html#a22aea74a1155aa798d6032da46da2391',1,'memory.h']]],
-  ['operator_20new_6',['operator new',['../memory_8h.html#acfad8f0764cf06b8abd170d8569a7b3f',1,'memory.h']]],
-  ['operator_20new_5b_5d_7',['operator new[]',['../memory_8h.html#a8fb4213ce34d87b1076be664d2e6ff53',1,'memory.h']]],
-  ['operator_2a_8',['operator*',['../class_vector3.html#abaeb4593c38a3d63afad7f1911297250',1,'Vector3::operator*(const Vector3 &amp;other) const noexcept'],['../class_vector3.html#aab07a7a65a21ffaa8ccb8034d96f7968',1,'Vector3::operator*(float value) const noexcept']]],
-  ['operator_2a_3d_9',['operator*=',['../class_vector3.html#a3d4f181bee36499b2debbe0306339590',1,'Vector3::operator*=(const Vector3 &amp;other) noexcept'],['../class_vector3.html#a1793fd437116e8c241e952c959bfd40a',1,'Vector3::operator*=(float value) noexcept']]],
-  ['operator_2b_10',['operator+',['../class_vector3.html#a19bc2d328bdb91a42e717652dff476a0',1,'Vector3']]],
-  ['operator_2b_3d_11',['operator+=',['../class_vector3.html#aeceb6a8c7193af99a3a21c781a34c9b5',1,'Vector3']]],
-  ['operator_2d_12',['operator-',['../class_vector3.html#a11ce237fdb550df8204bb6a9d264f92a',1,'Vector3']]],
-  ['operator_2d_3d_13',['operator-=',['../class_vector3.html#a5ceb28fc3b8073a434c01d76eb681dde',1,'Vector3']]],
-  ['operator_2f_14',['operator/',['../class_vector3.html#a246a7450fb5b1d71a30d6de46253bf6f',1,'Vector3::operator/(float value) const noexcept'],['../class_vector3.html#a9d6c85aa632a11d2035a6092a32ebdf9',1,'Vector3::operator/(const Vector3 &amp;other) const noexcept']]],
-  ['operator_2f_3d_15',['operator/=',['../class_vector3.html#adf9f13ff339cabef1447d0eacb70d681',1,'Vector3::operator/=(const Vector3 &amp;other) noexcept'],['../class_vector3.html#a2ca0b6fdf9c26be60b459d7d0b16e528',1,'Vector3::operator/=(float value) noexcept']]],
-  ['operator_3d_16',['operator=',['../class_asset_service.html#a9930285a0e8b8ec50d3e7f8662d45af5',1,'AssetService::operator=(const AssetService &amp;)=delete'],['../class_asset_service.html#a042b5267453056e175667f19fa335206',1,'AssetService::operator=(AssetService &amp;&amp;)=default'],['../class_physics_world.html#a9663e5b2f516a2c14c14580c1b6575fc',1,'PhysicsWorld::operator=(const PhysicsWorld &amp;)=delete'],['../class_physics_world.html#a8f20aba6b747c23393feb9827393821d',1,'PhysicsWorld::operator=(PhysicsWorld &amp;&amp;)=delete']]],
-  ['ordering_5flayer_17',['ordering_layer',['../class_sprite.html#a7fe460e614f453cbfd4fff222a0e59b8',1,'Sprite::ordering_layer() const'],['../class_sprite.html#a54fd5bdd38207dbc30c6380e1c56d6b1',1,'Sprite::ordering_layer(int val)']]]
+  ['name_0',['name',['../class_sound_resource.html#a3f560c04d9aca03a2c13ad596f630113',1,'SoundResource::name()'],['../class_game_object.html#a72fb34f46d0a462cc277454b7b1324bc',1,'GameObject::name(const std::string &amp;name)'],['../class_game_object.html#a0dbc751921e81aee5b113524400922a4',1,'GameObject::name() const']]]
 ];

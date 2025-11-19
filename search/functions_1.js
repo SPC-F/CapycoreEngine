@@ -1,13 +1,6 @@
 var searchData=
 [
-  ['check_5fcollision_0',['check_collision',['../class_physics_world.html#a89c7a466c498251dbdce979f1b7ece16',1,'PhysicsWorld']]],
-  ['children_1',['children',['../class_game_object.html#a48374de753f04fdf2327aa035570bb11',1,'GameObject']]],
-  ['clear_2',['clear',['../class_renderer.html#ab084c79787c3e2857ddc89a55d9955cf',1,'Renderer']]],
-  ['color_3',['color',['../class_sprite.html#a99304af697307c4847c3e65ce8a3e768',1,'Sprite::color() const'],['../class_sprite.html#af874503eae32060ce4a3fe078f912d46',1,'Sprite::color(Color color)'],['../class_color.html#a912df0cb52b88689ce6b721d3cee3966',1,'Color::Color(unsigned short r, unsigned short g, unsigned short b, unsigned short a)'],['../class_color.html#a9a742cbe9f9f4037f5d9f4e81a9b2428',1,'Color::Color()']]],
-  ['component_4',['Component',['../class_component.html#a8775db6d1a2c1afc2e77cd3c8f39da6f',1,'Component']]],
-  ['create_5fbox_5fbody_5',['create_box_body',['../class_physics_creation_factory.html#ac0da0a8d3f2fbbc3231fae6c75582f2b',1,'PhysicsCreationFactory']]],
-  ['create_5fcircle_5fbody_6',['create_circle_body',['../class_physics_creation_factory.html#ac1571828831f0feda6ba3da90fd8a7e9',1,'PhysicsCreationFactory']]],
-  ['create_5fsound_5finstance_7',['create_sound_instance',['../class_sound_factory.html#a2e2466cd9294e90a4449c3d9c7f0c5c5',1,'SoundFactory']]],
-  ['create_5fsound_5fresource_8',['create_sound_resource',['../class_sound_factory.html#ae29cbaf45a1f9d79b73922e9081b5ac6',1,'SoundFactory']]],
-  ['create_5fspritesheet_5ffor_9',['create_spritesheet_for',['../class_asset_service.html#aff8dfa617b79f3d082db0519a925cd5d',1,'AssetService']]]
+  ['body_0',['body',['../class_rigidbody2_d.html#afef9930496f1e178cabc51a236b0e02a',1,'Rigidbody2D::body() const noexcept'],['../class_rigidbody2_d.html#a292cfa0e79c61787d24b40261566e0a7',1,'Rigidbody2D::body(const Body2D &amp;value) noexcept']]],
+  ['bounciness_1',['bounciness',['../class_box_collider2_d.html#adc83a89ab09bcb848023be63379f391c',1,'BoxCollider2D::bounciness()'],['../class_circle_collider2_d.html#a78913b8e769a74b6f58f025ce8b9fd12',1,'CircleCollider2D::bounciness()'],['../class_collider2_d.html#aa71c77e260d44aebc617ef6945225327',1,'Collider2D::bounciness() const noexcept'],['../class_collider2_d.html#a1772f27a22652004faa1f5bfd85a99c1',1,'Collider2D::bounciness(float value) noexcept']]],
+  ['boxcollider2d_2',['BoxCollider2D',['../class_box_collider2_d.html#ae633bbcbbff43faf8b0188871c018ea8',1,'BoxCollider2D']]]
 ];

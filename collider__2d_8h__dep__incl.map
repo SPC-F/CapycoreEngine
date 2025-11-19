@@ -1,0 +1,7 @@
+<map id="include/engine/public/components/colliders/collider_2d.h" name="include/engine/public/components/colliders/collider_2d.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="100,5,265,60"/>
+<area shape="rect" id="Node000002" href="$box__collider__2d_8h.html" title=" " alt="" coords="5,108,171,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,72,115,110,111,106,147,68"/>
+<area shape="rect" id="Node000003" href="$circle__collider__2d_8h.html" title=" " alt="" coords="195,108,360,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="219,68,255,106,251,110,215,72"/>
+</map>
