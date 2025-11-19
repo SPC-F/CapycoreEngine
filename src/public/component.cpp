@@ -28,6 +28,15 @@ void Component::on_detach() {
     }
 }
 
+bool Component::marked_for_deletion() const noexcept {
+    return marked_for_deletion_;
+}
+
+Component& Component::mark_for_deletion() noexcept {
+    marked_for_deletion_ = true;
+    return *this;
+}
+
 std::optional<std::reference_wrapper<GameObject>>& Component::parent() noexcept {
     return parent_;
 }

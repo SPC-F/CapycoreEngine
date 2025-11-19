@@ -11,6 +11,7 @@ class Component {
 private:
     std::optional<std::reference_wrapper<GameObject>> parent_;
     bool active_ {true};
+    bool marked_for_deletion_ {false};
 
     std::vector<std::function<void(Component&)>> on_detach_actions_;
     std::vector<std::function<void(Component&)>> on_attach_actions_;
@@ -21,6 +22,9 @@ public:
 
     [[nodiscard]] bool active() const noexcept;
     Component& active(bool value) noexcept;
+
+    [[nodiscard]] bool marked_for_deletion() const noexcept;
+    Component& mark_for_deletion() noexcept;
 
     virtual void update(float dt) = 0;
     

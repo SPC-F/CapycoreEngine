@@ -1,11 +1,18 @@
 #include <engine/public/gameObject.h>
 #include <engine/public/component.h>
 
-GameObject::GameObject(Scene& scene) : scene_(scene) {}
+GameObject::GameObject(Scene& scene) :
+        scene_(scene) {
+}
+
 GameObject::~GameObject() {
     if (parent_.has_value()) {
         parent_->get().remove_child(*this);
     }
+}
+
+std::string GameObject::id() const noexcept {
+    return id_;
 }
 
 GameObject& GameObject::name(const std::string& name) {
@@ -63,6 +70,14 @@ bool GameObject::is_active_in_world() const noexcept {
 
 bool GameObject::is_active() const noexcept {
     return is_active_;
+}
+
+bool GameObject::marked_for_deletion() const noexcept {
+    return marked_for_deletion_;
+}
+
+GameObject& GameObject::mark_for_deletion() noexcept {
+    marked_for_deletion_ = true;
 }
 
 GameObject& GameObject::parent(GameObject& parent) {
