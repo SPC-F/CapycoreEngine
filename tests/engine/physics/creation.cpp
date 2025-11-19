@@ -1,11 +1,11 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include <engine/physics/physics_creation_factory.h>
-#include <engine/physics/physics_world.h>
+#include <engine/physics/creation/physics_creation_factory.h>
+#include <engine/physics/world/physics_world.h>
 
 #include <engine/public/component.h>
 #include <engine/public/gameObject.h>
-#include <engine/public/util/point.h>
+#include <engine/public/util/vector3.h>
 #include <engine/public/scene.h>
 
 struct DummyScene : public Scene {
@@ -24,8 +24,31 @@ struct DummyComponent : public Component {
     void on_deserialize() override {}
 };
 
+TEST_CASE("physics_creation_factory_creates_body", "[PhysicsCreationFactory]") {
+    // arrange
+    PhysicsWorld world;
+    PhysicsCreationFactory factory(world.world_id());
 
-TEST_CASE("physics_creation_factory_creates_box_body", "[PhysicsCreationFactory]") {
+    Vector3 position{0.0f, 0.0f, 0.0f};
+
+    DummyScene dummy_scene;
+    DummyGameObject dummy_game_object(dummy_scene);
+    DummyComponent dummy_component;
+    auto& comp = dummy_component.parent(dummy_game_object);
+
+    // act
+    Body2D body = factory.create_body(position, BodyType2D::Static, &dummy_component);
+
+    // assert
+    REQUIRE(b2Body_IsValid(body.id));
+    b2Vec2 pos = b2Body_GetPosition(body.id);
+    REQUIRE(pos.x == position.x);
+    REQUIRE(pos.y == position.y);
+    REQUIRE(b2Body_GetType(body.id) == b2BodyType::b2_staticBody);
+}
+
+
+TEST_CASE("physics_creation_factory_creates_box_fixture", "[PhysicsCreationFactory]") {
     // arrange
     PhysicsWorld world;
     PhysicsCreationFactory factory(world.world_id());
@@ -36,25 +59,26 @@ TEST_CASE("physics_creation_factory_creates_box_body", "[PhysicsCreationFactory]
     flags.is_bullet = false;
     flags.sensor = false;
 
-    Point position{5.0f, 10.0f};
+    Vector3 position{5.0f, 10.0f, 0.0f};
 
     DummyScene dummy_scene;
     DummyGameObject dummy_game_object(dummy_scene);
     DummyComponent dummy_component;
-    dummy_component.parent(dummy_game_object);
+    auto& comp = dummy_component.parent(dummy_game_object);
 
     // act
-    b2BodyId body_id = factory.create_box_body(position, 2.0f, 4.0f, flags, &dummy_component);
-
+    Body2D body = factory.create_body(position, BodyType2D::Dynamic, &dummy_component);
+    body = factory.create_box_fixture(body, {0.0f, 0.0f}, 2.0f, 4.0f, flags);
+    
     // assert
-    REQUIRE(b2Body_IsValid(body_id));
-    b2Vec2 pos = b2Body_GetPosition(body_id);
+    REQUIRE(b2Body_IsValid(body.id));
+    b2Vec2 pos = b2Body_GetPosition(body.id);
     REQUIRE(pos.x == position.x);
     REQUIRE(pos.y == position.y);
-    REQUIRE(b2Body_GetType(body_id) == b2BodyType::b2_dynamicBody);
+    REQUIRE(b2Body_GetType(body.id) == b2BodyType::b2_dynamicBody);
 }
 
-TEST_CASE("physics_creation_factory_creates_circle_body", "[PhysicsCreationFactory]") {
+TEST_CASE("physics_creation_factory_creates_circle_fixture", "[PhysicsCreationFactory]") {
     // arrange
     PhysicsWorld world;
     PhysicsCreationFactory factory(world.world_id());
@@ -64,19 +88,20 @@ TEST_CASE("physics_creation_factory_creates_circle_body", "[PhysicsCreationFacto
     flags.enable_contact_events = false;
     flags.sensor = true;
 
-    Point position{0.0f, 0.0f};
+    Vector3 position{0.0f, 0.0f, 0.0f};
 
     DummyScene dummy_scene;
     DummyGameObject dummy_game_object(dummy_scene);
     DummyComponent dummy_component;
-    dummy_component.parent(dummy_game_object);
+    auto& comp = dummy_component.parent(dummy_game_object);
 
     // act
-    b2BodyId body_id = factory.create_circle_body(position, 1.0f, flags, &dummy_component);
+    Body2D body = factory.create_body(position, BodyType2D::Static, &dummy_component);
+    body = factory.create_circle_fixture(body, {0.0f, 0.0f}, 1.0f, flags);
 
     // assert
-    REQUIRE(b2Body_IsValid(body_id));
-    REQUIRE(b2Body_GetType(body_id) == b2BodyType::b2_staticBody);
+    REQUIRE(b2Body_IsValid(body.id));
+    REQUIRE(b2Body_GetType(body.id) == b2BodyType::b2_staticBody);
 }
 
 TEST_CASE("physics_creation_factory_creates_bullet_body_with_mass_data", "[PhysicsCreationFactory]") {
@@ -88,21 +113,22 @@ TEST_CASE("physics_creation_factory_creates_bullet_body_with_mass_data", "[Physi
     flags.dynamic = true;
     flags.is_bullet = true;
 
-    Point position{2.0f, 3.0f};
+    Vector3 position{2.0f, 3.0f, 0.0f};
 
     DummyScene dummy_scene;
     DummyGameObject dummy_game_object(dummy_scene);
     DummyComponent dummy_component;
-    dummy_component.parent(dummy_game_object);
+    auto& comp = dummy_component.parent(dummy_game_object);
 
     // act
-    b2BodyId body_id = factory.create_circle_body(position, 0.5f, flags, &dummy_component);
+    Body2D body = factory.create_body(position, BodyType2D::Dynamic, &dummy_component);
+    body = factory.create_circle_fixture(body, {0.0f, 0.0f}, 0.5f, flags);
 
     // assert
-    REQUIRE(b2Body_IsValid(body_id));
-    REQUIRE(b2Body_IsBullet(body_id));
+    REQUIRE(b2Body_IsValid(body.id));
+    REQUIRE(b2Body_IsBullet(body.id));
 
-    b2MassData mass_data = b2Body_GetMassData(body_id);
+    b2MassData mass_data = b2Body_GetMassData(body.id);
     REQUIRE(mass_data.mass > 0.0f);
 }
 
@@ -114,13 +140,16 @@ TEST_CASE("physics_creation_factory_destroys_body", "[PhysicsCreationFactory]") 
     PhysicsCreationFlags flags{};
     flags.dynamic = true;
 
-    Point position{1.0f, 1.0f};
-    b2BodyId body_id = factory.create_box_body(position, 2.0f, 2.0f, flags, nullptr);
-    REQUIRE(b2Body_IsValid(body_id));
+    Vector3 position{1.0f, 1.0f, 0.0f};
+
+    Body2D body = factory.create_body(position, BodyType2D::Dynamic, nullptr);
+    body = factory.create_box_fixture(body, {0.0f, 0.0f}, 2.0f, 2.0f, flags);
+
+    REQUIRE(b2Body_IsValid(body.id));
 
     // act
-    factory.destroy_body(body_id);
+    factory.destroy_body(body);
 
     // assert
-    REQUIRE_FALSE(b2Body_IsValid(body_id));
+    REQUIRE_FALSE(b2Body_IsValid(body.id));
 }

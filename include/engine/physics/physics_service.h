@@ -4,10 +4,10 @@
 #include <memory>
 
 #include <engine/core/iEngineService.h>
-#include <engine/physics/physics_world.h>
-#include <engine/physics/physics_raycaster.h>
-#include <engine/physics/physics_creation_factory.h>
+#include <engine/physics/creation/physics_creation_factory.h>
+#include <engine/physics/raycast/physics_raycaster.h>
 #include <engine/physics/physics_math.h>
+#include <engine/physics/world/physics_world.h>
 
 /**
  * @brief Service responsible for managing the physics world.
@@ -22,13 +22,15 @@ public:
 
     /** 
      * @brief Updates the physics world by stepping the simulation.
+     * @note Delta time (dt) should potentially be fixed for consistent physics behavior.
      * 
      * This method advances the physics simulation by one time step,
      * applying all physics calculations and updating object states.
      * 
      * @param dt The (deltatime) time step duration for the physics update.
+     * @param objects The list of game objects to check for collisions.
      */
-    void update(float dt);
+    void update(float dt, const std::vector<std::reference_wrapper<GameObject>>& objects);
 
     /** 
      * @brief Accessor for the physics world instance.

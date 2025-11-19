@@ -1,4 +1,7 @@
 #include <engine/public/component.h>
+
+#include <iterator>
+
 #include <engine/public/gameObject.h>
 
 Component::Component()
@@ -35,6 +38,10 @@ Component& Component::mark_for_deletion() noexcept {
 }
 
 std::optional<std::reference_wrapper<GameObject>>& Component::parent() noexcept {
+    return parent_;
+}
+
+const std::optional<std::reference_wrapper<GameObject>>& Component::parent() const noexcept {
     return parent_;
 }
 
