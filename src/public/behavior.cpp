@@ -78,5 +78,5 @@ void Behavior::destroy(GameObject& game_object)
         throw std::runtime_error("Behavior has no associated component.");
     }
 
-    // Get scene from parent GameObject and remove the specified game object
+    game_object.mark_for_deletion();
 }
