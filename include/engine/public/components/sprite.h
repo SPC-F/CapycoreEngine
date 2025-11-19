@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <engine/public/util/color.h>
-#include <engine/core/rendering/texture.h>
+#include <../../core/rendering/renderables/texture.h>
 #include <engine/public/component.h>
 
 /**

@@ -3,6 +3,7 @@
 #include <engine/core/iEngineService.h>
 #include <engine/core/rendering/renderer.h>
 #include <engine/core/rendering/window.h>
+#include <engine/core/rendering/strategies/istrategy_factory.h>
 
 /**
  * @brief Service responsible for rendering game objects to the window.

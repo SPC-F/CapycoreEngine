@@ -1,6 +1,6 @@
 #include <engine/core/rendering/renderer.h>
 #include <engine/public/gameObject.h>
-#include <engine/core/rendering/texture.h>
+#include <../../../include/engine/core/rendering/renderables/texture.h>
 #include <engine/public/components/sprite.h>
 #include <SDL3_image/SDL_image.h>
 
