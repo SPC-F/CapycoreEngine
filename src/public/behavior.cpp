@@ -1,4 +1,4 @@
-#include <engine/core/behavior.h>
+#include <engine/public/behavior.h>
 
 Behavior::Behavior() : attached_component_(std::nullopt)
 {} 
