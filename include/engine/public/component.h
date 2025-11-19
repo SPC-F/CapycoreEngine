@@ -1,4 +1,5 @@
 #pragma once
+
 #include <memory>
 #include <optional>
 
@@ -8,12 +9,17 @@ class Component {
 private:
     std::optional<std::reference_wrapper<GameObject>> parent_;
     bool active_ {true};
+    bool marked_for_deletion_ {false};
+
 public:
     explicit Component();
     virtual ~Component() = default;
 
     [[nodiscard]] bool active() const noexcept;
     Component& active(bool value) noexcept;
+
+    [[nodiscard]] bool marked_for_deletion() const noexcept;
+    Component& mark_for_deletion() noexcept;
 
     virtual void update(float dt) = 0;
     virtual void on_attach() = 0;

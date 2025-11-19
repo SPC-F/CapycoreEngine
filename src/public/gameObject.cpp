@@ -72,6 +72,14 @@ bool GameObject::is_active() const noexcept {
     return is_active_;
 }
 
+bool GameObject::marked_for_deletion() const noexcept {
+    return marked_for_deletion_;
+}
+
+GameObject& GameObject::mark_for_deletion() noexcept {
+    marked_for_deletion_ = true;
+}
+
 GameObject& GameObject::parent(GameObject& parent) {
     parent_ = parent;
     return *this;
