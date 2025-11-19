@@ -26,7 +26,7 @@ BehaviorScript::~BehaviorScript()
 
 void BehaviorScript::update(float dt)
 {
-    if (!enabled()) {
+    if (!started_) {
         behavior_->on_start();
         started_ = true;
         return;
