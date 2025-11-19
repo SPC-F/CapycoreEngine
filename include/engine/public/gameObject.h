@@ -34,6 +34,14 @@ public:
     explicit GameObject(Scene& scene);
     virtual ~GameObject();
 
+    GameObject(const GameObject&) = delete;
+    GameObject& operator=(const GameObject&) = delete;
+
+    GameObject(GameObject&&) = default;
+    GameObject& operator=(GameObject&&) = default;
+
+    [[nodiscard]]
+    std::optional<std::reference_wrapper<GameObject>> parent() const;
     GameObject& parent(GameObject& parent);
     GameObject& parent(std::nullopt_t null_opt);
 
@@ -68,6 +76,7 @@ public:
     GameObject& add_child(GameObject& child);
     GameObject& remove_child(GameObject& child);
 
+    
     template<IsComponent T>
     [[nodiscard]]
     std::optional<std::reference_wrapper<T>> get_component() const noexcept {

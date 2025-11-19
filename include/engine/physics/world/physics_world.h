@@ -3,9 +3,16 @@
 #include <box2d/box2d.h>
 #include <memory>
 
+#include <engine/physics/creation/physics_creation_factory.h>
+#include <engine/physics/world/body/body_2d.h>
+#include <engine/physics/world/body/shape_type_2d.h>
+#include <engine/physics/world/body/body_distance_2d.h>
+#include <engine/public/util/vector3.h>
+#include <engine/public/util/point.h>
+
 constexpr int32_t default_velocity_iterations = 6;
 constexpr float default_gravity_x = 0.0f;
-constexpr float default_gravity_y = -30.0f;
+constexpr float default_gravity_y = 1.0f;
 constexpr float default_pixel_to_meter_ratio = 16.0f;
 
 /**
@@ -43,7 +50,28 @@ public:
      * for the current state of the physics world. Its based on
      * Box2D's internal collision handling and objects
      */
-    void check_collision();
+    void check_collision(const std::vector<std::reference_wrapper<GameObject>>& objects);
+
+    /**
+     * @brief Calculate the distance between two bodies
+     * 
+     * @param a The first body's transform.
+     * @param b The second body's transform.
+     * @return BodyDistance2D The distance information between the two bodies.
+     */
+    static BodyDistance2D distance(const Body2DTransform& a, const Body2DTransform& b);
+
+    /**
+     * @brief Calculate the distance between two bodies using their fixtures
+     * 
+     * Fixture means the actual shapes attached to the bodies. So for instance a 
+     * box body with multiple box fixtures will calculate the distance based on the closest fixture.
+     * 
+     * @param a The first body's transform.
+     * @param b The second body's transform.
+     * @return BodyDistance2D The distance information between the two bodies' fixtures.
+     */
+    static BodyDistance2D fixture_distance(const Body2DTransform& a, const Body2DTransform& b);
 
     [[nodiscard]]
     b2WorldId world_id() const noexcept;
