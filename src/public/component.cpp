@@ -25,12 +25,12 @@ void Component::on_detach() {
     }
 }
 
-std::optional<std::reference_wrapper<GameObject>>& Component::parent() noexcept {
-    return parent_;
+bool Component::marked_for_deletion() const noexcept {
+    return marked_for_deletion_;
 }
 
-const std::optional<std::reference_wrapper<GameObject>>& Component::parent() const noexcept {
-    return parent_;
+Component& Component::mark_for_deletion() noexcept {
+    marked_for_deletion_ = true;
 }
 
 Component& Component::parent(GameObject& parent) {

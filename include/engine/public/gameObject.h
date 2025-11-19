@@ -1,4 +1,5 @@
 #pragma once
+
 #include <algorithm>
 #include <optional>
 #include <ranges>
@@ -27,6 +28,8 @@ private:
     Scene& scene_;
     Transform transform_;
 
+    bool marked_for_deletion_ {false};
+
 public:
     explicit GameObject(Scene& scene);
     virtual ~GameObject();
@@ -38,11 +41,14 @@ public:
 
     [[nodiscard]] bool is_active_in_world() const noexcept;
     [[nodiscard]] bool is_active() const noexcept;
-
+    
     void set_inactive() noexcept;
     void set_active() noexcept;
     void set_active_in_world() noexcept;
     void set_inactive_in_world() noexcept;
+    
+    GameObject& mark_for_deletion() noexcept;
+    [[nodiscard]] bool marked_for_deletion() const noexcept;
 
     GameObject& name(const std::string& name);
     [[nodiscard]] const std::string& name() const;
