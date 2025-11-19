@@ -26,7 +26,10 @@ public:
      */
     Window& window();
 
+    std::unique_ptr<IRenderingStrategy> create_strategy_for_type(RenderingStrategyType type) const;
+
 private:
     friend class AssetService;
     const std::unique_ptr<Renderer> renderer_;
+    const std::unique_ptr<IStrategyFactory> strategy_factory_;
 };

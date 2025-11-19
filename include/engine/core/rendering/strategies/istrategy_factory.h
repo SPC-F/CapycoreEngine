@@ -6,5 +6,5 @@
 class IStrategyFactory {
 public:
     virtual ~IStrategyFactory() = default;
-    virtual std::unique_ptr<IRenderingStrategy> get_strategy_for(RenderingStrategyType type) = 0;
+    virtual std::unique_ptr<IRenderingStrategy> create_strategy_for(RenderingStrategyType type) = 0;
 };

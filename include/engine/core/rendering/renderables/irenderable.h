@@ -1,12 +1,11 @@
 #pragma once
+#include <memory>
 #include <engine/core/rendering/strategies/irendering_strategy.h>
 
 class IRenderable {
-private:
-    IRenderingStrategy * const render_strategy_;
+protected:
+    std::unique_ptr<IRenderingStrategy> render_strategy_;
 public:
-    explicit IRenderable(IRenderingStrategy * render_strategy);
     virtual ~IRenderable() = default;
-
-    IRenderingStrategy& render_strategy() const;
+    [[nodiscard]] virtual IRenderingStrategy& render_strategy() const = 0;
 };

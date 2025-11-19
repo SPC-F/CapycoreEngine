@@ -3,6 +3,6 @@
 
 class SdlStrategyFactory final : public IStrategyFactory {
 public:
-    SdlStrategyFactory();
-    std::unique_ptr<IRenderingStrategy> get_strategy_for(RenderingStrategyType type) override;
+    SdlStrategyFactory() = default;
+    std::unique_ptr<IRenderingStrategy> create_strategy_for(RenderingStrategyType type) override;
 };
