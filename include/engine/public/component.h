@@ -34,11 +34,7 @@ public:
     virtual void on_serialize() = 0;
     virtual void on_deserialize() = 0;
 
-    [[nodiscard]]
-    const std::optional<std::reference_wrapper<GameObject>>& parent() const noexcept;
     std::optional<std::reference_wrapper<GameObject>>& parent() noexcept;
-
-    [[nodiscard]] 
     Component& parent(GameObject& parent);
     Component& parent(std::nullopt_t nullopt);
 

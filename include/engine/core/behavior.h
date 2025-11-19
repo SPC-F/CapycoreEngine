@@ -20,10 +20,10 @@ public:
     virtual void on_update(float dt) = 0;
     virtual void on_destroy() = 0;
 
-    GameObject& game_object() const;
-    Transform& transform() const;
+    [[nodiscard]] GameObject& game_object() const;
+    [[nodiscard]] Transform& transform() const;
 
-    bool enabled() const;
+    [[nodiscard]] bool enabled() const;
     Behavior& enabled(bool value);
 
     template<typename T>

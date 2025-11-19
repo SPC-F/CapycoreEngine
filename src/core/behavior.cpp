@@ -11,7 +11,7 @@ void Behavior::attach(Component& component)
 bool Behavior::enabled() const 
 {
     if (!attached_component_) {
-        throw std::runtime_error("Behavior has no associated Component.");
+        throw std::runtime_error("Behavior has no associated component.");
     }
 
     return attached_component_->get().active() && game_object().is_active_in_world() && enabled_;
@@ -20,7 +20,7 @@ bool Behavior::enabled() const
 Behavior& Behavior::enabled(bool value) 
 {
     if (!attached_component_) {
-        throw std::runtime_error("Behavior has no associated Component.");
+        throw std::runtime_error("Behavior has no associated component.");
     }
 
     enabled_ = value;
@@ -31,20 +31,20 @@ Behavior& Behavior::enabled(bool value)
 GameObject& Behavior::game_object() const 
 {
     if (!attached_component_) {
-        throw std::runtime_error("Behavior has no associated GameObject.");
+        throw std::runtime_error("Behavior has no associated component.");
     }
 
-    if (!attached_component_->get().parent()) {
-        throw std::runtime_error("Component has no associated GameObject.");
+    if (auto parent = attached_component_->get().parent()) {
+        return parent->get();
     }
 
-    return attached_component_->get().parent()->get();
+    throw std::runtime_error("Component has no associated GameObject.");
 }
 
 Transform& Behavior::transform() const 
 {
     if (!attached_component_) {
-        throw std::runtime_error("Behavior has no associated GameObject.");
+        throw std::runtime_error("Behavior has no associated component.");
     }
 
     return game_object().transform();
@@ -53,25 +53,27 @@ Transform& Behavior::transform() const
 void Behavior::destroy() 
 {
     if (!attached_component_) {
-        throw std::runtime_error("Behavior has no associated GameObject.");
+        throw std::runtime_error("Behavior has no associated component.");
     }
 
-    // Get scene from parent GameObject and remove the parent GameObject itself
+    game_object().mark_for_deletion();
 }
 
 void Behavior::destroy(Component& component) 
 {
     if (!attached_component_) {
-        throw std::runtime_error("Behavior has no associated GameObject.");
+        throw std::runtime_error("Behavior has no associated component.");
     }
 
-    game_object().remove_child(component.parent().value().get());
+    if (auto parent = component.parent()) {
+        game_object().remove_child(parent->get());
+    }
 }
 
 void Behavior::destroy(GameObject& game_object) 
 {
     if (!attached_component_) {
-        throw std::runtime_error("Behavior has no associated GameObject.");
+        throw std::runtime_error("Behavior has no associated component.");
     }
 
     // Get scene from parent GameObject and remove the specified game object

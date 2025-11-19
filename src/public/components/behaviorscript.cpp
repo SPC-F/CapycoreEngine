@@ -42,3 +42,19 @@ void BehaviorScript::on_deserialize()
 {
     // TODO: implement after networking is done
 }
+
+Behavior& BehaviorScript::behavior()
+{
+    return *behavior_;
+}
+
+bool BehaviorScript::enabled() const
+{
+    return behavior_->enabled();
+}
+
+BehaviorScript& BehaviorScript::enabled(bool value)
+{
+    behavior_->enabled(value);
+    return *this;
+}

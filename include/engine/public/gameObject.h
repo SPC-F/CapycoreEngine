@@ -34,6 +34,7 @@ public:
     explicit GameObject(Scene& scene);
     virtual ~GameObject();
 
+    [[nodiscard]] std::optional<std::reference_wrapper<GameObject>> parent() const;
     GameObject& parent(GameObject& parent);
     GameObject& parent(std::nullopt_t null_opt);
 
@@ -120,6 +121,7 @@ public:
 
     template<IsComponent T>
     void remove_component(T& component) {
+        
         component.on_detach();
         component.parent(std::nullopt);
 

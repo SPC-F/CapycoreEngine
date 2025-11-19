@@ -31,6 +31,11 @@ bool Component::marked_for_deletion() const noexcept {
 
 Component& Component::mark_for_deletion() noexcept {
     marked_for_deletion_ = true;
+    return *this;
+}
+
+std::optional<std::reference_wrapper<GameObject>>& Component::parent() noexcept {
+    return parent_;
 }
 
 Component& Component::parent(GameObject& parent) {

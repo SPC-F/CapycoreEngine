@@ -1,6 +1,15 @@
+// NOLINT
 #include <engine/util/uuid.h>
 #include <random>
 #include <array>
+
+constexpr size_t uuid_bytes = 16;
+constexpr uint8_t version_mask_clear = 0x0F;
+constexpr uint8_t version_v4_set    = 0x40;
+constexpr uint8_t variant_mask_clear = 0x3F;
+constexpr uint8_t variant_rfc4122_set = 0x80;
+constexpr size_t uuid_string_len = 36;
+constexpr size_t uuid_string_buffer = uuid_string_len + 1;
 
 namespace uuid {
 
@@ -8,16 +17,16 @@ namespace uuid {
     thread_local std::uniform_int_distribution<uint8_t> dis(0, 255);
 
     std::string generate_uuid_v4() {
-        std::array<uint8_t, 16> bytes{};
+        std::array<uint8_t, uuid_bytes> bytes{};
 
         for (auto& b : bytes) {
             b = dis(gen);
         }
 
-        bytes[6] = (bytes[6] & 0x0F) | 0x40;
-        bytes[8] = (bytes[8] & 0x3F) | 0x80;
+        bytes[6] = (bytes[6] & version_mask_clear) | version_v4_set;
+        bytes[8] = (bytes[8] & variant_mask_clear) | variant_rfc4122_set;
 
-        char buffer[37];
+        char buffer[uuid_string_buffer];
         snprintf(
             buffer, sizeof(buffer),
             "%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x",

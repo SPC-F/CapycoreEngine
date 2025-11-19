@@ -15,6 +15,11 @@ public:
     void on_serialize() override;
     void on_deserialize() override;
 
+    Behavior& behavior();
+
+    [[nodiscard]] bool enabled() const;
+    BehaviorScript& enabled(bool value);
+
 private:
     bool started_ {false};
     std::unique_ptr<Behavior> behavior_;
