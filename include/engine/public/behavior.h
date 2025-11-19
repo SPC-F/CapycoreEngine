@@ -24,10 +24,10 @@ public:
 
     void attach(Component& component);
 
-    virtual void on_awake() = 0;
-    virtual void on_start() = 0;
+    virtual void on_awake() {};
+    virtual void on_start() {};
     virtual void on_update(float dt) = 0;
-    virtual void on_destroy() = 0;
+    virtual void on_destroy() {};
 
     [[nodiscard]] GameObject& game_object() const;
     [[nodiscard]] Transform& transform() const;

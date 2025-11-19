@@ -40,8 +40,7 @@ public:
     GameObject(GameObject&&) = default;
     GameObject& operator=(GameObject&&) = default;
 
-    [[nodiscard]]
-    std::optional<std::reference_wrapper<GameObject>> parent() const;
+    std::optional<std::reference_wrapper<GameObject>> parent() const; // NOLINT
     GameObject& parent(GameObject& parent);
     GameObject& parent(std::nullopt_t null_opt);
 
