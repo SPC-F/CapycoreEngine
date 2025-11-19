@@ -78,6 +78,11 @@ bool GameObject::marked_for_deletion() const noexcept {
 
 GameObject& GameObject::mark_for_deletion() noexcept {
     marked_for_deletion_ = true;
+    return *this;
+}
+
+std::optional<std::reference_wrapper<GameObject>> GameObject::parent() const {
+    return parent_;
 }
 
 GameObject& GameObject::parent(GameObject& parent) {
