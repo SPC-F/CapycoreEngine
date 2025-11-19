@@ -120,7 +120,7 @@ public:
         auto component = std::make_unique<T>(std::forward<Args>(args)...);
         T& ref = *component;
 
-        component->parent(std::ref(*this));
+        auto& comp = component->parent(std::ref(*this));
         component->on_attach();
 
         components_.emplace_back(std::move(component));
