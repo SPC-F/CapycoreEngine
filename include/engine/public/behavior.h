@@ -7,6 +7,15 @@
 #include <engine/public/gameObject.h>
 #include <engine/public/component.h>
 
+/**
+ * @brief Base class for defining behaviors that can be attached to Components.
+ * @note This class is inteded to be inherited from to create specific behaviors.
+ * 
+ * The Behavior class provides a structured way to define lifecycle methods
+ * for game logic, such as initialization, updates, and destruction.
+ * It also offers utility methods to interact with the associated GameObject
+ * and its Components.
+ */
 class Behavior
 {
 public:
