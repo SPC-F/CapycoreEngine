@@ -17,13 +17,15 @@ bool Behavior::enabled() const
     return attached_component_->get().active() && game_object().is_active_in_world() && enabled_;
 }
 
-Behavior& Behavior::enabled(bool value) 
+Behavior& Behavior::enable() 
 {
-    if (!attached_component_) {
-        throw std::runtime_error("Behavior has no associated component.");
-    }
+    enabled_ = true;
+    return *this;
+}
 
-    enabled_ = value;
+Behavior& Behavior::disable() 
+{
+    enabled_ = false;
     return *this;
 }
 

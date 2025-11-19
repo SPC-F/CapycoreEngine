@@ -10,6 +10,7 @@ BehaviorScript::BehaviorScript(std::unique_ptr<Behavior> behavior)
     }
 
     behavior_->attach(*this);
+    behavior_->enable();
     behavior_->on_awake();
 }
 
@@ -19,12 +20,13 @@ BehaviorScript::~BehaviorScript()
         return;
     }
 
+    behavior_->disable();
     behavior_->on_destroy();
 }
 
 void BehaviorScript::update(float dt)
 {
-    if (!started_) {
+    if (!enabled()) {
         behavior_->on_start();
         started_ = true;
         return;
@@ -53,8 +55,14 @@ bool BehaviorScript::enabled() const
     return behavior_->enabled();
 }
 
-BehaviorScript& BehaviorScript::enabled(bool value)
+BehaviorScript& BehaviorScript::enable()
 {
-    behavior_->enabled(value);
+    behavior_->enable();
+    return *this;
+}
+
+BehaviorScript& BehaviorScript::disable()
+{
+    behavior_->disable();
     return *this;
 }

@@ -24,7 +24,8 @@ public:
     Behavior& behavior();
 
     [[nodiscard]] bool enabled() const;
-    BehaviorScript& enabled(bool value);
+    BehaviorScript& enable();
+    BehaviorScript& disable();
 
 private:
     bool started_ {false};

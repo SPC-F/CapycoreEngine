@@ -33,7 +33,8 @@ public:
     [[nodiscard]] Transform& transform() const;
 
     [[nodiscard]] bool enabled() const;
-    Behavior& enabled(bool value);
+    Behavior& enable();
+    Behavior& disable();
 
     template<typename T>
     std::optional<std::reference_wrapper<T>> get_component() 
