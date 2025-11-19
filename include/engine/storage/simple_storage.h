@@ -64,7 +64,8 @@ protected:
      */
     std::map<StorageKey, StorageValue> session_storage_;
 
-private:
+    SimpleStorage() = default;
+
     /**
      * @brief Engine is the sole caller of load().
      *
