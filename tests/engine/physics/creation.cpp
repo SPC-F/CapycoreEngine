@@ -6,7 +6,6 @@
 #include <engine/public/component.h>
 #include <engine/public/gameObject.h>
 #include <engine/public/util/vector3.h>
-#include <engine/public/scene.h>
 #include <engine/public/scene_service.h>
 
 struct DummyGameObject : public GameObject {
@@ -29,7 +28,10 @@ TEST_CASE("physics_creation_factory_creates_body", "[PhysicsCreationFactory]") {
 
     Vector3 position{0.0f, 0.0f, 0.0f};
 
-    DummyScene dummy_scene;
+    const std::string& scene_name = "Test Scene";
+    auto scene_service = SceneService();
+    Scene& dummy_scene = scene_service.add_scene(scene_name);
+    
     DummyGameObject dummy_game_object(dummy_scene);
     DummyComponent dummy_component;
     auto& comp = dummy_component.parent(dummy_game_object);
