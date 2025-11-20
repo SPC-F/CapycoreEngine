@@ -14,15 +14,20 @@ Texture& get_texture_for(const std::string& sprite) {
 }
 
 Sprite::Sprite(const std::string& sprite, const Color color, const int flip_x, const int flip_y, const int sorting_layer, const int ordering_layer)
-    : texture_(get_texture_for(sprite)), rendering_strategy_ {nullptr},
+    : Renderable(nullptr),
+    texture_(get_texture_for(sprite)),
     flip_x_(flip_x),
     flip_y_(flip_y),
     sorting_layer_(sorting_layer),
     ordering_layer_(ordering_layer),
     color_(color) {
 
-    const auto& service = Engine::instance().services->get_service<RenderingService>().get();
-    rendering_strategy_ = service.create_strategy_for_type(RenderingStrategyType::SPRITE);
+    this->render_strategy_ = std::move(
+        Engine::instance()
+        .services
+        ->get_service<RenderingService>()
+        .get()
+        .create_strategy_for_type(RenderingStrategyType::SPRITE));
 }
 
 int Sprite::flip_x() const {

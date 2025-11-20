@@ -3,7 +3,7 @@
 #include <engine/public/component.h>
 #include <engine/public/util/color.h>
 #include <engine/core/rendering/renderables/texture.h>
-#include <engine/core/rendering/renderables/irenderable.h>
+#include <engine/core/rendering/renderables/renderable.h>
 #include <engine/core/rendering/strategies/irendering_strategy.h>
 
 /**
@@ -11,10 +11,9 @@
  * The Sprite component holds a reference to a Texture and includes properties for flipping, sorting, ordering, and color modulation.
  * It can be treated as a wrapper around a texture with additional rendering properties that go beyond just the texture itself.
  */
-class Sprite : public Component, IRenderable {
+class Sprite final: public Component, Renderable {
 private:
     std::reference_wrapper<Texture> texture_;
-    std::unique_ptr<IRenderingStrategy> rendering_strategy_;
     int flip_x_;
     int flip_y_;
     int sorting_layer_;
@@ -48,6 +47,4 @@ public:
     void on_detach() override;
     void on_serialize() override;
     void on_deserialize() override;
-
-
 };
