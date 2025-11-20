@@ -1,18 +1,19 @@
 #pragma once
+
 #include <algorithm>
 #include <optional>
 #include <ranges>
 #include <string>
 #include <vector>
 
-#include <engine/public/scene.h>
 #include <engine/public/transform.h>
 #include <engine/public/component.h>
-#include <engine/util/uuid.h>
+
+class Scene;
 
 class GameObject {
 private:
-    std::string id_ {uuid::generate_uuid_v4()};
+    std::string id_;
 
     std::vector<std::unique_ptr<Component>> components_;
     std::vector<std::reference_wrapper<GameObject>> children_;
@@ -27,10 +28,20 @@ private:
     Scene& scene_;
     Transform transform_;
 
+    bool marked_for_deletion_ {false};
+
 public:
     explicit GameObject(Scene& scene);
     virtual ~GameObject();
 
+    GameObject(const GameObject&) = delete;
+    GameObject& operator=(const GameObject&) = delete;
+
+    GameObject(GameObject&&) = default;
+    GameObject& operator=(GameObject&&) = default;
+
+    [[nodiscard]]
+    std::optional<std::reference_wrapper<GameObject>> parent() const;
     GameObject& parent(GameObject& parent);
     GameObject& parent(std::nullopt_t null_opt);
 
@@ -38,11 +49,14 @@ public:
 
     [[nodiscard]] bool is_active_in_world() const noexcept;
     [[nodiscard]] bool is_active() const noexcept;
-
+    
     void set_inactive() noexcept;
     void set_active() noexcept;
     void set_active_in_world() noexcept;
     void set_inactive_in_world() noexcept;
+    
+    GameObject& mark_for_deletion() noexcept;
+    [[nodiscard]] bool marked_for_deletion() const noexcept;
 
     GameObject& name(const std::string& name);
     [[nodiscard]] const std::string& name() const;
@@ -62,6 +76,7 @@ public:
     GameObject& add_child(GameObject& child);
     GameObject& remove_child(GameObject& child);
 
+    
     template<IsComponent T>
     [[nodiscard]]
     std::optional<std::reference_wrapper<T>> get_component() const noexcept {

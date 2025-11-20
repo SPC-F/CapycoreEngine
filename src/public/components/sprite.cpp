@@ -90,12 +90,6 @@ Sprite& Sprite::texture(Texture& texture) {
 void Sprite::update(float dt) {
 
 }
-void Sprite::on_attach() {
-
-}
-void Sprite::on_detach() {
-
-}
 void Sprite::on_serialize() {
 
 }
