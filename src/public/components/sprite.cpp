@@ -1,5 +1,5 @@
 #include <engine/public/components/sprite.h>
-#include "engine/core/rendering/assetService.h"
+#include <engine/core/rendering/assetService.h>
 #include <engine/core/engine.h>
 #include <engine/core/rendering/renderingService.h>
 #include <format>
@@ -31,7 +31,10 @@ Sprite::Sprite(const std::string& sprite, const Color color, const int flip_x, c
     ordering_layer_(ordering_layer),
     color_(color) {
 
-    this->render_strategy_ = std::move(get_rendering_strategy(*this, parent().value()));
+    add_on_attach([this](Component& comp) {
+        auto& parent = comp.parent().value().get();
+        this->render_strategy_ = std::move(get_rendering_strategy(*this, this->parent().value()));
+    });
 }
 
 int Sprite::flip_x() const {

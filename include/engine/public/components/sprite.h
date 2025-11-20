@@ -2,8 +2,8 @@
 #include <string>
 #include <engine/public/component.h>
 #include <engine/public/util/color.h>
-#include "engine/core/rendering/texture.h"
-#include "engine/core/rendering/renderable.h"
+#include <engine/core/rendering/texture.h>
+#include <engine/core/rendering/renderable.h>
 #include <engine/core/rendering/strategies/irendering_strategy.h>
 
 /**

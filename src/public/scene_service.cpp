@@ -80,14 +80,9 @@ std::optional<std::reference_wrapper<Scene>> SceneService::current_scene() const
     auto current_scene = scenes_.begin();
     for (const auto& scene_pair : scenes_) {
         if (scene_pair.second->is_running()) {
-            current_scene = scenes_.find(scene_pair.first);
-            break;
+            return *(scene_pair.second);
         }
     }
 
-    if(current_scene == scenes_.end()) {
-        return std::nullopt;
-    }
-
-    return *(current_scene->second);
+    return std::nullopt;
 }

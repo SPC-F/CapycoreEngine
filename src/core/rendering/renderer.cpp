@@ -1,6 +1,7 @@
+#include <SDL3/sdl.h>
 #include <engine/core/rendering/renderer.h>
-#include "engine/core/rendering/texture.h"
-#include "engine/core/rendering/renderable.h"
+#include <engine/core/rendering/texture.h>
+#include <engine/core/rendering/renderable.h>
 
 constexpr int default_min_aspect_width = 800;
 constexpr int default_min_aspect_height = 600;

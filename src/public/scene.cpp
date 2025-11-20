@@ -1,9 +1,9 @@
+#include <SDL3/sdl.h>
+
 #include <engine/public/scene.h>
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/engine.h>
-
 #include <algorithm>
-#include <SDL3/SDL.h>
 
 Scene::Scene(const std::string& name)
     : is_running_(false), time_scale_(1.0f), game_objects_ {}, name_{name} {
@@ -51,6 +51,13 @@ void Scene::game_loop() {
         last = now;
 
         accumulator += frame_dt;
+
+        SDL_Event e;
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_EVENT_QUIT) {
+                stop();
+            }
+        }
 
         while (accumulator >= fixed_step) {
             //physics(fixed_step, 8, 3);

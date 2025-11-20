@@ -1,11 +1,13 @@
 #pragma once
 #include <memory>
 
-#include <SDL3/sdl.h>
 #include <engine/core/rendering/rendererFlags.h>
 #include <engine/public/gameObject.h>
 #include <engine/core/iEngineService.h>
 #include <engine/core/rendering/window.h>
+
+class SDL_Renderer; // NOLINT
+class SDL_Window; // NOLINT
 
 using SdlRendererPtr = std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)>;
 using SdlWindowPtr = std::unique_ptr<SDL_Window, void(*)(SDL_Window*)>;
