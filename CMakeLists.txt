@@ -36,22 +36,30 @@ FetchContent_MakeAvailable(SDL3_image)
 # =========================================================
 # FreeType (local package install, sibling folder)
 # =========================================================
-FetchContent_Declare(
-    freetype
-    GIT_REPOSITORY https://github.com/freetype/freetype.git
-    GIT_TAG master
-)
+if(WIN32)
+    set(FREETYPE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../freetype-win-build")
+    set(FREETYPE_INCLUDE_DIR "${FREETYPE_ROOT}/include/freetype2")
+    set(FREETYPE_LIBRARY "${FREETYPE_ROOT}/lib/freetype.lib")
+    set(FREETYPE_DLL "${FREETYPE_ROOT}/bin/freetype.dll")
 
-FetchContent_MakeAvailable(freetype)
+    add_library(Freetype::Freetype UNKNOWN IMPORTED)
+    set_target_properties(Freetype::Freetype PROPERTIES
+        IMPORTED_LOCATION "${FREETYPE_LIBRARY}"
+        INTERFACE_INCLUDE_DIRECTORIES "${FREETYPE_INCLUDE_DIR}"
+    )
 
-add_library(Freetype::Freetype ALIAS freetype)
-set(FREETYPE_LIBRARY $<TARGET_FILE:freetype>)
-set(FREETYPE_INCLUDE_DIR ${freetype_SOURCE_DIR}/include)
+    set(FREETYPE_INCLUDE_DIRS "${FREETYPE_INCLUDE_DIR}")
+    set(FREETYPE_LIBRARIES "${FREETYPE_LIBRARY}")
+else()
+    find_package(Freetype REQUIRED)
+    set(FREETYPE_INCLUDE_DIRS "${FREETYPE_INCLUDE_DIRS}") # Provided by find_package
+    set(FREETYPE_LIBRARIES Freetype::Freetype)
+endif()
 
 # =========================================================
 # SDL3_ttf (needs FreeType)
 # =========================================================
-set(SDL3TTF_VENDORED OFF)  # use external freetype
+set(SDL3TTF_VENDORED OFF)
 FetchContent_Declare(
         SDL3_ttf
         GIT_REPOSITORY https://github.com/libsdl-org/SDL_ttf.git
@@ -133,7 +141,7 @@ target_link_libraries(engine
         SDL3::SDL3
         SDL3_image::SDL3_image
         SDL3_ttf::SDL3_ttf
-        freetype
+        Freetype::Freetype
         enet 
         box2d
 )
@@ -208,6 +216,12 @@ if(WIN32)
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
             "${Catch2_BINARY_DIR}/src/libCatch2d.dll"
+            $<TARGET_FILE_DIR:${PROJECT_NAME}>
+    )
+
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${FREETYPE_DLL}"
             $<TARGET_FILE_DIR:${PROJECT_NAME}>
     )
 
