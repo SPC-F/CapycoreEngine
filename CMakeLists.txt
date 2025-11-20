@@ -205,12 +205,6 @@ if(WIN32)
         )
     endforeach()
 
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${FREETYPE_DLL}"
-            $<TARGET_FILE_DIR:${PROJECT_NAME}>
-    )
-
     # copy box2d dll if built (located at box2d-build/bin)
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
@@ -222,6 +216,12 @@ if(WIN32)
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
             "${Catch2_BINARY_DIR}/src/libCatch2d.dll"
+            $<TARGET_FILE_DIR:${PROJECT_NAME}>
+    )
+
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${FREETYPE_DLL}"
             $<TARGET_FILE_DIR:${PROJECT_NAME}>
     )
 

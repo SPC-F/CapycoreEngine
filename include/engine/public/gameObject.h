@@ -6,14 +6,14 @@
 #include <string>
 #include <vector>
 
-#include <engine/public/scene.h>
 #include <engine/public/transform.h>
 #include <engine/public/component.h>
-#include <engine/util/uuid.h>
+
+class Scene;
 
 class GameObject {
 private:
-    std::string id_ {uuid::generate_uuid_v4()};
+    std::string id_;
 
     std::vector<std::unique_ptr<Component>> components_;
     std::vector<std::reference_wrapper<GameObject>> children_;

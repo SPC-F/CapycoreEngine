@@ -1,13 +1,20 @@
 #include <engine/public/gameObject.h>
 #include <engine/public/component.h>
+#include <engine/public/scene.h>
+#include <engine/util/uuid.h>
 
 GameObject::GameObject(Scene& scene) :
-        scene_(scene) {
+    id_(uuid::generate_uuid_v4()),
+    scene_(scene) {
 }
 
 GameObject::~GameObject() {
     if (parent_.has_value()) {
         parent_->get().remove_child(*this);
+    }
+
+    for(auto child : children_) {
+        scene_.remove_game_object(child);
     }
 }
 
@@ -87,6 +94,15 @@ std::optional<std::reference_wrapper<GameObject>> GameObject::parent() const {
 
 GameObject& GameObject::parent(GameObject& parent) {
     parent_ = parent;
+
+    const auto found_child = std::find_if(parent.children().begin(), parent.children().end(),[&](auto& ref) {
+        return &ref.get() == this;
+    });
+
+    if(found_child == parent.children().end()) {
+        parent.add_child(*this);
+    }
+    
     return *this;
 }
 
@@ -105,6 +121,7 @@ std::vector<std::reference_wrapper<GameObject>>& GameObject::children() {
 
 GameObject& GameObject::add_child(GameObject& child) {
     children_.emplace_back(child);
+    child.parent(*this);
     return *this;
 }
 
