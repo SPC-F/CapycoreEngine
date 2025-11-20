@@ -76,7 +76,3 @@ void Component::remove_on_detach(size_t index) {
         on_detach_actions_.erase(std::next(on_detach_actions_.begin(), static_cast<std::ptrdiff_t>(index)));
     }
 }
-
-std::optional<std::reference_wrapper<GameObject>> Component::parent() const noexcept {
-    return parent_;
-}
