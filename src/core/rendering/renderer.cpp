@@ -1,8 +1,6 @@
 #include <engine/core/rendering/renderer.h>
-#include <engine/public/gameObject.h>
-#include <../../../include/engine/core/rendering/renderables/texture.h>
-#include <engine/public/components/sprite.h>
-#include <SDL3_image/SDL_image.h>
+#include "engine/core/rendering/texture.h"
+#include "engine/core/rendering/renderable.h"
 
 constexpr int default_min_aspect_width = 800;
 constexpr int default_min_aspect_height = 600;
@@ -63,62 +61,17 @@ void Renderer::clear() const {
     SDL_RenderClear(sdl_renderer_.get());
 }
 
-Color get_default_color(SDL_Texture* texture) {
-    Color color;
-    SDL_GetTextureColorMod(texture,
-                           reinterpret_cast<Uint8*>(&color.r),
-                           reinterpret_cast<Uint8*>(&color.g),
-                           reinterpret_cast<Uint8*>(&color.b));
-    SDL_GetTextureAlphaMod(texture, reinterpret_cast<Uint8*>(&color.a));
-    return color;
-}
-
-void set_color(const Color& color, SDL_Texture* texture) {
-    SDL_SetTextureColorMod(texture,
-                           static_cast<Uint8>(color.r),
-                           static_cast<Uint8>(color.g),
-                           static_cast<Uint8>(color.b));
-    SDL_SetTextureAlphaMod(texture, static_cast<Uint8>(color.a));
-}
-
-void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& objects) const{
+void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& objects) {
     SDL_RenderClear(sdl_renderer_.get());
 
     for (auto game_obj_wrapper : objects) {
         auto& game_obj = game_obj_wrapper.get();
-        const auto& transform = game_obj.transform();
-        const auto& position = transform.position();
+        auto renderables = game_obj.get_components<Renderable>();
+        for (auto renderable_wrapper : renderables) {
+            auto& renderable = renderable_wrapper.get();
+            auto& strategy = renderable.render_strategy();
 
-        for (const auto sprite_wrapper : game_obj.get_components<Sprite>()) {
-            const Sprite& sprite = sprite_wrapper.get();
-            const Texture& texture = sprite.texture();
-
-            auto const source = SDL_FRect {
-                .x = 0,
-                .y = 0,
-                .w = texture.width(),
-                .h = texture.height()
-            };
-            auto const target = SDL_FRect {
-                .x = position.x,
-                .y = position.y,
-                .w = texture.width() * transform.scale().x,
-                .h = texture.height() * transform.scale().y
-            };
-
-            Color original_color = get_default_color(texture.texture_.get());
-            set_color(sprite.color(), texture.texture_.get());
-
-            SDL_RenderTextureRotated(
-                    sdl_renderer_.get(),
-                    sprite.texture().texture_.get(),
-                    &source,
-                    &target,
-                    transform.rotation(),
-                    nullptr, // default is center of target square
-                SDL_FLIP_NONE);
-
-            set_color(original_color, texture.texture_.get());
+            strategy.draw(*this);
         }
     }
 

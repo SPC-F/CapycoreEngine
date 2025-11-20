@@ -8,6 +8,8 @@ class Component {
 private:
     std::optional<std::reference_wrapper<GameObject>> parent_;
     bool active_ {true};
+protected:
+    [[nodiscard]] std::optional<std::reference_wrapper<GameObject>> parent() const noexcept;
 public:
     explicit Component();
     virtual ~Component() = default;

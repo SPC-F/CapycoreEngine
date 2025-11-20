@@ -22,3 +22,7 @@ Component& Component::parent(std::nullopt_t nullopt) {
     parent_ = std::nullopt;
     return *this;
 }
+
+std::optional<std::reference_wrapper<GameObject>> Component::parent() const noexcept {
+    return parent_;
+}

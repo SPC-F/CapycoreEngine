@@ -3,7 +3,7 @@
 
 RenderingService::RenderingService()
     : renderer_{new Renderer()},
-    strategy_factory_{new SdlStrategyFactory()} {
+    strategy_factory_{new SdlStrategyFactory(*renderer_)} {
 }
 
 RenderingService::RenderingService(Renderer* renderer)
@@ -18,6 +18,6 @@ Window& RenderingService::window() {
     return renderer_->window();
 }
 
-std::unique_ptr<IRenderingStrategy> RenderingService::create_strategy_for_type(RenderingStrategyType type) const {
-    return strategy_factory_->create_strategy_for(type);
+IRenderingStrategyFactory& RenderingService::rendering_strategy_factory() const {
+    return *strategy_factory_;
 }

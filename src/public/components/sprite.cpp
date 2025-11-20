@@ -13,6 +13,15 @@ Texture& get_texture_for(const std::string& sprite) {
     return maybe_texture.value();
 }
 
+std::unique_ptr<IRenderingStrategy> get_rendering_strategy(Sprite& sprite, GameObject& parent) {
+    return Engine::instance()
+            .services
+            ->get_service<RenderingService>()
+            .get()
+            .rendering_strategy_factory()
+            .create_sprite_strategy(sprite, parent);
+}
+
 Sprite::Sprite(const std::string& sprite, const Color color, const int flip_x, const int flip_y, const int sorting_layer, const int ordering_layer)
     : Renderable(nullptr),
     texture_(get_texture_for(sprite)),
@@ -22,12 +31,7 @@ Sprite::Sprite(const std::string& sprite, const Color color, const int flip_x, c
     ordering_layer_(ordering_layer),
     color_(color) {
 
-    this->render_strategy_ = std::move(
-        Engine::instance()
-        .services
-        ->get_service<RenderingService>()
-        .get()
-        .create_strategy_for_type(RenderingStrategyType::SPRITE));
+    this->render_strategy_ = std::move(get_rendering_strategy(*this, parent().value()));
 }
 
 int Sprite::flip_x() const {

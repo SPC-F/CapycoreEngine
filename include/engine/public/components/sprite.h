@@ -2,8 +2,8 @@
 #include <string>
 #include <engine/public/component.h>
 #include <engine/public/util/color.h>
-#include <engine/core/rendering/renderables/texture.h>
-#include <engine/core/rendering/renderables/renderable.h>
+#include "engine/core/rendering/texture.h"
+#include "engine/core/rendering/renderable.h"
 #include <engine/core/rendering/strategies/irendering_strategy.h>
 
 /**
@@ -11,7 +11,7 @@
  * The Sprite component holds a reference to a Texture and includes properties for flipping, sorting, ordering, and color modulation.
  * It can be treated as a wrapper around a texture with additional rendering properties that go beyond just the texture itself.
  */
-class Sprite final: public Component, Renderable {
+class Sprite final: public Renderable {
 private:
     std::reference_wrapper<Texture> texture_;
     int flip_x_;

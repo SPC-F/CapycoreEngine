@@ -3,7 +3,7 @@
 #include <engine/core/iEngineService.h>
 #include <engine/core/rendering/renderer.h>
 #include <engine/core/rendering/window.h>
-#include <engine/core/rendering/strategies/istrategy_factory.h>
+#include <engine/core/rendering/strategies/irendering_strategy_factory.h>
 
 /**
  * @brief Service responsible for rendering game objects to the window.
@@ -26,10 +26,10 @@ public:
      */
     Window& window();
 
-    std::unique_ptr<IRenderingStrategy> create_strategy_for_type(RenderingStrategyType type) const;
+    [[nodiscard]] IRenderingStrategyFactory& rendering_strategy_factory() const;
 
 private:
     friend class AssetService;
     const std::unique_ptr<Renderer> renderer_;
-    const std::unique_ptr<IStrategyFactory> strategy_factory_;
+    const std::unique_ptr<IRenderingStrategyFactory> strategy_factory_;
 };
