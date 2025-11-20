@@ -5,5 +5,6 @@ var dir_449e025360b1e0775671965c2105f9c1 =
     [ "component.h", "component_8h.html", "component_8h" ],
     [ "gameObject.h", "game_object_8h.html", "game_object_8h" ],
     [ "scene.h", "scene_8h.html", "scene_8h" ],
+    [ "scene_service.h", "scene__service_8h.html", "scene__service_8h" ],
     [ "transform.h", "transform_8h.html", "transform_8h" ]
 ];

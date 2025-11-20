@@ -1,7 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="Node000000" href="$class_sound_instance.html" title="Represents an instance of a generic sound within the audio system. The reason for separating SoundIns..." alt="" coords="5,31,123,56"/>
 <area shape="rect" id="Node000001" href="$class_generic_sound_instance.html" title="A generic implementation of a sound instance. Provides the basic functionality while not tied to any ..." alt="" coords="171,5,337,31"/>
-<area shape="poly" id="edge15_Node000000_Node000001" title=" " alt="" coords="136,31,170,26,171,32,137,36"/>
+<area shape="poly" id="edge16_Node000000_Node000001" title=" " alt="" coords="136,31,170,26,171,32,137,36"/>
 <area shape="rect" id="Node000002" href="$class_s_d_l_sound_instance.html" title="Represents a SDL&#45;specific implementation of a sound instance. Inherits from the generic SoundInstance..." alt="" coords="183,55,325,80"/>
-<area shape="poly" id="edge16_Node000000_Node000002" title=" " alt="" coords="137,50,183,56,182,61,136,55"/>
+<area shape="poly" id="edge17_Node000000_Node000002" title=" " alt="" coords="137,50,183,56,182,61,136,55"/>
 </map>

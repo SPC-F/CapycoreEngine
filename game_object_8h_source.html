@@ -140,15 +140,15 @@ $(document).ready(function(){initNavTree('game_object_8h_source.html',''); initR
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="scene_8h.html">engine/public/scene.h</a>&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;<a class="code" href="transform_8h.html">engine/public/transform.h</a>&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;<a class="code" href="component_8h.html">engine/public/component.h</a>&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;<a class="code" href="uuid_8h.html">engine/util/uuid.h</a>&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="transform_8h.html">engine/public/transform.h</a>&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;<a class="code" href="component_8h.html">engine/public/component.h</a>&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">class </span><a class="code hl_class" href="class_scene.html">Scene</a>;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_game_object.html">   14</a></span><span class="keyword">class </span><a class="code hl_class" href="class_game_object.html">GameObject</a> {</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    std::string id_ {<a class="code hl_function" href="namespaceuuid.html#a9a1420474ea2cd2392dfc8703b0ab281">uuid::generate_uuid_v4</a>()};</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    std::string id_;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    std::vector&lt;std::unique_ptr&lt;Component&gt;&gt; components_;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    std::vector&lt;std::reference_wrapper&lt;GameObject&gt;&gt; children_;</div>
@@ -324,15 +324,12 @@ $(document).ready(function(){initNavTree('game_object_8h_source.html',''); initR
 <div class="ttc" id="aclass_game_object_html_aef31e6fca036256ac8eee5cc1b0963c4"><div class="ttname"><a href="class_game_object.html#aef31e6fca036256ac8eee5cc1b0963c4">GameObject::get_components</a></div><div class="ttdeci">std::vector&lt; std::reference_wrapper&lt; T &gt; &gt; get_components() const</div><div class="ttdef"><b>Definition</b> gameObject.h:96</div></div>
 <div class="ttc" id="aclass_game_object_html_af593d5fdc4daefe74d9f8c037f15d209"><div class="ttname"><a href="class_game_object.html#af593d5fdc4daefe74d9f8c037f15d209">GameObject::operator=</a></div><div class="ttdeci">GameObject &amp; operator=(GameObject &amp;&amp;)=default</div></div>
 <div class="ttc" id="aclass_game_object_html_afd556ea34cc2c55f84a486ac54619b5d"><div class="ttname"><a href="class_game_object.html#afd556ea34cc2c55f84a486ac54619b5d">GameObject::id</a></div><div class="ttdeci">std::string id() const noexcept</div></div>
-<div class="ttc" id="aclass_scene_html"><div class="ttname"><a href="class_scene.html">Scene</a></div><div class="ttdef"><b>Definition</b> scene.h:3</div></div>
+<div class="ttc" id="aclass_scene_html"><div class="ttname"><a href="class_scene.html">Scene</a></div><div class="ttdef"><b>Definition</b> scene.h:8</div></div>
 <div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdef"><b>Definition</b> transform.h:7</div></div>
 <div class="ttc" id="acomponent_8h_html"><div class="ttname"><a href="component_8h.html">component.h</a></div></div>
 <div class="ttc" id="aconcept_is_component_html"><div class="ttname"><a href="concept_is_component.html">IsComponent</a></div><div class="ttdef"><b>Definition</b> component.h:53</div></div>
 <div class="ttc" id="akey__code_8h_html_a9f6df2a5c85bb933f82d88a19f3d8c44a4a8a08f09d37b73795649038408b5f33"><div class="ttname"><a href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a4a8a08f09d37b73795649038408b5f33">KeyCode::c</a></div><div class="ttdeci">@ c</div></div>
-<div class="ttc" id="anamespaceuuid_html_a9a1420474ea2cd2392dfc8703b0ab281"><div class="ttname"><a href="namespaceuuid.html#a9a1420474ea2cd2392dfc8703b0ab281">uuid::generate_uuid_v4</a></div><div class="ttdeci">std::string generate_uuid_v4()</div></div>
-<div class="ttc" id="ascene_8h_html"><div class="ttname"><a href="scene_8h.html">scene.h</a></div></div>
 <div class="ttc" id="atransform_8h_html"><div class="ttname"><a href="transform_8h.html">transform.h</a></div></div>
-<div class="ttc" id="auuid_8h_html"><div class="ttname"><a href="uuid_8h.html">uuid.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

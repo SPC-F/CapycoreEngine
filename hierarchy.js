@@ -23,7 +23,8 @@ var hierarchy =
       [ "InputManager", "class_input_manager.html", null ],
       [ "PhysicsService", "class_physics_service.html", null ],
       [ "Renderer", "class_renderer.html", null ],
-      [ "RenderingService", "class_rendering_service.html", null ]
+      [ "RenderingService", "class_rendering_service.html", null ],
+      [ "SceneService", "class_scene_service.html", null ]
     ] ],
     [ "IInput", "class_i_input.html", [
       [ "SDLInputStrategy", "class_s_d_l_input_strategy.html", null ]

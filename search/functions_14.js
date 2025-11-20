@@ -13,9 +13,11 @@ var searchData=
   ['_7ephysicsworld_10',['~PhysicsWorld',['../class_physics_world.html#abf1573b008b52b60a83a8f36cbdd51bc',1,'PhysicsWorld']]],
   ['_7erenderingservice_11',['~RenderingService',['../class_rendering_service.html#a667ac7788b2fcb26dce2c303b209552b',1,'RenderingService']]],
   ['_7erigidbody2d_12',['~Rigidbody2D',['../class_rigidbody2_d.html#a76d39f8ddb656bc6d54fb2cf6c6d9560',1,'Rigidbody2D']]],
-  ['_7esdlsoundinstance_13',['~SDLSoundInstance',['../class_s_d_l_sound_instance.html#a6e4d67902cf3b6563333e030b1efc6e8',1,'SDLSoundInstance']]],
-  ['_7esdlsoundresource_14',['~SDLSoundResource',['../class_s_d_l_sound_resource.html#a48bbd8502a17973baf98e92f34625da7',1,'SDLSoundResource']]],
-  ['_7esoundfactory_15',['~SoundFactory',['../class_sound_factory.html#abd32f31d14df855cfea7b1417a61ebe3',1,'SoundFactory']]],
-  ['_7esoundinstance_16',['~SoundInstance',['../class_sound_instance.html#aae84fc61fb24512d7506a3c4b4c14279',1,'SoundInstance']]],
-  ['_7esoundresource_17',['~SoundResource',['../class_sound_resource.html#aaa392404ed48a13d3a805107a622efbd',1,'SoundResource']]]
+  ['_7escene_13',['~Scene',['../class_scene.html#aa0a5be58e2ee2d1fdafc5fb46b5e661e',1,'Scene']]],
+  ['_7esceneservice_14',['~SceneService',['../class_scene_service.html#a3878c5173da198932539effef20f8961',1,'SceneService']]],
+  ['_7esdlsoundinstance_15',['~SDLSoundInstance',['../class_s_d_l_sound_instance.html#a6e4d67902cf3b6563333e030b1efc6e8',1,'SDLSoundInstance']]],
+  ['_7esdlsoundresource_16',['~SDLSoundResource',['../class_s_d_l_sound_resource.html#a48bbd8502a17973baf98e92f34625da7',1,'SDLSoundResource']]],
+  ['_7esoundfactory_17',['~SoundFactory',['../class_sound_factory.html#abd32f31d14df855cfea7b1417a61ebe3',1,'SoundFactory']]],
+  ['_7esoundinstance_18',['~SoundInstance',['../class_sound_instance.html#aae84fc61fb24512d7506a3c4b4c14279',1,'SoundInstance']]],
+  ['_7esoundresource_19',['~SoundResource',['../class_sound_resource.html#aaa392404ed48a13d3a805107a622efbd',1,'SoundResource']]]
 ];

@@ -27,6 +27,7 @@ var searchData=
   ['is_5fmouse_5freleased_24',['is_mouse_released',['../class_i_input_provider.html#a331daddb0983fd35c8bfa0422d3416e8',1,'IInputProvider::is_mouse_released()'],['../class_input_system.html#a7171c52edef92a9bb644a33c296f29f0',1,'InputSystem::is_mouse_released()']]],
   ['is_5fpaused_25',['is_paused',['../class_generic_sound_instance.html#a91c5685bbd5d4fb7d16512ec35a5b1f7',1,'GenericSoundInstance::is_paused()'],['../class_s_d_l_sound_instance.html#a4e7441ca5d870615728bb1484619660f',1,'SDLSoundInstance::is_paused()'],['../class_sound_instance.html#afd6f97cdca9f4676bf67f747094406a5',1,'SoundInstance::is_paused()']]],
   ['is_5fplaying_26',['is_playing',['../class_generic_sound_instance.html#a7c366e56e5009e25bd5ee61ae783846b',1,'GenericSoundInstance::is_playing()'],['../class_s_d_l_sound_instance.html#a4122bf9d127af59b5c8ff79b6f175184',1,'SDLSoundInstance::is_playing()'],['../class_sound_instance.html#adf8680c7da38360c77040f323cecab48',1,'SoundInstance::is_playing()']]],
-  ['is_5fvalid_27',['is_valid',['../struct_collider_ray_result.html#a61ed3d024608ab82eea4699009805b95',1,'ColliderRayResult']]],
-  ['iscomponent_28',['IsComponent',['../concept_is_component.html',1,'']]]
+  ['is_5frunning_27',['is_running',['../class_scene.html#a74bfdea2518df4875a58763dd88c0838',1,'Scene']]],
+  ['is_5fvalid_28',['is_valid',['../struct_collider_ray_result.html#a61ed3d024608ab82eea4699009805b95',1,'ColliderRayResult']]],
+  ['iscomponent_29',['IsComponent',['../concept_is_component.html',1,'']]]
 ];
