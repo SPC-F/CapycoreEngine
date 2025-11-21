@@ -15,8 +15,9 @@
             "cacheVariables": {
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
                 "CMAKE_BUILD_TYPE": "Debug",
+                "ENABLE_TRACY": "ON",
                 "ENABLE_TESTS": "ON",
-                "ENABLE_TRACY": "ON"
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
             }
         },
         {
