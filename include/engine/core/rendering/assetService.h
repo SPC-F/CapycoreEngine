@@ -4,7 +4,7 @@
 #include <map>
 #include <optional>
 
-#include "texture.h"
+#include <engine/core/rendering/texture.h>
 #include <engine/core/iEngineService.h>
 
 /**
