@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.25)
 project(CapycoreEngine)
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(FetchContent)
 
@@ -202,6 +204,20 @@ if(WIN32)
                 $<TARGET_FILE_DIR:${PROJECT_NAME}>
         )
     endforeach()
+
+    # copy box2d dll if built (located at box2d-build/bin)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${box2d_BINARY_DIR}/bin/libbox2dd.dll"
+            $<TARGET_FILE_DIR:${PROJECT_NAME}>
+    )
+
+    # copy catch2 dll (located at Catch2-build/src)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${Catch2_BINARY_DIR}/src/libCatch2d.dll"
+            $<TARGET_FILE_DIR:${PROJECT_NAME}>
+    )
 
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
