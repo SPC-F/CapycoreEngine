@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SDL3/sdl.h>
+#include <SDL3/SDL.h>
 
 #include <engine/core/rendering/strategies/irendering_strategy.h>
 #include <engine/public/component.h>
