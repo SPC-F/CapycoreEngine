@@ -23,7 +23,9 @@ namespace {
 #include <engine/core/rendering/renderingService.h>
 
 #include <engine/public/components/ui/ui_text.h>
+#include <engine/public/components/ui/ui_button.h>
 #include <engine/public/components/ui/text.h>
+#include <engine/public/components/ui/image.h>
 
 
 void sdl_debug_loop() {
@@ -50,22 +52,46 @@ void yes() {
     asset_service.load_from_resource("Fred_Sprites_REDO.png", "FRED", 12, 6);
     asset_service.register_texture("FRED", "TestTexture", 0);
 
+    asset_service.load_from_resource("ui.png", "UI", 12, 12);
+    asset_service.register_texture("UI", "ButtonNormal", 36);
+
     auto& scene = scene_service.add_scene("SomeScene");
 
-    auto ui_text = std::make_unique<UIText>(
-        "Hello, World!",
-        "Roboto-Bold",
-        "resources/fonts/roboto/Roboto-Bold.ttf",
-        200.0f,
+    // auto ui_text = std::make_unique<UIText>(
+    //     "Hello, World!",
+    //     "Roboto-Bold",
+    //     "resources/fonts/roboto/Roboto-Bold.ttf",
+    //     200.0f,
+    //     50.0f,
+    //     Point{0.5f, 0.5f},
+    //     Point{0.5f, 0.5f},
+    //     scene
+    // );
+    // ui_text->font_size(24);
+    // ui_text->color(Color{0, 0, 0, 255});
+
+    // scene.add_game_object(std::move(ui_text));
+
+    auto ui_button = std::make_unique<UIButton>(
+        100.0f,
         50.0f,
         Point{0.5f, 0.5f},
         Point{0.5f, 0.5f},
-        scene
+        scene,
+        "Click Me",
+        "Roboto-Bold",
+        "resources/fonts/roboto/Roboto-Bold.ttf",
+        ""
     );
-    ui_text->font_size(24);
-    ui_text->color(Color{0, 0, 0, 255});
 
-    scene.add_game_object(std::move(ui_text));
+    auto& text = ui_button->get_component<Text>()->get();
+    text.color(Color{0, 0, 0, 255});
+
+    auto& image = ui_button->get_component<Image>()->get();
+    image.texture("ButtonNormal");
+    image.color(Color{200, 200, 200, 255});
+
+    scene.add_game_object(std::move(ui_button));
 
     // GameObject& game_object = scene.add_game_object("SomeGameObject");
     // game_object.transform().scale({3, 3, 1});

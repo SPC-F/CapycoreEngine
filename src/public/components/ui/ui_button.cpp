@@ -1,5 +1,8 @@
 #include <engine/public/components/ui/ui_button.h>
 
+#include <engine/public/components/ui/text.h>
+#include <engine/public/components/ui/image.h>
+
 constexpr unsigned short default_color_value = 255;
 
 UIButton::UIButton(
@@ -7,20 +10,37 @@ UIButton::UIButton(
     float height,
     Point pivot,
     Point anchor,
-    Scene& scene
+    Scene& scene,
+    std::string label,
+    std::string font,
+    std::string font_path,
+    std::string sprite_path
 ) : 
     UIObject(width, height, pivot, anchor, scene),
     color_(default_color_value, default_color_value, default_color_value, default_color_value),
     state_() 
-{}
+{
+    auto& sprite = add_component<Image>(
+        sprite_path,
+        0,
+        0,
+        static_cast<int>(width),
+        static_cast<int>(height),
+        color_
+    );
 
-void UIButton::render() const {
-    // TODO: implement button rendering
+    add_component<Text>(
+        label,
+        font,
+        font_path,
+        16,
+        color_
+    );
 }
 
-void UIButton::update(float dt) {
-    // TODO: implement button state updates (hover, pressed, etc.)
-}
+void UIButton::render() const {}
+
+void UIButton::update(float dt) {}
 
 void UIButton::add_on_press(const std::function<void(UIButton&)>& handler) {
     on_press_handlers_.emplace_back(handler);

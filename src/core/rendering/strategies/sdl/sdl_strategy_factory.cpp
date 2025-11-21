@@ -2,8 +2,10 @@
 
 #include <engine/core/rendering/strategies/sdl/sdl_sprite_strategy.h>
 #include <engine/core/rendering/strategies/sdl/sdl_text_strategy.h>
+#include <engine/core/rendering/strategies/sdl/sdl_image_strategy.h>
 
 #include <engine/public/components/ui/text.h>
+#include <engine/public/components/ui/image.h>
 #include <engine/public/components/sprite.h>
 
 SdlStrategyFactory::SdlStrategyFactory(Renderer &renderer): IRenderingStrategyFactory(renderer) {
@@ -17,6 +19,10 @@ std::unique_ptr<IRenderingStrategy> SdlStrategyFactory::create_strategy(Componen
 
     if (auto* text = dynamic_cast<Text*>(&component)) {
         return std::make_unique<SdlTextStrategy>(*renderer_.sdl_renderer_);
+    }
+
+    if (auto* image = dynamic_cast<Image*>(&component)) {
+        return std::make_unique<SdlImageStrategy>(*renderer_.sdl_renderer_);
     }
 
     return {};

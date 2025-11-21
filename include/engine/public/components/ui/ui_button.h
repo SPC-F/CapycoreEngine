@@ -35,7 +35,11 @@ public:
         float height,
         Point pivot,
         Point anchor,
-        Scene& scene
+        Scene& scene,
+        std::string label = "",
+        std::string font = "",
+        std::string font_path = "",
+        std::string sprite_path = ""
     );
 
     void update(float dt) override;

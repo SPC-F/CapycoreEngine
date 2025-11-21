@@ -3,7 +3,7 @@
 #include <map>
 #include <memory>
 #include <string>
-#include <SDL3/sdl.h>
+#include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
 
 #include <engine/core/rendering/strategies/irendering_strategy.h>
