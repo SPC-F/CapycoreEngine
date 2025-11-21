@@ -66,7 +66,8 @@ void Scene::game_loop() {
             accumulator -= fixed_step;
         }
 
-        rendering_service.draw(game_objects());
+        auto game_objects = this->game_objects();
+        rendering_service.draw(game_objects);
     }
 }
 

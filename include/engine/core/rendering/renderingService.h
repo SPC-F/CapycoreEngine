@@ -19,7 +19,7 @@ public:
      * Delegates the drawing operation to the Renderer instance.
      * @param objects A vector of references to GameObject instances to be drawn.
      */
-    void draw(const std::vector<std::reference_wrapper<GameObject>>& objects);
+    void draw(std::vector<std::reference_wrapper<GameObject>>& objects);
     /**
      * @brief Provides access to the game window.
      * @return A reference to the Window instance managed by the Renderer.
