@@ -8,7 +8,7 @@ SdlStrategyFactory::SdlStrategyFactory(Renderer &renderer): IRenderingStrategyFa
 }
 
 std::unique_ptr<IRenderingStrategy> SdlStrategyFactory::create_strategy(Component& component) {
-    if (auto sprite = dynamic_cast<Sprite*>(&component)) {
+    if (auto* sprite = dynamic_cast<Sprite*>(&component)) {
         return std::make_unique<SdlSpriteStrategy>(*renderer_.sdl_renderer_);
     }
 

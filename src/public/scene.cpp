@@ -1,28 +1,30 @@
+#include <engine/public/scene.h>
+
 #include <SDL3/sdl.h>
 
-#include <engine/public/scene.h>
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/engine.h>
 #include <algorithm>
 
-Scene::Scene(const std::string& name)
-    : is_running_(false), time_scale_(1.0f), game_objects_ {}, name_{name} {
-}
+Scene::Scene(std::string name)
+    : name_{ std::move(name) },
+      is_running_{ false },
+      time_scale_{ 1.0f } {}
 
 Scene::~Scene() {
     execute_listeners(destroy_listeners_);
 }
 
-void Scene::on_run(listener_function_t func) {
-    run_listeners_.push_back(func);
+void Scene::on_run(listener_function_t& listener) {
+    run_listeners_.push_back(listener);
 }
 
-void Scene::on_stop(listener_function_t func) {
-    stop_listeners_.push_back(func);
+void Scene::on_stop(listener_function_t& listener) {
+    stop_listeners_.push_back(listener);
 }
 
-void Scene::on_destroy(listener_function_t func) {
-    destroy_listeners_.push_back(func);
+void Scene::on_destroy(listener_function_t& listener) {
+    destroy_listeners_.push_back(listener);
 }
 
 void Scene::execute_listeners(const std::vector<Scene::listener_function_t> &listeners) {
@@ -38,7 +40,7 @@ void Scene::game_loop() {
     float accumulator = accumulator_default_value;
 
     Uint64 last = SDL_GetPerformanceCounter();
-    float freq = static_cast<float>(SDL_GetPerformanceFrequency());
+    auto freq = static_cast<float>(SDL_GetPerformanceFrequency());
 
     auto& rendering_service = Engine::instance()
         .services

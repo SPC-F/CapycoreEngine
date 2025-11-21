@@ -1,12 +1,9 @@
 #include <engine/public/scene_service.h>
 
-SceneService::SceneService()
-    : scenes_{  } {
-}
+SceneService::SceneService() = default;
 
-SceneService::SceneService(const std::string& name)
-    : scenes_{  } {
-    Scene* scene = new Scene(name);
+SceneService::SceneService(const std::string& name) {
+    auto* scene = new Scene(name);
     scene->run();
     scenes_.try_emplace(name, std::move(std::unique_ptr<Scene>(scene)));
 }
@@ -18,7 +15,7 @@ Scene& SceneService::add_scene(const std::string& name) {
 
     // Scene not found
     if (it == scenes_.end()) {
-        Scene* scene = new Scene(name);
+        auto* scene = new Scene(name);
         scenes_.try_emplace(name, std::move(std::unique_ptr<Scene>(scene)));
         return *scene;
     }
@@ -77,7 +74,6 @@ std::set<std::string> SceneService::contained_scene_names() const {
 }
 
 std::optional<std::reference_wrapper<Scene>> SceneService::current_scene() const {
-    auto current_scene = scenes_.begin();
     for (const auto& scene_pair : scenes_) {
         if (scene_pair.second->is_running()) {
             return *(scene_pair.second);

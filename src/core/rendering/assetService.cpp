@@ -7,8 +7,8 @@
 #include "engine/core/rendering/renderingService.h"
 #include "engine/core/engine.h"
 
-constexpr int WHITE_TEXTURE_SIZE = 32;
-constexpr Uint32 WHITE_PIXEL = 0xFFFFFFFF;
+constexpr int white_texture_size = 32;
+constexpr Uint32 white_pixel = 0xFFFFFFFF;
 
 AssetService::AssetService() = default;
 
@@ -178,17 +178,17 @@ std::reference_wrapper<Texture> AssetService::get_default_texture() {
         renderer,
         SDL_PIXELFORMAT_RGBA8888,
         SDL_TEXTUREACCESS_STATIC,
-        WHITE_TEXTURE_SIZE,
-        WHITE_TEXTURE_SIZE
+        white_texture_size,
+        white_texture_size
     );
 
     if (!tex) {
         throw std::runtime_error("Failed to create white texture");
     }
 
-    std::vector<Uint32> pixels(WHITE_TEXTURE_SIZE * WHITE_TEXTURE_SIZE, WHITE_PIXEL);
+    std::vector<Uint32> pixels(static_cast<size_t>(white_texture_size) * static_cast<size_t>(white_texture_size), white_pixel);
 
-    SDL_UpdateTexture(tex, nullptr, pixels.data(), WHITE_TEXTURE_SIZE * sizeof(Uint32));
+    SDL_UpdateTexture(tex, nullptr, pixels.data(), static_cast<int>(static_cast<size_t>(white_texture_size) * sizeof(Uint32)));
     SDL_SetTextureBlendMode(tex, SDL_BLENDMODE_BLEND);
 
     auto new_texture = std::unique_ptr<Texture>(new Texture(tex));

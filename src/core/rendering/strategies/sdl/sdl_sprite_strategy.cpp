@@ -28,10 +28,15 @@ void set_color(const Color& color, SDL_Texture* texture) {
 }
 
 void SdlSpriteStrategy::draw(Component& component) {
-    const auto& transform = component.parent()->get().transform();
+    auto parent_opt = component.parent();
+    if (!parent_opt.has_value()) {
+        throw std::runtime_error("Cannot draw Sprite component without a parent GameObject");
+    }
+
+    const auto& transform = parent_opt->get().transform();
     const auto& position = transform.position();
 
-    const Sprite& sprite = static_cast<const Sprite&>(component);
+    const auto& sprite = dynamic_cast<const Sprite&>(component);
     const Texture& texture = sprite.texture();
     auto* texture_ptr = texture.texture_.get();
 
