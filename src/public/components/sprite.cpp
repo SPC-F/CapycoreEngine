@@ -16,8 +16,7 @@ std::reference_wrapper<Texture> get_texture_for(const std::string& sprite) {
 }
 
 Sprite::Sprite(const std::string& sprite, const Color color, const int flip_x, const int flip_y, const int sorting_layer, const int ordering_layer)
-    : Renderable(),
-    texture_(get_texture_for(sprite)),
+    : texture_(get_texture_for(sprite)),
     flip_x_(flip_x),
     flip_y_(flip_y),
     sorting_layer_(sorting_layer),
