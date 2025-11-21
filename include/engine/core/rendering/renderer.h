@@ -39,7 +39,7 @@ public:
      * Mind that this method clears the entire screen and renders immediately on finish. If you want to batch multiple calls, fuse them into one.
      * @param objects
      */
-    void render(const std::vector<std::reference_wrapper<GameObject>>& objects) ;
+    void render(std::vector<std::reference_wrapper<GameObject>>& objects) ;
 
     /**
      * @brief Clears the rendering target with the drawing color.

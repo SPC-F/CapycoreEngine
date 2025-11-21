@@ -1,13 +1,13 @@
 #include <engine/public/scene.h>
 
-#include <SDL3/sdl.h>
+#include <SDL3/SDL.h>
 
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/engine.h>
 #include <algorithm>
 
-Scene::Scene(std::string name)
-    : name_{ std::move(name) },
+Scene::Scene(const std::string& name) // NOLINT
+    : name_{ name },
       is_running_{ false },
       time_scale_{ 1.0f } {}
 

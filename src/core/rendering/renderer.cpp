@@ -60,7 +60,7 @@ void Renderer::clear() const {
     SDL_RenderClear(sdl_renderer_.get());
 }
 
-void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& objects) {
+void Renderer::render(std::vector<std::reference_wrapper<GameObject>>& objects) {
     SDL_RenderClear(sdl_renderer_.get());
 
     for (auto game_obj_wrapper : objects) {
