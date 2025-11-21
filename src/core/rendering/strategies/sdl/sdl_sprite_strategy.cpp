@@ -1,11 +1,13 @@
 #include "engine/core/rendering/strategies/sdl/sdl_sprite_strategy.h"
 
-SdlSpriteStrategy::SdlSpriteStrategy(Sprite& sprite, GameObject& parent, SDL_Renderer* renderer):
-    sprite_(sprite),
-    game_object_(parent),
-    sdl_renderer_(renderer) {
+#include <engine/core/engine.h>
+#include <engine/core/rendering/assetService.h>
+#include <engine/public/components/sprite.h>
 
-}
+constexpr float default_texture_width = 32;
+constexpr float default_texture_height = 32;
+
+SdlSpriteStrategy::SdlSpriteStrategy(SDL_Renderer& sdl_renderer) : sdl_renderer_(sdl_renderer) {}
 
 Color get_default_color(SDL_Texture* texture) {
     Color color;
@@ -25,39 +27,42 @@ void set_color(const Color& color, SDL_Texture* texture) {
     SDL_SetTextureAlphaMod(texture, static_cast<Uint8>(color.a));
 }
 
-void SdlSpriteStrategy::draw(Renderer &renderer) {
-    const auto& transform = game_object_.transform();
+void SdlSpriteStrategy::draw(Component& component) {
+    const auto& transform = component.parent()->get().transform();
     const auto& position = transform.position();
 
-    for (const auto sprite_wrapper : game_object_.get_components<Sprite>()) {
-        const Sprite& sprite = sprite_wrapper.get();
-        const Texture& texture = sprite.texture();
+    const Sprite& sprite = static_cast<const Sprite&>(component);
+    const Texture& texture = sprite.texture();
+    auto* texture_ptr = texture.texture_.get();
 
-        auto const source = SDL_FRect {
-                .x = 0,
-                .y = 0,
-                .w = texture.width(),
-                .h = texture.height()
-        };
-        auto const target = SDL_FRect {
-                .x = position.x,
-                .y = position.y,
-                .w = texture.width() * transform.scale().x,
-                .h = texture.height() * transform.scale().y
-        };
+    float width = default_texture_width;
+    float height = default_texture_height;
 
-        Color original_color = get_default_color(texture.texture_.get());
-        set_color(sprite.color(), texture.texture_.get());
+    auto const source = SDL_FRect {
+        .x = 0,
+        .y = 0,
+        .w = width,
+        .h = height
+    };
+    auto const target = SDL_FRect {
+        .x = position.x,
+        .y = position.y,
+        .w = width * transform.scale().x,
+        .h = height * transform.scale().y
+    };
 
-        SDL_RenderTextureRotated(
-                sdl_renderer_,
-                sprite.texture().texture_.get(),
-                &source,
-                &target,
-                transform.rotation(),
-                nullptr, // default is center of target square
-                SDL_FLIP_NONE);
+    Color original_color = get_default_color(texture_ptr);
+    set_color(sprite.color(), texture_ptr);
 
-        set_color(original_color, texture.texture_.get());
-    }
+    SDL_RenderTextureRotated(
+        &sdl_renderer_,
+        texture_ptr,
+        &source,
+        &target,
+        transform.rotation(),
+        nullptr, // pivot = center
+        SDL_FLIP_NONE
+    );
+
+    set_color(original_color, texture_ptr);
 }

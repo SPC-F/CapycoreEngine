@@ -4,36 +4,27 @@
 #include <engine/core/rendering/renderingService.h>
 #include <format>
 
-Texture& get_texture_for(const std::string& sprite) {
-    const auto& service = Engine::instance().services->get_service<AssetService>().get();
-    const auto maybe_texture = service.try_get_texture(sprite);
-    if (!maybe_texture.has_value()) {
-        throw std::runtime_error(std::format("Failed to get texture for sprite: {}", sprite));
-    }
-    return maybe_texture.value();
-}
+std::reference_wrapper<Texture> get_texture_for(const std::string& sprite) {
+    auto& service = Engine::instance().services->get_service<AssetService>().get();
+    auto maybe_texture = service.try_get_texture(sprite);
 
-std::unique_ptr<IRenderingStrategy> get_rendering_strategy(Sprite& sprite, GameObject& parent) {
-    return Engine::instance()
-            .services
-            ->get_service<RenderingService>()
-            .get()
-            .rendering_strategy_factory()
-            .create_sprite_strategy(sprite, parent);
+    if (!maybe_texture.has_value()) {
+        return service.get_default_texture();
+    }
+
+    return maybe_texture->get();
 }
 
 Sprite::Sprite(const std::string& sprite, const Color color, const int flip_x, const int flip_y, const int sorting_layer, const int ordering_layer)
-    : Renderable(nullptr),
+    : Renderable(),
     texture_(get_texture_for(sprite)),
     flip_x_(flip_x),
     flip_y_(flip_y),
     sorting_layer_(sorting_layer),
     ordering_layer_(ordering_layer),
     color_(color) {
-
     add_on_attach([this](Component& comp) {
-        auto& parent = comp.parent().value().get();
-        this->render_strategy_ = std::move(get_rendering_strategy(*this, this->parent().value()));
+        this->set_render_strategy(comp);
     });
 }
 
@@ -81,10 +72,12 @@ Sprite& Sprite::color(const Color color) {
 const Texture& Sprite::texture() const {
     return texture_;
 }
+
 Sprite& Sprite::texture(const std::string& name) {
     texture_ = get_texture_for(name);
     return *this;
 }
+
 Sprite& Sprite::texture(Texture& texture) {
     texture_ = texture;
     return *this;
@@ -93,9 +86,11 @@ Sprite& Sprite::texture(Texture& texture) {
 void Sprite::update(float dt) {
 
 }
+
 void Sprite::on_serialize() {
 
 }
+
 void Sprite::on_deserialize() {
 
 }

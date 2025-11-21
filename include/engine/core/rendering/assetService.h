@@ -77,6 +77,12 @@ public:
         int rows,
         int cols);
 
+    /**
+     * @brief Retrieves the default white texture.
+     * @return A reference to the default white texture.
+     */
+    std::reference_wrapper<Texture> get_default_texture();
+
 private:
     static constexpr const char * const resource_path = "resources/sprites/";
     std::vector<std::unique_ptr<Texture>> textures_;

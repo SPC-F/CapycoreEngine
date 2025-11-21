@@ -5,9 +5,7 @@
 
 constexpr int default_min_aspect_width = 800;
 constexpr int default_min_aspect_height = 600;
-Renderer::Renderer() : Renderer(default_min_aspect_width, default_min_aspect_height, "CapyCore", RendererFlags::None) {
-
-}
+Renderer::Renderer() : Renderer(default_min_aspect_width, default_min_aspect_height, "CapyCore", RendererFlags::None) {}
 
 Renderer::Renderer(int min_aspect_width, int min_aspect_height, const std::string& title, RendererFlags flags)
     : sdl_renderer_(nullptr, SDL_DestroyRenderer), sdl_window_(nullptr, SDL_DestroyWindow) {
@@ -68,11 +66,12 @@ void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& obj
     for (auto game_obj_wrapper : objects) {
         auto& game_obj = game_obj_wrapper.get();
         auto renderables = game_obj.get_components<Renderable>();
+        
         for (auto renderable_wrapper : renderables) {
             auto& renderable = renderable_wrapper.get();
             auto& strategy = renderable.render_strategy();
 
-            strategy.draw(*this);
+            strategy.draw(renderable);
         }
     }
 

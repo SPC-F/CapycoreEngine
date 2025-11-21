@@ -1,10 +1,13 @@
 #pragma once
+
 #include <string>
-#include <engine/public/component.h>
-#include <engine/public/util/color.h>
+#include <optional>
+
 #include <engine/core/rendering/texture.h>
 #include <engine/core/rendering/renderable.h>
 #include <engine/core/rendering/strategies/irendering_strategy.h>
+#include <engine/public/component.h>
+#include <engine/public/util/color.h>
 
 /**
  * @brief Component that represents a 2D sprite to be rendered.

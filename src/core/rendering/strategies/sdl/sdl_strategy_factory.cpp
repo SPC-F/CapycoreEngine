@@ -7,10 +7,10 @@ SdlStrategyFactory::SdlStrategyFactory(Renderer &renderer): IRenderingStrategyFa
 
 }
 
-std::unique_ptr<IRenderingStrategy> SdlStrategyFactory::create_sprite_strategy(Sprite& sprite, GameObject& parent) {
-    return std::make_unique<SdlSpriteStrategy>(sprite, parent, renderer_.sdl_renderer_.get());
-}
+std::unique_ptr<IRenderingStrategy> SdlStrategyFactory::create_strategy(Component& component) {
+    if (auto sprite = dynamic_cast<Sprite*>(&component)) {
+        return std::make_unique<SdlSpriteStrategy>(*renderer_.sdl_renderer_);
+    }
 
-std::unique_ptr<IRenderingStrategy> SdlStrategyFactory::create_gui_strategy() {
     return {};
 }

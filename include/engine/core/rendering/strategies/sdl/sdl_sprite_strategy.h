@@ -1,15 +1,22 @@
 #pragma once
-#include <engine/core/rendering/strategies/irendering_strategy.h>
-#include <engine/public/components/sprite.h>
+
 #include <SDL3/sdl.h>
 
+#include <engine/core/rendering/strategies/irendering_strategy.h>
+#include <engine/public/component.h>
+
+/**
+ * @brief SDL implementation of the sprite rendering strategy.
+ * 
+ * SdlSpriteStrategy is responsible for rendering Sprite components using SDL.
+ * It utilizes an SDL_Renderer to draw the associated Texture of the Sprite component
+ * onto the screen, applying transformations and color modulations as specified by the Sprite.
+ */
 class SdlSpriteStrategy final : public IRenderingStrategy{
 private:
-    Sprite& sprite_;
-    GameObject& game_object_;
-    SDL_Renderer* const sdl_renderer_;
+    SDL_Renderer& sdl_renderer_;
 public:
-    SdlSpriteStrategy(Sprite& sprite, GameObject& parent, SDL_Renderer* renderer);
+    SdlSpriteStrategy(SDL_Renderer& sdl_renderer);
     ~SdlSpriteStrategy() override = default;
-    void draw(Renderer& renderer) override;
+    void draw(Component& component) override;
 };
