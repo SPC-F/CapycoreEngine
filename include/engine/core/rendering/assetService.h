@@ -4,8 +4,10 @@
 #include <map>
 #include <optional>
 
-#include "texture.h"
+#include <engine/core/rendering/texture.h>
+#include <engine/core/rendering/font.h>
 #include <engine/core/iEngineService.h>
+#include <engine/public/util/color.h>
 
 /**
  * @brief Service responsible for managing game assets such as textures and spritesheets.
@@ -83,8 +85,27 @@ public:
      */
     std::reference_wrapper<Texture> get_default_texture();
 
+    /**
+     * @brief Attempts to retrieve a font by its name and size.
+     * @param font_name The name of the font.
+     * @param font_size The size of the font.
+     * @return An optional reference to the font if found, std::nullopt otherwise.
+     */
+    std::optional<std::reference_wrapper<Font>> try_get_font(const std::string& font_name, int8_t font_size) const;
+
+    /**
+     * @brief Registers a font with the given name and size.
+     * @param font_name The name of the font.
+     * @param font_size The size of the font.
+     * @return A reference to the registered font.
+     * @throws An exception if the font cannot be loaded.
+     */
+    std::reference_wrapper<Font> register_font(const std::string font_name, const std::string font_path, int8_t font_size);
+
 private:
     static constexpr const char * const resource_path = "resources/sprites/";
+
     std::vector<std::unique_ptr<Texture>> textures_;
     std::map<std::string, std::vector<std::reference_wrapper<Texture>>> named_assets_;
+    std::map<std::string, std::unique_ptr<Font>> font_cache_;
 };

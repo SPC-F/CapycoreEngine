@@ -1,5 +1,8 @@
-#include <SDL3/sdl.h>
 #include <engine/core/rendering/renderer.h>
+
+#include <SDL3/sdl.h>
+#include <SDL3_ttf/SDL_ttf.h>
+
 #include <engine/core/rendering/texture.h>
 #include <engine/core/rendering/renderable.h>
 
@@ -22,7 +25,7 @@ Renderer::Renderer(int min_aspect_width, int min_aspect_height, const std::strin
         sdl_window_flags |= SDL_WINDOW_RESIZABLE;
     }
 
-    if(!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
+    if(!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) || !TTF_Init()) {
         throw std::runtime_error("Failed to initialize renderer: SDL_Init failed with error: " + std::string(SDL_GetError()));
     }
 

@@ -15,6 +15,8 @@ class UIText : public UIObject
 public:
     UIText(
         std::string text,
+        std::string font,
+        std::string font_path,
         float width,
         float height,
         Point pivot,
@@ -25,25 +27,25 @@ public:
     void update(float dt) override;
     void render() const override;
 
-    [[nodiscard]] 
-    const std::string& text() const;
+    [[nodiscard]] const std::string& text() const;
     UIText& text(const std::string& text);
 
-    [[nodiscard]]
-    const std::string& font_name() const;
-    UIText& font_name(const std::string& font_name);
+    [[nodiscard]] const std::string& font() const;
+    UIText& font(const std::string& font);
 
-    [[nodiscard]]
-    int font_size() const;
+    [[nodiscard]] const std::string& font_path() const;
+    UIText& font_path(const std::string& font_path);
+
+    [[nodiscard]] int font_size() const;
     UIText& font_size(int font_size);
 
-    [[nodiscard]]
-    Color color() const;
+    [[nodiscard]] Color color() const;
     UIText& color(Color color);
 
 private:
     std::string text_;
-    std::string font_name_;
+    std::string font_;
+    std::string font_path_;
     int font_size_;
     Color color_;
 };
