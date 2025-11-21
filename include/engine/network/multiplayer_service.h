@@ -44,7 +44,7 @@ public:
     /* @brief If client, disconnect from host; If host, disconnect all clients. */
     void disconnect();
 
-    ConnectionState get_connection_state() noexcept;
+    [[nodiscard]] ConnectionState get_connection_state() noexcept;
 
     void set_max_clients(int amount);
     int get_client_amount() noexcept;
@@ -58,4 +58,5 @@ private:
     std::unique_ptr<Host> host_;
 
     int connection_port_{1024};
+    int max_clients_{4};
 };

@@ -45,6 +45,7 @@ int main(int argc, char* argv[]) {
         std::cout << err << std::endl;
     }
 
+    Engine::quit();
 
     tracy_shutdown();
     return 0;

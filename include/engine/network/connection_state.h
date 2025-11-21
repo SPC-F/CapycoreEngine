@@ -6,5 +6,5 @@ enum class ConnectionState {
     DISCONNECTED,
     CONNECTING,
     DISCONNECTING,
-    RECONNECTING
+    RECONNECTING // Unimplemented
 };

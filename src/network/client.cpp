@@ -11,22 +11,8 @@ Client::Client(std::shared_ptr<Router> router)
         throw "An error occurred while trying to create an ENet client host.";
         // TODO: This has never occurred during testing, how should this be handled?
 
-    auto ClientOnPeerConnectHandler = [this](const Message& message) {
-        MsgConnect data;
-        std::memcpy(&data, message.payload.data(), sizeof(data));
-
-        local_uuid_ = data.uuid;
-        std::cout << "New UUID: " << local_uuid_ << std::endl;
-
-        connection_state_ = ConnectionState::CONNECTED;
-    };
-    router_->register_handler(DefaultMessageTypes::CONNECT, ClientOnPeerConnectHandler);
-
-    auto ClientOnPeerDisconnectHandler = [this](const Message& message) {
-        connection_state_ = ConnectionState::DISCONNECTING;
-        std::cout << "Disconnecting!" << std::endl;
-    };
-    router_->register_handler(DefaultMessageTypes::HOST_DISCONNECT, ClientOnPeerDisconnectHandler);
+    register_on_connect_handler();
+    register_on_disconnect_handler();
 }
 
 Client::~Client()
@@ -48,23 +34,19 @@ void Client::poll() noexcept
     while (enet_host_service(client_, &event, 0) > 0) {
         switch (event.type) {
             case ENET_EVENT_TYPE_CONNECT:
-                std::cout << "Connected!" << std::endl;
-                // Connection succesfully established.
-                // I am unsure what should be used here.
-                // We are connected, but haven't received our uuid yet.
+                // Connected, awaiting message containing uuid.
             break;
 
             case ENET_EVENT_TYPE_DISCONNECT:
                 if (connection_state_ == ConnectionState::DISCONNECTING) {
                     event.peer -> data = NULL;
-                    connection_state_ = ConnectionState::DISCONNECTED;
+
                     enet_peer_reset(event.peer);
                     server_peer_ = nullptr;
-                    std::cout << "Disconnected!" << std::endl;
-                    // TODO: Clean everything
+
+                    connection_state_ = ConnectionState::DISCONNECTED;
                 } else {
                     // TODO: Something went wrong, try reconnecting
-                    std::cout << "Uhhh..." << std::endl;
                 }
             break;
 
@@ -101,7 +83,7 @@ void Client::connect(const std::string& host_ip, const int connection_port)
 
     ENetAddress address;
     ENetEvent event;
-    std::cout << "Connecting to: " << host_ip << ":" << connection_port << std::endl;
+
     enet_address_set_host (&address, host_ip.c_str());
     address.port = connection_port;
 
@@ -124,17 +106,28 @@ void Client::disconnect()
     send(message);
 }
 
-void Client::on_connect() noexcept
-{
-
-}
-
-void Client::on_disconnect() noexcept
-{
-
-}
-
 ConnectionState Client::get_connection_state() noexcept
 {
     return connection_state_;
+}
+
+void Client::register_on_connect_handler() noexcept
+{
+    auto ClientOnPeerConnectHandler = [this](const Message& message) {
+        MsgConnect data;
+        std::memcpy(&data, message.payload.data(), sizeof(data));
+
+        local_uuid_ = data.uuid;
+
+        connection_state_ = ConnectionState::CONNECTED;
+    };
+    router_->register_handler(DefaultMessageTypes::CONNECT, ClientOnPeerConnectHandler);
+}
+
+void Client::register_on_disconnect_handler() noexcept
+{
+    auto ClientOnPeerDisconnectHandler = [this](const Message& message) {
+        connection_state_ = ConnectionState::DISCONNECTING;
+    };
+    router_->register_handler(DefaultMessageTypes::HOST_DISCONNECT, ClientOnPeerDisconnectHandler);
 }

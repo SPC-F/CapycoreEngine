@@ -3,26 +3,12 @@
 
 #include <iostream>
 
-Host::Host(std::shared_ptr<Router> router, int connection_port)
+Host::Host(std::shared_ptr<Router> router, int connection_port, int max_clients)
+    : router_{router}, connection_port_{connection_port}, max_clients_{max_clients}, connection_state_{ConnectionState::NONE}, local_uuid_{uuid::generate_uuid_v4()}
 {
-    std::cout << "Created host" << std::endl;
-    connection_state_ = ConnectionState::NONE;
-    connection_port_ = connection_port;
-
-    router_ = router;
     local_uuid_ = uuid::generate_uuid_v4();
 
-    auto ClientOnPeerDisconnectHandler = [this](const Message& message) {
-        MsgConnect data;
-        std::memcpy(&data, message.payload.data(), sizeof(data));
-
-        if(clients_[data.uuid]) {
-            enet_peer_disconnect(clients_[data.uuid], 0);
-            clients_.erase(data.uuid);
-            // TODO: Broadcast disconnection
-        }
-    };
-    router_->register_handler(DefaultMessageTypes::CLIENT_DISCONNECT, ClientOnPeerDisconnectHandler);
+    set_client_disconnect_handler();
 }
 
 Host::~Host()
@@ -42,8 +28,6 @@ void Host::start_server()
     if (server_ == nullptr)
         throw "An error occurred while trying to create an ENet server host.";
         // TODO: This has never occurred during testing, how should this be handled?
-
-    std::cout << "Started server" << std::endl;
 }
 
 void Host::poll() noexcept
@@ -63,16 +47,11 @@ void Host::poll() noexcept
                 strcpy(body.uuid, uuid.c_str());
                 Message message { SerializeMessage(body, DefaultMessageTypes::CONNECT) };
 
-                std::cout << "New connection: " << uuid << std::endl;
-                // TODO: Broadcast connection
-
                 send(message, event.peer);
             } break;
 
             case ENET_EVENT_TYPE_DISCONNECT:
-                std::cout << "Client disconnected" << std::endl;
-                // Do nothing. Disconnection has been handled elsewhere or client disconnected unintentionally.
-                // If the latter is the case, the client should try to reconnect.
+                // Client disconnected.
             break;
 
             case ENET_EVENT_TYPE_RECEIVE:
@@ -117,20 +96,10 @@ void Host::disconnect()
     for (auto& it : clients_)
         enet_peer_disconnect_later(it.second, 0);
     clients_.clear();
-    std::cout << "Disconnecting.." << std::endl;
+
     enet_host_destroy(server_);
 
     connection_state_ = ConnectionState::DISCONNECTED;
-}
-
-void Host::on_client_connect() noexcept
-{
-
-}
-
-void Host::on_client_disconnect() noexcept
-{
-
 }
 
 void Host::send(Message message, ENetPeer* peer)
@@ -145,22 +114,37 @@ void Host::send(Message message, ENetPeer* peer)
     enet_peer_send (peer, 0, packet);
 }
 
-ConnectionState Host::get_connection_state() noexcept
+const ConnectionState Host::get_connection_state() const noexcept
 {
     return connection_state_;
 }
 
-void Host::set_max_clients(int amount)
+void Host::set_max_clients(int amount) noexcept
 {
     max_clients_ = amount;
 }
 
-int Host::get_client_amount() noexcept
+const int Host::get_client_amount() const noexcept
 {
     return clients_.size();
 }
 
-void Host::set_connection_port_(int port)
+void Host::set_connection_port_(int port) noexcept
 {
     connection_port_ = port;
+}
+
+void Host::set_client_disconnect_handler() noexcept
+{
+    auto HostOnPeerDisconnectHandler = [this](const Message& message) {
+        MsgConnect data;
+        std::memcpy(&data, message.payload.data(), sizeof(data));
+
+        if(clients_[data.uuid]) {
+            enet_peer_disconnect(clients_[data.uuid], 0);
+            clients_.erase(data.uuid);
+            // TODO: Broadcast disconnection
+        }
+    };
+    router_->register_handler(DefaultMessageTypes::CLIENT_DISCONNECT, HostOnPeerDisconnectHandler);
 }

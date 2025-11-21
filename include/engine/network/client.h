@@ -24,19 +24,18 @@ public:
     /* @brief Disconnect from current peer. */
     void disconnect();
 
-    /* @brief Called on connection, setting local uuid and forwarding to custom handlers. */
-    void on_connect() noexcept;
-
-    /* @brief Called on disconnection, cleaning left-over data and forwarding to custom handlers. */
-    void on_disconnect() noexcept;
-
-    ConnectionState get_connection_state() noexcept;
+    [[nodiscard]] ConnectionState get_connection_state() noexcept;
 
 private:
     std::string local_uuid_;
     std::shared_ptr<Router> router_{nullptr};
     ENetPeer* server_peer_{nullptr};
     ENetHost* client_{nullptr};
-
     ConnectionState connection_state_{ConnectionState::NONE};
+
+    /* @brief Called on connection, setting local uuid and forwarding to custom handlers. */
+    void register_on_connect_handler() noexcept;
+
+    /* @brief Called on disconnection, cleaning left-over data and forwarding to custom handlers. */
+    void register_on_disconnect_handler() noexcept;
 };

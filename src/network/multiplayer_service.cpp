@@ -4,8 +4,9 @@
 
 MultiplayerService::MultiplayerService()
 {
-    if (enet_initialize() != 0)
+    if (enet_initialize() != 0) {
         throw "An error occurred while initializing ENet.";
+    }
 
     atexit (enet_deinitialize);
 
@@ -24,28 +25,41 @@ void MultiplayerService::unregister_handler(const MessageType type)
 
 void MultiplayerService::set_host()
 {
-    if (client_)
-        throw "Cannot act as host; Already acting as client.";
+    if (client_) {
+        if (client_->get_connection_state() != ConnectionState::DISCONNECTED
+            && client_->get_connection_state() != ConnectionState::NONE) {
+            throw "Cannot act as host, there is still an ongoing connection.";
+        }
 
-    host_ = std::make_unique<Host>(router_, connection_port_);
+        client_ = nullptr;
+    }
+
+    host_ = std::make_unique<Host>(router_, connection_port_, max_clients_);
 }
 
 void MultiplayerService::set_client()
 {
-    if (host_)
-        throw "Cannot act as client; Already acting as host.";
+    if (host_) {
+        if (host_->get_connection_state() != ConnectionState::DISCONNECTED
+            && host_->get_connection_state() != ConnectionState::NONE) {
+            throw "Cannot act as client, there is still an ongoing connection.";
+        }
+
+        host_ = nullptr;
+    }
 
     client_ = std::make_unique<Client>(router_);
 }
 
 void MultiplayerService::poll()
 {
-    if (host_)
+    if (host_) {
         host_->poll();
-    else if (client_)
+    } else if (client_) {
         client_->poll();
-    else
+    } else {
         throw "Cannot poll. Not acting as host or client.";
+    }
 }
 
 void MultiplayerService::send(Message& message)
@@ -55,44 +69,51 @@ void MultiplayerService::send(Message& message)
 
 void MultiplayerService::start_server()
 {
-    if (client_)
+    if (client_) {
         throw "Cannot start server as client.";
+    }
 
     host_->start_server();
 }
 
 void MultiplayerService::connect(const std::string& address)
 {
-    if (host_)
+    if (host_) {
         throw "Cannot initiate connection as host.";
+    }
 
     client_->connect(address, connection_port_);
 }
 
 void MultiplayerService::disconnect()
 {
-    if (host_)
+    if (host_) {
         host_->disconnect();
-    else if (client_)
+    } else if (client_) {
         client_->disconnect();
-    else
+    } else {
         throw "Cannot disconnect. Not acting as host or client.";
+    }
 }
 
 ConnectionState MultiplayerService::get_connection_state() noexcept
 {
-    if (host_)
+    if (host_) {
         return host_->get_connection_state();
-    else if (client_)
+    } else if (client_) {
         return client_->get_connection_state();
-    else
+    } else {
         return ConnectionState::NONE;
+    }
 }
 
 void MultiplayerService::set_max_clients(int amount)
 {
-    if (host_)
+    if (host_) {
         host_->set_max_clients(amount);
+    }
+
+    max_clients_ = amount;
 }
 
 int MultiplayerService::get_client_amount() noexcept
