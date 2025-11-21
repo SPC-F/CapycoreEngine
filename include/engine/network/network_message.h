@@ -7,7 +7,10 @@
 
 enum class DefaultMessageTypes : uint16_t {
     CONNECT,
-    DISCONNECT
+    DISCONNECT,
+    CLIENT_CONNECT,
+    HOST_DISCONNECT,
+    CLIENT_DISCONNECT
 };
 
 enum class CustomMessageTypes : uint16_t;
@@ -42,11 +45,18 @@ struct MsgDisconnect
 template <typename T>
 Message SerializeMessage(const T& data, MessageType type)
 {
-
+    Message msg;
+    msg.header.type = type;
+    msg.header.size = sizeof(T);
+    msg.payload.resize(sizeof(T));
+    std::memcpy(msg.payload.data(), &data, sizeof(T));
+    return msg;
 }
 
 template <typename T>
 T DeserializeMessage(const Message& message)
 {
-
+    T data;
+    std::memcpy(&data, message.payload.data(), sizeof(T));
+    return data;
 }

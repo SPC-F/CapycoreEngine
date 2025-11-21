@@ -1,4 +1,5 @@
 #include <engine/util/memory.h>
+#include <engine/core/engine.h>
 
 // Macro's for tracy based on the CMake option
 namespace {
@@ -11,7 +12,7 @@ namespace {
     #endif
 }
 
-int main() {
+int main(int argc, char* argv[]) {
     tracy_init();
 
     tracy_shutdown();

@@ -1,26 +1,33 @@
 #pragma once
 
 #include <unordered_map>
-#include <any>
-#include <string>
 #include <functional>
 
 #include <engine/network/network_message.h>
 
 /**
- * @brief Router used for sending incoming network messages to corresponding handlers.
+ * @brief Routes incoming network messages to registered handlers.
  */
 class Router {
 public:
-    /* @brief Register new handler via given message type. */
-    void register_handler(const MessageType type, const std::function<void()>& handler);
+    /**
+     * @brief Registers a handler for a specific message type.
+     * If the handler already exists, it will be overwritten.
+     */
+    void register_handler(MessageType type, std::function<void(const Message&)> handler);
 
-    /* @brief Unregister handler via given message type. */
-    void unregister_handler(const MessageType type);
+    /**
+     * @brief Unregisters the handler associated with a message type.
+     * @throws std::runtime_error if no handler exists.
+     */
+    void unregister_handler(MessageType type);
 
-    /* @brief Route date to handler of given type. */
-    void route(const MessageType type, std::any& data);
+    /**
+     * @brief Routes the message to its corresponding handler.
+     * If no handler exists, the message is ignored.
+     */
+    void route(const Message& msg) const;
 
 private:
-    std::unordered_map<MessageType, std::function<void()>> handlers_;
+    std::unordered_map<MessageType, std::function<void(const Message&)>> handlers_;
 };
