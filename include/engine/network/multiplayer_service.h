@@ -19,7 +19,7 @@ public:
     MultiplayerService();
 
     /* @brief Register handler function to message type. */
-    void register_handler(const MessageType type, const std::function<void()>& handler);
+    void register_handler(const MessageType type, const std::function<void(const Message&)> handler);
 
     /* @brief Unregister handler of given message type */
     void unregister_handler(const MessageType type);

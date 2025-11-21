@@ -12,14 +12,14 @@ MultiplayerService::MultiplayerService()
     router_ = std::make_shared<Router>();
 }
 
-void MultiplayerService::register_handler(const MessageType type, const std::function<void()>& handler)
+void MultiplayerService::register_handler(const MessageType type, const std::function<void(const Message&)> handler)
 {
-
+    router_->register_handler(type, handler);
 }
 
 void MultiplayerService::unregister_handler(const MessageType type)
 {
-
+    router_->unregister_handler(type);
 }
 
 void MultiplayerService::set_host()

@@ -7,6 +7,9 @@ void Router::register_handler(const MessageType type, const std::function<void(c
 
 void Router::unregister_handler(const MessageType type)
 {
+    if (!handlers_[type])
+        throw "No handler of given message type found.";
+
     handlers_.erase(type);
 }
 
