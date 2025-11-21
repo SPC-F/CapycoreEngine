@@ -1,7 +1,6 @@
 #include <engine/network/multiplayer_service.h>
 
 #include <stdexcept>
-#include <iostream>
 
 MultiplayerService::MultiplayerService()
 {

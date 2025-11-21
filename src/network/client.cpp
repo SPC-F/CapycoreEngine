@@ -3,7 +3,6 @@
 
 #include <cstring>
 #include <stdexcept>
-#include <iostream>
 
 Client::Client(std::shared_ptr<Router> router)
     : router_(std::move(router))

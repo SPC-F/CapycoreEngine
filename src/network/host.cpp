@@ -3,7 +3,6 @@
 
 #include <cstring>
 #include <stdexcept>
-#include <iostream>
 
 Host::Host(std::shared_ptr<Router> router, int connection_port, int max_clients)
     : server_{nullptr},
