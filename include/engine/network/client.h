@@ -1,13 +1,16 @@
 #pragma once
 
 #include <memory>
+#include <string>
 #include <enet/enet.h>
 
 #include <engine/network/router.h>
+#include <engine/network/connection_state.h>
 
 class Client {
 public:
     Client(std::shared_ptr<Router> router);
+    ~Client();
 
     /* @brief polling network for new messages. */
     void poll() noexcept;
@@ -16,7 +19,7 @@ public:
     void send(Message& message);
 
     /* @brief Connect to given address. */
-    void connect(std::string address);
+    void connect(const std::string& host_ip, const int connection_port);
 
     /* @brief Disconnect from current peer. */
     void disconnect();
@@ -27,8 +30,13 @@ public:
     /* @brief Called on disconnection, cleaning left-over data and forwarding to custom handlers. */
     void on_disconnect() noexcept;
 
+    ConnectionState get_connection_state() noexcept;
+
 private:
+    std::string local_uuid_;
     std::shared_ptr<Router> router_{nullptr};
-    std::unique_ptr<ENetPeer> server_peer_{nullptr};
-    std::unique_ptr<ENetHost> client_{nullptr};
+    ENetPeer* server_peer_{nullptr};
+    ENetHost* client_{nullptr};
+
+    ConnectionState connection_state_{ConnectionState::NONE};
 };

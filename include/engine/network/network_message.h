@@ -7,7 +7,9 @@
 
 enum class DefaultMessageTypes : uint16_t {
     CONNECT,
-    DISCONNECT
+    DISCONNECT,
+    HOST_DISCONNECT,
+    CLIENT_DISCONNECT
 };
 
 enum class CustomMessageTypes : uint16_t;
