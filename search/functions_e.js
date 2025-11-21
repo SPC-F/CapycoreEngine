@@ -1,28 +1,4 @@
 var searchData=
 [
-  ['radius_0',['radius',['../class_circle_collider2_d.html#ad9c144687f8303bfeffe3457013c8e29',1,'CircleCollider2D::radius(float value) noexcept'],['../class_circle_collider2_d.html#ab2e889f4893ffc302c6eb5609dc76fda',1,'CircleCollider2D::radius() const noexcept']]],
-  ['raycast_1',['raycast',['../class_collider2_d.html#aab2b636c8268d12000a97cf60fc9e0a0',1,'Collider2D']]],
-  ['raycast_5fall_2',['raycast_all',['../class_physics_raycaster.html#a530ed19ab8d7759eb4b13bd1121a4a9f',1,'PhysicsRaycaster']]],
-  ['raycast_5fclosest_3',['raycast_closest',['../class_physics_raycaster.html#a4a6b52d081a56211c1d0adcd44e93655',1,'PhysicsRaycaster']]],
-  ['raycast_5ffiltered_4',['raycast_filtered',['../class_physics_raycaster.html#a509bb38f74cc7b8977bc4d28691f124d',1,'PhysicsRaycaster']]],
-  ['raycast_5fsegment_5',['raycast_segment',['../class_physics_raycaster.html#add9c53d0e921e35e77352ced64c6e2c0',1,'PhysicsRaycaster']]],
-  ['raycaster_6',['raycaster',['../class_physics_service.html#ab9cfcd5ca5650410838a77f986afba16',1,'PhysicsService']]],
-  ['register_5fservice_7',['register_service',['../class_service_container.html#a662ee72dff7c6a031f0cea9851e4654c',1,'ServiceContainer']]],
-  ['register_5fsound_8',['register_sound',['../class_audio_service.html#ac8bc4573e599fcc41149681f2de0ff40',1,'AudioService']]],
-  ['register_5ftexture_9',['register_texture',['../class_asset_service.html#a8356c7ce6fcf9f4dae13bf533beee5a5',1,'AssetService']]],
-  ['remove_5fchild_10',['remove_child',['../class_game_object.html#a0f2f5be33d65a8270d319679270f407d',1,'GameObject']]],
-  ['remove_5fcomponent_11',['remove_component',['../class_game_object.html#a145a87b82daf92c17e8ae6f1417f56b8',1,'GameObject']]],
-  ['remove_5fgame_5fobject_12',['remove_game_object',['../class_scene.html#a2ce3a726f9bebd29f28b5d3311db877b',1,'Scene']]],
-  ['remove_5fon_5fattach_13',['remove_on_attach',['../class_component.html#a1888d36eea572c402996dad0bf4e0cc0',1,'Component']]],
-  ['remove_5fon_5fdetach_14',['remove_on_detach',['../class_component.html#a7edd46feca5ccc65be205350dacee236',1,'Component']]],
-  ['remove_5fscene_15',['remove_scene',['../class_scene_service.html#a70fb6d59b2638453cc8c496f6a44f8d4',1,'SceneService']]],
-  ['render_16',['render',['../class_renderer.html#ac58fc307f2d2dd4fc22d43cf560fafd8',1,'Renderer']]],
-  ['renderer_17',['renderer',['../class_renderer.html#aa32d1caf42ca469513db53b03be688bf',1,'Renderer::Renderer(int min_aspect_width, int min_aspect_height, const std::string &amp;title, RendererFlags flags)'],['../class_renderer.html#a7ebf46f54dab9905f79b80f7fddb76a6',1,'Renderer::Renderer()']]],
-  ['renderingservice_18',['renderingservice',['../class_rendering_service.html#a09d2372dad15d3aab269e00cbc74005f',1,'RenderingService::RenderingService()'],['../class_rendering_service.html#ace36317c9854be3e5ad5e5c812a2c4d1',1,'RenderingService::RenderingService(Renderer *renderer)']]],
-  ['reset_19',['reset',['../struct_key_state.html#a8eae29523da7329a4802edd894065fef',1,'KeyState::reset()'],['../struct_mouse_button_state.html#a97f2f4b1943b3db9fca13b15d61a977e',1,'MouseButtonState::reset()'],['../struct_mouse_wheel_state.html#a6f8a46808d00f972daa835f5e00664fd',1,'MouseWheelState::reset()'],['../struct_mouse_state.html#a934473a0251bf14edfa70c27ded70784',1,'MouseState::reset()']]],
-  ['reset_5fstate_20',['reset_state',['../class_i_input_provider.html#a87a6c1ecc8e5259edc2206088874049d',1,'IInputProvider::reset_state()'],['../class_input_system.html#a081d0f26090f8f33a05e1a1fdce9aa11',1,'InputSystem::reset_state()']]],
-  ['resource_21',['resource',['../class_sound_instance.html#a814b69df625d2961766159e28782d5bf',1,'SoundInstance']]],
-  ['resume_22',['resume',['../class_generic_sound_instance.html#a86541369cedeb747a013fdeb4d71f3cc',1,'GenericSoundInstance::resume()'],['../class_s_d_l_sound_instance.html#a7ecc596772a62c7480452193894d5468',1,'SDLSoundInstance::resume()'],['../class_sound_instance.html#ac92895aa87db942dc7859fe7ced8a293',1,'SoundInstance::resume()']]],
-  ['rigidbody2d_23',['Rigidbody2D',['../class_rigidbody2_d.html#a3a3854bd5fef02d2f6891ffd197c2885',1,'Rigidbody2D']]],
-  ['rotation_24',['rotation',['../class_transform.html#aab172a3345eb5c13ecea1c8530f85b86',1,'Transform::rotation(float rot) noexcept'],['../class_transform.html#a0211949d7def7f9d7294bb3f012e5fc9',1,'Transform::rotation() const noexcept']]]
+  ['quit_0',['quit',['../class_engine.html#aaf1c35c2dfe7c809c466be2147311aa2',1,'Engine']]]
 ];

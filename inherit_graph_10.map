@@ -1,5 +1,17 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_i_input.html" title=" " alt="" coords="5,5,64,31"/>
-<area shape="rect" id="Node000001" href="$class_s_d_l_input_strategy.html" title=" " alt="" coords="112,5,247,31"/>
-<area shape="poly" id="edge14_Node000000_Node000001" title=" " alt="" coords="77,15,112,15,112,21,77,21"/>
+<area shape="rect" id="Node000000" href="$class_i_engine_service.html" title=" " alt="" coords="5,153,124,179"/>
+<area shape="rect" id="Node000001" href="$class_asset_service.html" title="Service responsible for managing game assets such as textures and spritesheets." alt="" coords="187,5,293,31"/>
+<area shape="poly" id="edge8_Node000000_Node000001" title=" " alt="" coords="79,140,117,90,142,63,171,40,192,28,195,33,173,44,146,67,121,93,83,143"/>
+<area shape="rect" id="Node000002" href="$class_audio_service.html" title="Manages audio playback and sound instances within the engine." alt="" coords="187,55,293,80"/>
+<area shape="poly" id="edge9_Node000000_Node000002" title=" " alt="" coords="90,143,127,115,171,89,197,78,199,83,173,94,130,120,93,147"/>
+<area shape="rect" id="Node000003" href="$class_input_manager.html" title="Centralized input manager that delegates to an external input provider." alt="" coords="184,104,296,129"/>
+<area shape="poly" id="edge10_Node000000_Node000003" title=" " alt="" coords="123,147,193,127,194,132,124,152"/>
+<area shape="rect" id="Node000004" href="$class_physics_service.html" title="Service responsible for managing the physics world." alt="" coords="181,153,299,179"/>
+<area shape="poly" id="edge11_Node000000_Node000004" title=" " alt="" coords="138,163,180,163,180,169,138,169"/>
+<area shape="rect" id="Node000005" href="$class_renderer.html" title="Service responsible for rendering game objects to the screen." alt="" coords="199,203,281,228"/>
+<area shape="poly" id="edge12_Node000000_Node000005" title=" " alt="" coords="124,180,200,201,198,207,123,185"/>
+<area shape="rect" id="Node000006" href="$class_rendering_service.html" title="Service responsible for rendering game objects to the window. This service functions as a manager for..." alt="" coords="172,252,308,277"/>
+<area shape="poly" id="edge13_Node000000_Node000006" title=" " alt="" coords="94,185,131,211,173,237,201,249,199,254,171,242,128,216,91,189"/>
+<area shape="rect" id="Node000007" href="$class_scene_service.html" title=" " alt="" coords="185,301,295,327"/>
+<area shape="poly" id="edge14_Node000000_Node000007" title=" " alt="" coords="84,189,121,238,146,264,173,286,197,299,195,304,171,291,142,268,117,241,79,192"/>
 </map>

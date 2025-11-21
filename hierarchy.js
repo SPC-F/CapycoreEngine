@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "Behavior", "class_behavior.html", null ],
     [ "Body2D", "struct_body2_d.html", null ],
     [ "Body2DTransform", "struct_body2_d_transform.html", null ],
     [ "BodyDistance2D", "struct_body_distance2_d.html", null ],
@@ -8,6 +9,7 @@ var hierarchy =
     [ "Color", "class_color.html", null ],
     [ "Component", "class_component.html", [
       [ "AudioSource", "class_audio_source.html", null ],
+      [ "BehaviorScript", "class_behavior_script.html", null ],
       [ "Collider2D", "class_collider2_d.html", [
         [ "BoxCollider2D", "class_box_collider2_d.html", null ],
         [ "CircleCollider2D", "class_circle_collider2_d.html", null ]

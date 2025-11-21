@@ -19,12 +19,14 @@ var searchData=
   ['delta_5fx_16',['delta_x',['../struct_mouse_state.html#ac3e36771c2be1040c25c0737e554ebd3',1,'MouseState']]],
   ['delta_5fy_17',['delta_y',['../struct_mouse_state.html#a241498a6a3ce01a7db6a9c56ebdef12f',1,'MouseState']]],
   ['deserialize_18',['deserialize',['../class_game_object.html#abe51776495ad4bd011802c7a74dd8927',1,'GameObject']]],
-  ['destroy_5fbody_19',['destroy_body',['../class_physics_creation_factory.html#a37fa4d47f6b656b8204aa23d8bee29a5',1,'PhysicsCreationFactory']]],
-  ['distance_20',['distance',['../class_collider2_d.html#a6a44157deb7188d11f3dc85e1177bb0a',1,'Collider2D::distance()'],['../class_physics_world.html#aedfde43af095a4c06d2b76f7d0f0febe',1,'PhysicsWorld::distance()'],['../struct_body_distance2_d.html#a55211de1dc2f4b6e84e64d9660ca45b1',1,'BodyDistance2D::distance'],['../struct_collider_ray_result.html#a27cbda395e061c5f975875ec284196b2',1,'ColliderRayResult::distance']]],
-  ['distance_5fbetween_5fpoints_21',['distance_between_points',['../namespace_physics_math.html#aafa599467749c7447527b6195cc65474',1,'PhysicsMath']]],
-  ['down_22',['down',['../mouse__state_8h.html#ad24c1433fc0344e2b220f3abc6da31cca74e8333ad11685ff3bdae589c8f6e34d',1,'mouse_state.h']]],
-  ['draw_23',['draw',['../class_rendering_service.html#acf704a3a1e570fac877029f3d0ee53d3',1,'RenderingService']]],
-  ['dx_5fbetween_5fpoints_24',['dx_between_points',['../namespace_physics_math.html#ac45d273bd31cdde1d2b899c2675c9178',1,'PhysicsMath']]],
-  ['dy_5fbetween_5fpoints_25',['dy_between_points',['../namespace_physics_math.html#a5dbef262e155ac3eab6a03abcae0c045',1,'PhysicsMath']]],
-  ['dynamic_26',['dynamic',['../struct_body_type2_d.html#ab1c7b696dcdfcd93b525330436ad8f3aa411011e3c68c9731c5fc7c02938956f5',1,'BodyType2D::Dynamic'],['../struct_physics_creation_flags.html#a1d88ccbfad081f9471155c930fd46e90',1,'PhysicsCreationFlags::dynamic']]]
+  ['destroy_19',['destroy',['../class_behavior.html#af0709b7d2bf1418cbf8c03df6a4f4a33',1,'Behavior::destroy(GameObject &amp;game_object)'],['../class_behavior.html#a56c62ccb4fe4e2d190c0940d68716041',1,'Behavior::destroy(Component &amp;component)'],['../class_behavior.html#a54a12eb0adc296293ffafbb21aeaa4a6',1,'Behavior::destroy()']]],
+  ['destroy_5fbody_20',['destroy_body',['../class_physics_creation_factory.html#a37fa4d47f6b656b8204aa23d8bee29a5',1,'PhysicsCreationFactory']]],
+  ['disable_21',['disable',['../class_behavior_script.html#aeeca12ff06df9bd04360b10022957ea4',1,'BehaviorScript::disable()'],['../class_behavior.html#a1c1360ffa98badaa29dd2aaf1649c231',1,'Behavior::disable()']]],
+  ['distance_22',['distance',['../class_collider2_d.html#a6a44157deb7188d11f3dc85e1177bb0a',1,'Collider2D::distance()'],['../class_physics_world.html#aedfde43af095a4c06d2b76f7d0f0febe',1,'PhysicsWorld::distance()'],['../struct_body_distance2_d.html#a55211de1dc2f4b6e84e64d9660ca45b1',1,'BodyDistance2D::distance'],['../struct_collider_ray_result.html#a27cbda395e061c5f975875ec284196b2',1,'ColliderRayResult::distance']]],
+  ['distance_5fbetween_5fpoints_23',['distance_between_points',['../namespace_physics_math.html#aafa599467749c7447527b6195cc65474',1,'PhysicsMath']]],
+  ['down_24',['down',['../mouse__state_8h.html#ad24c1433fc0344e2b220f3abc6da31cca74e8333ad11685ff3bdae589c8f6e34d',1,'mouse_state.h']]],
+  ['draw_25',['draw',['../class_rendering_service.html#acf704a3a1e570fac877029f3d0ee53d3',1,'RenderingService']]],
+  ['dx_5fbetween_5fpoints_26',['dx_between_points',['../namespace_physics_math.html#ac45d273bd31cdde1d2b899c2675c9178',1,'PhysicsMath']]],
+  ['dy_5fbetween_5fpoints_27',['dy_between_points',['../namespace_physics_math.html#a5dbef262e155ac3eab6a03abcae0c045',1,'PhysicsMath']]],
+  ['dynamic_28',['dynamic',['../struct_physics_creation_flags.html#a1d88ccbfad081f9471155c930fd46e90',1,'PhysicsCreationFlags::dynamic'],['../struct_body_type2_d.html#ab1c7b696dcdfcd93b525330436ad8f3aa411011e3c68c9731c5fc7c02938956f5',1,'BodyType2D::Dynamic']]]
 ];

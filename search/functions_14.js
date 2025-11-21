@@ -1,23 +1,8 @@
 var searchData=
 [
-  ['_7eaudiosource_0',['~AudioSource',['../class_audio_source.html#a3721135b0f9c7672d9e1fa830cd73c6b',1,'AudioSource']]],
-  ['_7eboxcollider2d_1',['~BoxCollider2D',['../class_box_collider2_d.html#a0d6e93759d288694b4bfe9b3c90481cc',1,'BoxCollider2D']]],
-  ['_7ecirclecollider2d_2',['~CircleCollider2D',['../class_circle_collider2_d.html#ade51349e8074ae8772375ee44c0c9985',1,'CircleCollider2D']]],
-  ['_7ecollider2d_3',['~Collider2D',['../class_collider2_d.html#ae604d7cbac7ca834840b88318833428b',1,'Collider2D']]],
-  ['_7ecomponent_4',['~Component',['../class_component.html#ad82d7393e339c1b19cc17a0d55b5674d',1,'Component']]],
-  ['_7egameobject_5',['~GameObject',['../class_game_object.html#a224d4f6d9dd75c8a6f9d022eaf586fd9',1,'GameObject']]],
-  ['_7egenericsoundinstance_6',['~GenericSoundInstance',['../class_generic_sound_instance.html#aa26b19a9743f19b2f6fd6daae9a96649',1,'GenericSoundInstance']]],
-  ['_7eiengineservice_7',['~IEngineService',['../class_i_engine_service.html#abf066771b0c8c59c4e6be6beedb669c3',1,'IEngineService']]],
-  ['_7eiinput_8',['~IInput',['../class_i_input.html#a4a348eb3d9dd7201ab713a26bd2f3821',1,'IInput']]],
-  ['_7eiinputprovider_9',['~IInputProvider',['../class_i_input_provider.html#a7ae285d5e33d38193134b4cb2cadd7e9',1,'IInputProvider']]],
-  ['_7ephysicsworld_10',['~PhysicsWorld',['../class_physics_world.html#abf1573b008b52b60a83a8f36cbdd51bc',1,'PhysicsWorld']]],
-  ['_7erenderingservice_11',['~RenderingService',['../class_rendering_service.html#a667ac7788b2fcb26dce2c303b209552b',1,'RenderingService']]],
-  ['_7erigidbody2d_12',['~Rigidbody2D',['../class_rigidbody2_d.html#a76d39f8ddb656bc6d54fb2cf6c6d9560',1,'Rigidbody2D']]],
-  ['_7escene_13',['~Scene',['../class_scene.html#aa0a5be58e2ee2d1fdafc5fb46b5e661e',1,'Scene']]],
-  ['_7esceneservice_14',['~SceneService',['../class_scene_service.html#a3878c5173da198932539effef20f8961',1,'SceneService']]],
-  ['_7esdlsoundinstance_15',['~SDLSoundInstance',['../class_s_d_l_sound_instance.html#a6e4d67902cf3b6563333e030b1efc6e8',1,'SDLSoundInstance']]],
-  ['_7esdlsoundresource_16',['~SDLSoundResource',['../class_s_d_l_sound_resource.html#a48bbd8502a17973baf98e92f34625da7',1,'SDLSoundResource']]],
-  ['_7esoundfactory_17',['~SoundFactory',['../class_sound_factory.html#abd32f31d14df855cfea7b1417a61ebe3',1,'SoundFactory']]],
-  ['_7esoundinstance_18',['~SoundInstance',['../class_sound_instance.html#aae84fc61fb24512d7506a3c4b4c14279',1,'SoundInstance']]],
-  ['_7esoundresource_19',['~SoundResource',['../class_sound_resource.html#aaa392404ed48a13d3a805107a622efbd',1,'SoundResource']]]
+  ['width_0',['width',['../class_texture.html#aff7577b22e5c2a3b0318b69b5ab27285',1,'Texture::width()'],['../class_box_collider2_d.html#a9f90413c3f178c3b29b33c508694a583',1,'BoxCollider2D::width() const noexcept'],['../class_box_collider2_d.html#a176a68215cefbc73fc8390f888eb072e',1,'BoxCollider2D::width(float value) noexcept']]],
+  ['window_1',['window',['../class_window.html#a2786c2808ad53b91c74fe54ce08aa8d7',1,'Window::Window()'],['../class_renderer.html#a2091230e41550ba2564272fbf2fc0fac',1,'Renderer::window()'],['../class_rendering_service.html#aaadc92a91a4c926e37a7c6fdfbdca133',1,'RenderingService::window()']]],
+  ['world_2',['world',['../class_physics_service.html#a43a33b5ea02a11cfb0dec5b9347b3351',1,'PhysicsService']]],
+  ['world_5fexists_3',['world_exists',['../class_physics_world.html#a659fe2483ac7a9c902138ecabe798000',1,'PhysicsWorld']]],
+  ['world_5fid_4',['world_id',['../class_physics_world.html#ae42f6df177998535486454b347a103f0',1,'PhysicsWorld']]]
 ];

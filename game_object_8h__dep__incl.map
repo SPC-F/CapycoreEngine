@@ -1,11 +1,15 @@
 <map id="include/engine/public/gameObject.h" name="include/engine/public/gameObject.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="138,5,298,45"/>
-<area shape="rect" id="Node000002" href="$renderer_8h.html" title=" " alt="" coords="47,93,205,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,57,148,95,145,91,186,53"/>
-<area shape="rect" id="Node000004" href="$scene_8h.html" title=" " alt="" coords="237,93,397,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="252,52,297,91,293,95,248,56"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="271,5,431,45"/>
+<area shape="rect" id="Node000002" href="$renderer_8h.html" title=" " alt="" coords="61,93,220,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="294,53,188,96,186,91,292,48"/>
+<area shape="rect" id="Node000004" href="$behavior_8h.html" title=" " alt="" coords="271,93,431,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="354,59,354,93,349,93,349,59"/>
+<area shape="rect" id="Node000006" href="$scene_8h.html" title=" " alt="" coords="469,93,629,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="408,48,507,91,504,96,406,53"/>
 <area shape="rect" id="Node000003" href="$rendering_service_8h.html" title=" " alt="" coords="5,181,220,221"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="124,147,118,182,113,181,118,146"/>
-<area shape="rect" id="Node000005" href="$scene__service_8h.html" title=" " alt="" coords="245,181,405,221"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="322,147,326,181,320,181,317,147"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="133,147,121,182,116,180,128,146"/>
+<area shape="rect" id="Node000005" href="$behaviorscript_8h.html" title=" " alt="" coords="244,181,459,221"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="354,147,354,181,349,181,349,147"/>
+<area shape="rect" id="Node000007" href="$scene__service_8h.html" title=" " alt="" coords="483,181,643,221"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="557,146,563,181,557,182,552,147"/>
 </map>

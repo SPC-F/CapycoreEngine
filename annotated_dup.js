@@ -3,6 +3,8 @@ var annotated_dup =
     [ "AssetService", "class_asset_service.html", "class_asset_service" ],
     [ "AudioService", "class_audio_service.html", "class_audio_service" ],
     [ "AudioSource", "class_audio_source.html", "class_audio_source" ],
+    [ "Behavior", "class_behavior.html", "class_behavior" ],
+    [ "BehaviorScript", "class_behavior_script.html", "class_behavior_script" ],
     [ "Body2D", "struct_body2_d.html", "struct_body2_d" ],
     [ "Body2DTransform", "struct_body2_d_transform.html", "struct_body2_d_transform" ],
     [ "BodyDistance2D", "struct_body_distance2_d.html", "struct_body_distance2_d" ],

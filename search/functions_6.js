@@ -1,5 +1,25 @@
 var searchData=
 [
-  ['has_5fsound_5finstance_0',['has_sound_instance',['../class_audio_service.html#a423a93d3dc2681370bd93163a08cabdd',1,'AudioService']]],
-  ['height_1',['height',['../class_texture.html#a24f96b4b59aee0b9963c4b48134ca9ef',1,'Texture::height()'],['../class_box_collider2_d.html#a5ca65c67f242e198e5fd3a362f512f94',1,'BoxCollider2D::height() const noexcept'],['../class_box_collider2_d.html#a22f29b074ceb8045235ef782039a7461',1,'BoxCollider2D::height(float value) noexcept']]]
+  ['game_5fobject_0',['game_object',['../class_behavior.html#a08b8c4ce381114ed5b36c256747a57b5',1,'Behavior']]],
+  ['game_5fobjects_1',['game_objects',['../class_scene.html#a7a3c0c308ec7be21ed4bde91d5dc5be8',1,'Scene']]],
+  ['gameobject_2',['gameobject',['../class_game_object.html#ab2c6683579548906dc8432bbd823fd76',1,'GameObject::GameObject(Scene &amp;scene)'],['../class_game_object.html#aae3335f16f4c318950ef8b9b5fd1d368',1,'GameObject::GameObject(const GameObject &amp;)=delete'],['../class_game_object.html#aec073a2a8dd3d4874540cb8b650ff1e4',1,'GameObject::GameObject(GameObject &amp;&amp;)=default']]],
+  ['generate_5fuuid_5fv4_3',['generate_uuid_v4',['../namespaceuuid.html#a9a1420474ea2cd2392dfc8703b0ab281',1,'uuid']]],
+  ['genericsoundinstance_4',['GenericSoundInstance',['../class_generic_sound_instance.html#aec39f381ddf4ebb0deb748fc4fe18b41',1,'GenericSoundInstance']]],
+  ['get_5fall_5fplaying_5fsounds_5',['get_all_playing_sounds',['../class_audio_service.html#a5133714b707abf09be07f41a1543d4f8',1,'AudioService']]],
+  ['get_5fbody_5ftransform_6',['get_body_transform',['../struct_body2_d.html#a3fa540cae4cc98f29e1ac1b755f71a8b',1,'Body2D']]],
+  ['get_5fbody_5fvelocity_7',['get_body_velocity',['../struct_body2_d.html#a8535ef7a5fb4b5d815fb82c151b84120',1,'Body2D']]],
+  ['get_5fcomponent_8',['get_component',['../class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc',1,'GameObject::get_component()'],['../class_behavior.html#a024cf1e2006a8833d6e15183339584a3',1,'Behavior::get_component()']]],
+  ['get_5fcomponent_5ffrom_5fchildren_9',['get_component_from_children',['../class_behavior.html#a18323b581e46e0bc46750d34a0a69320',1,'Behavior']]],
+  ['get_5fcomponent_5fin_5fparent_10',['get_component_in_parent',['../class_behavior.html#ae3f46f2c17fe854434a168c11406d4a2',1,'Behavior']]],
+  ['get_5fcomponents_11',['get_components',['../class_game_object.html#aef31e6fca036256ac8eee5cc1b0963c4',1,'GameObject::get_components()'],['../class_behavior.html#a28497802051c668268e7271ec9ceb6a7',1,'Behavior::get_components()']]],
+  ['get_5fcomponents_5ffrom_5fchildren_12',['get_components_from_children',['../class_behavior.html#ab6dd445cb82a7694f20cdfcd54615156',1,'Behavior::get_components_from_children()'],['../class_game_object.html#aa58c30b6156e37604a5e318b728a22e5',1,'GameObject::get_components_from_children()']]],
+  ['get_5fcomponents_5fin_5fparent_13',['get_components_in_parent',['../class_behavior.html#a44d8a7c9bc89e30d5f53d345798dff50',1,'Behavior']]],
+  ['get_5fgame_5fobject_14',['get_game_object',['../class_scene.html#a5fd424c55ac36c17a8f48d7b74007cf6',1,'Scene']]],
+  ['get_5frigidbody_15',['get_rigidbody',['../class_collider2_d.html#a0230d0acd5bd86ff302ac5485b840e7e',1,'Collider2D']]],
+  ['get_5fservice_16',['get_service',['../class_service_container.html#a3739f5de7c829e73fadd73cf6d7512ba',1,'ServiceContainer']]],
+  ['get_5fsound_5finstance_17',['get_sound_instance',['../class_audio_service.html#af828eb86dec0e61f02121b6130cc44e7',1,'AudioService']]],
+  ['get_5fsound_5fresource_18',['get_sound_resource',['../class_audio_service.html#a89ef9feb5ea0e3135374c654e1b868e1',1,'AudioService']]],
+  ['gravity_5fscale_19',['gravity_scale',['../class_rigidbody2_d.html#ae164bca3fdc43f62c96c58cd7966446b',1,'Rigidbody2D::gravity_scale() const noexcept'],['../class_rigidbody2_d.html#a64b4fad914381025089d94ad4cd2e28b',1,'Rigidbody2D::gravity_scale(float value) noexcept']]],
+  ['gravity_5fx_20',['gravity_x',['../class_physics_world.html#a5763183d7f2c57ddfa12d171e0052585',1,'PhysicsWorld::gravity_x() const noexcept'],['../class_physics_world.html#a4eea68f69a725e5b94dea83c073e3d22',1,'PhysicsWorld::gravity_x(float gx) noexcept']]],
+  ['gravity_5fy_21',['gravity_y',['../class_physics_world.html#ab5fa8faad554bf39a00393a1c49de57e',1,'PhysicsWorld::gravity_y() const noexcept'],['../class_physics_world.html#a494fa3f3ccb8210dae83e85d0cb7e1e1',1,'PhysicsWorld::gravity_y(float gy) noexcept']]]
 ];
