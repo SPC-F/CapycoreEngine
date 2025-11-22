@@ -3,7 +3,7 @@
 #include <engine/core/engine.h>
 #include <engine/core/rendering/assetService.h>
 #include <engine/public/components/ui/image.h>
-#include <engine/public/components/ui/ui_object.h>
+#include <engine/public/ui/ui_object.h>
 
 constexpr float default_texture_width = 32;
 constexpr float default_texture_height = 32;

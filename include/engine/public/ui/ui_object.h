@@ -37,25 +37,17 @@ public:
      */
     virtual void render() const = 0;
 
-    [[nodiscard]] 
-    float width() const;
+    [[nodiscard]] float width() const;
     UIObject& width(float width);
 
-    [[nodiscard]] 
-    float height() const;
+    [[nodiscard]] float height() const;
     UIObject& height(float height);
 
-    [[nodiscard]] 
-    Point pivot() const;
+    [[nodiscard]] Point pivot() const;
     UIObject& pivot(Point pivot);
 
-    [[nodiscard]] 
-    Point anchor() const;
+    [[nodiscard]] Point anchor() const;
     UIObject& anchor(Point anchor);
-
-    [[nodiscard]]
-    Scene& scene() const noexcept;
-    UIObject& scene(Scene& scene);
 
 protected:
     float width_;

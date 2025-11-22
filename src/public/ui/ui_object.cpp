@@ -1,4 +1,4 @@
-#include <engine/public/components/ui/ui_object.h>
+#include <engine/public/ui/ui_object.h>
 
 UIObject::UIObject(
     float width, 

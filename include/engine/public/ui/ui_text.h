@@ -1,6 +1,6 @@
 #pragma once
 
-#include <engine/public/components/ui/ui_object.h>
+#include <engine/public/ui/ui_object.h>
 #include <engine/public/util/color.h>
 
 /**
@@ -9,6 +9,10 @@
  * UIText represents a text element in the user interface. It inherits from UIObject
  * and adds properties specific to text rendering, such as the text content, font name,
  * font size, and color.
+ * 
+ * In its core UIText is a game object with UIObject as its base class. The reason for this class
+ * is to encapsulate text-specific functionality and state management, making it easier to
+ * create and manage text elements within the UI system.
  */
 class UIText : public UIObject
 {

@@ -199,7 +199,7 @@ std::reference_wrapper<Texture> AssetService::get_default_texture() {
     return *textures_.back();
 }
 
-std::optional<std::reference_wrapper<Font>> AssetService::try_get_font(const std::string& font_name, int8_t font_size) const {
+std::optional<std::reference_wrapper<Font>> AssetService::try_get_font(const std::string& font_name, int font_size) const {
     const std::string key = font_name + "_" + std::to_string(font_size);
     auto it = font_cache_.find(key);
 
@@ -210,11 +210,11 @@ std::optional<std::reference_wrapper<Font>> AssetService::try_get_font(const std
     return std::nullopt;
 }
 
-std::reference_wrapper<Font> AssetService::register_font(const std::string font_name, const std::string font_path, int8_t font_size) {
+std::reference_wrapper<Font> AssetService::register_font(const std::string font_name, const std::string font_path, int font_size) {
     const std::string key = font_name + "_" + std::to_string(font_size);
 
     std::unique_ptr<TTF_Font, void(*)(TTF_Font*)> font = std::unique_ptr<TTF_Font, void(*)(TTF_Font*)>(
-        TTF_OpenFont(font_path.c_str(), static_cast<int>(font_size)),
+        TTF_OpenFont(font_path.c_str(), font_size),
         &TTF_CloseFont
     );
 

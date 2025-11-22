@@ -1,4 +1,4 @@
-#include <engine/public/components/ui/ui_text.h>
+#include <engine/public/ui/ui_text.h>
 
 #include <engine/public/components/ui/text.h>
 

@@ -22,11 +22,8 @@ namespace {
 #include <engine/core/rendering/assetService.h>
 #include <engine/core/rendering/renderingService.h>
 
-#include <engine/public/components/ui/ui_text.h>
-#include <engine/public/components/ui/ui_button.h>
-#include <engine/public/components/ui/text.h>
-#include <engine/public/components/ui/image.h>
-
+#include <engine/public/ui/ui_text.h>
+#include <engine/public/ui/ui_button.h>
 
 void sdl_debug_loop() {
     bool running = true;
@@ -52,46 +49,72 @@ void yes() {
     asset_service.load_from_resource("Fred_Sprites_REDO.png", "FRED", 12, 6);
     asset_service.register_texture("FRED", "TestTexture", 0);
 
-    asset_service.load_from_resource("ui.png", "UI", 12, 12);
-    asset_service.register_texture("UI", "ButtonNormal", 36);
+    asset_service.load_from_resource("ui/buttons_big.png", "UI", 4, 2);
+    asset_service.register_texture("UI", "ButtonBlue", 0);
+    asset_service.register_texture("UI", "ButtonRed", 1);
+    asset_service.register_texture("UI", "ButtonYellow", 2);
 
     auto& scene = scene_service.add_scene("SomeScene");
 
-    // auto ui_text = std::make_unique<UIText>(
-    //     "Hello, World!",
-    //     "Roboto-Bold",
-    //     "resources/fonts/roboto/Roboto-Bold.ttf",
-    //     200.0f,
-    //     50.0f,
-    //     Point{0.5f, 0.5f},
-    //     Point{0.5f, 0.5f},
-    //     scene
-    // );
-    // ui_text->font_size(24);
-    // ui_text->color(Color{0, 0, 0, 255});
-
-    // scene.add_game_object(std::move(ui_text));
-
-    auto ui_button = std::make_unique<UIButton>(
-        100.0f,
+    auto& title = scene.add_game_object<UIText>(
+        "CapyBrawla",
+        "ByteBounce",
+        "resources/fonts/bytebounce/ByteBounce.ttf",
+        200.0f,
         50.0f,
         Point{0.5f, 0.5f},
         Point{0.5f, 0.5f},
-        scene,
-        "Click Me",
-        "Roboto-Bold",
-        "resources/fonts/roboto/Roboto-Bold.ttf",
-        ""
+        scene
     );
+    title.transform().position({310.0f, 100.0f, 0.0f});
+    title.font_size(94);
+    title.color(Color{0, 0, 0, 255});
+ 
+    // auto& start_button = scene.add_game_object<UIButton>(
+    //     180.0f,
+    //     60.0f,
+    //     Point{0.5f, 0.5f},
+    //     Point{0.5f, 0.5f},
+    //     scene,
+    //     "Start",
+    //     "ByteBounce",
+    //     "resources/fonts/bytebounce/ByteBounce.ttf",
+    //     "ButtonBlue"
+    // );
+    // start_button.transform().position({310.0f, 200.0f, 0.0f});
+    // start_button.label_color(Color{255, 255, 255, 255});
+    // start_button.font_size(32);
 
-    auto& text = ui_button->get_component<Text>()->get();
-    text.color(Color{0, 0, 0, 255});
+    // auto& tutorial_button = scene.add_game_object<UIButton>(
+    //     180.0f,
+    //     60.0f,
+    //     Point{0.5f, 0.5f},
+    //     Point{0.5f, 0.5f},
+    //     scene,
+    //     "Tutorial",
+    //     "ByteBounce",
+    //     "resources/fonts/bytebounce/ByteBounce.ttf",
+    //     "ButtonYellow"
+    // );
+    // tutorial_button.transform().position({310.0f, 300.0f, 0.0f});
+    // tutorial_button.label_color(Color{255, 255, 255, 255});
+    // tutorial_button.font_size(32);
 
-    auto& image = ui_button->get_component<Image>()->get();
-    image.texture("ButtonNormal");
-    image.color(Color{200, 200, 200, 255});
+    // auto& quit_button = scene.add_game_object<UIButton>(
+    //     180.0f,
+    //     60.0f,
+    //     Point{0.5f, 0.5f},
+    //     Point{0.5f, 0.5f},
+    //     scene,
+    //     "Quit",
+    //     "ByteBounce",
+    //     "resources/fonts/bytebounce/ByteBounce.ttf",
+    //     "ButtonRed"
+    // );
+    // quit_button.transform().position({310.0f, 400.0f, 0.0f});
+    // quit_button.label_color(Color{255, 255, 255, 255});
+    // quit_button.font_size(32);
 
-    scene.add_game_object(std::move(ui_button));
 
     // GameObject& game_object = scene.add_game_object("SomeGameObject");
     // game_object.transform().scale({3, 3, 1});

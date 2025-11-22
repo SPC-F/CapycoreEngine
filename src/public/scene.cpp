@@ -1,10 +1,12 @@
 #include <engine/public/scene.h>
 
 #include <SDL3/sdl.h>
+#include <algorithm>
 
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/engine.h>
-#include <algorithm>
+#include <engine/input/input_manager.h>
+#include <engine/input/i_input_provider.h>
 
 Scene::Scene(std::string name)
     : name_{ std::move(name) },

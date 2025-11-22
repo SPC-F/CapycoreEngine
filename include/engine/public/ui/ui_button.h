@@ -2,7 +2,7 @@
 
 #include <functional>
 
-#include <engine/public/components/ui/ui_object.h>
+#include <engine/public/ui/ui_object.h>
 #include <engine/public/util/color.h>
 
 /**
@@ -26,6 +26,10 @@ struct UIButtonState {
  * UIButton represents a button element in the user interface. It inherits from UIObject
  * and adds properties and behaviors specific to buttons, such as click handling,
  * hover state, press state, and visual appearance.
+ * 
+ * In its core UIButton is a game object with UIObject as its base class. The reason for this class
+ * is to encapsulate button-specific functionality and state management, making it easier to
+ * create and manage buttons within the UI system.
  */
 class UIButton : public UIObject
 {
@@ -65,16 +69,23 @@ public:
 
     void reset_state();
 
-    [[nodiscard]]
-    Color color() const;
-    UIButton& color(Color color);
+    [[nodiscard]] std::string label() const;
+    UIButton& label(const std::string& label);
+
+    [[nodiscard]] Color label_color() const;
+    UIButton& label_color(const Color& color);
+
+    [[nodiscard]] int font_size() const;
+    UIButton& font_size(int size);
+
+    [[nodiscard]] Color button_color() const;
+    UIButton& button_color(const Color& color);
 
     [[nodiscard]]
     UIButtonState& state();
     UIButton& state(UIButtonState state);
 
 private:
-    Color color_;
     UIButtonState state_;
     std::vector<std::function<void(UIButton&)>> on_press_handlers_;
 };

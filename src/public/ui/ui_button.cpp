@@ -1,4 +1,4 @@
-#include <engine/public/components/ui/ui_button.h>
+#include <engine/public/ui/ui_button.h>
 
 #include <engine/public/components/ui/text.h>
 #include <engine/public/components/ui/image.h>
@@ -17,16 +17,22 @@ UIButton::UIButton(
     std::string sprite_path
 ) : 
     UIObject(width, height, pivot, anchor, scene),
-    color_(default_color_value, default_color_value, default_color_value, default_color_value),
     state_() 
 {
+    Color default_color{
+        default_color_value,
+        default_color_value,
+        default_color_value,
+        default_color_value
+    };
+
     auto& sprite = add_component<Image>(
         sprite_path,
         0,
         0,
         static_cast<int>(width),
         static_cast<int>(height),
-        color_
+        default_color
     );
 
     add_component<Text>(
@@ -34,7 +40,7 @@ UIButton::UIButton(
         font,
         font_path,
         16,
-        color_
+        default_color
     );
 }
 
@@ -120,12 +126,47 @@ void UIButton::reset_state() {
     state_ = UIButtonState{};
 }
 
-Color UIButton::color() const {
-    return color_;
+std::string UIButton::label() const {
+    auto& text = get_component<Text>()->get();
+    return text.text();
 }
 
-UIButton& UIButton::color(Color color) {
-    color_ = color;
+UIButton& UIButton::label(const std::string& label) {
+    auto& text = get_component<Text>()->get();
+    text.text(label);
+    return *this;
+}
+
+Color UIButton::label_color() const {
+    auto& text = get_component<Text>()->get();
+    return text.color();
+}
+
+UIButton& UIButton::label_color(const Color& color) {
+    auto& text = get_component<Text>()->get();
+    text.color(color);
+    return *this;
+}
+
+int UIButton::font_size() const {
+    auto& text = get_component<Text>()->get();
+    return text.font_size();
+}
+
+UIButton& UIButton::font_size(int size) {
+    auto& text = get_component<Text>()->get();
+    text.font_size(size);
+    return *this;
+}
+
+Color UIButton::button_color() const {
+    auto& image = get_component<Image>()->get();
+    return image.color();
+}
+
+UIButton& UIButton::button_color(const Color& color) {
+    auto& image = get_component<Image>()->get();
+    image.color(color);
     return *this;
 }
 
