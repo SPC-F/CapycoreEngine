@@ -39,7 +39,7 @@ void Scene::execute_listeners(const std::vector<Scene::listener_function_t> &lis
     }
 }
 
-void Scene::game_loop() {
+void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
     float accumulator = accumulator_default_value;
 
     auto& rendering_service = Engine::instance().services->get_service<RenderingService>().get();
