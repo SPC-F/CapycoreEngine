@@ -1,6 +1,6 @@
 #include <engine/core/rendering/renderer.h>
 
-#include <SDL3/sdl.h>
+#include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
 
 #include <engine/core/rendering/texture.h>
@@ -8,6 +8,7 @@
 
 constexpr int default_min_aspect_width = 800;
 constexpr int default_min_aspect_height = 600;
+
 Renderer::Renderer() : Renderer(default_min_aspect_width, default_min_aspect_height, "CapyCore", RendererFlags::None) {}
 
 Renderer::Renderer(int min_aspect_width, int min_aspect_height, const std::string& title, RendererFlags flags)
@@ -63,7 +64,7 @@ void Renderer::clear() const {
     SDL_RenderClear(sdl_renderer_.get());
 }
 
-void Renderer::render(const std::vector<std::reference_wrapper<GameObject>>& objects) {
+void Renderer::render(std::vector<std::reference_wrapper<GameObject>>& objects) {
     SDL_RenderClear(sdl_renderer_.get());
 
     for (auto game_obj_wrapper : objects) {

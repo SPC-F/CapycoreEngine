@@ -12,7 +12,7 @@
  * They hold a unique pointer to an IRenderingStrategy which defines how the component is rendered.
  * This class extends the Component class and provides functionality to set and retrieve the rendering strategy.
  */
-class Renderable : public Component {
+class Renderable : public Component { // NOLINT
 protected:
     std::unique_ptr<IRenderingStrategy> render_strategy_;
 public:

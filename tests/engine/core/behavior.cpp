@@ -5,7 +5,7 @@
 #include <engine/public/behavior.h>
 #include <engine/public/component.h>
 #include <engine/public/components/behaviorscript.h>
-#include <engine/public/gameobject.h>
+#include <engine/public/gameObject.h>
 #include <engine/public/scene.h>
 #include <engine/public/scene_service.h>
 
