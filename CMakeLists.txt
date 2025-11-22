@@ -47,6 +47,7 @@ if(WIN32)
                 if(NOT DEFINED FREETYPE_LIBRARY)
                         set(FREETYPE_LIBRARY "${FREETYPE_ROOT}/lib/freetype.lib" CACHE FILEPATH "" FORCE)
                 endif()
+                set(FREETYPE_DLL "${FREETYPE_ROOT}/bin/freetype.dll")
 
                 add_library(Freetype::Freetype UNKNOWN IMPORTED)
                 set_target_properties(Freetype::Freetype PROPERTIES
