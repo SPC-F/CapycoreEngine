@@ -4,6 +4,7 @@
 
 #include <engine/core/rendering/strategies/irendering_strategy.h>
 #include <engine/public/component.h>
+#include <engine/public/util/color.h>
 
 /**
  * @brief SDL implementation of the sprite rendering strategy.
@@ -15,6 +16,9 @@
 class SdlSpriteStrategy final : public IRenderingStrategy{
 private:
     SDL_Renderer& sdl_renderer_;
+
+    Color get_default_sprite_color(SDL_Texture* texture);
+    void set_sprite_color(const Color& color, SDL_Texture* texture);
 public:
     SdlSpriteStrategy(SDL_Renderer& sdl_renderer);
     ~SdlSpriteStrategy() override = default;

@@ -23,6 +23,8 @@ private:
     int ordering_layer_;
     Color color_;
 
+    std::reference_wrapper<Texture> get_texture_for(const std::string& name);
+
 public:
     Sprite(const std::string& sprite, Color color, int flip_x, int flip_y, int sorting_layer, int ordering_layer);
 

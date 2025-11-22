@@ -1,10 +1,16 @@
 #include <engine/public/scene.h>
 
 #include <SDL3/SDL.h>
+#include <algorithm>
 
+#include <engine/util/memory.h>
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/engine.h>
-#include <algorithm>
+#include <engine/input/input_manager.h>
+#include <engine/input/i_input_provider.h>
+
+constexpr float accumulator_default_value = 0.0f;
+constexpr float fixed_step = 1.0f / 60.0f; // ~60 fps
 
 Scene::Scene(const std::string& name) // NOLINT
     : name_{ name },
@@ -34,23 +40,14 @@ void Scene::execute_listeners(const std::vector<Scene::listener_function_t> &lis
 }
 
 void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
-    constexpr float accumulator_default_value = 0.0f;
-    constexpr float fixed_step = 1.0f / 60.0f; // ~60 fps
-
     float accumulator = accumulator_default_value;
 
-    Uint64 last = SDL_GetPerformanceCounter();
-    auto freq = static_cast<float>(SDL_GetPerformanceFrequency());
-
-    auto& rendering_service = Engine::instance()
-        .services
-        ->get_service<RenderingService>()
-        .get();
+    auto& rendering_service = Engine::instance().services->get_service<RenderingService>().get();
+    rendering_service.init_frame_timer();
 
     while (is_running()) {
-        Uint64 now = SDL_GetPerformanceCounter();
-        float frame_dt = static_cast<float>(now - last) / freq * time_scale_;
-        last = now;
+        rendering_service.update_frame_time(time_scale_);
+        float frame_dt = rendering_service.delta_time();
 
         accumulator += frame_dt;
 
@@ -62,12 +59,18 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
         }
 
         while (accumulator >= fixed_step) {
-            //physics(fixed_step, 8, 3);
+            // creates a fixed step for input handling and physics updates
             accumulator -= fixed_step;
         }
 
-        auto game_objects = this->game_objects();
-        rendering_service.draw(game_objects);
+        // So tracy logs all allocations, even the past ones in previous frames
+        // It does this to build a complete timeline of allocations for profiling
+        // We don't want that overhead during normal frame rendering as clearing is buggy here due to the stack
+        // So we run the rendering without tracy tracking (if tracy is enabled)
+        run_without_tracy([&]() {
+            auto game_objects = this->game_objects();
+            rendering_service.draw(game_objects);
+        });
     }
 }
 

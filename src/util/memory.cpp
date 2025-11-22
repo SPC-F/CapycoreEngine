@@ -58,6 +58,22 @@ void tracy_memory_shutdown()
     tracy_dump_leaks();
 }
 
+void run_without_tracy(std::function<void()> func) {
+    bool previous_state;
+    {
+        std::lock_guard<std::recursive_mutex> lock(g_mutex);
+        previous_state = g_tracking_enabled;
+        g_tracking_enabled = false;
+    }
+
+    func();
+
+    {
+        std::lock_guard<std::recursive_mutex> lock(g_mutex);
+        g_tracking_enabled = previous_state;
+    }
+}
+
 // =========================================================
 // Override new / delete operators
 // =========================================================
