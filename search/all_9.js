@@ -14,7 +14,7 @@ var searchData=
   ['inputmanager_11',['InputManager',['../class_input_manager.html',1,'']]],
   ['inputsystem_12',['InputSystem',['../class_input_system.html',1,'']]],
   ['insert_13',['insert',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44ae0df5f3dfd2650ae5be9993434e2b2c0',1,'key_code.h']]],
-  ['instance_14',['instance',['../class_engine.html#acca26a5c853e66d423f277e3c4cb9591',1,'Engine::instance()'],['../class_audio_source.html#a32f8b321701c00a75ba077b93dbc9641',1,'AudioSource::instance()']]],
+  ['instance_14',['instance',['../class_simple_storage.html#ab37d75132d87e6537297e6e92fee88fc',1,'SimpleStorage::instance()'],['../class_engine.html#acca26a5c853e66d423f277e3c4cb9591',1,'Engine::instance()'],['../class_audio_source.html#a32f8b321701c00a75ba077b93dbc9641',1,'AudioSource::instance()']]],
   ['is_5factive_15',['is_active',['../class_game_object.html#a56047ef342a5a2b87938a2982346e2d0',1,'GameObject']]],
   ['is_5factive_5fin_5fworld_16',['is_active_in_world',['../class_game_object.html#a3ba32ed8f5e202a537cad8a4f0fd7d2d',1,'GameObject']]],
   ['is_5fbullet_17',['is_bullet',['../struct_physics_creation_flags.html#ac321755ab6d03148127170833516fcae',1,'PhysicsCreationFlags']]],

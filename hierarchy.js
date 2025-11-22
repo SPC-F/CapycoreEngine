@@ -47,6 +47,7 @@ var hierarchy =
     [ "ServiceContainer", "class_service_container.html", null ],
     [ "Shape2D", "struct_shape2_d.html", null ],
     [ "ShapeType2D", "struct_shape_type2_d.html", null ],
+    [ "SimpleStorage", "class_simple_storage.html", null ],
     [ "SoundFactory", "class_sound_factory.html", null ],
     [ "SoundInstance", "class_sound_instance.html", [
       [ "GenericSoundInstance", "class_generic_sound_instance.html", null ],

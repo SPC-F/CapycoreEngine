@@ -13,8 +13,9 @@ var searchData=
   ['tracy_5fmemory_5finit_10',['tracy_memory_init',['../memory_8h.html#ad4363dd01b003ce9403bb11889b6dee0',1,'memory.h']]],
   ['tracy_5fmemory_5fshutdown_11',['tracy_memory_shutdown',['../memory_8h.html#a99ab95e12af5ddfa366db0bd61de7f47',1,'memory.h']]],
   ['transform_12',['transform',['../class_transform.html#a44161a6135af0e513cb9f46eeabdd796',1,'Transform::Transform(Vector3 position, float rotation, Vector3 scale, std::optional&lt; std::reference_wrapper&lt; Transform &gt; &gt; parent)'],['../class_transform.html#a13677e20f996e58e5be882e529812581',1,'Transform::Transform(Vector3 position, float rotation, Vector3 scale)'],['../class_transform.html#acbadae96d66cba8840206c58d0547030',1,'Transform::Transform(Vector3 position)'],['../class_transform.html#aa08ca4266efabc768973cdeea51945ab',1,'Transform::Transform()'],['../class_game_object.html#a0ed7c62875e7dd6c83fb1c78f4ba373f',1,'GameObject::transform()'],['../class_game_object.html#ad3bc5c0607330f392cb917bfce1e7e29',1,'GameObject::transform(Transform transform)'],['../class_behavior.html#aea1b793f37a7d3b96b652e4058b71e15',1,'Behavior::transform()']]],
-  ['try_5fget_5fservice_13',['try_get_service',['../class_service_container.html#aedf0e2021bcc3624de5f185d2da63aa9',1,'ServiceContainer']]],
-  ['try_5fget_5fspritesheet_14',['try_get_spritesheet',['../class_asset_service.html#a9e54c11ab154edb7d3181c1a6e7269a5',1,'AssetService']]],
-  ['try_5fget_5ftexture_15',['try_get_texture',['../class_asset_service.html#a75bdf741bcd9d9d8a1b1d1a2079e7b7d',1,'AssetService']]],
-  ['type_16',['type',['../class_sound_resource.html#aef7f6e10d324636a9eb1c00b9e140240',1,'SoundResource::type()'],['../class_rigidbody2_d.html#abd2afecd96cb5536f89eb8faf0e4bab6',1,'Rigidbody2D::type() const noexcept'],['../class_rigidbody2_d.html#ae22edd28e8415090a66e0646af0c7050',1,'Rigidbody2D::type(BodyType2D::Type value) noexcept']]]
+  ['try_5fget_13',['try_get',['../class_simple_storage.html#a284071a747404fbfd575a8d71b9e3276',1,'SimpleStorage']]],
+  ['try_5fget_5fservice_14',['try_get_service',['../class_service_container.html#aedf0e2021bcc3624de5f185d2da63aa9',1,'ServiceContainer']]],
+  ['try_5fget_5fspritesheet_15',['try_get_spritesheet',['../class_asset_service.html#a9e54c11ab154edb7d3181c1a6e7269a5',1,'AssetService']]],
+  ['try_5fget_5ftexture_16',['try_get_texture',['../class_asset_service.html#a75bdf741bcd9d9d8a1b1d1a2079e7b7d',1,'AssetService']]],
+  ['type_17',['type',['../class_sound_resource.html#aef7f6e10d324636a9eb1c00b9e140240',1,'SoundResource::type()'],['../class_rigidbody2_d.html#abd2afecd96cb5536f89eb8faf0e4bab6',1,'Rigidbody2D::type() const noexcept'],['../class_rigidbody2_d.html#ae22edd28e8415090a66e0646af0c7050',1,'Rigidbody2D::type(BodyType2D::Type value) noexcept']]]
 ];

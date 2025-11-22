@@ -5,7 +5,7 @@ var searchData=
   ['circlecollider2d_2',['CircleCollider2D',['../class_circle_collider2_d.html#a23949bc26b5a1076ac6824b7f438acab',1,'CircleCollider2D']]],
   ['clear_3',['clear',['../class_renderer.html#ab084c79787c3e2857ddc89a55d9955cf',1,'Renderer']]],
   ['collider2d_4',['Collider2D',['../class_collider2_d.html#ae2f71aa62f6a2c4580d1c4febe5ca0d7',1,'Collider2D']]],
-  ['color_5',['color',['../class_color.html#a912df0cb52b88689ce6b721d3cee3966',1,'Color::Color(unsigned short r, unsigned short g, unsigned short b, unsigned short a)'],['../class_color.html#a9a742cbe9f9f4037f5d9f4e81a9b2428',1,'Color::Color()'],['../class_sprite.html#a99304af697307c4847c3e65ce8a3e768',1,'Sprite::color() const'],['../class_sprite.html#af874503eae32060ce4a3fe078f912d46',1,'Sprite::color(Color color)']]],
+  ['color_5',['color',['../class_sprite.html#a99304af697307c4847c3e65ce8a3e768',1,'Sprite::color() const'],['../class_sprite.html#af874503eae32060ce4a3fe078f912d46',1,'Sprite::color(Color color)'],['../class_color.html#a912df0cb52b88689ce6b721d3cee3966',1,'Color::Color(unsigned short r, unsigned short g, unsigned short b, unsigned short a)'],['../class_color.html#a9a742cbe9f9f4037f5d9f4e81a9b2428',1,'Color::Color()']]],
   ['component_6',['Component',['../class_component.html#a8775db6d1a2c1afc2e77cd3c8f39da6f',1,'Component']]],
   ['contained_5fscene_5fnames_7',['contained_scene_names',['../class_scene_service.html#a29ac879ac89dcc39f68d436b2a0869d8',1,'SceneService']]],
   ['convert_5fbox2d_5fangle_5fto_5fradians_8',['convert_box2d_angle_to_radians',['../namespace_physics_math.html#a2529f79ad0f1215b032cc8d0d6604a55',1,'PhysicsMath']]],

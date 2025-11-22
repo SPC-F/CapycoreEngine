@@ -8,8 +8,9 @@ var searchData=
   ['servicecontainer_5',['ServiceContainer',['../class_service_container.html',1,'']]],
   ['shape2d_6',['Shape2D',['../struct_shape2_d.html',1,'']]],
   ['shapetype2d_7',['ShapeType2D',['../struct_shape_type2_d.html',1,'']]],
-  ['soundfactory_8',['SoundFactory',['../class_sound_factory.html',1,'']]],
-  ['soundinstance_9',['SoundInstance',['../class_sound_instance.html',1,'']]],
-  ['soundresource_10',['SoundResource',['../class_sound_resource.html',1,'']]],
-  ['sprite_11',['Sprite',['../class_sprite.html',1,'']]]
+  ['simplestorage_8',['SimpleStorage',['../class_simple_storage.html',1,'']]],
+  ['soundfactory_9',['SoundFactory',['../class_sound_factory.html',1,'']]],
+  ['soundinstance_10',['SoundInstance',['../class_sound_instance.html',1,'']]],
+  ['soundresource_11',['SoundResource',['../class_sound_resource.html',1,'']]],
+  ['sprite_12',['Sprite',['../class_sprite.html',1,'']]]
 ];

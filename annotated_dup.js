@@ -44,6 +44,7 @@ var annotated_dup =
     [ "ServiceContainer", "class_service_container.html", "class_service_container" ],
     [ "Shape2D", "struct_shape2_d.html", "struct_shape2_d" ],
     [ "ShapeType2D", "struct_shape_type2_d.html", "struct_shape_type2_d" ],
+    [ "SimpleStorage", "class_simple_storage.html", "class_simple_storage" ],
     [ "SoundFactory", "class_sound_factory.html", "class_sound_factory" ],
     [ "SoundInstance", "class_sound_instance.html", "class_sound_instance" ],
     [ "SoundResource", "class_sound_resource.html", "class_sound_resource" ],
