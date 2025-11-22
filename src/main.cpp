@@ -13,7 +13,6 @@ namespace {
 
 int main() {
     tracy_init();
-
     tracy_shutdown();
     return 0;
 }

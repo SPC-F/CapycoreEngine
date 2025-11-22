@@ -23,8 +23,6 @@ public:
     SceneService& add_scene_and_load(const std::string& name);
     SceneService& remove_scene(const std::string& name);
 
-    [[nodiscard]]
-    std::set<std::string> contained_scene_names() const;
-
+    [[nodiscard]] std::set<std::string> contained_scene_names() const;
     [[nodiscard]] std::optional<std::reference_wrapper<Scene>> current_scene() const;
 };

@@ -1,5 +1,4 @@
 #pragma once
-
 #include <functional>
 #include <memory>
 #include <optional>
@@ -27,7 +26,7 @@ public:
     Component& mark_for_deletion() noexcept;
 
     virtual void update(float dt) = 0;
-    
+
     virtual void on_attach();
     virtual void on_detach();
 
@@ -38,12 +37,12 @@ public:
     std::optional<std::reference_wrapper<GameObject>>& parent() noexcept; // NOLINT
     Component& parent(GameObject& parent);
     Component& parent(std::nullopt_t nullopt);
-    
+
     size_t add_on_attach(const std::function<void(Component&)>& action);
     void remove_on_attach(size_t index);
-    
+
     size_t add_on_detach(const std::function<void(Component&)>& action);
-    void remove_on_detach(size_t index);  
+    void remove_on_detach(size_t index);
 };
 
 template<typename T>
