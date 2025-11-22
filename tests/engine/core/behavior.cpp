@@ -1,9 +1,10 @@
 #include <catch2/catch_test_macros.hpp>
 
 #include <engine/public/behavior.h>
-#include <engine/public/scene.h>
 #include <engine/public/component.h>
 #include <engine/public/components/behaviorscript.h>
+#include <engine/public/scene.h>
+#include <engine/public/scene_service.h>
 
 TEST_CASE("behavior_runs_on_awake", "[Behavior]")
 {
@@ -19,7 +20,10 @@ TEST_CASE("behavior_runs_on_awake", "[Behavior]")
         bool awake_called = false;
     };
 
-    Scene scene;
+    const std::string& scene_name = "Test Scene";
+    auto scene_service = SceneService();
+    Scene& scene = scene_service.add_scene(scene_name);
+
     GameObject game_object(scene);
     auto& behavior_script = game_object.add_component<BehaviorScript>(std::make_unique<TestBehavior>());
 
@@ -44,7 +48,10 @@ TEST_CASE("behavior_on_start_and_update", "[Behavior]")
         bool update_called = false;
     };
 
-    Scene scene;
+    const std::string& scene_name = "Test Scene";
+    auto scene_service = SceneService();
+    Scene& scene = scene_service.add_scene(scene_name);
+
     GameObject game_object(scene);
     auto& behavior_script = game_object.add_component<BehaviorScript>(std::make_unique<TestBehavior>());
 
@@ -82,7 +89,10 @@ TEST_CASE("behavior_on_destroy_called_on_destruction", "[Behavior]")
     };
 
     {
-        Scene scene;
+        const std::string& scene_name = "Test Scene";
+        auto scene_service = SceneService();
+        Scene& scene = scene_service.add_scene(scene_name);
+
         GameObject game_object(scene);
         auto& behavior_script = game_object.add_component<BehaviorScript>(
             std::make_unique<TestBehavior>(callback)
@@ -107,7 +117,10 @@ TEST_CASE("behavior_can_access_game_object_and_transform", "[Behavior]")
 
     auto behavior = std::make_unique<TestBehavior>();
 
-    Scene scene;
+    const std::string& scene_name = "Test Scene";
+    auto scene_service = SceneService();
+    Scene& scene = scene_service.add_scene(scene_name);
+
     GameObject game_object(scene);
     auto& behavior_script = game_object.add_component<BehaviorScript>(std::make_unique<TestBehavior>());
     
