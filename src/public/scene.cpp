@@ -33,7 +33,7 @@ void Scene::execute_listeners(const std::vector<Scene::listener_function_t> &lis
     }
 }
 
-void Scene::game_loop() {
+void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
     constexpr float accumulator_default_value = 0.0f;
     constexpr float fixed_step = 1.0f / 60.0f; // ~60 fps
 

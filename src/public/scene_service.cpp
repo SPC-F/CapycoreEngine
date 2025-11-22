@@ -1,7 +1,6 @@
 #include <engine/public/scene_service.h>
 
 SceneService::SceneService() = default;
-
 SceneService::SceneService(const std::string& name) {
     auto* scene = new Scene(name);
     scene->run();
