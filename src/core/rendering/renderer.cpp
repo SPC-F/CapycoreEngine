@@ -81,3 +81,18 @@ void Renderer::render(std::vector<std::reference_wrapper<GameObject>>& objects) 
 
     SDL_RenderPresent(sdl_renderer_.get());
 }
+
+void Renderer::init_frame_timer() {
+    last_ = SDL_GetPerformanceCounter();
+    freq_ = static_cast<float>(SDL_GetPerformanceFrequency());
+}
+
+void Renderer::update_frame_time(float time_scale) {
+    Uint64 now = SDL_GetPerformanceCounter();
+    delta_time_ = static_cast<float>(now - last_) / freq_ * time_scale;
+    last_ = now;
+}
+
+float Renderer::delta_time() const {
+    return delta_time_;
+}
