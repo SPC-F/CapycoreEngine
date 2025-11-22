@@ -37,25 +37,32 @@ FetchContent_MakeAvailable(SDL3_image)
 # FreeType (local package install, sibling folder)
 # =========================================================
 if(WIN32)
-    set(FREETYPE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../freetype-win-build")
-    set(FREETYPE_INCLUDE_DIR "${FREETYPE_ROOT}/include/freetype2")
-    set(FREETYPE_LIBRARY "${FREETYPE_ROOT}/lib/freetype.lib")
-    set(FREETYPE_DLL "${FREETYPE_ROOT}/bin/freetype.dll")
+        if(NOT TARGET Freetype::Freetype)
+                if(NOT DEFINED FREETYPE_ROOT)
+                        set(FREETYPE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../freetype-win-build" CACHE PATH "" FORCE)
+                endif()
+                if(NOT DEFINED FREETYPE_INCLUDE_DIR)
+                        set(FREETYPE_INCLUDE_DIR "${FREETYPE_ROOT}/include/freetype2" CACHE PATH "" FORCE)
+                endif()
+                if(NOT DEFINED FREETYPE_LIBRARY)
+                        set(FREETYPE_LIBRARY "${FREETYPE_ROOT}/lib/freetype.lib" CACHE FILEPATH "" FORCE)
+                endif()
 
-    add_library(Freetype::Freetype UNKNOWN IMPORTED)
-    set_target_properties(Freetype::Freetype PROPERTIES
-        IMPORTED_LOCATION "${FREETYPE_LIBRARY}"
-        INTERFACE_INCLUDE_DIRECTORIES "${FREETYPE_INCLUDE_DIR}"
-    )
+                add_library(Freetype::Freetype UNKNOWN IMPORTED)
+                set_target_properties(Freetype::Freetype PROPERTIES
+                        IMPORTED_LOCATION "${FREETYPE_LIBRARY}"
+                        INTERFACE_INCLUDE_DIRECTORIES "${FREETYPE_INCLUDE_DIR}"
+                )
 
-    set(FREETYPE_INCLUDE_DIRS "${FREETYPE_INCLUDE_DIR}")
-    set(FREETYPE_LIBRARIES "${FREETYPE_LIBRARY}")
+                # Also update legacy variables for find_package compatibility
+                set(FREETYPE_INCLUDE_DIRS "${FREETYPE_INCLUDE_DIR}" CACHE PATH "" FORCE)
+                set(FREETYPE_LIBRARIES "${FREETYPE_LIBRARY}" CACHE FILEPATH "" FORCE)
+        endif()
 else()
     find_package(Freetype REQUIRED)
     set(FREETYPE_INCLUDE_DIRS "${FREETYPE_INCLUDE_DIRS}") # Provided by find_package
     set(FREETYPE_LIBRARIES Freetype::Freetype)
 endif()
-
 # =========================================================
 # SDL3_ttf (needs FreeType)
 # =========================================================

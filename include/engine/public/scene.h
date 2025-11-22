@@ -12,7 +12,7 @@ private:
     float time_scale_;
     std::vector<std::unique_ptr<GameObject>> game_objects_;
 
-    Scene(const std::string& name);
+    Scene(std::string name);
 
     using listener_function_t = std::function<void(Scene&)>;
     std::vector<listener_function_t> run_listeners_;
@@ -29,9 +29,9 @@ private:
 public:
     virtual ~Scene();
 
-    void on_run(listener_function_t);
-    void on_stop(listener_function_t);
-    void on_destroy(listener_function_t);
+    void on_run(listener_function_t& listener);
+    void on_stop(listener_function_t& listener);
+    void on_destroy(listener_function_t& listener);
 
     Scene& time_scale(float modifier);
     [[nodiscard]] float time_scale() const;

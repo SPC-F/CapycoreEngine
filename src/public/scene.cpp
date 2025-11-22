@@ -5,24 +5,24 @@
 #include <algorithm>
 #include <SDL3/SDL.h>
 
-Scene::Scene(const std::string& name)
-    : is_running_(false), time_scale_(1.0f), game_objects_ {}, name_{name} {
+Scene::Scene(std::string name)
+    : is_running_(false), time_scale_(1.0f), name_{std::move(name)} {
 }
 
 Scene::~Scene() {
     execute_listeners(destroy_listeners_);
 }
 
-void Scene::on_run(listener_function_t func) {
-    run_listeners_.push_back(func);
+void Scene::on_run(listener_function_t& listener) {
+    run_listeners_.push_back(listener);
 }
 
-void Scene::on_stop(listener_function_t func) {
-    stop_listeners_.push_back(func);
+void Scene::on_stop(listener_function_t& listener) {
+    stop_listeners_.push_back(listener);
 }
 
-void Scene::on_destroy(listener_function_t func) {
-    destroy_listeners_.push_back(func);
+void Scene::on_destroy(listener_function_t& listener) {
+    destroy_listeners_.push_back(listener);
 }
 
 void Scene::execute_listeners(const std::vector<Scene::listener_function_t> &listeners) {
@@ -31,14 +31,14 @@ void Scene::execute_listeners(const std::vector<Scene::listener_function_t> &lis
     }
 }
 
-void Scene::game_loop() {
+void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
     constexpr float accumulator_default_value = 0.0f;
     constexpr float fixed_step = 1.0f / 60.0f; // ~60 fps
 
     float accumulator = accumulator_default_value;
 
     Uint64 last = SDL_GetPerformanceCounter();
-    float freq = static_cast<float>(SDL_GetPerformanceFrequency());
+    auto freq = static_cast<float>(SDL_GetPerformanceFrequency());
 
     auto& rendering_service = Engine::instance()
         .services
