@@ -29,7 +29,6 @@ public:
     );
 
     void update(float dt) override;
-    void render() const override;
 
     [[nodiscard]] const std::string& text() const;
     UIText& text(const std::string& text);

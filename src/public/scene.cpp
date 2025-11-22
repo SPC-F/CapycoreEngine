@@ -1,8 +1,10 @@
 #include <engine/public/scene.h>
 
+
 #include <SDL3/sdl.h>
 #include <algorithm>
 
+#include <engine/util/memory.h>
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/engine.h>
 #include <engine/input/input_manager.h>
@@ -68,7 +70,9 @@ void Scene::game_loop() {
             accumulator -= fixed_step;
         }
 
-        rendering_service.draw(game_objects());
+        run_without_tracy([&]() {
+            rendering_service.draw(this->game_objects());
+        });
     }
 }
 

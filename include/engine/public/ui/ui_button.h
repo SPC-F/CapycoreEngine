@@ -47,7 +47,6 @@ public:
     );
 
     void update(float dt) override;
-    void render() const override;
 
     void add_on_press(const std::function<void(UIButton&)>& handler);
     void trigger_on_press();

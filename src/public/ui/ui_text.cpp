@@ -31,7 +31,6 @@ UIText::UIText(
     );
 }
 
-void UIText::render() const {}
 void UIText::update(float dt) {}
 
 const std::string& UIText::text() const {

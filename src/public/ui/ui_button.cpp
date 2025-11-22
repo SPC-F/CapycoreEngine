@@ -44,8 +44,6 @@ UIButton::UIButton(
     );
 }
 
-void UIButton::render() const {}
-
 void UIButton::update(float dt) {}
 
 void UIButton::add_on_press(const std::function<void(UIButton&)>& handler) {
@@ -94,7 +92,7 @@ void UIButton::enable() {
     if (!state_.is_disabled) {
         return;
     }
-
+    
     state_.is_disabled = false;
 }
 

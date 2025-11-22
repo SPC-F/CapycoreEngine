@@ -35,7 +35,7 @@ public:
      * 
      * This should be overridden by derived classes to implement specific rendering logic.
      */
-    virtual void render() const = 0;
+    virtual void render() const {};
 
     [[nodiscard]] float width() const;
     UIObject& width(float width);

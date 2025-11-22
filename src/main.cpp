@@ -70,50 +70,50 @@ void yes() {
     title.font_size(94);
     title.color(Color{0, 0, 0, 255});
  
-    // auto& start_button = scene.add_game_object<UIButton>(
-    //     180.0f,
-    //     60.0f,
-    //     Point{0.5f, 0.5f},
-    //     Point{0.5f, 0.5f},
-    //     scene,
-    //     "Start",
-    //     "ByteBounce",
-    //     "resources/fonts/bytebounce/ByteBounce.ttf",
-    //     "ButtonBlue"
-    // );
-    // start_button.transform().position({310.0f, 200.0f, 0.0f});
-    // start_button.label_color(Color{255, 255, 255, 255});
-    // start_button.font_size(32);
+    auto& start_button = scene.add_game_object<UIButton>(
+        180.0f,
+        60.0f,
+        Point{0.5f, 0.5f},
+        Point{0.5f, 0.5f},
+        scene,
+        "Start",
+        "ByteBounce",
+        "resources/fonts/bytebounce/ByteBounce.ttf",
+        "ButtonBlue"
+    );
+    start_button.transform().position({310.0f, 200.0f, 0.0f});
+    start_button.label_color(Color{255, 255, 255, 255});
+    start_button.font_size(32);
 
-    // auto& tutorial_button = scene.add_game_object<UIButton>(
-    //     180.0f,
-    //     60.0f,
-    //     Point{0.5f, 0.5f},
-    //     Point{0.5f, 0.5f},
-    //     scene,
-    //     "Tutorial",
-    //     "ByteBounce",
-    //     "resources/fonts/bytebounce/ByteBounce.ttf",
-    //     "ButtonYellow"
-    // );
-    // tutorial_button.transform().position({310.0f, 300.0f, 0.0f});
-    // tutorial_button.label_color(Color{255, 255, 255, 255});
-    // tutorial_button.font_size(32);
+    auto& tutorial_button = scene.add_game_object<UIButton>(
+        180.0f,
+        60.0f,
+        Point{0.5f, 0.5f},
+        Point{0.5f, 0.5f},
+        scene,
+        "Tutorial",
+        "ByteBounce",
+        "resources/fonts/bytebounce/ByteBounce.ttf",
+        "ButtonYellow"
+    );
+    tutorial_button.transform().position({310.0f, 300.0f, 0.0f});
+    tutorial_button.label_color(Color{255, 255, 255, 255});
+    tutorial_button.font_size(32);
 
-    // auto& quit_button = scene.add_game_object<UIButton>(
-    //     180.0f,
-    //     60.0f,
-    //     Point{0.5f, 0.5f},
-    //     Point{0.5f, 0.5f},
-    //     scene,
-    //     "Quit",
-    //     "ByteBounce",
-    //     "resources/fonts/bytebounce/ByteBounce.ttf",
-    //     "ButtonRed"
-    // );
-    // quit_button.transform().position({310.0f, 400.0f, 0.0f});
-    // quit_button.label_color(Color{255, 255, 255, 255});
-    // quit_button.font_size(32);
+    auto& quit_button = scene.add_game_object<UIButton>(
+        180.0f,
+        60.0f,
+        Point{0.5f, 0.5f},
+        Point{0.5f, 0.5f},
+        scene,
+        "Quit",
+        "ByteBounce",
+        "resources/fonts/bytebounce/ByteBounce.ttf",
+        "ButtonRed"
+    );
+    quit_button.transform().position({310.0f, 400.0f, 0.0f});
+    quit_button.label_color(Color{255, 255, 255, 255});
+    quit_button.font_size(32);
 
 
     // GameObject& game_object = scene.add_game_object("SomeGameObject");
