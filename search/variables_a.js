@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['mask_0',['mask',['../struct_physics_creation_flags.html#a5fbdfb193ea1a113cba0334034622835',1,'PhysicsCreationFlags']]],
-  ['mouse_5fstate_5f_1',['mouse_state_',['../class_input_system.html#a55ec018c53aa56dfc5c04e9f52523ae3',1,'InputSystem']]]
+  ['last_5fscroll_5fdirection_0',['last_scroll_direction',['../struct_mouse_wheel_state.html#afc104e1419a556b270cbc806510fc7ef',1,'MouseWheelState']]],
+  ['loop_5f_1',['loop_',['../class_sound_instance.html#a6c43e95ae3cd823630d725a07a7bd5b1',1,'SoundInstance']]]
 ];

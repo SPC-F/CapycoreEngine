@@ -21,8 +21,11 @@ var searchData=
   ['fixture_5fdistance_18',['fixture_distance',['../class_physics_world.html#a38ce0acd7870358efdd4f6e6848a4b31',1,'PhysicsWorld']]],
   ['flip_5fx_19',['flip_x',['../class_sprite.html#a361a40b1e885cf6493c2062eaccb39f9',1,'Sprite::flip_x(int val)'],['../class_sprite.html#a627f95ef5ff440d95fe6e171bf23cd2a',1,'Sprite::flip_x() const']]],
   ['flip_5fy_20',['flip_y',['../class_sprite.html#ae4d583f04c7698edd9bbde1eeed25506',1,'Sprite::flip_y(int val)'],['../class_sprite.html#ad6fc7fc54b172768b1749d430619a916',1,'Sprite::flip_y() const']]],
-  ['for_20linux_20users_21',['Note for Linux users',['../index.html#autotoc_md2',1,'']]],
-  ['fraction_22',['fraction',['../struct_collider_ray_result.html#a6656a71509418846fcfbf3c4af392551',1,'ColliderRayResult']]],
-  ['friction_23',['friction',['../class_collider2_d.html#a058fa64b1992f1e78ce5a90c28f42111',1,'Collider2D::friction(float value) noexcept'],['../class_collider2_d.html#a4f3fcf48b33f6c7a8339a14e3455e378',1,'Collider2D::friction() const noexcept'],['../class_circle_collider2_d.html#ac8873bf7adb9e66ce1631c1459f12e5f',1,'CircleCollider2D::friction()'],['../class_box_collider2_d.html#a530ad414562f8d3c341d00cf6f303ef6',1,'BoxCollider2D::friction()']]],
-  ['fullscreen_24',['Fullscreen',['../renderer_flags_8h.html#a38ee5c69c90472e460192941b5c680f1a442ecc88f57a81fcf5161137646b031f',1,'rendererFlags.h']]]
+  ['focus_21',['focus',['../class_u_i_button.html#a9200e7ceee45f7b5c46cd5b22bea236f',1,'UIButton']]],
+  ['font_5fname_22',['font_name',['../class_u_i_text.html#a639c191d816485416f7def5e714a6ac0',1,'UIText::font_name(const std::string &amp;font_name)'],['../class_u_i_text.html#aad50ee759c0db1c0428060b7fe5c02b8',1,'UIText::font_name() const']]],
+  ['font_5fsize_23',['font_size',['../class_u_i_text.html#a5ea77b56c8943ee97c0447983e0a5e3d',1,'UIText::font_size(int font_size)'],['../class_u_i_text.html#ad3d54b2e1ea241973b16a53d542beaa0',1,'UIText::font_size() const']]],
+  ['for_20linux_20users_24',['Note for Linux users',['../index.html#autotoc_md2',1,'']]],
+  ['fraction_25',['fraction',['../struct_collider_ray_result.html#a6656a71509418846fcfbf3c4af392551',1,'ColliderRayResult']]],
+  ['friction_26',['friction',['../class_collider2_d.html#a058fa64b1992f1e78ce5a90c28f42111',1,'Collider2D::friction(float value) noexcept'],['../class_collider2_d.html#a4f3fcf48b33f6c7a8339a14e3455e378',1,'Collider2D::friction() const noexcept'],['../class_circle_collider2_d.html#ac8873bf7adb9e66ce1631c1459f12e5f',1,'CircleCollider2D::friction()'],['../class_box_collider2_d.html#a530ad414562f8d3c341d00cf6f303ef6',1,'BoxCollider2D::friction()']]],
+  ['fullscreen_27',['Fullscreen',['../renderer_flags_8h.html#a360f88a51f469ff309df1e1e7cc2558ba442ecc88f57a81fcf5161137646b031f',1,'rendererFlags.h']]]
 ];

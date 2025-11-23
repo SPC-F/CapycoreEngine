@@ -1,0 +1,5 @@
+<map id="SdlStrategyFactory" name="SdlStrategyFactory">
+<area shape="rect" id="Node000001" title="Factory for creating SDL rendering strategies." alt="" coords="31,79,175,104"/>
+<area shape="rect" id="Node000002" href="$class_i_rendering_strategy_factory.html" title="Interface for factories that create rendering strategies." alt="" coords="5,5,200,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,44,105,79,100,79,100,44"/>
+</map>

@@ -14,11 +14,18 @@ var hierarchy =
         [ "BoxCollider2D", "class_box_collider2_d.html", null ],
         [ "CircleCollider2D", "class_circle_collider2_d.html", null ]
       ] ],
-      [ "Rigidbody2D", "class_rigidbody2_d.html", null ],
-      [ "Sprite", "class_sprite.html", null ]
+      [ "Renderable", "class_renderable.html", [
+        [ "Sprite", "class_sprite.html", null ]
+      ] ],
+      [ "Rigidbody2D", "class_rigidbody2_d.html", null ]
     ] ],
     [ "Engine", "class_engine.html", null ],
-    [ "GameObject", "class_game_object.html", null ],
+    [ "GameObject", "class_game_object.html", [
+      [ "UIObject", "class_u_i_object.html", [
+        [ "UIButton", "class_u_i_button.html", null ],
+        [ "UIText", "class_u_i_text.html", null ]
+      ] ]
+    ] ],
     [ "IEngineService", "class_i_engine_service.html", [
       [ "AssetService", "class_asset_service.html", null ],
       [ "AudioService", "class_audio_service.html", null ],
@@ -33,6 +40,13 @@ var hierarchy =
     ] ],
     [ "IInputProvider", "class_i_input_provider.html", [
       [ "InputSystem", "class_input_system.html", null ]
+    ] ],
+    [ "IRenderingStrategy", "class_i_rendering_strategy.html", [
+      [ "SdlGuiStrategy", "class_sdl_gui_strategy.html", null ],
+      [ "SdlSpriteStrategy", "class_sdl_sprite_strategy.html", null ]
+    ] ],
+    [ "IRenderingStrategyFactory", "class_i_rendering_strategy_factory.html", [
+      [ "SdlStrategyFactory", "class_sdl_strategy_factory.html", null ]
     ] ],
     [ "KeyState", "struct_key_state.html", null ],
     [ "MouseButtonState", "struct_mouse_button_state.html", null ],
@@ -58,6 +72,7 @@ var hierarchy =
     ] ],
     [ "Texture", "class_texture.html", null ],
     [ "Transform", "class_transform.html", null ],
+    [ "UIButtonState", "struct_u_i_button_state.html", null ],
     [ "Vector3", "class_vector3.html", null ],
     [ "Window", "class_window.html", null ]
 ];

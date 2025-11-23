@@ -1,0 +1,9 @@
+<map id="UIObject" name="UIObject">
+<area shape="rect" id="Node000001" title="Base class for all UI objects." alt="" coords="52,79,131,104"/>
+<area shape="rect" id="Node000003" href="$class_u_i_button.html" title="A UI button element." alt="" coords="5,152,84,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="78,117,54,153,50,150,74,114"/>
+<area shape="rect" id="Node000004" href="$class_u_i_text.html" title="A UI text element." alt="" coords="108,152,171,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="109,114,134,150,129,153,105,117"/>
+<area shape="rect" id="Node000002" href="$class_game_object.html" title=" " alt="" coords="40,5,143,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,44,94,79,89,79,89,44"/>
+</map>

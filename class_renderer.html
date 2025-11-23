@@ -146,13 +146,13 @@ Inheritance diagram for Renderer:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7ebf46f54dab9905f79b80f7fddb76a6" id="r_a7ebf46f54dab9905f79b80f7fddb76a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a7ebf46f54dab9905f79b80f7fddb76a6">Renderer</a> ()</td></tr>
 <tr class="separator:a7ebf46f54dab9905f79b80f7fddb76a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa32d1caf42ca469513db53b03be688bf" id="r_aa32d1caf42ca469513db53b03be688bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#aa32d1caf42ca469513db53b03be688bf">Renderer</a> (int min_aspect_width, int min_aspect_height, const std::string &amp;title, <a class="el" href="renderer_flags_8h.html#a38ee5c69c90472e460192941b5c680f1">RendererFlags</a> flags)</td></tr>
+<tr class="memitem:aa32d1caf42ca469513db53b03be688bf" id="r_aa32d1caf42ca469513db53b03be688bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#aa32d1caf42ca469513db53b03be688bf">Renderer</a> (int min_aspect_width, int min_aspect_height, const std::string &amp;title, <a class="el" href="renderer_flags_8h.html#a360f88a51f469ff309df1e1e7cc2558b">RendererFlags</a> flags)</td></tr>
 <tr class="separator:aa32d1caf42ca469513db53b03be688bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac58fc307f2d2dd4fc22d43cf560fafd8" id="r_ac58fc307f2d2dd4fc22d43cf560fafd8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#ac58fc307f2d2dd4fc22d43cf560fafd8">render</a> (const std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;objects) const</td></tr>
-<tr class="memdesc:ac58fc307f2d2dd4fc22d43cf560fafd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a collection of game objects to the screen. Renders a given collection of game objects to the screen. Each game object is expected to have its own sprite, or it will be skipped. <br  />
+<tr class="memitem:a18d6d94d1930759e8e248f8a432b99bd" id="r_a18d6d94d1930759e8e248f8a432b99bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a18d6d94d1930759e8e248f8a432b99bd">render</a> (std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;objects)</td></tr>
+<tr class="memdesc:a18d6d94d1930759e8e248f8a432b99bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a collection of game objects to the screen. Renders a given collection of game objects to the screen. Each game object is expected to have its own sprite, or it will be skipped. <br  />
  <br  />
  Mind that this method clears the entire screen and renders immediately on finish. If you want to batch multiple calls, fuse them into one.  <br /></td></tr>
-<tr class="separator:ac58fc307f2d2dd4fc22d43cf560fafd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a18d6d94d1930759e8e248f8a432b99bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab084c79787c3e2857ddc89a55d9955cf" id="r_ab084c79787c3e2857ddc89a55d9955cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#ab084c79787c3e2857ddc89a55d9955cf">clear</a> () const</td></tr>
 <tr class="memdesc:ab084c79787c3e2857ddc89a55d9955cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the rendering target with the drawing color. Clears the current rendering target with the drawing color set in the SDL renderer.  <br /></td></tr>
 <tr class="separator:ab084c79787c3e2857ddc89a55d9955cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,6 +168,8 @@ Friends</h2></td></tr>
 <tr class="separator:af97d60083cbec9dff36ea5566c308d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c222101221c002f4f6eb643b27cc0aa" id="r_a5c222101221c002f4f6eb643b27cc0aa"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a5c222101221c002f4f6eb643b27cc0aa">AssetService</a></td></tr>
 <tr class="separator:a5c222101221c002f4f6eb643b27cc0aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad34b176fc23f9db7379caf703e4a176f" id="r_ad34b176fc23f9db7379caf703e4a176f"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#ad34b176fc23f9db7379caf703e4a176f">SdlStrategyFactory</a></td></tr>
+<tr class="separator:ad34b176fc23f9db7379caf703e4a176f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Service responsible for rendering game objects to the screen. </p>
@@ -228,7 +230,7 @@ Friends</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="renderer_flags_8h.html#a38ee5c69c90472e460192941b5c680f1">RendererFlags</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="renderer_flags_8h.html#a360f88a51f469ff309df1e1e7cc2558b">RendererFlags</a>&#160;</td>
           <td class="paramname"><em>flags</em>&#160;</td>
         </tr>
         <tr>
@@ -266,8 +268,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="ac58fc307f2d2dd4fc22d43cf560fafd8" name="ac58fc307f2d2dd4fc22d43cf560fafd8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac58fc307f2d2dd4fc22d43cf560fafd8">&#9670;&#160;</a></span>render()</h2>
+<a id="a18d6d94d1930759e8e248f8a432b99bd" name="a18d6d94d1930759e8e248f8a432b99bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18d6d94d1930759e8e248f8a432b99bd">&#9670;&#160;</a></span>render()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -275,9 +277,9 @@ Friends</h2></td></tr>
         <tr>
           <td class="memname">void Renderer::render </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td>
           <td class="paramname"><em>objects</em></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -345,6 +347,28 @@ Friends</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">friend class RenderingManager</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad34b176fc23f9db7379caf703e4a176f" name="ad34b176fc23f9db7379caf703e4a176f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad34b176fc23f9db7379caf703e4a176f">&#9670;&#160;</a></span>SdlStrategyFactory</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="class_sdl_strategy_factory.html">SdlStrategyFactory</a></td>
         </tr>
       </table>
   </td>

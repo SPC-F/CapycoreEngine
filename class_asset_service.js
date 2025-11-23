@@ -4,6 +4,7 @@ var class_asset_service =
     [ "AssetService", "class_asset_service.html#a17e689c7a5e22dc0a20d7bd6409fd964", null ],
     [ "AssetService", "class_asset_service.html#a63a1f83b783e73dea20af3a2444c790c", null ],
     [ "create_spritesheet_for", "class_asset_service.html#aff8dfa617b79f3d082db0519a925cd5d", null ],
+    [ "get_default_texture", "class_asset_service.html#a225a70386d6a3566601887c6204f0b8b", null ],
     [ "load_from_resource", "class_asset_service.html#a42d4e1cdea1e1d32aa178ffc004806f0", null ],
     [ "operator=", "class_asset_service.html#a042b5267453056e175667f19fa335206", null ],
     [ "operator=", "class_asset_service.html#a9930285a0e8b8ec50d3e7f8662d45af5", null ],

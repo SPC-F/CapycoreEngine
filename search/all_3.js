@@ -15,7 +15,7 @@ var searchData=
   ['collider_5f2d_2eh_12',['collider_2d.h',['../collider__2d_8h.html',1,'']]],
   ['collider_5fray_5fresult_2eh_13',['collider_ray_result.h',['../collider__ray__result_8h.html',1,'']]],
   ['colliderrayresult_14',['ColliderRayResult',['../struct_collider_ray_result.html',1,'']]],
-  ['color_15',['color',['../class_sprite.html#af874503eae32060ce4a3fe078f912d46',1,'Sprite::color()'],['../class_color.html#a912df0cb52b88689ce6b721d3cee3966',1,'Color::Color(unsigned short r, unsigned short g, unsigned short b, unsigned short a)'],['../class_color.html#a9a742cbe9f9f4037f5d9f4e81a9b2428',1,'Color::Color()'],['../class_sprite.html#a99304af697307c4847c3e65ce8a3e768',1,'Sprite::color()'],['../class_color.html',1,'Color']]],
+  ['color_15',['color',['../class_color.html#a9a742cbe9f9f4037f5d9f4e81a9b2428',1,'Color::Color()'],['../class_sprite.html#a99304af697307c4847c3e65ce8a3e768',1,'Sprite::color() const'],['../class_sprite.html#af874503eae32060ce4a3fe078f912d46',1,'Sprite::color(Color color)'],['../class_u_i_button.html#a5ba07d1b5602d0e60e03f63968e3e24b',1,'UIButton::color() const'],['../class_u_i_button.html#a3d8c5ec1ec63a01fbef8609f5c2d761f',1,'UIButton::color(Color color)'],['../class_u_i_text.html#af897ba527b2ebeea974e245b0c64938d',1,'UIText::color() const'],['../class_u_i_text.html#a21fe3a63371272cabdf00389af476e70',1,'UIText::color(Color color)'],['../class_color.html#a912df0cb52b88689ce6b721d3cee3966',1,'Color::Color()'],['../class_color.html',1,'Color']]],
   ['color_2eh_16',['color.h',['../color_8h.html',1,'']]],
   ['comma_17',['comma',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44ab6d00dc1ba038e5901cd6c06b2daa192',1,'key_code.h']]],
   ['component_18',['component',['../class_component.html#a8775db6d1a2c1afc2e77cd3c8f39da6f',1,'Component::Component()'],['../class_component.html',1,'Component']]],
@@ -30,7 +30,8 @@ var searchData=
   ['create_5fsound_5finstance_27',['create_sound_instance',['../class_sound_factory.html#a2e2466cd9294e90a4449c3d9c7f0c5c5',1,'SoundFactory']]],
   ['create_5fsound_5fresource_28',['create_sound_resource',['../class_sound_factory.html#ae29cbaf45a1f9d79b73922e9081b5ac6',1,'SoundFactory']]],
   ['create_5fspritesheet_5ffor_29',['create_spritesheet_for',['../class_asset_service.html#aff8dfa617b79f3d082db0519a925cd5d',1,'AssetService']]],
-  ['creation_5fflags_30',['creation_flags',['../class_collider2_d.html#aade9fc87e5a1d28c553327677bd4e5d3',1,'Collider2D::creation_flags(PhysicsCreationFlags value) noexcept'],['../class_collider2_d.html#a4fe126eab52b330f738d757a1eef5c76',1,'Collider2D::creation_flags() noexcept']]],
-  ['current_31',['current',['../struct_mouse_button_state.html#aa62593b07641cef3ff46ba88e3c85b93',1,'MouseButtonState::current'],['../struct_key_state.html#acc422cc40f6d391ff01de0f458c7e53f',1,'KeyState::current']]],
-  ['current_5fscene_32',['current_scene',['../class_scene_service.html#a4c3429ea82d84e6f16ff4c260bde8b1e',1,'SceneService']]]
+  ['create_5fstrategy_30',['create_strategy',['../class_sdl_strategy_factory.html#a5644c3f44edd587dbea693c417ab5a89',1,'SdlStrategyFactory::create_strategy()'],['../class_i_rendering_strategy_factory.html#ae28c076356a1a3c2fcf0977c1f87ca2a',1,'IRenderingStrategyFactory::create_strategy()']]],
+  ['creation_5fflags_31',['creation_flags',['../class_collider2_d.html#aade9fc87e5a1d28c553327677bd4e5d3',1,'Collider2D::creation_flags(PhysicsCreationFlags value) noexcept'],['../class_collider2_d.html#a4fe126eab52b330f738d757a1eef5c76',1,'Collider2D::creation_flags() noexcept']]],
+  ['current_32',['current',['../struct_key_state.html#acc422cc40f6d391ff01de0f458c7e53f',1,'KeyState::current'],['../struct_mouse_button_state.html#aa62593b07641cef3ff46ba88e3c85b93',1,'MouseButtonState::current']]],
+  ['current_5fscene_33',['current_scene',['../class_scene_service.html#a4c3429ea82d84e6f16ff4c260bde8b1e',1,'SceneService']]]
 ];

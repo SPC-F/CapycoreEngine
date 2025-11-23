@@ -5,7 +5,7 @@ var searchData=
   ['circlecollider2d_2',['CircleCollider2D',['../class_circle_collider2_d.html#a23949bc26b5a1076ac6824b7f438acab',1,'CircleCollider2D']]],
   ['clear_3',['clear',['../class_renderer.html#ab084c79787c3e2857ddc89a55d9955cf',1,'Renderer']]],
   ['collider2d_4',['Collider2D',['../class_collider2_d.html#ae2f71aa62f6a2c4580d1c4febe5ca0d7',1,'Collider2D']]],
-  ['color_5',['color',['../class_sprite.html#a99304af697307c4847c3e65ce8a3e768',1,'Sprite::color() const'],['../class_sprite.html#af874503eae32060ce4a3fe078f912d46',1,'Sprite::color(Color color)'],['../class_color.html#a912df0cb52b88689ce6b721d3cee3966',1,'Color::Color(unsigned short r, unsigned short g, unsigned short b, unsigned short a)'],['../class_color.html#a9a742cbe9f9f4037f5d9f4e81a9b2428',1,'Color::Color()']]],
+  ['color_5',['color',['../class_color.html#a912df0cb52b88689ce6b721d3cee3966',1,'Color::Color(unsigned short r, unsigned short g, unsigned short b, unsigned short a)'],['../class_color.html#a9a742cbe9f9f4037f5d9f4e81a9b2428',1,'Color::Color()'],['../class_sprite.html#a99304af697307c4847c3e65ce8a3e768',1,'Sprite::color() const'],['../class_sprite.html#af874503eae32060ce4a3fe078f912d46',1,'Sprite::color(Color color)'],['../class_u_i_button.html#a5ba07d1b5602d0e60e03f63968e3e24b',1,'UIButton::color() const'],['../class_u_i_button.html#a3d8c5ec1ec63a01fbef8609f5c2d761f',1,'UIButton::color(Color color)'],['../class_u_i_text.html#af897ba527b2ebeea974e245b0c64938d',1,'UIText::color() const'],['../class_u_i_text.html#a21fe3a63371272cabdf00389af476e70',1,'UIText::color(Color color)']]],
   ['component_6',['Component',['../class_component.html#a8775db6d1a2c1afc2e77cd3c8f39da6f',1,'Component']]],
   ['contained_5fscene_5fnames_7',['contained_scene_names',['../class_scene_service.html#a29ac879ac89dcc39f68d436b2a0869d8',1,'SceneService']]],
   ['convert_5fbox2d_5fangle_5fto_5fradians_8',['convert_box2d_angle_to_radians',['../namespace_physics_math.html#a2529f79ad0f1215b032cc8d0d6604a55',1,'PhysicsMath']]],
@@ -17,6 +17,7 @@ var searchData=
   ['create_5fsound_5finstance_14',['create_sound_instance',['../class_sound_factory.html#a2e2466cd9294e90a4449c3d9c7f0c5c5',1,'SoundFactory']]],
   ['create_5fsound_5fresource_15',['create_sound_resource',['../class_sound_factory.html#ae29cbaf45a1f9d79b73922e9081b5ac6',1,'SoundFactory']]],
   ['create_5fspritesheet_5ffor_16',['create_spritesheet_for',['../class_asset_service.html#aff8dfa617b79f3d082db0519a925cd5d',1,'AssetService']]],
-  ['creation_5fflags_17',['creation_flags',['../class_collider2_d.html#a4fe126eab52b330f738d757a1eef5c76',1,'Collider2D::creation_flags() noexcept'],['../class_collider2_d.html#aade9fc87e5a1d28c553327677bd4e5d3',1,'Collider2D::creation_flags(PhysicsCreationFlags value) noexcept']]],
-  ['current_5fscene_18',['current_scene',['../class_scene_service.html#a4c3429ea82d84e6f16ff4c260bde8b1e',1,'SceneService']]]
+  ['create_5fstrategy_17',['create_strategy',['../class_i_rendering_strategy_factory.html#ae28c076356a1a3c2fcf0977c1f87ca2a',1,'IRenderingStrategyFactory::create_strategy()'],['../class_sdl_strategy_factory.html#a5644c3f44edd587dbea693c417ab5a89',1,'SdlStrategyFactory::create_strategy()']]],
+  ['creation_5fflags_18',['creation_flags',['../class_collider2_d.html#a4fe126eab52b330f738d757a1eef5c76',1,'Collider2D::creation_flags() noexcept'],['../class_collider2_d.html#aade9fc87e5a1d28c553327677bd4e5d3',1,'Collider2D::creation_flags(PhysicsCreationFlags value) noexcept']]],
+  ['current_5fscene_19',['current_scene',['../class_scene_service.html#a4c3429ea82d84e6f16ff4c260bde8b1e',1,'SceneService']]]
 ];
