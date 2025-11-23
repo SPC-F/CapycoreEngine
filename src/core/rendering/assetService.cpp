@@ -1,9 +1,14 @@
+#include "engine/core/rendering/assetService.h"
+
+#include <format>
 #include "SDL3/SDL_render.h"
 #include "SDL3_image/SDL_image.h"
-#include "engine/core/rendering/assetService.h"
+
 #include "engine/core/rendering/renderingService.h"
 #include "engine/core/engine.h"
-#include <format>
+
+constexpr int white_texture_size = 32;
+constexpr Uint32 white_pixel = 0xFFFFFFFF;
 
 AssetService::AssetService() = default;
 
@@ -151,4 +156,44 @@ std::reference_wrapper<Texture> AssetService::register_texture(
     );
 
     return resource.at(index);
+}
+
+std::reference_wrapper<Texture> AssetService::get_default_texture() {
+    const auto maybe_texture = this->try_get_texture("default");
+    
+    if (maybe_texture.has_value()) {
+        return maybe_texture->get();
+    }
+
+    const auto& renderer_service = Engine::instance()
+        .services
+        ->get_service<RenderingService>()
+        .get();
+
+    SDL_Renderer* renderer = renderer_service.renderer_
+        ->sdl_renderer_
+        .get();
+
+    SDL_Texture* tex = SDL_CreateTexture(
+        renderer,
+        SDL_PIXELFORMAT_RGBA8888,
+        SDL_TEXTUREACCESS_STATIC,
+        white_texture_size,
+        white_texture_size
+    );
+
+    if (!tex) {
+        throw std::runtime_error("Failed to create white texture");
+    }
+
+    std::vector<Uint32> pixels(static_cast<size_t>(white_texture_size) * static_cast<size_t>(white_texture_size), white_pixel);
+
+    SDL_UpdateTexture(tex, nullptr, pixels.data(), static_cast<int>(static_cast<size_t>(white_texture_size) * sizeof(Uint32)));
+    SDL_SetTextureBlendMode(tex, SDL_BLENDMODE_BLEND);
+
+    auto new_texture = std::unique_ptr<Texture>(new Texture(tex));
+    textures_.emplace_back(std::move(new_texture));
+    named_assets_.emplace("default", std::vector<std::reference_wrapper<Texture>>{*textures_.back()});
+
+    return *textures_.back();
 }

@@ -15,6 +15,7 @@ private:
     friend class Renderer;
     friend class RenderingManager;
     friend class AssetService;
+    friend class SdlSpriteStrategy;
 
     std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)> texture_; // custom deleter
     explicit Texture(SDL_Texture* texture);

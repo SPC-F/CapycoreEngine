@@ -3,6 +3,7 @@
 #include <engine/core/iEngineService.h>
 #include <engine/core/rendering/renderer.h>
 #include <engine/core/rendering/window.h>
+#include <engine/core/rendering/strategies/irendering_strategy_factory.h>
 
 /**
  * @brief Service responsible for rendering game objects to the window.
@@ -18,14 +19,17 @@ public:
      * Delegates the drawing operation to the Renderer instance.
      * @param objects A vector of references to GameObject instances to be drawn.
      */
-    void draw(const std::vector<std::reference_wrapper<GameObject>>& objects);
+    void draw(std::vector<std::reference_wrapper<GameObject>>& objects);
     /**
      * @brief Provides access to the game window.
      * @return A reference to the Window instance managed by the Renderer.
      */
     Window& window();
 
+    [[nodiscard]] IRenderingStrategyFactory& rendering_strategy_factory() const;
+
 private:
     friend class AssetService;
     const std::unique_ptr<Renderer> renderer_;
+    const std::unique_ptr<IRenderingStrategyFactory> strategy_factory_;
 };

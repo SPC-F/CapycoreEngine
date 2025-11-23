@@ -1,11 +1,13 @@
 #pragma once
 #include <memory>
 
-#include <SDL3/SDL_render.h>
 #include <engine/core/rendering/rendererFlags.h>
 #include <engine/public/gameObject.h>
 #include <engine/core/iEngineService.h>
 #include <engine/core/rendering/window.h>
+
+class SDL_Renderer; // NOLINT
+class SDL_Window; // NOLINT
 
 using SdlRendererPtr = std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)>;
 using SdlWindowPtr = std::unique_ptr<SDL_Window, void(*)(SDL_Window*)>;
@@ -20,6 +22,8 @@ class Renderer final : public IEngineService {
 private:
     friend class RenderingManager;
     friend class AssetService;
+    friend class SdlStrategyFactory;
+
     SdlRendererPtr sdl_renderer_;
     SdlWindowPtr sdl_window_;
     // I tried just storing a Window& here, but that caused issues because the can never be a proper init value...
@@ -35,7 +39,7 @@ public:
      * Mind that this method clears the entire screen and renders immediately on finish. If you want to batch multiple calls, fuse them into one.
      * @param objects
      */
-    void render(const std::vector<std::reference_wrapper<GameObject>>& objects) const;
+    void render(std::vector<std::reference_wrapper<GameObject>>& objects) ;
 
     /**
      * @brief Clears the rendering target with the drawing color.

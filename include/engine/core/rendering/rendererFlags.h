@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-enum RendererFlags : std::uint8_t {
+enum RendererFlags : uint8_t {
     None = 0,
     Fullscreen = 1 << 0,
     Borderless = 1 << 1,

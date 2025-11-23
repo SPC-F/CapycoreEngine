@@ -1,13 +1,15 @@
 #include <engine/public/scene.h>
-#include <engine/core/rendering/renderingService.h>
-#include <engine/core/engine.h>
 
-#include <algorithm>
 #include <SDL3/SDL.h>
 
-Scene::Scene(std::string name)
-    : is_running_(false), time_scale_(1.0f), name_{std::move(name)} {
-}
+#include <engine/core/rendering/renderingService.h>
+#include <engine/core/engine.h>
+#include <algorithm>
+
+Scene::Scene(const std::string& name) // NOLINT
+    : name_{ name },
+      is_running_{ false },
+      time_scale_{ 1.0f } {}
 
 Scene::~Scene() {
     execute_listeners(destroy_listeners_);
@@ -52,12 +54,20 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
 
         accumulator += frame_dt;
 
+        SDL_Event e;
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_EVENT_QUIT) {
+                stop();
+            }
+        }
+
         while (accumulator >= fixed_step) {
             //physics(fixed_step, 8, 3);
             accumulator -= fixed_step;
         }
 
-        rendering_service.draw(game_objects());
+        auto game_objects = this->game_objects();
+        rendering_service.draw(game_objects);
     }
 }
 
