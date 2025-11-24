@@ -10,7 +10,7 @@ MultiplayerService::MultiplayerService()
 
     atexit(enet_deinitialize);
 
-    router_ = std::make_shared<Router>();
+    router_ = std::make_unique<Router>();
 }
 
 void MultiplayerService::register_handler(
@@ -39,7 +39,7 @@ void MultiplayerService::set_host()
         client_.reset();
     }
 
-    host_ = std::make_unique<Host>(router_, connection_port_, max_clients_);
+    host_ = std::make_unique<Host>(std::ref(*router_), connection_port_, max_clients_);
 }
 
 void MultiplayerService::set_client()
@@ -56,7 +56,7 @@ void MultiplayerService::set_client()
         host_.reset();
     }
 
-    client_ = std::make_unique<Client>(router_);
+    client_ = std::make_unique<Client>(std::ref(*router_));
 }
 
 void MultiplayerService::poll()

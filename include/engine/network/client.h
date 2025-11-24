@@ -23,7 +23,7 @@ public:
      *
      * @throws std::runtime_error if ENet client host creation fails.
      */
-    explicit Client(std::shared_ptr<Router> router);
+    explicit Client(std::reference_wrapper<Router> router);
 
     /**
      * @brief Safely destroys the client, unregisters handlers and frees ENet resources.
@@ -63,7 +63,7 @@ public:
 
 private:
     std::string local_uuid_;
-    std::shared_ptr<Router> router_{nullptr};
+    std::reference_wrapper<Router> router_;
     ENetPeer* server_peer_{nullptr};
     ENetHost* client_{nullptr};
     ConnectionState connection_state_{ConnectionState::NONE};

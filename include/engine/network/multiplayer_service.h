@@ -95,7 +95,7 @@ public:
     [[nodiscard]] int get_connection_port() const noexcept;
 
 private:
-    std::shared_ptr<Router> router_{nullptr};
+    std::unique_ptr<Router> router_{nullptr};
     std::unique_ptr<Client> client_{nullptr};
     std::unique_ptr<Host> host_{nullptr};
 

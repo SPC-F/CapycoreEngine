@@ -4,8 +4,8 @@
 #include <cstring>
 #include <stdexcept>
 
-Client::Client(std::shared_ptr<Router> router)
-    : router_(std::move(router))
+Client::Client(std::reference_wrapper<Router> router)
+    : router_(router)
 {
     const ENetAddress* address = nullptr;
     size_t peer_count = 1;
@@ -40,10 +40,8 @@ Client::~Client() noexcept
         client_ = nullptr;
     }
 
-    if (router_) {
-        router_->unregister_handler(DefaultMessageTypes::HOST_DISCONNECT);
-        router_->unregister_handler(DefaultMessageTypes::CONNECT);
-    }
+    router_.get().unregister_handler(DefaultMessageTypes::HOST_DISCONNECT);
+    router_.get().unregister_handler(DefaultMessageTypes::CONNECT);
 }
 
 void Client::poll() noexcept
@@ -82,8 +80,7 @@ void Client::poll() noexcept
                 event.packet->data + event.packet->dataLength
             );
 
-            if (router_)
-                router_->route(msg);
+            router_.get().route(msg);
 
             enet_packet_destroy(event.packet);
             break;
@@ -171,8 +168,7 @@ void Client::register_on_connect_handler() noexcept
         connection_state_ = ConnectionState::CONNECTED;
     };
 
-    if (router_)
-        router_->register_handler(DefaultMessageTypes::CONNECT, std::move(handler));
+    router_.get().register_handler(DefaultMessageTypes::CONNECT, std::move(handler));
 }
 
 void Client::register_on_disconnect_handler() noexcept
@@ -181,6 +177,5 @@ void Client::register_on_disconnect_handler() noexcept
         connection_state_ = ConnectionState::DISCONNECTING;
     };
 
-    if (router_)
-        router_->register_handler(DefaultMessageTypes::HOST_DISCONNECT, std::move(handler));
+    router_.get().register_handler(DefaultMessageTypes::HOST_DISCONNECT, std::move(handler));
 }

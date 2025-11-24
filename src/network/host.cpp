@@ -4,13 +4,13 @@
 #include <cstring>
 #include <stdexcept>
 
-Host::Host(std::shared_ptr<Router> router, int connection_port, int max_clients)
+Host::Host(std::reference_wrapper<Router> router, int connection_port, int max_clients)
     : server_{nullptr},
       connection_port_{connection_port},
       max_clients_{max_clients},
       connection_state_{ConnectionState::NONE},
       local_uuid_{uuid::generate_uuid_v4()},
-      router_{std::move(router)}
+      router_{router}
 {
     set_client_disconnect_handler();
 }
@@ -91,8 +91,7 @@ void Host::poll() noexcept
                 event.packet->data + event.packet->dataLength
             );
 
-            if (router_)
-                router_->route(msg);
+            router_.get().route(msg);
 
             enet_packet_destroy(event.packet);
         } break;
@@ -230,7 +229,6 @@ void Host::set_client_disconnect_handler() noexcept
         }
     };
 
-    if (router_)
-        router_->register_handler(DefaultMessageTypes::CLIENT_DISCONNECT,
-                                  std::move(handler));
+    router_.get().register_handler(DefaultMessageTypes::CLIENT_DISCONNECT,
+                              std::move(handler));
 }

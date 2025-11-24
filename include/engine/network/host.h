@@ -26,7 +26,7 @@ public:
      * @param connection_port Port on which to listen for incoming clients.
      * @param max_clients Maximum number of simultaneous connections allowed.
      */
-    Host(std::shared_ptr<Router> router, int connection_port, int max_clients);
+    Host(std::reference_wrapper<Router> router, int connection_port, int max_clients);
 
     /**
      * @brief Destructs the Host and releases ENet resources safely.
@@ -84,7 +84,7 @@ private:
     ConnectionState connection_state_{ConnectionState::NONE};
 
     std::string local_uuid_;
-    std::shared_ptr<Router> router_{nullptr};
+    std::reference_wrapper<Router> router_;
 
     // Maps client UUID to the peer object assigned by ENet.
     std::unordered_map<std::string, ENetPeer*> clients_;
