@@ -125,7 +125,15 @@ void Client::connect(const std::string& host_ip, int connection_port)
     enet_address_set_host(&address, host_ip.c_str());
     address.port = connection_port;
 
-    server_peer_ = enet_host_connect(client_, &address, 2, 0);
+    size_t channel_limit = 2;
+    enet_uint32 data = 0;
+
+    server_peer_ = enet_host_connect(
+        client_,
+        &address,
+        channel_limit,
+        data
+    );
 
     if (server_peer_ == nullptr)
         throw std::runtime_error("ENet could not create a peer for connection attempt.");
