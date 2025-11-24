@@ -44,8 +44,18 @@ public:
     [[nodiscard]]
     std::vector<std::reference_wrapper<GameObject>> game_objects() const;
 
-    Scene& add_game_object(std::unique_ptr<GameObject> game_object);
+    template<typename T, typename... Args>
+    T& add_game_object(Args&&... args) {
+        static_assert(std::is_base_of<GameObject, T>::value, "T must be derived from GameObject");
+
+        auto game_object = std::make_unique<T>(std::forward<Args>(args)...);
+        game_objects_.emplace_back(std::move(game_object));
+
+        return static_cast<T&>(*game_objects_.back());
+    }   
     GameObject& add_game_object(const std::string& name);
+
+    Scene& add_game_object(std::unique_ptr<GameObject> game_object);
     Scene& add_game_objects(std::vector<std::unique_ptr<GameObject>> game_objects);
 
     bool remove_game_object(GameObject& game_object);

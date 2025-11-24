@@ -21,3 +21,15 @@ Window& RenderingService::window() {
 IRenderingStrategyFactory& RenderingService::rendering_strategy_factory() const {
     return *strategy_factory_;
 }
+
+void RenderingService::init_frame_timer() {
+    renderer_->init_frame_timer();
+}
+
+void RenderingService::update_frame_time(float time_scale) {
+    renderer_->update_frame_time(time_scale);
+}
+
+float RenderingService::delta_time() const {
+    return renderer_->delta_time();
+}

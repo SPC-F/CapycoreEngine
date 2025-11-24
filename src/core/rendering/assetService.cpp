@@ -3,6 +3,7 @@
 #include <format>
 #include "SDL3/SDL_render.h"
 #include "SDL3_image/SDL_image.h"
+#include "SDL3_ttf/SDL_ttf.h"
 
 #include "engine/core/rendering/renderingService.h"
 #include "engine/core/engine.h"
@@ -196,4 +197,33 @@ std::reference_wrapper<Texture> AssetService::get_default_texture() {
     named_assets_.emplace("default", std::vector<std::reference_wrapper<Texture>>{*textures_.back()});
 
     return *textures_.back();
+}
+
+std::optional<std::reference_wrapper<Font>> AssetService::try_get_font(const std::string& font_name, int font_size) const {
+    const std::string key = font_name + "_" + std::to_string(font_size);
+    auto it = font_cache_.find(key);
+
+    if (it != font_cache_.end()) {
+        return std::ref(*(it->second));
+    }
+
+    return std::nullopt;
+}
+
+std::reference_wrapper<Font> AssetService::register_font(const std::string font_name, const std::string font_path, int font_size) {
+    const std::string key = font_name + "_" + std::to_string(font_size);
+
+    std::unique_ptr<TTF_Font, void(*)(TTF_Font*)> font = std::unique_ptr<TTF_Font, void(*)(TTF_Font*)>(
+        TTF_OpenFont(font_path.c_str(), font_size),
+        &TTF_CloseFont
+    );
+
+    if (!font) {
+        throw std::runtime_error("Failed to load font: " + font_name);
+    }
+
+    auto font_ptr = std::unique_ptr<Font>(new Font(font_name, font_size, font.release()));
+    font_cache_.emplace(key, std::move(font_ptr));
+
+    return *font_cache_.at(key);
 }

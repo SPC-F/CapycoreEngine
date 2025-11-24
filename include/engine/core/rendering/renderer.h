@@ -1,4 +1,5 @@
 #pragma once
+
 #include <memory>
 
 #include <engine/core/rendering/rendererFlags.h>
@@ -28,6 +29,10 @@ private:
     SdlWindowPtr sdl_window_;
     // I tried just storing a Window& here, but that caused issues because the can never be a proper init value...
     std::optional<Window> window_;
+
+    uint64_t last_{0};
+    float freq_{0.0f};
+    float delta_time_{0.0f};
 public:
     explicit Renderer();
     explicit Renderer(int min_aspect_width, int min_aspect_height, const std::string& title, RendererFlags flags);
@@ -47,4 +52,25 @@ public:
      */
     void clear() const;
     Window& window();
+
+    /**
+     * @brief Initializes the internal timer for frame time calculation.
+     * @note This method must be called before using update_frame_time or delta_time.
+     * @note Techically this keeps track of time, but it utilizes SDL's performance counter under the hood so thats why its here.
+     * 
+     * This method sets up the necessary variables to track frame time and should be called before starting the rendering loop.
+     */
+    void init_frame_timer();
+
+    /**
+     * @brief Updates the frame time based on the elapsed time since the last frame.
+     * @param time_scale A modifier to scale the delta time, useful for implementing slow-motion or speed-up effects.
+     */
+    void update_frame_time(float time_scale);
+
+    /**
+     * @brief Retrieves the time elapsed since the last frame.
+     * @return The delta time in seconds.
+     */
+    [[nodiscard]] float delta_time() const;
 };

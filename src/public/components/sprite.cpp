@@ -4,7 +4,7 @@
 #include <engine/core/rendering/renderingService.h>
 #include <format>
 
-std::reference_wrapper<Texture> get_texture_for(const std::string& sprite) {
+std::reference_wrapper<Texture> Sprite::get_texture_for(const std::string& sprite) {
     auto& service = Engine::instance().services->get_service<AssetService>().get();
     auto maybe_texture = service.try_get_texture(sprite);
 
