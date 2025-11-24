@@ -22,6 +22,9 @@
  */
 class MultiplayerService : public IEngineService {
 public:
+    static constexpr int16_t default_connection_port = 1024;
+    static constexpr int16_t default_max_clients = 4;
+
     /**
      * @brief Initializes ENet and prepares the internal Router.
      * @throws std::runtime_error if ENet initialization fails.
@@ -96,6 +99,6 @@ private:
     std::unique_ptr<Client> client_{nullptr};
     std::unique_ptr<Host> host_{nullptr};
 
-    int connection_port_{1024};
-    int max_clients_{4};
+    int16_t connection_port_{default_connection_port};
+    int16_t max_clients_{default_max_clients};
 };
