@@ -67,9 +67,6 @@ void MultiplayerService::poll()
     else if (client_) {
         client_->poll();
     }
-    else {
-        throw std::runtime_error("Cannot poll: service is neither client nor host.");
-    }
 }
 
 void MultiplayerService::send(const Message& message)
