@@ -7,7 +7,18 @@
 Client::Client(std::shared_ptr<Router> router)
     : router_(std::move(router))
 {
-    client_ = enet_host_create(nullptr, 1, 2, 0, 0);
+    const ENetAddress* address = nullptr;
+    size_t peer_count = 1;
+    size_t channel_limit = 2;
+    enet_uint32 max_bandwidth = 0;
+
+    client_ = enet_host_create(
+        address,
+        peer_count,
+        channel_limit,
+        max_bandwidth,
+        max_bandwidth
+    );
 
     if (client_ == nullptr)
         throw std::runtime_error("Failed to create ENet client host.");
