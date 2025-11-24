@@ -4,7 +4,7 @@
 
 MultiplayerService::MultiplayerService()
 {
-    if (enet_initialize() != 0) {
+    if (enet_initialize() != 0) { // 0 on succes, < 0 on failure
         throw std::runtime_error("Failed to initialize ENet.");
     }
 
