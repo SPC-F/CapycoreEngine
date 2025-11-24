@@ -1,5 +1,6 @@
 var annotated_dup =
 [
+    [ "Animator", "class_animator.html", "class_animator" ],
     [ "AssetService", "class_asset_service.html", "class_asset_service" ],
     [ "AudioService", "class_audio_service.html", "class_audio_service" ],
     [ "AudioSource", "class_audio_source.html", "class_audio_source" ],

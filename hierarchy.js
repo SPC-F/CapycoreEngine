@@ -8,6 +8,7 @@ var hierarchy =
     [ "ColliderRayResult", "struct_collider_ray_result.html", null ],
     [ "Color", "class_color.html", null ],
     [ "Component", "class_component.html", [
+      [ "Animator", "class_animator.html", null ],
       [ "AudioSource", "class_audio_source.html", null ],
       [ "BehaviorScript", "class_behavior_script.html", null ],
       [ "Collider2D", "class_collider2_d.html", [
