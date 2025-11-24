@@ -22,7 +22,7 @@
 namespace {
     std::recursive_mutex g_mutex;
     std::unordered_map<void*, size_t> g_allocations;
-    bool g_tracking_enabled = true;
+    bool g_tracking_enabled = false;
 } 
 
 void tracy_dump_leaks()
