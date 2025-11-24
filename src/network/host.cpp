@@ -30,7 +30,16 @@ void Host::start_server()
     address.host = ENET_HOST_ANY;
     address.port = connection_port_;
 
-    server_ = enet_host_create(&address, max_clients_, 2, 0, 0);
+    size_t channel_limit = 2;
+    enet_uint32 max_bandwidth = 0;
+
+    server_ = enet_host_create(
+        &address,
+        max_clients_,
+        channel_limit,
+        max_bandwidth,
+        max_bandwidth
+    );
 
     if (!server_)
         throw std::runtime_error("Failed to create ENet server host.");
