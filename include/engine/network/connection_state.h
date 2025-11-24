@@ -1,6 +1,6 @@
 #pragma once
 
-enum class ConnectionState {
+enum class ConnectionState : uint16_t {
     NONE,
     CONNECTED,
     DISCONNECTED,
