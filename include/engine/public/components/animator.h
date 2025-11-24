@@ -17,7 +17,7 @@ private:
     bool is_playing_;
     bool is_looping_;
 
-    int calculate_next_frame_index(int intervals_advanced) const;
+    [[nodiscard]] int calculate_next_frame_index(int intervals_advanced) const;
     void update_sprite_texture(int new_frame_index);
 public:
     explicit Animator(const std::string& sprite_sheet_name, int interval_ms);
@@ -25,7 +25,7 @@ public:
     void play(bool is_looping);
     void pause();
     void reset();
-    bool is_playing() const noexcept;
+    [[nodiscard]] bool is_playing() const noexcept;
 
     // Component overrides
     void update(float dt_seconds) override;

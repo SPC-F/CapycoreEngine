@@ -83,7 +83,11 @@ int Animator::calculate_next_frame_index(const int intervals_advanced) const {
 }
 
 void Animator::update_sprite_texture(const int new_frame_index) {
-    const auto& parent = this->parent().value().get();
+    const auto& parent_opt = this->parent();
+    if (!parent_opt.has_value()) {
+        throw std::runtime_error("Animator: No parent GameObject found.");
+    }
+    const GameObject& parent = parent_opt.value().get();
     const auto sprite = parent.get_component<Sprite>();
 
     if (!sprite.has_value()) {
