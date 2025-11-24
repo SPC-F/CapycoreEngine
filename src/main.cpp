@@ -12,7 +12,7 @@ namespace {
     #endif
 }
 
-int main(int argc, char* argv[]) {
+int main() {
     tracy_init();
 
     tracy_shutdown();
