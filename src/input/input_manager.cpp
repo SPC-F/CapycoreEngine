@@ -13,3 +13,10 @@ void InputManager::set_provider(std::unique_ptr<IInputProvider> provider) noexce
 {
     provider_ = std::move(provider);
 }
+
+void InputManager::update()
+{
+    if (provider_) {
+        provider_->update();
+    }
+}

@@ -7,7 +7,7 @@
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/engine.h>
 #include <engine/input/input_manager.h>
-#include <engine/input/i_input_provider.h>
+#include <engine/input/input_system.h>
 
 constexpr float accumulator_default_value = 0.0f;
 constexpr float fixed_step = 1.0f / 60.0f; // ~60 fps
@@ -57,6 +57,9 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
                 stop();
             }
         }
+
+        auto& input_manager = Engine::instance().services->get_service<InputManager>().get();
+        input_manager.update();
 
         while (accumulator >= fixed_step) {
             // creates a fixed step for input handling and physics updates
