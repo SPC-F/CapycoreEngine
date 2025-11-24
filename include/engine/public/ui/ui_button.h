@@ -51,20 +51,20 @@ public:
     void add_on_press(const std::function<void(UIButton&)>& handler);
     void trigger_on_press();
 
-    void hover();
-    void unhover();
+    void hover(std::function<void(UIButton&)> on_hovered = nullptr);
+    void unhover(std::function<void(UIButton&)> on_unhovered = nullptr);
 
-    void press();
-    void release();
+    void press(std::function<void(UIButton&)> on_pressed = nullptr);
+    void release(std::function<void(UIButton&)> on_released = nullptr);
 
-    void disable();
-    void enable();
+    void disable(std::function<void(UIButton&)> on_disabled = nullptr);
+    void enable(std::function<void(UIButton&)> on_enabled = nullptr);
 
-    void focus();
-    void unfocus();
+    void focus(std::function<void(UIButton&)> on_focused = nullptr);
+    void unfocus(std::function<void(UIButton&)> on_unfocused = nullptr);
 
-    void select();
-    void deselect();
+    void select(std::function<void(UIButton&)> on_selected = nullptr);
+    void deselect(std::function<void(UIButton&)> on_deselected = nullptr);
 
     void reset_state();
 

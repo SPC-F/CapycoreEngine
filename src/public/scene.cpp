@@ -3,11 +3,16 @@
 #include <SDL3/SDL.h>
 #include <algorithm>
 
-#include <engine/util/memory.h>
-#include <engine/core/rendering/renderingService.h>
 #include <engine/core/engine.h>
+#include <engine/core/rendering/renderingService.h>
+#include <engine/audio/audio_service.h>
 #include <engine/input/input_manager.h>
 #include <engine/input/input_system.h>
+#include <engine/physics/physics_service.h>
+#include <engine/public/gameObject.h>
+#include <engine/public/ui/ui_object.h>
+#include <engine/public/component.h>
+#include <engine/util/memory.h>
 
 constexpr float accumulator_default_value = 0.0f;
 constexpr float fixed_step = 1.0f / 60.0f; // ~60 fps
@@ -42,24 +47,27 @@ void Scene::execute_listeners(const std::vector<Scene::listener_function_t> &lis
 void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
     float accumulator = accumulator_default_value;
 
+    auto& audio_service = Engine::instance().services->get_service<AudioService>().get();
+    auto& input_manager = Engine::instance().services->get_service<InputManager>().get();
+    auto& physics_service = Engine::instance().services->get_service<PhysicsService>().get();
     auto& rendering_service = Engine::instance().services->get_service<RenderingService>().get();
+    
     rendering_service.init_frame_timer();
 
     while (is_running()) {
         rendering_service.update_frame_time(time_scale_);
         float frame_dt = rendering_service.delta_time();
-
         accumulator += frame_dt;
 
+        input_manager.update();
+
+        // TODO: This event does not work for now!
         SDL_Event e;
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_EVENT_QUIT) {
                 stop();
             }
         }
-
-        auto& input_manager = Engine::instance().services->get_service<InputManager>().get();
-        input_manager.update();
 
         while (accumulator >= fixed_step) {
             // creates a fixed step for input handling and physics updates
@@ -73,6 +81,27 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
         run_without_tracy([&]() {
             auto game_objects = this->game_objects();
             rendering_service.draw(game_objects);
+            
+            audio_service.update();
+            physics_service.update(fixed_step, game_objects);
+
+            for (auto& game_object_ref : game_objects) {
+                auto& game_object = game_object_ref.get();
+
+                if (auto ui_object_opt = dynamic_cast<UIObject*>(&game_object)) {
+                    ui_object_opt->update(frame_dt);
+                }
+
+                auto components = game_object.get_components<Component>();
+                for (auto& component_ref : components) {
+                    auto& component = component_ref.get();
+                    component.update(frame_dt);
+                }
+
+                if (game_object.marked_for_deletion()) {
+                    remove_game_object(game_object);
+                }
+            }
         });
     }
 }
