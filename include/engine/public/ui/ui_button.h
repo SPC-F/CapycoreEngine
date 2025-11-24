@@ -40,10 +40,10 @@ public:
         Point pivot,
         Point anchor,
         Scene& scene,
-        std::string label = "",
-        std::string font = "",
-        std::string font_path = "",
-        std::string sprite_path = ""
+        const std::string& label = "",
+        const std::string& font = "",
+        const std::string& font_path = "",
+        const std::string& sprite_path = ""
     );
 
     void update(float dt) override;

@@ -210,11 +210,11 @@ std::optional<std::reference_wrapper<Font>> AssetService::try_get_font(const std
     return std::nullopt;
 }
 
-std::reference_wrapper<Font> AssetService::register_font(const std::string font_name, const std::string font_path, int font_size) {
+std::reference_wrapper<Font> AssetService::register_font(const std::string& font_name, const std::string& font_path, int font_size) {
     const std::string key = font_name + "_" + std::to_string(font_size);
 
     std::unique_ptr<TTF_Font, void(*)(TTF_Font*)> font = std::unique_ptr<TTF_Font, void(*)(TTF_Font*)>(
-        TTF_OpenFont(font_path.c_str(), font_size),
+        TTF_OpenFont(font_path.c_str(), static_cast<float>(font_size)),
         &TTF_CloseFont
     );
 
@@ -222,7 +222,7 @@ std::reference_wrapper<Font> AssetService::register_font(const std::string font_
         throw std::runtime_error("Failed to load font: " + font_name);
     }
 
-    auto font_ptr = std::unique_ptr<Font>(new Font(font_name, font_size, font.release()));
+    auto font_ptr = std::unique_ptr<Font>(new Font(font_name, static_cast<int8_t>(font_size), font.release()));
     font_cache_.emplace(key, std::move(font_ptr));
 
     return *font_cache_.at(key);

@@ -4,6 +4,7 @@
 #include <engine/public/components/ui/image.h>
 
 constexpr unsigned short default_color_value = 255;
+constexpr unsigned short default_font_size = 16;
 
 UIButton::UIButton(
     float width,
@@ -11,10 +12,10 @@ UIButton::UIButton(
     Point pivot,
     Point anchor,
     Scene& scene,
-    std::string label,
-    std::string font,
-    std::string font_path,
-    std::string sprite_path
+    const std::string& label,
+    const std::string& font,
+    const std::string& font_path,
+    const std::string& sprite_path
 ) : 
     UIObject(width, height, pivot, anchor, scene),
     state_() 
@@ -39,7 +40,7 @@ UIButton::UIButton(
         label,
         font,
         font_path,
-        16,
+        default_font_size,
         default_color
     );
 }
@@ -125,45 +126,85 @@ void UIButton::reset_state() {
 }
 
 std::string UIButton::label() const {
-    auto& text = get_component<Text>()->get();
+    auto text_opt = get_component<Text>();
+    if (!text_opt.has_value()) {
+        return "";
+    }
+
+    auto& text = text_opt->get();
     return text.text();
 }
 
 UIButton& UIButton::label(const std::string& label) {
-    auto& text = get_component<Text>()->get();
+    auto text_opt = get_component<Text>(); 
+    if (!text_opt.has_value()) {
+        return *this;
+    }
+
+    auto& text = text_opt->get();
     text.text(label);
     return *this;
 }
 
 Color UIButton::label_color() const {
-    auto& text = get_component<Text>()->get();
+    auto text_opt = get_component<Text>();
+    if (!text_opt.has_value()) {
+        return Color{};
+    }
+
+    auto& text = text_opt->get();
     return text.color();
 }
 
 UIButton& UIButton::label_color(const Color& color) {
-    auto& text = get_component<Text>()->get();
+    auto text_opt = get_component<Text>();
+    if (!text_opt.has_value()) {
+        return *this;
+    }
+
+    auto& text = text_opt->get();
     text.color(color);
     return *this;
 }
 
 int UIButton::font_size() const {
-    auto& text = get_component<Text>()->get();
+    auto text_opt = get_component<Text>();
+    if (!text_opt.has_value()) {
+        return 0;
+    }
+
+    auto& text = text_opt->get();
     return text.font_size();
 }
 
 UIButton& UIButton::font_size(int size) {
-    auto& text = get_component<Text>()->get();
+    auto text_opt = get_component<Text>();
+    if (!text_opt.has_value()) {
+        return *this;
+    }
+
+    auto& text = text_opt->get();
     text.font_size(size);
     return *this;
 }
 
 Color UIButton::button_color() const {
-    auto& image = get_component<Image>()->get();
+    auto image_opt = get_component<Image>();
+    if (!image_opt.has_value()) {
+        return Color{};
+    }
+
+    auto& image = image_opt->get();
     return image.color();
 }
 
 UIButton& UIButton::button_color(const Color& color) {
-    auto& image = get_component<Image>()->get();
+    auto image_opt = get_component<Image>();
+    if (!image_opt.has_value()) {
+        return *this;
+    }
+
+    auto& image = image_opt->get();
     image.color(color);
     return *this;
 }

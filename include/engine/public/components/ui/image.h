@@ -8,13 +8,13 @@
 class Image : public Renderable {
 public:
     Image(
-        const std::string image,
+        const std::string& image,
         int flip_x,
         int flip_y,
         int width,
         int height,
         Color color
-    );
+    ); // NOLINT
 
     void update(float dt) override;
     void on_serialize() override;

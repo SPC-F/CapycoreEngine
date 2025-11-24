@@ -91,7 +91,7 @@ public:
      * @param font_size The size of the font.
      * @return An optional reference to the font if found, std::nullopt otherwise.
      */
-    std::optional<std::reference_wrapper<Font>> try_get_font(const std::string& font_name, int font_size) const;
+    [[nodiscard]] std::optional<std::reference_wrapper<Font>> try_get_font(const std::string& font_name, int font_size) const;
 
     /**
      * @brief Registers a font with the given name and size.
@@ -100,7 +100,7 @@ public:
      * @return A reference to the registered font.
      * @throws An exception if the font cannot be loaded.
      */
-    std::reference_wrapper<Font> register_font(const std::string font_name, const std::string font_path, int font_size);
+    [[nodiscard]]std::reference_wrapper<Font> register_font(const std::string& font_name, const std::string& font_path, int font_size);
 
 private:
     static constexpr const char * const resource_path = "resources/sprites/";

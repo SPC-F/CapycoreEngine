@@ -10,7 +10,7 @@ constexpr float default_texture_height = 32;
 
 SdlImageStrategy::SdlImageStrategy(SDL_Renderer& sdl_renderer) : sdl_renderer_(sdl_renderer) {}
 
-Color SdlImageStrategy::get_default_image_color(SDL_Texture* texture) {
+Color SdlImageStrategy::get_default_image_color(SDL_Texture* texture) { // NOLINT [readability-convert-member-functions-to-static]
     Color color;
     SDL_GetTextureColorMod(texture,
                            reinterpret_cast<Uint8*>(&color.r),
@@ -20,7 +20,7 @@ Color SdlImageStrategy::get_default_image_color(SDL_Texture* texture) {
     return color;
 }
 
-void SdlImageStrategy::set_image_color(const Color& color, SDL_Texture* texture) {
+void SdlImageStrategy::set_image_color(const Color& color, SDL_Texture* texture) { // NOLINT [readability-convert-member-functions-to-static]
     SDL_SetTextureColorMod(texture,
                            static_cast<Uint8>(color.r),
                            static_cast<Uint8>(color.g),

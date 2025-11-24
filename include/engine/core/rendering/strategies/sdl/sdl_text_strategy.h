@@ -25,7 +25,7 @@ private:
     float last_font_width_ = 0.0f;
     float last_font_height_ = 0.0f;
     
-    std::reference_wrapper<TTF_Font> get_font(const std::string& name, const std::string& path, int size);
+    static std::reference_wrapper<TTF_Font> get_font(const std::string& name, const std::string& path, int size);
 
 public:
     SdlTextStrategy(SDL_Renderer& sdl_renderer);

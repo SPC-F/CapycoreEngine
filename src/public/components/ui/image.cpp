@@ -3,9 +3,9 @@
 #include <engine/core/engine.h>
 #include <engine/core/rendering/assetService.h>
 
-std::reference_wrapper<Texture> Image::get_texture_for(const std::string& sprite) {
+std::reference_wrapper<Texture> Image::get_texture_for(const std::string& name) { // NOLINT
     auto& service = Engine::instance().services->get_service<AssetService>().get();
-    auto maybe_texture = service.try_get_texture(sprite);
+    auto maybe_texture = service.try_get_texture(name);
 
     if (!maybe_texture.has_value()) {
         return service.get_default_texture();
@@ -15,7 +15,7 @@ std::reference_wrapper<Texture> Image::get_texture_for(const std::string& sprite
 }
 
 Image::Image(
-    const std::string image,
+    const std::string& image,
     int flip_x,
     int flip_y,
     int width,

@@ -46,7 +46,7 @@ public:
 
     template<typename T, typename... Args>
     T& add_game_object(Args&&... args) {
-        static_assert(std::is_base_of<GameObject, T>::value, "T must be derived from GameObject");
+        static_assert(std::is_base_of_v<GameObject, T>, "T must be derived from GameObject");
 
         auto game_object = std::make_unique<T>(std::forward<Args>(args)...);
         game_objects_.emplace_back(std::move(game_object));

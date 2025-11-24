@@ -9,7 +9,7 @@ constexpr float default_texture_height = 32;
 
 SdlSpriteStrategy::SdlSpriteStrategy(SDL_Renderer& sdl_renderer) : sdl_renderer_(sdl_renderer) {}
 
-Color SdlSpriteStrategy::get_default_sprite_color(SDL_Texture* texture) {
+Color SdlSpriteStrategy::get_default_sprite_color(SDL_Texture* texture) { // NOLINT [readability-convert-member-functions-to-static]
     Color color;
     SDL_GetTextureColorMod(texture,
                            reinterpret_cast<Uint8*>(&color.r),
@@ -19,7 +19,7 @@ Color SdlSpriteStrategy::get_default_sprite_color(SDL_Texture* texture) {
     return color;
 }
 
-void SdlSpriteStrategy::set_sprite_color(const Color& color, SDL_Texture* texture) {
+void SdlSpriteStrategy::set_sprite_color(const Color& color, SDL_Texture* texture) { // NOLINT [readability-convert-member-functions-to-static]
     SDL_SetTextureColorMod(texture,
                            static_cast<Uint8>(color.r),
                            static_cast<Uint8>(color.g),

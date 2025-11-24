@@ -28,8 +28,8 @@ void SdlTextStrategy::draw(Component& component) {
         float scale_y = transform.scale().y;
 
         SDL_FRect dst{
-            transform.position().x + (ui_object.width() - last_font_width_) * default_scale_multiplier * scale_x,
-            transform.position().y + (ui_object.height() - last_font_height_) * default_scale_multiplier * scale_y,
+            transform.position().x + ((ui_object.width() - last_font_width_) * default_scale_multiplier * scale_x),
+            transform.position().y + ((ui_object.height() - last_font_height_) * default_scale_multiplier * scale_y),
             last_font_width_ * scale_x,
             last_font_height_ * scale_y
         };
@@ -48,7 +48,7 @@ void SdlTextStrategy::draw(Component& component) {
     }
 
     // Generate texture
-    auto& font = get_font(text.font(), text.font_path(), text.font_size()).get();
+    auto& font = SdlTextStrategy::get_font(text.font(), text.font_path(), text.font_size()).get();
     SDL_Color color{
         static_cast<Uint8>(text.color().r),
         static_cast<Uint8>(text.color().g),
@@ -79,8 +79,8 @@ void SdlTextStrategy::draw(Component& component) {
     float scale_y = transform.scale().y;
 
     SDL_FRect dst{
-        transform.position().x + (ui_object.width() - last_font_width_) * default_scale_multiplier * scale_x,
-        transform.position().y + (ui_object.height() - last_font_height_) * default_scale_multiplier * scale_y,
+        transform.position().x + ((ui_object.width() - last_font_width_) * default_scale_multiplier * scale_x),
+        transform.position().y + ((ui_object.height() - last_font_height_) * default_scale_multiplier * scale_y),
         last_font_width_ * scale_x,
         last_font_height_ * scale_y
     };
