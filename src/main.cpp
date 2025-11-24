@@ -1,5 +1,4 @@
 #include <engine/util/memory.h>
-#include <engine/core/engine.h>
 
 // Macro's for tracy based on the CMake option
 namespace {
