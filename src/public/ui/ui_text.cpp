@@ -22,13 +22,7 @@ UIText::UIText(
     font_size_(default_font_size),
     color_(default_color_value, default_color_value, default_color_value, default_color_value)
 {
-    add_component<Text>(
-        text_,
-        font_,
-        font_path_,
-        font_size_,
-        color_
-    );
+    add_component<Text>(text_, font_, font_path_, font_size_, color_);
 }
 
 void UIText::update(float dt) {}

@@ -59,7 +59,9 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
         float frame_dt = rendering_service.delta_time();
         accumulator += frame_dt;
 
-        input_manager.update();
+        run_without_tracy([&]() {
+            input_manager.update();
+        });
 
         // TODO: This event does not work for now!
         SDL_Event e;

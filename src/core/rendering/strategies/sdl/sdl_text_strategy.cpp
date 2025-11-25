@@ -56,6 +56,13 @@ void SdlTextStrategy::draw(Component& component) {
         static_cast<Uint8>(text.color().a)
     };
 
+    if (text.text().empty()) {
+        last_font_width_ = 0.0f;
+        last_font_height_ = 0.0f;
+        text.mark_dirty(false);
+        return;
+    }
+
     std::unique_ptr<SDL_Surface, decltype(&SDL_DestroySurface)> surf(
         TTF_RenderText_Blended(&font, text.text().c_str(), text.text().length(), color),
         SDL_DestroySurface
