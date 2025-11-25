@@ -5,7 +5,23 @@
 #include <engine/public/component.h>
 #include <engine/core/rendering/renderable.h>
 #include <engine/public/util/color.h>
+#include <engine/public/util/point.h>
 
+/**
+ * @brief Text alignment options
+ */
+enum TextAlignment : uint8_t {
+    Left = 0,
+    Center = 1,
+    Right = 2,
+};
+
+/**
+ * @brief UI Text Component
+ * 
+ * Represents a text element in the UI with customizable font, size, color, and content.
+ * Inherits from Renderable to allow rendering strategies.
+ */
 class Text : public Renderable {
 public:
     Text(std::string text, std::string font, std::string font_path, int font_size, Color color);
@@ -32,12 +48,22 @@ public:
     [[nodiscard]] bool dirty() const;
     void mark_dirty(bool dirty = true);
 
+    [[nodiscard]] TextAlignment alignment() const;
+    Text& alignment(TextAlignment alignment);
+
+    [[nodiscard]] Point offset() const;
+    Text& offset(Point offset);
+
 private:
     std::string text_;
     std::string font_;
     std::string font_path_;
+
     int font_size_;
     Color color_;
+
+    TextAlignment alignment_{Center};
+    Point offset_{0, 0};
 
     bool dirty_;
 };

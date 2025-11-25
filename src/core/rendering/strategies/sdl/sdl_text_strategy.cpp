@@ -22,14 +22,31 @@ void SdlTextStrategy::draw(Component& component) {
     const auto& ui_object = dynamic_cast<const UIObject&>(parent_opt->get());
     const auto& transform = parent_opt->get().transform();
 
-    // Reuse cached texture if possible
+    float scale_x = transform.scale().x;
+    float scale_y = transform.scale().y;
+
     if (!text.dirty() && texture_) {
-        float scale_x = transform.scale().x;
-        float scale_y = transform.scale().y;
+        float x = transform.position().x;
+        switch (text.alignment()) {
+            case TextAlignment::Left:
+                x += 0.0f;
+                break;
+            case TextAlignment::Center:
+                x += (ui_object.width() - last_font_width_) * 0.5f;
+                break;
+            case TextAlignment::Right:
+                x += (ui_object.width() - last_font_width_);
+                break;
+        }
+
+        float y = transform.position().y + (ui_object.height() - last_font_height_) * 0.5f;
+
+        x += text.offset().x;
+        y += text.offset().y;
 
         SDL_FRect dst{
-            transform.position().x + ((ui_object.width() - last_font_width_) * default_scale_multiplier * scale_x),
-            transform.position().y + ((ui_object.height() - last_font_height_) * default_scale_multiplier * scale_y),
+            x * scale_x,
+            y * scale_y,
             last_font_width_ * scale_x,
             last_font_height_ * scale_y
         };
@@ -40,14 +57,13 @@ void SdlTextStrategy::draw(Component& component) {
             nullptr,
             &dst,
             transform.rotation(),
-            nullptr, // we already adjusted for pivot
+            nullptr,
             SDL_FLIP_NONE
         );
 
         return;
     }
 
-    // Generate texture
     auto& font = SdlTextStrategy::get_font(text.font(), text.font_path(), text.font_size()).get();
     SDL_Color color{
         static_cast<Uint8>(text.color().r),
@@ -60,6 +76,7 @@ void SdlTextStrategy::draw(Component& component) {
         last_font_width_ = 0.0f;
         last_font_height_ = 0.0f;
         text.mark_dirty(false);
+        texture_.reset();
         return;
     }
 
@@ -82,12 +99,27 @@ void SdlTextStrategy::draw(Component& component) {
     texture_.reset(new_tex.release());
     text.mark_dirty(false);
 
-    float scale_x = transform.scale().x;
-    float scale_y = transform.scale().y;
+    float x = transform.position().x;
+    switch (text.alignment()) {
+        case TextAlignment::Left:   
+            x += 0.0f; 
+            break;
+        case TextAlignment::Center: 
+            x += (ui_object.width() - last_font_width_) * 0.5f; 
+            break;
+        case TextAlignment::Right:  
+            x += (ui_object.width() - last_font_width_); 
+            break;
+    }
+
+    float y = transform.position().y + (ui_object.height() - last_font_height_) * 0.5f;
+
+    x += text.offset().x;
+    y += text.offset().y;
 
     SDL_FRect dst{
-        transform.position().x + ((ui_object.width() - last_font_width_) * default_scale_multiplier * scale_x),
-        transform.position().y + ((ui_object.height() - last_font_height_) * default_scale_multiplier * scale_y),
+        x * scale_x,
+        y * scale_y,
         last_font_width_ * scale_x,
         last_font_height_ * scale_y
     };
@@ -100,7 +132,7 @@ void SdlTextStrategy::draw(Component& component) {
         nullptr,
         &dst,
         transform.rotation(),
-        nullptr, // already accounted for pivot
+        nullptr,
         SDL_FLIP_NONE
     );
 }

@@ -69,3 +69,23 @@ bool Text::dirty() const {
 void Text::mark_dirty(bool dirty) {
     dirty_ = dirty;
 }
+
+TextAlignment Text::alignment() const {
+    return alignment_;
+}
+
+Text& Text::alignment(TextAlignment alignment) {
+    alignment_ = alignment;
+    mark_dirty();
+    return *this;
+}
+
+Point Text::offset() const {
+    return offset_;
+}
+
+Text& Text::offset(Point offset) {
+    offset_ = offset;
+    mark_dirty();
+    return *this;
+}
