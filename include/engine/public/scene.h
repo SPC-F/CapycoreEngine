@@ -32,6 +32,9 @@ public:
     void on_run(listener_function_t& listener);
     void on_stop(listener_function_t& listener);
     void on_destroy(listener_function_t& listener);
+    void on_run(listener_function_t&& listener);
+    void on_stop(listener_function_t&& listener);
+    void on_destroy(listener_function_t&& listener);
 
     Scene& time_scale(float modifier);
     [[nodiscard]] float time_scale() const;

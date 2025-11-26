@@ -13,15 +13,15 @@ Scene::~Scene() {
     execute_listeners(destroy_listeners_);
 }
 
-void Scene::on_run(listener_function_t& listener) {
+void Scene::on_run(listener_function_t&& listener) {
     run_listeners_.push_back(listener);
 }
 
-void Scene::on_stop(listener_function_t& listener) {
+void Scene::on_stop(listener_function_t&& listener) {
     stop_listeners_.push_back(listener);
 }
 
-void Scene::on_destroy(listener_function_t& listener) {
+void Scene::on_destroy(listener_function_t&& listener) {
     destroy_listeners_.push_back(listener);
 }
 
