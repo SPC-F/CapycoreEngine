@@ -36,7 +36,7 @@ void Camera::set_main() {
             continue;
         }
 
-        Camera& cam = dynamic_cast<Camera&>(obj);
+        auto& cam = dynamic_cast<Camera&>(obj);
         if (&cam != this) {
             cam.set_not_main();
         }
