@@ -41,10 +41,41 @@ SceneService& SceneService::load_scene(const std::string& name) {
         return *this; // Scene is already loaded
     }
 
+    Scene& next_scene = *it->second;
+    move_dont_destroy_on_load_objects(current_scene, next_scene);
     current_scene.stop();
     it->second->run();
 
     return *this;
+}
+
+void SceneService::move_dont_destroy_on_load_objects(Scene& current_scene, Scene& next_scene) {
+    std::vector<std::reference_wrapper<GameObject>> objects_to_move;
+    for (auto obj : current_scene.game_objects()) {
+        // Only move root objects, hierarchy is preserved by moving the root
+        if (obj.get().dont_destroy_on_load() && !obj.get().parent().has_value()) {
+            objects_to_move.push_back(obj);
+        }
+    }
+
+    std::function<void(GameObject&, Scene&)> update_scene_ref;
+    update_scene_ref = [&](GameObject& obj, Scene& new_scene) {
+        obj.scene(new_scene);
+        for (auto child : obj.children()) {
+            if (auto child_ptr = current_scene.extract_game_object(child)) {
+                update_scene_ref(*child_ptr, new_scene);
+                new_scene.add_game_object(std::move(child_ptr));
+            }
+        }
+    };
+
+    for (auto obj_ref : objects_to_move) {
+        GameObject& obj = obj_ref.get();
+        if (auto ptr = current_scene.extract_game_object(obj)) {
+            update_scene_ref(*ptr, next_scene);
+            next_scene.add_game_object(std::move(ptr));
+        }
+    }
 }
 
 SceneService& SceneService::add_scene_and_load(const std::string& name) {
@@ -73,17 +104,11 @@ std::set<std::string> SceneService::contained_scene_names() const {
 }
 
 std::optional<std::reference_wrapper<Scene>> SceneService::current_scene() const {
-    auto current_scene = scenes_.begin();
     for (const auto& scene_pair : scenes_) {
         if (scene_pair.second->is_running()) {
-            current_scene = scenes_.find(scene_pair.first);
-            break;
+            return *(scene_pair.second);
         }
     }
 
-    if(current_scene == scenes_.end()) {
-        return std::nullopt;
-    }
-
-    return *(current_scene->second);
+    return std::nullopt;
 }
