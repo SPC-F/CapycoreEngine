@@ -1,8 +1,5 @@
 #include <engine/core/system/strategy/sdl_backend_system.h>
 
-SDLBackendSystem::SDLBackendSystem()
-{}
-
 void SDLBackendSystem::initialize_listeners(
     std::unordered_map<SystemEvent, std::vector<BackendCallback>>* listeners
 )

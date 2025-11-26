@@ -12,7 +12,7 @@
 class SDLBackendSystem : public IBackendSystem
 {
 public:
-    SDLBackendSystem();
+    SDLBackendSystem() = default;
 
     void initialize_listeners(
         std::unordered_map<SystemEvent, std::vector<BackendCallback>>* listeners

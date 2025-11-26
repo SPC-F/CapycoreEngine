@@ -30,7 +30,7 @@ Engine& Engine::instance() {
 }
 
 void Engine::initialize() {
-    auto& services = instance().services;
+    const auto& services = instance().services;
 
     services->register_service<PhysicsService>();
     services->register_service<SceneService>();
