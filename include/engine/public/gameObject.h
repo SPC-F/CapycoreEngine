@@ -25,7 +25,7 @@ private:
     std::string name_;
     std::string tag_;
     int layer_ {};
-    Scene& scene_;
+    std::reference_wrapper<Scene> scene_;
     Transform transform_;
 
     bool marked_for_deletion_ {false};
@@ -70,6 +70,7 @@ public:
     [[nodiscard]] Transform& transform();
 
     [[nodiscard]] const Scene& scene() const noexcept;
+    void scene(Scene& scene) noexcept;
 
     [[nodiscard]] std::vector<std::reference_wrapper<GameObject>>& children();
     GameObject& add_child(GameObject& child);

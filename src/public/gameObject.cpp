@@ -58,6 +58,11 @@ const Scene& GameObject::scene() const noexcept {
     return scene_;
 }
 
+void GameObject::scene(Scene& scene) noexcept
+{
+    scene_ = scene;
+}
+
 void GameObject::set_inactive() noexcept {
     is_active_ = false;
 }
