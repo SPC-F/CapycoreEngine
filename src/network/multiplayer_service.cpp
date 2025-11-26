@@ -130,6 +130,16 @@ ConnectionState MultiplayerService::get_connection_state() const noexcept
     return ConnectionState::NONE;
 }
 
+std::string MultiplayerService::get_uuid() const noexcept
+{
+    if (host_)
+        return host_->get_uuid();
+    if (client_)
+        return client_->get_uuid();
+    else
+        throw std::runtime_error("Cannot get uuid: must be a host or connected client first.");
+}
+
 void MultiplayerService::set_max_clients(int amount) noexcept
 {
     max_clients_ = amount;

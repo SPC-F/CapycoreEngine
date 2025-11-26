@@ -158,6 +158,11 @@ ConnectionState Client::get_connection_state() const noexcept
     return connection_state_;
 }
 
+std::string Client::get_uuid() const noexcept
+{
+    return local_uuid_;
+}
+
 void Client::register_on_connect_handler() noexcept
 {
     auto handler = [this](const Message& message) {

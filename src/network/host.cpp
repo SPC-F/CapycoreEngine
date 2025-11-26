@@ -199,6 +199,11 @@ ConnectionState Host::get_connection_state() const noexcept
     return connection_state_;
 }
 
+std::string Host::get_uuid() const noexcept
+{
+    return local_uuid_;
+}
+
 void Host::set_max_clients(int amount) noexcept
 {
     max_clients_ = amount;
