@@ -1,164 +1,170 @@
-#include <catch2/catch_test_macros.hpp>
-
 #include <engine/physics/creation/physics_creation_factory.h>
 #include <engine/physics/world/physics_world.h>
-
 #include <engine/public/component.h>
 #include <engine/public/gameObject.h>
-#include <engine/public/util/vector3.h>
 #include <engine/public/scene_service.h>
+#include <engine/public/util/vector3.h>
+
+#include <catch2/catch_test_macros.hpp>
 
 struct DummyGameObject : public GameObject {
-    explicit DummyGameObject(Scene& scene) : GameObject(scene) {}
+  explicit DummyGameObject(Scene& scene) : GameObject(scene) {}
 };
 
 struct DummyComponent : public Component {
-    explicit DummyComponent() : Component() {}
-    void update(float dt) override {}
-    void on_attach() override {}
-    void on_detach() override {}
-    void on_serialize() override {}
-    void on_deserialize() override {}
+  explicit DummyComponent() : Component() {}
+  void update(float dt) override {}
+  void on_attach() override {}
+  void on_detach() override {}
+  void on_serialize() override {}
+  void on_deserialize() override {}
 };
 
 TEST_CASE("physics_creation_factory_creates_body", "[PhysicsCreationFactory]") {
-    // arrange
-    PhysicsWorld world;
-    PhysicsCreationFactory factory(world.world_id());
+  // arrange
+  PhysicsWorld world;
+  PhysicsCreationFactory factory(world.world_id());
 
-    Vector3 position{0.0f, 0.0f, 0.0f};
+  Vector3 position{0.0f, 0.0f, 0.0f};
 
-    const std::string& scene_name = "Test Scene";
-    auto scene_service = SceneService();
-    Scene& dummy_scene = scene_service.add_scene(scene_name);
-    
-    DummyGameObject dummy_game_object(dummy_scene);
-    DummyComponent dummy_component;
-    auto& comp = dummy_component.parent(dummy_game_object);
+  const std::string& scene_name = "Test Scene";
+  auto scene_service = SceneService();
+  Scene& dummy_scene = scene_service.add_scene(scene_name);
 
-    // act
-    Body2D body = factory.create_body(position, BodyType2D::Static, &dummy_component);
+  DummyGameObject dummy_game_object(dummy_scene);
+  DummyComponent dummy_component;
+  auto& comp = dummy_component.parent(dummy_game_object);
 
-    // assert
-    REQUIRE(b2Body_IsValid(body.id));
-    b2Vec2 pos = b2Body_GetPosition(body.id);
-    REQUIRE(pos.x == position.x);
-    REQUIRE(pos.y == position.y);
-    REQUIRE(b2Body_GetType(body.id) == b2BodyType::b2_staticBody);
+  // act
+  Body2D body =
+      factory.create_body(position, BodyType2D::Static, &dummy_component);
+
+  // assert
+  REQUIRE(b2Body_IsValid(body.id));
+  b2Vec2 pos = b2Body_GetPosition(body.id);
+  REQUIRE(pos.x == position.x);
+  REQUIRE(pos.y == position.y);
+  REQUIRE(b2Body_GetType(body.id) == b2BodyType::b2_staticBody);
 }
 
+TEST_CASE("physics_creation_factory_creates_box_fixture",
+          "[PhysicsCreationFactory]") {
+  // arrange
+  PhysicsWorld world;
+  PhysicsCreationFactory factory(world.world_id());
 
-TEST_CASE("physics_creation_factory_creates_box_fixture", "[PhysicsCreationFactory]") {
-    // arrange
-    PhysicsWorld world;
-    PhysicsCreationFactory factory(world.world_id());
+  PhysicsCreationFlags flags{};
+  flags.dynamic = true;
+  flags.enable_contact_events = false;
+  flags.is_bullet = false;
+  flags.sensor = false;
 
-    PhysicsCreationFlags flags{};
-    flags.dynamic = true;
-    flags.enable_contact_events = false;
-    flags.is_bullet = false;
-    flags.sensor = false;
+  Vector3 position{5.0f, 10.0f, 0.0f};
 
-    Vector3 position{5.0f, 10.0f, 0.0f};
+  const std::string& scene_name = "Test Scene";
+  auto scene_service = SceneService();
+  Scene& dummy_scene = scene_service.add_scene(scene_name);
 
-    const std::string& scene_name = "Test Scene";
-    auto scene_service = SceneService();
-    Scene& dummy_scene = scene_service.add_scene(scene_name);
+  DummyGameObject dummy_game_object(dummy_scene);
+  DummyComponent dummy_component;
+  auto& comp = dummy_component.parent(dummy_game_object);
 
-    DummyGameObject dummy_game_object(dummy_scene);
-    DummyComponent dummy_component;
-    auto& comp = dummy_component.parent(dummy_game_object);
+  // act
+  Body2D body =
+      factory.create_body(position, BodyType2D::Dynamic, &dummy_component);
+  body = factory.create_box_fixture(body, {0.0f, 0.0f}, 2.0f, 4.0f, flags);
 
-    // act
-    Body2D body = factory.create_body(position, BodyType2D::Dynamic, &dummy_component);
-    body = factory.create_box_fixture(body, {0.0f, 0.0f}, 2.0f, 4.0f, flags);
-    
-    // assert
-    REQUIRE(b2Body_IsValid(body.id));
-    b2Vec2 pos = b2Body_GetPosition(body.id);
-    REQUIRE(pos.x == position.x);
-    REQUIRE(pos.y == position.y);
-    REQUIRE(b2Body_GetType(body.id) == b2BodyType::b2_dynamicBody);
+  // assert
+  REQUIRE(b2Body_IsValid(body.id));
+  b2Vec2 pos = b2Body_GetPosition(body.id);
+  REQUIRE(pos.x == position.x);
+  REQUIRE(pos.y == position.y);
+  REQUIRE(b2Body_GetType(body.id) == b2BodyType::b2_dynamicBody);
 }
 
-TEST_CASE("physics_creation_factory_creates_circle_fixture", "[PhysicsCreationFactory]") {
-    // arrange
-    PhysicsWorld world;
-    PhysicsCreationFactory factory(world.world_id());
+TEST_CASE("physics_creation_factory_creates_circle_fixture",
+          "[PhysicsCreationFactory]") {
+  // arrange
+  PhysicsWorld world;
+  PhysicsCreationFactory factory(world.world_id());
 
-    PhysicsCreationFlags flags{};
-    flags.dynamic = false;
-    flags.enable_contact_events = false;
-    flags.sensor = true;
+  PhysicsCreationFlags flags{};
+  flags.dynamic = false;
+  flags.enable_contact_events = false;
+  flags.sensor = true;
 
-    Vector3 position{0.0f, 0.0f, 0.0f};
+  Vector3 position{0.0f, 0.0f, 0.0f};
 
-    const std::string& scene_name = "Test Scene";
-    auto scene_service = SceneService();
-    Scene& dummy_scene = scene_service.add_scene(scene_name);
+  const std::string& scene_name = "Test Scene";
+  auto scene_service = SceneService();
+  Scene& dummy_scene = scene_service.add_scene(scene_name);
 
-    DummyGameObject dummy_game_object(dummy_scene);
-    DummyComponent dummy_component;
-    auto& comp = dummy_component.parent(dummy_game_object);
+  DummyGameObject dummy_game_object(dummy_scene);
+  DummyComponent dummy_component;
+  auto& comp = dummy_component.parent(dummy_game_object);
 
-    // act
-    Body2D body = factory.create_body(position, BodyType2D::Static, &dummy_component);
-    body = factory.create_circle_fixture(body, {0.0f, 0.0f}, 1.0f, flags);
+  // act
+  Body2D body =
+      factory.create_body(position, BodyType2D::Static, &dummy_component);
+  body = factory.create_circle_fixture(body, {0.0f, 0.0f}, 1.0f, flags);
 
-    // assert
-    REQUIRE(b2Body_IsValid(body.id));
-    REQUIRE(b2Body_GetType(body.id) == b2BodyType::b2_staticBody);
+  // assert
+  REQUIRE(b2Body_IsValid(body.id));
+  REQUIRE(b2Body_GetType(body.id) == b2BodyType::b2_staticBody);
 }
 
-TEST_CASE("physics_creation_factory_creates_bullet_body_with_mass_data", "[PhysicsCreationFactory]") {
-    // arrange
-    PhysicsWorld world;
-    PhysicsCreationFactory factory(world.world_id());
+TEST_CASE("physics_creation_factory_creates_bullet_body_with_mass_data",
+          "[PhysicsCreationFactory]") {
+  // arrange
+  PhysicsWorld world;
+  PhysicsCreationFactory factory(world.world_id());
 
-    PhysicsCreationFlags flags{};
-    flags.dynamic = true;
-    flags.is_bullet = true;
+  PhysicsCreationFlags flags{};
+  flags.dynamic = true;
+  flags.is_bullet = true;
 
-    Vector3 position{2.0f, 3.0f, 0.0f};
+  Vector3 position{2.0f, 3.0f, 0.0f};
 
-    const std::string& scene_name = "Test Scene";
-    auto scene_service = SceneService();
-    Scene& dummy_scene = scene_service.add_scene(scene_name);
+  const std::string& scene_name = "Test Scene";
+  auto scene_service = SceneService();
+  Scene& dummy_scene = scene_service.add_scene(scene_name);
 
-    DummyGameObject dummy_game_object(dummy_scene);
-    DummyComponent dummy_component;
-    auto& comp = dummy_component.parent(dummy_game_object);
+  DummyGameObject dummy_game_object(dummy_scene);
+  DummyComponent dummy_component;
+  auto& comp = dummy_component.parent(dummy_game_object);
 
-    // act
-    Body2D body = factory.create_body(position, BodyType2D::Dynamic, &dummy_component);
-    body = factory.create_circle_fixture(body, {0.0f, 0.0f}, 0.5f, flags);
+  // act
+  Body2D body =
+      factory.create_body(position, BodyType2D::Dynamic, &dummy_component);
+  body = factory.create_circle_fixture(body, {0.0f, 0.0f}, 0.5f, flags);
 
-    // assert
-    REQUIRE(b2Body_IsValid(body.id));
-    REQUIRE(b2Body_IsBullet(body.id));
+  // assert
+  REQUIRE(b2Body_IsValid(body.id));
+  REQUIRE(b2Body_IsBullet(body.id));
 
-    b2MassData mass_data = b2Body_GetMassData(body.id);
-    REQUIRE(mass_data.mass > 0.0f);
+  b2MassData mass_data = b2Body_GetMassData(body.id);
+  REQUIRE(mass_data.mass > 0.0f);
 }
 
-TEST_CASE("physics_creation_factory_destroys_body", "[PhysicsCreationFactory]") {
-    // arrange
-    PhysicsWorld world;
-    PhysicsCreationFactory factory(world.world_id());
+TEST_CASE("physics_creation_factory_destroys_body",
+          "[PhysicsCreationFactory]") {
+  // arrange
+  PhysicsWorld world;
+  PhysicsCreationFactory factory(world.world_id());
 
-    PhysicsCreationFlags flags{};
-    flags.dynamic = true;
+  PhysicsCreationFlags flags{};
+  flags.dynamic = true;
 
-    Vector3 position{1.0f, 1.0f, 0.0f};
+  Vector3 position{1.0f, 1.0f, 0.0f};
 
-    Body2D body = factory.create_body(position, BodyType2D::Dynamic, nullptr);
-    body = factory.create_box_fixture(body, {0.0f, 0.0f}, 2.0f, 2.0f, flags);
+  Body2D body = factory.create_body(position, BodyType2D::Dynamic, nullptr);
+  body = factory.create_box_fixture(body, {0.0f, 0.0f}, 2.0f, 2.0f, flags);
 
-    REQUIRE(b2Body_IsValid(body.id));
+  REQUIRE(b2Body_IsValid(body.id));
 
-    // act
-    factory.destroy_body(body);
+  // act
+  factory.destroy_body(body);
 
-    // assert
-    REQUIRE_FALSE(b2Body_IsValid(body.id));
+  // assert
+  REQUIRE_FALSE(b2Body_IsValid(body.id));
 }

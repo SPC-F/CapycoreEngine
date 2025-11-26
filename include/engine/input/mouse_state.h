@@ -1,9 +1,9 @@
 #pragma once
 
-#include <map>
-
 #include <engine/input/mouse_button.h>
 #include <engine/public/util/point.h>
+
+#include <map>
 
 /**
  * @brief Represents the primary directions of mouse wheel movement.
@@ -12,11 +12,11 @@
  * Can be combined with per-frame deltas for precise scroll handling.
  */
 enum class MouseDirection : std::uint8_t {
-    none,   ///< No scroll detected (this frame).
-    up,     ///< Scroll wheel moved upward (away from the user).
-    down,   ///< Scroll wheel moved downward (toward the user).
-    left,   ///< Scroll wheel moved leftward.
-    right   ///< Scroll wheel moved rightward.
+  none,  ///< No scroll detected (this frame).
+  up,    ///< Scroll wheel moved upward (away from the user).
+  down,  ///< Scroll wheel moved downward (toward the user).
+  left,  ///< Scroll wheel moved leftward.
+  right  ///< Scroll wheel moved rightward.
 };
 
 /**
@@ -26,10 +26,11 @@ enum class MouseDirection : std::uint8_t {
  * presses and releases deterministically.
  */
 struct MouseButtonState {
-    bool current  = false;  ///< True if the button is down this frame.
-    bool previous = false;  ///< True if the button was down in the previous frame.
+  bool current = false;  ///< True if the button is down this frame.
+  bool previous =
+      false;  ///< True if the button was down in the previous frame.
 
-    void reset();
+  void reset();
 };
 
 /**
@@ -39,33 +40,34 @@ struct MouseButtonState {
  * Designed for deterministic querying without backend-specific dependencies.
  */
 struct MouseWheelState {
-    float x_scroll = 0.0f;  ///< Accumulated horizontal scroll position.
-    float y_scroll = 0.0f;  ///< Accumulated vertical scroll position.
+  float x_scroll = 0.0f;  ///< Accumulated horizontal scroll position.
+  float y_scroll = 0.0f;  ///< Accumulated vertical scroll position.
 
-    float x_delta = 0.0f;   ///< Horizontal scroll change this frame.
-    float y_delta = 0.0f;   ///< Vertical scroll change this frame.
+  float x_delta = 0.0f;  ///< Horizontal scroll change this frame.
+  float y_delta = 0.0f;  ///< Vertical scroll change this frame.
 
-    MouseDirection last_scroll_direction = MouseDirection::none;
+  MouseDirection last_scroll_direction = MouseDirection::none;
 
-    void reset();
+  void reset();
 };
 
 /**
  * @brief Aggregates all mouse-related state information.
  *
- * Encapsulates position, button states, and wheel movement into a single structure.
- * Intended for per-frame input tracking and polling through IInputProvider.
+ * Encapsulates position, button states, and wheel movement into a single
+ * structure. Intended for per-frame input tracking and polling through
+ * IInputProvider.
  */
 struct MouseState {
-    // Cursor position in window coordinates.
-    Point position = Point(0, 0);
+  // Cursor position in window coordinates.
+  Point position = Point(0, 0);
 
-    // Cursor movement delta since last frame.
-    float delta_x = 0.0f;
-    float delta_y = 0.0f;
+  // Cursor movement delta since last frame.
+  float delta_x = 0.0f;
+  float delta_y = 0.0f;
 
-    std::map<MouseButton, MouseButtonState> buttons;
-    MouseWheelState wheel;
+  std::map<MouseButton, MouseButtonState> buttons;
+  MouseWheelState wheel;
 
-    void reset();
+  void reset();
 };
