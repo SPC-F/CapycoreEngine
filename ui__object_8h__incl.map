@@ -1,5 +1,5 @@
-<map id="include/engine/public/components/ui/ui_object.h" name="include/engine/public/components/ui/ui_object.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="475,5,672,45"/>
+<map id="include/engine/public/ui/ui_object.h" name="include/engine/public/ui/ui_object.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="493,5,653,45"/>
 <area shape="rect" id="Node000002" href="$game_object_8h.html" title=" " alt="" coords="375,101,579,126"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="554,48,503,93,499,89,550,44"/>
 <area shape="rect" id="Node000013" href="$point_8h.html" title=" " alt="" coords="603,93,738,133"/>

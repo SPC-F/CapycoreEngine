@@ -171,6 +171,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a225a70386d6a3566601887c6204f0b8b" id="r_a225a70386d6a3566601887c6204f0b8b"><td class="memItemLeft" align="right" valign="top">std::reference_wrapper&lt; <a class="el" href="class_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_asset_service.html#a225a70386d6a3566601887c6204f0b8b">get_default_texture</a> ()</td></tr>
 <tr class="memdesc:a225a70386d6a3566601887c6204f0b8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the default white texture.  <br /></td></tr>
 <tr class="separator:a225a70386d6a3566601887c6204f0b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4ad7c42d37a61fc59c6f5df8f93496e" id="r_ac4ad7c42d37a61fc59c6f5df8f93496e"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_font.html">Font</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_asset_service.html#ac4ad7c42d37a61fc59c6f5df8f93496e">try_get_font</a> (const std::string &amp;font_name, int font_size) const</td></tr>
+<tr class="memdesc:ac4ad7c42d37a61fc59c6f5df8f93496e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to retrieve a font by its name and size.  <br /></td></tr>
+<tr class="separator:ac4ad7c42d37a61fc59c6f5df8f93496e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c2a69c70585d5a60adf0cfd47791a60" id="r_a2c2a69c70585d5a60adf0cfd47791a60"><td class="memItemLeft" align="right" valign="top">std::reference_wrapper&lt; <a class="el" href="class_font.html">Font</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_asset_service.html#a2c2a69c70585d5a60adf0cfd47791a60">register_font</a> (const std::string &amp;font_name, const std::string &amp;font_path, int font_size)</td></tr>
+<tr class="memdesc:a2c2a69c70585d5a60adf0cfd47791a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a font with the given name and size.  <br /></td></tr>
+<tr class="separator:a2c2a69c70585d5a60adf0cfd47791a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_i_engine_service"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_i_engine_service')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_i_engine_service.html">IEngineService</a></td></tr>
 <tr class="memitem:abf066771b0c8c59c4e6be6beedb669c3 inherit pub_methods_class_i_engine_service" id="r_abf066771b0c8c59c4e6be6beedb669c3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_engine_service.html#abf066771b0c8c59c4e6be6beedb669c3">~IEngineService</a> ()=default</td></tr>
 <tr class="separator:abf066771b0c8c59c4e6be6beedb669c3 inherit pub_methods_class_i_engine_service"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -437,6 +443,56 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a2c2a69c70585d5a60adf0cfd47791a60" name="a2c2a69c70585d5a60adf0cfd47791a60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c2a69c70585d5a60adf0cfd47791a60">&#9670;&#160;</a></span>register_font()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::reference_wrapper&lt; <a class="el" href="class_font.html">Font</a> &gt; AssetService::register_font </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>font_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>font_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>font_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers a font with the given name and size. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">font_name</td><td>The name of the font. </td></tr>
+    <tr><td class="paramname">font_size</td><td>The size of the font. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the registered font. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">An</td><td>exception if the font cannot be loaded. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a8356c7ce6fcf9f4dae13bf533beee5a5" name="a8356c7ce6fcf9f4dae13bf533beee5a5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8356c7ce6fcf9f4dae13bf533beee5a5">&#9670;&#160;</a></span>register_texture()</h2>
 
@@ -485,6 +541,44 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ac4ad7c42d37a61fc59c6f5df8f93496e" name="ac4ad7c42d37a61fc59c6f5df8f93496e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4ad7c42d37a61fc59c6f5df8f93496e">&#9670;&#160;</a></span>try_get_font()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_font.html">Font</a> &gt; &gt; AssetService::try_get_font </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>font_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>font_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attempts to retrieve a font by its name and size. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">font_name</td><td>The name of the font. </td></tr>
+    <tr><td class="paramname">font_size</td><td>The size of the font. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An optional reference to the font if found, std::nullopt otherwise. </dd></dl>
 
 </div>
 </div>

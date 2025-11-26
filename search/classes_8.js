@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['physicscreationfactory_0',['PhysicsCreationFactory',['../class_physics_creation_factory.html',1,'']]],
-  ['physicscreationflags_1',['PhysicsCreationFlags',['../struct_physics_creation_flags.html',1,'']]],
-  ['physicsraycaster_2',['PhysicsRaycaster',['../class_physics_raycaster.html',1,'']]],
-  ['physicsservice_3',['PhysicsService',['../class_physics_service.html',1,'']]],
-  ['physicsworld_4',['PhysicsWorld',['../class_physics_world.html',1,'']]],
-  ['point_5',['Point',['../class_point.html',1,'']]]
+  ['mousebuttonstate_0',['MouseButtonState',['../struct_mouse_button_state.html',1,'']]],
+  ['mousestate_1',['MouseState',['../struct_mouse_state.html',1,'']]],
+  ['mousewheelstate_2',['MouseWheelState',['../struct_mouse_wheel_state.html',1,'']]]
 ];

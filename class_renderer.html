@@ -158,6 +158,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab084c79787c3e2857ddc89a55d9955cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2091230e41550ba2564272fbf2fc0fac" id="r_a2091230e41550ba2564272fbf2fc0fac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_window.html">Window</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a2091230e41550ba2564272fbf2fc0fac">window</a> ()</td></tr>
 <tr class="separator:a2091230e41550ba2564272fbf2fc0fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a014c038c51421e32bea9cb815601fb0d" id="r_a014c038c51421e32bea9cb815601fb0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a014c038c51421e32bea9cb815601fb0d">init_frame_timer</a> ()</td></tr>
+<tr class="memdesc:a014c038c51421e32bea9cb815601fb0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the internal timer for frame time calculation.  <br /></td></tr>
+<tr class="separator:a014c038c51421e32bea9cb815601fb0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4362af2575380ec2ca410384c71cecc1" id="r_a4362af2575380ec2ca410384c71cecc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a4362af2575380ec2ca410384c71cecc1">update_frame_time</a> (float time_scale)</td></tr>
+<tr class="memdesc:a4362af2575380ec2ca410384c71cecc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the frame time based on the elapsed time since the last frame.  <br /></td></tr>
+<tr class="separator:a4362af2575380ec2ca410384c71cecc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea6bd10db040ec83d7e82d56588989a0" id="r_aea6bd10db040ec83d7e82d56588989a0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#aea6bd10db040ec83d7e82d56588989a0">delta_time</a> () const</td></tr>
+<tr class="memdesc:aea6bd10db040ec83d7e82d56588989a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the time elapsed since the last frame.  <br /></td></tr>
+<tr class="separator:aea6bd10db040ec83d7e82d56588989a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_i_engine_service"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_i_engine_service')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_i_engine_service.html">IEngineService</a></td></tr>
 <tr class="memitem:abf066771b0c8c59c4e6be6beedb669c3 inherit pub_methods_class_i_engine_service" id="r_abf066771b0c8c59c4e6be6beedb669c3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_engine_service.html#abf066771b0c8c59c4e6be6beedb669c3">~IEngineService</a> ()=default</td></tr>
 <tr class="separator:abf066771b0c8c59c4e6be6beedb669c3 inherit pub_methods_class_i_engine_service"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -268,6 +277,49 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="aea6bd10db040ec83d7e82d56588989a0" name="aea6bd10db040ec83d7e82d56588989a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea6bd10db040ec83d7e82d56588989a0">&#9670;&#160;</a></span>delta_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Renderer::delta_time </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves the time elapsed since the last frame. </p>
+<dl class="section return"><dt>Returns</dt><dd>The delta time in seconds. </dd></dl>
+
+</div>
+</div>
+<a id="a014c038c51421e32bea9cb815601fb0d" name="a014c038c51421e32bea9cb815601fb0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a014c038c51421e32bea9cb815601fb0d">&#9670;&#160;</a></span>init_frame_timer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::init_frame_timer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes the internal timer for frame time calculation. </p>
+<dl class="section note"><dt>Note</dt><dd>This method must be called before using update_frame_time or delta_time. </dd>
+<dd>
+Techically this keeps track of time, but it utilizes SDL's performance counter under the hood so thats why its here.</dd></dl>
+<p>This method sets up the necessary variables to track frame time and should be called before starting the rendering loop. </p>
+
+</div>
+</div>
 <a id="a18d6d94d1930759e8e248f8a432b99bd" name="a18d6d94d1930759e8e248f8a432b99bd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a18d6d94d1930759e8e248f8a432b99bd">&#9670;&#160;</a></span>render()</h2>
 
@@ -290,6 +342,32 @@ Friends</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">objects</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4362af2575380ec2ca410384c71cecc1" name="a4362af2575380ec2ca410384c71cecc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4362af2575380ec2ca410384c71cecc1">&#9670;&#160;</a></span>update_frame_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::update_frame_time </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>time_scale</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the frame time based on the elapsed time since the last frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time_scale</td><td>A modifier to scale the delta time, useful for implementing slow-motion or speed-up effects. </td></tr>
   </table>
   </dd>
 </dl>

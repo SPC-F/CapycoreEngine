@@ -16,11 +16,14 @@ var hierarchy =
         [ "CircleCollider2D", "class_circle_collider2_d.html", null ]
       ] ],
       [ "Renderable", "class_renderable.html", [
-        [ "Sprite", "class_sprite.html", null ]
+        [ "Image", "class_image.html", null ],
+        [ "Sprite", "class_sprite.html", null ],
+        [ "Text", "class_text.html", null ]
       ] ],
       [ "Rigidbody2D", "class_rigidbody2_d.html", null ]
     ] ],
     [ "Engine", "class_engine.html", null ],
+    [ "Font", "class_font.html", null ],
     [ "GameObject", "class_game_object.html", [
       [ "UIObject", "class_u_i_object.html", [
         [ "UIButton", "class_u_i_button.html", null ],
@@ -43,8 +46,9 @@ var hierarchy =
       [ "InputSystem", "class_input_system.html", null ]
     ] ],
     [ "IRenderingStrategy", "class_i_rendering_strategy.html", [
-      [ "SdlGuiStrategy", "class_sdl_gui_strategy.html", null ],
-      [ "SdlSpriteStrategy", "class_sdl_sprite_strategy.html", null ]
+      [ "SdlImageStrategy", "class_sdl_image_strategy.html", null ],
+      [ "SdlSpriteStrategy", "class_sdl_sprite_strategy.html", null ],
+      [ "SdlTextStrategy", "class_sdl_text_strategy.html", null ]
     ] ],
     [ "IRenderingStrategyFactory", "class_i_rendering_strategy_factory.html", [
       [ "SdlStrategyFactory", "class_sdl_strategy_factory.html", null ]

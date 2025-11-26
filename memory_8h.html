@@ -129,11 +129,12 @@ $(document).ready(function(){initNavTree('memory_8h.html',''); initResizable(); 
   <div class="headertitle"><div class="title">memory.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
+<div class="textblock"><code>#include &lt;functional&gt;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for memory.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="memory_8h__incl.svg" width="154" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="memory_8h__incl.svg" width="192" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="memory_8h_source.html">Go to the source code of this file.</a></p>
@@ -146,6 +147,8 @@ Functions</h2></td></tr>
 <tr class="separator:ad4363dd01b003ce9403bb11889b6dee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99ab95e12af5ddfa366db0bd61de7f47" id="r_a99ab95e12af5ddfa366db0bd61de7f47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#a99ab95e12af5ddfa366db0bd61de7f47">tracy_memory_shutdown</a> ()</td></tr>
 <tr class="separator:a99ab95e12af5ddfa366db0bd61de7f47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa49efe42bb4e5937f1bd60c9f63a04e7" id="r_aa49efe42bb4e5937f1bd60c9f63a04e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#aa49efe42bb4e5937f1bd60c9f63a04e7">run_without_tracy</a> (std::function&lt; void()&gt; func)</td></tr>
+<tr class="separator:aa49efe42bb4e5937f1bd60c9f63a04e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfad8f0764cf06b8abd170d8569a7b3f" id="r_acfad8f0764cf06b8abd170d8569a7b3f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#acfad8f0764cf06b8abd170d8569a7b3f">operator new</a> (std::size_t size)</td></tr>
 <tr class="separator:acfad8f0764cf06b8abd170d8569a7b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa145befcf5e7b83424408ca503c8637" id="r_afa145befcf5e7b83424408ca503c8637"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8h.html#afa145befcf5e7b83424408ca503c8637">operator delete</a> (void *ptr) noexcept</td></tr>
@@ -237,6 +240,24 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa49efe42bb4e5937f1bd60c9f63a04e7" name="aa49efe42bb4e5937f1bd60c9f63a04e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa49efe42bb4e5937f1bd60c9f63a04e7">&#9670;&#160;</a></span>run_without_tracy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void run_without_tracy </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void()&gt;&#160;</td>
+          <td class="paramname"><em>func</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

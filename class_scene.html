@@ -156,10 +156,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5fd424c55ac36c17a8f48d7b74007cf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a3c0c308ec7be21ed4bde91d5dc5be8" id="r_a7a3c0c308ec7be21ed4bde91d5dc5be8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a7a3c0c308ec7be21ed4bde91d5dc5be8">game_objects</a> () const</td></tr>
 <tr class="separator:a7a3c0c308ec7be21ed4bde91d5dc5be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa055d631c9b184940e72c13fd2908fc8" id="r_aa055d631c9b184940e72c13fd2908fc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene.html">Scene</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#aa055d631c9b184940e72c13fd2908fc8">add_game_object</a> (std::unique_ptr&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; game_object)</td></tr>
-<tr class="separator:aa055d631c9b184940e72c13fd2908fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1d96a595a394958631767743c2f02c6" id="r_ab1d96a595a394958631767743c2f02c6"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
+<tr class="memitem:ab1d96a595a394958631767743c2f02c6"><td class="memTemplItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_scene.html#ab1d96a595a394958631767743c2f02c6">add_game_object</a> (Args &amp;&amp;... args)</td></tr>
+<tr class="separator:ab1d96a595a394958631767743c2f02c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91e548323c92cb525848ab006a0708f1" id="r_a91e548323c92cb525848ab006a0708f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_object.html">GameObject</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a91e548323c92cb525848ab006a0708f1">add_game_object</a> (const std::string &amp;<a class="el" href="class_scene.html#ade337ad27cf632bc8f5a40fed26bc1f8">name</a>)</td></tr>
 <tr class="separator:a91e548323c92cb525848ab006a0708f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa055d631c9b184940e72c13fd2908fc8" id="r_aa055d631c9b184940e72c13fd2908fc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene.html">Scene</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#aa055d631c9b184940e72c13fd2908fc8">add_game_object</a> (std::unique_ptr&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; game_object)</td></tr>
+<tr class="separator:aa055d631c9b184940e72c13fd2908fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4b00720ca239a808fb60521e2915ec8" id="r_aa4b00720ca239a808fb60521e2915ec8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene.html">Scene</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#aa4b00720ca239a808fb60521e2915ec8">add_game_objects</a> (std::vector&lt; std::unique_ptr&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; <a class="el" href="class_scene.html#a7a3c0c308ec7be21ed4bde91d5dc5be8">game_objects</a>)</td></tr>
 <tr class="separator:aa4b00720ca239a808fb60521e2915ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ce3a726f9bebd29f28b5d3311db877b" id="r_a2ce3a726f9bebd29f28b5d3311db877b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a2ce3a726f9bebd29f28b5d3311db877b">remove_game_object</a> (<a class="el" href="class_game_object.html">GameObject</a> &amp;game_object)</td></tr>
@@ -197,8 +200,36 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab1d96a595a394958631767743c2f02c6" name="ab1d96a595a394958631767743c2f02c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1d96a595a394958631767743c2f02c6">&#9670;&#160;</a></span>add_game_object() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T &amp; Scene::add_game_object </td>
+          <td>(</td>
+          <td class="paramtype">Args &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a91e548323c92cb525848ab006a0708f1" name="a91e548323c92cb525848ab006a0708f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91e548323c92cb525848ab006a0708f1">&#9670;&#160;</a></span>add_game_object() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a91e548323c92cb525848ab006a0708f1">&#9670;&#160;</a></span>add_game_object() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -216,7 +247,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="aa055d631c9b184940e72c13fd2908fc8" name="aa055d631c9b184940e72c13fd2908fc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa055d631c9b184940e72c13fd2908fc8">&#9670;&#160;</a></span>add_game_object() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa055d631c9b184940e72c13fd2908fc8">&#9670;&#160;</a></span>add_game_object() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

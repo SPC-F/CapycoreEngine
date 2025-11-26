@@ -1,5 +1,9 @@
 <map id="include/engine/core/rendering/renderable.h" name="include/engine/core/rendering/renderable.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,180,45"/>
-<area shape="rect" id="Node000002" href="$sprite_8h.html" title=" " alt="" coords="13,93,173,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,59,95,93,90,93,90,59"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="191,5,366,45"/>
+<area shape="rect" id="Node000002" href="$sprite_8h.html" title=" " alt="" coords="5,93,165,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="225,53,129,96,127,91,223,49"/>
+<area shape="rect" id="Node000003" href="$image_8h.html" title=" " alt="" coords="189,93,368,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="281,59,281,93,276,93,276,59"/>
+<area shape="rect" id="Node000004" href="$text_8h.html" title=" " alt="" coords="393,93,557,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="335,48,433,91,431,96,333,53"/>
 </map>

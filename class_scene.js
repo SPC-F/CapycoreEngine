@@ -1,6 +1,7 @@
 var class_scene =
 [
     [ "~Scene", "class_scene.html#aa0a5be58e2ee2d1fdafc5fb46b5e661e", null ],
+    [ "add_game_object", "class_scene.html#ab1d96a595a394958631767743c2f02c6", null ],
     [ "add_game_object", "class_scene.html#a91e548323c92cb525848ab006a0708f1", null ],
     [ "add_game_object", "class_scene.html#aa055d631c9b184940e72c13fd2908fc8", null ],
     [ "add_game_objects", "class_scene.html#aa4b00720ca239a808fb60521e2915ec8", null ],

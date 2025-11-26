@@ -1,7 +1,7 @@
-<map id="include/engine/public/components/ui/ui_object.h" name="include/engine/public/components/ui/ui_object.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="113,5,310,45"/>
-<area shape="rect" id="Node000002" href="$ui__button_8h.html" title=" " alt="" coords="5,93,204,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,56,130,95,127,91,175,52"/>
-<area shape="rect" id="Node000003" href="$ui__text_8h.html" title=" " alt="" coords="228,93,411,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="248,52,297,91,294,95,244,56"/>
+<map id="include/engine/public/ui/ui_object.h" name="include/engine/public/ui/ui_object.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="97,5,257,45"/>
+<area shape="rect" id="Node000002" href="$ui__button_8h.html" title=" " alt="" coords="5,93,165,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,57,108,95,104,91,145,53"/>
+<area shape="rect" id="Node000003" href="$ui__text_8h.html" title=" " alt="" coords="189,93,349,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,53,251,91,247,95,206,57"/>
 </map>

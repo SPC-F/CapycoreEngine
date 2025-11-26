@@ -5,5 +5,6 @@ var class_texture =
     [ "AssetService", "class_texture.html#a5c222101221c002f4f6eb643b27cc0aa", null ],
     [ "Renderer", "class_texture.html#a70538530bc36e033e360880ef311df61", null ],
     [ "RenderingManager", "class_texture.html#af97d60083cbec9dff36ea5566c308d6d", null ],
+    [ "SdlImageStrategy", "class_texture.html#a7704bad8092cbe00495a5229a887d5f3", null ],
     [ "SdlSpriteStrategy", "class_texture.html#ad770ada922c01960c60eedbea5e9e3b9", null ]
 ];

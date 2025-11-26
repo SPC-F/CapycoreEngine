@@ -1,7 +1,9 @@
 <map id="IRenderingStrategy" name="IRenderingStrategy">
-<area shape="rect" id="Node000001" title="Interface for rendering strategies used by renderable components." alt="" coords="66,5,213,31"/>
-<area shape="rect" id="Node000002" href="$class_sdl_gui_strategy.html" title="SDL implementation of the GUI rendering strategy." alt="" coords="5,79,124,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,42,79,80,75,77,116,38"/>
-<area shape="rect" id="Node000003" href="$class_sdl_sprite_strategy.html" title="SDL implementation of the sprite rendering strategy." alt="" coords="148,79,283,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="163,38,205,76,201,80,160,42"/>
+<area shape="rect" id="Node000001" title="Interface for rendering strategies used by renderable components." alt="" coords="163,5,309,31"/>
+<area shape="rect" id="Node000002" href="$class_sdl_image_strategy.html" title="SDL implementation of the image rendering strategy." alt="" coords="5,79,144,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,39,102,81,100,76,197,34"/>
+<area shape="rect" id="Node000003" href="$class_sdl_sprite_strategy.html" title="SDL implementation of the sprite rendering strategy." alt="" coords="169,79,303,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,44,239,79,233,79,233,44"/>
+<area shape="rect" id="Node000004" href="$class_sdl_text_strategy.html" title="SDL implementation of the text rendering strategy." alt="" coords="327,79,451,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="274,34,365,76,363,81,272,39"/>
 </map>
