@@ -38,12 +38,14 @@ struct MessageType
         : kind{kind}, value{t}
     {}
 
+    // pack a `MessageType` into a 16-bit integer
     static uint16_t to_raw(const MessageType& type)
     {
         return (type.kind == MessageType::Kind::Custom ? 0x8000 : 0x0000) |
             (type.value & 0x7FFF);
     }
 
+    // parse a `MessageType` from a 16-bit integer
     static MessageType from_raw(uint16_t raw)
     {
         bool isCustom = raw & 0x8000;
