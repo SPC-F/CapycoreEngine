@@ -51,7 +51,6 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
         Uint64 now = SDL_GetPerformanceCounter();
         float frame_dt = static_cast<float>(now - last) / freq * time_scale_;
         last = now;
-
         accumulator += frame_dt;
 
         SDL_Event e;
@@ -61,12 +60,18 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
             }
         }
 
+        auto game_objects = this->game_objects();
+        for (auto game_object : game_objects) {
+            for (auto component : game_object.get().get_components<Component>()) {
+                component.get().update(frame_dt);
+            }
+        }
+
         while (accumulator >= fixed_step) {
             //physics(fixed_step, 8, 3);
             accumulator -= fixed_step;
         }
 
-        auto game_objects = this->game_objects();
         rendering_service.draw(game_objects);
     }
 }
@@ -153,4 +158,22 @@ bool Scene::remove_game_object(GameObject& game_object) {
     game_objects_.erase(found_object);
 
     return true;
+}
+
+std::optional<std::reference_wrapper<Camera>> Scene::main_camera() const {
+    for (const auto& game_object : game_objects_) {
+        if (!dynamic_cast<Camera*>(game_object.get())) {
+            continue;
+        }
+
+        auto& camera = dynamic_cast<Camera&>(*game_object);
+
+        if (!camera.is_main()) {
+            continue;
+        }
+
+        return camera;
+    }
+
+    return std::nullopt;
 }

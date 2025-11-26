@@ -2,6 +2,6 @@
 
 SdlGuiStrategy::SdlGuiStrategy(SDL_Renderer& sdl_renderer) : sdl_renderer_(sdl_renderer) {}
 
-void SdlGuiStrategy::draw(Component& component) {
+void SdlGuiStrategy::draw(Component& component, Camera& camera) {
 
 }
