@@ -26,6 +26,10 @@ public:
      */
     Window& window();
 
+    void init_frame_timer();
+    void update_frame_time(float time_scale);
+    [[nodiscard]] float delta_time() const;
+
     [[nodiscard]] IRenderingStrategyFactory& rendering_strategy_factory() const;
 
 private:
