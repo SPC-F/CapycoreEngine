@@ -9,7 +9,7 @@ SystemService::SystemService()
 
 void SystemService::add_listener(SystemEvent event, EventCallback callback)
 {
-    listeners_[event].push_back(callback);
+    listeners_[event].push_back(std::move(callback));
 }
 
 void SystemService::update()
