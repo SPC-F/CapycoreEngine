@@ -29,6 +29,7 @@ private:
     Transform transform_;
 
     bool marked_for_deletion_ {false};
+    bool dont_destroy_on_load_ {false};
 
 public:
     explicit GameObject(Scene& scene);
@@ -56,6 +57,10 @@ public:
     
     GameObject& mark_for_deletion() noexcept;
     [[nodiscard]] bool marked_for_deletion() const noexcept;
+
+    /* Only applicable for parent objects. Child objects are unaffected */
+    void mark_dont_destroy_on_load(bool destroy) noexcept;
+    bool dont_destroy_on_load() const noexcept;
 
     GameObject& name(const std::string& name);
     [[nodiscard]] const std::string& name() const;

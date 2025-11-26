@@ -14,7 +14,7 @@ GameObject::~GameObject() {
     }
 
     for(auto child : children_) {
-        scene_.remove_game_object(child);
+        scene_.get().remove_game_object(child);
     }
 }
 
@@ -91,6 +91,19 @@ bool GameObject::marked_for_deletion() const noexcept {
 GameObject& GameObject::mark_for_deletion() noexcept {
     marked_for_deletion_ = true;
     return *this;
+}
+
+void GameObject::mark_dont_destroy_on_load(const bool destroy) noexcept
+{
+    if (!parent().has_value())
+    {
+        dont_destroy_on_load_ = destroy;
+    }
+}
+
+bool GameObject::dont_destroy_on_load() const noexcept
+{
+    return dont_destroy_on_load_;
 }
 
 std::optional<std::reference_wrapper<GameObject>> GameObject::parent() const {
