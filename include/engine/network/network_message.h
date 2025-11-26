@@ -2,7 +2,6 @@
 
 #include <cstdint>
 #include <vector>
-#include <variant>
 #include <cstring>
 
 enum class DefaultMessageTypes : uint16_t {
@@ -15,7 +14,50 @@ enum class DefaultMessageTypes : uint16_t {
 
 enum class CustomMessageTypes : uint16_t;
 
-using MessageType = std::variant<DefaultMessageTypes, CustomMessageTypes>;
+struct MessageType
+{
+    enum class Kind : uint8_t {
+        Default,
+        Custom
+    };
+
+    Kind kind;
+    uint16_t value;
+
+    MessageType() = default;
+
+    MessageType(DefaultMessageTypes t)
+        : kind{Kind::Default}, value{static_cast<uint16_t>(t)}
+    {}
+
+    MessageType(CustomMessageTypes t)
+        : kind{Kind::Custom}, value{static_cast<uint16_t>(t)}
+    {}
+
+    MessageType(Kind kind, uint16_t t)
+        : kind{kind}, value{t}
+    {}
+
+    static uint16_t to_raw(const MessageType& type)
+    {
+        return (type.kind == MessageType::Kind::Custom ? 0x8000 : 0x0000) |
+            (type.value & 0x7FFF);
+    }
+
+    static MessageType from_raw(uint16_t raw)
+    {
+        bool isCustom = raw & 0x8000;
+        uint16_t value = raw & 0x7FFF;
+
+        return { isCustom ? MessageType::Kind::Custom : MessageType::Kind::Default, value };
+    }
+
+    bool operator<(const MessageType& other) const {
+        if (kind != other.kind)
+            return kind < other.kind;
+        return value < other.value;
+    }
+};
 
 struct MessageHeader
 {
@@ -43,7 +85,7 @@ struct MsgDisconnect
 
 // +------ Serialization/Deserialization ------+
 template <typename T>
-Message SerializeMessage(const T& data, MessageType type)
+Message serialize_message(const T& data, MessageType type)
 {
     Message msg;
     msg.header.type = type;
@@ -54,7 +96,7 @@ Message SerializeMessage(const T& data, MessageType type)
 }
 
 template <typename T>
-T DeserializeMessage(const Message& message)
+T deserialize_message(const Message& message)
 {
     T data;
     std::memcpy(&data, message.payload.data(), sizeof(T));

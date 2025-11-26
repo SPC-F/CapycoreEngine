@@ -1,6 +1,6 @@
 #pragma once
 
-#include <unordered_map>
+#include <map>
 #include <functional>
 
 #include <engine/network/network_message.h>
@@ -29,5 +29,5 @@ public:
     void route(const Message& msg) const;
 
 private:
-    std::unordered_map<MessageType, std::function<void(const Message&)>> handlers_;
+    std::map<MessageType, std::function<void(const Message&)>> handlers_;
 };
