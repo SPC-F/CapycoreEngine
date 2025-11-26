@@ -16,7 +16,8 @@ public:
 
     using EventCallback = std::function<void(void* event)>;
 
-    void add_listener(SystemEvent event, EventCallback callback); // NOLINT
+    int add_listener(SystemEvent event, EventCallback callback); // NOLINT
+    void remove_listener(SystemEvent event, int listener_id); // NOLINT
     void update();
 
     void init_frame_timer();

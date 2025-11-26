@@ -120,8 +120,8 @@ void InputSystem::reset_state()
 
 void InputSystem::register_events()
 {
-    if (input().has_value()) {
-        input()->get().register_events(key_states_, mouse_state_);
+    if (auto input_opt = input(); input_opt.has_value()) {
+        input_opt->get().register_events(key_states_, mouse_state_);
     }
 }
 
