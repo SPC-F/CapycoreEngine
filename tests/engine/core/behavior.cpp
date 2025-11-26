@@ -1,5 +1,7 @@
 #include <catch2/catch_test_macros.hpp>
 
+#include <string>
+
 #include <engine/public/behavior.h>
 #include <engine/public/component.h>
 #include <engine/public/components/behaviorscript.h>
