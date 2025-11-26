@@ -1,19 +1,23 @@
 #include <engine/core/engine.h>
+
+#include <memory>
+#include <SDL3/SDL.h>
+
 #include <engine/audio/audio_service.h>
-#include <engine/core/system/system_service.h>
 #include <engine/core/rendering/assetService.h>
 #include <engine/core/rendering/renderingService.h>
+#include <engine/core/system/system_service.h>
 #include <engine/physics/physics_service.h>
 #include <engine/public/scene_service.h>
-#include <SDL3/SDL.h>
+#include <engine/input/input_manager.h>
+#include <engine/input/input_system.h>
+#include <engine/input/strategy/sdl_input_strategy.h>
 
 Engine::Engine() : services(std::make_unique<ServiceContainer>()) {
     services->register_service<RenderingService>();
     services->register_service<SystemService>();
     services->register_service<AudioService>();
     services->register_service<AssetService>();
-    services->register_service<PhysicsService>();
-    services->register_service<SceneService>();
 }
 
 Engine& Engine::instance() {
@@ -23,6 +27,19 @@ Engine& Engine::instance() {
     }
 
     return *engine_instance_;
+}
+
+void Engine::initialize() {
+    auto& services = instance().services;
+
+    services->register_service<PhysicsService>();
+    services->register_service<SceneService>();
+    auto& input_manager = services->register_service<InputManager>();
+    
+    // Setup SDL components
+    auto input_system = std::make_unique<InputSystem>();
+    input_system->set_input(std::make_unique<SDLInputStrategy>());
+    input_manager.set_provider(std::move(input_system));
 }
 
 void Engine::quit() {

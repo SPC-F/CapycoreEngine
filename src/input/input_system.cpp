@@ -118,6 +118,13 @@ void InputSystem::reset_state()
     mouse_state_.reset();
 }
 
+void InputSystem::register_events()
+{
+    if (input().has_value()) {
+        input()->get().register_events(key_states_, mouse_state_);
+    }
+}
+
 void InputSystem::update()
 {
     for (auto& [_, state] : key_states_) {
@@ -126,9 +133,5 @@ void InputSystem::update()
 
     for (auto& [_, state] : mouse_state_.buttons) {
         state.previous = state.current;
-    }
-
-    if (input().has_value()) {
-        input()->get().update(key_states_, mouse_state_);
     }
 }

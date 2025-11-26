@@ -1,4 +1,4 @@
-#include <engine/core/system/sdl_backend_system.h>
+#include <engine/core/system/strategy/sdl_backend_system.h>
 
 SDLBackendSystem::SDLBackendSystem()
 {}
@@ -30,8 +30,22 @@ void SDLBackendSystem::poll_events()
             case SDL_EVENT_MOUSE_MOTION:        execute_callbacks(MOUSE_MOTION, e); break;
             case SDL_EVENT_MOUSE_WHEEL:         execute_callbacks(MOUSE_WHEEL, e); break;
 
-            // Handle other SDL events as needed
             default: break;
         }
     }
+}
+
+void SDLBackendSystem::init_frame_timer() {
+    last_ = SDL_GetPerformanceCounter();
+    freq_ = static_cast<float>(SDL_GetPerformanceFrequency());
+}
+
+void SDLBackendSystem::update_frame_time(float time_scale) {
+    Uint64 now = SDL_GetPerformanceCounter();
+    delta_time_ = static_cast<float>(now - last_) / freq_ * time_scale;
+    last_ = now;
+}
+
+float SDLBackendSystem::delta_time() {
+    return delta_time_;
 }
