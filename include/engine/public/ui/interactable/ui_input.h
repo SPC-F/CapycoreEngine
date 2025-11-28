@@ -39,16 +39,16 @@ public:
     void on_focus() override;
     void on_unfocus() override;
 
-    std::string text() const;
+    [[nodiscard]] std::string text() const;
     UIInput& text(const std::string& value);
 
-    Color text_color() const;
+    [[nodiscard]] Color text_color() const;
     UIInput& text_color(const Color& color);
 
-    int font_size() const;
+    [[nodiscard]] int font_size() const;
     UIInput& font_size(int size);
 
-    Color input_color() const;
+    [[nodiscard]] Color input_color() const;
     UIInput& input_color(const Color& color);
 
 private:

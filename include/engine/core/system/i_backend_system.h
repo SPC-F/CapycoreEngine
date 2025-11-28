@@ -3,6 +3,7 @@
 #include <functional>
 #include <unordered_map>
 #include <vector>
+#include <string>
 
 #include <engine/core/events/system_event.h>
 
@@ -50,6 +51,37 @@ public:
      * @return The delta time in seconds.
      */
     [[nodiscard]] virtual float delta_time() = 0;
+
+    /**
+     * @brief Sets the current text to the system clipboard.
+     * @param text The text to set to the clipboard.
+     */
+    [[nodiscard]] virtual std::string get_clipboard_text() = 0;
+
+    /**
+     * @brief Sets the cursor to the standard arrow shape.
+     */
+    virtual void set_cursor_to_arrow() = 0;
+    
+    /**
+     * @brief Sets the cursor to the hand shape.
+     */
+    virtual void set_cursor_to_hand() = 0;
+
+    /**
+     *  @brief Sets the cursor to the I-beam shape.
+     */
+    virtual void set_cursor_to_ibeam() = 0;
+
+    /**
+     * @brief Sets the cursor to the crosshair shape.
+     */
+    virtual void set_cursor_to_crosshair() = 0;
+
+    /**
+     * @brief Sets the cursor to the wait (hourglass) shape.
+     */
+    virtual void set_cursor_to_wait() = 0;
 
 protected:
     uint64_t last_{0};

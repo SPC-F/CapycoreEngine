@@ -26,6 +26,36 @@ void SystemService::update()
     backend_system_->poll_events();
 }
 
+std::string SystemService::get_clipboard_text()
+{
+    return backend_system_->get_clipboard_text();
+}
+
+void SystemService::set_cursor_to_arrow()
+{
+    backend_system_->set_cursor_to_arrow();
+}
+
+void SystemService::set_cursor_to_hand()
+{
+    backend_system_->set_cursor_to_hand();
+}
+
+void SystemService::set_cursor_to_ibeam()
+{
+    backend_system_->set_cursor_to_ibeam();
+}
+
+void SystemService::set_cursor_to_crosshair()
+{
+    backend_system_->set_cursor_to_crosshair();
+}
+
+void SystemService::set_cursor_to_wait()
+{
+    backend_system_->set_cursor_to_wait();
+}
+
 void SystemService::init_frame_timer()
 {
     backend_system_->init_frame_timer();

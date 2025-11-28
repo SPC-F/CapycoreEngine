@@ -44,7 +44,7 @@ public:
     void update_interaction(float dt);
 
     UIInteractionState& state();
-    const UIInteractionState& state() const;
+    [[nodiscard]] const UIInteractionState& state() const;
 
     /** 
      * @brief Disable the interactable element.
@@ -100,7 +100,7 @@ public:
     void add_on_unfocus(const std::function<void(UIInteractable&)>& handler);
 
 protected:
-    bool in_range(const Point& mouse_pos) const;
+    [[nodiscard]] bool in_range(const Point& mouse_pos) const;
 
     UIInteractionState interaction_state_;
 

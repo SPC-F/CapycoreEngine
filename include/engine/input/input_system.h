@@ -12,7 +12,7 @@
  */
 class InputSystem : public IInputProvider {
 public:
-    [[nodiscard]] KeyCode get_pressed_key() const;
+    [[nodiscard]] KeyCode get_pressed_key() const override;
     [[nodiscard]] bool is_key_held(KeyCode key) const override;
     [[nodiscard]] bool is_key_pressed(KeyCode key) const override;
     [[nodiscard]] bool is_key_released(KeyCode key) const override;

@@ -1,5 +1,7 @@
 #include <engine/public/ui/interactable/ui_button.h>
 
+#include <engine/core/engine.h>
+#include <engine/core/system/system_service.h>
 #include <engine/public/components/ui/text.h>
 #include <engine/public/components/ui/image.h>
 
@@ -37,19 +39,25 @@ void UIButton::update(float dt) {
 }
 
 void UIButton::on_hover() {
-    button_color(Color{200, 200, 200, 255});
+    button_color(Color{200, 200, 200, 255}); // NOLINT
+
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+    system_service.set_cursor_to_hand();
 }
 
 void UIButton::on_unhover() {
-    button_color(Color{255, 255, 255, 255});
+    button_color(Color{255, 255, 255, 255}); // NOLINT
+
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+    system_service.set_cursor_to_arrow();
 }
 
 void UIButton::on_press() {
-    button_color(Color{180, 180, 180, 255});
+    button_color(Color{180, 180, 180, 255}); // NOLINT
 }
 
 void UIButton::on_release() {
-    button_color(Color{255, 255, 255, 255});
+    button_color(Color{255, 255, 255, 255}); // NOLINT
 
     if (state().hovered && !state().disabled) {
         trigger_on_press();

@@ -2,8 +2,8 @@
 
 #include <engine/public/components/ui/text.h>
 #include <engine/public/components/ui/image.h>
-
 #include <engine/core/engine.h>
+#include <engine/core/system/system_service.h>
 #include <engine/input/input_manager.h>
 #include <engine/input/input_system.h>
 
@@ -21,8 +21,7 @@ UIInput::UIInput(
     const std::string& font_path,
     const std::string& sprite_path
 )
-: UIInteractable(width, height, pivot, anchor, scene),
-  content_("")
+: UIInteractable(width, height, pivot, anchor, scene)
 {
     Color default_color{
         default_color_value,
@@ -61,12 +60,7 @@ void UIInput::update(float dt) {
     auto& input_manager = Engine::instance().services->get_service<InputManager>().get();
     const auto& input = input_manager.provider();
 
-    auto key = input.get_pressed_key();
-    if (key == KeyCode::unknown) {
-        return;
-    }
-
-    if (key == KeyCode::backspace) {
+    if (input.is_key_pressed(KeyCode::backspace) || input.is_key_held(KeyCode::backspace)) {
         if (!content_.empty()) {
             content_.pop_back();
             text(content_);
@@ -76,14 +70,33 @@ void UIInput::update(float dt) {
         return;
     }
 
+    auto key = input.get_pressed_key();
+    if (key == KeyCode::unknown) {
+        return;
+    }
+
     bool text_outside_box = font_size() * static_cast<int>(content_.length()) > static_cast<int>(width()) * 2;
     if (text_outside_box) {
         return;
     }
+    
+    bool copy_paste_held = (input.is_key_held(KeyCode::left_control) || input.is_key_held(KeyCode::right_control));
+    if (copy_paste_held) {
+        if (key == KeyCode::v) {
+            auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+            std::string clipboard_text = system_service.get_clipboard_text();
+            content_ += clipboard_text;
+
+            text(content_);
+            trigger_on_text_changed();
+            
+            return;
+        }
+    }
 
     bool shift_held = input.is_key_held(KeyCode::left_shift) || input.is_key_held(KeyCode::right_shift);    
     if (key >= KeyCode::a && key <= KeyCode::z) {
-        char c = (shift_held ? 'A' : 'a') + static_cast<int>(key) - static_cast<int>(KeyCode::a);
+        char c = (shift_held ? 'A' : 'a') + static_cast<int>(key) - static_cast<int>(KeyCode::a); // NOLINT
         content_ += c;
 
         text(content_);
@@ -93,7 +106,7 @@ void UIInput::update(float dt) {
     }
 
     if (key >= KeyCode::num_0 && key <= KeyCode::num_9) {
-        char c = '0' + static_cast<int>(key) - static_cast<int>(KeyCode::num_0);
+        char c = '0' + static_cast<int>(key) - static_cast<int>(KeyCode::num_0); // NOLINT
         content_ += c;
 
         text(content_);
@@ -105,21 +118,27 @@ void UIInput::update(float dt) {
 
 
 void UIInput::on_hover() {
-    input_color(Color{200, 200, 200, 255});
+    input_color(Color{200, 200, 200, 255}); // NOLINT
+
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+    system_service.set_cursor_to_ibeam();
 }
 
 void UIInput::on_unhover() {
-    input_color(Color{255, 255, 255, 255});
+    input_color(Color{255, 255, 255, 255}); // NOLINT
+
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+    system_service.set_cursor_to_arrow();
 }
 
 void UIInput::on_focus() {
     trigger_on_focus();
-    input_color(Color{220, 220, 220, 255});
+    input_color(Color{220, 220, 220, 255}); // NOLINT
 }
 
 void UIInput::on_unfocus() {
     trigger_on_unfocus();
-    input_color(Color{255, 255, 255, 255});
+    input_color(Color{255, 255, 255, 255}); // NOLINT
 }
 
 void UIInput::add_on_focus(const std::function<void(UIInput&)>& handler) {

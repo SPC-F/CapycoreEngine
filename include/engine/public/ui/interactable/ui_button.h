@@ -37,16 +37,16 @@ public:
     void on_press() override;
     void on_release() override;
 
-    std::string label() const;
+    [[nodiscard]] std::string label() const;
     UIButton& label(const std::string& label);
 
-    Color label_color() const;
+    [[nodiscard]] Color label_color() const;
     UIButton& label_color(const Color& color);
 
-    int font_size() const;
+    [[nodiscard]] int font_size() const;
     UIButton& font_size(int size);
 
-    Color button_color() const;
+    [[nodiscard]] Color button_color() const;
     UIButton& button_color(const Color& color);
 
 private:

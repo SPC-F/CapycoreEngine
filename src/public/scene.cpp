@@ -5,6 +5,7 @@
 
 #include <engine/core/engine.h>
 #include <engine/core/rendering/renderingService.h>
+#include <engine/core/system/system_service.h>
 #include <engine/audio/audio_service.h>
 #include <engine/input/input_manager.h>
 #include <engine/input/input_system.h>
@@ -47,29 +48,23 @@ void Scene::execute_listeners(const std::vector<Scene::listener_function_t> &lis
 void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
     float accumulator = accumulator_default_value;
 
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
     auto& audio_service = Engine::instance().services->get_service<AudioService>().get();
     auto& input_manager = Engine::instance().services->get_service<InputManager>().get();
     auto& physics_service = Engine::instance().services->get_service<PhysicsService>().get();
     auto& rendering_service = Engine::instance().services->get_service<RenderingService>().get();
-    
-    rendering_service.init_frame_timer();
+
+    system_service.init_frame_timer();
 
     while (is_running()) {
-        rendering_service.update_frame_time(time_scale_);
-        float frame_dt = rendering_service.delta_time();
+        system_service.update_frame_time(time_scale_);
+        float frame_dt = system_service.delta_time();
         accumulator += frame_dt;
 
         run_without_tracy([&]() {
             input_manager.update();
+            system_service.update();
         });
-
-        // TODO: This event does not work for now!
-        SDL_Event e;
-        while (SDL_PollEvent(&e)) {
-            if (e.type == SDL_EVENT_QUIT) {
-                stop();
-            }
-        }
 
         while (accumulator >= fixed_step) {
             // creates a fixed step for input handling and physics updates
@@ -90,7 +85,7 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
             for (auto& game_object_ref : game_objects) {
                 auto& game_object = game_object_ref.get();
 
-                if (auto ui_object_opt = dynamic_cast<UIObject*>(&game_object)) {
+                if (auto* ui_object_opt = dynamic_cast<UIObject*>(&game_object)) {
                     ui_object_opt->update(frame_dt);
                 }
 
@@ -111,12 +106,21 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
 void Scene::run() {
     is_running_ = true;
     execute_listeners(run_listeners_);
+
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+    stop_event_listener_id_ = system_service.add_listener(EVENT_QUIT, [&](void* /*event*/) { // register per scene
+        stop();
+    });
+
     game_loop();
 }
 
 void Scene::stop() {
     is_running_ = false;
     execute_listeners(stop_listeners_);
+
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+    system_service.remove_listener(EVENT_QUIT, stop_event_listener_id_);
 }
 
 Scene& Scene::time_scale(float modifier) {

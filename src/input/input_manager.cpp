@@ -21,10 +21,3 @@ void InputManager::update()
         provider_->update();
     }
 }
-
-void InputManager::update()
-{
-    if (provider_) {
-        provider_->update();
-    }
-}
