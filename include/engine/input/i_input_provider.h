@@ -162,6 +162,13 @@ public:
     virtual void reset_state() = 0;
 
     /**
+     * @brief Registers necessary event listeners with the underlying system.
+     *
+     * Must be called during initialization to ensure input events are captured.
+     */
+    virtual void register_events() = 0;
+
+    /**
      * @brief Polls the underlying system for input updates.
      *
      * Usually called once per frame before querying input state.

@@ -9,7 +9,7 @@
 
 class SDLInputStrategy : public IInput {
 public:
-    void update(std::map<KeyCode, KeyState>& key_states, MouseState& mouse_state) override;
+    void register_events(std::map<KeyCode, KeyState>& key_states, MouseState& mouse_state) override;
 
 private:
     /**

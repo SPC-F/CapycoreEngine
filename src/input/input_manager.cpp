@@ -12,6 +12,14 @@ const IInputProvider& InputManager::provider() const
 void InputManager::set_provider(std::unique_ptr<IInputProvider> provider) noexcept
 {
     provider_ = std::move(provider);
+    provider_->register_events();
+}
+
+void InputManager::update()
+{
+    if (provider_) {
+        provider_->update();
+    }
 }
 
 void InputManager::update()
