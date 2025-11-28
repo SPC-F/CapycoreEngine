@@ -142,9 +142,9 @@ Inheritance diagram for IInput:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4a348eb3d9dd7201ab713a26bd2f3821" id="r_a4a348eb3d9dd7201ab713a26bd2f3821"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_input.html#a4a348eb3d9dd7201ab713a26bd2f3821">~IInput</a> ()=default</td></tr>
 <tr class="separator:a4a348eb3d9dd7201ab713a26bd2f3821"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a016e02c3d586c155807d5550f567b2" id="r_a9a016e02c3d586c155807d5550f567b2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_input.html#a9a016e02c3d586c155807d5550f567b2">update</a> (std::map&lt; <a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44">KeyCode</a>, <a class="el" href="struct_key_state.html">KeyState</a> &gt; &amp;key_states, <a class="el" href="struct_mouse_state.html">MouseState</a> &amp;mouse_state)=0</td></tr>
-<tr class="memdesc:a9a016e02c3d586c155807d5550f567b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the state of keyboard and mouse inputs.  <br /></td></tr>
-<tr class="separator:a9a016e02c3d586c155807d5550f567b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebedd7264bf898b79afbb01c597c3ddd" id="r_aebedd7264bf898b79afbb01c597c3ddd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_input.html#aebedd7264bf898b79afbb01c597c3ddd">register_events</a> (std::map&lt; <a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44">KeyCode</a>, <a class="el" href="struct_key_state.html">KeyState</a> &gt; &amp;key_states, <a class="el" href="struct_mouse_state.html">MouseState</a> &amp;mouse_state)=0</td></tr>
+<tr class="memdesc:aebedd7264bf898b79afbb01c597c3ddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers necessary event listeners with the underlying system.  <br /></td></tr>
+<tr class="separator:aebedd7264bf898b79afbb01c597c3ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4a348eb3d9dd7201ab713a26bd2f3821" name="a4a348eb3d9dd7201ab713a26bd2f3821"></a>
@@ -173,8 +173,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9a016e02c3d586c155807d5550f567b2" name="a9a016e02c3d586c155807d5550f567b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a016e02c3d586c155807d5550f567b2">&#9670;&#160;</a></span>update()</h2>
+<a id="aebedd7264bf898b79afbb01c597c3ddd" name="aebedd7264bf898b79afbb01c597c3ddd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebedd7264bf898b79afbb01c597c3ddd">&#9670;&#160;</a></span>register_events()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -183,7 +183,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void IInput::update </td>
+          <td class="memname">virtual void IInput::register_events </td>
           <td>(</td>
           <td class="paramtype">std::map&lt; <a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44">KeyCode</a>, <a class="el" href="struct_key_state.html">KeyState</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>key_states</em>, </td>
@@ -207,10 +207,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Updates the state of keyboard and mouse inputs. </p>
-<p>This function is responsible for querying the current input states, including key presses, key releases, mouse button presses, releases, and mouse movement. It updates the provided <code>key_states</code> and <code>mouse_state</code> with the latest input information for the current frame. </p>
+<p>Registers necessary event listeners with the underlying system. </p>
+<p>Must be called during initialization to ensure input events are captured. </p>
 
-<p>Implemented in <a class="el" href="class_s_d_l_input_strategy.html#a70f4138ad660a6a741d2c7eb5a41b6d7">SDLInputStrategy</a>.</p>
+<p>Implemented in <a class="el" href="class_s_d_l_input_strategy.html#a8bb5acc684b0c07ebfa8fab6034d59fd">SDLInputStrategy</a>.</p>
 
 </div>
 </div>

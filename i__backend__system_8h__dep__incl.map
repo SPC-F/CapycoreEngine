@@ -1,0 +1,7 @@
+<map id="include/engine/core/system/i_backend_system.h" name="include/engine/core/system/i_backend_system.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="76,5,287,45"/>
+<area shape="rect" id="Node000002" href="$sdl__backend__system_8h.html" title=" " alt="" coords="5,93,160,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,57,112,95,109,91,150,53"/>
+<area shape="rect" id="Node000003" href="$system__service_8h.html" title=" " alt="" coords="184,101,376,141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="213,53,262,99,258,103,209,57"/>
+</map>

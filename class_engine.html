@@ -133,13 +133,21 @@ $(document).ready(function(){initNavTree('class_engine.html',''); initResizable(
 </div><!--header-->
 <div class="contents">
 
+<p>Central engine class managing core services and lifecycle.  
+ <a href="class_engine.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="engine_8h_source.html">engine.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:acca26a5c853e66d423f277e3c4cb9591" id="r_acca26a5c853e66d423f277e3c4cb9591"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine.html">Engine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine.html#acca26a5c853e66d423f277e3c4cb9591">instance</a> ()</td></tr>
+<tr class="memdesc:acca26a5c853e66d423f277e3c4cb9591"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the singleton engine instance.  <br /></td></tr>
 <tr class="separator:acca26a5c853e66d423f277e3c4cb9591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a330ed4c7e718ad487502fe1e91df6f33" id="r_a330ed4c7e718ad487502fe1e91df6f33"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine.html#a330ed4c7e718ad487502fe1e91df6f33">initialize</a> ()</td></tr>
+<tr class="memdesc:a330ed4c7e718ad487502fe1e91df6f33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the engine and its core services.  <br /></td></tr>
+<tr class="separator:a330ed4c7e718ad487502fe1e91df6f33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf1c35c2dfe7c809c466be2147311aa2" id="r_aaf1c35c2dfe7c809c466be2147311aa2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine.html#aaf1c35c2dfe7c809c466be2147311aa2">quit</a> ()</td></tr>
+<tr class="memdesc:aaf1c35c2dfe7c809c466be2147311aa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down the engine and cleans up resources.  <br /></td></tr>
 <tr class="separator:aaf1c35c2dfe7c809c466be2147311aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -147,7 +155,38 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a9d2c8b51e035f4bec69a4a643b1cffa6" id="r_a9d2c8b51e035f4bec69a4a643b1cffa6"><td class="memItemLeft" align="right" valign="top">const std::unique_ptr&lt; <a class="el" href="class_service_container.html">ServiceContainer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine.html#a9d2c8b51e035f4bec69a4a643b1cffa6">services</a></td></tr>
 <tr class="separator:a9d2c8b51e035f4bec69a4a643b1cffa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Central engine class managing core services and lifecycle. </p>
+<p>Provides access to global services via the <a class="el" href="class_service_container.html">ServiceContainer</a>. Responsible for engine initialization and shutdown. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a330ed4c7e718ad487502fe1e91df6f33" name="a330ed4c7e718ad487502fe1e91df6f33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a330ed4c7e718ad487502fe1e91df6f33">&#9670;&#160;</a></span>initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Engine::initialize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes the engine and its core services. </p>
+<p>Must be called before using any engine functionality as it sets up necessary systems. This registers all except the core services, as they utilize the engine instance. </p>
+
+</div>
+</div>
 <a id="acca26a5c853e66d423f277e3c4cb9591" name="acca26a5c853e66d423f277e3c4cb9591"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acca26a5c853e66d423f277e3c4cb9591">&#9670;&#160;</a></span>instance()</h2>
 
@@ -170,6 +209,9 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retrieves the singleton engine instance. </p>
+<p>Initializes the engine if not already done and should be the first call made. This only initializes the CORE services; call <a class="el" href="class_engine.html#a330ed4c7e718ad487502fe1e91df6f33" title="Initializes the engine and its core services.">initialize()</a> to set up all services. </p>
 
 </div>
 </div>
@@ -195,6 +237,9 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Shuts down the engine and cleans up resources. </p>
+<p>Should be called at application exit to ensure proper resource management. </p>
 
 </div>
 </div>

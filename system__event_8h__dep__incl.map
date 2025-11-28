@@ -1,0 +1,10 @@
+<map id="include/engine/core/events/system_event.h" name="include/engine/core/events/system_event.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="119,5,297,45"/>
+<area shape="rect" id="Node000002" href="$i__backend__system_8h.html" title=" " alt="" coords="32,93,243,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,58,155,95,151,91,182,54"/>
+<area shape="rect" id="Node000004" href="$system__service_8h.html" title=" " alt="" coords="184,189,376,229"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="235,55,257,92,273,143,281,188,275,189,268,145,252,94,230,58"/>
+<area shape="rect" id="Node000003" href="$sdl__backend__system_8h.html" title=" " alt="" coords="5,181,160,236"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="122,146,100,183,96,180,117,144"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="179,139,253,186,250,191,176,143"/>
+</map>

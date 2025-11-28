@@ -1,0 +1,5 @@
+<map id="IBackendSystem" name="IBackendSystem">
+<area shape="rect" id="Node000001" title="Interface for backend system implementations handling low&#45;level events." alt="" coords="15,5,146,31"/>
+<area shape="rect" id="Node000002" href="$class_s_d_l_backend_system.html" title="SDL&#45;based implementation of the backend system interface." alt="" coords="5,79,156,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,44,83,79,78,79,78,44"/>
+</map>

@@ -206,6 +206,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a87a6c1ecc8e5259edc2206088874049d" id="r_a87a6c1ecc8e5259edc2206088874049d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_input_provider.html#a87a6c1ecc8e5259edc2206088874049d">reset_state</a> ()=0</td></tr>
 <tr class="memdesc:a87a6c1ecc8e5259edc2206088874049d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all input states (useful when changing scenes or focus).  <br /></td></tr>
 <tr class="separator:a87a6c1ecc8e5259edc2206088874049d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e1dcef903e6d7de9d1183ae5565be4" id="r_a51e1dcef903e6d7de9d1183ae5565be4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_input_provider.html#a51e1dcef903e6d7de9d1183ae5565be4">register_events</a> ()=0</td></tr>
+<tr class="memdesc:a51e1dcef903e6d7de9d1183ae5565be4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers necessary event listeners with the underlying system.  <br /></td></tr>
+<tr class="separator:a51e1dcef903e6d7de9d1183ae5565be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4932b6c72db4287d9705d0037ef883b" id="r_af4932b6c72db4287d9705d0037ef883b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_input_provider.html#af4932b6c72db4287d9705d0037ef883b">update</a> ()=0</td></tr>
 <tr class="memdesc:af4932b6c72db4287d9705d0037ef883b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls the underlying system for input updates.  <br /></td></tr>
 <tr class="separator:af4932b6c72db4287d9705d0037ef883b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -800,6 +803,36 @@ Public Member Functions</h2></td></tr>
 <p>Can be used to determine the general scroll direction (up, down, left, right). </p>
 
 <p>Implemented in <a class="el" href="class_input_system.html#a1ce99f1bfcdd77e9d5c350d795b6bba6">InputSystem</a>.</p>
+
+</div>
+</div>
+<a id="a51e1dcef903e6d7de9d1183ae5565be4" name="a51e1dcef903e6d7de9d1183ae5565be4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51e1dcef903e6d7de9d1183ae5565be4">&#9670;&#160;</a></span>register_events()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IInputProvider::register_events </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Registers necessary event listeners with the underlying system. </p>
+<p>Must be called during initialization to ensure input events are captured. </p>
+
+<p>Implemented in <a class="el" href="class_input_system.html#ab089950dadbea593a497c0bec5b6c248">InputSystem</a>.</p>
 
 </div>
 </div>

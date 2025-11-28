@@ -30,6 +30,9 @@ var hierarchy =
         [ "UIText", "class_u_i_text.html", null ]
       ] ]
     ] ],
+    [ "IBackendSystem", "class_i_backend_system.html", [
+      [ "SDLBackendSystem", "class_s_d_l_backend_system.html", null ]
+    ] ],
     [ "IEngineService", "class_i_engine_service.html", [
       [ "AssetService", "class_asset_service.html", null ],
       [ "AudioService", "class_audio_service.html", null ],
@@ -37,7 +40,8 @@ var hierarchy =
       [ "PhysicsService", "class_physics_service.html", null ],
       [ "Renderer", "class_renderer.html", null ],
       [ "RenderingService", "class_rendering_service.html", null ],
-      [ "SceneService", "class_scene_service.html", null ]
+      [ "SceneService", "class_scene_service.html", null ],
+      [ "SystemService", "class_system_service.html", null ]
     ] ],
     [ "IInput", "class_i_input.html", [
       [ "SDLInputStrategy", "class_s_d_l_input_strategy.html", null ]

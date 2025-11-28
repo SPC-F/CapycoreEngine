@@ -185,7 +185,7 @@ Protected Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:a3e1914489e4bed4f9f23cdeab34a43dc" id="r_a3e1914489e4bed4f9f23cdeab34a43dc"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_simple_storage.html#a3e1914489e4bed4f9f23cdeab34a43dc">Engine</a></td></tr>
-<tr class="memdesc:a3e1914489e4bed4f9f23cdeab34a43dc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine.html">Engine</a> is the sole caller of <a class="el" href="class_simple_storage.html#ac45fd953ab33d5f90ac86a9bfe4c7dc1" title="Load stored data into memory.">load()</a>.  <br /></td></tr>
+<tr class="memdesc:a3e1914489e4bed4f9f23cdeab34a43dc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine.html" title="Central engine class managing core services and lifecycle.">Engine</a> is the sole caller of <a class="el" href="class_simple_storage.html#ac45fd953ab33d5f90ac86a9bfe4c7dc1" title="Load stored data into memory.">load()</a>.  <br /></td></tr>
 <tr class="separator:a3e1914489e4bed4f9f23cdeab34a43dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
@@ -334,7 +334,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Load stored data into memory. </p>
-<p>Restores the session_storage_ from a persistent source if one exists. Intended to be called during initialization by <a class="el" href="class_engine.html">Engine</a> to rebuild the in-memory state for fast access. </p>
+<p>Restores the session_storage_ from a persistent source if one exists. Intended to be called during initialization by <a class="el" href="class_engine.html" title="Central engine class managing core services and lifecycle.">Engine</a> to rebuild the in-memory state for fast access. </p>
 
 </div>
 </div>
@@ -431,8 +431,8 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="class_engine.html">Engine</a> is the sole caller of <a class="el" href="class_simple_storage.html#ac45fd953ab33d5f90ac86a9bfe4c7dc1" title="Load stored data into memory.">load()</a>. </p>
-<p>Only the <a class="el" href="class_engine.html">Engine</a> class should invoke <a class="el" href="class_simple_storage.html#ac45fd953ab33d5f90ac86a9bfe4c7dc1" title="Load stored data into memory.">load()</a> during game startup. This ensures that session_storage_ is correctly populated from persistent storage before any game logic accesses it. </p>
+<p><a class="el" href="class_engine.html" title="Central engine class managing core services and lifecycle.">Engine</a> is the sole caller of <a class="el" href="class_simple_storage.html#ac45fd953ab33d5f90ac86a9bfe4c7dc1" title="Load stored data into memory.">load()</a>. </p>
+<p>Only the <a class="el" href="class_engine.html" title="Central engine class managing core services and lifecycle.">Engine</a> class should invoke <a class="el" href="class_simple_storage.html#ac45fd953ab33d5f90ac86a9bfe4c7dc1" title="Load stored data into memory.">load()</a> during game startup. This ensures that session_storage_ is correctly populated from persistent storage before any game logic accesses it. </p>
 
 </div>
 </div>

@@ -18,6 +18,7 @@ var class_input_system =
     [ "mouse_scroll", "class_input_system.html#a2713ddaf47b8f4ba1bbc9f36d0509e4d", null ],
     [ "mouse_scroll_delta", "class_input_system.html#ad7bddd391b4b51a597a4a91f1ee9cd87", null ],
     [ "mouse_scroll_direction", "class_input_system.html#a1ce99f1bfcdd77e9d5c350d795b6bba6", null ],
+    [ "register_events", "class_input_system.html#ab089950dadbea593a497c0bec5b6c248", null ],
     [ "reset_state", "class_input_system.html#a081d0f26090f8f33a05e1a1fdce9aa11", null ],
     [ "update", "class_input_system.html#a99d57334cf63404cb69f2c29a20e64d8", null ],
     [ "key_states_", "class_input_system.html#a1087690e044405d7e194ba191ffa7d05", null ],

@@ -20,6 +20,7 @@ var class_i_input_provider =
     [ "mouse_scroll", "class_i_input_provider.html#a0f0bde3cbee2f5f18259219c86b7569b", null ],
     [ "mouse_scroll_delta", "class_i_input_provider.html#a5bc4aa5066d4fe185f155ac5e169da9e", null ],
     [ "mouse_scroll_direction", "class_i_input_provider.html#ae944bf64a731db6590794125ec1b03e8", null ],
+    [ "register_events", "class_i_input_provider.html#a51e1dcef903e6d7de9d1183ae5565be4", null ],
     [ "reset_state", "class_i_input_provider.html#a87a6c1ecc8e5259edc2206088874049d", null ],
     [ "set_input", "class_i_input_provider.html#a8b95c5f90ada0aa3a43789a33b0fcfbe", null ],
     [ "update", "class_i_input_provider.html#af4932b6c72db4287d9705d0037ef883b", null ]
