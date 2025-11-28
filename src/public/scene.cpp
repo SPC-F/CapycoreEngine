@@ -48,10 +48,6 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
     while (is_running()) {
         rendering_service.update_frame_time(time_scale_);
         float frame_dt = rendering_service.delta_time();
-
-        Uint64 now = SDL_GetPerformanceCounter();
-        float frame_dt = static_cast<float>(now - last) / freq * time_scale_;
-        last = now;
         accumulator += frame_dt;
 
         SDL_Event e;

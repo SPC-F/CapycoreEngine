@@ -28,7 +28,7 @@ void SdlImageStrategy::set_image_color(const Color& color, SDL_Texture* texture)
     SDL_SetTextureAlphaMod(texture, static_cast<Uint8>(color.a));
 }
 
-void SdlImageStrategy::draw(Component& component) {
+void SdlImageStrategy::draw(Component& component, Camera& camera) {
     auto parent_opt = component.parent();
     if (!parent_opt.has_value()) {
         throw std::runtime_error("Cannot draw Image component without a parent GameObject");
