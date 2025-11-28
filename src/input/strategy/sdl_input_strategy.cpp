@@ -1,58 +1,60 @@
 #include <engine/input/strategy/sdl_input_strategy.h>
 
 #include <SDL3/SDL_events.h>
+#include <engine/core/engine.h>
+#include <engine/core/system/system_service.h>
 
-void SDLInputStrategy::update(std::map<KeyCode, KeyState>& key_states, MouseState& mouse_state)
+void SDLInputStrategy::register_events(std::map<KeyCode, KeyState>& key_states, MouseState& mouse_state)
 {
-    SDL_Event event;
-    while (SDL_PollEvent(&event)) {
-        switch (event.type) {
-        case SDL_EVENT_KEY_DOWN:
-            key_states[sdl_to_keycode(event.key.key)].current = true;
-            break;
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+    
+    system_service.add_listener(KEY_DOWN, [&](void* sdl_event) {
+        SDL_Event event = *static_cast<SDL_Event*>(sdl_event);
+        key_states[sdl_to_keycode(event.key.key)].current = true;
+    });
 
-        case SDL_EVENT_KEY_UP:
-            key_states[sdl_to_keycode(event.key.key)].current = false;
-            break;
+    system_service.add_listener(KEY_UP, [&](void* sdl_event) {
+        SDL_Event event = *static_cast<SDL_Event*>(sdl_event);
+        key_states[sdl_to_keycode(event.key.key)].current = false;
+    });
 
-        case SDL_EVENT_MOUSE_BUTTON_DOWN:
-            mouse_state.buttons[sdl_to_mouse_button(event.button.button)].current = true;
-            break;
+    system_service.add_listener(MOUSE_BUTTON_DOWN, [&](void* sdl_event) {
+        SDL_Event event = *static_cast<SDL_Event*>(sdl_event);
+        mouse_state.buttons[sdl_to_mouse_button(event.button.button)].current = true;
+    });
 
-        case SDL_EVENT_MOUSE_BUTTON_UP:
-            mouse_state.buttons[sdl_to_mouse_button(event.button.button)].current = false;
-            break;
+    system_service.add_listener(MOUSE_BUTTON_UP, [&](void* sdl_event) {
+        SDL_Event event = *static_cast<SDL_Event*>(sdl_event);
+        mouse_state.buttons[sdl_to_mouse_button(event.button.button)].current = false;
+    });
 
-        case SDL_EVENT_MOUSE_MOTION:
-            mouse_state.position.x = event.motion.x;
-            mouse_state.position.y = event.motion.y;
-            mouse_state.delta_x = event.motion.xrel;
-            mouse_state.delta_y = event.motion.yrel;
-            break;
+    system_service.add_listener(MOUSE_MOTION, [&](void* sdl_event) {
+        SDL_Event event = *static_cast<SDL_Event*>(sdl_event);
+        mouse_state.position.x = event.motion.x;
+        mouse_state.position.y = event.motion.y;
+        mouse_state.delta_x = event.motion.xrel;
+        mouse_state.delta_y = event.motion.yrel;
+    });
 
-        case SDL_EVENT_MOUSE_WHEEL:
-            mouse_state.wheel.x_delta = event.wheel.x;
-            mouse_state.wheel.y_delta = event.wheel.y;
-            mouse_state.wheel.x_scroll += event.wheel.x;
-            mouse_state.wheel.y_scroll += event.wheel.y;
+    system_service.add_listener(MOUSE_WHEEL, [&](void* sdl_event) {
+        SDL_Event event = *static_cast<SDL_Event*>(sdl_event);
+        mouse_state.wheel.x_delta = event.wheel.x;
+        mouse_state.wheel.y_delta = event.wheel.y;
+        mouse_state.wheel.x_scroll += event.wheel.x;
+        mouse_state.wheel.y_scroll += event.wheel.y;
 
-            if (event.wheel.y > 0) {
-                mouse_state.wheel.last_scroll_direction = MouseDirection::up;
-            } else if (event.wheel.y < 0) {
-                mouse_state.wheel.last_scroll_direction = MouseDirection::down;
-            } else if (event.wheel.x > 0) {
-                mouse_state.wheel.last_scroll_direction = MouseDirection::right;
-            } else if (event.wheel.x < 0) {
-                mouse_state.wheel.last_scroll_direction = MouseDirection::left;
-            } else {
-                mouse_state.wheel.last_scroll_direction = MouseDirection::none;
-            }
-            break;
-
-        default:
-            break;
+        if (event.wheel.y > 0) {
+            mouse_state.wheel.last_scroll_direction = MouseDirection::up;
+        } else if (event.wheel.y < 0) {
+            mouse_state.wheel.last_scroll_direction = MouseDirection::down;
+        } else if (event.wheel.x > 0) {
+            mouse_state.wheel.last_scroll_direction = MouseDirection::right;
+        } else if (event.wheel.x < 0) {
+            mouse_state.wheel.last_scroll_direction = MouseDirection::left;
+        } else {
+            mouse_state.wheel.last_scroll_direction = MouseDirection::none;
         }
-    }
+    });
 }
 
 KeyCode SDLInputStrategy::sdl_to_keycode(SDL_Keycode key)

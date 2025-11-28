@@ -22,7 +22,7 @@
 namespace {
     std::recursive_mutex g_mutex;
     std::unordered_map<void*, size_t> g_allocations;
-    bool g_tracking_enabled = true;
+    bool g_tracking_enabled = false;
 } 
 
 void tracy_dump_leaks()
@@ -56,6 +56,22 @@ void tracy_memory_shutdown()
     std::lock_guard<std::recursive_mutex> lock(g_mutex);
     g_tracking_enabled = false;
     tracy_dump_leaks();
+}
+
+void run_without_tracy(std::function<void()> func) {
+    bool previous_state;
+    {
+        std::lock_guard<std::recursive_mutex> lock(g_mutex);
+        previous_state = g_tracking_enabled;
+        g_tracking_enabled = false;
+    }
+
+    func();
+
+    {
+        std::lock_guard<std::recursive_mutex> lock(g_mutex);
+        g_tracking_enabled = previous_state;
+    }
 }
 
 // =========================================================
