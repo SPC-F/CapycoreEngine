@@ -34,6 +34,7 @@ public:
     [[nodiscard]] MouseDirection mouse_scroll_direction() const override;
 
     void reset_state() override;
+    void register_events() override;
     void update() override;
 
 protected:
