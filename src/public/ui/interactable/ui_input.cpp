@@ -60,7 +60,7 @@ void UIInput::update(float dt) {
     auto& input_manager = Engine::instance().services->get_service<InputManager>().get();
     const auto& input = input_manager.provider();
 
-    if (input.is_key_pressed(KeyCode::backspace) || input.is_key_held(KeyCode::backspace)) {
+    if (input.is_key_pressed(KeyCode::backspace)) {
         if (!content_.empty()) {
             content_.pop_back();
             text(content_);
