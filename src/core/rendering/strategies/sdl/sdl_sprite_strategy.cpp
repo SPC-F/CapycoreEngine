@@ -43,6 +43,11 @@ void SdlSpriteStrategy::draw(Component& component) {
     float width = default_texture_width;
     float height = default_texture_height;
 
+    if (texture_ptr != nullptr) {
+        width = static_cast<float>(texture_ptr->w);
+        height = static_cast<float>(texture_ptr->h);
+    }
+
     auto const source = SDL_FRect {
         .x = 0,
         .y = 0,
