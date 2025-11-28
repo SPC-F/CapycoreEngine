@@ -62,14 +62,6 @@ Text& Text::color(Color color) {
     return *this;
 }
 
-bool Text::dirty() const {
-    return dirty_;
-}
-
-void Text::mark_dirty(bool dirty) {
-    dirty_ = dirty;
-}
-
 TextAlignment Text::alignment() const {
     return alignment_;
 }
@@ -88,4 +80,12 @@ Text& Text::offset(Point offset) {
     offset_ = offset;
     mark_dirty();
     return *this;
+}
+
+bool Text::dirty() const {
+    return dirty_;
+}
+
+void Text::mark_dirty(bool dirty) {
+    dirty_ = dirty;
 }
