@@ -8,6 +8,7 @@
 #include <engine/public/components/ui/text.h>
 
 constexpr float default_scale_multiplier = 0.5f;
+constexpr float default_transform_divider = 0.5f;
 
 SdlTextStrategy::SdlTextStrategy(SDL_Renderer& sdl_renderer) : sdl_renderer_(sdl_renderer) {}
 
@@ -32,14 +33,14 @@ void SdlTextStrategy::draw(Component& component) {
                 x += 0.0f;
                 break;
             case TextAlignment::Center:
-                x += (ui_object.width() - last_font_width_) * 0.5f;
+                x += (ui_object.width() - last_font_width_) * default_transform_divider;
                 break;
             case TextAlignment::Right:
                 x += (ui_object.width() - last_font_width_);
                 break;
         }
 
-        float y = transform.position().y + (ui_object.height() - last_font_height_) * 0.5f;
+        float y = transform.position().y + (ui_object.height() - last_font_height_) * default_transform_divider;
 
         x += text.offset().x;
         y += text.offset().y;
@@ -105,14 +106,14 @@ void SdlTextStrategy::draw(Component& component) {
             x += 0.0f; 
             break;
         case TextAlignment::Center: 
-            x += (ui_object.width() - last_font_width_) * 0.5f; 
+            x += (ui_object.width() - last_font_width_) * default_transform_divider; 
             break;
         case TextAlignment::Right:  
             x += (ui_object.width() - last_font_width_); 
             break;
     }
 
-    float y = transform.position().y + (ui_object.height() - last_font_height_) * 0.5f;
+    float y = transform.position().y + (ui_object.height() - last_font_height_) * default_transform_divider;
 
     x += text.offset().x;
     y += text.offset().y;
