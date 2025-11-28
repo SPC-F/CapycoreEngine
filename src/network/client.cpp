@@ -72,11 +72,16 @@ void Client::poll() noexcept
 
         case ENET_EVENT_TYPE_RECEIVE: {
             Message msg;
-            msg.header.type = *reinterpret_cast<MessageType*>(event.packet->data);
-            msg.header.size = event.packet->dataLength - sizeof(MessageType);
+
+            uint16_t raw_type;
+            std::memcpy(&raw_type, event.packet->data, sizeof(raw_type));
+            msg.header.type = MessageType::from_raw(raw_type);
+
+            msg.header.size =
+                event.packet->dataLength - sizeof(raw_type);
 
             msg.payload.assign(
-                event.packet->data + sizeof(MessageType),
+                event.packet->data + sizeof(raw_type),
                 event.packet->data + event.packet->dataLength
             );
 
@@ -97,16 +102,22 @@ void Client::send(const Message& message) noexcept
     if (!server_peer_)
         return;
 
-    const MessageType type = message.header.type;
-    const size_t packetSize = sizeof(MessageType) + message.payload.size();
+    uint16_t raw_type = MessageType::to_raw(message.header.type);
+    const size_t packet_size = sizeof(raw_type) + message.payload.size();
 
-    ENetPacket* packet = enet_packet_create(nullptr, packetSize, ENET_PACKET_FLAG_RELIABLE);
+    ENetPacket* packet = enet_packet_create(
+        nullptr,
+        packet_size,
+        ENET_PACKET_FLAG_RELIABLE
+    );
+
     if (!packet)
-        return; // Best-effort send; no exception in noexcept function.
+        return;
 
-    std::memcpy(packet->data, &type, sizeof(MessageType));
+    std::memcpy(packet->data, &raw_type, sizeof(raw_type));
+
     if (!message.payload.empty()) {
-        std::memcpy(packet->data + sizeof(MessageType),
+        std::memcpy(packet->data + sizeof(raw_type),
                     message.payload.data(),
                     message.payload.size());
     }
@@ -149,13 +160,18 @@ void Client::disconnect() noexcept
     MsgDisconnect body{};
     std::strncpy(body.uuid, local_uuid_.c_str(), sizeof(body.uuid) - 1);
 
-    Message message{ SerializeMessage(body, DefaultMessageTypes::CLIENT_DISCONNECT) };
+    Message message{ serialize_message(body, DefaultMessageTypes::CLIENT_DISCONNECT) };
     send(message);
 }
 
 ConnectionState Client::get_connection_state() const noexcept
 {
     return connection_state_;
+}
+
+std::string Client::get_uuid() const noexcept
+{
+    return local_uuid_;
 }
 
 void Client::register_on_connect_handler() noexcept

@@ -71,7 +71,7 @@ void Host::poll() noexcept
             MsgConnect body{};
             std::strncpy(body.uuid, uuid.c_str(), sizeof(body.uuid) - 1);
 
-            Message msg = SerializeMessage(body, DefaultMessageTypes::CONNECT);
+            Message msg = serialize_message(body, DefaultMessageTypes::CONNECT);
             send_to_peer(msg, event.peer);
         } break;
 
@@ -81,13 +81,16 @@ void Host::poll() noexcept
 
         case ENET_EVENT_TYPE_RECEIVE: {
             Message msg;
-            msg.header.type =
-                *reinterpret_cast<MessageType*>(event.packet->data);
+
+            uint16_t raw_type;
+            std::memcpy(&raw_type, event.packet->data, sizeof(raw_type));
+            msg.header.type = MessageType::from_raw(raw_type);
+
             msg.header.size =
-                event.packet->dataLength - sizeof(MessageType);
+                event.packet->dataLength - sizeof(raw_type);
 
             msg.payload.assign(
-                event.packet->data + sizeof(MessageType),
+                event.packet->data + sizeof(raw_type),
                 event.packet->data + event.packet->dataLength
             );
 
@@ -107,23 +110,22 @@ void Host::broadcast(const Message& message) noexcept
     if (clients_.empty())
         return;
 
-    const MessageType type = message.header.type;
-    const size_t packetSize =
-        sizeof(MessageType) + message.payload.size();
+    uint16_t raw_type = MessageType::to_raw(message.header.type);
+    const size_t packet_size = sizeof(raw_type) + message.payload.size();
 
     ENetPacket* packet = enet_packet_create(
         nullptr,
-        packetSize,
+        packet_size,
         ENET_PACKET_FLAG_RELIABLE
     );
 
     if (!packet)
         return;
 
-    std::memcpy(packet->data, &type, sizeof(MessageType));
+    std::memcpy(packet->data, &raw_type, sizeof(raw_type));
 
     if (!message.payload.empty()) {
-        std::memcpy(packet->data + sizeof(MessageType),
+        std::memcpy(packet->data + sizeof(raw_type),
                     message.payload.data(),
                     message.payload.size());
     }
@@ -145,7 +147,7 @@ void Host::disconnect() noexcept
     MsgDisconnect body{};
     std::strncpy(body.uuid, local_uuid_.c_str(), sizeof(body.uuid) - 1);
 
-    Message msg = SerializeMessage(body, DefaultMessageTypes::HOST_DISCONNECT);
+    Message msg = serialize_message(body, DefaultMessageTypes::HOST_DISCONNECT);
     broadcast(msg);
 
     enet_host_flush(server_);
@@ -170,23 +172,22 @@ void Host::send_to_peer(const Message& message, ENetPeer* peer) noexcept
     if (!peer)
         return;
 
-    const MessageType type = message.header.type;
-    const size_t packetSize =
-        sizeof(MessageType) + message.payload.size();
+    uint16_t raw_type = MessageType::to_raw(message.header.type);
+    const size_t packet_size = sizeof(raw_type) + message.payload.size();
 
     ENetPacket* packet = enet_packet_create(
         nullptr,
-        packetSize,
+        packet_size,
         ENET_PACKET_FLAG_RELIABLE
     );
 
     if (!packet)
         return;
 
-    std::memcpy(packet->data, &type, sizeof(MessageType));
+    std::memcpy(packet->data, &raw_type, sizeof(raw_type));
 
     if (!message.payload.empty()) {
-        std::memcpy(packet->data + sizeof(MessageType),
+        std::memcpy(packet->data + sizeof(raw_type),
                     message.payload.data(),
                     message.payload.size());
     }
@@ -197,6 +198,11 @@ void Host::send_to_peer(const Message& message, ENetPeer* peer) noexcept
 ConnectionState Host::get_connection_state() const noexcept
 {
     return connection_state_;
+}
+
+std::string Host::get_uuid() const noexcept
+{
+    return local_uuid_;
 }
 
 void Host::set_max_clients(int amount) noexcept

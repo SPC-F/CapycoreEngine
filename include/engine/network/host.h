@@ -62,6 +62,8 @@ public:
      */
     [[nodiscard]] ConnectionState get_connection_state() const noexcept;
 
+    [[nodiscard]] std::string get_uuid() const noexcept;
+
     /**
      * @brief Sets the maximum number of clients allowed.
      */

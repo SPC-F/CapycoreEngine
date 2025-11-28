@@ -61,6 +61,8 @@ public:
      */
     [[nodiscard]] ConnectionState get_connection_state() const noexcept;
 
+    [[nodiscard]] std::string get_uuid() const noexcept;
+
 private:
     std::string local_uuid_;
     std::reference_wrapper<Router> router_;
