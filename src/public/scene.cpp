@@ -27,15 +27,15 @@ Scene::~Scene() {
     execute_listeners(destroy_listeners_);
 }
 
-void Scene::on_run(listener_function_t& listener) {
+void Scene::on_run(listener_function_t&& listener) {
     run_listeners_.push_back(listener);
 }
 
-void Scene::on_stop(listener_function_t& listener) {
+void Scene::on_stop(listener_function_t&& listener) {
     stop_listeners_.push_back(listener);
 }
 
-void Scene::on_destroy(listener_function_t& listener) {
+void Scene::on_destroy(listener_function_t&& listener) {
     destroy_listeners_.push_back(listener);
 }
 
@@ -46,6 +46,10 @@ void Scene::execute_listeners(const std::vector<Scene::listener_function_t> &lis
 }
 
 void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
+    if (!is_running()) {
+        return;
+    }
+
     float accumulator = accumulator_default_value;
 
     auto& system_service = Engine::instance().services->get_service<SystemService>().get();
@@ -184,6 +188,33 @@ Scene& Scene::add_game_objects(std::vector<std::unique_ptr<GameObject>> game_obj
         game_objects_.emplace_back(std::move(game_object));
     }
     return *this;
+}
+
+/**
+ * @brief Extracts and transfers ownership of a game object from the scene.
+ *
+ * Extracts a specified game object from the scene, transferring its ownership.
+ * Removes the game object from the scene's internal collection if found.
+ *
+ * @return A unique pointer to the extracted game object if it is found and successfully removed
+ *         from the scene; otherwise, returns nullptr.
+ */
+std::unique_ptr<GameObject> Scene::extract_game_object(GameObject& game_object)
+{
+    const auto found_object = std::ranges::find_if(game_objects_,
+                                                   [&game_object](const auto& param)
+                                                   {
+                                                       return param.get() == &game_object;
+                                                   });
+
+    if (found_object == game_objects_.end())
+    {
+        return nullptr;
+    }
+
+    std::unique_ptr<GameObject> extracted = std::move(*found_object);
+    game_objects_.erase(found_object);
+    return extracted;
 }
 
 bool Scene::remove_game_object(GameObject& game_object) {
