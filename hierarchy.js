@@ -25,6 +25,7 @@ var hierarchy =
     [ "Engine", "class_engine.html", null ],
     [ "Font", "class_font.html", null ],
     [ "GameObject", "class_game_object.html", [
+      [ "Camera", "class_camera.html", null ],
       [ "UIObject", "class_u_i_object.html", [
         [ "UIButton", "class_u_i_button.html", null ],
         [ "UIText", "class_u_i_text.html", null ]
@@ -50,6 +51,7 @@ var hierarchy =
       [ "InputSystem", "class_input_system.html", null ]
     ] ],
     [ "IRenderingStrategy", "class_i_rendering_strategy.html", [
+      [ "SdlGuiStrategy", "class_sdl_gui_strategy.html", null ],
       [ "SdlImageStrategy", "class_sdl_image_strategy.html", null ],
       [ "SdlSpriteStrategy", "class_sdl_sprite_strategy.html", null ],
       [ "SdlTextStrategy", "class_sdl_text_strategy.html", null ]

@@ -134,20 +134,21 @@ $(document).ready(function(){initNavTree('irendering__strategy_8h_source.html','
 <div class="contents">
 <a href="irendering__strategy_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;<a class="code" href="renderer_8h.html">engine/core/rendering/renderer.h</a>&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;<a class="code" href="camera_8h.html">engine/public/camera.h</a>&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_i_rendering_strategy.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="class_i_rendering_strategy.html">IRenderingStrategy</a> {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_i_rendering_strategy.html#afbc104d060470a72c10c0286a3770dcb">   14</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_i_rendering_strategy.html#afbc104d060470a72c10c0286a3770dcb">~IRenderingStrategy</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_i_rendering_strategy.html#a32b31535cc6654e051a3d2bc9db88e60">   15</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_i_rendering_strategy.html#a32b31535cc6654e051a3d2bc9db88e60">draw</a>(<a class="code hl_class" href="class_component.html">Component</a>&amp; component) = 0;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_i_rendering_strategy.html#a759454d651f0a4095a1f222069ace839">   15</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_i_rendering_strategy.html#a759454d651f0a4095a1f222069ace839">draw</a>(<a class="code hl_class" href="class_component.html">Component</a>&amp; component, <a class="code hl_class" href="class_camera.html">Camera</a>&amp; camera) = 0;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>};</div>
 </div>
+<div class="ttc" id="acamera_8h_html"><div class="ttname"><a href="camera_8h.html">camera.h</a></div></div>
+<div class="ttc" id="aclass_camera_html"><div class="ttname"><a href="class_camera.html">Camera</a></div><div class="ttdef"><b>Definition</b> camera.h:6</div></div>
 <div class="ttc" id="aclass_component_html"><div class="ttname"><a href="class_component.html">Component</a></div><div class="ttdef"><b>Definition</b> component.h:9</div></div>
 <div class="ttc" id="aclass_i_rendering_strategy_html"><div class="ttname"><a href="class_i_rendering_strategy.html">IRenderingStrategy</a></div><div class="ttdoc">Interface for rendering strategies used by renderable components.</div><div class="ttdef"><b>Definition</b> irendering_strategy.h:12</div></div>
-<div class="ttc" id="aclass_i_rendering_strategy_html_a32b31535cc6654e051a3d2bc9db88e60"><div class="ttname"><a href="class_i_rendering_strategy.html#a32b31535cc6654e051a3d2bc9db88e60">IRenderingStrategy::draw</a></div><div class="ttdeci">virtual void draw(Component &amp;component)=0</div></div>
+<div class="ttc" id="aclass_i_rendering_strategy_html_a759454d651f0a4095a1f222069ace839"><div class="ttname"><a href="class_i_rendering_strategy.html#a759454d651f0a4095a1f222069ace839">IRenderingStrategy::draw</a></div><div class="ttdeci">virtual void draw(Component &amp;component, Camera &amp;camera)=0</div></div>
 <div class="ttc" id="aclass_i_rendering_strategy_html_afbc104d060470a72c10c0286a3770dcb"><div class="ttname"><a href="class_i_rendering_strategy.html#afbc104d060470a72c10c0286a3770dcb">IRenderingStrategy::~IRenderingStrategy</a></div><div class="ttdeci">virtual ~IRenderingStrategy()=default</div></div>
-<div class="ttc" id="arenderer_8h_html"><div class="ttname"><a href="renderer_8h.html">renderer.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
