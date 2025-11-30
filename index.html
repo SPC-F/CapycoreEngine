@@ -154,14 +154,21 @@ Note for Linux users</h1>
 <p>Currently even Linux users have to do the copy thing for freetype. This is because the repository is primarily intended for Windows users who have a hard time building freetype from source. In this case it was done like this so Windows users do not have to build freetype themselves. It will be included in the engine so end-users have nothing to do with it.</p>
 <p>In the future, we may make it so Linux users can just link the freetype library normally. This change may not affect Windows users in any way shape or form, meaning that Windows users will still be able to use the prebuilt binaries from the freetype-win-build repository regardless.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
-Clang-tidy</h1>
-<p>This project uses <em>clang-tidy</em> as its linter. Its configured through <code>.clang-tidy</code> and needs the command export from your build: <code>"CMAKE_EXPORT_COMPILE_COMMANDS": "ON"</code>.</p>
-<p>We do utilize c++ 20 features so make sure that these are also used: <code>"CMAKE_CXX_STANDARD": "20","CMAKE_CXX_STANDARD_REQUIRED": "ON"</code> For msys2 users: <code>pacman -S mingw-w64-ucrt-x86_64-clang-tools-extra</code> For linux/mac: <code>something similar...</code></p>
-<p>A new target <b>[clang-tidy]</b> is defined in CMake that runs the linter on the entire <code>/src</code> directory. Due note that this simply lints and not fully builds. Simply add it to the existing build command and voila, it checks all.</p>
-<p><code>cmake --build build/default (build) --target clang_tidy</code></p>
-<p>If you install clang-tidy then you can also run it yourself for smaller checks:</p>
-<p><code>clang-tidy -p [BUILD-FOLDER-PATH] .\src\main.cpp</code></p>
-<hr  />
+Linter</h1>
+<ol type="1">
+<li>Install pre-commit</li>
+</ol>
+<p>First, install pre-commit on your system. This tool is required to manage the hooks that will run before each commit. </p><div class="fragment"><div class="line">pip install pre-commit</div>
+</div><!-- fragment --><ol type="1">
+<li>Install the Git hook</li>
+</ol>
+<p>After installing pre-commit, run the following command to set up the hooks defined in the .pre-commit-config.yaml file for your project: </p><div class="fragment"><div class="line">pre-commit install</div>
+</div><!-- fragment --><p>This command will create the necessary Git hook configurations to ensure that clang-format is run automatically on staged files before each commit.</p>
+<ol type="1">
+<li>Manually run the hook (Optional)</li>
+</ol>
+<p>If you want to manually run the hook and format all the files in your repository, you can do so with the following command: </p><div class="fragment"><div class="line">pre-commit run --all-files</div>
+</div><!-- fragment --><hr  />
 <p> An example of a preset (windows): </p><div class="fragment"><div class="line">{</div>
 <div class="line">    &quot;version&quot;: 5,</div>
 <div class="line">    &quot;configurePresets&quot;: [</div>

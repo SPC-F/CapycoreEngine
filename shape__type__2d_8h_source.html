@@ -135,38 +135,35 @@ $(document).ready(function(){initNavTree('shape__type__2d_8h_source.html',''); i
 <a href="shape__type__2d_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;box2d/box2d.h&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="struct_shape_type2_d.html">   12</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_shape_type2_d.html">ShapeType2D</a></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="struct_shape_type2_d.html">   13</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_shape_type2_d.html">ShapeType2D</a> {</div>
 <div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47">   14</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47">Type</a> : int8_t</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a2ee3216db6a833c2e2c867f7265a2408">   16</a></span>        <a class="code hl_enumvalue" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a2ee3216db6a833c2e2c867f7265a2408">Circle</a> = 0,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a970a51fce6262f8bb23c7a4ceccb22b3">   17</a></span>        <a class="code hl_enumvalue" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a970a51fce6262f8bb23c7a4ceccb22b3">Polygon</a> = 1,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    };</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47">   14</a></span>  <span class="keyword">enum</span> <a class="code hl_enumeration" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47">Type</a> : int8_t {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a2ee3216db6a833c2e2c867f7265a2408">   15</a></span>    <a class="code hl_enumvalue" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a2ee3216db6a833c2e2c867f7265a2408">Circle</a> = 0,</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a970a51fce6262f8bb23c7a4ceccb22b3">   16</a></span>    <a class="code hl_enumvalue" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a970a51fce6262f8bb23c7a4ceccb22b3">Polygon</a> = 1,</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  };</div>
 </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="foldopen" id="foldopen00021" data-start="{" data-end="}">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="struct_shape_type2_d.html#a9c9c2449364324d5df48044369395fe3">   21</a></span>    <span class="keyword">static</span> b2ShapeType <a class="code hl_function" href="struct_shape_type2_d.html#a9c9c2449364324d5df48044369395fe3">to_box2d_type</a>(<a class="code hl_enumeration" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47">Type</a> type)</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">switch</span> (type)</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a2ee3216db6a833c2e2c867f7265a2408">Type::Circle</a>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                <span class="keywordflow">return</span> b2ShapeType::b2_circleShape;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a970a51fce6262f8bb23c7a4ceccb22b3">Type::Polygon</a>:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="keywordflow">default</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                <span class="keywordflow">return</span> b2ShapeType::b2_polygonShape;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        }</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="struct_shape_type2_d.html#a9c9c2449364324d5df48044369395fe3">   21</a></span>  <span class="keyword">static</span> b2ShapeType <a class="code hl_function" href="struct_shape_type2_d.html#a9c9c2449364324d5df48044369395fe3">to_box2d_type</a>(<a class="code hl_enumeration" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47">Type</a> type) {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">switch</span> (type) {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a2ee3216db6a833c2e2c867f7265a2408">Type::Circle</a>:</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">return</span> b2ShapeType::b2_circleShape;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a970a51fce6262f8bb23c7a4ceccb22b3">Type::Polygon</a>:</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>      <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordflow">return</span> b2ShapeType::b2_polygonShape;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  }</div>
 </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>};</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>};</div>
 </div>
 <div class="ttc" id="astruct_shape_type2_d_html"><div class="ttname"><a href="struct_shape_type2_d.html">ShapeType2D</a></div><div class="ttdoc">Structure representing a 2D physics body.</div><div class="ttdef"><b>Definition</b> shape_type_2d.h:13</div></div>
-<div class="ttc" id="astruct_shape_type2_d_html_a116a281cc3f93d18a172102463499a47"><div class="ttname"><a href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47">ShapeType2D::Type</a></div><div class="ttdeci">Type</div><div class="ttdef"><b>Definition</b> shape_type_2d.h:15</div></div>
-<div class="ttc" id="astruct_shape_type2_d_html_a116a281cc3f93d18a172102463499a47a2ee3216db6a833c2e2c867f7265a2408"><div class="ttname"><a href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a2ee3216db6a833c2e2c867f7265a2408">ShapeType2D::Circle</a></div><div class="ttdeci">@ Circle</div><div class="ttdef"><b>Definition</b> shape_type_2d.h:16</div></div>
-<div class="ttc" id="astruct_shape_type2_d_html_a116a281cc3f93d18a172102463499a47a970a51fce6262f8bb23c7a4ceccb22b3"><div class="ttname"><a href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a970a51fce6262f8bb23c7a4ceccb22b3">ShapeType2D::Polygon</a></div><div class="ttdeci">@ Polygon</div><div class="ttdef"><b>Definition</b> shape_type_2d.h:17</div></div>
+<div class="ttc" id="astruct_shape_type2_d_html_a116a281cc3f93d18a172102463499a47"><div class="ttname"><a href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47">ShapeType2D::Type</a></div><div class="ttdeci">Type</div><div class="ttdef"><b>Definition</b> shape_type_2d.h:14</div></div>
+<div class="ttc" id="astruct_shape_type2_d_html_a116a281cc3f93d18a172102463499a47a2ee3216db6a833c2e2c867f7265a2408"><div class="ttname"><a href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a2ee3216db6a833c2e2c867f7265a2408">ShapeType2D::Circle</a></div><div class="ttdeci">@ Circle</div><div class="ttdef"><b>Definition</b> shape_type_2d.h:15</div></div>
+<div class="ttc" id="astruct_shape_type2_d_html_a116a281cc3f93d18a172102463499a47a970a51fce6262f8bb23c7a4ceccb22b3"><div class="ttname"><a href="struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a970a51fce6262f8bb23c7a4ceccb22b3">ShapeType2D::Polygon</a></div><div class="ttdeci">@ Polygon</div><div class="ttdef"><b>Definition</b> shape_type_2d.h:16</div></div>
 <div class="ttc" id="astruct_shape_type2_d_html_a9c9c2449364324d5df48044369395fe3"><div class="ttname"><a href="struct_shape_type2_d.html#a9c9c2449364324d5df48044369395fe3">ShapeType2D::to_box2d_type</a></div><div class="ttdeci">static b2ShapeType to_box2d_type(Type type)</div><div class="ttdoc">Converts the custom ShapeType2D::Type to the corresponding Box2D shape type.</div><div class="ttdef"><b>Definition</b> shape_type_2d.h:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

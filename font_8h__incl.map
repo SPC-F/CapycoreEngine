@@ -1,7 +1,7 @@
 <map id="include/engine/core/rendering/font.h" name="include/engine/core/rendering/font.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,155,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,64,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,47,51,83,46,80,67,44"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="88,93,165,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="94,44,115,80,110,83,89,47"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="15,5,164,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,83,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,47,60,83,55,80,76,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="107,93,165,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="103,44,124,80,120,83,98,47"/>
 </map>
