@@ -4,6 +4,7 @@
 #include <memory>
 #include <functional>
 #include <engine/public/gameObject.h>
+#include <engine/public/camera.h>
 
 class Scene {
 private:
@@ -61,4 +62,6 @@ public:
     Scene& add_game_objects(std::vector<std::unique_ptr<GameObject>> game_objects);
 
     bool remove_game_object(GameObject& game_object);
+
+    [[nodiscard]] std::optional<std::reference_wrapper<Camera>> main_camera() const;
 };

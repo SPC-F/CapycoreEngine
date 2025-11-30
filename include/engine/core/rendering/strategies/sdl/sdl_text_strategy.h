@@ -34,5 +34,5 @@ private:
 public:
     SdlTextStrategy(SDL_Renderer& sdl_renderer);
     ~SdlTextStrategy() override = default;
-    void draw(Component& component) override;
+    void draw(Component& component, Camera& camera) override;
 };

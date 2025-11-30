@@ -27,7 +27,7 @@ void SdlSpriteStrategy::set_sprite_color(const Color& color, SDL_Texture* textur
     SDL_SetTextureAlphaMod(texture, static_cast<Uint8>(color.a));
 }
 
-void SdlSpriteStrategy::draw(Component& component) {
+void SdlSpriteStrategy::draw(Component& component, Camera& camera) {
     auto parent_opt = component.parent();
     if (!parent_opt.has_value()) {
         throw std::runtime_error("Cannot draw Sprite component without a parent GameObject");
@@ -35,6 +35,7 @@ void SdlSpriteStrategy::draw(Component& component) {
 
     const auto& transform = parent_opt->get().transform();
     const auto& position = transform.position();
+    const auto& camera_position = camera.transform().position();
 
     const auto& sprite = dynamic_cast<const Sprite&>(component);
     const Texture& texture = sprite.texture();
@@ -54,14 +55,15 @@ void SdlSpriteStrategy::draw(Component& component) {
         .w = width,
         .h = height
     };
+
     auto const target = SDL_FRect {
-        .x = position.x,
-        .y = position.y,
+        .x = position.x - camera_position.x,
+        .y = position.y - camera_position.y,
         .w = width * transform.scale().x,
         .h = height * transform.scale().y
     };
 
-    Color original_color = get_default_sprite_color(texture_ptr);
+    const Color original_color = get_default_sprite_color(texture_ptr);
     set_sprite_color(sprite.color(), texture_ptr);
 
     SDL_RenderTextureRotated(

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <engine/core/rendering/renderer.h>
+#include <engine/public/camera.h>
 
 /**
  * @brief Interface for rendering strategies used by renderable components.
@@ -12,5 +12,5 @@
 class IRenderingStrategy {
 public:
     virtual ~IRenderingStrategy() = default;
-    virtual void draw(Component& component) = 0;
+    virtual void draw(Component& component, Camera& camera) = 0;
 };

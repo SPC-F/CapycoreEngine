@@ -1,10 +1,11 @@
-#include <engine/core/rendering/renderer.h>
-
 #include <SDL3/SDL.h>
+#include <engine/core/engine.h>
+#include <engine/core/rendering/renderer.h>
 #include <SDL3_ttf/SDL_ttf.h>
-
 #include <engine/core/rendering/texture.h>
 #include <engine/core/rendering/renderable.h>
+#include <engine/public/scene_service.h>
+
 
 constexpr int default_min_aspect_width = 800;
 constexpr int default_min_aspect_height = 600;
@@ -65,17 +66,32 @@ void Renderer::clear() const {
 }
 
 void Renderer::render(std::vector<std::reference_wrapper<GameObject>>& objects) {
+    if (objects.empty()) {
+        return;
+    }
+
+    const Scene& current_scene = objects.front().get().scene();
+    const auto camera_opt = current_scene.main_camera();
+
+    if (!camera_opt.has_value()
+        || !camera_opt->get().is_active()
+        || !camera_opt->get().is_main()) {
+
+        return;
+    }
+
+    Camera& camera = camera_opt->get();
+
     SDL_RenderClear(sdl_renderer_.get());
 
     for (auto game_obj_wrapper : objects) {
         auto& game_obj = game_obj_wrapper.get();
-        auto renderables = game_obj.get_components<Renderable>();
-        
-        for (auto renderable_wrapper : renderables) {
+
+        for (auto renderables = game_obj.get_components<Renderable>(); auto renderable_wrapper : renderables) {
             auto& renderable = renderable_wrapper.get();
             auto& strategy = renderable.render_strategy();
 
-            strategy.draw(renderable);
+            strategy.draw(renderable, camera);
         }
     }
 

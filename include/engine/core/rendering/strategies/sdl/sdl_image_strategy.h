@@ -22,5 +22,5 @@ private:
 public:
     SdlImageStrategy(SDL_Renderer& sdl_renderer);
     ~SdlImageStrategy() override = default;
-    void draw(Component& component) override;
+    void draw(Component& component, Camera& camera) override;
 };
