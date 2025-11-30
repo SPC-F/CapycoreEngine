@@ -6,21 +6,17 @@
 
 RenderingService::RenderingService()
     : renderer_{new Renderer()},
-    strategy_factory_{new SdlStrategyFactory(*renderer_)} {
-}
+      strategy_factory_{new SdlStrategyFactory(*renderer_)} {}
 
-RenderingService::RenderingService(Renderer* renderer)
-    : renderer_{renderer}{
-}
+RenderingService::RenderingService(Renderer* renderer) : renderer_{renderer} {}
 
 void RenderingService::draw(std::map<int, std::vector<std::reference_wrapper<Renderable>>>& objects, Scene& scene) {
     renderer_->render(objects, scene);
 }
 
-Window& RenderingService::window() {
-    return renderer_->window();
-}
+Window& RenderingService::window() { return renderer_->window(); }
 
-IRenderingStrategyFactory& RenderingService::rendering_strategy_factory() const {
-    return *strategy_factory_;
+IRenderingStrategyFactory& RenderingService::rendering_strategy_factory()
+    const {
+  return *strategy_factory_;
 }

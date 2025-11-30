@@ -2,6 +2,8 @@
 
 #include <algorithm>
 
+#include <SDL3/SDL.h>
+#include <engine/audio/audio_service.h>
 #include <engine/core/engine.h>
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/system/system_service.h>
@@ -13,64 +15,72 @@
 #include <engine/input/input_system.h>
 #include <engine/util/memory.h>
 
+#include <engine/physics/physics_service.h>
+#include <engine/public/component.h>
 #include <engine/public/gameObject.h>
 #include <engine/public/component.h>
+#include <engine/public/scene.h>
 #include <engine/public/ui/ui_object.h>
+#include <engine/util/memory.h>
+
+#include <algorithm>
 
 constexpr float accumulator_default_value = 0.0f;
-constexpr float fixed_step = 1.0f / 60.0f; // ~60 fps
+constexpr float fixed_step = 1.0f / 60.0f;  // ~60 fps
 
-Scene::Scene(const std::string& name) // NOLINT
-    : name_{ name },
-      is_running_{ false },
-      time_scale_{ 1.0f } {}
+Scene::Scene(const std::string& name)  // NOLINT
+    : name_{name}, is_running_{false}, time_scale_{1.0f} {}
 
-Scene::~Scene() {
-    execute_listeners(destroy_listeners_);
-}
+Scene::~Scene() { execute_listeners(destroy_listeners_); }
 
 void Scene::on_run(listener_function_t&& listener) {
-    run_listeners_.push_back(listener);
+  run_listeners_.push_back(listener);
 }
 
 void Scene::on_stop(listener_function_t&& listener) {
-    stop_listeners_.push_back(listener);
+  stop_listeners_.push_back(listener);
 }
 
 void Scene::on_destroy(listener_function_t&& listener) {
-    destroy_listeners_.push_back(listener);
+  destroy_listeners_.push_back(listener);
 }
 
-void Scene::execute_listeners(const std::vector<Scene::listener_function_t> &listeners) {
-    for (const auto& listener : listeners) {
-        listener(*this);
-    }
+void Scene::execute_listeners(
+    const std::vector<Scene::listener_function_t>& listeners) {
+  for (const auto& listener : listeners) {
+    listener(*this);
+  }
 }
 
-void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
-    if (!is_running()) {
-        return;
-    }
+void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
+  if (!is_running()) {
+    return;
+  }
 
-    float accumulator = accumulator_default_value;
+  float accumulator = accumulator_default_value;
 
-    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
-    auto& audio_service = Engine::instance().services->get_service<AudioService>().get();
-    auto& input_manager = Engine::instance().services->get_service<InputManager>().get();
-    auto& physics_service = Engine::instance().services->get_service<PhysicsService>().get();
-    auto& rendering_service = Engine::instance().services->get_service<RenderingService>().get();
+  auto& system_service =
+      Engine::instance().services->get_service<SystemService>().get();
+  auto& audio_service =
+      Engine::instance().services->get_service<AudioService>().get();
+  auto& input_manager =
+      Engine::instance().services->get_service<InputManager>().get();
+  auto& physics_service =
+      Engine::instance().services->get_service<PhysicsService>().get();
+  auto& rendering_service =
+      Engine::instance().services->get_service<RenderingService>().get();
 
-    system_service.init_frame_timer();
+  system_service.init_frame_timer();
 
-    while (is_running()) {
-        system_service.update_frame_time(time_scale_);
-        float frame_dt = system_service.delta_time();
-        accumulator += frame_dt;
+  while (is_running()) {
+    system_service.update_frame_time(time_scale_);
+    float frame_dt = system_service.delta_time();
+    accumulator += frame_dt;
 
-        run_without_tracy([&]() {
-            input_manager.update();
-            system_service.update();
-        });
+    run_without_tracy([&]() {
+      input_manager.update();
+      system_service.update();
+    });
 
         std::map<int, std::vector<std::reference_wrapper<Renderable>>> layered_renderables {};
 
@@ -85,10 +95,10 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
             }
         }
 
-        while (accumulator >= fixed_step) {
-            // creates a fixed step for input handling and physics updates
-            accumulator -= fixed_step;
-        }
+    while (accumulator >= fixed_step) {
+      // creates a fixed step for input handling and physics updates
+      accumulator -= fixed_step;
+    }
 
         /*
             So tracy logs all allocations, even the past ones in previous frames
@@ -101,101 +111,102 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
             audio_service.update();
             physics_service.update(fixed_step, game_objects);
 
-            for (auto& game_object_ref : game_objects) {
-                auto& game_object = game_object_ref.get();
+      for (auto& game_object_ref : game_objects) {
+        auto& game_object = game_object_ref.get();
 
-                if (auto* ui_object_opt = dynamic_cast<UIObject*>(&game_object)) {
-                    ui_object_opt->update(frame_dt);
-                }
+        if (auto* ui_object_opt = dynamic_cast<UIObject*>(&game_object)) {
+          ui_object_opt->update(frame_dt);
+        }
 
-                auto components = game_object.get_components<Component>();
-                for (auto& component_ref : components) {
-                    auto& component = component_ref.get();
-                    component.update(frame_dt);
-                }
+        auto components = game_object.get_components<Component>();
+        for (auto& component_ref : components) {
+          auto& component = component_ref.get();
+          component.update(frame_dt);
+        }
 
-                if (game_object.marked_for_deletion()) {
-                    remove_game_object(game_object);
-                }
-            }
-        });
-    }
+        if (game_object.marked_for_deletion()) {
+          remove_game_object(game_object);
+        }
+      }
+    });
+  }
 }
 
 void Scene::run() {
-    is_running_ = true;
-    execute_listeners(run_listeners_);
+  is_running_ = true;
+  execute_listeners(run_listeners_);
 
-    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
-    stop_event_listener_id_ = system_service.add_listener(EVENT_QUIT, [&](void* /*event*/) { // register per scene
+  auto& system_service =
+      Engine::instance().services->get_service<SystemService>().get();
+  stop_event_listener_id_ = system_service.add_listener(
+      EVENT_QUIT, [&](void* /*event*/) {  // register per scene
         stop();
-    });
+      });
 
-    game_loop();
+  game_loop();
 }
 
 void Scene::stop() {
-    is_running_ = false;
-    execute_listeners(stop_listeners_);
+  is_running_ = false;
+  execute_listeners(stop_listeners_);
 
-    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
-    system_service.remove_listener(EVENT_QUIT, stop_event_listener_id_);
+  auto& system_service =
+      Engine::instance().services->get_service<SystemService>().get();
+  system_service.remove_listener(EVENT_QUIT, stop_event_listener_id_);
 }
 
 Scene& Scene::time_scale(float modifier) {
-    time_scale_ = modifier;
-    return *this;
+  time_scale_ = modifier;
+  return *this;
 }
-float Scene::time_scale() const {
-    return time_scale_;
-}
+float Scene::time_scale() const { return time_scale_; }
 
-const std::string& Scene::name() const {
-    return name_;
-}
+const std::string& Scene::name() const { return name_; }
 
-bool Scene::is_running() const {
-    return is_running_;
-}
+bool Scene::is_running() const { return is_running_; }
 
-std::reference_wrapper<GameObject> Scene::get_game_object(const std::string& id) const {
-    for(const auto& game_object : game_objects_) {
-        if (game_object->id() == id) {
-            return *game_object;
-        }
+std::reference_wrapper<GameObject> Scene::get_game_object(
+    const std::string& id) const {
+  for (const auto& game_object : game_objects_) {
+    if (game_object->id() == id) {
+      return *game_object;
     }
+  }
 
-    throw std::runtime_error("GameObject with id " + id + " not found in scene " + name_);
+  throw std::runtime_error("GameObject with id " + id + " not found in scene " +
+                           name_);
 }
 
 std::vector<std::reference_wrapper<GameObject>> Scene::game_objects() const {
-    std::vector<std::reference_wrapper<GameObject>> refs;
-    refs.reserve(game_objects_.size());
-    for (const auto& game_object : game_objects_) {
-        refs.emplace_back(*game_object);
-    }
-    return refs;
+  std::vector<std::reference_wrapper<GameObject>> refs;
+  refs.reserve(game_objects_.size());
+  for (const auto& game_object : game_objects_) {
+    refs.emplace_back(*game_object);
+  }
+  return refs;
 }
 
 Scene& Scene::add_game_object(std::unique_ptr<GameObject> game_object) {
-    game_objects_.emplace_back(std::move(game_object));
-    return *this;
+  game_objects_.emplace_back(std::move(game_object));
+  return *this;
 }
 
 GameObject& Scene::add_game_object(const std::string& name) {
-    auto game_object = std::make_unique<GameObject>(*this);
-    auto* object_ptr = game_object.get();
-    game_object->name(name);
-    game_objects_.emplace_back(std::move(game_object));
+  auto game_object = std::make_unique<GameObject>(*this);
+  auto* object_ptr = game_object.get();
+  game_object->name(name);
+  game_objects_.emplace_back(std::move(game_object));
 
-    return *object_ptr; // could be done with a stored ref as well, but this makes it clearer what is returned
+  return *object_ptr;  // could be done with a stored ref as well, but this
+                       // makes it clearer what is returned
 }
 
-Scene& Scene::add_game_objects(std::vector<std::unique_ptr<GameObject>> game_objects) {
-    for (auto& game_object : game_objects) {
-        game_objects_.emplace_back(std::move(game_object));
-    }
-    return *this;
+Scene& Scene::add_game_objects(
+    std::vector<std::unique_ptr<GameObject>> game_objects) {
+  for (auto& game_object : game_objects) {
+    game_objects_.emplace_back(std::move(game_object));
+  }
+  return *this;
 }
 
 /**
@@ -204,58 +215,54 @@ Scene& Scene::add_game_objects(std::vector<std::unique_ptr<GameObject>> game_obj
  * Extracts a specified game object from the scene, transferring its ownership.
  * Removes the game object from the scene's internal collection if found.
  *
- * @return A unique pointer to the extracted game object if it is found and successfully removed
- *         from the scene; otherwise, returns nullptr.
+ * @return A unique pointer to the extracted game object if it is found and
+ * successfully removed from the scene; otherwise, returns nullptr.
  */
-std::unique_ptr<GameObject> Scene::extract_game_object(GameObject& game_object)
-{
-    const auto found_object = std::ranges::find_if(game_objects_,
-       [&game_object](const auto& param)
-       {
-           return param.get() == &game_object;
-       });
+std::unique_ptr<GameObject> Scene::extract_game_object(
+    GameObject& game_object) {
+  const auto found_object =
+      std::ranges::find_if(game_objects_, [&game_object](const auto& param) {
+        return param.get() == &game_object;
+      });
 
-    if (found_object == game_objects_.end())
-    {
-        return nullptr;
-    }
+  if (found_object == game_objects_.end()) {
+    return nullptr;
+  }
 
-    std::unique_ptr<GameObject> extracted = std::move(*found_object);
-    game_objects_.erase(found_object);
-    return extracted;
+  std::unique_ptr<GameObject> extracted = std::move(*found_object);
+  game_objects_.erase(found_object);
+  return extracted;
 }
 
 bool Scene::remove_game_object(GameObject& game_object) {
-    auto found_object = std::find_if(
-        game_objects_.begin(),
-        game_objects_.end(),
-        [&game_object](const auto& param) {
-            return param.get() == &game_object;
-        });
+  auto found_object = std::find_if(game_objects_.begin(), game_objects_.end(),
+                                   [&game_object](const auto& param) {
+                                     return param.get() == &game_object;
+                                   });
 
-    if (found_object == game_objects_.end()) {
-        return false; // not found
-    }
+  if (found_object == game_objects_.end()) {
+    return false;  // not found
+  }
 
-    game_objects_.erase(found_object);
+  game_objects_.erase(found_object);
 
-    return true;
+  return true;
 }
 
 std::optional<std::reference_wrapper<Camera>> Scene::main_camera() const {
-    for (const auto& game_object : game_objects_) {
-        if (!dynamic_cast<Camera*>(game_object.get())) {
-            continue;
-        }
-
-        auto& camera = dynamic_cast<Camera&>(*game_object);
-
-        if (!camera.is_main()) {
-            continue;
-        }
-
-        return camera;
+  for (const auto& game_object : game_objects_) {
+    if (!dynamic_cast<Camera*>(game_object.get())) {
+      continue;
     }
 
-    return std::nullopt;
+    auto& camera = dynamic_cast<Camera&>(*game_object);
+
+    if (!camera.is_main()) {
+      continue;
+    }
+
+    return camera;
+  }
+
+  return std::nullopt;
 }

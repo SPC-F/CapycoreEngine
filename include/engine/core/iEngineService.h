@@ -1,10 +1,10 @@
 #pragma once
-#include <concepts> // NOLINT
+#include <concepts>  // NOLINT
 
 class IEngineService {
-public:
-    virtual ~IEngineService() = default;
+ public:
+  virtual ~IEngineService() = default;
 };
 
-template<typename T>
+template <typename T>
 concept EngineService = std::derived_from<T, IEngineService>;

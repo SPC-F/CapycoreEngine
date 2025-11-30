@@ -7,10 +7,14 @@
 #include <engine/core/rendering/window.h>
 #include <engine/core/rendering/renderable.h>
 #include <engine/core/rendering/strategies/irendering_strategy_factory.h>
+#include <engine/core/rendering/window.h>
+
+#include <vector>
 
 /**
  * @brief Service responsible for rendering game objects to the window.
- * This service functions as a manager for the Renderer, and also as a face to work with the game window via a window property.
+ * This service functions as a manager for the Renderer, and also as a face to
+ * work with the game window via a window property.
  */
 class RenderingService : public IEngineService {
 public:
@@ -30,10 +34,10 @@ public:
      */
     Window& window();
 
-    [[nodiscard]] IRenderingStrategyFactory& rendering_strategy_factory() const;
+  [[nodiscard]] IRenderingStrategyFactory& rendering_strategy_factory() const;
 
-private:
-    friend class AssetService;
-    const std::unique_ptr<Renderer> renderer_;
-    const std::unique_ptr<IRenderingStrategyFactory> strategy_factory_;
+ private:
+  friend class AssetService;
+  const std::unique_ptr<Renderer> renderer_;
+  const std::unique_ptr<IRenderingStrategyFactory> strategy_factory_;
 };

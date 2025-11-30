@@ -57,19 +57,6 @@ jobs:
             -DCMAKE_CXX_COMPILER=clang++ \
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
-      
-      - name: Run clang-tidy
-        run: |
-          echo "Collecting files..."
-          mapfile -t FILES < <(
-            find src include -type f -name '*.cpp' \
-              ! -path '*/tests/*' \
-              ! -path '*/util/memory.cpp' \
-              ! -path '*/iEngineService.*' \
-              ! -path '*/util/uuid.cpp*'
-          )
-          echo "Running clang-tidy on ${#FILES[@]} files..."
-          run-clang-tidy -p build -j "$(nproc)" -warnings-as-errors=* "${FILES[@]}"
 
       - name: Build (ASan)
         shell: bash

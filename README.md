@@ -1,5 +1,5 @@
 # Capycore Engine 101
-The Capycore engine is a C++ game engine designed for 2D games. It is developed as a product of the Avans Hogeschool 
+The Capycore engine is a C++ game engine designed for 2D games. It is developed as a product of the Avans Hogeschool
 Systems Programming minor in C++ ('s-Hertogenbosch, Netherlands).
 
 ## How-to-run
@@ -29,31 +29,40 @@ root
 ```
 
 ## Note for Linux users
-Currently even Linux users have to do the copy thing for freetype. This is because the repository 
-is primarily intended for Windows users who have a hard time building freetype from source. In 
-this case it was done like this so Windows users do not have to build freetype themselves. It will 
+Currently even Linux users have to do the copy thing for freetype. This is because the repository
+is primarily intended for Windows users who have a hard time building freetype from source. In
+this case it was done like this so Windows users do not have to build freetype themselves. It will
 be included in the engine so end-users have nothing to do with it.
 
-In the future, we may make it so Linux users can just link the freetype library normally. This change 
+In the future, we may make it so Linux users can just link the freetype library normally. This change
 may not affect Windows users in any way shape or form, meaning that Windows users will still be able to
 use the prebuilt binaries from the freetype-win-build repository regardless.
 
 
-## Clang-tidy
-This project uses *clang-tidy* as its linter. Its configured through `.clang-tidy` and needs the command export from your build: `"CMAKE_EXPORT_COMPILE_COMMANDS": "ON"`.
+## Linter
 
-We do utilize c++ 20 features so make sure that these are also used: `"CMAKE_CXX_STANDARD": "20","CMAKE_CXX_STANDARD_REQUIRED": "ON"`
-For msys2 users: `pacman -S mingw-w64-ucrt-x86_64-clang-tools-extra`
-For linux/mac: `something similar...`
+1. Install pre-commit
 
-A new target **[clang-tidy]** is defined in CMake that runs the linter on the entire `/src` directory. Due note that this simply lints and not fully builds. 
-Simply add it to the existing build command and voila, it checks all.
+First, install pre-commit on your system. This tool is required to manage the hooks that will run before each commit.
+```bash
+pip install pre-commit
+```
 
-`cmake --build build/default (build) --target clang_tidy`
+2. Install the Git hook
 
-If you install clang-tidy then you can also run it yourself for smaller checks:
+After installing pre-commit, run the following command to set up the hooks defined in the .pre-commit-config.yaml file for your project:
+```bash
+pre-commit install
+```
 
-`clang-tidy -p [BUILD-FOLDER-PATH] .\src\main.cpp`
+This command will create the necessary Git hook configurations to ensure that clang-format is run automatically on staged files before each commit.
+
+3. Manually run the hook (Optional)
+
+If you want to manually run the hook and format all the files in your repository, you can do so with the following command:
+```bash
+pre-commit run --all-files
+```
 
 ---
 An example of a preset (windows):
