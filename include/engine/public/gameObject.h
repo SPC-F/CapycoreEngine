@@ -68,6 +68,7 @@ public:
 
     GameObject& transform(Transform transform);
     [[nodiscard]] Transform& transform();
+    [[nodiscard]] const Transform& transform() const;
 
     [[nodiscard]] const Scene& scene() const noexcept;
 

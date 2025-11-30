@@ -3,11 +3,17 @@
 #include <SDL3/SDL.h>
 #include <algorithm>
 
-#include <engine/util/memory.h>
-#include <engine/core/rendering/renderingService.h>
 #include <engine/core/engine.h>
+#include <engine/core/rendering/renderingService.h>
+#include <engine/core/system/system_service.h>
+#include <engine/audio/audio_service.h>
 #include <engine/input/input_manager.h>
-#include <engine/input/i_input_provider.h>
+#include <engine/input/input_system.h>
+#include <engine/physics/physics_service.h>
+#include <engine/public/gameObject.h>
+#include <engine/public/ui/ui_object.h>
+#include <engine/public/component.h>
+#include <engine/util/memory.h>
 
 constexpr float accumulator_default_value = 0.0f;
 constexpr float fixed_step = 1.0f / 60.0f; // ~60 fps
@@ -42,20 +48,23 @@ void Scene::execute_listeners(const std::vector<Scene::listener_function_t> &lis
 void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
     float accumulator = accumulator_default_value;
 
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+    auto& audio_service = Engine::instance().services->get_service<AudioService>().get();
+    auto& input_manager = Engine::instance().services->get_service<InputManager>().get();
+    auto& physics_service = Engine::instance().services->get_service<PhysicsService>().get();
     auto& rendering_service = Engine::instance().services->get_service<RenderingService>().get();
-    rendering_service.init_frame_timer();
+
+    system_service.init_frame_timer();
 
     while (is_running()) {
-        rendering_service.update_frame_time(time_scale_);
-        float frame_dt = rendering_service.delta_time();
+        system_service.update_frame_time(time_scale_);
+        float frame_dt = system_service.delta_time();
         accumulator += frame_dt;
 
-        SDL_Event e;
-        while (SDL_PollEvent(&e)) {
-            if (e.type == SDL_EVENT_QUIT) {
-                stop();
-            }
-        }
+        run_without_tracy([&]() {
+            input_manager.update();
+            system_service.update();
+        });
 
         auto game_objects = this->game_objects();
         for (auto game_object : game_objects) {
@@ -76,6 +85,27 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
         run_without_tracy([&]() {
             auto game_objects = this->game_objects();
             rendering_service.draw(game_objects);
+            
+            audio_service.update();
+            physics_service.update(fixed_step, game_objects);
+
+            for (auto& game_object_ref : game_objects) {
+                auto& game_object = game_object_ref.get();
+
+                if (auto* ui_object_opt = dynamic_cast<UIObject*>(&game_object)) {
+                    ui_object_opt->update(frame_dt);
+                }
+
+                auto components = game_object.get_components<Component>();
+                for (auto& component_ref : components) {
+                    auto& component = component_ref.get();
+                    component.update(frame_dt);
+                }
+
+                if (game_object.marked_for_deletion()) {
+                    remove_game_object(game_object);
+                }
+            }
         });
     }
 }
@@ -83,12 +113,21 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
 void Scene::run() {
     is_running_ = true;
     execute_listeners(run_listeners_);
+
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+    stop_event_listener_id_ = system_service.add_listener(EVENT_QUIT, [&](void* /*event*/) { // register per scene
+        stop();
+    });
+
     game_loop();
 }
 
 void Scene::stop() {
     is_running_ = false;
     execute_listeners(stop_listeners_);
+
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+    system_service.remove_listener(EVENT_QUIT, stop_event_listener_id_);
 }
 
 Scene& Scene::time_scale(float modifier) {

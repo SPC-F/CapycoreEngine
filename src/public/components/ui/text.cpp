@@ -62,6 +62,26 @@ Text& Text::color(Color color) {
     return *this;
 }
 
+TextAlignment Text::alignment() const {
+    return alignment_;
+}
+
+Text& Text::alignment(TextAlignment alignment) {
+    alignment_ = alignment;
+    mark_dirty();
+    return *this;
+}
+
+Point Text::offset() const {
+    return offset_;
+}
+
+Text& Text::offset(Point offset) {
+    offset_ = offset;
+    mark_dirty();
+    return *this;
+}
+
 bool Text::dirty() const {
     return dirty_;
 }

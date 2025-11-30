@@ -39,6 +39,13 @@ public:
     [[nodiscard]] virtual bool is_key_pressed(KeyCode key) const = 0;
 
     /**
+     * @brief Returns the first key pressed this frame.
+     *
+     * Useful for detecting initial input.
+     */
+    [[nodiscard]] virtual KeyCode get_pressed_key() const = 0;
+
+    /**
      * @brief Returns true on the frame the specified key transitions to released.
      *
      * Useful for detecting input releases or cancellation events.

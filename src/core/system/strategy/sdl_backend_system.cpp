@@ -46,3 +46,35 @@ void SDLBackendSystem::update_frame_time(float time_scale) {
 float SDLBackendSystem::delta_time() {
     return delta_time_;
 }
+
+std::string SDLBackendSystem::get_clipboard_text() {
+    char* text = SDL_GetClipboardText();
+
+    if (text) {
+        std::string clipboard_text(text);
+        SDL_free(text); // NOLINT
+        return clipboard_text;
+    }
+    
+    return "";
+}
+
+void SDLBackendSystem::set_cursor_to_arrow() {
+    SDL_SetCursor(SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_DEFAULT));
+}
+
+void SDLBackendSystem::set_cursor_to_hand() {
+    SDL_SetCursor(SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_POINTER));
+}
+
+void SDLBackendSystem::set_cursor_to_ibeam() {
+    SDL_SetCursor(SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_TEXT));
+}
+
+void SDLBackendSystem::set_cursor_to_crosshair() {
+    SDL_SetCursor(SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_CROSSHAIR));
+}
+
+void SDLBackendSystem::set_cursor_to_wait() {
+    SDL_SetCursor(SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_WAIT));
+}

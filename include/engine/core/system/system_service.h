@@ -3,6 +3,7 @@
 #include <functional>
 #include <memory>
 #include <unordered_map>
+#include <string>
 
 #include "engine/core/events/system_event.h"
 #include "engine/core/iEngineService.h"
@@ -18,7 +19,15 @@ public:
 
     int add_listener(SystemEvent event, EventCallback callback); // NOLINT
     void remove_listener(SystemEvent event, int listener_id); // NOLINT
+    
     void update();
+    
+    std::string get_clipboard_text();
+    void set_cursor_to_arrow();
+    void set_cursor_to_hand();
+    void set_cursor_to_ibeam();
+    void set_cursor_to_crosshair();
+    void set_cursor_to_wait();
 
     void init_frame_timer();
     void update_frame_time(float time_scale);

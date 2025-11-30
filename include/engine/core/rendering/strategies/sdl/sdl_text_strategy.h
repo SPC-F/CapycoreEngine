@@ -8,6 +8,8 @@
 
 #include <engine/core/rendering/strategies/irendering_strategy.h>
 #include <engine/public/component.h>
+#include <engine/public/components/ui/text.h>
+#include <engine/public/ui/ui_object.h>
 
 /**
  * @brief SDL implementation of the text rendering strategy.
@@ -26,6 +28,8 @@ private:
     float last_font_height_ = 0.0f;
     
     static std::reference_wrapper<TTF_Font> get_font(const std::string& name, const std::string& path, int size);
+    void draw_cached(Text& text, const UIObject& ui_object, const Transform& transform, float scale_x, float scale_y);
+    void draw_fresh(Text& text, const UIObject& ui_object, const Transform& transform, float scale_x, float scale_y);
 
 public:
     SdlTextStrategy(SDL_Renderer& sdl_renderer);

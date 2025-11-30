@@ -6,29 +6,23 @@ constexpr unsigned short default_color_value = 255;
 constexpr unsigned short default_font_size = 16;
 
 UIText::UIText(
+    Scene& scene,
     std::string text,
     std::string font,
     std::string font_path,
     float width,
     float height,
     Point pivot,
-    Point anchor,
-    Scene& scene
+    Point anchor
 ) : 
-    UIObject(width, height, pivot, anchor, scene),
+    UIObject(scene, width, height, pivot, anchor),
     text_(std::move(text)),
     font_(std::move(font)),
     font_path_(std::move(font_path)),
     font_size_(default_font_size),
     color_(default_color_value, default_color_value, default_color_value, default_color_value)
 {
-    add_component<Text>(
-        text_,
-        font_,
-        font_path_,
-        font_size_,
-        color_
-    );
+    add_component<Text>(text_, font_, font_path_, font_size_, color_);
 }
 
 void UIText::update(float dt) {}

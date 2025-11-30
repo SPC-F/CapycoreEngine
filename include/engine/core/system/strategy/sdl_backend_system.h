@@ -43,6 +43,37 @@ public:
      * @return The delta time in seconds.
      */
     [[nodiscard]] float delta_time() override;
+
+    /**
+     * @brief Gets the current text from the system clipboard.
+     * @return The text from the clipboard.
+     */
+    [[nodiscard]] std::string get_clipboard_text() override;
+
+    /**
+     * @brief Sets the cursor to the standard arrow shape.
+     */
+    void set_cursor_to_arrow() override;
+
+    /**
+     * @brief Sets the cursor to the hand shape.
+     */
+    void set_cursor_to_hand() override;
+
+    /**
+     * @brief Sets the cursor to the I-beam shape.
+     */
+    void set_cursor_to_ibeam() override;
+
+    /**
+     * @brief Sets the cursor to the crosshair shape.
+     */
+    void set_cursor_to_crosshair() override;
+
+    /**
+     * @brief Sets the cursor to the wait (hourglass) shape.
+     */
+    void set_cursor_to_wait() override;
     
 private:
     std::unordered_map<SystemEvent, std::vector<BackendCallback>>* listeners_{ nullptr };

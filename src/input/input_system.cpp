@@ -2,6 +2,17 @@
 
 #include <engine/input/input_system.h>
 
+KeyCode InputSystem::get_pressed_key() const
+{
+    for (const auto& [key, state] : key_states_) {
+        if (state.current && !state.previous) {
+            return key;
+        }
+    }
+
+    return KeyCode::unknown;
+}
+
 bool InputSystem::is_key_held(KeyCode key) const
 {
     auto it = key_states_.find(key);

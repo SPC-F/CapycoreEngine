@@ -13,11 +13,11 @@ class UIObject : public GameObject
 {
 public:
     UIObject(
+        Scene& scene,
         float width, 
         float height, 
         Point pivot, 
-        Point anchor,
-        Scene& scene
+        Point anchor
     );
 
     /**
