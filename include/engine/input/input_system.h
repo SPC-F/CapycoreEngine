@@ -1,3 +1,5 @@
+#pragma once
+
 #include <map>
 
 #include <engine/input/i_input_provider.h>
