@@ -2,8 +2,8 @@ var searchData=
 [
   ['save_0',['save',['../class_simple_storage.html#a4794718313092efc10e60a6ebb7c247d',1,'SimpleStorage']]],
   ['scale_1',['scale',['../class_transform.html#a40a9ab54c04146731f3c164b82a4464e',1,'Transform::scale(Vector3 scale) noexcept'],['../class_transform.html#a819d2db2c59e95f64e0990880daed47a',1,'Transform::scale() const noexcept']]],
-  ['scene_2',['scene',['../class_game_object.html#a2289c71a95125871640a379f9afb7a3d',1,'GameObject']]],
-  ['sceneservice_3',['sceneservice',['../class_scene_service.html#a856bac582e5b02d628896e2fb81cada3',1,'SceneService::SceneService(const SceneService &amp;)=delete'],['../class_scene_service.html#a6c15c95c32703e4315769dd90175d3ff',1,'SceneService::SceneService(const std::string &amp;initial_scene_name)'],['../class_scene_service.html#ab85cdba5c4952f201e692b525c3f50a8',1,'SceneService::SceneService()']]],
+  ['scene_2',['scene',['../class_game_object.html#a2289c71a95125871640a379f9afb7a3d',1,'GameObject::scene() const noexcept'],['../class_game_object.html#a57618477cb24abfe206c42322d544fea',1,'GameObject::scene(Scene &amp;scene) noexcept']]],
+  ['sceneservice_3',['sceneservice',['../class_scene_service.html#ab85cdba5c4952f201e692b525c3f50a8',1,'SceneService::SceneService()'],['../class_scene_service.html#a856bac582e5b02d628896e2fb81cada3',1,'SceneService::SceneService(const SceneService &amp;)=delete'],['../class_scene_service.html#a6c15c95c32703e4315769dd90175d3ff',1,'SceneService::SceneService(const std::string &amp;initial_scene_name)']]],
   ['sdlbackendsystem_4',['SDLBackendSystem',['../class_s_d_l_backend_system.html#a315e3dc1d3976f4bd994a78e3755af50',1,'SDLBackendSystem']]],
   ['sdlimagestrategy_5',['SdlImageStrategy',['../class_sdl_image_strategy.html#a07ef19bdfb2f3530208d7c7d867aead8',1,'SdlImageStrategy']]],
   ['sdlsoundinstance_6',['SDLSoundInstance',['../class_s_d_l_sound_instance.html#ad9420e4c95087e0b8fdadc05d261478c',1,'SDLSoundInstance']]],
@@ -53,9 +53,9 @@ var searchData=
   ['soundinstance_50',['SoundInstance',['../class_sound_instance.html#a4dcabfcaa67d3080dd0ab23b1cf3acca',1,'SoundInstance']]],
   ['soundresource_51',['SoundResource',['../class_sound_resource.html#a36b401113d895625f3b5f56defc9ec96',1,'SoundResource']]],
   ['sprite_52',['Sprite',['../class_sprite.html#ae93cbda2d3b18e1fc2ef2c067589540e',1,'Sprite']]],
-  ['state_53',['state',['../class_u_i_interactable.html#a92213dc96fa336a3bf30ec6a61fb0895',1,'UIInteractable::state() const'],['../class_u_i_interactable.html#a37635ef4747ae039aa8a3c318d1f1a44',1,'UIInteractable::state()']]],
+  ['state_53',['state',['../class_u_i_interactable.html#a37635ef4747ae039aa8a3c318d1f1a44',1,'UIInteractable::state()'],['../class_u_i_interactable.html#a92213dc96fa336a3bf30ec6a61fb0895',1,'UIInteractable::state() const']]],
   ['step_54',['step',['../class_physics_world.html#a7cdf3bfd913d3dbb770e1404bebd80a1',1,'PhysicsWorld']]],
-  ['stop_55',['stop',['../class_generic_sound_instance.html#a07bd55ae2e5b885559f522b3df228ebe',1,'GenericSoundInstance::stop()'],['../class_s_d_l_sound_instance.html#ac99f527154046a5b8f23db8ace5ae5a9',1,'SDLSoundInstance::stop()'],['../class_sound_instance.html#ae8fc6b171c9a2a874af13aba5439bc96',1,'SoundInstance::stop()'],['../class_audio_source.html#ab3449cc8a764c0d15e9453d52610475e',1,'AudioSource::stop()']]],
+  ['stop_55',['stop',['../class_generic_sound_instance.html#a07bd55ae2e5b885559f522b3df228ebe',1,'GenericSoundInstance::stop()'],['../class_s_d_l_sound_instance.html#ac99f527154046a5b8f23db8ace5ae5a9',1,'SDLSoundInstance::stop()'],['../class_sound_instance.html#ae8fc6b171c9a2a874af13aba5439bc96',1,'SoundInstance::stop()'],['../class_audio_source.html#ab3449cc8a764c0d15e9453d52610475e',1,'AudioSource::stop()'],['../class_scene.html#add01794b17df2030e961468fc88cf2e7',1,'Scene::stop()']]],
   ['stop_5fall_5fsounds_56',['stop_all_sounds',['../class_audio_service.html#ae08fa94ffa7f5ad1c2792d6e39f3c280',1,'AudioService']]],
   ['stop_5fsound_57',['stop_sound',['../class_audio_service.html#a1d924616f5179225ae05f45ce97101ef',1,'AudioService::stop_sound(SoundInstance &amp;instance)'],['../class_audio_service.html#ae794777ca0e019940e3308af84564195',1,'AudioService::stop_sound(const std::string &amp;name)']]],
   ['systemservice_58',['SystemService',['../class_system_service.html#a4e29d66d1727c8792d6758db36cdb660',1,'SystemService']]]
