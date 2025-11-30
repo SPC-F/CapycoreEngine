@@ -36,5 +36,6 @@ var class_game_object =
     [ "tag", "class_game_object.html#a4d09199581be7cda800bc98a39dc0a3f", null ],
     [ "tag", "class_game_object.html#a94715cae17ad49c81798dac77ad43ed5", null ],
     [ "transform", "class_game_object.html#a0ed7c62875e7dd6c83fb1c78f4ba373f", null ],
+    [ "transform", "class_game_object.html#a8f936b2b99cb2988832728b7329fb325", null ],
     [ "transform", "class_game_object.html#ad3bc5c0607330f392cb917bfce1e7e29", null ]
 ];

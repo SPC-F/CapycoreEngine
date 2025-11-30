@@ -200,7 +200,7 @@
 <!-- Node10 -->
 <g id="Node000010" class="node">
 <title>Node10</title>
-<g id="a_Node000010"><a xlink:href="class_text.html" target="_top" xlink:title=" ">
+<g id="a_Node000010"><a xlink:href="class_text.html" target="_top" xlink:title="UI Text Component.">
 <polygon fill="white" stroke="#666666" points="299,-19 262,-19 262,0 299,0 299,-19"/>
 <text text-anchor="middle" x="280.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Text</text>
 </a>

@@ -2,11 +2,11 @@ var searchData=
 [
   ['l_0',['l',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a2db95e8e1a9267b7a1188556b2013b33',1,'key_code.h']]],
   ['label_1',['label',['../class_u_i_button.html#a5a213354b82fbce0a3b5d3ef5d4a05d3',1,'UIButton::label() const'],['../class_u_i_button.html#af7fae81ad3afe53624080b7684903c27',1,'UIButton::label(const std::string &amp;label)']]],
-  ['label_5fcolor_2',['label_color',['../class_u_i_button.html#a1acf0660f8cd8887c39aab90277e13d7',1,'UIButton::label_color() const'],['../class_u_i_button.html#a8a7e987e03872acbc67141c8fac63ff2',1,'UIButton::label_color(const Color &amp;color)']]],
+  ['label_5fcolor_2',['label_color',['../class_u_i_button.html#a8a7e987e03872acbc67141c8fac63ff2',1,'UIButton::label_color(const Color &amp;color)'],['../class_u_i_button.html#a1acf0660f8cd8887c39aab90277e13d7',1,'UIButton::label_color() const']]],
   ['last_5f_3',['last_',['../class_i_backend_system.html#a2d9d1e86979d79eb7462fbd814a49414',1,'IBackendSystem']]],
   ['last_5fscroll_5fdirection_4',['last_scroll_direction',['../struct_mouse_wheel_state.html#afc104e1419a556b270cbc806510fc7ef',1,'MouseWheelState']]],
   ['layer_5',['layer',['../class_game_object.html#a73bc97d860ea942001cfcc1dd623854d',1,'GameObject::layer(int layer)'],['../class_game_object.html#ab8b2152385ce0474103245a680aa864b',1,'GameObject::layer() const']]],
-  ['left_6',['left',['../mouse__state_8h.html#ad24c1433fc0344e2b220f3abc6da31cca811882fecd5c7618d7099ebbd39ea254',1,'left:&#160;mouse_state.h'],['../mouse__button_8h.html#addd443be3bdcc8c62df96178b7870b2ba811882fecd5c7618d7099ebbd39ea254',1,'left:&#160;mouse_button.h']]],
+  ['left_6',['left',['../mouse__state_8h.html#ad24c1433fc0344e2b220f3abc6da31cca811882fecd5c7618d7099ebbd39ea254',1,'left:&#160;mouse_state.h'],['../mouse__button_8h.html#addd443be3bdcc8c62df96178b7870b2ba811882fecd5c7618d7099ebbd39ea254',1,'left:&#160;mouse_button.h'],['../text_8h.html#adfc22542e72607021f066578c0fcc252a9d4d8b0b72fc2659da772d761a3c5ecb',1,'Left:&#160;text.h']]],
   ['left_5falt_7',['left_alt',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a217c34bd52ebbf6dbb13f7f6d7e7f53f',1,'key_code.h']]],
   ['left_5fbracket_8',['left_bracket',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a1476759ce86d46d41e079a8584b7a4f9',1,'key_code.h']]],
   ['left_5fcontrol_9',['left_control',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44ae31c29a406e855ae968bcfd47c55c1b8',1,'key_code.h']]],

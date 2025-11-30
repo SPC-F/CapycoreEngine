@@ -17,6 +17,7 @@ var searchData=
   ['delta_5ftime_5f_14',['delta_time_',['../class_i_backend_system.html#aee6e95720125484cbf09a4fb5a240087',1,'IBackendSystem']]],
   ['delta_5fx_15',['delta_x',['../struct_mouse_state.html#ac3e36771c2be1040c25c0737e554ebd3',1,'MouseState']]],
   ['delta_5fy_16',['delta_y',['../struct_mouse_state.html#a241498a6a3ce01a7db6a9c56ebdef12f',1,'MouseState']]],
-  ['distance_17',['distance',['../struct_body_distance2_d.html#a55211de1dc2f4b6e84e64d9660ca45b1',1,'BodyDistance2D::distance'],['../struct_collider_ray_result.html#a27cbda395e061c5f975875ec284196b2',1,'ColliderRayResult::distance']]],
-  ['dynamic_18',['dynamic',['../struct_physics_creation_flags.html#a1d88ccbfad081f9471155c930fd46e90',1,'PhysicsCreationFlags']]]
+  ['disabled_17',['disabled',['../struct_u_i_interaction_state.html#aefdd183caf654bf3444359211bc06319',1,'UIInteractionState']]],
+  ['distance_18',['distance',['../struct_body_distance2_d.html#a55211de1dc2f4b6e84e64d9660ca45b1',1,'BodyDistance2D::distance'],['../struct_collider_ray_result.html#a27cbda395e061c5f975875ec284196b2',1,'ColliderRayResult::distance']]],
+  ['dynamic_19',['dynamic',['../struct_physics_creation_flags.html#a1d88ccbfad081f9471155c930fd46e90',1,'PhysicsCreationFlags']]]
 ];

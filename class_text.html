@@ -131,6 +131,9 @@ $(document).ready(function(){initNavTree('class_text.html',''); initResizable();
 </div><!--header-->
 <div class="contents">
 
+<p>UI <a class="el" href="class_text.html" title="UI Text Component.">Text</a> <a class="el" href="class_component.html">Component</a>.  
+ <a href="class_text.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="text_8h_source.html">text.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Text:</div>
@@ -172,6 +175,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a48660316e1d2535d5094f07c85beb152"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb91465ac1d027bff7169c79ef6d6139" id="r_acb91465ac1d027bff7169c79ef6d6139"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_text.html#acb91465ac1d027bff7169c79ef6d6139">mark_dirty</a> (bool <a class="el" href="class_text.html#a48660316e1d2535d5094f07c85beb152">dirty</a>=true)</td></tr>
 <tr class="separator:acb91465ac1d027bff7169c79ef6d6139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9734b5c47234fd7dcd79fa5ecf8e16c4" id="r_a9734b5c47234fd7dcd79fa5ecf8e16c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="text_8h.html#adfc22542e72607021f066578c0fcc252">TextAlignment</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_text.html#a9734b5c47234fd7dcd79fa5ecf8e16c4">alignment</a> () const</td></tr>
+<tr class="separator:a9734b5c47234fd7dcd79fa5ecf8e16c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdabe0c4585caa8d18718d4d752b3ef0" id="r_acdabe0c4585caa8d18718d4d752b3ef0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_text.html">Text</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_text.html#acdabe0c4585caa8d18718d4d752b3ef0">alignment</a> (<a class="el" href="text_8h.html#adfc22542e72607021f066578c0fcc252">TextAlignment</a> alignment)</td></tr>
+<tr class="separator:acdabe0c4585caa8d18718d4d752b3ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab37f50078a2bce4a76ef0185940b4b30" id="r_ab37f50078a2bce4a76ef0185940b4b30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_point.html">Point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_text.html#ab37f50078a2bce4a76ef0185940b4b30">offset</a> () const</td></tr>
+<tr class="separator:ab37f50078a2bce4a76ef0185940b4b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e30202aee038e2b6ec6258b9a0fa573" id="r_a3e30202aee038e2b6ec6258b9a0fa573"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_text.html">Text</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_text.html#a3e30202aee038e2b6ec6258b9a0fa573">offset</a> (<a class="el" href="class_point.html">Point</a> offset)</td></tr>
+<tr class="separator:a3e30202aee038e2b6ec6258b9a0fa573"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_renderable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_renderable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_renderable.html">Renderable</a></td></tr>
 <tr class="memitem:aa518dab4001997185c7ccdf3e389e1d8 inherit pub_methods_class_renderable" id="r_aa518dab4001997185c7ccdf3e389e1d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#aa518dab4001997185c7ccdf3e389e1d8">Renderable</a> ()=default</td></tr>
 <tr class="separator:aa518dab4001997185c7ccdf3e389e1d8 inherit pub_methods_class_renderable"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -221,7 +232,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a487c853faff4489e006918af1d82f513 inherit pro_attribs_class_renderable" id="r_a487c853faff4489e006918af1d82f513"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_i_rendering_strategy.html">IRenderingStrategy</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a487c853faff4489e006918af1d82f513">render_strategy_</a></td></tr>
 <tr class="separator:a487c853faff4489e006918af1d82f513 inherit pro_attribs_class_renderable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>UI <a class="el" href="class_text.html" title="UI Text Component.">Text</a> <a class="el" href="class_component.html">Component</a>. </p>
+<p>Represents a text element in the UI with customizable font, size, color, and content. Inherits from <a class="el" href="class_renderable.html" title="Base class for renderable components in the engine.">Renderable</a> to allow rendering strategies. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8e8b84d65358393e56e40b9e8af71ecb" name="a8e8b84d65358393e56e40b9e8af71ecb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8e8b84d65358393e56e40b9e8af71ecb">&#9670;&#160;</a></span>Text()</h2>
 
@@ -269,6 +283,41 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9734b5c47234fd7dcd79fa5ecf8e16c4" name="a9734b5c47234fd7dcd79fa5ecf8e16c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9734b5c47234fd7dcd79fa5ecf8e16c4">&#9670;&#160;</a></span>alignment() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="text_8h.html#adfc22542e72607021f066578c0fcc252">TextAlignment</a> Text::alignment </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acdabe0c4585caa8d18718d4d752b3ef0" name="acdabe0c4585caa8d18718d4d752b3ef0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdabe0c4585caa8d18718d4d752b3ef0">&#9670;&#160;</a></span>alignment() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_text.html">Text</a> &amp; Text::alignment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="text_8h.html#adfc22542e72607021f066578c0fcc252">TextAlignment</a>&#160;</td>
+          <td class="paramname"><em>alignment</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a139e6cd186845df975c995be5087cd2b" name="a139e6cd186845df975c995be5087cd2b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a139e6cd186845df975c995be5087cd2b">&#9670;&#160;</a></span>color() <span class="overload">[1/2]</span></h2>
 
@@ -437,6 +486,41 @@ Additional Inherited Members</h2></td></tr>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>dirty</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab37f50078a2bce4a76ef0185940b4b30" name="ab37f50078a2bce4a76ef0185940b4b30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab37f50078a2bce4a76ef0185940b4b30">&#9670;&#160;</a></span>offset() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_point.html">Point</a> Text::offset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3e30202aee038e2b6ec6258b9a0fa573" name="a3e30202aee038e2b6ec6258b9a0fa573"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e30202aee038e2b6ec6258b9a0fa573">&#9670;&#160;</a></span>offset() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_text.html">Text</a> &amp; Text::offset </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_point.html">Point</a>&#160;</td>
+          <td class="paramname"><em>offset</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

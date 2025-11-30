@@ -4,6 +4,13 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="225,53,129,96,127,91,223,49"/>
 <area shape="rect" id="Node000003" href="$image_8h.html" title=" " alt="" coords="189,93,368,133"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="281,59,281,93,276,93,276,59"/>
-<area shape="rect" id="Node000004" href="$text_8h.html" title=" " alt="" coords="393,93,557,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="335,48,433,91,431,96,333,53"/>
+<area shape="rect" id="Node000006" href="$text_8h.html" title=" " alt="" coords="393,93,557,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="335,48,433,91,431,96,333,53"/>
+<area shape="rect" id="Node000004" href="$ui__input_8h.html" title=" " alt="" coords="282,189,470,229"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="310,141,358,187,354,191,306,145"/>
+<area shape="rect" id="Node000005" href="$ui__image_8h.html" title=" " alt="" coords="97,189,257,229"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="250,145,200,191,196,187,246,141"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="447,145,398,191,394,187,443,141"/>
+<area shape="rect" id="Node000007" href="$sdl__text__strategy_8h.html" title=" " alt="" coords="494,181,666,236"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="508,140,552,179,549,183,504,144"/>
 </map>

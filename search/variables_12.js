@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['wheel_0',['wheel',['../struct_mouse_state.html#aa55cd0e5b66af47616728a6ea874f025',1,'MouseState']]],
-  ['width_5f_1',['width_',['../class_u_i_object.html#a711f68da4eb6ec811c63eceea6402872',1,'UIObject']]]
+  ['volume_5f_0',['volume_',['../class_sound_instance.html#ade1399c32a6050425db1f9bff6192576',1,'SoundInstance']]]
 ];

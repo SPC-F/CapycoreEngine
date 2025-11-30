@@ -1,7 +1,15 @@
 <map id="include/engine/public/ui/ui_object.h" name="include/engine/public/ui/ui_object.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="97,5,257,45"/>
-<area shape="rect" id="Node000002" href="$ui__button_8h.html" title=" " alt="" coords="5,93,165,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,57,108,95,104,91,145,53"/>
-<area shape="rect" id="Node000003" href="$ui__text_8h.html" title=" " alt="" coords="189,93,349,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,53,251,91,247,95,206,57"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="349,5,509,45"/>
+<area shape="rect" id="Node000002" href="$sdl__text__strategy_8h.html" title=" " alt="" coords="5,93,177,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="348,52,178,98,177,93,346,47"/>
+<area shape="rect" id="Node000003" href="$ui__interactable_8h.html" title=" " alt="" coords="201,101,435,141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="397,56,342,103,339,99,394,52"/>
+<area shape="rect" id="Node000006" href="$ui__image_8h.html" title=" " alt="" coords="459,101,619,141"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="463,52,519,99,515,103,460,56"/>
+<area shape="rect" id="Node000007" href="$ui__text_8h.html" title=" " alt="" coords="643,101,803,141"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="502,47,665,98,663,103,501,52"/>
+<area shape="rect" id="Node000004" href="$ui__button_8h.html" title=" " alt="" coords="110,196,307,236"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="287,152,232,198,229,194,284,148"/>
+<area shape="rect" id="Node000005" href="$ui__input_8h.html" title=" " alt="" coords="332,196,520,236"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="352,148,406,194,402,198,348,152"/>
 </map>

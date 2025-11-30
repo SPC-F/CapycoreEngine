@@ -27,7 +27,11 @@ var hierarchy =
     [ "GameObject", "class_game_object.html", [
       [ "Camera", "class_camera.html", null ],
       [ "UIObject", "class_u_i_object.html", [
-        [ "UIButton", "class_u_i_button.html", null ],
+        [ "UIImage", "class_u_i_image.html", null ],
+        [ "UIInteractable", "class_u_i_interactable.html", [
+          [ "UIButton", "class_u_i_button.html", null ],
+          [ "UIInput", "class_u_i_input.html", null ]
+        ] ],
         [ "UIText", "class_u_i_text.html", null ]
       ] ]
     ] ],
@@ -51,7 +55,6 @@ var hierarchy =
       [ "InputSystem", "class_input_system.html", null ]
     ] ],
     [ "IRenderingStrategy", "class_i_rendering_strategy.html", [
-      [ "SdlGuiStrategy", "class_sdl_gui_strategy.html", null ],
       [ "SdlImageStrategy", "class_sdl_image_strategy.html", null ],
       [ "SdlSpriteStrategy", "class_sdl_sprite_strategy.html", null ],
       [ "SdlTextStrategy", "class_sdl_text_strategy.html", null ]
@@ -83,7 +86,7 @@ var hierarchy =
     ] ],
     [ "Texture", "class_texture.html", null ],
     [ "Transform", "class_transform.html", null ],
-    [ "UIButtonState", "struct_u_i_button_state.html", null ],
+    [ "UIInteractionState", "struct_u_i_interaction_state.html", null ],
     [ "Vector3", "class_vector3.html", null ],
     [ "Window", "class_window.html", null ]
 ];

@@ -147,6 +147,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2540379f2fa2eda258a531408648bc93" id="r_a2540379f2fa2eda258a531408648bc93"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_system.html#a2540379f2fa2eda258a531408648bc93">is_key_held</a> (<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44">KeyCode</a> key) const override</td></tr>
 <tr class="memdesc:a2540379f2fa2eda258a531408648bc93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the specified key is currently held down.  <br /></td></tr>
 <tr class="separator:a2540379f2fa2eda258a531408648bc93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae67d1a9b3965087f48f12602af67ebe2" id="r_ae67d1a9b3965087f48f12602af67ebe2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44">KeyCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_system.html#ae67d1a9b3965087f48f12602af67ebe2">get_pressed_key</a> () const override</td></tr>
+<tr class="memdesc:ae67d1a9b3965087f48f12602af67ebe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the first key pressed this frame.  <br /></td></tr>
+<tr class="separator:ae67d1a9b3965087f48f12602af67ebe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9194c4f1756a7fc9e808f71cbd00ea09" id="r_a9194c4f1756a7fc9e808f71cbd00ea09"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_system.html#a9194c4f1756a7fc9e808f71cbd00ea09">is_key_pressed</a> (<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44">KeyCode</a> key) const override</td></tr>
 <tr class="memdesc:a9194c4f1756a7fc9e808f71cbd00ea09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true on the frame the specified key transitions to pressed.  <br /></td></tr>
 <tr class="separator:a9194c4f1756a7fc9e808f71cbd00ea09"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -405,6 +408,36 @@ Protected Attributes</h2></td></tr>
 <p>Helps detect end of drag or click-release events. </p>
 
 <p>Implements <a class="el" href="class_i_input_provider.html#aecb38b94cea7300bb8694e994ed9698e">IInputProvider</a>.</p>
+
+</div>
+</div>
+<a id="ae67d1a9b3965087f48f12602af67ebe2" name="ae67d1a9b3965087f48f12602af67ebe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae67d1a9b3965087f48f12602af67ebe2">&#9670;&#160;</a></span>get_pressed_key()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44">KeyCode</a> InputSystem::get_pressed_key </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the first key pressed this frame. </p>
+<p>Useful for detecting initial input. </p>
+
+<p>Implements <a class="el" href="class_i_input_provider.html#a49ee486a8fabf7ec69ad2c84b53c21ca">IInputProvider</a>.</p>
 
 </div>
 </div>

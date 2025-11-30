@@ -6,6 +6,7 @@ var class_input_system =
     [ "any_mouse_held", "class_input_system.html#afed846632ebddfe07554fb4eb3cbf467", null ],
     [ "any_mouse_pressed", "class_input_system.html#aebd62b2795c1a34421b7ff5bd2af2cfd", null ],
     [ "any_mouse_released", "class_input_system.html#a59ebbff018c5a97f9838187323c517d7", null ],
+    [ "get_pressed_key", "class_input_system.html#ae67d1a9b3965087f48f12602af67ebe2", null ],
     [ "is_key_held", "class_input_system.html#a2540379f2fa2eda258a531408648bc93", null ],
     [ "is_key_pressed", "class_input_system.html#a9194c4f1756a7fc9e808f71cbd00ea09", null ],
     [ "is_key_released", "class_input_system.html#aaa8e3778c1cd10125eac8651f70c7b39", null ],
