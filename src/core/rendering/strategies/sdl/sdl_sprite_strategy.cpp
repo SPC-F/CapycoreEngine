@@ -9,7 +9,7 @@ constexpr float default_texture_height = 32;
 
 SdlSpriteStrategy::SdlSpriteStrategy(SDL_Renderer& sdl_renderer) : sdl_renderer_(sdl_renderer) {}
 
-Color get_default_color(SDL_Texture* texture) {
+Color SdlSpriteStrategy::get_default_sprite_color(SDL_Texture* texture) { // NOLINT [readability-convert-member-functions-to-static]
     Color color;
     SDL_GetTextureColorMod(texture,
                            reinterpret_cast<Uint8*>(&color.r),
@@ -19,7 +19,7 @@ Color get_default_color(SDL_Texture* texture) {
     return color;
 }
 
-void set_color(const Color& color, SDL_Texture* texture) {
+void SdlSpriteStrategy::set_sprite_color(const Color& color, SDL_Texture* texture) { // NOLINT [readability-convert-member-functions-to-static]
     SDL_SetTextureColorMod(texture,
                            static_cast<Uint8>(color.r),
                            static_cast<Uint8>(color.g),
@@ -27,7 +27,7 @@ void set_color(const Color& color, SDL_Texture* texture) {
     SDL_SetTextureAlphaMod(texture, static_cast<Uint8>(color.a));
 }
 
-void SdlSpriteStrategy::draw(Component& component) {
+void SdlSpriteStrategy::draw(Component& component, Camera& camera) {
     auto parent_opt = component.parent();
     if (!parent_opt.has_value()) {
         throw std::runtime_error("Cannot draw Sprite component without a parent GameObject");
@@ -35,6 +35,7 @@ void SdlSpriteStrategy::draw(Component& component) {
 
     const auto& transform = parent_opt->get().transform();
     const auto& position = transform.position();
+    const auto& camera_position = camera.transform().position();
 
     const auto& sprite = dynamic_cast<const Sprite&>(component);
     const Texture& texture = sprite.texture();
@@ -43,21 +44,27 @@ void SdlSpriteStrategy::draw(Component& component) {
     float width = default_texture_width;
     float height = default_texture_height;
 
+    if (texture_ptr != nullptr) {
+        width = static_cast<float>(texture_ptr->w);
+        height = static_cast<float>(texture_ptr->h);
+    }
+
     auto const source = SDL_FRect {
         .x = 0,
         .y = 0,
         .w = width,
         .h = height
     };
+
     auto const target = SDL_FRect {
-        .x = position.x,
-        .y = position.y,
+        .x = position.x - camera_position.x,
+        .y = position.y - camera_position.y,
         .w = width * transform.scale().x,
         .h = height * transform.scale().y
     };
 
-    Color original_color = get_default_color(texture_ptr);
-    set_color(sprite.color(), texture_ptr);
+    const Color original_color = get_default_sprite_color(texture_ptr);
+    set_sprite_color(sprite.color(), texture_ptr);
 
     SDL_RenderTextureRotated(
         &sdl_renderer_,
@@ -69,5 +76,5 @@ void SdlSpriteStrategy::draw(Component& component) {
         SDL_FLIP_NONE
     );
 
-    set_color(original_color, texture_ptr);
+    set_sprite_color(original_color, texture_ptr);
 }

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <map>
 
 #include <engine/input/i_input_provider.h>
@@ -13,6 +15,7 @@
 class InputSystem : public IInputProvider {
 public:
     [[nodiscard]] bool is_key_held(KeyCode key) const override;
+    [[nodiscard]] KeyCode get_pressed_key() const override;
     [[nodiscard]] bool is_key_pressed(KeyCode key) const override;
     [[nodiscard]] bool is_key_released(KeyCode key) const override;
     [[nodiscard]] bool any_key_held() const override;
@@ -34,6 +37,7 @@ public:
     [[nodiscard]] MouseDirection mouse_scroll_direction() const override;
 
     void reset_state() override;
+    void register_events() override;
     void update() override;
 
 protected:

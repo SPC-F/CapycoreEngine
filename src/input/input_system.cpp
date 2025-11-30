@@ -2,6 +2,17 @@
 
 #include <engine/input/input_system.h>
 
+KeyCode InputSystem::get_pressed_key() const
+{
+    for (const auto& [key, state] : key_states_) {
+        if (state.current && !state.previous) {
+            return key;
+        }
+    }
+
+    return KeyCode::unknown;
+}
+
 bool InputSystem::is_key_held(KeyCode key) const
 {
     auto it = key_states_.find(key);
@@ -118,6 +129,13 @@ void InputSystem::reset_state()
     mouse_state_.reset();
 }
 
+void InputSystem::register_events()
+{
+    if (auto input_opt = input(); input_opt.has_value()) {
+        input_opt->get().register_events(key_states_, mouse_state_);
+    }
+}
+
 void InputSystem::update()
 {
     for (auto& [_, state] : key_states_) {
@@ -126,9 +144,5 @@ void InputSystem::update()
 
     for (auto& [_, state] : mouse_state_.buttons) {
         state.previous = state.current;
-    }
-
-    if (input().has_value()) {
-        input()->get().update(key_states_, mouse_state_);
     }
 }

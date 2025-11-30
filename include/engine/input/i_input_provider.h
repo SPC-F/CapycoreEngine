@@ -39,6 +39,13 @@ public:
     [[nodiscard]] virtual bool is_key_pressed(KeyCode key) const = 0;
 
     /**
+     * @brief Returns the first key pressed this frame.
+     *
+     * Useful for detecting initial input.
+     */
+    [[nodiscard]] virtual KeyCode get_pressed_key() const = 0;
+
+    /**
      * @brief Returns true on the frame the specified key transitions to released.
      *
      * Useful for detecting input releases or cancellation events.
@@ -153,6 +160,13 @@ public:
      * Ensures stale input doesn’t carry over between menus or gameplay.
      */
     virtual void reset_state() = 0;
+
+    /**
+     * @brief Registers necessary event listeners with the underlying system.
+     *
+     * Must be called during initialization to ensure input events are captured.
+     */
+    virtual void register_events() = 0;
 
     /**
      * @brief Polls the underlying system for input updates.

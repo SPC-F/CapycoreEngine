@@ -1,10 +1,22 @@
 #include <engine/public/scene.h>
 
 #include <SDL3/SDL.h>
-
-#include <engine/core/rendering/renderingService.h>
-#include <engine/core/engine.h>
 #include <algorithm>
+
+#include <engine/core/engine.h>
+#include <engine/core/rendering/renderingService.h>
+#include <engine/core/system/system_service.h>
+#include <engine/audio/audio_service.h>
+#include <engine/input/input_manager.h>
+#include <engine/input/input_system.h>
+#include <engine/physics/physics_service.h>
+#include <engine/public/gameObject.h>
+#include <engine/public/ui/ui_object.h>
+#include <engine/public/component.h>
+#include <engine/util/memory.h>
+
+constexpr float accumulator_default_value = 0.0f;
+constexpr float fixed_step = 1.0f / 60.0f; // ~60 fps
 
 Scene::Scene(const std::string& name) // NOLINT
     : name_{ name },
@@ -15,15 +27,15 @@ Scene::~Scene() {
     execute_listeners(destroy_listeners_);
 }
 
-void Scene::on_run(listener_function_t&& listener) {
+void Scene::on_run(listener_function_t& listener) {
     run_listeners_.push_back(listener);
 }
 
-void Scene::on_stop(listener_function_t&& listener) {
+void Scene::on_stop(listener_function_t& listener) {
     stop_listeners_.push_back(listener);
 }
 
-void Scene::on_destroy(listener_function_t&& listener) {
+void Scene::on_destroy(listener_function_t& listener) {
     destroy_listeners_.push_back(listener);
 }
 
@@ -34,56 +46,88 @@ void Scene::execute_listeners(const std::vector<Scene::listener_function_t> &lis
 }
 
 void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
-    if (!is_running()) {
-        return;
-    }
-
-    constexpr float accumulator_default_value = 0.0f;
-    constexpr float fixed_step = 1.0f / 60.0f; // ~60 fps
-
     float accumulator = accumulator_default_value;
 
-    Uint64 last = SDL_GetPerformanceCounter();
-    auto freq = static_cast<float>(SDL_GetPerformanceFrequency());
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+    auto& audio_service = Engine::instance().services->get_service<AudioService>().get();
+    auto& input_manager = Engine::instance().services->get_service<InputManager>().get();
+    auto& physics_service = Engine::instance().services->get_service<PhysicsService>().get();
+    auto& rendering_service = Engine::instance().services->get_service<RenderingService>().get();
 
-    auto& rendering_service = Engine::instance()
-        .services
-        ->get_service<RenderingService>()
-        .get();
+    system_service.init_frame_timer();
 
     while (is_running()) {
-        Uint64 now = SDL_GetPerformanceCounter();
-        float frame_dt = static_cast<float>(now - last) / freq * time_scale_;
-        last = now;
-
+        system_service.update_frame_time(time_scale_);
+        float frame_dt = system_service.delta_time();
         accumulator += frame_dt;
 
-        SDL_Event e;
-        while (SDL_PollEvent(&e)) {
-            if (e.type == SDL_EVENT_QUIT) {
-                stop();
+        run_without_tracy([&]() {
+            input_manager.update();
+            system_service.update();
+        });
+
+        auto game_objects = this->game_objects();
+        for (auto game_object : game_objects) {
+            for (auto component : game_object.get().get_components<Component>()) {
+                component.get().update(frame_dt);
             }
         }
 
         while (accumulator >= fixed_step) {
-            //physics(fixed_step, 8, 3);
+            // creates a fixed step for input handling and physics updates
             accumulator -= fixed_step;
         }
 
-        auto game_objects = this->game_objects();
-        rendering_service.draw(game_objects);
+        // So tracy logs all allocations, even the past ones in previous frames
+        // It does this to build a complete timeline of allocations for profiling
+        // We don't want that overhead during normal frame rendering as clearing is buggy here due to the stack
+        // So we run the rendering without tracy tracking (if tracy is enabled)
+        run_without_tracy([&]() {
+            auto game_objects = this->game_objects();
+            rendering_service.draw(game_objects);
+            
+            audio_service.update();
+            physics_service.update(fixed_step, game_objects);
+
+            for (auto& game_object_ref : game_objects) {
+                auto& game_object = game_object_ref.get();
+
+                if (auto* ui_object_opt = dynamic_cast<UIObject*>(&game_object)) {
+                    ui_object_opt->update(frame_dt);
+                }
+
+                auto components = game_object.get_components<Component>();
+                for (auto& component_ref : components) {
+                    auto& component = component_ref.get();
+                    component.update(frame_dt);
+                }
+
+                if (game_object.marked_for_deletion()) {
+                    remove_game_object(game_object);
+                }
+            }
+        });
     }
 }
 
 void Scene::run() {
     is_running_ = true;
     execute_listeners(run_listeners_);
+
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+    stop_event_listener_id_ = system_service.add_listener(EVENT_QUIT, [&](void* /*event*/) { // register per scene
+        stop();
+    });
+
     game_loop();
 }
 
 void Scene::stop() {
     is_running_ = false;
     execute_listeners(stop_listeners_);
+
+    auto& system_service = Engine::instance().services->get_service<SystemService>().get();
+    system_service.remove_listener(EVENT_QUIT, stop_event_listener_id_);
 }
 
 Scene& Scene::time_scale(float modifier) {
@@ -142,33 +186,6 @@ Scene& Scene::add_game_objects(std::vector<std::unique_ptr<GameObject>> game_obj
     return *this;
 }
 
-/**
- * @brief Extracts and transfers ownership of a game object from the scene.
- *
- * Extracts a specified game object from the scene, transferring its ownership.
- * Removes the game object from the scene's internal collection if found.
- *
- * @return A unique pointer to the extracted game object if it is found and successfully removed
- *         from the scene; otherwise, returns nullptr.
- */
-std::unique_ptr<GameObject> Scene::extract_game_object(GameObject& game_object)
-{
-    const auto found_object = std::ranges::find_if(game_objects_,
-                                                   [&game_object](const auto& param)
-                                                   {
-                                                       return param.get() == &game_object;
-                                                   });
-
-    if (found_object == game_objects_.end())
-    {
-        return nullptr;
-    }
-
-    std::unique_ptr<GameObject> extracted = std::move(*found_object);
-    game_objects_.erase(found_object);
-    return extracted;
-}
-
 bool Scene::remove_game_object(GameObject& game_object) {
     auto found_object = std::find_if(
         game_objects_.begin(),
@@ -184,4 +201,22 @@ bool Scene::remove_game_object(GameObject& game_object) {
     game_objects_.erase(found_object);
 
     return true;
+}
+
+std::optional<std::reference_wrapper<Camera>> Scene::main_camera() const {
+    for (const auto& game_object : game_objects_) {
+        if (!dynamic_cast<Camera*>(game_object.get())) {
+            continue;
+        }
+
+        auto& camera = dynamic_cast<Camera&>(*game_object);
+
+        if (!camera.is_main()) {
+            continue;
+        }
+
+        return camera;
+    }
+
+    return std::nullopt;
 }
