@@ -3,6 +3,19 @@
 #include "engine/core/engine.h"
 #include "engine/core/rendering/renderingService.h"
 
+Renderable::Renderable(const int layer) : layer_{ layer } {
+
+}
+
+Renderable& Renderable::rendering_layer(int layer) {
+    layer_ = layer;
+    return *this;
+}
+
+[[nodiscard]] int Renderable::rendering_layer() const {
+    return layer_;
+}
+
 void Renderable::set_render_strategy(Component& component) {
     auto strateg = Engine::instance()
             .services

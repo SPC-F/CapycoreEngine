@@ -15,9 +15,14 @@
 class Renderable : public Component { // NOLINT
 protected:
     std::unique_ptr<IRenderingStrategy> render_strategy_;
+    int layer_ = 0;
 public:
     Renderable() = default;
+    explicit Renderable(int layer);
     ~Renderable() override = default;
+
+    Renderable& rendering_layer(int layer);
+    [[nodiscard]] int rendering_layer() const;
 
     void set_render_strategy(Component& component);
     [[nodiscard]] virtual IRenderingStrategy& render_strategy() const;

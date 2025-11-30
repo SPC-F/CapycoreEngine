@@ -65,13 +65,12 @@ void Renderer::clear() const {
     SDL_RenderClear(sdl_renderer_.get());
 }
 
-void Renderer::render(std::vector<std::reference_wrapper<GameObject>>& objects) {
+void Renderer::render(const std::map<int, std::vector<std::reference_wrapper<Renderable>>>& objects, Scene& scene) {
     if (objects.empty()) {
         return;
     }
 
-    const Scene& current_scene = objects.front().get().scene();
-    const auto camera_opt = current_scene.main_camera();
+    const auto camera_opt = scene.main_camera();
 
     if (!camera_opt.has_value()
         || !camera_opt->get().is_active()
@@ -81,17 +80,17 @@ void Renderer::render(std::vector<std::reference_wrapper<GameObject>>& objects) 
     }
 
     Camera& camera = camera_opt->get();
+    const Color bg_color = camera.background_color();
 
     SDL_RenderClear(sdl_renderer_.get());
 
-    for (auto game_obj_wrapper : objects) {
-        auto& game_obj = game_obj_wrapper.get();
+    SDL_SetRenderDrawColor(sdl_renderer_.get(), bg_color.r, bg_color.g, bg_color.b, bg_color.a);
 
-        for (auto renderables = game_obj.get_components<Renderable>(); auto renderable_wrapper : renderables) {
+    // Since we do not act on the layers, we do not mention them. An alternative here is just accepting the tuple...
+    for (auto renderables_list: objects | std::views::values) {
+        for (std::reference_wrapper<Renderable> renderable_wrapper : renderables_list) {
             auto& renderable = renderable_wrapper.get();
-            auto& strategy = renderable.render_strategy();
-
-            strategy.draw(renderable, camera);
+            renderable.render_strategy().draw(renderable, camera);
         }
     }
 

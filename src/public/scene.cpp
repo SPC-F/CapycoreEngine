@@ -1,19 +1,21 @@
 #include <engine/public/scene.h>
 
-#include <SDL3/SDL.h>
 #include <algorithm>
 
 #include <engine/core/engine.h>
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/system/system_service.h>
+#include <engine/physics/physics_service.h>
 #include <engine/audio/audio_service.h>
 #include <engine/input/input_manager.h>
+
+#include <engine/core/rendering/renderable.h>
 #include <engine/input/input_system.h>
-#include <engine/physics/physics_service.h>
-#include <engine/public/gameObject.h>
-#include <engine/public/ui/ui_object.h>
-#include <engine/public/component.h>
 #include <engine/util/memory.h>
+
+#include <engine/public/gameObject.h>
+#include <engine/public/component.h>
+#include <engine/public/ui/ui_object.h>
 
 constexpr float accumulator_default_value = 0.0f;
 constexpr float fixed_step = 1.0f / 60.0f; // ~60 fps
@@ -70,10 +72,16 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
             system_service.update();
         });
 
+        std::map<int, std::vector<std::reference_wrapper<Renderable>>> layered_renderables {};
+
         auto game_objects = this->game_objects();
         for (auto game_object : game_objects) {
             for (auto component : game_object.get().get_components<Component>()) {
                 component.get().update(frame_dt);
+
+                if (Renderable * const renderable = dynamic_cast<Renderable*>(&component.get()); component.get().active()) {
+                    layered_renderables[renderable->rendering_layer()].push_back(*renderable);
+                }
             }
         }
 
@@ -82,14 +90,14 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
             accumulator -= fixed_step;
         }
 
-        // So tracy logs all allocations, even the past ones in previous frames
-        // It does this to build a complete timeline of allocations for profiling
-        // We don't want that overhead during normal frame rendering as clearing is buggy here due to the stack
-        // So we run the rendering without tracy tracking (if tracy is enabled)
+        /*
+            So tracy logs all allocations, even the past ones in previous frames
+            It does this to build a complete timeline of allocations for profiling
+            We don't want that overhead during normal frame rendering as clearing is buggy here due to the stack
+            So we run the rendering without tracy tracking (if tracy is enabled)
+        */
         run_without_tracy([&]() {
-            auto game_objects = this->game_objects();
-            rendering_service.draw(game_objects);
-            
+            rendering_service.draw(layered_renderables, *this);
             audio_service.update();
             physics_service.update(fixed_step, game_objects);
 
@@ -202,10 +210,10 @@ Scene& Scene::add_game_objects(std::vector<std::unique_ptr<GameObject>> game_obj
 std::unique_ptr<GameObject> Scene::extract_game_object(GameObject& game_object)
 {
     const auto found_object = std::ranges::find_if(game_objects_,
-                                                   [&game_object](const auto& param)
-                                                   {
-                                                       return param.get() == &game_object;
-                                                   });
+       [&game_object](const auto& param)
+       {
+           return param.get() == &game_object;
+       });
 
     if (found_object == game_objects_.end())
     {

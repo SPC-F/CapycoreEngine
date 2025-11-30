@@ -14,10 +14,13 @@
 #include <engine/input/strategy/sdl_input_strategy.h>
 
 Engine::Engine() : services(std::make_unique<ServiceContainer>()) {
+    services->register_service<SceneService>();
     services->register_service<RenderingService>();
     services->register_service<SystemService>();
     services->register_service<AudioService>();
     services->register_service<AssetService>();
+    services->register_service<InputManager>();
+    services->register_service<PhysicsService>();
 }
 
 Engine& Engine::instance() {

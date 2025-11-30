@@ -1,5 +1,8 @@
+#include <map>
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/rendering/strategies/sdl/sdl_strategy_factory.h>
+
+#include "engine/core/rendering/renderable.h"
 
 RenderingService::RenderingService()
     : renderer_{new Renderer()},
@@ -10,8 +13,8 @@ RenderingService::RenderingService(Renderer* renderer)
     : renderer_{renderer}{
 }
 
-void RenderingService::draw(std::vector<std::reference_wrapper<GameObject>>& objects) {
-    renderer_->render(objects);
+void RenderingService::draw(std::map<int, std::vector<std::reference_wrapper<Renderable>>>& objects, Scene& scene) {
+    renderer_->render(objects, scene);
 }
 
 Window& RenderingService::window() {
