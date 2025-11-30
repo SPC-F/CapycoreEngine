@@ -11,7 +11,7 @@ constexpr float default_scale_multiplier = 0.5f;
 
 SdlTextStrategy::SdlTextStrategy(SDL_Renderer& sdl_renderer) : sdl_renderer_(sdl_renderer) {}
 
-void SdlTextStrategy::draw(Component& component) {
+void SdlTextStrategy::draw(Component& component, Camera& camera) {
     auto& text = dynamic_cast<Text&>(component);
 
     auto parent_opt = component.parent();

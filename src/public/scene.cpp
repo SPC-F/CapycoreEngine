@@ -48,13 +48,19 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
     while (is_running()) {
         rendering_service.update_frame_time(time_scale_);
         float frame_dt = rendering_service.delta_time();
-
         accumulator += frame_dt;
 
         SDL_Event e;
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_EVENT_QUIT) {
                 stop();
+            }
+        }
+
+        auto game_objects = this->game_objects();
+        for (auto game_object : game_objects) {
+            for (auto component : game_object.get().get_components<Component>()) {
+                component.get().update(frame_dt);
             }
         }
 
@@ -156,4 +162,22 @@ bool Scene::remove_game_object(GameObject& game_object) {
     game_objects_.erase(found_object);
 
     return true;
+}
+
+std::optional<std::reference_wrapper<Camera>> Scene::main_camera() const {
+    for (const auto& game_object : game_objects_) {
+        if (!dynamic_cast<Camera*>(game_object.get())) {
+            continue;
+        }
+
+        auto& camera = dynamic_cast<Camera&>(*game_object);
+
+        if (!camera.is_main()) {
+            continue;
+        }
+
+        return camera;
+    }
+
+    return std::nullopt;
 }
