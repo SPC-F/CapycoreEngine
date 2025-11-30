@@ -10,6 +10,7 @@
 class SceneService final : public IEngineService{
 private:
     std::map<const std::string, std::unique_ptr<Scene>> scenes_;
+    void move_dont_destroy_on_load_objects(Scene& current_scene, Scene& next_scene);
 public:
     SceneService();
     SceneService(const SceneService&) = delete;

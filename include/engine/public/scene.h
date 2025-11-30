@@ -27,14 +27,14 @@ private:
     void game_loop();
     friend class SceneService;
     void run();
-
-    void stop();
 public:
     virtual ~Scene();
 
-    void on_run(listener_function_t& listener);
-    void on_stop(listener_function_t& listener);
-    void on_destroy(listener_function_t& listener);
+    void on_run(listener_function_t&& listener);
+    void on_stop(listener_function_t&& listener);
+    void on_destroy(listener_function_t&& listener);
+
+    void stop();
 
     Scene& time_scale(float modifier);
     [[nodiscard]] float time_scale() const;
@@ -61,6 +61,7 @@ public:
     Scene& add_game_object(std::unique_ptr<GameObject> game_object);
     Scene& add_game_objects(std::vector<std::unique_ptr<GameObject>> game_objects);
 
+    std::unique_ptr<GameObject> extract_game_object(GameObject& game_object);
     bool remove_game_object(GameObject& game_object);
 
     [[nodiscard]] std::optional<std::reference_wrapper<Camera>> main_camera() const;
