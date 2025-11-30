@@ -1,8 +1,8 @@
 // NOLINTFILE
 #pragma once
 
-#include <functional>
 #include <cstddef>
+#include <functional>
 
 void tracy_dump_leaks();
 void tracy_memory_init();

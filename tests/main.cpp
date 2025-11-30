@@ -1,23 +1,23 @@
 // NOLINTFILE
 #define CATCH_CONFIG_RUNNER
 
-#include <catch2/catch_all.hpp>
 #include <SDL3/SDL.h>
 
+#include <catch2/catch_all.hpp>
 #include <cstdlib>
 #include <iostream>
 
 int main(int argc, char* argv[]) {
-    SDL_SetEnvironmentVariable(nullptr, "SDL_VIDEODRIVER", "dummy", true);
-    SDL_SetEnvironmentVariable(nullptr, "SDL_AUDIODRIVER", "dummy", true);
-    
-    if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
-        std::cerr << "SDL_Init failed: " << SDL_GetError() << "\n";
-    }
+  SDL_SetEnvironmentVariable(nullptr, "SDL_VIDEODRIVER", "dummy", true);
+  SDL_SetEnvironmentVariable(nullptr, "SDL_AUDIODRIVER", "dummy", true);
 
-    int result = Catch::Session().run(argc, argv);
+  if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
+    std::cerr << "SDL_Init failed: " << SDL_GetError() << "\n";
+  }
 
-    SDL_Quit();
-    
-    return result;
+  int result = Catch::Session().run(argc, argv);
+
+  SDL_Quit();
+
+  return result;
 }

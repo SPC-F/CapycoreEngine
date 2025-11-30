@@ -1,95 +1,80 @@
-#include <engine/public/components/sprite.h>
-#include <engine/core/rendering/assetService.h>
 #include <engine/core/engine.h>
+#include <engine/core/rendering/assetService.h>
 #include <engine/core/rendering/renderingService.h>
+#include <engine/public/components/sprite.h>
+
 #include <format>
 
-std::reference_wrapper<Texture> Sprite::get_texture_for(const std::string& sprite) { // NOLINT
-    auto& service = Engine::instance().services->get_service<AssetService>().get();
-    auto maybe_texture = service.try_get_texture(sprite);
+std::reference_wrapper<Texture> Sprite::get_texture_for(
+    const std::string& sprite) {  // NOLINT
+  auto& service =
+      Engine::instance().services->get_service<AssetService>().get();
+  auto maybe_texture = service.try_get_texture(sprite);
 
-    if (!maybe_texture.has_value()) {
-        return service.get_default_texture();
-    }
+  if (!maybe_texture.has_value()) {
+    return service.get_default_texture();
+  }
 
-    return maybe_texture->get();
+  return maybe_texture->get();
 }
 
-Sprite::Sprite(const std::string& sprite, const Color color, const int flip_x, const int flip_y, const int sorting_layer, const int ordering_layer)
+Sprite::Sprite(const std::string& sprite, const Color color, const int flip_x,
+               const int flip_y, const int sorting_layer,
+               const int ordering_layer)
     : texture_(get_texture_for(sprite)),
-    flip_x_(flip_x),
-    flip_y_(flip_y),
-    sorting_layer_(sorting_layer),
-    ordering_layer_(ordering_layer),
-    color_(color) {
-    add_on_attach([this](Component& comp) {
-        this->set_render_strategy(comp);
-    });
+      flip_x_(flip_x),
+      flip_y_(flip_y),
+      sorting_layer_(sorting_layer),
+      ordering_layer_(ordering_layer),
+      color_(color) {
+  add_on_attach([this](Component& comp) { this->set_render_strategy(comp); });
 }
 
-int Sprite::flip_x() const {
-    return flip_x_;
-}
+int Sprite::flip_x() const { return flip_x_; }
 Sprite& Sprite::flip_x(const int val) {
-    flip_x_ = val;
-    return *this;
+  flip_x_ = val;
+  return *this;
 }
 
-int Sprite::flip_y() const {
-    return flip_y_;
-}
+int Sprite::flip_y() const { return flip_y_; }
 Sprite& Sprite::flip_y(const int val) {
-    flip_y_ = val;
-    return *this;
+  flip_y_ = val;
+  return *this;
 }
 
-int Sprite::sorting_layer() const {
-    return sorting_layer_;
-}
+int Sprite::sorting_layer() const { return sorting_layer_; }
 Sprite& Sprite::sorting_layer(const int val) {
-    sorting_layer_ = val;
-    return *this;
+  sorting_layer_ = val;
+  return *this;
 }
 
-int Sprite::ordering_layer() const {
-    return ordering_layer_;
-}
+int Sprite::ordering_layer() const { return ordering_layer_; }
 Sprite& Sprite::ordering_layer(const int val) {
-    ordering_layer_ = val;
-    return *this;
+  ordering_layer_ = val;
+  return *this;
 }
 
-Color Sprite::color() const {
-    return color_;
-}
+Color Sprite::color() const { return color_; }
 
 Sprite& Sprite::color(const Color color) {
-    this->color_ = color;
-    return *this;
+  this->color_ = color;
+  return *this;
 }
 
-const Texture& Sprite::texture() const {
-    return texture_;
-}
+const Texture& Sprite::texture() const { return texture_; }
 
 Sprite& Sprite::texture(const std::string& name) {
-    texture_ = get_texture_for(name);
-    return *this;
+  texture_ = get_texture_for(name);
+  return *this;
 }
 
 Sprite& Sprite::texture(Texture& texture) {
-    texture_ = texture;
-    return *this;
+  texture_ = texture;
+  return *this;
 }
 
-void Sprite::update(float dt) {
+void Sprite::update(float dt) {}
 
-}
+void Sprite::on_serialize() {}
 
-void Sprite::on_serialize() {
-
-}
-
-void Sprite::on_deserialize() {
-
-}
+void Sprite::on_deserialize() {}
