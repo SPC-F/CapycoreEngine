@@ -1,24 +1,14 @@
-#include <engine/public/scene.h>
-
-#include <algorithm>
-
 #include <SDL3/SDL.h>
 #include <engine/audio/audio_service.h>
 #include <engine/core/engine.h>
+#include <engine/core/rendering/renderable.h>
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/system/system_service.h>
-#include <engine/physics/physics_service.h>
-#include <engine/audio/audio_service.h>
 #include <engine/input/input_manager.h>
-
-#include <engine/core/rendering/renderable.h>
 #include <engine/input/input_system.h>
-#include <engine/util/memory.h>
-
 #include <engine/physics/physics_service.h>
 #include <engine/public/component.h>
 #include <engine/public/gameObject.h>
-#include <engine/public/component.h>
 #include <engine/public/scene.h>
 #include <engine/public/ui/ui_object.h>
 #include <engine/util/memory.h>
@@ -82,34 +72,39 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       system_service.update();
     });
 
-        std::map<int, std::vector<std::reference_wrapper<Renderable>>> layered_renderables {};
+    std::map<int, std::vector<std::reference_wrapper<Renderable>>>
+        layered_renderables{};
 
-        auto game_objects = this->game_objects();
-        for (auto game_object : game_objects) {
-            for (auto component : game_object.get().get_components<Component>()) {
-                component.get().update(frame_dt);
+    auto game_objects = this->game_objects();
+    for (auto game_object : game_objects) {
+      for (auto component : game_object.get().get_components<Component>()) {
+        component.get().update(frame_dt);
 
-                if (auto * const renderable = dynamic_cast<Renderable*>(&component.get()); component.get().active()) {
-                    layered_renderables[renderable->rendering_layer()].push_back(*renderable);
-                }
-            }
+        if (auto* const renderable =
+                dynamic_cast<Renderable*>(&component.get());
+            component.get().active()) {
+          layered_renderables[renderable->rendering_layer()].push_back(
+              *renderable);
         }
+      }
+    }
 
     while (accumulator >= fixed_step) {
       // creates a fixed step for input handling and physics updates
       accumulator -= fixed_step;
     }
 
-        /*
-            So tracy logs all allocations, even the past ones in previous frames
-            It does this to build a complete timeline of allocations for profiling
-            We don't want that overhead during normal frame rendering as clearing is buggy here due to the stack
-            So we run the rendering without tracy tracking (if tracy is enabled)
-        */
-        run_without_tracy([&]() {
-            rendering_service.draw(layered_renderables, *this);
-            audio_service.update();
-            physics_service.update(fixed_step, game_objects);
+    /*
+        So tracy logs all allocations, even the past ones in previous frames
+        It does this to build a complete timeline of allocations for profiling
+        We don't want that overhead during normal frame rendering as clearing is
+       buggy here due to the stack So we run the rendering without tracy
+       tracking (if tracy is enabled)
+    */
+    run_without_tracy([&]() {
+      rendering_service.draw(layered_renderables, *this);
+      audio_service.update();
+      physics_service.update(fixed_step, game_objects);
 
       for (auto& game_object_ref : game_objects) {
         auto& game_object = game_object_ref.get();

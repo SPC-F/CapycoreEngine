@@ -71,36 +71,40 @@ Window& Renderer::window() {
   return window_.value();
 }
 
-void Renderer::clear() const {
-    SDL_RenderClear(sdl_renderer_.get());
-}
+void Renderer::clear() const { SDL_RenderClear(sdl_renderer_.get()); }
 
-void Renderer::render(const std::map<int, std::vector<std::reference_wrapper<Renderable>>>& objects, Scene& scene) {
-    if (objects.empty()) {
-        return;
-    }
+void Renderer::render(
+    const std::map<int, std::vector<std::reference_wrapper<Renderable>>>&
+        objects,
+    Scene& scene) {
+  if (objects.empty()) {
+    return;
+  }
 
-    const auto camera_opt = scene.main_camera();
+  const auto camera_opt = scene.main_camera();
 
   if (!camera_opt.has_value() || !camera_opt->get().is_active() ||
       !camera_opt->get().is_main()) {
     return;
   }
 
-    Camera& camera = camera_opt->get();
-    const Color bg_color = camera.background_color();
+  Camera& camera = camera_opt->get();
+  const Color bg_color = camera.background_color();
 
-    SDL_RenderClear(sdl_renderer_.get());
+  SDL_RenderClear(sdl_renderer_.get());
 
-    SDL_SetRenderDrawColor(sdl_renderer_.get(), bg_color.r, bg_color.g, bg_color.b, bg_color.a);
+  SDL_SetRenderDrawColor(sdl_renderer_.get(), bg_color.r, bg_color.g,
+                         bg_color.b, bg_color.a);
 
-    // Since we do not act on the layers, we do not mention them. An alternative here is just accepting the tuple...
-    for (auto& renderables_list: objects | std::views::values) {
-        for (std::reference_wrapper<Renderable> renderable_wrapper : renderables_list) {
-            auto& renderable = renderable_wrapper.get();
-            renderable.render_strategy().draw(renderable, camera);
-        }
+  // Since we do not act on the layers, we do not mention them. An alternative
+  // here is just accepting the tuple...
+  for (auto& renderables_list : objects | std::views::values) {
+    for (std::reference_wrapper<Renderable> renderable_wrapper :
+         renderables_list) {
+      auto& renderable = renderable_wrapper.get();
+      renderable.render_strategy().draw(renderable, camera);
     }
+  }
 
   SDL_RenderPresent(sdl_renderer_.get());
 }
