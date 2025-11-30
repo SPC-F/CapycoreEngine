@@ -8,12 +8,12 @@
 class UIImage : public UIObject {
 public:
     UIImage(
+        Scene& scene,
         std::string image_path,
         float width,
         float height,
         Point pivot,
-        Point anchor,
-        Scene& scene
+        Point anchor
     );
 
     void update(float dt) override;

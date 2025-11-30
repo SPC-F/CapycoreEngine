@@ -3,14 +3,14 @@
 constexpr unsigned short default_color_value = 255;
 
 UIImage::UIImage(
+    Scene& scene,
     std::string image_path,
     float width,
     float height,
     Point pivot,
-    Point anchor,
-    Scene& scene
+    Point anchor
 )
-: UIObject(width, height, pivot, anchor, scene),
+: UIObject(scene, width, height, pivot, anchor),
   image_path_(std::move(image_path)),
   color_(default_color_value, default_color_value, default_color_value, default_color_value)
 {

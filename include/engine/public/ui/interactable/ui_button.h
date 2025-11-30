@@ -16,11 +16,11 @@ class UIButton : public UIInteractable
 {
 public:
     UIButton(
+        Scene& scene,
         float width,
         float height,
         Point pivot,
         Point anchor,
-        Scene& scene,
         const std::string& label = "",
         const std::string& font = "",
         const std::string& font_path = "",

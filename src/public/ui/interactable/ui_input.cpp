@@ -11,17 +11,17 @@ constexpr unsigned short default_color_value = 255;
 constexpr unsigned short default_font_size = 16;
 
 UIInput::UIInput(
+    Scene& scene,
     float width,
     float height,
     Point pivot,
     Point anchor,
-    Scene& scene,
     const std::string& placeholder,
     const std::string& font,
     const std::string& font_path,
     const std::string& sprite_path
 )
-: UIInteractable(width, height, pivot, anchor, scene)
+: UIInteractable(scene, width, height, pivot, anchor)
 {
     Color default_color{
         default_color_value,

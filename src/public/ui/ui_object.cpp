@@ -1,11 +1,11 @@
 #include <engine/public/ui/ui_object.h>
 
 UIObject::UIObject(
+    Scene& scene,
     float width, 
     float height, 
     Point pivot, 
-    Point anchor,
-    Scene& scene
+    Point anchor
 ) : 
     GameObject(scene), 
     width_(width), 

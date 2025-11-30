@@ -7,13 +7,13 @@
 #include <engine/public/transform.h>
 
 UIInteractable::UIInteractable(
+    Scene& scene,
     float width,
     float height,
     Point pivot,
-    Point anchor,
-    Scene& scene
+    Point anchor
 )
-: UIObject(width, height, pivot, anchor, scene),
+: UIObject(scene, width, height, pivot, anchor),
   interaction_state_()
 {
 }

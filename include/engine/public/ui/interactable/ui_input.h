@@ -17,11 +17,11 @@
 class UIInput : public UIInteractable {
 public:
     UIInput(
+        Scene& scene,
         float width,
         float height,
         Point pivot,
         Point anchor,
-        Scene& scene,
         const std::string& placeholder = "",
         const std::string& font = "",
         const std::string& font_path = "",

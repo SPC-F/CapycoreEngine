@@ -28,11 +28,11 @@ struct UIInteractionState {
 class UIInteractable : public UIObject {
 public:
     UIInteractable(
+        Scene& scene,
         float width,
         float height,
         Point pivot,
-        Point anchor,
-        Scene& scene
+        Point anchor
     );
 
     /**

@@ -18,14 +18,14 @@ class UIText : public UIObject
 {
 public:
     UIText(
+        Scene& scene,
         std::string text,
         std::string font,
         std::string font_path,
         float width,
         float height,
         Point pivot,
-        Point anchor,
-        Scene& scene
+        Point anchor
     );
 
     void update(float dt) override;
