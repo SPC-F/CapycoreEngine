@@ -1,69 +1,70 @@
 #pragma once
 
-#include <string>
-
-#include <engine/public/component.h>
 #include <engine/core/rendering/renderable.h>
+#include <engine/public/component.h>
 #include <engine/public/util/color.h>
 #include <engine/public/util/point.h>
+
+#include <string>
 
 /**
  * @brief Text alignment options
  */
 enum TextAlignment : uint8_t {
-    Left = 0,
-    Center = 1,
-    Right = 2,
+  Left = 0,
+  Center = 1,
+  Right = 2,
 };
 
 /**
  * @brief UI Text Component
- * 
- * Represents a text element in the UI with customizable font, size, color, and content.
- * Inherits from Renderable to allow rendering strategies.
+ *
+ * Represents a text element in the UI with customizable font, size, color, and
+ * content. Inherits from Renderable to allow rendering strategies.
  */
 class Text : public Renderable {
-public:
-    Text(std::string text, std::string font, std::string font_path, int font_size, Color color);
+ public:
+  Text(std::string text, std::string font, std::string font_path, int font_size,
+       Color color);
 
-    void update(float dt) override {}
-    void on_serialize() override {}
-    void on_deserialize() override {}
+  void update(float dt) override {}
+  void on_serialize() override {}
+  void on_deserialize() override {}
 
-    [[nodiscard]] const std::string& text() const;
-    Text& text(const std::string& text);
+  [[nodiscard]] const std::string& text() const;
+  Text& text(const std::string& text);
 
-    [[nodiscard]] const std::string& font() const;
-    Text& font(const std::string& font);
+  [[nodiscard]] const std::string& font() const;
+  Text& font(const std::string& font);
 
-    [[nodiscard]] const std::string& font_path() const;
-    Text& font_path(const std::string& font_path);
+  [[nodiscard]] const std::string& font_path() const;
+  Text& font_path(const std::string& font_path);
 
-    [[nodiscard]] int font_size() const;
-    Text& font_size(int font_size);
+  [[nodiscard]] int font_size() const;
+  Text& font_size(int font_size);
 
-    [[nodiscard]] Color color() const;
-    Text& color(Color color);
+  [[nodiscard]] Color color() const;
+  Text& color(Color color);
 
-    [[nodiscard]] bool dirty() const;
-    void mark_dirty(bool dirty = true);
+  [[nodiscard]] bool dirty() const;
+  void mark_dirty(bool dirty = true);
 
-    [[nodiscard]] TextAlignment alignment() const;
-    Text& alignment(TextAlignment alignment);
+  [[nodiscard]] TextAlignment alignment() const;
+  Text& alignment(TextAlignment alignment);
 
-    [[nodiscard]] Point offset() const;
-    Text& offset(Point offset);
+  [[nodiscard]] Point offset() const;
+  Text& offset(Point offset);
 
-private:
-    std::string text_;
-    std::string font_;
-    std::string font_path_;
+ private:
+  std::string text_;
+  std::string font_;
+  std::string font_path_;
 
-    int font_size_;
-    Color color_;
+  int font_size_;
+  Color color_;
 
-    TextAlignment alignment_{Center};
-    Point offset_{0, 0};
+  TextAlignment alignment_{Center};
+  Point offset_{0, 0};
 
-    bool dirty_;
+  bool dirty_;
 };
