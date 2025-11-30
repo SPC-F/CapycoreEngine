@@ -25,13 +25,6 @@ public:
     [[nodiscard]] std::optional<std::reference_wrapper<IInput>> input() const;
 
     /**
-     * @brief Returns the first key that was pressed this frame.
-     *
-     * Useful for detecting initial input or simple "Press any key" prompts.
-     */
-    [[nodiscard]] virtual KeyCode get_pressed_key() const = 0;
-
-    /**
      * @brief Returns whether the specified key is currently held down.
      *
      * Suitable for continuous input such as movement or sustained actions.
@@ -44,6 +37,13 @@ public:
      * Supports one-shot actions such as jumping or confirming selections.
      */
     [[nodiscard]] virtual bool is_key_pressed(KeyCode key) const = 0;
+
+    /**
+     * @brief Returns the first key pressed this frame.
+     *
+     * Useful for detecting initial input.
+     */
+    [[nodiscard]] virtual KeyCode get_pressed_key() const = 0;
 
     /**
      * @brief Returns true on the frame the specified key transitions to released.
