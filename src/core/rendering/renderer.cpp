@@ -87,7 +87,7 @@ void Renderer::render(const std::map<int, std::vector<std::reference_wrapper<Ren
     SDL_SetRenderDrawColor(sdl_renderer_.get(), bg_color.r, bg_color.g, bg_color.b, bg_color.a);
 
     // Since we do not act on the layers, we do not mention them. An alternative here is just accepting the tuple...
-    for (auto renderables_list: objects | std::views::values) {
+    for (auto& renderables_list: objects | std::views::values) {
         for (std::reference_wrapper<Renderable> renderable_wrapper : renderables_list) {
             auto& renderable = renderable_wrapper.get();
             renderable.render_strategy().draw(renderable, camera);

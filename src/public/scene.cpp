@@ -79,7 +79,7 @@ void Scene::game_loop() { // NOLINT [readability-make-member-function-const]
             for (auto component : game_object.get().get_components<Component>()) {
                 component.get().update(frame_dt);
 
-                if (Renderable * const renderable = dynamic_cast<Renderable*>(&component.get()); component.get().active()) {
+                if (auto * const renderable = dynamic_cast<Renderable*>(&component.get()); component.get().active()) {
                     layered_renderables[renderable->rendering_layer()].push_back(*renderable);
                 }
             }
