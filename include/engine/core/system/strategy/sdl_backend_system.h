@@ -43,7 +43,14 @@ class SDLBackendSystem : public IBackendSystem {
    * @brief Retrieves the time elapsed since the last frame.
    * @return The delta time in seconds.
    */
-  [[nodiscard]] float delta_time() override;
+  [[nodiscard]] float delta_time() const override;
+
+  /**
+   * @brief Retrieves the frames per second (FPS) based on the updated frame
+   * time.
+   * @return The current frames per second.
+   */
+  [[nodiscard]] float frames_per_second() const override;
 
   /**
    * @brief Gets the current text from the system clipboard.
