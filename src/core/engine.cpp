@@ -12,6 +12,8 @@
 
 #include <memory>
 
+#include "engine/public/gameplay_speed_service.h"
+
 Engine::Engine() : services(std::make_unique<ServiceContainer>()) {
   services->register_service<SceneService>();
   services->register_service<RenderingService>();
@@ -40,6 +42,8 @@ void Engine::initialize() {
   auto input_system = std::make_unique<InputSystem>();
   input_system->set_input(std::make_unique<SDLInputStrategy>());
   input_manager.set_provider(std::move(input_system));
+
+  services->register_service<GameplaySpeedService>(input_manager.provider());
 }
 
 void Engine::quit() {
