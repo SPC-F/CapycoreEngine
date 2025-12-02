@@ -12,7 +12,7 @@ RenderingService::RenderingService()
 RenderingService::RenderingService(Renderer* renderer) : renderer_{renderer} {}
 
 void RenderingService::draw(
-    std::map<int, std::vector<std::reference_wrapper<Renderable>>>& objects,
+    std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>& objects,
     Scene& scene) {
   renderer_->render(objects, scene);
 }

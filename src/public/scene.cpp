@@ -72,19 +72,29 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       system_service.update();
     });
 
-    std::map<int, std::vector<std::reference_wrapper<Renderable>>>
-        layered_renderables{};
+    std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>> layered_renderables{};
 
     auto game_objects = this->game_objects();
-    for (auto game_object : game_objects) {
-      for (auto component : game_object.get().get_components<Component>()) {
-        component.get().update(frame_dt);
+    for (auto game_object_wrapper : game_objects) {
 
+      const GameObject& game_object = game_object_wrapper.get();
+
+      if (!layered_renderables.contains(game_object.layer())) {
+        // add game-object layer
+        layered_renderables.try_emplace(game_object.layer());
+      }
+
+      auto& obj_layer =
+        layered_renderables.at(game_object.layer());
+
+      for (auto component : game_object.get_components<Component>()) {
+
+        component.get().update(frame_dt);
         if (auto* const renderable =
                 dynamic_cast<Renderable*>(&component.get());
             component.get().active()) {
-          layered_renderables[renderable->rendering_layer()].push_back(
-              *renderable);
+
+          obj_layer.emplace(renderable->ordering_layer(), *renderable);
         }
       }
     }

@@ -51,7 +51,8 @@ class Renderer final : public IEngineService {
      * @param objects A map of renderable objects grouped by their rendering layer
      * @param scene The current scene being rendered
      */
-    void render(const std::map<int, std::vector<std::reference_wrapper<Renderable>>>& objects, Scene& scene) ;
+    void render(const std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>& objects,
+      const Scene& scene) ;
 
   /**
    * @brief Clears the rendering target with the drawing color.

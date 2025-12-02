@@ -74,9 +74,9 @@ Window& Renderer::window() {
 void Renderer::clear() const { SDL_RenderClear(sdl_renderer_.get()); }
 
 void Renderer::render(
-    const std::map<int, std::vector<std::reference_wrapper<Renderable>>>&
+    const std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>&
         objects,
-    Scene& scene) {
+    const Scene& scene) {
   if (objects.empty()) {
     return;
   }
@@ -99,8 +99,7 @@ void Renderer::render(
   // Since we do not act on the layers, we do not mention them. An alternative
   // here is just accepting the tuple...
   for (auto& renderables_list : objects | std::views::values) {
-    for (std::reference_wrapper<Renderable> renderable_wrapper :
-         renderables_list) {
+    for (auto& renderable_wrapper : renderables_list | std::views::values) {
       auto& renderable = renderable_wrapper.get();
       renderable.render_strategy().draw(renderable, camera);
     }

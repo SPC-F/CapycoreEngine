@@ -27,7 +27,7 @@ public:
      * @param objects A vector of references to GameObject instances to be drawn.
      * @param scene The current scene context for rendering.
      */
-    void draw(std::map<int, std::vector<std::reference_wrapper<Renderable>>>& objects, Scene& scene);
+    void draw(std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>& objects, Scene& scene);
     /**
      * @brief Provides access to the game window.
      * @return A reference to the Window instance managed by the Renderer.
