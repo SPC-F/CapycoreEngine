@@ -1,6 +1,7 @@
 #include <SDL3/SDL.h>
 #include <engine/audio/audio_service.h>
 #include <engine/core/engine.h>
+#include <engine/core/rendering/renderable.h>
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/system/system_service.h>
 #include <engine/input/input_manager.h>
@@ -71,6 +72,33 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       system_service.update();
     });
 
+    std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>> layered_renderables{};
+
+    auto game_objects = this->game_objects();
+    for (auto game_object_wrapper : game_objects) {
+
+      const GameObject& game_object = game_object_wrapper.get();
+
+      if (!layered_renderables.contains(game_object.layer())) {
+        // add game-object layer
+        layered_renderables.try_emplace(game_object.layer());
+      }
+
+      auto& obj_layer =
+        layered_renderables.at(game_object.layer());
+
+      for (auto component : game_object.get_components<Component>()) {
+
+        component.get().update(frame_dt);
+        if (auto* const renderable =
+                dynamic_cast<Renderable*>(&component.get());
+            component.get().active()) {
+
+          obj_layer.emplace(renderable->order_in_layer(), *renderable);
+        }
+      }
+    }
+
     while (accumulator >= fixed_step) {
       // creates a fixed step for input handling and physics updates
       accumulator -= fixed_step;
@@ -82,9 +110,7 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
     // buggy here due to the stack So we run the rendering without tracy
     // tracking (if tracy is enabled)
     run_without_tracy([&]() {
-      auto game_objects = this->game_objects();
-      rendering_service.draw(game_objects);
-
+      rendering_service.draw(layered_renderables, *this);
       audio_service.update();
       physics_service.update(fixed_step, game_objects);
 

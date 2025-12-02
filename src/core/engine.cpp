@@ -13,6 +13,7 @@
 #include <memory>
 
 Engine::Engine() : services(std::make_unique<ServiceContainer>()) {
+  services->register_service<SceneService>();
   services->register_service<RenderingService>();
   services->register_service<SystemService>();
   services->register_service<AudioService>();

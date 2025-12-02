@@ -1,10 +1,10 @@
 #pragma once
+#include <map>
 #include <engine/core/iEngineService.h>
 #include <engine/core/rendering/renderer.h>
-#include <engine/core/rendering/strategies/irendering_strategy_factory.h>
 #include <engine/core/rendering/window.h>
-
-#include <vector>
+#include <engine/core/rendering/renderable.h>
+#include <engine/core/rendering/strategies/irendering_strategy_factory.h>
 
 /**
  * @brief Service responsible for rendering game objects to the window.
@@ -12,23 +12,22 @@
  * work with the game window via a window property.
  */
 class RenderingService : public IEngineService {
- public:
-  explicit RenderingService();
-  explicit RenderingService(Renderer* renderer);
-  ~RenderingService() override = default;
-
-  /**
-   * @brief Draws the provided game objects to the window using the renderer.
-   * Delegates the drawing operation to the Renderer instance.
-   * @param objects A vector of references to GameObject instances to be drawn.
-   */
-  void draw(std::vector<std::reference_wrapper<GameObject>>& objects);
-
-  /**
-   * @brief Provides access to the game window.
-   * @return A reference to the Window instance managed by the Renderer.
-   */
-  Window& window();
+public:
+    explicit RenderingService();
+    explicit RenderingService(Renderer* renderer);
+    ~RenderingService() override = default;
+    /**
+     * @brief Draws the provided game objects to the window using the renderer.
+     * Delegates the drawing operation to the Renderer instance.
+     * @param objects A vector of references to GameObject instances to be drawn.
+     * @param scene The current scene context for rendering.
+     */
+    void draw(std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>& objects, Scene& scene);
+    /**
+     * @brief Provides access to the game window.
+     * @return A reference to the Window instance managed by the Renderer.
+     */
+    Window& window();
 
   /**
    * @brief Checks if vertical synchronization (VSync).
