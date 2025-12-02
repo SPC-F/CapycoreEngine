@@ -1,8 +1,9 @@
 #include "engine/core/rendering/renderable.h"
-
+#include <engine/public/util/layers.h>
 #include "engine/core/engine.h"
 #include "engine/core/rendering/renderingService.h"
 
+Renderable::Renderable() : ordering_layer_{Layers::Default} {}
 Renderable::Renderable(const int layer) : ordering_layer_{layer} {}
 
 Renderable& Renderable::ordering_layer(int layer) {

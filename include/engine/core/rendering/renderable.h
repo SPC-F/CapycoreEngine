@@ -18,7 +18,7 @@ protected:
   std::unique_ptr<IRenderingStrategy> render_strategy_;
   int ordering_layer_ = 0;
 public:
-  Renderable() = default;
+  explicit Renderable();
   explicit Renderable(int layer);
   ~Renderable() override = default;
 

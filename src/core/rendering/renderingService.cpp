@@ -1,14 +1,12 @@
-#include <engine/core/rendering/renderingService.h>
-#include <engine/core/rendering/strategies/sdl/sdl_strategy_factory.h>
-
 #include <map>
 
-#include "engine/core/rendering/renderable.h"
+#include <engine/core/rendering/renderable.h>
+#include <engine/core/rendering/renderingService.h>
+#include <engine/core/rendering/strategies/sdl/sdl_strategy_factory.h>
 
 RenderingService::RenderingService()
     : renderer_{new Renderer()},
       strategy_factory_{new SdlStrategyFactory(*renderer_)} {}
-
 RenderingService::RenderingService(Renderer* renderer) : renderer_{renderer} {}
 
 void RenderingService::draw(
