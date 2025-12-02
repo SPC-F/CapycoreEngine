@@ -82,7 +82,8 @@ FetchContent_MakeAvailable(SDL3_ttf)
 set(ENET_VERSION 1.3.18)
 FetchContent_Declare(
         ENet
-        URL http://enet.bespin.org/download/enet-${ENET_VERSION}.tar.gz
+        GIT_REPOSITORY https://github.com/lsalzman/enet.git
+        GIT_TAG v1.3.18
 )
 FetchContent_MakeAvailable(ENet)
 
