@@ -1,0 +1,44 @@
+#pragma once
+
+#include <SDL3/SDL.h>
+#include <SDL3_ttf/SDL_ttf.h>
+#include <engine/core/rendering/strategies/irendering_strategy.h>
+#include <engine/public/component.h>
+#include <engine/public/components/ui/text.h>
+#include <engine/public/ui/ui_object.h>
+
+#include <map>
+#include <memory>
+#include <string>
+
+/**
+ * @brief SDL implementation of the text rendering strategy.
+ *
+ * SdlTextStrategy is responsible for rendering text components using SDL.
+ * It utilizes an SDL_Renderer to draw the associated text elements of the
+ * Component onto the screen, applying necessary transformations and styles as
+ * specified by the text component.
+ */
+class SdlTextStrategy final : public IRenderingStrategy {
+ private:
+  SDL_Renderer& sdl_renderer_;
+
+  std::unique_ptr<SDL_Texture, void (*)(SDL_Texture*)> texture_{
+      nullptr, SDL_DestroyTexture};
+
+  float last_font_width_ = 0.0f;
+  float last_font_height_ = 0.0f;
+
+  static std::reference_wrapper<TTF_Font> get_font(const std::string& name,
+                                                   const std::string& path,
+                                                   int size);
+  void draw_cached(Text& text, const UIObject& ui_object,
+                   const Transform& transform, float scale_x, float scale_y);
+  void draw_fresh(Text& text, const UIObject& ui_object,
+                  const Transform& transform, float scale_x, float scale_y);
+
+ public:
+  SdlTextStrategy(SDL_Renderer& sdl_renderer);
+  ~SdlTextStrategy() override = default;
+  void draw(Component& component, Camera& camera) override;
+};

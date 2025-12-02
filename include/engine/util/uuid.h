@@ -2,5 +2,5 @@
 #include <string>
 
 namespace uuid {
-    std::string generate_uuid_v4();
+std::string generate_uuid_v4();
 }

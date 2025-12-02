@@ -1,143 +1,133 @@
-#include <engine/public/gameObject.h>
 #include <engine/public/component.h>
+#include <engine/public/gameObject.h>
 #include <engine/public/scene.h>
 #include <engine/util/uuid.h>
 
-GameObject::GameObject(Scene& scene) :
-    id_(uuid::generate_uuid_v4()),
-    scene_(scene) {
-}
+GameObject::GameObject(Scene& scene)
+    : id_(uuid::generate_uuid_v4()), scene_(scene) {}
 
 GameObject::~GameObject() {
-    if (parent_.has_value()) {
-        parent_->get().remove_child(*this);
-    }
+  if (parent_.has_value()) {
+    parent_->get().remove_child(*this);
+  }
 
-    for(auto child : children_) {
-        scene_.remove_game_object(child);
-    }
+  for (auto child : children_) {
+    scene_.get().remove_game_object(child);
+  }
 }
 
-std::string GameObject::id() const noexcept {
-    return id_;
-}
+std::string GameObject::id() const noexcept { return id_; }
 
 GameObject& GameObject::name(const std::string& name) {
-    name_ = name;
-    return *this;
+  name_ = name;
+  return *this;
 }
-const std::string& GameObject::name() const {
-    return name_;
-}
+const std::string& GameObject::name() const { return name_; }
 
 GameObject& GameObject::tag(const std::string& tag) {
-    tag_ = tag;
-    return *this;
+  tag_ = tag;
+  return *this;
 }
-const std::string& GameObject::tag() const {
-    return tag_;
-}
+const std::string& GameObject::tag() const { return tag_; }
 
 GameObject& GameObject::layer(const int layer) {
-    layer_ = layer;
-    return *this;
+  layer_ = layer;
+  return *this;
 }
-int GameObject::layer() const {
-    return layer_;
-}
+int GameObject::layer() const { return layer_; }
 
 GameObject& GameObject::transform(Transform transform) {
-    transform_ = transform;
-    return *this;
+  transform_ = transform;
+  return *this;
 }
-Transform& GameObject::transform() {
-    return transform_;
-}
+Transform& GameObject::transform() { return transform_; }
 
-const Scene& GameObject::scene() const noexcept {
-    return scene_;
-}
+const Transform& GameObject::transform() const { return transform_; }
 
-void GameObject::set_inactive() noexcept {
-    is_active_ = false;
-}
-void GameObject::set_active() noexcept {
-    is_active_ = true;
-}
-void GameObject::set_active_in_world() noexcept {
-    is_active_in_world_ = true;
-}
+const Scene& GameObject::scene() const noexcept { return scene_; }
+
+void GameObject::scene(Scene& scene) noexcept { scene_ = scene; }
+
+void GameObject::set_inactive() noexcept { is_active_ = false; }
+void GameObject::set_active() noexcept { is_active_ = true; }
+void GameObject::set_active_in_world() noexcept { is_active_in_world_ = true; }
 void GameObject::set_inactive_in_world() noexcept {
-    is_active_in_world_ = false;
+  is_active_in_world_ = false;
 }
 
 bool GameObject::is_active_in_world() const noexcept {
-    return is_active_in_world_;
+  return is_active_in_world_;
 }
 
-bool GameObject::is_active() const noexcept {
-    return is_active_;
-}
+bool GameObject::is_active() const noexcept { return is_active_; }
 
 bool GameObject::marked_for_deletion() const noexcept {
-    return marked_for_deletion_;
+  return marked_for_deletion_;
 }
 
 GameObject& GameObject::mark_for_deletion() noexcept {
-    marked_for_deletion_ = true;
-    return *this;
+  marked_for_deletion_ = true;
+  return *this;
+}
+
+void GameObject::mark_dont_destroy_on_load(const bool destroy) noexcept {
+  if (!parent().has_value()) {
+    dont_destroy_on_load_ = destroy;
+  }
+}
+
+bool GameObject::dont_destroy_on_load() const noexcept {
+  return dont_destroy_on_load_;
 }
 
 std::optional<std::reference_wrapper<GameObject>> GameObject::parent() const {
-    return parent_;
+  return parent_;
 }
 
 GameObject& GameObject::parent(GameObject& parent) {
-    parent_ = parent;
+  parent_ = parent;
 
-    const auto found_child = std::find_if(parent.children().begin(), parent.children().end(),[&](auto& ref) {
-        return &ref.get() == this;
-    });
+  const auto found_child =
+      std::find_if(parent.children().begin(), parent.children().end(),
+                   [&](auto& ref) { return &ref.get() == this; });
 
-    if(found_child == parent.children().end()) {
-        parent.add_child(*this);
-    }
-    
-    return *this;
+  if (found_child == parent.children().end()) {
+    parent.add_child(*this);
+  }
+
+  return *this;
 }
 
 GameObject& GameObject::parent(std::nullopt_t null_opt) {
-    if (!parent_.has_value()) {
-        return *this;
-    }
-
-    parent_ = std::nullopt;
+  if (!parent_.has_value()) {
     return *this;
+  }
+
+  parent_ = std::nullopt;
+  return *this;
 }
 
 std::vector<std::reference_wrapper<GameObject>>& GameObject::children() {
-    return children_;
+  return children_;
 }
 
 GameObject& GameObject::add_child(GameObject& child) {
-    children_.emplace_back(child);
-    child.parent(*this);
-    return *this;
+  children_.emplace_back(child);
+  child.parent(*this);
+  return *this;
 }
 
 GameObject& GameObject::remove_child(GameObject& child) {
-    std::erase_if(children_, [&](auto& ref) {
-        return &ref.get() == &child;
-    });
-    child.parent(std::nullopt);
-    return *this;
+  std::erase_if(children_, [&](auto& ref) { return &ref.get() == &child; });
+  child.parent(std::nullopt);
+  return *this;
 }
 
 // NOLINTBEGIN
 void GameObject::serialize() const {
-    throw std::runtime_error("Not implemented");
+  throw std::runtime_error("Not implemented");
 }
 void GameObject::deserialize() const {
-    throw std::runtime_error("Not implemented");
+  throw std::runtime_error("Not implemented");
 }
 // NOLINTEND

@@ -2,18 +2,17 @@
 
 // Macro's for tracy based on the CMake option
 namespace {
-    #ifdef TRACY_ENABLE
-    inline void tracy_init() { tracy_memory_init(); }
-    inline void tracy_shutdown() { tracy_memory_shutdown(); }
-    #else
-    inline void tracy_init() {}
-    inline void tracy_shutdown() {}
-    #endif
-}
+#ifdef TRACY_ENABLE
+inline void tracy_init() { tracy_memory_init(); }
+inline void tracy_shutdown() { tracy_memory_shutdown(); }
+#else
+inline void tracy_init() {}
+inline void tracy_shutdown() {}
+#endif
+}  // namespace
 
 int main() {
-    tracy_init();
-
-    tracy_shutdown();
-    return 0;
+  tracy_init();
+  tracy_shutdown();
+  return 0;
 }
