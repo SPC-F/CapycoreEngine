@@ -20,6 +20,7 @@ var annotated_dup =
     [ "Engine", "class_engine.html", "class_engine" ],
     [ "Font", "class_font.html", "class_font" ],
     [ "GameObject", "class_game_object.html", "class_game_object" ],
+    [ "GameplaySpeedService", "class_gameplay_speed_service.html", "class_gameplay_speed_service" ],
     [ "GenericSoundInstance", "class_generic_sound_instance.html", "class_generic_sound_instance" ],
     [ "IBackendSystem", "class_i_backend_system.html", "class_i_backend_system" ],
     [ "IEngineService", "class_i_engine_service.html", "class_i_engine_service" ],

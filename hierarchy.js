@@ -42,6 +42,7 @@ var hierarchy =
     [ "IEngineService", "class_i_engine_service.html", [
       [ "AssetService", "class_asset_service.html", null ],
       [ "AudioService", "class_audio_service.html", null ],
+      [ "GameplaySpeedService", "class_gameplay_speed_service.html", null ],
       [ "InputManager", "class_input_manager.html", null ],
       [ "PhysicsService", "class_physics_service.html", null ],
       [ "Renderer", "class_renderer.html", null ],
