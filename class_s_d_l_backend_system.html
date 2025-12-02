@@ -156,9 +156,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adb3e9a8531446b7a8587b45aac8806f4" id="r_adb3e9a8531446b7a8587b45aac8806f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_d_l_backend_system.html#adb3e9a8531446b7a8587b45aac8806f4">update_frame_time</a> (float time_scale) override</td></tr>
 <tr class="memdesc:adb3e9a8531446b7a8587b45aac8806f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the frame time based on the elapsed time since the last frame.  <br /></td></tr>
 <tr class="separator:adb3e9a8531446b7a8587b45aac8806f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb5967abb195f5e690a2c0bfbeaf5db1" id="r_abb5967abb195f5e690a2c0bfbeaf5db1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_d_l_backend_system.html#abb5967abb195f5e690a2c0bfbeaf5db1">delta_time</a> () override</td></tr>
-<tr class="memdesc:abb5967abb195f5e690a2c0bfbeaf5db1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the time elapsed since the last frame.  <br /></td></tr>
-<tr class="separator:abb5967abb195f5e690a2c0bfbeaf5db1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6bc485be14a6d86afdba2974a516c96" id="r_ae6bc485be14a6d86afdba2974a516c96"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_d_l_backend_system.html#ae6bc485be14a6d86afdba2974a516c96">delta_time</a> () const override</td></tr>
+<tr class="memdesc:ae6bc485be14a6d86afdba2974a516c96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the time elapsed since the last frame.  <br /></td></tr>
+<tr class="separator:ae6bc485be14a6d86afdba2974a516c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10187b9da7593594bebf5313d87cc492" id="r_a10187b9da7593594bebf5313d87cc492"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_d_l_backend_system.html#a10187b9da7593594bebf5313d87cc492">frames_per_second</a> () const override</td></tr>
+<tr class="memdesc:a10187b9da7593594bebf5313d87cc492"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the frames per second (FPS) based on the updated frame time.  <br /></td></tr>
+<tr class="separator:a10187b9da7593594bebf5313d87cc492"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38558280cebb036e7c88c1c396b860f0" id="r_a38558280cebb036e7c88c1c396b860f0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_d_l_backend_system.html#a38558280cebb036e7c88c1c396b860f0">get_clipboard_text</a> () override</td></tr>
 <tr class="memdesc:a38558280cebb036e7c88c1c396b860f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current text from the system clipboard.  <br /></td></tr>
 <tr class="separator:a38558280cebb036e7c88c1c396b860f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,10 +189,16 @@ Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_class_i_backend_system"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_i_backend_system')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_i_backend_system.html">IBackendSystem</a></td></tr>
 <tr class="memitem:a2d9d1e86979d79eb7462fbd814a49414 inherit pro_attribs_class_i_backend_system" id="r_a2d9d1e86979d79eb7462fbd814a49414"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#a2d9d1e86979d79eb7462fbd814a49414">last_</a> {0}</td></tr>
 <tr class="separator:a2d9d1e86979d79eb7462fbd814a49414 inherit pro_attribs_class_i_backend_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85113ce9c44f51e04c232a6de2f784c6 inherit pro_attribs_class_i_backend_system" id="r_a85113ce9c44f51e04c232a6de2f784c6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#a85113ce9c44f51e04c232a6de2f784c6">freq_</a> {0.0f}</td></tr>
-<tr class="separator:a85113ce9c44f51e04c232a6de2f784c6 inherit pro_attribs_class_i_backend_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2817c1e257cb2f64538ec6f78e030269 inherit pro_attribs_class_i_backend_system" id="r_a2817c1e257cb2f64538ec6f78e030269"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#a2817c1e257cb2f64538ec6f78e030269">freq_</a> {0.0f}</td></tr>
+<tr class="separator:a2817c1e257cb2f64538ec6f78e030269 inherit pro_attribs_class_i_backend_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee6e95720125484cbf09a4fb5a240087 inherit pro_attribs_class_i_backend_system" id="r_aee6e95720125484cbf09a4fb5a240087"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#aee6e95720125484cbf09a4fb5a240087">delta_time_</a> {0.0f}</td></tr>
 <tr class="separator:aee6e95720125484cbf09a4fb5a240087 inherit pro_attribs_class_i_backend_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa276b2f613fa403ceca800b5baa1ccef inherit pro_attribs_class_i_backend_system" id="r_aa276b2f613fa403ceca800b5baa1ccef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#aa276b2f613fa403ceca800b5baa1ccef">frame_count_</a> {0}</td></tr>
+<tr class="separator:aa276b2f613fa403ceca800b5baa1ccef inherit pro_attribs_class_i_backend_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8710c4fabfb6f9d56007c54a8e16741 inherit pro_attribs_class_i_backend_system" id="r_aa8710c4fabfb6f9d56007c54a8e16741"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#aa8710c4fabfb6f9d56007c54a8e16741">fps_</a> {0.0f}</td></tr>
+<tr class="separator:aa8710c4fabfb6f9d56007c54a8e16741 inherit pro_attribs_class_i_backend_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32b83895777d00476859d6cbc91093d4 inherit pro_attribs_class_i_backend_system" id="r_a32b83895777d00476859d6cbc91093d4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#a32b83895777d00476859d6cbc91093d4">accumulated_time_</a> {0.0f}</td></tr>
+<tr class="separator:a32b83895777d00476859d6cbc91093d4 inherit pro_attribs_class_i_backend_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>SDL-based implementation of the backend system interface. </p>
@@ -221,8 +230,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="abb5967abb195f5e690a2c0bfbeaf5db1" name="abb5967abb195f5e690a2c0bfbeaf5db1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb5967abb195f5e690a2c0bfbeaf5db1">&#9670;&#160;</a></span>delta_time()</h2>
+<a id="ae6bc485be14a6d86afdba2974a516c96" name="ae6bc485be14a6d86afdba2974a516c96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6bc485be14a6d86afdba2974a516c96">&#9670;&#160;</a></span>delta_time()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -234,7 +243,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">float SDLBackendSystem::delta_time </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -247,7 +256,37 @@ Additional Inherited Members</h2></td></tr>
 <p>Retrieves the time elapsed since the last frame. </p>
 <dl class="section return"><dt>Returns</dt><dd>The delta time in seconds. </dd></dl>
 
-<p>Implements <a class="el" href="class_i_backend_system.html#a115e629a54e2e0ddaeed4fd3b8a0cc81">IBackendSystem</a>.</p>
+<p>Implements <a class="el" href="class_i_backend_system.html#a45ae2523f44c6821233ed67310559dc4">IBackendSystem</a>.</p>
+
+</div>
+</div>
+<a id="a10187b9da7593594bebf5313d87cc492" name="a10187b9da7593594bebf5313d87cc492"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10187b9da7593594bebf5313d87cc492">&#9670;&#160;</a></span>frames_per_second()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SDLBackendSystem::frames_per_second </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the frames per second (FPS) based on the updated frame time. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current frames per second. </dd></dl>
+
+<p>Implements <a class="el" href="class_i_backend_system.html#a07da6de342170e0d07f97d5e50356dca">IBackendSystem</a>.</p>
 
 </div>
 </div>

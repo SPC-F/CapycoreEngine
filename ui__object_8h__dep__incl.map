@@ -1,13 +1,15 @@
 <map id="include/engine/public/ui/ui_object.h" name="include/engine/public/ui/ui_object.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="349,5,509,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="459,5,619,45"/>
 <area shape="rect" id="Node000002" href="$sdl__text__strategy_8h.html" title=" " alt="" coords="5,93,177,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="348,52,178,98,177,93,346,47"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="446,45,191,96,178,99,177,94,189,91,445,40"/>
 <area shape="rect" id="Node000003" href="$ui__interactable_8h.html" title=" " alt="" coords="201,101,435,141"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="397,56,342,103,339,99,394,52"/>
-<area shape="rect" id="Node000006" href="$ui__image_8h.html" title=" " alt="" coords="459,101,619,141"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="463,52,519,99,515,103,460,56"/>
-<area shape="rect" id="Node000007" href="$ui__text_8h.html" title=" " alt="" coords="643,101,803,141"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="502,47,665,98,663,103,501,52"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="483,53,364,103,362,98,481,48"/>
+<area shape="rect" id="Node000006" href="$ui__fps_8h.html" title=" " alt="" coords="459,101,619,141"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="542,59,542,101,537,101,537,59"/>
+<area shape="rect" id="Node000007" href="$ui__image_8h.html" title=" " alt="" coords="643,101,803,141"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="590,49,687,98,685,103,588,54"/>
+<area shape="rect" id="Node000008" href="$ui__text_8h.html" title=" " alt="" coords="827,101,987,141"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="634,46,816,91,843,98,841,103,815,96,632,51"/>
 <area shape="rect" id="Node000004" href="$ui__button_8h.html" title=" " alt="" coords="110,196,307,236"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="287,152,232,198,229,194,284,148"/>
 <area shape="rect" id="Node000005" href="$ui__input_8h.html" title=" " alt="" coords="332,196,520,236"/>

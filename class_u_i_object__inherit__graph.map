@@ -1,15 +1,17 @@
 <map id="UIObject" name="UIObject">
-<area shape="rect" id="Node000001" title="Base class for all UI objects." alt="" coords="125,79,203,104"/>
-<area shape="rect" id="Node000003" href="$class_u_i_image.html" title=" " alt="" coords="5,152,83,177"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="134,113,65,154,62,149,131,109"/>
-<area shape="rect" id="Node000004" href="$class_u_i_interactable.html" title="Base class for interactive UI elements." alt="" coords="107,152,221,177"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="167,118,167,152,161,152,161,118"/>
-<area shape="rect" id="Node000007" href="$class_u_i_text.html" title="A UI text element." alt="" coords="246,152,309,177"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="196,109,260,150,257,154,193,114"/>
-<area shape="rect" id="Node000002" href="$class_game_object.html" title=" " alt="" coords="113,5,215,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,44,167,79,161,79,161,44"/>
-<area shape="rect" id="Node000005" href="$class_u_i_button.html" title="A UI button element." alt="" coords="75,225,154,251"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="150,190,125,227,120,224,146,187"/>
-<area shape="rect" id="Node000006" href="$class_u_i_input.html" title="A UI input field element." alt="" coords="179,225,248,251"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="182,187,208,224,203,227,178,190"/>
+<area shape="rect" id="Node000001" title="Base class for all UI objects." alt="" coords="149,79,228,104"/>
+<area shape="rect" id="Node000003" href="$class_u_i_f_p_s.html" title=" " alt="" coords="5,152,65,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,112,62,154,59,149,151,107"/>
+<area shape="rect" id="Node000004" href="$class_u_i_image.html" title=" " alt="" coords="90,152,167,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="172,116,140,154,136,150,168,113"/>
+<area shape="rect" id="Node000005" href="$class_u_i_interactable.html" title="Base class for interactive UI elements." alt="" coords="191,152,306,177"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="209,113,241,150,237,154,205,116"/>
+<area shape="rect" id="Node000008" href="$class_u_i_text.html" title="A UI text element." alt="" coords="331,152,393,177"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="230,107,335,149,333,154,228,112"/>
+<area shape="rect" id="Node000002" href="$class_game_object.html" title=" " alt="" coords="137,5,240,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,44,191,79,186,79,186,44"/>
+<area shape="rect" id="Node000006" href="$class_u_i_button.html" title="A UI button element." alt="" coords="160,225,239,251"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="235,190,210,227,205,224,231,187"/>
+<area shape="rect" id="Node000007" href="$class_u_i_input.html" title="A UI input field element." alt="" coords="263,225,333,251"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="267,187,292,224,288,227,262,190"/>
 </map>

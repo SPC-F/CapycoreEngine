@@ -2,7 +2,7 @@ var searchData=
 [
   ['delete_5fall_0',['delete_all',['../class_simple_storage.html#a8669c39e22ad42878103e4166b0276b0',1,'SimpleStorage']]],
   ['delete_5fkey_1',['delete_key',['../class_simple_storage.html#a1d78952a866a4376e49be129817ea391',1,'SimpleStorage']]],
-  ['delta_5ftime_2',['delta_time',['../class_i_backend_system.html#a115e629a54e2e0ddaeed4fd3b8a0cc81',1,'IBackendSystem::delta_time()'],['../class_s_d_l_backend_system.html#abb5967abb195f5e690a2c0bfbeaf5db1',1,'SDLBackendSystem::delta_time()'],['../class_system_service.html#a6eefbd571fa98069cb9cc284ede43fff',1,'SystemService::delta_time()']]],
+  ['delta_5ftime_2',['delta_time',['../class_i_backend_system.html#a45ae2523f44c6821233ed67310559dc4',1,'IBackendSystem::delta_time()'],['../class_s_d_l_backend_system.html#ae6bc485be14a6d86afdba2974a516c96',1,'SDLBackendSystem::delta_time()'],['../class_system_service.html#a6eefbd571fa98069cb9cc284ede43fff',1,'SystemService::delta_time()']]],
   ['deserialize_3',['deserialize',['../class_game_object.html#abe51776495ad4bd011802c7a74dd8927',1,'GameObject']]],
   ['destroy_4',['destroy',['../class_behavior.html#a54a12eb0adc296293ffafbb21aeaa4a6',1,'Behavior::destroy()'],['../class_behavior.html#a56c62ccb4fe4e2d190c0940d68716041',1,'Behavior::destroy(Component &amp;component)'],['../class_behavior.html#af0709b7d2bf1418cbf8c03df6a4f4a33',1,'Behavior::destroy(GameObject &amp;game_object)']]],
   ['destroy_5fbody_5',['destroy_body',['../class_physics_creation_factory.html#a37fa4d47f6b656b8204aa23d8bee29a5',1,'PhysicsCreationFactory']]],

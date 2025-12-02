@@ -156,6 +156,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaadc92a91a4c926e37a7c6fdfbdca133" id="r_aaadc92a91a4c926e37a7c6fdfbdca133"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_window.html">Window</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rendering_service.html#aaadc92a91a4c926e37a7c6fdfbdca133">window</a> ()</td></tr>
 <tr class="memdesc:aaadc92a91a4c926e37a7c6fdfbdca133"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides access to the game window.  <br /></td></tr>
 <tr class="separator:aaadc92a91a4c926e37a7c6fdfbdca133"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b89b6e1f76365b75dc1a2a05faf5368" id="r_a2b89b6e1f76365b75dc1a2a05faf5368"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rendering_service.html#a2b89b6e1f76365b75dc1a2a05faf5368">vsync</a> () const</td></tr>
+<tr class="memdesc:a2b89b6e1f76365b75dc1a2a05faf5368"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if vertical synchronization (VSync).  <br /></td></tr>
+<tr class="separator:a2b89b6e1f76365b75dc1a2a05faf5368"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a747a90851d9b0d2047136de89bf526e1" id="r_a747a90851d9b0d2047136de89bf526e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rendering_service.html#a747a90851d9b0d2047136de89bf526e1">vsync</a> (bool enabled)</td></tr>
+<tr class="memdesc:a747a90851d9b0d2047136de89bf526e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggles vertical synchronization (VSync) which limits fps to the monitor's refresh rate.  <br /></td></tr>
+<tr class="separator:a747a90851d9b0d2047136de89bf526e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad427d4aca8564a01a8eb21f3f0f27f7" id="r_aad427d4aca8564a01a8eb21f3f0f27f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_i_rendering_strategy_factory.html">IRenderingStrategyFactory</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rendering_service.html#aad427d4aca8564a01a8eb21f3f0f27f7">rendering_strategy_factory</a> () const</td></tr>
 <tr class="separator:aad427d4aca8564a01a8eb21f3f0f27f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_i_engine_service"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_i_engine_service')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_i_engine_service.html">IEngineService</a></td></tr>
@@ -287,6 +293,46 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b89b6e1f76365b75dc1a2a05faf5368" name="a2b89b6e1f76365b75dc1a2a05faf5368"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b89b6e1f76365b75dc1a2a05faf5368">&#9670;&#160;</a></span>vsync() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RenderingService::vsync </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if vertical synchronization (VSync). </p>
+<dl class="section return"><dt>Returns</dt><dd>true if VSync is enabled, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a747a90851d9b0d2047136de89bf526e1" name="a747a90851d9b0d2047136de89bf526e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a747a90851d9b0d2047136de89bf526e1">&#9670;&#160;</a></span>vsync() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RenderingService::vsync </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enabled</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Toggles vertical synchronization (VSync) which limits fps to the monitor's refresh rate. </p>
 
 </div>
 </div>

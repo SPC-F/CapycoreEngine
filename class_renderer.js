@@ -4,6 +4,8 @@ var class_renderer =
     [ "Renderer", "class_renderer.html#aa32d1caf42ca469513db53b03be688bf", null ],
     [ "clear", "class_renderer.html#ab084c79787c3e2857ddc89a55d9955cf", null ],
     [ "render", "class_renderer.html#a18d6d94d1930759e8e248f8a432b99bd", null ],
+    [ "vsync", "class_renderer.html#a7f581e37a6c762ff93790695115641f5", null ],
+    [ "vsync", "class_renderer.html#a7a2c7f7c7f182d5f3aa385d0043471fe", null ],
     [ "window", "class_renderer.html#a2091230e41550ba2564272fbf2fc0fac", null ],
     [ "AssetService", "class_renderer.html#a5c222101221c002f4f6eb643b27cc0aa", null ],
     [ "RenderingManager", "class_renderer.html#af97d60083cbec9dff36ea5566c308d6d", null ],

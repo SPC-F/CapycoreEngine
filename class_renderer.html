@@ -153,6 +153,12 @@ Public Member Functions</h2></td></tr>
  <br  />
  Mind that this method clears the entire screen and renders immediately on finish. If you want to batch multiple calls, fuse them into one.  <br /></td></tr>
 <tr class="separator:a18d6d94d1930759e8e248f8a432b99bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f581e37a6c762ff93790695115641f5" id="r_a7f581e37a6c762ff93790695115641f5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a7f581e37a6c762ff93790695115641f5">vsync</a> () const</td></tr>
+<tr class="memdesc:a7f581e37a6c762ff93790695115641f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if vertical synchronization (VSync) is enabled.  <br /></td></tr>
+<tr class="separator:a7f581e37a6c762ff93790695115641f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a2c7f7c7f182d5f3aa385d0043471fe" id="r_a7a2c7f7c7f182d5f3aa385d0043471fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a7a2c7f7c7f182d5f3aa385d0043471fe">vsync</a> (bool enabled)</td></tr>
+<tr class="memdesc:a7a2c7f7c7f182d5f3aa385d0043471fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggles vertical synchronization (VSync) which limits fps to the monitor's refresh rate.  <br /></td></tr>
+<tr class="separator:a7a2c7f7c7f182d5f3aa385d0043471fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab084c79787c3e2857ddc89a55d9955cf" id="r_ab084c79787c3e2857ddc89a55d9955cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#ab084c79787c3e2857ddc89a55d9955cf">clear</a> () const</td></tr>
 <tr class="memdesc:ab084c79787c3e2857ddc89a55d9955cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the rendering target with the drawing color. Clears the current rendering target with the drawing color set in the SDL renderer.  <br /></td></tr>
 <tr class="separator:ab084c79787c3e2857ddc89a55d9955cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -293,6 +299,46 @@ Friends</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a7f581e37a6c762ff93790695115641f5" name="a7f581e37a6c762ff93790695115641f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f581e37a6c762ff93790695115641f5">&#9670;&#160;</a></span>vsync() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Renderer::vsync </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if vertical synchronization (VSync) is enabled. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if VSync is enabled, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a7a2c7f7c7f182d5f3aa385d0043471fe" name="a7a2c7f7c7f182d5f3aa385d0043471fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a2c7f7c7f182d5f3aa385d0043471fe">&#9670;&#160;</a></span>vsync() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::vsync </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enabled</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Toggles vertical synchronization (VSync) which limits fps to the monitor's refresh rate. </p>
 
 </div>
 </div>

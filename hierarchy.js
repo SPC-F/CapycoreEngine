@@ -27,6 +27,7 @@ var hierarchy =
     [ "GameObject", "class_game_object.html", [
       [ "Camera", "class_camera.html", null ],
       [ "UIObject", "class_u_i_object.html", [
+        [ "UIFPS", "class_u_i_f_p_s.html", null ],
         [ "UIImage", "class_u_i_image.html", null ],
         [ "UIInteractable", "class_u_i_interactable.html", [
           [ "UIButton", "class_u_i_button.html", null ],

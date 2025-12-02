@@ -157,9 +157,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a981cb807547813a329259e1e53c4be20" id="r_a981cb807547813a329259e1e53c4be20"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#a981cb807547813a329259e1e53c4be20">update_frame_time</a> (float time_scale)=0</td></tr>
 <tr class="memdesc:a981cb807547813a329259e1e53c4be20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the frame time based on the elapsed time since the last frame.  <br /></td></tr>
 <tr class="separator:a981cb807547813a329259e1e53c4be20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a115e629a54e2e0ddaeed4fd3b8a0cc81" id="r_a115e629a54e2e0ddaeed4fd3b8a0cc81"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#a115e629a54e2e0ddaeed4fd3b8a0cc81">delta_time</a> ()=0</td></tr>
-<tr class="memdesc:a115e629a54e2e0ddaeed4fd3b8a0cc81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the time elapsed since the last frame.  <br /></td></tr>
-<tr class="separator:a115e629a54e2e0ddaeed4fd3b8a0cc81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45ae2523f44c6821233ed67310559dc4" id="r_a45ae2523f44c6821233ed67310559dc4"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#a45ae2523f44c6821233ed67310559dc4">delta_time</a> () const =0</td></tr>
+<tr class="memdesc:a45ae2523f44c6821233ed67310559dc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the time elapsed since the last frame.  <br /></td></tr>
+<tr class="separator:a45ae2523f44c6821233ed67310559dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07da6de342170e0d07f97d5e50356dca" id="r_a07da6de342170e0d07f97d5e50356dca"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#a07da6de342170e0d07f97d5e50356dca">frames_per_second</a> () const =0</td></tr>
+<tr class="memdesc:a07da6de342170e0d07f97d5e50356dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the frames per second (FPS) based on the updated frame time.  <br /></td></tr>
+<tr class="separator:a07da6de342170e0d07f97d5e50356dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bc377a02be5da6cc20ae27bf2269526" id="r_a4bc377a02be5da6cc20ae27bf2269526"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#a4bc377a02be5da6cc20ae27bf2269526">get_clipboard_text</a> ()=0</td></tr>
 <tr class="memdesc:a4bc377a02be5da6cc20ae27bf2269526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current text to the system clipboard.  <br /></td></tr>
 <tr class="separator:a4bc377a02be5da6cc20ae27bf2269526"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,10 +186,16 @@ Public Member Functions</h2></td></tr>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a2d9d1e86979d79eb7462fbd814a49414" id="r_a2d9d1e86979d79eb7462fbd814a49414"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#a2d9d1e86979d79eb7462fbd814a49414">last_</a> {0}</td></tr>
 <tr class="separator:a2d9d1e86979d79eb7462fbd814a49414"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85113ce9c44f51e04c232a6de2f784c6" id="r_a85113ce9c44f51e04c232a6de2f784c6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#a85113ce9c44f51e04c232a6de2f784c6">freq_</a> {0.0f}</td></tr>
-<tr class="separator:a85113ce9c44f51e04c232a6de2f784c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2817c1e257cb2f64538ec6f78e030269" id="r_a2817c1e257cb2f64538ec6f78e030269"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#a2817c1e257cb2f64538ec6f78e030269">freq_</a> {0.0f}</td></tr>
+<tr class="separator:a2817c1e257cb2f64538ec6f78e030269"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee6e95720125484cbf09a4fb5a240087" id="r_aee6e95720125484cbf09a4fb5a240087"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#aee6e95720125484cbf09a4fb5a240087">delta_time_</a> {0.0f}</td></tr>
 <tr class="separator:aee6e95720125484cbf09a4fb5a240087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa276b2f613fa403ceca800b5baa1ccef" id="r_aa276b2f613fa403ceca800b5baa1ccef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#aa276b2f613fa403ceca800b5baa1ccef">frame_count_</a> {0}</td></tr>
+<tr class="separator:aa276b2f613fa403ceca800b5baa1ccef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8710c4fabfb6f9d56007c54a8e16741" id="r_aa8710c4fabfb6f9d56007c54a8e16741"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#aa8710c4fabfb6f9d56007c54a8e16741">fps_</a> {0.0f}</td></tr>
+<tr class="separator:aa8710c4fabfb6f9d56007c54a8e16741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32b83895777d00476859d6cbc91093d4" id="r_a32b83895777d00476859d6cbc91093d4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_backend_system.html#a32b83895777d00476859d6cbc91093d4">accumulated_time_</a> {0.0f}</td></tr>
+<tr class="separator:a32b83895777d00476859d6cbc91093d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for backend system implementations handling low-level events. </p>
@@ -218,8 +227,8 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a115e629a54e2e0ddaeed4fd3b8a0cc81" name="a115e629a54e2e0ddaeed4fd3b8a0cc81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a115e629a54e2e0ddaeed4fd3b8a0cc81">&#9670;&#160;</a></span>delta_time()</h2>
+<a id="a45ae2523f44c6821233ed67310559dc4" name="a45ae2523f44c6821233ed67310559dc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45ae2523f44c6821233ed67310559dc4">&#9670;&#160;</a></span>delta_time()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,7 +240,7 @@ Protected Attributes</h2></td></tr>
           <td class="memname">virtual float IBackendSystem::delta_time </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -244,7 +253,37 @@ Protected Attributes</h2></td></tr>
 <p>Retrieves the time elapsed since the last frame. </p>
 <dl class="section return"><dt>Returns</dt><dd>The delta time in seconds. </dd></dl>
 
-<p>Implemented in <a class="el" href="class_s_d_l_backend_system.html#abb5967abb195f5e690a2c0bfbeaf5db1">SDLBackendSystem</a>.</p>
+<p>Implemented in <a class="el" href="class_s_d_l_backend_system.html#ae6bc485be14a6d86afdba2974a516c96">SDLBackendSystem</a>.</p>
+
+</div>
+</div>
+<a id="a07da6de342170e0d07f97d5e50356dca" name="a07da6de342170e0d07f97d5e50356dca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07da6de342170e0d07f97d5e50356dca">&#9670;&#160;</a></span>frames_per_second()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float IBackendSystem::frames_per_second </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the frames per second (FPS) based on the updated frame time. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current frames per second. </dd></dl>
+
+<p>Implemented in <a class="el" href="class_s_d_l_backend_system.html#a10187b9da7593594bebf5313d87cc492">SDLBackendSystem</a>.</p>
 
 </div>
 </div>
@@ -556,6 +595,28 @@ Techically this keeps track of time, but it utilizes SDL's performance counter u
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a32b83895777d00476859d6cbc91093d4" name="a32b83895777d00476859d6cbc91093d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32b83895777d00476859d6cbc91093d4">&#9670;&#160;</a></span>accumulated_time_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float IBackendSystem::accumulated_time_ {0.0f}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aee6e95720125484cbf09a4fb5a240087" name="aee6e95720125484cbf09a4fb5a240087"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aee6e95720125484cbf09a4fb5a240087">&#9670;&#160;</a></span>delta_time_</h2>
 
@@ -578,8 +639,8 @@ Techically this keeps track of time, but it utilizes SDL's performance counter u
 
 </div>
 </div>
-<a id="a85113ce9c44f51e04c232a6de2f784c6" name="a85113ce9c44f51e04c232a6de2f784c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85113ce9c44f51e04c232a6de2f784c6">&#9670;&#160;</a></span>freq_</h2>
+<a id="aa8710c4fabfb6f9d56007c54a8e16741" name="aa8710c4fabfb6f9d56007c54a8e16741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8710c4fabfb6f9d56007c54a8e16741">&#9670;&#160;</a></span>fps_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -588,7 +649,51 @@ Techically this keeps track of time, but it utilizes SDL's performance counter u
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float IBackendSystem::freq_ {0.0f}</td>
+          <td class="memname">float IBackendSystem::fps_ {0.0f}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa276b2f613fa403ceca800b5baa1ccef" name="aa276b2f613fa403ceca800b5baa1ccef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa276b2f613fa403ceca800b5baa1ccef">&#9670;&#160;</a></span>frame_count_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IBackendSystem::frame_count_ {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2817c1e257cb2f64538ec6f78e030269" name="a2817c1e257cb2f64538ec6f78e030269"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2817c1e257cb2f64538ec6f78e030269">&#9670;&#160;</a></span>freq_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double IBackendSystem::freq_ {0.0f}</td>
         </tr>
       </table>
   </td>

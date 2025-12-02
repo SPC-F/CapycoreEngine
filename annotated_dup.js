@@ -67,6 +67,7 @@ var annotated_dup =
     [ "Texture", "class_texture.html", "class_texture" ],
     [ "Transform", "class_transform.html", "class_transform" ],
     [ "UIButton", "class_u_i_button.html", "class_u_i_button" ],
+    [ "UIFPS", "class_u_i_f_p_s.html", "class_u_i_f_p_s" ],
     [ "UIImage", "class_u_i_image.html", "class_u_i_image" ],
     [ "UIInput", "class_u_i_input.html", "class_u_i_input" ],
     [ "UIInteractable", "class_u_i_interactable.html", "class_u_i_interactable" ],
