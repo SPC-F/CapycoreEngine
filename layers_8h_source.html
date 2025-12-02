@@ -10,7 +10,7 @@
 <meta property="og:description" content="A simple game engine written in C++ based on the Unity API architecture." />
 <meta property="og:url" content="https://spc-f.github.io/CapycoreEngine/index.html" />
 <!-- END opengraph metadata -->
-<title>Capycore Engine: include/engine/core/rendering/strategies/irendering_strategy_factory.h File Reference</title>
+<title>Capycore Engine: include/engine/public/util/layers.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -85,6 +85,11 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -98,7 +103,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('irendering__strategy__factory_8h.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('layers_8h_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -124,39 +129,32 @@ $(document).ready(function(){initNavTree('irendering__strategy__factory_8h.html'
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
-  <div class="headertitle"><div class="title">irendering_strategy_factory.h File Reference</div></div>
+  <div class="headertitle"><div class="title">layers.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="renderer_8h_source.html">engine/core/rendering/renderer.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="irendering__strategy_8h_source.html">engine/core/rendering/strategies/irendering_strategy.h</a>&gt;</code><br />
-<code>#include &lt;memory&gt;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for irendering_strategy_factory.h:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="irendering__strategy__factory_8h__incl.svg" width="1064" height="682"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<a href="layers_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// We explicitly use an enum here instead of an enum class, because we want the ability to</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// automagically convert from enum values to integers.</span></div>
+<div class="foldopen" id="foldopen00005" data-start="{" data-end="};">
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bd">    5</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bd">Layers</a> : <span class="keywordtype">int</span> {</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bda49b67fba8870b2cddbd025273ceb87ff">    6</a></span>  <a class="code hl_enumvalue" href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bda49b67fba8870b2cddbd025273ceb87ff">Background</a> = 0,</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bdaa027d72e915cf5e43cb38322edd8227e">    7</a></span>  <a class="code hl_enumvalue" href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bdaa027d72e915cf5e43cb38322edd8227e">Foreground</a> = 10,</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bda79935518a3889663d8688b6b01fff051">    8</a></span>  <a class="code hl_enumvalue" href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bda79935518a3889663d8688b6b01fff051">Default</a> = <a class="code hl_enumvalue" href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bdaa027d72e915cf5e43cb38322edd8227e">Foreground</a>,</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bda52b9f40bf088527b69966871a797fa55">    9</a></span>  <a class="code hl_enumvalue" href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bda52b9f40bf088527b69966871a797fa55">UI</a> = 50,</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>};</div>
 </div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="irendering__strategy__factory_8h__dep__incl.svg" width="443" height="168"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-<p><a href="irendering__strategy__factory_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_rendering_strategy_factory.html">IRenderingStrategyFactory</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for factories that create rendering strategies.  <a href="class_i_rendering_strategy_factory.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-</div><!-- contents -->
+<div class="ttc" id="alayers_8h_html_a98569f5f22d83e369a3097537c8d87bd"><div class="ttname"><a href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bd">Layers</a></div><div class="ttdeci">Layers</div><div class="ttdef"><b>Definition</b> layers.h:5</div></div>
+<div class="ttc" id="alayers_8h_html_a98569f5f22d83e369a3097537c8d87bda49b67fba8870b2cddbd025273ceb87ff"><div class="ttname"><a href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bda49b67fba8870b2cddbd025273ceb87ff">Background</a></div><div class="ttdeci">@ Background</div><div class="ttdef"><b>Definition</b> layers.h:6</div></div>
+<div class="ttc" id="alayers_8h_html_a98569f5f22d83e369a3097537c8d87bda52b9f40bf088527b69966871a797fa55"><div class="ttname"><a href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bda52b9f40bf088527b69966871a797fa55">UI</a></div><div class="ttdeci">@ UI</div><div class="ttdef"><b>Definition</b> layers.h:9</div></div>
+<div class="ttc" id="alayers_8h_html_a98569f5f22d83e369a3097537c8d87bda79935518a3889663d8688b6b01fff051"><div class="ttname"><a href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bda79935518a3889663d8688b6b01fff051">Default</a></div><div class="ttdeci">@ Default</div><div class="ttdef"><b>Definition</b> layers.h:8</div></div>
+<div class="ttc" id="alayers_8h_html_a98569f5f22d83e369a3097537c8d87bdaa027d72e915cf5e43cb38322edd8227e"><div class="ttname"><a href="layers_8h.html#a98569f5f22d83e369a3097537c8d87bdaa027d72e915cf5e43cb38322edd8227e">Foreground</a></div><div class="ttdeci">@ Foreground</div><div class="ttdef"><b>Definition</b> layers.h:7</div></div>
+</div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7f531b1c37460085cedd304cb8df01d.html">engine</a></li><li class="navelem"><a class="el" href="dir_7f643b58e2241519524527f42d96aecd.html">core</a></li><li class="navelem"><a class="el" href="dir_eeb1a6a4d8c8f32e98e11776446ad2bc.html">rendering</a></li><li class="navelem"><a class="el" href="dir_0268eea10e7a29bbad48a7de7b43a0f6.html">strategies</a></li><li class="navelem"><a class="el" href="irendering__strategy__factory_8h.html">irendering_strategy_factory.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7f531b1c37460085cedd304cb8df01d.html">engine</a></li><li class="navelem"><a class="el" href="dir_449e025360b1e0775671965c2105f9c1.html">public</a></li><li class="navelem"><a class="el" href="dir_a49164a242c307165c720613e9741f63.html">util</a></li><li class="navelem"><a class="el" href="layers_8h.html">layers.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

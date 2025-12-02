@@ -148,11 +148,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7ebf46f54dab9905f79b80f7fddb76a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa32d1caf42ca469513db53b03be688bf" id="r_aa32d1caf42ca469513db53b03be688bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#aa32d1caf42ca469513db53b03be688bf">Renderer</a> (int min_aspect_width, int min_aspect_height, const std::string &amp;title, <a class="el" href="renderer_flags_8h.html#a360f88a51f469ff309df1e1e7cc2558b">RendererFlags</a> flags)</td></tr>
 <tr class="separator:aa32d1caf42ca469513db53b03be688bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18d6d94d1930759e8e248f8a432b99bd" id="r_a18d6d94d1930759e8e248f8a432b99bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a18d6d94d1930759e8e248f8a432b99bd">render</a> (std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;objects)</td></tr>
-<tr class="memdesc:a18d6d94d1930759e8e248f8a432b99bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a collection of game objects to the screen. Renders a given collection of game objects to the screen. Each game object is expected to have its own sprite, or it will be skipped. <br  />
+<tr class="memitem:a6ee7975fe698c7aa1cb3b995e2869b35" id="r_a6ee7975fe698c7aa1cb3b995e2869b35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a6ee7975fe698c7aa1cb3b995e2869b35">render</a> (const std::map&lt; int, std::multimap&lt; int, std::reference_wrapper&lt; <a class="el" href="class_renderable.html">Renderable</a> &gt; &gt; &gt; &amp;objects, const <a class="el" href="class_scene.html">Scene</a> &amp;scene)</td></tr>
+<tr class="memdesc:a6ee7975fe698c7aa1cb3b995e2869b35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a collection of game objects to the screen. Renders a given collection of game objects to the screen. Each game object is expected to have its own sprite, or it will be skipped. <br  />
  <br  />
  Mind that this method clears the entire screen and renders immediately on finish. If you want to batch multiple calls, fuse them into one.  <br /></td></tr>
-<tr class="separator:a18d6d94d1930759e8e248f8a432b99bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a6ee7975fe698c7aa1cb3b995e2869b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f581e37a6c762ff93790695115641f5" id="r_a7f581e37a6c762ff93790695115641f5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer.html#a7f581e37a6c762ff93790695115641f5">vsync</a> () const</td></tr>
 <tr class="memdesc:a7f581e37a6c762ff93790695115641f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if vertical synchronization (VSync) is enabled.  <br /></td></tr>
 <tr class="separator:a7f581e37a6c762ff93790695115641f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -274,8 +274,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a18d6d94d1930759e8e248f8a432b99bd" name="a18d6d94d1930759e8e248f8a432b99bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18d6d94d1930759e8e248f8a432b99bd">&#9670;&#160;</a></span>render()</h2>
+<a id="a6ee7975fe698c7aa1cb3b995e2869b35" name="a6ee7975fe698c7aa1cb3b995e2869b35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ee7975fe698c7aa1cb3b995e2869b35">&#9670;&#160;</a></span>render()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -283,9 +283,19 @@ Friends</h2></td></tr>
         <tr>
           <td class="memname">void Renderer::render </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td>
-          <td class="paramname"><em>objects</em></td><td>)</td>
+          <td class="paramtype">const std::map&lt; int, std::multimap&lt; int, std::reference_wrapper&lt; <a class="el" href="class_renderable.html">Renderable</a> &gt; &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>objects</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="class_scene.html">Scene</a> &amp;&#160;</td>
+          <td class="paramname"><em>scene</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -295,7 +305,8 @@ Friends</h2></td></tr>
  Mind that this method clears the entire screen and renders immediately on finish. If you want to batch multiple calls, fuse them into one. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">objects</td><td></td></tr>
+    <tr><td class="paramname">objects</td><td>A map of renderable objects grouped by their rendering layer </td></tr>
+    <tr><td class="paramname">scene</td><td>The current scene being rendered </td></tr>
   </table>
   </dd>
 </dl>

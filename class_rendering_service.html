@@ -150,9 +150,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ace36317c9854be3e5ad5e5c812a2c4d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a667ac7788b2fcb26dce2c303b209552b" id="r_a667ac7788b2fcb26dce2c303b209552b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rendering_service.html#a667ac7788b2fcb26dce2c303b209552b">~RenderingService</a> () override=default</td></tr>
 <tr class="separator:a667ac7788b2fcb26dce2c303b209552b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0071346e120fe312e7cad5f4aa12d11a" id="r_a0071346e120fe312e7cad5f4aa12d11a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rendering_service.html#a0071346e120fe312e7cad5f4aa12d11a">draw</a> (std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;objects)</td></tr>
-<tr class="memdesc:a0071346e120fe312e7cad5f4aa12d11a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the provided game objects to the window using the renderer. Delegates the drawing operation to the <a class="el" href="class_renderer.html" title="Service responsible for rendering game objects to the screen.">Renderer</a> instance.  <br /></td></tr>
-<tr class="separator:a0071346e120fe312e7cad5f4aa12d11a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5f9a8b6b5d5c277d146fd79f4153ad5" id="r_ab5f9a8b6b5d5c277d146fd79f4153ad5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rendering_service.html#ab5f9a8b6b5d5c277d146fd79f4153ad5">draw</a> (std::map&lt; int, std::multimap&lt; int, std::reference_wrapper&lt; <a class="el" href="class_renderable.html">Renderable</a> &gt; &gt; &gt; &amp;objects, <a class="el" href="class_scene.html">Scene</a> &amp;scene)</td></tr>
+<tr class="memdesc:ab5f9a8b6b5d5c277d146fd79f4153ad5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the provided game objects to the window using the renderer. Delegates the drawing operation to the <a class="el" href="class_renderer.html" title="Service responsible for rendering game objects to the screen.">Renderer</a> instance.  <br /></td></tr>
+<tr class="separator:ab5f9a8b6b5d5c277d146fd79f4153ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaadc92a91a4c926e37a7c6fdfbdca133" id="r_aaadc92a91a4c926e37a7c6fdfbdca133"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_window.html">Window</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rendering_service.html#aaadc92a91a4c926e37a7c6fdfbdca133">window</a> ()</td></tr>
 <tr class="memdesc:aaadc92a91a4c926e37a7c6fdfbdca133"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides access to the game window.  <br /></td></tr>
 <tr class="separator:aaadc92a91a4c926e37a7c6fdfbdca133"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -253,8 +253,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a0071346e120fe312e7cad5f4aa12d11a" name="a0071346e120fe312e7cad5f4aa12d11a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0071346e120fe312e7cad5f4aa12d11a">&#9670;&#160;</a></span>draw()</h2>
+<a id="ab5f9a8b6b5d5c277d146fd79f4153ad5" name="ab5f9a8b6b5d5c277d146fd79f4153ad5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5f9a8b6b5d5c277d146fd79f4153ad5">&#9670;&#160;</a></span>draw()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -262,9 +262,19 @@ Friends</h2></td></tr>
         <tr>
           <td class="memname">void RenderingService::draw </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td>
-          <td class="paramname"><em>objects</em></td><td>)</td>
+          <td class="paramtype">std::map&lt; int, std::multimap&lt; int, std::reference_wrapper&lt; <a class="el" href="class_renderable.html">Renderable</a> &gt; &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>objects</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="class_scene.html">Scene</a> &amp;&#160;</td>
+          <td class="paramname"><em>scene</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -273,6 +283,7 @@ Friends</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">objects</td><td>A vector of references to <a class="el" href="class_game_object.html">GameObject</a> instances to be drawn. </td></tr>
+    <tr><td class="paramname">scene</td><td>The current scene context for rendering. </td></tr>
   </table>
   </dd>
 </dl>

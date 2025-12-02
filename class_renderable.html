@@ -144,10 +144,16 @@ Inheritance diagram for Renderable:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa518dab4001997185c7ccdf3e389e1d8" id="r_aa518dab4001997185c7ccdf3e389e1d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#aa518dab4001997185c7ccdf3e389e1d8">Renderable</a> ()=default</td></tr>
-<tr class="separator:aa518dab4001997185c7ccdf3e389e1d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97a0f6efd2a058dfb003e64e63bdb255" id="r_a97a0f6efd2a058dfb003e64e63bdb255"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a97a0f6efd2a058dfb003e64e63bdb255">Renderable</a> ()</td></tr>
+<tr class="separator:a97a0f6efd2a058dfb003e64e63bdb255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a753bb158e031d0f1d592aea8b95cf67c" id="r_a753bb158e031d0f1d592aea8b95cf67c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a753bb158e031d0f1d592aea8b95cf67c">Renderable</a> (int layer)</td></tr>
+<tr class="separator:a753bb158e031d0f1d592aea8b95cf67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ad7e7920790f289c376edde7e495290" id="r_a6ad7e7920790f289c376edde7e495290"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a6ad7e7920790f289c376edde7e495290">~Renderable</a> () override=default</td></tr>
 <tr class="separator:a6ad7e7920790f289c376edde7e495290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dff5810d7689b48586a1a8e8491e03e" id="r_a2dff5810d7689b48586a1a8e8491e03e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_renderable.html">Renderable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a2dff5810d7689b48586a1a8e8491e03e">order_in_layer</a> (int layer)</td></tr>
+<tr class="separator:a2dff5810d7689b48586a1a8e8491e03e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a891039d412aa3a3ef49e2a88b64829d6" id="r_a891039d412aa3a3ef49e2a88b64829d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a891039d412aa3a3ef49e2a88b64829d6">order_in_layer</a> () const</td></tr>
+<tr class="separator:a891039d412aa3a3ef49e2a88b64829d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70972d056585f61a2213eb234255c5e3" id="r_a70972d056585f61a2213eb234255c5e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a70972d056585f61a2213eb234255c5e3">set_render_strategy</a> (<a class="el" href="class_component.html">Component</a> &amp;component)</td></tr>
 <tr class="separator:a70972d056585f61a2213eb234255c5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a810422a6208a7552e6b3f56ca7699ae4" id="r_a810422a6208a7552e6b3f56ca7699ae4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_i_rendering_strategy.html">IRenderingStrategy</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a810422a6208a7552e6b3f56ca7699ae4">render_strategy</a> () const</td></tr>
@@ -196,13 +202,15 @@ Public Member Functions</h2></td></tr>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a487c853faff4489e006918af1d82f513" id="r_a487c853faff4489e006918af1d82f513"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_i_rendering_strategy.html">IRenderingStrategy</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a487c853faff4489e006918af1d82f513">render_strategy_</a></td></tr>
 <tr class="separator:a487c853faff4489e006918af1d82f513"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef090f5a51d638953bc251e7b687023f" id="r_aef090f5a51d638953bc251e7b687023f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#aef090f5a51d638953bc251e7b687023f">ordering_layer_</a> = 0</td></tr>
+<tr class="separator:aef090f5a51d638953bc251e7b687023f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for renderable components in the engine. </p>
 <p><a class="el" href="class_renderable.html" title="Base class for renderable components in the engine.">Renderable</a> components are those that can be drawn on the screen using a rendering strategy. They hold a unique pointer to an <a class="el" href="class_i_rendering_strategy.html" title="Interface for rendering strategies used by renderable components.">IRenderingStrategy</a> which defines how the component is rendered. This class extends the <a class="el" href="class_component.html">Component</a> class and provides functionality to set and retrieve the rendering strategy. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aa518dab4001997185c7ccdf3e389e1d8" name="aa518dab4001997185c7ccdf3e389e1d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa518dab4001997185c7ccdf3e389e1d8">&#9670;&#160;</a></span>Renderable()</h2>
+<a id="a97a0f6efd2a058dfb003e64e63bdb255" name="a97a0f6efd2a058dfb003e64e63bdb255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97a0f6efd2a058dfb003e64e63bdb255">&#9670;&#160;</a></span>Renderable() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -219,7 +227,33 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a753bb158e031d0f1d592aea8b95cf67c" name="a753bb158e031d0f1d592aea8b95cf67c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a753bb158e031d0f1d592aea8b95cf67c">&#9670;&#160;</a></span>Renderable() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Renderable::Renderable </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>layer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -252,6 +286,41 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a891039d412aa3a3ef49e2a88b64829d6" name="a891039d412aa3a3ef49e2a88b64829d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a891039d412aa3a3ef49e2a88b64829d6">&#9670;&#160;</a></span>order_in_layer() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Renderable::order_in_layer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2dff5810d7689b48586a1a8e8491e03e" name="a2dff5810d7689b48586a1a8e8491e03e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dff5810d7689b48586a1a8e8491e03e">&#9670;&#160;</a></span>order_in_layer() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_renderable.html">Renderable</a> &amp; Renderable::order_in_layer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>layer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a810422a6208a7552e6b3f56ca7699ae4" name="a810422a6208a7552e6b3f56ca7699ae4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a810422a6208a7552e6b3f56ca7699ae4">&#9670;&#160;</a></span>render_strategy()</h2>
 
@@ -296,6 +365,28 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="aef090f5a51d638953bc251e7b687023f" name="aef090f5a51d638953bc251e7b687023f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef090f5a51d638953bc251e7b687023f">&#9670;&#160;</a></span>ordering_layer_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Renderable::ordering_layer_ = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a487c853faff4489e006918af1d82f513" name="a487c853faff4489e006918af1d82f513"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a487c853faff4489e006918af1d82f513">&#9670;&#160;</a></span>render_strategy_</h2>
 

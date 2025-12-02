@@ -3,7 +3,7 @@ var class_rendering_service =
     [ "RenderingService", "class_rendering_service.html#a09d2372dad15d3aab269e00cbc74005f", null ],
     [ "RenderingService", "class_rendering_service.html#ace36317c9854be3e5ad5e5c812a2c4d1", null ],
     [ "~RenderingService", "class_rendering_service.html#a667ac7788b2fcb26dce2c303b209552b", null ],
-    [ "draw", "class_rendering_service.html#a0071346e120fe312e7cad5f4aa12d11a", null ],
+    [ "draw", "class_rendering_service.html#ab5f9a8b6b5d5c277d146fd79f4153ad5", null ],
     [ "rendering_strategy_factory", "class_rendering_service.html#aad427d4aca8564a01a8eb21f3f0f27f7", null ],
     [ "vsync", "class_rendering_service.html#a2b89b6e1f76365b75dc1a2a05faf5368", null ],
     [ "vsync", "class_rendering_service.html#a747a90851d9b0d2047136de89bf526e1", null ],
