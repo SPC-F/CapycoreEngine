@@ -29,7 +29,7 @@ float GameplaySpeedService::speed() const { return config_.speed; }
 GameplaySpeedService::Config& GameplaySpeedService::config() { return config_; }
 
 void GameplaySpeedService::set_step(const float value) {
-  if (value > 0) {
+  if (value > min_speed()) {
     config_.step = value;
   }
 }
