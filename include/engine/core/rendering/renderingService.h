@@ -16,17 +16,31 @@ class RenderingService : public IEngineService {
   explicit RenderingService();
   explicit RenderingService(Renderer* renderer);
   ~RenderingService() override = default;
+
   /**
    * @brief Draws the provided game objects to the window using the renderer.
    * Delegates the drawing operation to the Renderer instance.
    * @param objects A vector of references to GameObject instances to be drawn.
    */
   void draw(std::vector<std::reference_wrapper<GameObject>>& objects);
+
   /**
    * @brief Provides access to the game window.
    * @return A reference to the Window instance managed by the Renderer.
    */
   Window& window();
+
+  /**
+   * @brief Checks if vertical synchronization (VSync).
+   * @return true if VSync is enabled, false otherwise.
+   */
+  [[nodiscard]] bool vsync() const;
+
+  /**
+   * @brief Toggles vertical synchronization (VSync) which limits fps to the
+   * monitor's refresh rate.
+   */
+  void vsync(bool enabled);
 
   [[nodiscard]] IRenderingStrategyFactory& rendering_strategy_factory() const;
 

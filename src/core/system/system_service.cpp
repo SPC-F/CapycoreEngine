@@ -54,3 +54,7 @@ void SystemService::update_frame_time(float time_scale) {
 float SystemService::delta_time() const {
   return backend_system_->delta_time();
 }
+
+float SystemService::frames_per_second() const {
+  return backend_system_->frames_per_second();
+}

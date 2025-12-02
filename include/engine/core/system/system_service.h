@@ -20,7 +20,8 @@ class SystemService : public IEngineService {
 
   void update();
 
-  std::string get_clipboard_text();
+  [[nodiscard]] std::string get_clipboard_text();
+
   void set_cursor_to_arrow();
   void set_cursor_to_hand();
   void set_cursor_to_ibeam();
@@ -30,6 +31,7 @@ class SystemService : public IEngineService {
   void init_frame_timer();
   void update_frame_time(float time_scale);
   [[nodiscard]] float delta_time() const;
+  [[nodiscard]] float frames_per_second() const;
 
  private:
   std::unique_ptr<IBackendSystem> backend_system_;

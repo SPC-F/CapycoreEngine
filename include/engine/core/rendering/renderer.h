@@ -32,6 +32,8 @@ class Renderer final : public IEngineService {
   // never be a proper init value...
   std::optional<Window> window_;
 
+  bool vsync_enabled_{false};
+
  public:
   explicit Renderer();
   explicit Renderer(int min_aspect_width, int min_aspect_height,
@@ -46,6 +48,18 @@ class Renderer final : public IEngineService {
    * @param objects
    */
   void render(std::vector<std::reference_wrapper<GameObject>>& objects);
+
+  /**
+   * @brief Checks if vertical synchronization (VSync) is enabled.
+   * @return true if VSync is enabled, false otherwise.
+   */
+  [[nodiscard]] bool vsync() const;
+
+  /**
+   * @brief Toggles vertical synchronization (VSync) which limits fps to the
+   * monitor's refresh rate.
+   */
+  void vsync(bool enabled);
 
   /**
    * @brief Clears the rendering target with the drawing color.

@@ -18,3 +18,7 @@ IRenderingStrategyFactory& RenderingService::rendering_strategy_factory()
     const {
   return *strategy_factory_;
 }
+
+bool RenderingService::vsync() const { return renderer_->vsync(); }
+
+void RenderingService::vsync(bool enabled) { renderer_->vsync(enabled); }
