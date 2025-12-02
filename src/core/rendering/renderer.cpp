@@ -64,15 +64,6 @@ Renderer::Renderer(int min_aspect_width, int min_aspect_height,
   window_->init(window);
 }
 
-Window& Renderer::window() {
-  if (!window_.has_value()) {
-    throw std::runtime_error("Window is not initialized in Renderer.");
-  }
-  return window_.value();
-}
-
-void Renderer::clear() const { SDL_RenderClear(sdl_renderer_.get()); }
-
 void Renderer::render(
     const std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>&
         objects,
@@ -107,3 +98,23 @@ void Renderer::render(
 
   SDL_RenderPresent(sdl_renderer_.get());
 }
+
+bool Renderer::vsync() const { return vsync_enabled_; }
+
+void Renderer::vsync(bool enabled) {
+  if (vsync_enabled_ == enabled) {
+    return;
+  }
+
+  vsync_enabled_ = enabled;
+  SDL_SetRenderVSync(sdl_renderer_.get(), vsync_enabled_);
+}
+
+Window& Renderer::window() {
+  if (!window_.has_value()) {
+    throw std::runtime_error("Window is not initialized in Renderer.");
+  }
+  return window_.value();
+}
+
+void Renderer::clear() const { SDL_RenderClear(sdl_renderer_.get()); }

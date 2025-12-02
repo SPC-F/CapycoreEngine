@@ -104,13 +104,11 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       accumulator -= fixed_step;
     }
 
-    /*
-        So tracy logs all allocations, even the past ones in previous frames
-        It does this to build a complete timeline of allocations for profiling
-        We don't want that overhead during normal frame rendering as clearing is
-       buggy here due to the stack So we run the rendering without tracy
-       tracking (if tracy is enabled)
-    */
+    // So tracy logs all allocations, even the past ones in previous frames
+    // It does this to build a complete timeline of allocations for profiling
+    // We don't want that overhead during normal frame rendering as clearing is
+    // buggy here due to the stack So we run the rendering without tracy
+    // tracking (if tracy is enabled)
     run_without_tracy([&]() {
       rendering_service.draw(layered_renderables, *this);
       audio_service.update();

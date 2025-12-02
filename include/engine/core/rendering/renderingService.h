@@ -1,15 +1,10 @@
 #pragma once
-#include <vector>
 #include <map>
-
 #include <engine/core/iEngineService.h>
 #include <engine/core/rendering/renderer.h>
 #include <engine/core/rendering/window.h>
 #include <engine/core/rendering/renderable.h>
 #include <engine/core/rendering/strategies/irendering_strategy_factory.h>
-#include <engine/core/rendering/window.h>
-
-#include <vector>
 
 /**
  * @brief Service responsible for rendering game objects to the window.
@@ -33,6 +28,18 @@ public:
      * @return A reference to the Window instance managed by the Renderer.
      */
     Window& window();
+
+  /**
+   * @brief Checks if vertical synchronization (VSync).
+   * @return true if VSync is enabled, false otherwise.
+   */
+  [[nodiscard]] bool vsync() const;
+
+  /**
+   * @brief Toggles vertical synchronization (VSync) which limits fps to the
+   * monitor's refresh rate.
+   */
+  void vsync(bool enabled);
 
   [[nodiscard]] IRenderingStrategyFactory& rendering_strategy_factory() const;
 
