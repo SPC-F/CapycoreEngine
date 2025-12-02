@@ -8,6 +8,7 @@
 #include <engine/physics/physics_service.h>
 #include <engine/public/component.h>
 #include <engine/public/gameObject.h>
+#include <engine/public/gameplay_speed_service.h>
 #include <engine/public/scene.h>
 #include <engine/public/ui/ui_object.h>
 #include <engine/util/memory.h>
@@ -58,11 +59,14 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       Engine::instance().services->get_service<PhysicsService>().get();
   auto& rendering_service =
       Engine::instance().services->get_service<RenderingService>().get();
+  auto& gameplay_speed_service =
+      Engine::instance().services->get_service<GameplaySpeedService>().get();
 
   system_service.init_frame_timer();
 
   while (is_running()) {
-    system_service.update_frame_time(time_scale_);
+    system_service.update_frame_time(time_scale_ *
+                                     gameplay_speed_service.speed());
     float frame_dt = system_service.delta_time();
     accumulator += frame_dt;
 
@@ -94,6 +98,7 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
 
       audio_service.update();
       physics_service.update(fixed_step, game_objects);
+      gameplay_speed_service.update();
 
       for (auto& game_object_ref : game_objects) {
         auto& game_object = game_object_ref.get();
