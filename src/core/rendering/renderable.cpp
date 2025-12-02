@@ -6,12 +6,12 @@
 Renderable::Renderable() : ordering_layer_{Layers::Default} {}
 Renderable::Renderable(const int layer) : ordering_layer_{layer} {}
 
-Renderable& Renderable::ordering_layer(int layer) {
+Renderable& Renderable::order_in_layer(int layer) {
   ordering_layer_ = layer;
   return *this;
 }
 
-[[nodiscard]] int Renderable::ordering_layer() const { return ordering_layer_; }
+[[nodiscard]] int Renderable::order_in_layer() const { return ordering_layer_; }
 
 void Renderable::set_render_strategy(Component& component) {
   auto strateg = Engine::instance()

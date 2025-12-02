@@ -94,7 +94,7 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
                 dynamic_cast<Renderable*>(&component.get());
             component.get().active()) {
 
-          obj_layer.emplace(renderable->ordering_layer(), *renderable);
+          obj_layer.emplace(renderable->order_in_layer(), *renderable);
         }
       }
     }

@@ -22,8 +22,8 @@ public:
   explicit Renderable(int layer);
   ~Renderable() override = default;
 
-  Renderable& ordering_layer(int layer);
-  [[nodiscard]] int ordering_layer() const;
+  Renderable& order_in_layer(int layer);
+  [[nodiscard]] int order_in_layer() const;
 
   void set_render_strategy(Component& component);
   [[nodiscard]] virtual IRenderingStrategy& render_strategy() const;
