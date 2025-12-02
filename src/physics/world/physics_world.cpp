@@ -194,15 +194,6 @@ float PhysicsWorld::gravity_y(float gy) noexcept {
   return gravity_y_;
 }
 
-float PhysicsWorld::pixel_to_meter_ratio() const noexcept {
-  return pixel_to_meter_ratio_;
-}
-
-float PhysicsWorld::pixel_to_meter_ratio(float ratio) noexcept {
-  pixel_to_meter_ratio_ = ratio;
-  return pixel_to_meter_ratio_;
-}
-
 bool PhysicsWorld::world_exists() const noexcept {
   return world_id_.index1 != 0 || world_id_.generation != 0;
 }

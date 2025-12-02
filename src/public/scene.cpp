@@ -15,7 +15,7 @@
 #include <algorithm>
 
 constexpr float accumulator_default_value = 0.0f;
-constexpr float fixed_step = 1.0f / 60.0f;  // ~60 fps
+constexpr float fixed_step = 1.0f / 120.0f;  // ~120 fps
 
 Scene::Scene(const std::string& name)  // NOLINT
     : name_{name}, is_running_{false}, time_scale_{1.0f} {}
@@ -71,15 +71,13 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       system_service.update();
     });
 
-    auto game_objects = this->game_objects();
-    for (auto game_object : game_objects) {
-      for (auto component : game_object.get().get_components<Component>()) {
-        component.get().update(frame_dt);
-      }
-    }
-
     while (accumulator >= fixed_step) {
       // creates a fixed step for input handling and physics updates
+      run_without_tracy([&]() {
+        auto game_objects = this->game_objects();
+        physics_service.update(fixed_step, game_objects);
+      });
+
       accumulator -= fixed_step;
     }
 
@@ -93,7 +91,6 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       rendering_service.draw(game_objects);
 
       audio_service.update();
-      physics_service.update(fixed_step, game_objects);
 
       for (auto& game_object_ref : game_objects) {
         auto& game_object = game_object_ref.get();

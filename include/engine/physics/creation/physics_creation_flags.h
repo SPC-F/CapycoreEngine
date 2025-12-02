@@ -20,6 +20,13 @@ struct PhysicsCreationFlags {
   bool dynamic{true};
 
   /**
+   * @brief Whether to enable rotation for the body
+   *
+   * Default is false.
+   */
+  bool enable_rotation{false};
+
+  /**
    * @brief Whether the body is a sensor
    *
    * Default is false.
@@ -61,4 +68,12 @@ struct PhysicsCreationFlags {
    * 0x0004 to collide with players and enemies.
    */
   uint16_t mask = default_collision_mask;
+
+  /**
+   * @brief Desired mass of the body
+   *
+   * Default is 1.0f.
+   * This value sets the mass of the body directly.
+   */
+  float desired_mass{1.0f};
 };

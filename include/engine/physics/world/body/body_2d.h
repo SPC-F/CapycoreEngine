@@ -35,12 +35,21 @@ struct Body2D {
   static struct Body2DTransform get_body_transform(const Body2D& body);
 
   /**
+   * @brief Retrieves the pixel transform of the specified body.
+   *
+   * @param body The Body2D instance to get the local transform for.
+   * @return Body2DTransform The local transform of the body.
+   */
+  static struct Body2DTransform get_pixel_transform(const Body2D& body);
+
+  /**
    * @brief Sets the transform of the specified body.
    *
    * @param transform The Body2DTransform instance containing the new transform
    * data.
    */
-  static void set_body_transform(const struct Body2DTransform& transform);
+  static void set_body_transform(const struct Body2DTransform& transform,
+                                 bool in_pixels = false);
 
   /** @brief Sets the type of the specified body.
    *
@@ -135,4 +144,5 @@ struct Body2DTransform {
   Body2D body;
   Vector3 position;
   float rotation{0.0f};
+  Vector3 center_of_mass{0.0f, 0.0f, 0.0f};
 };

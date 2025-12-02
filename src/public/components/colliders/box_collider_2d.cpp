@@ -30,8 +30,12 @@ BoxCollider2D::BoxCollider2D(float friction, float bounciness, float width,
 
       auto& rigidbody = rigidbody_opt->get();
       auto body = rigidbody.body();
+      auto flags = Collider2D::creation_flags();
+      flags.desired_mass = rigidbody.mass();
+
+      auto transform = gameobject.transform();
       rigidbody.body(PhysicsCreationFactory::create_box_fixture(
-          body, offset, width_, height_, Collider2D::creation_flags()));
+          body, offset, width_, height_, flags));
     }
   };
 
