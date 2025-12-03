@@ -46,16 +46,33 @@ void SDLBackendSystem::poll_events() {
 
 void SDLBackendSystem::init_frame_timer() {
   last_ = SDL_GetPerformanceCounter();
-  freq_ = static_cast<float>(SDL_GetPerformanceFrequency());
+  freq_ = static_cast<double>(SDL_GetPerformanceFrequency());
+
+  frame_count_ = 0;
+  fps_ = 0.0f;
+  accumulated_time_ = 0.0;
 }
 
 void SDLBackendSystem::update_frame_time(float time_scale) {
   Uint64 now = SDL_GetPerformanceCounter();
-  delta_time_ = static_cast<float>(now - last_) / freq_ * time_scale;
+  double raw_delta = static_cast<double>(now - last_) / freq_;
   last_ = now;
+
+  delta_time_ = static_cast<float>(raw_delta * time_scale);
+
+  accumulated_time_ += raw_delta;
+  frame_count_++;
+
+  if (accumulated_time_ >= 1.0) {
+    fps_ = static_cast<float>(frame_count_ / accumulated_time_);
+    frame_count_ = 0;
+    accumulated_time_ = 0.0;
+  }
 }
 
-float SDLBackendSystem::delta_time() { return delta_time_; }
+float SDLBackendSystem::delta_time() const { return delta_time_; }
+
+float SDLBackendSystem::frames_per_second() const { return fps_; }
 
 std::string SDLBackendSystem::get_clipboard_text() {
   char* text = SDL_GetClipboardText();
