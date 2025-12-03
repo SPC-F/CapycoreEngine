@@ -1,10 +1,9 @@
 #include <engine/core/engine.h>
 #include <engine/core/rendering/strategies/sdl/sdl_circle_collider_2d_strategy.h>
+#include <engine/physics/physics_math.h>
 #include <engine/physics/physics_service.h>
 #include <engine/physics/world/body/body_2d.h>
 #include <engine/public/components/colliders/circle_collider_2d.h>
-
-#include <iostream>
 
 constexpr float default_texture_width = 32;
 constexpr float default_texture_height = 32;
@@ -40,7 +39,7 @@ void SdlCircleCollider2DStrategy::draw(Component& component, Camera& camera) {
   float oy = circle_collider.offset().y;
 
   float angle = transform.rotation();
-  float rad = angle * (3.14159265f / 180.0f);
+  float rad = angle * (PhysicsMath::pi / PhysicsMath::circle_divisor);
   float cosA = std::cos(rad);
   float sinA = std::sin(rad);
 
@@ -51,11 +50,29 @@ void SdlCircleCollider2DStrategy::draw(Component& component, Camera& camera) {
                body_tf.position.y + ry - camera_position.y};
 
   SDL_SetRenderDrawColor(&sdl_renderer_, 255, 0, 0, 255);
+
   draw_circle((int)center.x, (int)center.y, (int)radius_px);
 
-  int dir_x = center.x + std::cos(rad) * radius_px;
-  int dir_y = center.y + std::sin(rad) * radius_px;
-  SDL_RenderLine(&sdl_renderer_, center.x, center.y, dir_x, dir_y);
+  auto rotate_local = [&](float lx, float ly) -> SDL_FPoint {
+    return {lx * cosA - ly * sinA, lx * sinA + ly * cosA};
+  };
+
+  SDL_FPoint horizL = rotate_local(-radius_px, 0);
+  SDL_FPoint horizR = rotate_local(radius_px, 0);
+  SDL_FPoint vertT = rotate_local(0, -radius_px);
+  SDL_FPoint vertB = rotate_local(0, radius_px);
+
+  auto to_screen = [&](SDL_FPoint p) -> SDL_FPoint {
+    return {p.x + center.x, p.y + center.y};
+  };
+
+  SDL_FPoint H1 = to_screen(horizL);
+  SDL_FPoint H2 = to_screen(horizR);
+  SDL_FPoint V1 = to_screen(vertT);
+  SDL_FPoint V2 = to_screen(vertB);
+
+  SDL_RenderLine(&sdl_renderer_, H1.x, H1.y, H2.x, H2.y);
+  SDL_RenderLine(&sdl_renderer_, V1.x, V1.y, V2.x, V2.y);
 
   SDL_SetRenderDrawColor(&sdl_renderer_, 0, 0, 0, 255);
 }
