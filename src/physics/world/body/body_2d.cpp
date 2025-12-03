@@ -2,6 +2,7 @@
 #include <engine/physics/world/body/body_2d.h>
 #include <engine/physics/world/physics_world.h>
 
+constexpr float force_multiplier = 100000.0f;
 constexpr float default_box_divisor = 2.0f;
 
 Body2DTransform Body2D::get_body_transform(const Body2D& body) {
@@ -121,7 +122,10 @@ void Body2D::apply_force(const Body2D& body, const Vector3& force) noexcept {
   b2Vec2 b2_force{PhysicsMath::pixels_to_box2d(force.x),
                   PhysicsMath::pixels_to_box2d(force.y)};
 
-  b2_force *= 100000.0f;
+  // Force multiplier is an unusually high value to compensate for Box2D's
+  // physics calculations being tuned for smaller forces. This way we can apply
+  // forces that feel more natural in a pixel-based environment.
+  b2_force *= force_multiplier;
 
   b2Body_ApplyForceToCenter(body.id, b2_force, true);
 }

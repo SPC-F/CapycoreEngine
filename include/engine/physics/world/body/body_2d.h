@@ -47,6 +47,8 @@ struct Body2D {
    *
    * @param transform The Body2DTransform instance containing the new transform
    * data.
+   * @param in_pixels Whether the provided transform is in pixels (true) or
+   * Box2D units (false).
    */
   static void set_body_transform(const struct Body2DTransform& transform,
                                  bool in_pixels = false);

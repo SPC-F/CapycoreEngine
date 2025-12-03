@@ -15,7 +15,7 @@
 #include <algorithm>
 
 constexpr float accumulator_default_value = 0.0f;
-constexpr float fixed_step = 1.0f / 120.0f;  // ~120 fps
+constexpr float fixed_step = 1.0f / 60.0f;  // ~60 fps
 
 Scene::Scene(const std::string& name)  // NOLINT
     : name_{name}, is_running_{false}, time_scale_{1.0f} {}

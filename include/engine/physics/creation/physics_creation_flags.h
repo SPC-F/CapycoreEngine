@@ -76,4 +76,20 @@ struct PhysicsCreationFlags {
    * This value sets the mass of the body directly.
    */
   float desired_mass{1.0f};
+
+  /**
+   * @brief Friction coefficient of the body
+   *
+   * Default is 0.5f.
+   * This value defines the friction applied to the body during collisions.
+   */
+  float friction{0.5f};
+
+  /**
+   * @brief Bounciness (restitution) of the body
+   *
+   * Default is 0.5f.
+   * This value defines how bouncy the body is during collisions.
+   */
+  float bounciness{0.5f};
 };

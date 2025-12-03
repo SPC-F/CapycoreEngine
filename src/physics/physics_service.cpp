@@ -25,3 +25,9 @@ std::unique_ptr<PhysicsRaycaster>& PhysicsService::raycaster() noexcept {
 std::unique_ptr<PhysicsCreationFactory>& PhysicsService::factory() noexcept {
   return physics_creation_factory_;
 }
+
+bool PhysicsService::debug_mode() const noexcept { return debug_mode_; }
+
+void PhysicsService::debug_mode(bool enabled) noexcept {
+  debug_mode_ = enabled;
+}

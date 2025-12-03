@@ -14,6 +14,9 @@
  * simulations.
  */
 namespace PhysicsMath {
+static constexpr float pi = 3.14159265358979323846f;
+static constexpr float circle_divisor = 180.0f;
+
 /** @brief Convert pixels to meters using the specified ratio */
 float to_meters(float pixels, float ratio) noexcept;
 
