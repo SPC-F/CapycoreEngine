@@ -76,11 +76,11 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       system_service.update();
     });
 
-    std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>> layered_renderables{};
+    std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>
+        layered_renderables{};
 
-    auto game_objects = this->game_objects();
+    auto game_objects = this->active_game_objects();
     for (auto game_object_wrapper : game_objects) {
-
       const GameObject& game_object = game_object_wrapper.get();
 
       if (!layered_renderables.contains(game_object.layer())) {
@@ -88,16 +88,13 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
         layered_renderables.try_emplace(game_object.layer());
       }
 
-      auto& obj_layer =
-        layered_renderables.at(game_object.layer());
+      auto& obj_layer = layered_renderables.at(game_object.layer());
 
       for (auto component : game_object.get_components<Component>()) {
-
         component.get().update(frame_dt);
         if (auto* const renderable =
                 dynamic_cast<Renderable*>(&component.get());
             component.get().active()) {
-
           obj_layer.emplace(renderable->order_in_layer(), *renderable);
         }
       }
@@ -190,6 +187,19 @@ std::vector<std::reference_wrapper<GameObject>> Scene::game_objects() const {
   refs.reserve(game_objects_.size());
   for (const auto& game_object : game_objects_) {
     refs.emplace_back(*game_object);
+  }
+  return refs;
+}
+
+std::vector<std::reference_wrapper<GameObject>> Scene::active_game_objects()
+    const {
+  std::vector<std::reference_wrapper<GameObject>> refs;
+  refs.reserve(game_objects_.size());
+  for (const auto& game_object : game_objects_) {
+    auto& game_object_ref = *game_object;
+    if (game_object_ref.is_active() && game_object_ref.is_active_in_world()) {
+      refs.emplace_back(*game_object);
+    }
   }
   return refs;
 }

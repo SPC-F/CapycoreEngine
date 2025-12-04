@@ -56,10 +56,20 @@ void GameObject::set_inactive_in_world() noexcept {
 }
 
 bool GameObject::is_active_in_world() const noexcept {
+  if (parent_.has_value()) {
+    return is_active_in_world_ && parent_->get().is_active_in_world();
+  }
+
   return is_active_in_world_;
 }
 
-bool GameObject::is_active() const noexcept { return is_active_; }
+bool GameObject::is_active() const noexcept {
+  if (parent_.has_value()) {
+    return is_active_ && parent_->get().is_active();
+  }
+
+  return is_active_;
+}
 
 bool GameObject::marked_for_deletion() const noexcept {
   return marked_for_deletion_;
