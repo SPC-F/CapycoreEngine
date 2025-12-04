@@ -24,6 +24,8 @@ Collider2D::Collider2D(float friction, float bounciness, Point offset)
             "GameObject.");
       }
     }
+
+    this->set_render_strategy(comp);
   });
 }
 

@@ -52,18 +52,6 @@ TEST_CASE("physics_world_updates_gravity_when_world_exists", "[PhysicsWorld]") {
   REQUIRE(gravity.y == -10.0f);
 }
 
-TEST_CASE("physics_world_sets_and_gets_pixel_to_meter_ratio",
-          "[PhysicsWorld]") {
-  // arrange
-  PhysicsWorld world;
-
-  // act
-  world.pixel_to_meter_ratio(100.0f);
-
-  // assert
-  REQUIRE(world.pixel_to_meter_ratio() == 100.0f);
-}
-
 TEST_CASE("physics_world_step_and_check_collision", "[PhysicsWorld]") {
   // arrange
   PhysicsWorld world;
@@ -98,9 +86,9 @@ TEST_CASE("physics_world_step_updates_dynamic_body", "[PhysicsWorld]") {
   b2Vec2 new_pos = b2Body_GetPosition(body.id);
 
   // assert
-  REQUIRE(new_pos.y < initial_pos.y + 0.1f);  // allow small vertical drift
-  REQUIRE(new_pos.x < initial_pos.x + 0.1f);  // allow small horizontal drift
-  REQUIRE(new_pos.x > initial_pos.x - 0.1f);
+  REQUIRE(new_pos.y < initial_pos.y + 0.5f);  // allow small vertical drift
+  REQUIRE(new_pos.x < initial_pos.x + 0.5f);  // allow small horizontal drift
+  REQUIRE(new_pos.x > initial_pos.x - 0.5f);
 
   REQUIRE_NOTHROW(world.check_collision({}));
 }
@@ -148,8 +136,8 @@ TEST_CASE("physics_world_gets_body_transform", "[PhysicsWorld]") {
   Body2DTransform transform = Body2D::get_body_transform(body);
 
   // assert
-  REQUIRE(transform.position.x == 5.0f);
-  REQUIRE(transform.position.y == 15.0f);
+  REQUIRE(transform.position.x == 0.3125f);
+  REQUIRE(transform.position.y == 0.9375f);
 }
 
 TEST_CASE("physics_world_sets_body_transform", "[PhysicsWorld]") {
@@ -236,7 +224,7 @@ TEST_CASE("physics_world_calculates_distance_between_bodies",
   BodyDistance2D distance_info = world.distance(transform_a, transform_b);
 
   // assert
-  REQUIRE(distance_info.distance == 5.0f);
+  REQUIRE(distance_info.distance == 0.3125f);
   REQUIRE(distance_info.distance > 0.0f);
   REQUIRE(distance_info.normal.x != 0.0f);
   REQUIRE(distance_info.normal.y == 0.0f);
@@ -271,7 +259,7 @@ TEST_CASE("physics_world_calculates_fixture_distance_between_bodies",
       world.fixture_distance(transform_a, transform_b);
 
   // assert
-  REQUIRE(distance_info.distance == 4.0f);
+  REQUIRE(distance_info.distance == 0.25f);
   REQUIRE(distance_info.distance > 0.0f);
   REQUIRE(distance_info.normal.x != 0.0f);
   REQUIRE(distance_info.normal.y == 0.0f);

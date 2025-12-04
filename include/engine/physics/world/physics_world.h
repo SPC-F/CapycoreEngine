@@ -12,8 +12,7 @@
 
 constexpr int32_t default_velocity_iterations = 6;
 constexpr float default_gravity_x = 0.0f;
-constexpr float default_gravity_y = 1.0f;
-constexpr float default_pixel_to_meter_ratio = 16.0f;
+constexpr float default_gravity_y = 30.0f;
 
 /**
  * @brief Represents the physics world using Box2D.
@@ -89,10 +88,10 @@ class PhysicsWorld {
   [[nodiscard]] float gravity_y() const noexcept;
   float gravity_y(float gy) noexcept;
 
-  [[nodiscard]] float pixel_to_meter_ratio() const noexcept;
-  float pixel_to_meter_ratio(float ratio) noexcept;
-
   [[nodiscard]] bool world_exists() const noexcept;
+
+  static constexpr float pixels_per_meters = 16.0f;
+  static constexpr float meters_per_pixels = 1.0f / pixels_per_meters;
 
  private:
   /**
@@ -112,9 +111,6 @@ class PhysicsWorld {
 
   /** @brief Y component of the gravity vector. */
   float gravity_y_{default_gravity_y};
-
-  /** @brief Conversion ratio from pixels to meters (e.g., 16 px = 1 m). */
-  float pixel_to_meter_ratio_{default_pixel_to_meter_ratio};
 
   /** @brief Flag to enable or disable debug drawing of physics objects. */
   bool debug_draw_enabled_{false};
