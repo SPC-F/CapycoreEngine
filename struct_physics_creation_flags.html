@@ -141,6 +141,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a1d88ccbfad081f9471155c930fd46e90" id="r_a1d88ccbfad081f9471155c930fd46e90"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_physics_creation_flags.html#a1d88ccbfad081f9471155c930fd46e90">dynamic</a> {true}</td></tr>
 <tr class="memdesc:a1d88ccbfad081f9471155c930fd46e90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Density of the body.  <br /></td></tr>
 <tr class="separator:a1d88ccbfad081f9471155c930fd46e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bcea44d0ff88083af67cd2d7f611038" id="r_a2bcea44d0ff88083af67cd2d7f611038"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_physics_creation_flags.html#a2bcea44d0ff88083af67cd2d7f611038">enable_rotation</a> {false}</td></tr>
+<tr class="memdesc:a2bcea44d0ff88083af67cd2d7f611038"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to enable rotation for the body.  <br /></td></tr>
+<tr class="separator:a2bcea44d0ff88083af67cd2d7f611038"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78eba377685aebed3b169ef96ba7b8c2" id="r_a78eba377685aebed3b169ef96ba7b8c2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_physics_creation_flags.html#a78eba377685aebed3b169ef96ba7b8c2">sensor</a> {false}</td></tr>
 <tr class="memdesc:a78eba377685aebed3b169ef96ba7b8c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the body is a sensor.  <br /></td></tr>
 <tr class="separator:a78eba377685aebed3b169ef96ba7b8c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,11 +159,37 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a5fbdfb193ea1a113cba0334034622835" id="r_a5fbdfb193ea1a113cba0334034622835"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_physics_creation_flags.html#a5fbdfb193ea1a113cba0334034622835">mask</a> = <a class="el" href="physics__creation__flags_8h.html#aba246cce19122b684158a87e9b4e9353">default_collision_mask</a></td></tr>
 <tr class="memdesc:a5fbdfb193ea1a113cba0334034622835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collision mask filtering.  <br /></td></tr>
 <tr class="separator:a5fbdfb193ea1a113cba0334034622835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab05adb261ddb2debc44e904ed3c17a93" id="r_ab05adb261ddb2debc44e904ed3c17a93"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_physics_creation_flags.html#ab05adb261ddb2debc44e904ed3c17a93">desired_mass</a> {1.0f}</td></tr>
+<tr class="memdesc:ab05adb261ddb2debc44e904ed3c17a93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desired mass of the body.  <br /></td></tr>
+<tr class="separator:ab05adb261ddb2debc44e904ed3c17a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40b469e413a11c0f1d83057fc425df4d" id="r_a40b469e413a11c0f1d83057fc425df4d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_physics_creation_flags.html#a40b469e413a11c0f1d83057fc425df4d">friction</a> {0.5<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a8fa14cdd754f91cc6554c9e71929cce7">f</a>}</td></tr>
+<tr class="memdesc:a40b469e413a11c0f1d83057fc425df4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Friction coefficient of the body.  <br /></td></tr>
+<tr class="separator:a40b469e413a11c0f1d83057fc425df4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb195cf83f192a4aeba7bc144b65f7fd" id="r_abb195cf83f192a4aeba7bc144b65f7fd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_physics_creation_flags.html#abb195cf83f192a4aeba7bc144b65f7fd">bounciness</a> {0.5<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a8fa14cdd754f91cc6554c9e71929cce7">f</a>}</td></tr>
+<tr class="memdesc:abb195cf83f192a4aeba7bc144b65f7fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bounciness (restitution) of the body.  <br /></td></tr>
+<tr class="separator:abb195cf83f192a4aeba7bc144b65f7fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Flags for creating physics bodies. </p>
 <p>This struct encapsulates various options that can be set when creating physics bodies in the Box2D world. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="abb195cf83f192a4aeba7bc144b65f7fd" name="abb195cf83f192a4aeba7bc144b65f7fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb195cf83f192a4aeba7bc144b65f7fd">&#9670;&#160;</a></span>bounciness</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PhysicsCreationFlags::bounciness {0.5<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a8fa14cdd754f91cc6554c9e71929cce7">f</a>}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bounciness (restitution) of the body. </p>
+<p>Default is 0.5f. This value defines how bouncy the body is during collisions. </p>
+
+</div>
+</div>
 <a id="a9c19f0924389c01175ea5936a0f092f8" name="a9c19f0924389c01175ea5936a0f092f8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9c19f0924389c01175ea5936a0f092f8">&#9670;&#160;</a></span>category</h2>
 
@@ -175,6 +204,23 @@ Public Attributes</h2></td></tr>
 
 <p>Collision category filtering. </p>
 <p>Default is 0x0001. This value defines the category of the body for collision filtering. E.g, 0x0002 for player, 0x0004 for enemies. </p>
+
+</div>
+</div>
+<a id="ab05adb261ddb2debc44e904ed3c17a93" name="ab05adb261ddb2debc44e904ed3c17a93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab05adb261ddb2debc44e904ed3c17a93">&#9670;&#160;</a></span>desired_mass</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PhysicsCreationFlags::desired_mass {1.0f}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Desired mass of the body. </p>
+<p>Default is 1.0f. This value sets the mass of the body directly. </p>
 
 </div>
 </div>
@@ -209,6 +255,40 @@ Public Attributes</h2></td></tr>
 
 <p>Whether to enable contact events for the body. </p>
 <p>Default is true. If true, the body will generate contact events on collisions. </p>
+
+</div>
+</div>
+<a id="a2bcea44d0ff88083af67cd2d7f611038" name="a2bcea44d0ff88083af67cd2d7f611038"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bcea44d0ff88083af67cd2d7f611038">&#9670;&#160;</a></span>enable_rotation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PhysicsCreationFlags::enable_rotation {false}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether to enable rotation for the body. </p>
+<p>Default is false. </p>
+
+</div>
+</div>
+<a id="a40b469e413a11c0f1d83057fc425df4d" name="a40b469e413a11c0f1d83057fc425df4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40b469e413a11c0f1d83057fc425df4d">&#9670;&#160;</a></span>friction</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PhysicsCreationFlags::friction {0.5<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a8fa14cdd754f91cc6554c9e71929cce7">f</a>}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Friction coefficient of the body. </p>
+<p>Default is 0.5f. This value defines the friction applied to the body during collisions. </p>
 
 </div>
 </div>

@@ -11,11 +11,11 @@ var hierarchy =
       [ "Animator", "class_animator.html", null ],
       [ "AudioSource", "class_audio_source.html", null ],
       [ "BehaviorScript", "class_behavior_script.html", null ],
-      [ "Collider2D", "class_collider2_d.html", [
-        [ "BoxCollider2D", "class_box_collider2_d.html", null ],
-        [ "CircleCollider2D", "class_circle_collider2_d.html", null ]
-      ] ],
       [ "Renderable", "class_renderable.html", [
+        [ "Collider2D", "class_collider2_d.html", [
+          [ "BoxCollider2D", "class_box_collider2_d.html", null ],
+          [ "CircleCollider2D", "class_circle_collider2_d.html", null ]
+        ] ],
         [ "Image", "class_image.html", null ],
         [ "Sprite", "class_sprite.html", null ],
         [ "Text", "class_text.html", null ]
@@ -57,6 +57,8 @@ var hierarchy =
       [ "InputSystem", "class_input_system.html", null ]
     ] ],
     [ "IRenderingStrategy", "class_i_rendering_strategy.html", [
+      [ "SdlBoxCollider2DStrategy", "class_sdl_box_collider2_d_strategy.html", null ],
+      [ "SdlCircleCollider2DStrategy", "class_sdl_circle_collider2_d_strategy.html", null ],
       [ "SdlImageStrategy", "class_sdl_image_strategy.html", null ],
       [ "SdlSpriteStrategy", "class_sdl_sprite_strategy.html", null ],
       [ "SdlTextStrategy", "class_sdl_text_strategy.html", null ]

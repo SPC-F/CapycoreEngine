@@ -22,12 +22,14 @@ var searchData=
   ['_7erigidbody2d_19',['~Rigidbody2D',['../class_rigidbody2_d.html#a76d39f8ddb656bc6d54fb2cf6c6d9560',1,'Rigidbody2D']]],
   ['_7escene_20',['~Scene',['../class_scene.html#aa0a5be58e2ee2d1fdafc5fb46b5e661e',1,'Scene']]],
   ['_7esceneservice_21',['~SceneService',['../class_scene_service.html#a3878c5173da198932539effef20f8961',1,'SceneService']]],
-  ['_7esdlimagestrategy_22',['~SdlImageStrategy',['../class_sdl_image_strategy.html#aa4547c777192cedbc9693f87b10d5dca',1,'SdlImageStrategy']]],
-  ['_7esdlsoundinstance_23',['~SDLSoundInstance',['../class_s_d_l_sound_instance.html#a6e4d67902cf3b6563333e030b1efc6e8',1,'SDLSoundInstance']]],
-  ['_7esdlsoundresource_24',['~SDLSoundResource',['../class_s_d_l_sound_resource.html#a48bbd8502a17973baf98e92f34625da7',1,'SDLSoundResource']]],
-  ['_7esdlspritestrategy_25',['~SdlSpriteStrategy',['../class_sdl_sprite_strategy.html#a31207a25e575c7c35a0aceb72fb272c7',1,'SdlSpriteStrategy']]],
-  ['_7esdltextstrategy_26',['~SdlTextStrategy',['../class_sdl_text_strategy.html#a46075e47f32493570de50ba2de38d56e',1,'SdlTextStrategy']]],
-  ['_7esoundfactory_27',['~SoundFactory',['../class_sound_factory.html#abd32f31d14df855cfea7b1417a61ebe3',1,'SoundFactory']]],
-  ['_7esoundinstance_28',['~SoundInstance',['../class_sound_instance.html#aae84fc61fb24512d7506a3c4b4c14279',1,'SoundInstance']]],
-  ['_7esoundresource_29',['~SoundResource',['../class_sound_resource.html#aaa392404ed48a13d3a805107a622efbd',1,'SoundResource']]]
+  ['_7esdlboxcollider2dstrategy_22',['~SdlBoxCollider2DStrategy',['../class_sdl_box_collider2_d_strategy.html#aa355dbfc7c36e87965957d89310f509e',1,'SdlBoxCollider2DStrategy']]],
+  ['_7esdlcirclecollider2dstrategy_23',['~SdlCircleCollider2DStrategy',['../class_sdl_circle_collider2_d_strategy.html#aa5d412acd9db7dfb79da5ae759952651',1,'SdlCircleCollider2DStrategy']]],
+  ['_7esdlimagestrategy_24',['~SdlImageStrategy',['../class_sdl_image_strategy.html#aa4547c777192cedbc9693f87b10d5dca',1,'SdlImageStrategy']]],
+  ['_7esdlsoundinstance_25',['~SDLSoundInstance',['../class_s_d_l_sound_instance.html#a6e4d67902cf3b6563333e030b1efc6e8',1,'SDLSoundInstance']]],
+  ['_7esdlsoundresource_26',['~SDLSoundResource',['../class_s_d_l_sound_resource.html#a48bbd8502a17973baf98e92f34625da7',1,'SDLSoundResource']]],
+  ['_7esdlspritestrategy_27',['~SdlSpriteStrategy',['../class_sdl_sprite_strategy.html#a31207a25e575c7c35a0aceb72fb272c7',1,'SdlSpriteStrategy']]],
+  ['_7esdltextstrategy_28',['~SdlTextStrategy',['../class_sdl_text_strategy.html#a46075e47f32493570de50ba2de38d56e',1,'SdlTextStrategy']]],
+  ['_7esoundfactory_29',['~SoundFactory',['../class_sound_factory.html#abd32f31d14df855cfea7b1417a61ebe3',1,'SoundFactory']]],
+  ['_7esoundinstance_30',['~SoundInstance',['../class_sound_instance.html#aae84fc61fb24512d7506a3c4b4c14279',1,'SoundInstance']]],
+  ['_7esoundresource_31',['~SoundResource',['../class_sound_resource.html#aaa392404ed48a13d3a805107a622efbd',1,'SoundResource']]]
 ];

@@ -142,9 +142,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a3fa540cae4cc98f29e1ac1b755f71a8b" id="r_a3fa540cae4cc98f29e1ac1b755f71a8b"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_body2_d.html#a3fa540cae4cc98f29e1ac1b755f71a8b">get_body_transform</a> (const <a class="el" href="struct_body2_d.html">Body2D</a> &amp;body)</td></tr>
 <tr class="memdesc:a3fa540cae4cc98f29e1ac1b755f71a8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the transform of the specified body.  <br /></td></tr>
 <tr class="separator:a3fa540cae4cc98f29e1ac1b755f71a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a623a8af92341f5f39c9fc1774ae5969f" id="r_a623a8af92341f5f39c9fc1774ae5969f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_body2_d.html#a623a8af92341f5f39c9fc1774ae5969f">set_body_transform</a> (const struct <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> &amp;transform)</td></tr>
-<tr class="memdesc:a623a8af92341f5f39c9fc1774ae5969f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the transform of the specified body.  <br /></td></tr>
-<tr class="separator:a623a8af92341f5f39c9fc1774ae5969f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad89aa50c9ea10de1f3e345429d7a062c" id="r_ad89aa50c9ea10de1f3e345429d7a062c"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_body2_d.html#ad89aa50c9ea10de1f3e345429d7a062c">get_pixel_transform</a> (const <a class="el" href="struct_body2_d.html">Body2D</a> &amp;body)</td></tr>
+<tr class="memdesc:ad89aa50c9ea10de1f3e345429d7a062c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the pixel transform of the specified body.  <br /></td></tr>
+<tr class="separator:ad89aa50c9ea10de1f3e345429d7a062c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5963475e76fd0d61948c936397fa7e50" id="r_a5963475e76fd0d61948c936397fa7e50"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_body2_d.html#a5963475e76fd0d61948c936397fa7e50">set_body_transform</a> (const struct <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> &amp;transform, bool in_pixels=false)</td></tr>
+<tr class="memdesc:a5963475e76fd0d61948c936397fa7e50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the transform of the specified body.  <br /></td></tr>
+<tr class="separator:a5963475e76fd0d61948c936397fa7e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f50f61528a01a4d6caef5f6ccd4709a" id="r_a1f50f61528a01a4d6caef5f6ccd4709a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_body2_d.html#a1f50f61528a01a4d6caef5f6ccd4709a">set_body_type</a> (const <a class="el" href="struct_body2_d.html">Body2D</a> &amp;body, <a class="el" href="struct_body_type2_d.html#ab1c7b696dcdfcd93b525330436ad8f3a">BodyType2D::Type</a> type)</td></tr>
 <tr class="memdesc:a1f50f61528a01a4d6caef5f6ccd4709a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the type of the specified body.  <br /></td></tr>
 <tr class="separator:a1f50f61528a01a4d6caef5f6ccd4709a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -347,6 +350,41 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_vector3.html">Vector3</a> The current velocity vector. </dd></dl>
+
+</div>
+</div>
+<a id="ad89aa50c9ea10de1f3e345429d7a062c" name="ad89aa50c9ea10de1f3e345429d7a062c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad89aa50c9ea10de1f3e345429d7a062c">&#9670;&#160;</a></span>get_pixel_transform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> Body2D::get_pixel_transform </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_body2_d.html">Body2D</a> &amp;&#160;</td>
+          <td class="paramname"><em>body</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the pixel transform of the specified body. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">body</td><td>The <a class="el" href="struct_body2_d.html" title="Structure representing a 2D physics body.">Body2D</a> instance to get the local transform for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_body2_d_transform.html" title="Structure representing the transform of a 2D physics body.">Body2DTransform</a> The local transform of the body. </dd></dl>
 
 </div>
 </div>
@@ -634,8 +672,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a623a8af92341f5f39c9fc1774ae5969f" name="a623a8af92341f5f39c9fc1774ae5969f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a623a8af92341f5f39c9fc1774ae5969f">&#9670;&#160;</a></span>set_body_transform()</h2>
+<a id="a5963475e76fd0d61948c936397fa7e50" name="a5963475e76fd0d61948c936397fa7e50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5963475e76fd0d61948c936397fa7e50">&#9670;&#160;</a></span>set_body_transform()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -647,8 +685,18 @@ Public Attributes</h2></td></tr>
           <td class="memname">static void Body2D::set_body_transform </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> &amp;&#160;</td>
-          <td class="paramname"><em>transform</em></td><td>)</td>
+          <td class="paramname"><em>transform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>in_pixels</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -662,6 +710,7 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">transform</td><td>The <a class="el" href="struct_body2_d_transform.html" title="Structure representing the transform of a 2D physics body.">Body2DTransform</a> instance containing the new transform data. </td></tr>
+    <tr><td class="paramname">in_pixels</td><td>Whether the provided transform is in pixels (true) or Box2D units (false). </td></tr>
   </table>
   </dd>
 </dl>

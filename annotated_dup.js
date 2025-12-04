@@ -48,6 +48,8 @@ var annotated_dup =
     [ "Scene", "class_scene.html", "class_scene" ],
     [ "SceneService", "class_scene_service.html", "class_scene_service" ],
     [ "SDLBackendSystem", "class_s_d_l_backend_system.html", "class_s_d_l_backend_system" ],
+    [ "SdlBoxCollider2DStrategy", "class_sdl_box_collider2_d_strategy.html", "class_sdl_box_collider2_d_strategy" ],
+    [ "SdlCircleCollider2DStrategy", "class_sdl_circle_collider2_d_strategy.html", "class_sdl_circle_collider2_d_strategy" ],
     [ "SdlImageStrategy", "class_sdl_image_strategy.html", "class_sdl_image_strategy" ],
     [ "SDLInputStrategy", "class_s_d_l_input_strategy.html", "class_s_d_l_input_strategy" ],
     [ "SDLSoundInstance", "class_s_d_l_sound_instance.html", "class_s_d_l_sound_instance" ],

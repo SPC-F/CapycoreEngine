@@ -127,6 +127,7 @@ $(document).ready(function(){initNavTree('class_physics_world.html',''); initRes
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_physics_world-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">PhysicsWorld Class Reference</div></div>
 </div><!--header-->
@@ -172,10 +173,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab5fa8faad554bf39a00393a1c49de57e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a494fa3f3ccb8210dae83e85d0cb7e1e1" id="r_a494fa3f3ccb8210dae83e85d0cb7e1e1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#a494fa3f3ccb8210dae83e85d0cb7e1e1">gravity_y</a> (float gy) noexcept</td></tr>
 <tr class="separator:a494fa3f3ccb8210dae83e85d0cb7e1e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ff9d81a9c7591176a0b087759ae5359" id="r_a3ff9d81a9c7591176a0b087759ae5359"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#a3ff9d81a9c7591176a0b087759ae5359">pixel_to_meter_ratio</a> () const noexcept</td></tr>
-<tr class="separator:a3ff9d81a9c7591176a0b087759ae5359"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68ecdf9bfae4bc9568509473df795b2e" id="r_a68ecdf9bfae4bc9568509473df795b2e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#a68ecdf9bfae4bc9568509473df795b2e">pixel_to_meter_ratio</a> (float ratio) noexcept</td></tr>
-<tr class="separator:a68ecdf9bfae4bc9568509473df795b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a659fe2483ac7a9c902138ecabe798000" id="r_a659fe2483ac7a9c902138ecabe798000"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#a659fe2483ac7a9c902138ecabe798000">world_exists</a> () const noexcept</td></tr>
 <tr class="separator:a659fe2483ac7a9c902138ecabe798000"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -187,6 +184,13 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a38ce0acd7870358efdd4f6e6848a4b31" id="r_a38ce0acd7870358efdd4f6e6848a4b31"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_body_distance2_d.html">BodyDistance2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#a38ce0acd7870358efdd4f6e6848a4b31">fixture_distance</a> (const <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a0cc175b9c0f1b6a831c399e269772661">a</a>, const <a class="el" href="struct_body2_d_transform.html">Body2DTransform</a> &amp;<a class="el" href="key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a92eb5ffee6ae2fec3ad71c777531578f">b</a>)</td></tr>
 <tr class="memdesc:a38ce0acd7870358efdd4f6e6848a4b31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the distance between two bodies using their fixtures.  <br /></td></tr>
 <tr class="separator:a38ce0acd7870358efdd4f6e6848a4b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a24fdca49b1ff5067fe4d1dc4d298ba4c" id="r_a24fdca49b1ff5067fe4d1dc4d298ba4c"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#a24fdca49b1ff5067fe4d1dc4d298ba4c">pixels_per_meters</a> = 16.0f</td></tr>
+<tr class="separator:a24fdca49b1ff5067fe4d1dc4d298ba4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20feb2a8db98f3b82d6e850b7bda0750" id="r_a20feb2a8db98f3b82d6e850b7bda0750"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physics_world.html#a20feb2a8db98f3b82d6e850b7bda0750">meters_per_pixels</a> = 1.0f / <a class="el" href="class_physics_world.html#a24fdca49b1ff5067fe4d1dc4d298ba4c">pixels_per_meters</a></td></tr>
+<tr class="separator:a20feb2a8db98f3b82d6e850b7bda0750"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents the physics world using Box2D. </p>
@@ -549,57 +553,6 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a3ff9d81a9c7591176a0b087759ae5359" name="a3ff9d81a9c7591176a0b087759ae5359"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ff9d81a9c7591176a0b087759ae5359">&#9670;&#160;</a></span>pixel_to_meter_ratio() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float PhysicsWorld::pixel_to_meter_ratio </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a68ecdf9bfae4bc9568509473df795b2e" name="a68ecdf9bfae4bc9568509473df795b2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68ecdf9bfae4bc9568509473df795b2e">&#9670;&#160;</a></span>pixel_to_meter_ratio() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float PhysicsWorld::pixel_to_meter_ratio </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>ratio</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a7cdf3bfd913d3dbb770e1404bebd80a1" name="a7cdf3bfd913d3dbb770e1404bebd80a1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7cdf3bfd913d3dbb770e1404bebd80a1">&#9670;&#160;</a></span>step()</h2>
 
@@ -722,6 +675,51 @@ Static Public Member Functions</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a20feb2a8db98f3b82d6e850b7bda0750" name="a20feb2a8db98f3b82d6e850b7bda0750"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20feb2a8db98f3b82d6e850b7bda0750">&#9670;&#160;</a></span>meters_per_pixels</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr float PhysicsWorld::meters_per_pixels = 1.0f / <a class="el" href="class_physics_world.html#a24fdca49b1ff5067fe4d1dc4d298ba4c">pixels_per_meters</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a24fdca49b1ff5067fe4d1dc4d298ba4c" name="a24fdca49b1ff5067fe4d1dc4d298ba4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24fdca49b1ff5067fe4d1dc4d298ba4c">&#9670;&#160;</a></span>pixels_per_meters</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr float PhysicsWorld::pixels_per_meters = 16.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
