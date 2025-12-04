@@ -80,12 +80,11 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
 
     std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>
         layered_renderables{};
-    auto game_objects = this->game_objects();
+    auto game_objects = this->active_game_objects();
 
     // 3. fixed update for physics and other fixed-timestep systems
     while (accumulator >= fixed_step) {
-      run_without_tracy([&]() {
-        auto game_objects = this->game_objects();
+      run_without_tracy([this, &game_objects, &physics_service]() {
         physics_service.update(fixed_step, game_objects);
       });
 
@@ -194,6 +193,19 @@ std::vector<std::reference_wrapper<GameObject>> Scene::game_objects() const {
   refs.reserve(game_objects_.size());
   for (const auto& game_object : game_objects_) {
     refs.emplace_back(*game_object);
+  }
+  return refs;
+}
+
+std::vector<std::reference_wrapper<GameObject>> Scene::active_game_objects()
+    const {
+  std::vector<std::reference_wrapper<GameObject>> refs;
+  refs.reserve(game_objects_.size());
+  for (const auto& game_object : game_objects_) {
+    auto& game_object_ref = *game_object;
+    if (game_object_ref.is_active() && game_object_ref.is_active_in_world()) {
+      refs.emplace_back(*game_object);
+    }
   }
   return refs;
 }
