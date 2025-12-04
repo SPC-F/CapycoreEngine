@@ -1,5 +1,7 @@
 #pragma once
 
+#include <engine/core/rendering/renderable.h>
+#include <engine/core/rendering/strategies/irendering_strategy.h>
 #include <engine/physics/creation/physics_creation_flags.h>
 #include <engine/physics/raycast/physics_raycaster.h>
 #include <engine/physics/world/physics_world.h>
@@ -23,7 +25,7 @@ constexpr float default_bounciness_2d = 0.5f;
  * response within the physics engine. It provides methods for handling
  * collision events and querying collision information.
  */
-class Collider2D : public Component {
+class Collider2D : public Renderable {
  public:
   Collider2D(float friction = default_friction_2d,
              float bounciness = default_bounciness_2d,

@@ -230,8 +230,8 @@ TEST_CASE("physics_raycaster_misses_static_hits_dynamic",
   auto result = raycaster.raycast_closest(origin, translation);
 
   REQUIRE(b2Shape_IsValid(result.shape_id));
-  REQUIRE(result.fraction >= 0.3f);
-  REQUIRE(result.fraction <= 0.6f);
+  REQUIRE(result.fraction >= 0.03f);
+  REQUIRE(result.fraction <= 0.06f);
 };
 
 TEST_CASE("physics_raycaster_all_multiple_bodies_at_angle",

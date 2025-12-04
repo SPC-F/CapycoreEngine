@@ -66,76 +66,80 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
   system_service.init_frame_timer();
 
   while (is_running()) {
+    // 1. update frame time
     system_service.update_frame_time(time_scale_ *
                                      gameplay_speed_service.speed());
     float frame_dt = system_service.delta_time();
     accumulator += frame_dt;
 
+    // 2. handle input & system events
     run_without_tracy([&]() {
       input_manager.update();
       system_service.update();
     });
 
-    std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>> layered_renderables{};
-
+    std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>
+        layered_renderables{};
     auto game_objects = this->game_objects();
-    for (auto game_object_wrapper : game_objects) {
 
-      const GameObject& game_object = game_object_wrapper.get();
-
-      if (!layered_renderables.contains(game_object.layer())) {
-        // add game-object layer
-        layered_renderables.try_emplace(game_object.layer());
-      }
-
-      auto& obj_layer =
-        layered_renderables.at(game_object.layer());
-
-      for (auto component : game_object.get_components<Component>()) {
-
-        component.get().update(frame_dt);
-        if (auto* const renderable =
-                dynamic_cast<Renderable*>(&component.get());
-            component.get().active()) {
-
-          obj_layer.emplace(renderable->order_in_layer(), *renderable);
-        }
-      }
-    }
-
+    // 3. fixed update for physics and other fixed-timestep systems
     while (accumulator >= fixed_step) {
-      // creates a fixed step for input handling and physics updates
+      run_without_tracy([&]() {
+        auto game_objects = this->game_objects();
+        physics_service.update(fixed_step, game_objects);
+      });
+
       accumulator -= fixed_step;
     }
 
+    // 4. update game objects & components, collect renderables
     // So tracy logs all allocations, even the past ones in previous frames
     // It does this to build a complete timeline of allocations for profiling
     // We don't want that overhead during normal frame rendering as clearing is
     // buggy here due to the stack So we run the rendering without tracy
     // tracking (if tracy is enabled)
     run_without_tracy([&]() {
-      rendering_service.draw(layered_renderables, *this);
       audio_service.update();
-      physics_service.update(fixed_step, game_objects);
       gameplay_speed_service.update();
 
       for (auto& game_object_ref : game_objects) {
         auto& game_object = game_object_ref.get();
+        if (!game_object.is_active_in_world() || !game_object.is_active()) {
+          continue;
+        }
+
+        // add game-object layer
+        if (!layered_renderables.contains(game_object.layer())) {
+          layered_renderables.try_emplace(game_object.layer());
+        }
+
+        auto& obj_layer = layered_renderables.at(game_object.layer());
 
         if (auto* ui_object_opt = dynamic_cast<UIObject*>(&game_object)) {
           ui_object_opt->update(frame_dt);
         }
 
         auto components = game_object.get_components<Component>();
+
         for (auto& component_ref : components) {
           auto& component = component_ref.get();
+          if (!component.active()) {
+            continue;
+          }
+
           component.update(frame_dt);
+
+          if (auto* const renderable = dynamic_cast<Renderable*>(&component)) {
+            obj_layer.emplace(renderable->order_in_layer(), *renderable);
+          }
         }
 
         if (game_object.marked_for_deletion()) {
           remove_game_object(game_object);
         }
       }
+
+      rendering_service.draw(layered_renderables, *this);
     });
   }
 }

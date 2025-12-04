@@ -57,7 +57,11 @@ class PhysicsService : public IEngineService {
    */
   std::unique_ptr<PhysicsCreationFactory>& factory() noexcept;
 
+  [[nodiscard]] bool debug_mode() const noexcept;
+  void debug_mode(bool enabled) noexcept;
+
  private:
+  bool debug_mode_{false};
   std::unique_ptr<PhysicsWorld> physics_world_{nullptr};
   std::unique_ptr<PhysicsRaycaster> physics_raycaster_{nullptr};
   std::unique_ptr<PhysicsCreationFactory> physics_creation_factory_{nullptr};
