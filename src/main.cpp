@@ -1,5 +1,6 @@
 #include <engine/util/memory.h>
 
+
 // Macro's for tracy based on the CMake option
 namespace {
 #ifdef TRACY_ENABLE

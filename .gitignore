@@ -1,6 +1,8 @@
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
+CMakePresets.json
+
 /cmake-build-debug
 build
 CMakeScripts

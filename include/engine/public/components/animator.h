@@ -6,9 +6,9 @@
 
 #include <vector>
 
-class Animator final : public Component {
+class Animator : public Component {
  private:
-  const std::vector<std::reference_wrapper<Texture>> frames_;
+  std::vector<std::reference_wrapper<Texture>> frames_;
   const int interval_ms_;
 
   int current_texture_index_;
@@ -32,4 +32,7 @@ class Animator final : public Component {
   void update(float dt_seconds) override;
   void on_serialize() override;
   void on_deserialize() override;
+
+  void set_animation(
+      const std::vector<std::reference_wrapper<Texture>>& frames_);
 };
