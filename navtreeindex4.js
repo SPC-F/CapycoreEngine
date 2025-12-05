@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a8277e0910d750195b448797616e091ad":[4,0,0,0,2,5,0,3],
 "key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a82b5f6802b727b0d948d38cbccd48904":[4,0,0,0,2,5,0,45],
 "key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a83587bde886b4e2a02376472328fd171":[4,0,0,0,2,5,0,87],
 "key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a83878c91171338902e0fe0fb97a8c47a":[4,0,0,0,2,5,0,15],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "struct_mouse_state.html#a42cd0aa1778ef8888254e1568bf3fd1d":[3,0,33,1],
 "struct_mouse_state.html#a8ac0db15ff714b49811f58f24d49fb1f":[3,0,33,4],
 "struct_mouse_state.html#a934473a0251bf14edfa70c27ded70784":[3,0,33,0],
-"struct_mouse_state.html#aa55cd0e5b66af47616728a6ea874f025":[3,0,33,5],
-"struct_mouse_state.html#ac3e36771c2be1040c25c0737e554ebd3":[3,0,33,2]
+"struct_mouse_state.html#aa55cd0e5b66af47616728a6ea874f025":[3,0,33,5]
 };

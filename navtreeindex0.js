@@ -31,12 +31,13 @@ var NAVTREEINDEX0 =
 "class_animator.html":[3,0,0],
 "class_animator.html#a27155b2855273b5741fff32cead1aa6c":[3,0,0,3],
 "class_animator.html#a2d63cba9e9f75b5ba813ec1e619fa328":[3,0,0,6],
-"class_animator.html#a55208596a1d94eacd93e82767f0ba03d":[3,0,0,7],
+"class_animator.html#a55208596a1d94eacd93e82767f0ba03d":[3,0,0,8],
 "class_animator.html#a5eeaa2f921685aad765badce30ee8c13":[3,0,0,4],
 "class_animator.html#a84919c8020af822d3fa7df2d68e4e456":[3,0,0,0],
 "class_animator.html#aba0f20488b0b09cf0919d502d212538a":[3,0,0,2],
 "class_animator.html#aba29f7221a3740a7807f6212a2406349":[3,0,0,5],
 "class_animator.html#abf6aeab627419e5bbc20a267d69f8a31":[3,0,0,1],
+"class_animator.html#acdc615cf1c4172fb5df8e913ed62dfdc":[3,0,0,7],
 "class_asset_service.html":[3,0,1],
 "class_asset_service.html#a042b5267453056e175667f19fa335206":[3,0,1,6],
 "class_asset_service.html#a17e689c7a5e22dc0a20d7bd6409fd964":[3,0,1,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "class_gameplay_speed_service.html#a2e5204582712dacbf390e8ebd5d2a139":[3,0,20,6],
 "class_gameplay_speed_service.html#a30525d5eb8829997ad033de6ff4b5a27":[3,0,20,5],
 "class_gameplay_speed_service.html#a33721acdc3b67c98b23aa9e3febfcd91":[3,0,20,4],
-"class_gameplay_speed_service.html#a4da82e59956eec5cefc4181a142e21bf":[3,0,20,10],
-"class_gameplay_speed_service.html#a5aa5faf7db3c8825c696814a8de128a1":[3,0,20,7]
+"class_gameplay_speed_service.html#a4da82e59956eec5cefc4181a142e21bf":[3,0,20,10]
 };
