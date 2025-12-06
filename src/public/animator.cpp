@@ -132,3 +132,14 @@ void Animator::update(const float dt_seconds) {
 void Animator::on_serialize() {}
 
 void Animator::on_deserialize() {}
+
+void Animator::set_animation(
+    const std::vector<std::reference_wrapper<Texture>>& frames) {
+
+  if (frames.empty()) {
+    throw std::invalid_argument("Animator: frames cannot be empty.");
+  }
+
+  frames_ = frames;
+  reset();
+}

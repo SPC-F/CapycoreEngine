@@ -3,6 +3,7 @@
 #include <box2d/box2d.h>
 #include <engine/physics/world/body/body_type_2d.h>
 #include <engine/physics/world/body/shape_type_2d.h>
+#include <engine/public/util/point.h>
 #include <engine/public/util/vector3.h>
 
 #include <vector>
@@ -79,14 +80,15 @@ struct Body2D {
    * @param body The Body2D instance to set the size for.
    * @param size The new size as a Vector3.
    */
-  static void set_body_size(const Body2D& body, const Vector3& size);
+  static void set_body_size(const Body2D& body, const Vector3& size,
+                            Point offset);
 
   /** @brief Sets the radius of the specified body.
    *
    * @param body The Body2D instance to set the radius for.
    * @param radius The new radius value.
    */
-  static void set_body_radius(const Body2D& body, float radius);
+  static void set_body_radius(const Body2D& body, float radius, Point offset);
 
   /** @brief Sets the bounciness of the specified body for a given shape type.
    *

@@ -54,6 +54,10 @@ float CircleCollider2D::radius() const noexcept { return radius_; }
 
 CircleCollider2D& CircleCollider2D::radius(float value) noexcept {
   radius_ = value;
+
+  auto& rigidbody = get_rigidbody().get();
+  Body2D::set_body_radius(rigidbody.body(), radius_, offset());
+
   return *this;
 }
 

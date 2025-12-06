@@ -58,28 +58,39 @@ void Body2D::set_body_type(const Body2D& body, BodyType2D::Type type) {
   b2Body_SetType(body.id, b2_type);
 }
 
-void Body2D::set_body_size(const Body2D& body, const Vector3& size) {
+void Body2D::set_body_size(const Body2D& body, const Vector3& size,
+                           Point offset) {
+  float width_m = PhysicsMath::pixels_to_box2d(size.x);
+  float height_m = PhysicsMath::pixels_to_box2d(size.y);
+
+  float half_width = width_m / default_box_divisor;
+  float half_height = height_m / default_box_divisor;
+
+  b2Vec2 converted_offset = {
+      PhysicsMath::pixels_to_box2d(offset.x + size.x * 0.5f),
+      PhysicsMath::pixels_to_box2d(offset.y + size.y * 0.5f)};
+
   for (const auto& shape : body.shapes) {
     if (shape.type != b2ShapeType::b2_polygonShape) {
       continue;
     }
 
-    b2Polygon box =
-        b2MakeBox(size.x / default_box_divisor, size.y / default_box_divisor);
+    b2Polygon box = b2MakeOffsetBox(half_width, half_height, converted_offset,
+                                    b2MakeRot(0.0f));
     b2Shape_SetPolygon(shape.id, &box);
   }
 }
 
-void Body2D::set_body_radius(const Body2D& body, float radius) {
+void Body2D::set_body_radius(const Body2D& body, float radius, Point offset) {
   for (const auto& shape : body.shapes) {
     if (shape.type != b2ShapeType::b2_circleShape) {
       continue;
     }
 
     b2Circle circle;
-
-    circle.center = b2Vec2{0.0f, 0.0f};
-    circle.radius = radius;
+    circle.radius = PhysicsMath::pixels_to_box2d(radius);
+    circle.center = b2Vec2{PhysicsMath::pixels_to_box2d(offset.x),
+                           PhysicsMath::pixels_to_box2d(offset.y)};
 
     b2Shape_SetCircle(shape.id, &circle);
   }

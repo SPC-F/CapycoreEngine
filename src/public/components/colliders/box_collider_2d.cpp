@@ -57,7 +57,7 @@ BoxCollider2D& BoxCollider2D::width(float value) noexcept {
   width_ = value;
 
   auto& rigidbody = get_rigidbody().get();
-  Body2D::set_body_size(rigidbody.body(), {width_, height_, 0.0f});
+  Body2D::set_body_size(rigidbody.body(), {width_, height_, 0.0f}, offset());
 
   return *this;
 }
@@ -68,7 +68,7 @@ BoxCollider2D& BoxCollider2D::height(float value) noexcept {
   height_ = value;
 
   auto& rigidbody = get_rigidbody().get();
-  Body2D::set_body_size(rigidbody.body(), {width_, height_, 0.0f});
+  Body2D::set_body_size(rigidbody.body(), {width_, height_, 0.0f}, offset());
 
   return *this;
 }
