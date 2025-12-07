@@ -11,6 +11,12 @@
 #include <engine/network/router.h>
 #include <engine/network/connection_state.h>
 
+enum class PeerType : uint16_t {
+    HOST,
+    CLIENT,
+    NONE
+};
+
 /**
  * @class MultiplayerService
  * @brief High-level peer-to-peer networking service managing host/client mode,
@@ -55,6 +61,12 @@ public:
      * @throws std::runtime_error if the current host has active clients or running server.
      */
     void set_client();
+
+    /**
+     * @brief Returns the current peer type (host, client, or none).
+     * @return PeerType indicating the current mode of operation.
+     */
+    PeerType get_peer_type() const;
 
     /**
      * @brief Polls the network. Behavior depends on host/client mode.

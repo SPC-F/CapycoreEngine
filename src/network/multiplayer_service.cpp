@@ -59,6 +59,17 @@ void MultiplayerService::set_client()
     client_ = std::make_unique<Client>(std::ref(*router_));
 }
 
+PeerType MultiplayerService::get_peer_type() const
+{
+    if (host_) {
+        return PeerType::HOST;
+    } else if (client_) {
+        return PeerType::CLIENT;
+    } else {
+        return PeerType::NONE;
+    }
+}
+
 void MultiplayerService::poll()
 {
     if (host_) {
