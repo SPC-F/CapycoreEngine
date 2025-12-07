@@ -8,32 +8,68 @@
 #include <stdexcept>
 
 /**
- * @brief Base class for defining behaviors that can be attached to Components.
- * @note This class is inteded to be inherited from to create specific
- * behaviors.
+ * @brief Base class for defining logic that can be attached to Components,
+ *        similar to Unity's MonoBehaviour.
  *
- * The Behavior class provides a structured way to define lifecycle methods
- * for game logic, such as initialization, updates, and destruction.
- * It also offers utility methods to interact with the associated GameObject
- * and its Components.
+ * Behaviors provide a structured lifecycle for game logic:
+ * - on_awake()   : Called once when the Component is created.
+ * - on_start()   : Called once before the first update.
+ * - on_update()  : Called every frame.
+ * - on_destroy() : Called when the Behavior or its GameObject is destroyed.
+ *
+ * A Behavior operates on the Component it is attached to and provides utility
+ * methods for accessing the GameObject, Transform, and other Components. See it
+ * as a gateway to implement game logic that interacts with the engine's
+ * objects.
+ *
+ * @note Users should derive from this class to implement custom behavior.
+ * @warning on_update() must be overridden.
  */
 class Behavior {
  public:
   Behavior();
   virtual ~Behavior() = default;
 
+  /**
+   * @brief Attaches this Behavior to a Component.
+   * @param component The component this behavior should operate on.
+   * @throws std::runtime_error if already attached.
+   */
   void attach(Component& component);
 
+  /// Called when the Component is created. Runs before on_start().
   virtual void on_awake(){};
+
+  /// Called before the first frame on_update().
   virtual void on_start(){};
+
+  /**
+   * @brief Called once per frame.
+   * @param dt Time delta since last frame.
+   */
   virtual void on_update(float dt) = 0;
+
+  /// Called when the Behavior or associated GameObject is destroyed.
   virtual void on_destroy(){};
 
+  /**
+   * @return Reference to the GameObject this Behavior operates on.
+   * @throws std::runtime_error if not attached.
+   */
   [[nodiscard]] GameObject& game_object() const;
+
+  /**
+   * @return Reference to the Transform of the attached GameObject.
+   */
   [[nodiscard]] Transform& transform() const;
 
+  /// @return Whether the behavior is currently enabled.
   [[nodiscard]] bool enabled() const;
+
+  /// Enables the behavior.
   Behavior& enable();
+
+  /// Disables the behavior.
   Behavior& disable();
 
   template <typename T>
@@ -117,8 +153,13 @@ class Behavior {
     return result;
   }
 
+  /// Destroy the parent game object
   void destroy();
+
+  /// Destroy a specific component on the parent game object
   void destroy(Component& component);
+
+  /// Destroy a specific game object in the scene
   void destroy(GameObject& game_object);
 
  private:
