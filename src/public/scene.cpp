@@ -5,6 +5,7 @@
 #include <engine/core/system/system_service.h>
 #include <engine/input/input_manager.h>
 #include <engine/input/input_system.h>
+#include <engine/network/multiplayer_service.h>
 #include <engine/physics/physics_service.h>
 #include <engine/public/component.h>
 #include <engine/public/gameObject.h>
@@ -58,6 +59,8 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       Engine::instance().services->get_service<PhysicsService>().get();
   auto& rendering_service =
       Engine::instance().services->get_service<RenderingService>().get();
+  auto& multiplayer_service =
+      Engine::instance().services->get_service<MultiplayerService>().get();
 
   system_service.init_frame_timer();
 
@@ -69,6 +72,8 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
     run_without_tracy([&]() {
       input_manager.update();
       system_service.update();
+
+      multiplayer_service.poll();
     });
 
     auto game_objects = this->game_objects();
