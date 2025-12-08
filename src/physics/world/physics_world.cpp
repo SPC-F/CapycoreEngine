@@ -36,6 +36,7 @@ void PhysicsWorld::check_collision(
       continue;
     }
 
+    // Get the bodies associated with the shapes
     b2BodyId body_a = b2Shape_GetBody(touch_event->shapeIdA);
     b2BodyId body_b = b2Shape_GetBody(touch_event->shapeIdB);
     auto* comp_a = static_cast<Component*>(b2Body_GetUserData(body_a));
@@ -64,6 +65,7 @@ void PhysicsWorld::check_collision(
             }
           }
 
+          // Check for the collider type currently in the loop
           b2ShapeType collider_shape_type;
           if (auto box = dynamic_cast<BoxCollider2D*>(&collider)) {
             collider_shape_type = b2ShapeType::b2_polygonShape;
