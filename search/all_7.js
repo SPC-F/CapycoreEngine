@@ -1,7 +1,7 @@
 var searchData=
 [
   ['g_0',['g',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44ab2f5ff47436671b6e533d8dc3614845d',1,'g:&#160;key_code.h'],['../class_color.html#a88b0a0667f31694665642f2754fe2e86',1,'Color::g']]],
-  ['game_5fobject_1',['game_object',['../class_behavior.html#a08b8c4ce381114ed5b36c256747a57b5',1,'Behavior']]],
+  ['game_5fobject_1',['game_object',['../struct_collider_ray_result.html#a4d3eb25137a6a12543046f66a072a8c5',1,'ColliderRayResult::game_object'],['../class_behavior.html#a08b8c4ce381114ed5b36c256747a57b5',1,'Behavior::game_object()']]],
   ['game_5fobjects_2',['game_objects',['../class_scene.html#a7a3c0c308ec7be21ed4bde91d5dc5be8',1,'Scene']]],
   ['gameobject_3',['gameobject',['../class_game_object.html',1,'GameObject'],['../class_game_object.html#ab2c6683579548906dc8432bbd823fd76',1,'GameObject::GameObject(Scene &amp;scene)'],['../class_game_object.html#aae3335f16f4c318950ef8b9b5fd1d368',1,'GameObject::GameObject(const GameObject &amp;)=delete'],['../class_game_object.html#aec073a2a8dd3d4874540cb8b650ff1e4',1,'GameObject::GameObject(GameObject &amp;&amp;)=default']]],
   ['gameobject_2eh_4',['gameObject.h',['../game_object_8h.html',1,'']]],

@@ -1,5 +1,14 @@
 var NAVTREEINDEX5 =
 {
+"struct_mouse_button_state.html#a346b241f589a5a1bb8dfdb9ce81f6909":[3,0,32,2],
+"struct_mouse_button_state.html#a97f2f4b1943b3db9fca13b15d61a977e":[3,0,32,0],
+"struct_mouse_button_state.html#aa62593b07641cef3ff46ba88e3c85b93":[3,0,32,1],
+"struct_mouse_state.html":[3,0,33],
+"struct_mouse_state.html#a241498a6a3ce01a7db6a9c56ebdef12f":[3,0,33,3],
+"struct_mouse_state.html#a42cd0aa1778ef8888254e1568bf3fd1d":[3,0,33,1],
+"struct_mouse_state.html#a8ac0db15ff714b49811f58f24d49fb1f":[3,0,33,4],
+"struct_mouse_state.html#a934473a0251bf14edfa70c27ded70784":[3,0,33,0],
+"struct_mouse_state.html#aa55cd0e5b66af47616728a6ea874f025":[3,0,33,5],
 "struct_mouse_state.html#ac3e36771c2be1040c25c0737e554ebd3":[3,0,33,2],
 "struct_mouse_wheel_state.html":[3,0,34],
 "struct_mouse_wheel_state.html#a6f8a46808d00f972daa835f5e00664fd":[3,0,34,0],
