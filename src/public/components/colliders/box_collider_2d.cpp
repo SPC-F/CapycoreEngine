@@ -40,9 +40,14 @@ BoxCollider2D::BoxCollider2D(float friction, float bounciness, float width,
 
 void BoxCollider2D::update(float dt) { Collider2D::update(dt); }
 
-void BoxCollider2D::on_serialize() {}
+void BoxCollider2D::on_serialize(std::vector<uint8_t>& /*out*/) const {
+  // TODO: after networking
+}
 
-void BoxCollider2D::on_deserialize() {}
+void BoxCollider2D::on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                       size_t& /*offset*/) {
+  // TODO: after networking
+}
 
 float BoxCollider2D::width() const noexcept { return width_; }
 

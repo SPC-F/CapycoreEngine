@@ -28,9 +28,14 @@ Image::Image(const std::string& image, int flip_x, int flip_y, int width,
 
 void Image::update(float dt) {}
 
-void Image::on_serialize() {}
+void Image::on_serialize(std::vector<uint8_t>& /*out*/) const {
+  // TODO: after networking
+}
 
-void Image::on_deserialize() {}
+void Image::on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                       size_t& /*offset*/) {
+  // TODO: after networking
+}
 
 int Image::flip_x() const { return flip_x_; }
 

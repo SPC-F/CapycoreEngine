@@ -24,11 +24,12 @@ void AudioSource::on_attach() {
 
 void AudioSource::on_detach() { stop(); }
 
-void AudioSource::on_serialize() {
+void AudioSource::on_serialize(std::vector<uint8_t>& /*out*/) const {
   // TODO: after networking
 }
 
-void AudioSource::on_deserialize() {
+void AudioSource::on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                       size_t& /*offset*/) {
   // TODO: after networking
 }
 

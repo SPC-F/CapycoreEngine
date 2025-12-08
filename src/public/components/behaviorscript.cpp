@@ -32,12 +32,13 @@ void BehaviorScript::update(float dt) {
   behavior_->on_update(dt);
 }
 
-void BehaviorScript::on_serialize() {
-  // TODO: implement after networking is done
+void BehaviorScript::on_serialize(std::vector<uint8_t>& /*out*/) const {
+  // TODO: after networking
 }
 
-void BehaviorScript::on_deserialize() {
-  // TODO: implement after networking is done
+void BehaviorScript::on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                       size_t& /*offset*/) {
+  // TODO: after networking
 }
 
 Behavior& BehaviorScript::behavior() { return *behavior_; }

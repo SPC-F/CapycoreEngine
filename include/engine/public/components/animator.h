@@ -30,6 +30,7 @@ class Animator final : public Component {
 
   // Component overrides
   void update(float dt_seconds) override;
-  void on_serialize() override;
-  void on_deserialize() override;
+  void on_serialize(std::vector<uint8_t>& /*out*/) const override;
+  void on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                       size_t& /*offset*/) override;
 };

@@ -189,7 +189,7 @@ void GameObject::serialize(std::vector<uint8_t>& out) const {
   std::vector<std::pair<std::string, std::vector<uint8_t>>> comp_entries;
   for (auto& c : comps) {
     std::vector<uint8_t> cp;
-    c.get().on_serialize_payload(cp);
+    c.get().on_serialize(cp);
     if (!cp.empty()) comp_entries.emplace_back(c.get().type_name(), std::move(cp));
   }
 
@@ -273,7 +273,7 @@ void GameObject::deserialize(const std::vector<uint8_t>& data, size_t& offset) {
     for (auto& comp_ref : get_components_all()) {
       if (comp_ref.get().type_name() == tname) {
         size_t inner_off = offset;
-        comp_ref.get().on_deserialize_payload(data, inner_off);
+        comp_ref.get().on_deserialize(data, inner_off);
         // advance offset to end of this component payload regardless
         offset = offset + plen;
         applied = true;

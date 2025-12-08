@@ -80,13 +80,9 @@ void Component::remove_on_detach(size_t index) {
   }
 }
 
-// Legacy no-op implementations kept so existing components compile.
-void Component::on_serialize() {}
-void Component::on_deserialize() {}
+void Component::on_serialize(std::vector<uint8_t>& /*out*/) const {}
 
-void Component::on_serialize_payload(std::vector<uint8_t>& /*out*/) const {}
-
-void Component::on_deserialize_payload(const std::vector<uint8_t>& /*data*/,
+void Component::on_deserialize(const std::vector<uint8_t>& /*data*/,
                                        size_t& /*offset*/) {}
 
 std::string Component::type_name() const { return std::string(typeid(*this).name()); }

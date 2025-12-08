@@ -16,8 +16,8 @@ struct DummyComponent : public Component {
   void update(float dt) override {}
   void on_attach() override {}
   void on_detach() override {}
-  void on_serialize() override {}
-  void on_deserialize() override {}
+  void on_serialize(std::vector<uint8_t>&) const {}
+  void on_deserialize(const std::vector<uint8_t>&, size_t&) {}
 };
 
 TEST_CASE("physics_creation_factory_creates_body", "[PhysicsCreationFactory]") {

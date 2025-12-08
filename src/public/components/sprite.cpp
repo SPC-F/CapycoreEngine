@@ -75,6 +75,11 @@ Sprite& Sprite::texture(Texture& texture) {
 
 void Sprite::update(float dt) {}
 
-void Sprite::on_serialize() {}
+void Sprite::on_serialize(std::vector<uint8_t>& /*out*/) const {
+  // TODO: after networking
+}
 
-void Sprite::on_deserialize() {}
+void Sprite::on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                       size_t& /*offset*/) {
+  // TODO: after networking
+}

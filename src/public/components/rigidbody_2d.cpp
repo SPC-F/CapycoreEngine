@@ -55,12 +55,13 @@ void Rigidbody2D::update(float dt) {
   }
 }
 
-void Rigidbody2D::on_serialize() {
-  // TODO: Implement after network...
+void Rigidbody2D::on_serialize(std::vector<uint8_t>& /*out*/) const {
+  // TODO: after networking
 }
 
-void Rigidbody2D::on_deserialize() {
-  // TODO: Implement after network...
+void Rigidbody2D::on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                       size_t& /*offset*/) {
+  // TODO: after networking
 }
 
 BodyType2D::Type Rigidbody2D::type() const noexcept { return type_; }

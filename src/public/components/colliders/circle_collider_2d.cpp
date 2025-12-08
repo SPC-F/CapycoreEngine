@@ -40,9 +40,14 @@ CircleCollider2D::CircleCollider2D(float friction, float bounciness,
 
 void CircleCollider2D::update(float dt) { Collider2D::update(dt); }
 
-void CircleCollider2D::on_serialize() {}
+void CircleCollider2D::on_serialize(std::vector<uint8_t>& /*out*/) const {
+  // TODO: after networking
+}
 
-void CircleCollider2D::on_deserialize() {}
+void CircleCollider2D::on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                       size_t& /*offset*/) {
+  // TODO: after networking
+}
 
 float CircleCollider2D::radius() const noexcept { return radius_; }
 

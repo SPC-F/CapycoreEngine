@@ -27,7 +27,7 @@ void NetworkIdentity::clear_dirty() noexcept { dirty_ = false; }
 
 bool NetworkIdentity::is_dirty() const noexcept { return dirty_; }
 
-void NetworkIdentity::on_serialize_payload(std::vector<uint8_t>& out) const {
+void NetworkIdentity::on_serialize(std::vector<uint8_t>& out) const {
   // Serialize UUID and owner_uuid as: uuid_len(uint16_t) + uuid_bytes + 
   // owner_len(uint16_t) + owner_bytes
   uint16_t uuid_len = static_cast<uint16_t>(uuid_.size());
@@ -51,7 +51,7 @@ void NetworkIdentity::on_serialize_payload(std::vector<uint8_t>& out) const {
   }
 }
 
-void NetworkIdentity::on_deserialize_payload(const std::vector<uint8_t>& data,
+void NetworkIdentity::on_deserialize(const std::vector<uint8_t>& data,
                                              size_t& offset) {
   if (offset + sizeof(uint16_t) > data.size()) {
     return;

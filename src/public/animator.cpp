@@ -129,6 +129,11 @@ void Animator::update(const float dt_seconds) {
   }
 }
 
-void Animator::on_serialize() {}
+void Animator::on_serialize(std::vector<uint8_t>& /*out*/) const {
+  // TODO: after networking
+}
 
-void Animator::on_deserialize() {}
+void Animator::on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                       size_t& /*offset*/) {
+  // TODO: after networking
+}

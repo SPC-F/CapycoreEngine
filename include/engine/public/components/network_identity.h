@@ -34,10 +34,8 @@ public:
     void update(float /*dt*/) override {}
     void on_attach() override {}
     void on_detach() override {}
-    void on_serialize() override {}
-    void on_deserialize() override {}
-    void on_serialize_payload(std::vector<uint8_t>& out) const override;
-    void on_deserialize_payload(const std::vector<uint8_t>& data,
-                                size_t& offset) override;
+    void on_serialize(std::vector<uint8_t>& /*out*/) const override;
+    void on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                        size_t& /*offset*/) override;
     std::string type_name() const override { return "NetworkIdentity"; }
 };

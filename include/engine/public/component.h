@@ -36,16 +36,9 @@ class Component {
   virtual void on_attach();
   virtual void on_detach();
 
-  // Legacy no-op serialize hooks (kept for compatibility)
-  virtual void on_serialize();
-  virtual void on_deserialize();
-
-  // New payload-based hooks for network snapshots. Components that want to
-  // include custom data in snapshots should override these. Default
-  // implementations do nothing.
-  virtual void on_serialize_payload(std::vector<uint8_t>& out) const;
-  virtual void on_deserialize_payload(const std::vector<uint8_t>& data,
-                                      size_t& offset);
+  virtual void on_serialize(std::vector<uint8_t>& /*out*/) const;
+  virtual void on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                       size_t& /*offset*/);
 
   // A stable-ish textual identifier for the component type. By default this
   // returns the RTTI name; components may override to provide nicer names.
