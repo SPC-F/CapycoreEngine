@@ -79,6 +79,13 @@ public:
      */
     void set_connection_port(int port) noexcept;
 
+    /**
+     * @brief Sends a message to a connected client identified by UUID.
+     * @param uuid Target client's UUID.
+     * @param message Message to send.
+     */
+    void send_to_uuid(const std::string& uuid, const Message& message) noexcept;
+
 private:
     ENetHost* server_{nullptr};
     int connection_port_{0};
@@ -97,6 +104,8 @@ private:
      * @param peer Target peer.
      */
     void send_to_peer(const Message& message, ENetPeer* peer) noexcept;
+
+    void send_full_snapshot(std::string& uuid);
 
     /**
      * @brief Registers internal disconnect handler to clean client state

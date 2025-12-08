@@ -110,6 +110,10 @@ class GameObject {
                                                   filtered.end());
   }
 
+  /** Get all components (non-templated) attached to this GameObject. */
+  [[nodiscard]] std::vector<std::reference_wrapper<Component>>
+  get_components_all() const;
+
   template <IsComponent T>
   std::vector<std::reference_wrapper<T>> get_components_from_children() const {
     std::vector<std::reference_wrapper<T>> result{};
@@ -148,6 +152,25 @@ class GameObject {
         components_.end());
   }
 
-  void serialize() const;
-  void deserialize() const;
+  /**
+   * Serialize this GameObject's own state and its components into `out`.
+   * The format produced is:
+   *   uint16_t name_len, name bytes
+   *   uint16_t tag_len, tag bytes
+   *   uint8_t is_active
+   *   int32_t layer
+   *   uint16_t component_count
+   *   for each component:
+   *     uint16_t type_name_len, type_name bytes
+   *     uint32_t payload_len, payload bytes
+   */
+  void serialize(std::vector<uint8_t>& out) const;
+
+  /**
+   * Deserialize this GameObject's state and dispatch component payloads from
+   * `data` starting at `offset`. Implementations should advance `offset`
+   * by the number of bytes consumed. Subclasses overriding this method should
+   * call `GameObject::deserialize` first to keep base behavior.
+   */
+  void deserialize(const std::vector<uint8_t>& data, size_t& offset);
 };

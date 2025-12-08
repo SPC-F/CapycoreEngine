@@ -72,7 +72,12 @@ void Host::poll() noexcept
             std::strncpy(body.uuid, uuid.c_str(), sizeof(body.uuid) - 1);
 
             Message msg = serialize_message(body, DefaultMessageTypes::CONNECT);
+            
+            // Send CONNECT message to the client
             send_to_peer(msg, event.peer);
+            
+            // Also route CONNECT through the router so the engine's snapshot handler fires
+            router_.get().route(msg);
         } break;
 
         case ENET_EVENT_TYPE_DISCONNECT:
@@ -195,6 +200,15 @@ void Host::send_to_peer(const Message& message, ENetPeer* peer) noexcept
     enet_peer_send(peer, 0, packet);
 }
 
+void Host::send_to_uuid(const std::string& uuid, const Message& message) noexcept
+{
+    auto it = clients_.find(uuid);
+    if (it == clients_.end())
+        return;
+
+    send_to_peer(message, it->second);
+}
+
 ConnectionState Host::get_connection_state() const noexcept
 {
     return connection_state_;
@@ -218,6 +232,11 @@ int Host::get_client_amount() const noexcept
 void Host::set_connection_port(int port) noexcept
 {
     connection_port_ = port;
+}
+
+void Host::send_full_snapshot(std::string& uuid)
+{
+    
 }
 
 void Host::set_client_disconnect_handler() noexcept
