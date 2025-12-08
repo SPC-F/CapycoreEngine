@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"class_game_object.html#aef31e6fca036256ac8eee5cc1b0963c4":[3,0,19,10],
 "class_game_object.html#af593d5fdc4daefe74d9f8c037f15d209":[3,0,19,23],
 "class_game_object.html#afd556ea34cc2c55f84a486ac54619b5d":[3,0,19,12],
 "class_gameplay_speed_service.html":[3,0,20],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "class_s_d_l_sound_instance.html#ad9420e4c95087e0b8fdadc05d261478c":[3,0,52,0],
 "class_s_d_l_sound_resource.html":[3,0,53],
 "class_s_d_l_sound_resource.html#a48bbd8502a17973baf98e92f34625da7":[3,0,53,1],
-"class_s_d_l_sound_resource.html#a51f0a3586c19e34c2c31138ad0af8d74":[3,0,53,2],
-"class_s_d_l_sound_resource.html#a597d294627c85e5534e18b3aae2a03d7":[3,0,53,4]
+"class_s_d_l_sound_resource.html#a51f0a3586c19e34c2c31138ad0af8d74":[3,0,53,2]
 };

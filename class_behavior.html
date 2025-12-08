@@ -131,7 +131,7 @@ $(document).ready(function(){initNavTree('class_behavior.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 
-<p>Base class for defining behaviors that can be attached to Components.  
+<p>Base class for defining logic that can be attached to Components, similar to Unity's MonoBehaviour.  
  <a href="class_behavior.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="behavior_8h_source.html">behavior.h</a>&gt;</code></p>
@@ -143,14 +143,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a77a74cd65fcfe6069b4db29db28782e2" id="r_a77a74cd65fcfe6069b4db29db28782e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">virtual</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a77a74cd65fcfe6069b4db29db28782e2">~Behavior</a> ()=<a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">default</a></td></tr>
 <tr class="separator:a77a74cd65fcfe6069b4db29db28782e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e41cf9558384b3395d78edebbd72ad8" id="r_a0e41cf9558384b3395d78edebbd72ad8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a0e41cf9558384b3395d78edebbd72ad8">attach</a> (<a class="el" href="class_component.html">Component</a> &amp;<a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">component</a>)</td></tr>
+<tr class="memdesc:a0e41cf9558384b3395d78edebbd72ad8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attaches this <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a> to a <a class="el" href="class_component.html">Component</a>.  <br /></td></tr>
 <tr class="separator:a0e41cf9558384b3395d78edebbd72ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fbab8ff46c037928a0c5e80be144e2c" id="r_a7fbab8ff46c037928a0c5e80be144e2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">virtual</a> <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a7fbab8ff46c037928a0c5e80be144e2c">on_awake</a> ()</td></tr>
+<tr class="memdesc:a7fbab8ff46c037928a0c5e80be144e2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the <a class="el" href="class_component.html">Component</a> is created. Runs before <a class="el" href="class_behavior.html#a59f09bf66bafff928cfd20d68cd09b5c" title="Called before the first frame on_update().">on_start()</a>.  <br /></td></tr>
 <tr class="separator:a7fbab8ff46c037928a0c5e80be144e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59f09bf66bafff928cfd20d68cd09b5c" id="r_a59f09bf66bafff928cfd20d68cd09b5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">virtual</a> <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a59f09bf66bafff928cfd20d68cd09b5c">on_start</a> ()</td></tr>
+<tr class="memdesc:a59f09bf66bafff928cfd20d68cd09b5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called before the first frame <a class="el" href="class_behavior.html#a37032ee85e5a6c5d384056fd1b7d3ca9" title="Called once per frame.">on_update()</a>.  <br /></td></tr>
 <tr class="separator:a59f09bf66bafff928cfd20d68cd09b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37032ee85e5a6c5d384056fd1b7d3ca9" id="r_a37032ee85e5a6c5d384056fd1b7d3ca9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">virtual</a> <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a37032ee85e5a6c5d384056fd1b7d3ca9">on_update</a> (<a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">float</a> <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">dt</a>)=0</td></tr>
+<tr class="memdesc:a37032ee85e5a6c5d384056fd1b7d3ca9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called once per frame.  <br /></td></tr>
 <tr class="separator:a37032ee85e5a6c5d384056fd1b7d3ca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a528d9d6895737f5ce5ad3bc90a071e5f" id="r_a528d9d6895737f5ce5ad3bc90a071e5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">virtual</a> <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a528d9d6895737f5ce5ad3bc90a071e5f">on_destroy</a> ()</td></tr>
+<tr class="memdesc:a528d9d6895737f5ce5ad3bc90a071e5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a> or associated <a class="el" href="class_game_object.html">GameObject</a> is destroyed.  <br /></td></tr>
 <tr class="separator:a528d9d6895737f5ce5ad3bc90a071e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08b8c4ce381114ed5b36c256747a57b5" id="r_a08b8c4ce381114ed5b36c256747a57b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_object.html">GameObject</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a08b8c4ce381114ed5b36c256747a57b5">game_object</a> () <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">const</a></td></tr>
 <tr class="separator:a08b8c4ce381114ed5b36c256747a57b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,8 +164,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a28c08fd4219d2d2e3322aeee0dc55214" id="r_a28c08fd4219d2d2e3322aeee0dc55214"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a28c08fd4219d2d2e3322aeee0dc55214">enabled</a> () <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">const</a></td></tr>
 <tr class="separator:a28c08fd4219d2d2e3322aeee0dc55214"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2145c26bf1a2dec8ae94f04c37406857" id="r_a2145c26bf1a2dec8ae94f04c37406857"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html">Behavior</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a2145c26bf1a2dec8ae94f04c37406857">enable</a> ()</td></tr>
+<tr class="memdesc:a2145c26bf1a2dec8ae94f04c37406857"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the behavior.  <br /></td></tr>
 <tr class="separator:a2145c26bf1a2dec8ae94f04c37406857"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c1360ffa98badaa29dd2aaf1649c231" id="r_a1c1360ffa98badaa29dd2aaf1649c231"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html">Behavior</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a1c1360ffa98badaa29dd2aaf1649c231">disable</a> ()</td></tr>
+<tr class="memdesc:a1c1360ffa98badaa29dd2aaf1649c231"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the behavior.  <br /></td></tr>
 <tr class="separator:a1c1360ffa98badaa29dd2aaf1649c231"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a024cf1e2006a8833d6e15183339584a3" id="r_a024cf1e2006a8833d6e15183339584a3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a024cf1e2006a8833d6e15183339584a3"><td class="memTemplItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; T &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">get_component</a> ()</td></tr>
@@ -181,16 +188,26 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a44d8a7c9bc89e30d5f53d345798dff50"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">T</a> &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_behavior.html#a44d8a7c9bc89e30d5f53d345798dff50">get_components_in_parent</a> ()</td></tr>
 <tr class="separator:a44d8a7c9bc89e30d5f53d345798dff50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54a12eb0adc296293ffafbb21aeaa4a6" id="r_a54a12eb0adc296293ffafbb21aeaa4a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a54a12eb0adc296293ffafbb21aeaa4a6">destroy</a> ()</td></tr>
+<tr class="memdesc:a54a12eb0adc296293ffafbb21aeaa4a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the parent game object.  <br /></td></tr>
 <tr class="separator:a54a12eb0adc296293ffafbb21aeaa4a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56c62ccb4fe4e2d190c0940d68716041" id="r_a56c62ccb4fe4e2d190c0940d68716041"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a56c62ccb4fe4e2d190c0940d68716041">destroy</a> (<a class="el" href="class_component.html">Component</a> &amp;<a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">component</a>)</td></tr>
+<tr class="memdesc:a56c62ccb4fe4e2d190c0940d68716041"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a specific component on the parent game object.  <br /></td></tr>
 <tr class="separator:a56c62ccb4fe4e2d190c0940d68716041"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0709b7d2bf1418cbf8c03df6a4f4a33" id="r_af0709b7d2bf1418cbf8c03df6a4f4a33"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#af0709b7d2bf1418cbf8c03df6a4f4a33">destroy</a> (<a class="el" href="class_game_object.html">GameObject</a> &amp;<a class="el" href="class_behavior.html#a08b8c4ce381114ed5b36c256747a57b5">game_object</a>)</td></tr>
+<tr class="memdesc:af0709b7d2bf1418cbf8c03df6a4f4a33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a specific game object in the scene.  <br /></td></tr>
 <tr class="separator:af0709b7d2bf1418cbf8c03df6a4f4a33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Base class for defining behaviors that can be attached to Components. </p>
-<dl class="section note"><dt>Note</dt><dd>This class is inteded to be inherited from to create specific behaviors.</dd></dl>
-<p>The <a class="el" href="class_behavior.html" title="Base class for defining behaviors that can be attached to Components.">Behavior</a> class provides a structured way to define lifecycle methods for game logic, such as initialization, updates, and destruction. It also offers utility methods to interact with the associated <a class="el" href="class_game_object.html">GameObject</a> and its Components. </p>
+<div class="textblock"><p>Base class for defining logic that can be attached to Components, similar to Unity's MonoBehaviour. </p>
+<p>Behaviors provide a structured lifecycle for game logic:</p><ul>
+<li><a class="el" href="class_behavior.html#a7fbab8ff46c037928a0c5e80be144e2c" title="Called when the Component is created. Runs before on_start().">on_awake()</a> : Called once when the <a class="el" href="class_component.html">Component</a> is created.</li>
+<li><a class="el" href="class_behavior.html#a59f09bf66bafff928cfd20d68cd09b5c" title="Called before the first frame on_update().">on_start()</a> : Called once before the first update.</li>
+<li><a class="el" href="class_behavior.html#a37032ee85e5a6c5d384056fd1b7d3ca9" title="Called once per frame.">on_update()</a> : Called every frame.</li>
+<li><a class="el" href="class_behavior.html#a528d9d6895737f5ce5ad3bc90a071e5f" title="Called when the Behavior or associated GameObject is destroyed.">on_destroy()</a> : Called when the <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a> or its <a class="el" href="class_game_object.html">GameObject</a> is destroyed.</li>
+</ul>
+<p>A <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a> operates on the <a class="el" href="class_component.html">Component</a> it is attached to and provides utility methods for accessing the <a class="el" href="class_game_object.html">GameObject</a>, <a class="el" href="class_transform.html">Transform</a>, and other Components. See it as a gateway to implement game logic that interacts with the engine's objects.</p>
+<dl class="section note"><dt>Note</dt><dd>Users should derive from this class to implement custom behavior. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd><a class="el" href="class_behavior.html#a37032ee85e5a6c5d384056fd1b7d3ca9" title="Called once per frame.">on_update()</a> must be overridden. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a14c66859a6cf9447914bb882e0c957ea" name="a14c66859a6cf9447914bb882e0c957ea"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a14c66859a6cf9447914bb882e0c957ea">&#9670;&#160;</a></span>Behavior()</h2>
@@ -251,6 +268,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Attaches this <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a> to a <a class="el" href="class_component.html">Component</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">component</td><td>The component this behavior should operate on. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if already attached. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a54a12eb0adc296293ffafbb21aeaa4a6" name="a54a12eb0adc296293ffafbb21aeaa4a6"></a>
@@ -267,6 +298,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destroy the parent game object. </p>
 
 </div>
 </div>
@@ -286,6 +319,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Destroy a specific component on the parent game object. </p>
+
 </div>
 </div>
 <a id="af0709b7d2bf1418cbf8c03df6a4f4a33" name="af0709b7d2bf1418cbf8c03df6a4f4a33"></a>
@@ -304,6 +339,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Destroy a specific game object in the scene. </p>
+
 </div>
 </div>
 <a id="a1c1360ffa98badaa29dd2aaf1649c231" name="a1c1360ffa98badaa29dd2aaf1649c231"></a>
@@ -320,6 +357,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Disables the behavior. </p>
 
 </div>
 </div>
@@ -338,6 +377,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Enables the behavior. </p>
+
 </div>
 </div>
 <a id="a28c08fd4219d2d2e3322aeee0dc55214" name="a28c08fd4219d2d2e3322aeee0dc55214"></a>
@@ -354,6 +395,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Whether the behavior is currently enabled. </dd></dl>
 
 </div>
 </div>
@@ -371,6 +413,13 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Reference to the <a class="el" href="class_game_object.html">GameObject</a> this <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a> operates on. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if not attached. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -559,6 +608,8 @@ template&lt;<a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339
 </table>
 </div><div class="memdoc">
 
+<p>Called when the <a class="el" href="class_component.html">Component</a> is created. Runs before <a class="el" href="class_behavior.html#a59f09bf66bafff928cfd20d68cd09b5c" title="Called before the first frame on_update().">on_start()</a>. </p>
+
 </div>
 </div>
 <a id="a528d9d6895737f5ce5ad3bc90a071e5f" name="a528d9d6895737f5ce5ad3bc90a071e5f"></a>
@@ -584,6 +635,8 @@ template&lt;<a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339
 </table>
 </div><div class="memdoc">
 
+<p>Called when the <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a> or associated <a class="el" href="class_game_object.html">GameObject</a> is destroyed. </p>
+
 </div>
 </div>
 <a id="a59f09bf66bafff928cfd20d68cd09b5c" name="a59f09bf66bafff928cfd20d68cd09b5c"></a>
@@ -608,6 +661,8 @@ template&lt;<a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Called before the first frame <a class="el" href="class_behavior.html#a37032ee85e5a6c5d384056fd1b7d3ca9" title="Called once per frame.">on_update()</a>. </p>
 
 </div>
 </div>
@@ -635,6 +690,14 @@ template&lt;<a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339
 </table>
 </div><div class="memdoc">
 
+<p>Called once per frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>Time delta since last frame. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aea1b793f37a7d3b96b652e4058b71e15" name="aea1b793f37a7d3b96b652e4058b71e15"></a>
@@ -651,6 +714,7 @@ template&lt;<a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Reference to the <a class="el" href="class_transform.html">Transform</a> of the attached <a class="el" href="class_game_object.html">GameObject</a>. </dd></dl>
 
 </div>
 </div>

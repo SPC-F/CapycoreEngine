@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a74ce2e1a498f2fa27b5542040be774dc":[4,0,0,0,2,5,0,40],
 "key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a761ae972118562072e8808d6244159fd":[4,0,0,0,2,5,0,34],
 "key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a7694f4a66316e53c8cdd9d9954bd611d":[4,0,0,0,2,5,0,16],
 "key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a796376b16624346a60c77f88043bf037":[4,0,0,0,2,5,0,51],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "struct_key_state.html":[3,0,31],
 "struct_key_state.html#a242a20e869a4eab37535a5ef0c6e680d":[3,0,31,2],
 "struct_key_state.html#a8eae29523da7329a4802edd894065fef":[3,0,31,0],
-"struct_key_state.html#acc422cc40f6d391ff01de0f458c7e53f":[3,0,31,1],
-"struct_mouse_button_state.html":[3,0,32]
+"struct_key_state.html#acc422cc40f6d391ff01de0f458c7e53f":[3,0,31,1]
 };

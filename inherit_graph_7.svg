@@ -56,7 +56,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="class_behavior_script.html" target="_top" xlink:title="A Component that wraps a Behavior, allowing it to be attached to GameObjects.">
+<g id="a_Node000003"><a xlink:href="class_behavior_script.html" target="_top" xlink:title="Component that hosts a Behavior.">
 <polygon fill="white" stroke="#666666" points="197,-111 109,-111 109,-92 197,-92 197,-111"/>
 <text text-anchor="middle" x="153" y="-99" font-family="Helvetica,sans-Serif" font-size="10.00">BehaviorScript</text>
 </a>

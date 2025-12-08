@@ -4,7 +4,7 @@
 <area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="78,92,111,66,149,40,172,28,175,33,152,44,114,70,81,97"/>
 <area shape="rect" id="Node000002" href="$class_audio_source.html" title="Component that plays audio using the AudioService." alt="" coords="158,55,261,80"/>
 <area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="107,97,167,78,169,83,109,102"/>
-<area shape="rect" id="Node000003" href="$class_behavior_script.html" title="A Component that wraps a Behavior, allowing it to be attached to GameObjects." alt="" coords="151,104,268,129"/>
+<area shape="rect" id="Node000003" href="$class_behavior_script.html" title="Component that hosts a Behavior." alt="" coords="151,104,268,129"/>
 <area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="116,114,150,114,150,119,116,119"/>
 <area shape="rect" id="Node000004" href="$class_renderable.html" title="Base class for renderable components in the engine." alt="" coords="161,153,257,179"/>
 <area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="109,131,169,151,167,156,107,136"/>
