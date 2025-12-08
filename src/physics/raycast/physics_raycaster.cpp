@@ -19,6 +19,13 @@ ColliderRayResult PhysicsRaycaster::raycast_closest(const b2Vec2& origin,
   ColliderRayResult collision_result;
   if (ray.hit) {
     collision_result.shape_id = ray.shapeId;
+
+    b2BodyId body = b2Shape_GetBody(ray.shapeId);
+    auto* comp = static_cast<Component*>(b2Body_GetUserData(body));
+    if (comp != nullptr && comp->parent().has_value()) {
+      collision_result.game_object = comp->parent()->get();
+    }
+
     collision_result.fraction = ray.fraction;
     collision_result.is_valid = true;
 
@@ -44,6 +51,7 @@ std::vector<ColliderRayResult> PhysicsRaycaster::raycast_all(
 
     b2RayResult result{};
     result.shapeId = shape_id;
+
     result.point = point;
     result.normal = normal;
     result.fraction = fraction;
@@ -65,6 +73,13 @@ std::vector<ColliderRayResult> PhysicsRaycaster::raycast_all(
   for (const auto& ray : results) {
     ColliderRayResult collision_result;
     collision_result.shape_id = ray.shapeId;
+
+    b2BodyId body = b2Shape_GetBody(ray.shapeId);
+    auto* comp = static_cast<Component*>(b2Body_GetUserData(body));
+    if (comp != nullptr && comp->parent().has_value()) {
+      collision_result.game_object = comp->parent()->get();
+    }
+
     collision_result.fraction = ray.fraction;
     collision_result.is_valid = true;
 
@@ -103,6 +118,13 @@ ColliderRayResult PhysicsRaycaster::raycast_segment(const b2Vec2& start,
   ColliderRayResult collision_result;
   if (ray.hit) {
     collision_result.shape_id = ray.shapeId;
+
+    b2BodyId body = b2Shape_GetBody(ray.shapeId);
+    auto* comp = static_cast<Component*>(b2Body_GetUserData(body));
+    if (comp != nullptr && comp->parent().has_value()) {
+      collision_result.game_object = comp->parent()->get();
+    }
+
     collision_result.fraction = ray.fraction;
     collision_result.is_valid = true;
 
