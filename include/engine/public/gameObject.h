@@ -75,7 +75,7 @@ class GameObject {
   [[nodiscard]] Transform& transform();
   [[nodiscard]] const Transform& transform() const;
 
-  [[nodiscard]] const Scene& scene() const noexcept;
+  [[nodiscard]] Scene& scene() const noexcept;
   void scene(Scene& scene) noexcept;
 
   [[nodiscard]] std::vector<std::reference_wrapper<GameObject>>& children();

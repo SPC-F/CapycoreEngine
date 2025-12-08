@@ -44,7 +44,7 @@ Transform& GameObject::transform() { return transform_; }
 
 const Transform& GameObject::transform() const { return transform_; }
 
-const Scene& GameObject::scene() const noexcept { return scene_; }
+Scene& GameObject::scene() const noexcept { return scene_; }
 
 void GameObject::scene(Scene& scene) noexcept { scene_ = scene; }
 
@@ -124,11 +124,13 @@ std::vector<std::reference_wrapper<GameObject>>& GameObject::children() {
 GameObject& GameObject::add_child(GameObject& child) {
   children_.emplace_back(child);
   child.parent(*this);
+  child.transform().parent(std::ref(this->transform()));
   return *this;
 }
 
 GameObject& GameObject::remove_child(GameObject& child) {
   std::erase_if(children_, [&](auto& ref) { return &ref.get() == &child; });
+  child.transform().parent(std::nullopt);
   child.parent(std::nullopt);
   return *this;
 }

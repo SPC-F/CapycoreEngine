@@ -1,5 +1,7 @@
 #include "engine/core/rendering/renderable.h"
+
 #include <engine/public/util/layers.h>
+
 #include "engine/core/engine.h"
 #include "engine/core/rendering/renderingService.h"
 
@@ -26,3 +28,10 @@ void Renderable::set_render_strategy(Component& component) {
 [[nodiscard]] IRenderingStrategy& Renderable::render_strategy() const {
   return *render_strategy_;
 }
+
+Renderable& Renderable::draw(bool enabled) noexcept {
+  should_draw = enabled;
+  return *this;
+}
+
+bool Renderable::draw() const noexcept { return should_draw; }

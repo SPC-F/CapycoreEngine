@@ -1,9 +1,9 @@
 #pragma once
 
-#include <memory>
-
 #include <engine/core/rendering/strategies/irendering_strategy.h>
 #include <engine/public/component.h>
+
+#include <memory>
 
 /**
  * @brief Base class for renderable components in the engine.
@@ -13,11 +13,13 @@
  * defines how the component is rendered. This class extends the Component class
  * and provides functionality to set and retrieve the rendering strategy.
  */
-class Renderable : public Component { // NOLINT
-protected:
+class Renderable : public Component {  // NOLINT
+ protected:
   std::unique_ptr<IRenderingStrategy> render_strategy_;
   int ordering_layer_ = 0;
-public:
+  bool should_draw{true};
+
+ public:
   explicit Renderable();
   explicit Renderable(int layer);
   ~Renderable() override = default;
@@ -27,4 +29,7 @@ public:
 
   void set_render_strategy(Component& component);
   [[nodiscard]] virtual IRenderingStrategy& render_strategy() const;
+
+  Renderable& draw(bool enabled) noexcept;
+  [[nodiscard]] bool draw() const noexcept;
 };

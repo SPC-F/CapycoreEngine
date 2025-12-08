@@ -1,6 +1,14 @@
 #include <engine/public/components/ai/navigation/navigation_node.h>
 
-NavigationNode::NavigationNode() = default;
+NavigationNode::NavigationNode() {
+  add_on_attach([this](Component& comp) {
+    if (!parent().has_value()) {
+      throw std::runtime_error("Collider2D has no parent GameObject.");
+    }
+
+    this->set_render_strategy(comp);
+  });
+}
 
 NavigationNode& NavigationNode::add_edge(NavigationNode& neighbor, float cost) {
   GraphEdge<NavigationNode> edge{
