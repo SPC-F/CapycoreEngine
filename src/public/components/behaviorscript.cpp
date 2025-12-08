@@ -7,19 +7,14 @@ BehaviorScript::BehaviorScript(std::unique_ptr<Behavior> behavior)
   if (!behavior_) {
     throw std::runtime_error("BehaviorScript has no associated Behavior.");
   }
+}
+
+void BehaviorScript::on_attach() {
+  Component::on_attach();
 
   behavior_->attach(*this);
   behavior_->enable();
   behavior_->on_awake();
-}
-
-BehaviorScript::~BehaviorScript() {
-  if (!behavior_) {
-    return;
-  }
-
-  behavior_->disable();
-  behavior_->on_destroy();
 }
 
 void BehaviorScript::update(float dt) {
@@ -30,6 +25,17 @@ void BehaviorScript::update(float dt) {
   }
 
   behavior_->on_update(dt);
+}
+
+void BehaviorScript::on_detach() {
+  Component::on_detach();
+
+  if (!behavior_) {
+    return;
+  }
+
+  behavior_->disable();
+  behavior_->on_destroy();
 }
 
 void BehaviorScript::on_serialize() {
