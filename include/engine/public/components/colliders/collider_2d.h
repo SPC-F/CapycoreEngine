@@ -40,14 +40,10 @@ class Collider2D : public Renderable {
    * enter events.
    * @param other The other collider that entered the trigger.
    */
-  virtual void on_trigger_enter(Collider2D& other);
-  /**
-   * @brief Called when another collider exits this collider's trigger area.
-   * @note This method can be overridden to implement custom behavior on trigger
-   * exit events.
-   * @param other The other collider that exited the trigger.
-   */
-  virtual void on_trigger_exit(Collider2D& other);
+  void on_trigger_enter(Collider2D& other);
+  size_t add_on_trigger_enter(
+      const std::function<void(Collider2D&, Collider2D&)>& action);
+  void remove_on_trigger_enter(int index);
 
   /**
    * @brief Called when another collider exits this collider's trigger area.
@@ -55,14 +51,31 @@ class Collider2D : public Renderable {
    * exit events.
    * @param other The other collider that exited the trigger.
    */
-  virtual void on_collision_enter(Collider2D& other);
+  void on_trigger_exit(Collider2D& other);
+  size_t add_on_trigger_exit(
+      const std::function<void(Collider2D&, Collider2D&)>& action);
+  void remove_on_trigger_exit(int index);
   /**
    * @brief Called when another collider exits this collider's trigger area.
    * @note This method can be overridden to implement custom behavior on trigger
    * exit events.
    * @param other The other collider that exited the trigger.
    */
-  virtual void on_collision_exit(Collider2D& other);
+  void on_collision_enter(Collider2D& other);
+  size_t add_on_collision_enter(
+      const std::function<void(Collider2D&, Collider2D&)>& action);
+  void remove_on_collision_enter(int index);
+
+  /**
+   * @brief Called when another collider exits this collider's trigger area.
+   * @note This method can be overridden to implement custom behavior on trigger
+   * exit events.
+   * @param other The other collider that exited the trigger.
+   */
+  void on_collision_exit(Collider2D& other);
+  size_t add_on_collision_exit(
+      const std::function<void(Collider2D&, Collider2D&)>& action);
+  void remove_on_collision_exit(int index);
 
   /**
    * @brief Calculate the distance to another collider.
