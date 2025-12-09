@@ -29,9 +29,14 @@ void Renderable::set_render_strategy(Component& component) {
   return *render_strategy_;
 }
 
-Renderable& Renderable::draw(bool enabled) noexcept {
-  should_draw = enabled;
+Renderable& Renderable::disable_draw() noexcept {
+  draw = false;
   return *this;
 }
 
-bool Renderable::draw() const noexcept { return should_draw; }
+Renderable& Renderable::enable_draw() noexcept {
+  draw = true;
+  return *this;
+}
+
+bool Renderable::should_draw() const noexcept { return draw; }

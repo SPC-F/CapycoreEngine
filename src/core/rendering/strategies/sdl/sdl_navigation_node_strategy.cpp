@@ -17,7 +17,7 @@ void SdlNavigationNodeStrategy::draw(Component& component, Camera& camera) {
   if (!dynamic_cast<NavigationNode*>(&component)) return;
 
   NavigationNode& nav_node = dynamic_cast<NavigationNode&>(component);
-  if (!nav_node.draw()) return;
+  if (!nav_node.should_draw()) return;
 
   GameObject& parent = parent_opt->get();
   Vector3 world_pos = parent.transform().position();

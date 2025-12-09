@@ -6,6 +6,7 @@ NavigationNode::NavigationNode() {
       throw std::runtime_error("Collider2D has no parent GameObject.");
     }
 
+    this->disable_draw();
     this->set_render_strategy(comp);
   });
 }

@@ -17,7 +17,7 @@ class Renderable : public Component {  // NOLINT
  protected:
   std::unique_ptr<IRenderingStrategy> render_strategy_;
   int ordering_layer_ = 0;
-  bool should_draw{true};
+  bool draw{true};
 
  public:
   explicit Renderable();
@@ -30,6 +30,7 @@ class Renderable : public Component {  // NOLINT
   void set_render_strategy(Component& component);
   [[nodiscard]] virtual IRenderingStrategy& render_strategy() const;
 
-  Renderable& draw(bool enabled) noexcept;
-  [[nodiscard]] bool draw() const noexcept;
+  Renderable& disable_draw() noexcept;
+  Renderable& enable_draw() noexcept;
+  [[nodiscard]] bool should_draw() const noexcept;
 };
