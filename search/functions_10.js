@@ -57,7 +57,7 @@ var searchData=
   ['soundinstance_54',['SoundInstance',['../class_sound_instance.html#a4dcabfcaa67d3080dd0ab23b1cf3acca',1,'SoundInstance']]],
   ['soundresource_55',['SoundResource',['../class_sound_resource.html#a36b401113d895625f3b5f56defc9ec96',1,'SoundResource']]],
   ['speed_56',['speed',['../class_gameplay_speed_service.html#aeae350e8890f3b6c7c1e6f4e321cda4f',1,'GameplaySpeedService']]],
-  ['sprite_57',['Sprite',['../class_sprite.html#ae93cbda2d3b18e1fc2ef2c067589540e',1,'Sprite']]],
+  ['sprite_57',['Sprite',['../class_sprite.html#a512ce6449fabe9fea5a1ca7001a35cd7',1,'Sprite']]],
   ['state_58',['state',['../class_u_i_interactable.html#a37635ef4747ae039aa8a3c318d1f1a44',1,'UIInteractable::state()'],['../class_u_i_interactable.html#a92213dc96fa336a3bf30ec6a61fb0895',1,'UIInteractable::state() const']]],
   ['step_59',['step',['../class_physics_world.html#a7cdf3bfd913d3dbb770e1404bebd80a1',1,'PhysicsWorld::step()'],['../class_gameplay_speed_service.html#accc3a5154b160dcefe47b74c8e7be5f1',1,'GameplaySpeedService::step()']]],
   ['stop_60',['stop',['../class_generic_sound_instance.html#a07bd55ae2e5b885559f522b3df228ebe',1,'GenericSoundInstance::stop()'],['../class_s_d_l_sound_instance.html#ac99f527154046a5b8f23db8ace5ae5a9',1,'SDLSoundInstance::stop()'],['../class_sound_instance.html#ae8fc6b171c9a2a874af13aba5439bc96',1,'SoundInstance::stop()'],['../class_audio_source.html#ab3449cc8a764c0d15e9453d52610475e',1,'AudioSource::stop()'],['../class_scene.html#add01794b17df2030e961468fc88cf2e7',1,'Scene::stop()']]],

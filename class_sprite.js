@@ -1,12 +1,12 @@
 var class_sprite =
 [
-    [ "Sprite", "class_sprite.html#ae93cbda2d3b18e1fc2ef2c067589540e", null ],
+    [ "Sprite", "class_sprite.html#a512ce6449fabe9fea5a1ca7001a35cd7", null ],
     [ "color", "class_sprite.html#a99304af697307c4847c3e65ce8a3e768", null ],
     [ "color", "class_sprite.html#af874503eae32060ce4a3fe078f912d46", null ],
-    [ "flip_x", "class_sprite.html#a627f95ef5ff440d95fe6e171bf23cd2a", null ],
-    [ "flip_x", "class_sprite.html#a361a40b1e885cf6493c2062eaccb39f9", null ],
-    [ "flip_y", "class_sprite.html#ad6fc7fc54b172768b1749d430619a916", null ],
-    [ "flip_y", "class_sprite.html#ae4d583f04c7698edd9bbde1eeed25506", null ],
+    [ "flip_x", "class_sprite.html#ae7366c4b39d49da3074b21f27de7e3f0", null ],
+    [ "flip_x", "class_sprite.html#a9c29325260033e81412cbf5790f3ad6d", null ],
+    [ "flip_y", "class_sprite.html#a951934069da661548004801d3fccc23e", null ],
+    [ "flip_y", "class_sprite.html#a82fd21f759f4bc5039ac487a8a9f242b", null ],
     [ "on_deserialize", "class_sprite.html#a2ab98c7e39e9fba5c7bc2e24a505c76a", null ],
     [ "on_serialize", "class_sprite.html#a9f2f24d5294b669a6573a91cf0a8a84a", null ],
     [ "ordering_layer", "class_sprite.html#a7fe460e614f453cbfd4fff222a0e59b8", null ],
