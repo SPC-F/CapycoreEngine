@@ -180,9 +180,10 @@ void NavigationGraph::link_nodes() {
           tile_map_[check_pos] != nullptr)
         break;
 
+      /// If there's no ground below, can't jump
       if (tile_map_.find(below_pos) != tile_map_.end() &&
           tile_map_[below_pos] == nullptr)
-        break;  // Can't jump if there's no ground to jump from
+        break;
 
       if (node_tile_map_[check_pos] != nullptr) {
         node.add_edge(*node_tile_map_[check_pos], 1.0f + dy * 0.5f);
@@ -284,3 +285,28 @@ int NavigationGraph::get_grid_size() const noexcept { return grid_size_; }
 int NavigationGraph::get_grid_max_x() const noexcept { return grid_max_x_; }
 
 int NavigationGraph::get_grid_max_y() const noexcept { return grid_max_y_; }
+
+int NavigationGraph::get_stride() const noexcept { return stride_; }
+
+NavigationGraph& NavigationGraph::stride(int stride) noexcept {
+  stride_ = stride;
+  return *this;
+}
+
+int NavigationGraph::max_drop_distance() const noexcept {
+  return max_drop_distance_;
+}
+
+NavigationGraph& NavigationGraph::max_drop_distance(int distance) noexcept {
+  max_drop_distance_ = distance;
+  return *this;
+}
+
+int NavigationGraph::max_jump_distance() const noexcept {
+  return max_jump_distance_;
+}
+
+NavigationGraph& NavigationGraph::max_jump_distance(int distance) noexcept {
+  max_jump_distance_ = distance;
+  return *this;
+}

@@ -3,7 +3,6 @@
 
 #include <algorithm>
 #include <cfloat>
-#include <iostream>
 #include <iterator>
 #include <stdexcept>
 #include <unordered_set>
@@ -50,15 +49,24 @@ Pathfinding& Pathfinding::generate_path_to_position(Vector3 origin,
   return *this;
 }
 
+Pathfinding& Pathfinding::generate_path_to_position() {
+  if (!origin_.has_value() || !target_.has_value()) {
+    throw std::runtime_error(
+        "Origin or target position not set for pathfinding. Cannot generate "
+        "path.");
+  }
+
+  return generate_path_to_position(origin_.value(), target_.value());
+}
+
 Pathfinding& Pathfinding::generate_path_to_target(Vector3 origin) {
-  if (!current_target_.has_value()) {
+  if (!target_.has_value()) {
     throw std::runtime_error(
         "No target GameObject set for pathfinding. Cannot generate path.");
   }
 
   auto origin_pos = find_closest_node(origin);
-  auto target_pos =
-      find_closest_node(current_target_.value().get().transform().position());
+  auto target_pos = find_closest_node(target_.value());
 
   if (!origin_pos.has_value() || !target_pos.has_value()) {
     throw std::runtime_error(
@@ -71,6 +79,38 @@ Pathfinding& Pathfinding::generate_path_to_target(Vector3 origin) {
   return *this;
 }
 
+Pathfinding& Pathfinding::generate_path_to_target() {
+  if (!origin_.has_value()) {
+    throw std::runtime_error(
+        "Origin position not set for pathfinding. Cannot generate path.");
+  }
+
+  return generate_path_to_target(origin_.value());
+}
+
+Pathfinding& Pathfinding::generate_path_to_target_game_object() {
+  if (!target_game_object_.has_value()) {
+    throw std::runtime_error(
+        "No target GameObject set for pathfinding. Cannot generate path.");
+  }
+
+  if (!origin_.has_value()) {
+    throw std::runtime_error(
+        "Origin position not set for pathfinding. Cannot generate path.");
+  }
+
+  auto target_game_object_opt = target_game_object_;
+  if (!target_game_object_opt.has_value()) {
+    throw std::runtime_error(
+        "No target GameObject set for pathfinding. Cannot generate path.");
+  }
+
+  auto position = target_game_object_opt->get().transform().position();
+  generate_path_to_position(origin_.value(), position);
+
+  return *this;
+}
+
 const std::vector<std::reference_wrapper<GameObject>>& Pathfinding::get_path()
     const {
   return path_;
@@ -79,21 +119,12 @@ const std::vector<std::reference_wrapper<GameObject>>& Pathfinding::get_path()
 void Pathfinding::generate_path_a_star(GraphPosition origin,
                                        GraphPosition target) {
   path_.clear();
+
   NavigationGraph& graph = get_navigation_graph_component();
   auto& nodes = graph.get_nodes();
 
   if (!nodes.count(origin) || !nodes.count(target))
     throw std::runtime_error("Pathfinding: origin or target node missing.");
-
-  struct NodeRecord {
-    GraphPosition pos;
-    float g = FLT_MAX;
-    float h = 0.f;
-    GraphPosition parent;
-    bool has_parent = false;
-
-    float f() const { return g + h; }
-  };
 
   std::unordered_map<GraphPosition, NodeRecord, GraphPositionHash> open;
   std::unordered_set<GraphPosition, GraphPositionHash> closed;
@@ -103,7 +134,6 @@ void Pathfinding::generate_path_a_star(GraphPosition origin,
     return Point(a.x, a.y).distance_to(Point(b.x, b.y)).x;
   };
 
-  // Initialize start node
   NodeRecord start;
   start.pos = origin;
   start.g = 0.f;
@@ -113,22 +143,19 @@ void Pathfinding::generate_path_a_star(GraphPosition origin,
   open.emplace(origin, start);
   all_records[origin] = start;
 
-  // ---- A* MAIN LOOP ----
   while (!open.empty()) {
-    // Pick node with lowest f-cost
+    /// Pick node with lowest f()
     auto current_it = std::min_element(
         open.begin(), open.end(),
         [](auto& a, auto& b) { return a.second.f() < b.second.f(); });
 
     NodeRecord current = current_it->second;
-    // Move current node from open to closed
+
     closed.insert(current.pos);
     open.erase(current_it);
 
-    // Store current BEFORE goal check so reconstruction is safe
     all_records[current.pos] = current;
 
-    // Goal reached — reconstruct path
     if (current.pos == target) {
       std::vector<GraphPosition> reversed;
       GraphPosition trace = current.pos;
@@ -144,7 +171,7 @@ void Pathfinding::generate_path_a_star(GraphPosition origin,
 
       std::reverse(reversed.begin(), reversed.end());
 
-      // Convert positions → GameObjects
+      /// Extract game objects from navigation nodes
       for (auto& gp : reversed) {
         auto& nav_node = nodes.at(gp).get();
         auto parent_opt = nav_node.parent();
@@ -154,7 +181,6 @@ void Pathfinding::generate_path_a_star(GraphPosition origin,
       return;
     }
 
-    // Expand neighbors
     NavigationNode& node = nodes.at(current.pos);
     for (auto& edge : node.get_edges()) {
       NavigationNode& neigh = edge.target.get();
@@ -166,11 +192,10 @@ void Pathfinding::generate_path_a_star(GraphPosition origin,
       if (closed.count(neigh_pos)) continue;
 
       float new_g = current.g + edge.cost;
-
       auto open_it = open.find(neigh_pos);
 
+      /// Not in open set yet or found a better path
       if (open_it == open.end()) {
-        // First discovery
         NodeRecord rec;
         rec.pos = neigh_pos;
         rec.g = new_g;
@@ -179,21 +204,18 @@ void Pathfinding::generate_path_a_star(GraphPosition origin,
         rec.has_parent = true;
 
         open.emplace(neigh_pos, rec);
-        all_records[neigh_pos] = rec;  // <-- always stored
+        all_records[neigh_pos] = rec;
       } else {
-        // Found a better route
         if (new_g < open_it->second.g) {
           open_it->second.g = new_g;
           open_it->second.parent = current.pos;
           open_it->second.has_parent = true;
 
-          all_records[neigh_pos] = open_it->second;  // IMPORTANT
+          all_records[neigh_pos] = open_it->second;
         }
       }
     }
   }
-
-  throw std::runtime_error("A* failed to find a path.");
 }
 
 std::optional<GraphPosition> Pathfinding::find_closest_node(
@@ -202,6 +224,7 @@ std::optional<GraphPosition> Pathfinding::find_closest_node(
 
   auto closest_node_opt =
       navigation_graph_.get().get_closest_node(world_position);
+
   if (!closest_node_opt.has_value()) {
     throw std::runtime_error(
         "No navigation node found close to the target position. Cannot "
@@ -211,6 +234,7 @@ std::optional<GraphPosition> Pathfinding::find_closest_node(
   auto& target_node = closest_node_opt->get();
   auto target_node_pos_opt =
       navigation_graph_.get().get_position_of_node(target_node);
+
   if (!target_node_pos_opt.has_value()) {
     throw std::runtime_error(
         "Failed to retrieve position of the closest navigation node.");
@@ -219,17 +243,26 @@ std::optional<GraphPosition> Pathfinding::find_closest_node(
   return target_node_pos_opt;
 }
 
-std::optional<std::reference_wrapper<GameObject>> Pathfinding::get_target()
-    const {
-  return current_target_;
-}
+std::optional<Vector3> Pathfinding::get_origin() const { return origin_; }
 
-Pathfinding& Pathfinding::set_target(GameObject& target) {
-  current_target_ = std::ref(target);
+Pathfinding& Pathfinding::set_origin(Vector3 origin) {
+  origin_ = origin;
   return *this;
 }
 
-Pathfinding& Pathfinding::clear_target() {
-  current_target_ = std::nullopt;
+std::optional<Vector3> Pathfinding::get_target() const { return target_; }
+
+Pathfinding& Pathfinding::set_target(Vector3 target) {
+  target_ = target;
+  return *this;
+}
+
+std::optional<std::reference_wrapper<GameObject>>
+Pathfinding::get_target_game_object() const {
+  return target_game_object_;
+}
+
+Pathfinding& Pathfinding::set_target_game_object(GameObject& target) {
+  target_game_object_ = std::ref(target);
   return *this;
 }

@@ -63,13 +63,13 @@ void run() {
       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
       {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
       {2, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0},
-      {0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0},
+      {0, 1, 1, 0, 1, 0, 0, 0, 3, 0, 1, 0},
       {0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0},
       {0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0},
       {0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0},
       {0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0},
       {0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0},
-      {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
+      {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
       {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
   };
@@ -85,8 +85,6 @@ void run() {
   auto& navigation_graph =
       tile_map_parent.add_component<NavigationGraph>(32, 10);
   auto& pathfinding = tile_map_parent.add_component<Pathfinding>();
-  float start_x = 0.0f;
-  float start_y = 0.0f;
 
   for (size_t y = 0; y < maze.size(); ++y) {
     for (size_t x = 0; x < maze[y].size(); ++x) {
@@ -106,12 +104,12 @@ void run() {
 
       if (maze[y][x] == 2) {
         auto& start = scene.add_game_object("StartPoint");
-        start_x = static_cast<float>(x * 32);
-        start_y = static_cast<float>(y * 32);
 
-        start.transform().position({start_x, start_y, 0.0f});
+        start.transform().position(
+            {static_cast<float>(x * 32), static_cast<float>(y * 32), 0.0f});
         start.transform().scale({0.5f, 0.5f, 1.0f});
         start.add_component<Sprite>("", Color{0, 255, 0, 255}, 0, 0, 0, 0);
+        pathfinding.set_origin(start.transform().position());
       }
 
       if (maze[y][x] == 3) {
@@ -122,15 +120,15 @@ void run() {
         end.transform().scale({1.0f, 1.0f, 1.0f});
         end.add_component<Sprite>("", Color{255, 0, 0, 255}, 0, 0, 0, 0);
 
-        pathfinding.set_target(end);
+        pathfinding.set_target(end.transform().position());
       }
     }
   }
 
   navigation_graph.generate_graph();
-  // pathfinding.generate_path_to_target({start_x, start_y, 0.0f});
-  pathfinding.generate_path_to_position({start_x, start_y, 0.0f},
-                                        {8 * 32, 3 * 32, 0.0f});
+  pathfinding.generate_path_to_target();
+  // pathfinding.generate_path_to_position({start_x, start_y, 0.0f},
+  //                                       {8 * 32, 3 * 32, 0.0f});
 
   scene_service.load_scene("MazeScene");
 

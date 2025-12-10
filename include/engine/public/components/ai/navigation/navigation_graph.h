@@ -86,6 +86,15 @@ class NavigationGraph : public Component {
   int get_grid_max_x() const noexcept;
   int get_grid_max_y() const noexcept;
 
+  int get_stride() const noexcept;
+  NavigationGraph& stride(int stride) noexcept;
+
+  int max_drop_distance() const noexcept;
+  NavigationGraph& max_drop_distance(int distance) noexcept;
+
+  int max_jump_distance() const noexcept;
+  NavigationGraph& max_jump_distance(int distance) noexcept;
+
   void on_serialize() override{};
   void on_deserialize() override{};
 
@@ -104,9 +113,9 @@ class NavigationGraph : public Component {
   std::unordered_map<GraphPosition, NavigationNode*, GraphPositionHash>
       node_tile_map_;
 
-  int stride_ = 10;
-  int max_drop_distance_ = 10;
-  int max_jump_distance_ = 4;
+  int stride_{10};
+  int max_drop_distance_{10};
+  int max_jump_distance_{4};
   float node_vertical_offset_{16.0f};
 
   int grid_size_{16};
