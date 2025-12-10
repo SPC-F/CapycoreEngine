@@ -1,5 +1,8 @@
 #include <engine/network/host.h>
+#include <engine/network/snapshot.h>
 #include <engine/util/uuid.h>
+#include <engine/core/engine.h>
+#include <engine/public/scene_service.h>
 
 #include <cstring>
 #include <stdexcept>
@@ -13,6 +16,7 @@ Host::Host(std::reference_wrapper<Router> router, int connection_port, int max_c
       router_{router}
 {
     set_client_disconnect_handler();
+    set_client_connect_handler();
 }
 
 Host::~Host() noexcept
@@ -22,6 +26,9 @@ Host::~Host() noexcept
         enet_host_destroy(server_);
         server_ = nullptr;
     }
+
+    router_.get().unregister_handler(DefaultMessageTypes::CLIENT_DISCONNECT);
+    router_.get().unregister_handler(DefaultMessageTypes::CONNECT);
 }
 
 void Host::start_server()
@@ -72,10 +79,10 @@ void Host::poll() noexcept
             std::strncpy(body.uuid, uuid.c_str(), sizeof(body.uuid) - 1);
 
             Message msg = serialize_message(body, DefaultMessageTypes::CONNECT);
-            
+
             // Send CONNECT message to the client
             send_to_peer(msg, event.peer);
-            
+
             // Also route CONNECT through the router so the engine's snapshot handler fires
             router_.get().route(msg);
         } break;
@@ -209,6 +216,22 @@ void Host::send_to_uuid(const std::string& uuid, const Message& message) noexcep
     send_to_peer(message, it->second);
 }
 
+void Host::sync() noexcept
+{
+    const auto now = std::chrono::steady_clock::now();
+    if (now - last_snapshot_time_ >= snapshot_interval_) {
+        auto& engine = Engine::instance();
+        auto& scene_service = engine.services->get_service<SceneService>().get();
+
+        last_snapshot_time_ = now;
+        Message delta = snapshot::create_delta_snapshot(scene_service.current_scene().value(), DefaultMessageTypes::SNAPSHOT_DELTA);
+        // Only broadcast if there is payload beyond the count header
+        if (delta.header.size > sizeof(uint16_t)) {
+            broadcast(delta);
+        }
+    }
+}
+
 ConnectionState Host::get_connection_state() const noexcept
 {
     return connection_state_;
@@ -234,11 +257,6 @@ void Host::set_connection_port(int port) noexcept
     connection_port_ = port;
 }
 
-void Host::send_full_snapshot(std::string& uuid)
-{
-    
-}
-
 void Host::set_client_disconnect_handler() noexcept
 {
     // Client disconnect handler
@@ -255,5 +273,24 @@ void Host::set_client_disconnect_handler() noexcept
     };
 
     router_.get().register_handler(DefaultMessageTypes::CLIENT_DISCONNECT,
+                              std::move(handler));
+}
+
+void Host::set_client_connect_handler() noexcept
+{
+    auto handler = [this](const Message& msg) {
+        // Extract UUID from the CONNECT message
+        struct MsgConnect { char uuid[37]; } data{};
+        if (msg.payload.size() >= sizeof(data)) {
+            std::memcpy(&data, msg.payload.data(), sizeof(data));
+            auto& engine = Engine::instance();
+            auto& scene_service = engine.services->get_service<SceneService>().get();
+
+            Message snapshot_msg = snapshot::create_full_snapshot(scene_service.current_scene().value(), DefaultMessageTypes::SNAPSHOT_FULL);
+            send_to_uuid(std::string(data.uuid), snapshot_msg);
+        }
+    };
+
+    router_.get().register_handler(DefaultMessageTypes::CONNECT,
                               std::move(handler));
 }

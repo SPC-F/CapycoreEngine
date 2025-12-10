@@ -70,13 +70,8 @@ private:
     ENetHost* client_{nullptr};
     ConnectionState connection_state_{ConnectionState::NONE};
 
-    /**
-     * @brief Registers internal callback for handling connect messages.
-     */
     void register_on_connect_handler() noexcept;
-
-    /**
-     * @brief Registers internal callback for handling disconnect messages.
-     */
     void register_on_disconnect_handler() noexcept;
+    void register_on_snapshot_full_handler() noexcept;
+    void register_on_snapshot_delta_handler() noexcept;
 };

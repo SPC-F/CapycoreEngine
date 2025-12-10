@@ -1,7 +1,6 @@
 #pragma once
 
 #include <memory>
-#include <chrono>
 #include <functional>
 #include <string>
 #include <enet/enet.h>
@@ -115,18 +114,6 @@ public:
     void set_connection_port(int port) noexcept;
     [[nodiscard]] int get_connection_port() const noexcept;
 
-    /**
-     * @brief Enables automatic snapshot handling for a scene.
-     *
-     * When enabled, the service will:
-     * - (Host) automatically send full snapshots when clients join.
-     * - (Client) automatically receive and apply full snapshots.
-     *
-     * @param scene Reference to the scene to snapshot.
-     * @param spriteTexture Default sprite texture for newly created networked objects.
-     */
-    void enable_snapshots(class Scene& scene);
-
 private:
     std::unique_ptr<Router> router_{nullptr};
     std::unique_ptr<Client> client_{nullptr};
@@ -134,9 +121,4 @@ private:
 
     int16_t connection_port_{default_connection_port};
     int16_t max_clients_{default_max_clients};
-
-    // Snapshot support
-    Scene* snapshot_scene_{nullptr};
-    std::chrono::milliseconds snapshot_interval_{100};
-    std::chrono::steady_clock::time_point last_snapshot_time_{std::chrono::steady_clock::now()};
 };

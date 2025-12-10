@@ -76,19 +76,7 @@ void MultiplayerService::poll()
 {
     if (host_) {
         host_->poll();
-
-        // Periodically create and broadcast delta snapshots
-        if (snapshot_scene_) {
-            const auto now = std::chrono::steady_clock::now();
-            if (now - last_snapshot_time_ >= snapshot_interval_) {
-                last_snapshot_time_ = now;
-                Message delta = snapshot::create_delta_snapshot(*snapshot_scene_, DefaultMessageTypes::SNAPSHOT_DELTA);
-                // Only broadcast if there is payload beyond the count header
-                if (delta.header.size > sizeof(uint16_t)) {
-                    host_->broadcast(delta);
-                }
-            }
-        }
+        host_->sync();
     }
     else if (client_) {
         client_->poll();
@@ -200,48 +188,3 @@ int MultiplayerService::get_connection_port() const noexcept
 {
     return connection_port_;
 }
-
-void MultiplayerService::enable_snapshots(class Scene& scene)
-{
-    snapshot_scene_ = &scene;
-
-    // Register SNAPSHOT_FULL handler (both host and client use this)
-    register_handler(MessageType(DefaultMessageTypes::SNAPSHOT_FULL),
-        [this](const Message& msg) {
-            if (snapshot_scene_) {
-                snapshot::apply_full_snapshot(*snapshot_scene_, msg);
-            }
-        }
-    );
-
-    // Register SNAPSHOT_DELTA handler (client-side applies deltas)
-    register_handler(MessageType(DefaultMessageTypes::SNAPSHOT_DELTA),
-        [this](const Message& msg) {
-            if (snapshot_scene_) {
-                snapshot::apply_delta_snapshot(*snapshot_scene_, msg);
-            }
-        }
-    );
-
-    // Register handler to auto-send snapshots when a client connects (host only)
-    // We intercept CONNECT to inject snapshot sending to the newly connected client
-    auto on_client_connect = [this](const Message& msg) {
-        // CONNECT message contains the client's UUID
-        if (host_ && snapshot_scene_) {
-            // Extract UUID from the CONNECT message
-            struct MsgConnect { char uuid[37]; } data{};
-            if (msg.payload.size() >= sizeof(data)) {
-                std::memcpy(&data, msg.payload.data(), sizeof(data));
-
-                Message snapshot_msg = snapshot::create_full_snapshot(*snapshot_scene_, DefaultMessageTypes::SNAPSHOT_FULL);
-                host_->send_to_uuid(std::string(data.uuid), snapshot_msg);
-            }
-        }
-    };
-
-    // Hook to CONNECT event: when a client connects to the host, send them a snapshot
-    register_handler(MessageType(DefaultMessageTypes::CONNECT),
-        on_client_connect
-    );
-}
-

@@ -4,6 +4,7 @@
 #include <string>
 #include <unordered_map>
 #include <enet/enet.h>
+#include <chrono>
 
 #include <engine/network/router.h>
 #include <engine/network/connection_state.h>
@@ -86,6 +87,11 @@ public:
      */
     void send_to_uuid(const std::string& uuid, const Message& message) noexcept;
 
+    /**
+     * 
+     */
+    void sync() noexcept;
+
 private:
     ENetHost* server_{nullptr};
     int connection_port_{0};
@@ -98,6 +104,9 @@ private:
     // Maps client UUID to the peer object assigned by ENet.
     std::unordered_map<std::string, ENetPeer*> clients_;
 
+    std::chrono::milliseconds snapshot_interval_{100};
+    std::chrono::steady_clock::time_point last_snapshot_time_{std::chrono::steady_clock::now()};
+
     /**
      * @brief Sends a message to a specific peer (internal use only).
      * @param message Message to send.
@@ -105,11 +114,6 @@ private:
      */
     void send_to_peer(const Message& message, ENetPeer* peer) noexcept;
 
-    void send_full_snapshot(std::string& uuid);
-
-    /**
-     * @brief Registers internal disconnect handler to clean client state
-     *        and forward disconnection events.
-     */
     void set_client_disconnect_handler() noexcept;
+    void set_client_connect_handler() noexcept;
 };
