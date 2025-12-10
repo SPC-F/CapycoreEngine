@@ -128,7 +128,9 @@ void run() {
   }
 
   navigation_graph.generate_graph();
-  pathfinding.generate_path_to_target({start_x, start_y, 0.0f});
+  // pathfinding.generate_path_to_target({start_x, start_y, 0.0f});
+  pathfinding.generate_path_to_position({start_x, start_y, 0.0f},
+                                        {8 * 32, 3 * 32, 0.0f});
 
   scene_service.load_scene("MazeScene");
 

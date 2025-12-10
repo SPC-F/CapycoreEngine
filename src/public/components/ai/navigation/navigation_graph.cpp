@@ -136,6 +136,8 @@ void NavigationGraph::link_nodes() {
     for (int dx : horiz_offsets) {
       int step = 1;
       while (true) {
+        /// Check left/right from the current tile to see if a connection is
+        /// possible
         GraphPosition check_pos{gpos.x + dx * step, gpos.y};
 
         if (node_tile_map_.find(check_pos) == node_tile_map_.end()) break;
@@ -153,12 +155,34 @@ void NavigationGraph::link_nodes() {
     }
 
     for (int dy = 1; dy <= max_drop_distance_; ++dy) {
+      /// Check below the current tile to see if a drop is possible
       GraphPosition check_pos{gpos.x, gpos.y + dy};  // +y => down
 
       if (node_tile_map_.find(check_pos) == node_tile_map_.end()) break;
       if (tile_map_.find(check_pos) != tile_map_.end() &&
           tile_map_[check_pos] != nullptr)
         break;
+
+      if (node_tile_map_[check_pos] != nullptr) {
+        node.add_edge(*node_tile_map_[check_pos], 1.0f + dy * 0.8f);
+        break;
+      }
+    }
+
+    for (int dy = 1; dy <= max_jump_distance_; ++dy) {
+      /// Check above the current tile to see if a jump is possible
+      GraphPosition check_pos{gpos.x, gpos.y - dy};  // -y => up
+      /// Check below the current tile to ensure there's ground to jump from
+      GraphPosition below_pos{gpos.x, gpos.y + 1};  // +y => down
+
+      if (node_tile_map_.find(check_pos) == node_tile_map_.end()) break;
+      if (tile_map_.find(check_pos) != tile_map_.end() &&
+          tile_map_[check_pos] != nullptr)
+        break;
+
+      if (tile_map_.find(below_pos) != tile_map_.end() &&
+          tile_map_[below_pos] == nullptr)
+        break;  // Can't jump if there's no ground to jump from
 
       if (node_tile_map_[check_pos] != nullptr) {
         node.add_edge(*node_tile_map_[check_pos], 1.0f + dy * 0.5f);

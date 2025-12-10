@@ -106,6 +106,7 @@ class NavigationGraph : public Component {
 
   int stride_ = 10;
   int max_drop_distance_ = 10;
+  int max_jump_distance_ = 4;
   float node_vertical_offset_{16.0f};
 
   int grid_size_{16};
