@@ -5,6 +5,7 @@ var class_transform =
     [ "Transform", "class_transform.html#a13677e20f996e58e5be882e529812581", null ],
     [ "Transform", "class_transform.html#a44161a6135af0e513cb9f46eeabdd796", null ],
     [ "local_position", "class_transform.html#a999b79d44bccd02f597938b330184540", null ],
+    [ "local_position", "class_transform.html#a4b574cbdcff5693ab7bff5ff68337057", null ],
     [ "parent", "class_transform.html#ac3c74efb26546e811931b41728f924ba", null ],
     [ "parent", "class_transform.html#a9f035a1c9b2afaf102f30f9c1c9fb28e", null ],
     [ "position", "class_transform.html#aa889afe47b5ff11cc4af8b95a7fa3d9e", null ],
