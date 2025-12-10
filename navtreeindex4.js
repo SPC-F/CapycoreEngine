@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a6f8f57715090da2632453988d9a1501b":[4,0,0,0,2,5,0,12],
+"key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a73ae0dab45d507710e73573b1f546815":[4,0,0,0,2,5,0,31],
 "key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a74ce2e1a498f2fa27b5542040be774dc":[4,0,0,0,2,5,0,40],
 "key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a761ae972118562072e8808d6244159fd":[4,0,0,0,2,5,0,34],
 "key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a7694f4a66316e53c8cdd9d9954bd611d":[4,0,0,0,2,5,0,16],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "struct_collider_ray_result.html#ae5a17eea2f62bffcd483c4d1d42dcb40":[3,0,14,4],
 "struct_collider_ray_result.html#aff7a80427bfa8caeeb7020f8ae399172":[3,0,14,6],
 "struct_key_state.html":[3,0,31],
-"struct_key_state.html#a242a20e869a4eab37535a5ef0c6e680d":[3,0,31,2],
-"struct_key_state.html#a8eae29523da7329a4802edd894065fef":[3,0,31,0],
-"struct_key_state.html#acc422cc40f6d391ff01de0f458c7e53f":[3,0,31,1]
+"struct_key_state.html#a242a20e869a4eab37535a5ef0c6e680d":[3,0,31,2]
 };

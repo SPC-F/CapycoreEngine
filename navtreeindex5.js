@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"struct_key_state.html#a8eae29523da7329a4802edd894065fef":[3,0,31,0],
+"struct_key_state.html#acc422cc40f6d391ff01de0f458c7e53f":[3,0,31,1],
 "struct_mouse_button_state.html":[3,0,32],
 "struct_mouse_button_state.html#a346b241f589a5a1bb8dfdb9ce81f6909":[3,0,32,2],
 "struct_mouse_button_state.html#a97f2f4b1943b3db9fca13b15d61a977e":[3,0,32,0],
