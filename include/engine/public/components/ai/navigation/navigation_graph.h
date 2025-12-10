@@ -15,7 +15,7 @@
  */
 class NavigationGraph : public Component {
  public:
-  NavigationGraph(float node_distance = 1.0f);
+  NavigationGraph(int grid_size = 16, int stride = 10);
 
   /** @brief Update is left empty as the navigation graph does not require
    * per-frame updates */
@@ -70,12 +70,36 @@ class NavigationGraph : public Component {
   std::optional<std::reference_wrapper<NavigationNode>> get_closest_node(
       const GraphPosition& position) const;
 
+  void on_serialize() override{};
+  void on_deserialize() override{};
+
  private:
+  /// Mapping of graph positions to navigation nodes
   std::unordered_map<GraphPosition, std::reference_wrapper<NavigationNode>,
                      GraphPositionHash>
       nodes_;
-  float node_distance_;
 
+  /// Mapping of graph positions to TILES (GameObjects)
+  /// Used to keep track of obstacles when linking nodes
+  std::unordered_map<GraphPosition, GameObject*, GraphPositionHash> tile_map_;
+
+  /// Mapping of graph positions to NODES (NavigationNodes)
+  /// Used to store Nodes on the grid in comparison to tile_map_
+  std::unordered_map<GraphPosition, NavigationNode*, GraphPositionHash>
+      node_tile_map_;
+
+  int stride_ = 10;
+  int max_drop_distance_ = 10;
+  float node_vertical_offset_{16.0f};
+
+  int grid_size_{16};
+  int grid_max_x_{0};
+  int grid_max_y_{0};
+
+  void set_tile_maps(GameObject& parent);
   void generate_nodes();
   void link_nodes();
+
+  std::optional<std::reference_wrapper<NavigationNode>> find_node_in_children(
+      GameObject& parent) const noexcept;
 };

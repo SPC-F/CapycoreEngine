@@ -1,5 +1,6 @@
 #pragma once
 
+#include <engine/core/rendering/renderable.h>
 #include <engine/public/component.h>
 #include <engine/public/components/ai/navigation/graph.h>
 #include <engine/public/gameObject.h>
@@ -13,7 +14,7 @@
  * This component holds references to neighboring nodes and associated movement
  * costs. It is used in AI pathfinding to navigate through a graph of nodes.
  */
-class NavigationNode : public Component {
+class NavigationNode : public Renderable {
   using Edge = GraphEdge<NavigationNode>;
 
  public:
@@ -48,6 +49,9 @@ class NavigationNode : public Component {
    */
   std::optional<std::reference_wrapper<Edge>> get_edge_to(
       const NavigationNode& neighbor) const;
+
+  void on_serialize() override{};
+  void on_deserialize() override{};
 
  private:
   std::vector<Edge> edges_;
