@@ -2,6 +2,7 @@
 #include <engine/public/gameObject.h>
 #include <engine/public/scene.h>
 #include <engine/util/uuid.h>
+#include <engine/network/snapshot.h>
 
 #include <stdexcept>
 #include <vector>
@@ -34,6 +35,12 @@ GameObject& GameObject::tag(const std::string& tag) {
   return *this;
 }
 const std::string& GameObject::tag() const { return tag_; }
+
+GameObject& GameObject::prefab_type_id(const std::string& id) {
+  prefab_type_id_ = id;
+  return *this;
+}
+const std::string& GameObject::prefab_type_id() const { return prefab_type_id_; }
 
 GameObject& GameObject::layer(const int layer) {
   layer_ = layer;
@@ -137,54 +144,31 @@ GameObject& GameObject::remove_child(GameObject& child) {
   return *this;
 }
 
-// NOLINTBEGIN
 void GameObject::serialize(std::vector<uint8_t>& out) const {
-  // write name
-  uint16_t name_len = static_cast<uint16_t>(name_.size());
-  size_t old = out.size();
-  out.resize(old + sizeof(name_len) + name_len);
-  uint8_t* write_ptr = out.data() + old;
-  std::memcpy(write_ptr, &name_len, sizeof(name_len)); write_ptr += sizeof(name_len);
-  if (name_len > 0) { std::memcpy(write_ptr, name_.data(), name_len); write_ptr += name_len; }
+  // Write object metadata
+  snapshot::write_string(out, prefab_type_id_);
+  snapshot::write_string(out, name_);
+  snapshot::write_string(out, tag_);
 
-  // write tag
-  uint16_t tag_len = static_cast<uint16_t>(tag_.size());
-  size_t after_tag = write_ptr - out.data();
-  out.resize(out.size() + sizeof(tag_len) + tag_len);
-  write_ptr = out.data() + after_tag;
-  std::memcpy(write_ptr, &tag_len, sizeof(tag_len)); write_ptr += sizeof(tag_len);
-  if (tag_len > 0) { std::memcpy(write_ptr, tag_.data(), tag_len); write_ptr += tag_len; }
-
-  // is_active
   uint8_t active = is_active_ ? 1 : 0;
-  size_t after_active = write_ptr - out.data();
-  out.resize(out.size() + sizeof(active));
-  write_ptr = out.data() + after_active;
-  std::memcpy(write_ptr, &active, sizeof(active)); write_ptr += sizeof(active);
+  snapshot::write_bytes(out, &active, sizeof(active));
 
-  // layer (int32_t)
   int32_t layer = static_cast<int32_t>(layer_);
-  size_t after_layer = write_ptr - out.data();
-  out.resize(out.size() + sizeof(layer));
-  write_ptr = out.data() + after_layer;
-  std::memcpy(write_ptr, &layer, sizeof(layer)); write_ptr += sizeof(layer);
+  snapshot::write_bytes(out, &layer, sizeof(layer));
 
-  // transform: local position (3 floats), rotation (1 float), scale (3 floats)
-  auto lp = transform_.local_position();
+  // Write transform: position (3 floats), rotation (1 float), scale (3 floats)
+  auto pos = transform_.position();
   float rot = transform_.rotation();
   auto sc = transform_.scale();
-  size_t after_transform = write_ptr - out.data();
-  out.resize(out.size() + sizeof(float) * 7);
-  write_ptr = out.data() + after_transform;
-  std::memcpy(write_ptr, &lp.x, sizeof(float)); write_ptr += sizeof(float);
-  std::memcpy(write_ptr, &lp.y, sizeof(float)); write_ptr += sizeof(float);
-  std::memcpy(write_ptr, &lp.z, sizeof(float)); write_ptr += sizeof(float);
-  std::memcpy(write_ptr, &rot, sizeof(float)); write_ptr += sizeof(float);
-  std::memcpy(write_ptr, &sc.x, sizeof(float)); write_ptr += sizeof(float);
-  std::memcpy(write_ptr, &sc.y, sizeof(float)); write_ptr += sizeof(float);
-  std::memcpy(write_ptr, &sc.z, sizeof(float)); write_ptr += sizeof(float);
+  snapshot::write_bytes(out, &pos.x, sizeof(float));
+  snapshot::write_bytes(out, &pos.y, sizeof(float));
+  snapshot::write_bytes(out, &pos.z, sizeof(float));
+  snapshot::write_bytes(out, &rot, sizeof(float));
+  snapshot::write_bytes(out, &sc.x, sizeof(float));
+  snapshot::write_bytes(out, &sc.y, sizeof(float));
+  snapshot::write_bytes(out, &sc.z, sizeof(float));
 
-  // components
+  // Serialize components
   auto comps = get_components_all();
   std::vector<std::pair<std::string, std::vector<uint8_t>>> comp_entries;
   for (auto& c : comps) {
@@ -194,96 +178,74 @@ void GameObject::serialize(std::vector<uint8_t>& out) const {
   }
 
   uint16_t comp_count = static_cast<uint16_t>(comp_entries.size());
-  size_t after_compcount = write_ptr - out.data();
-  out.resize(out.size() + sizeof(comp_count));
-  write_ptr = out.data() + after_compcount;
-  std::memcpy(write_ptr, &comp_count, sizeof(comp_count)); write_ptr += sizeof(comp_count);
+  snapshot::write_bytes(out, &comp_count, sizeof(comp_count));
 
-  // write components
   for (const auto& e : comp_entries) {
-    uint16_t tlen = static_cast<uint16_t>(e.first.size());
+    snapshot::write_string(out, e.first);
     uint32_t plen = static_cast<uint32_t>(e.second.size());
-    size_t cur_off = write_ptr - out.data();
-    out.resize(out.size() + sizeof(tlen) + tlen + sizeof(plen) + plen);
-    write_ptr = out.data() + cur_off;
-    std::memcpy(write_ptr, &tlen, sizeof(tlen)); write_ptr += sizeof(tlen);
-    if (tlen > 0) { std::memcpy(write_ptr, e.first.data(), tlen); write_ptr += tlen; }
-    std::memcpy(write_ptr, &plen, sizeof(plen)); write_ptr += sizeof(plen);
-    if (plen > 0) { std::memcpy(write_ptr, e.second.data(), plen); write_ptr += plen; }
+    snapshot::write_bytes(out, &plen, sizeof(plen));
+    if (plen > 0) {
+      snapshot::write_bytes(out, e.second.data(), plen);
+    }
   }
 }
 
 void GameObject::deserialize(const std::vector<uint8_t>& data, size_t& offset) {
-  // read name
-  if (offset + sizeof(uint16_t) > data.size()) return;
-  uint16_t name_len = 0;
-  std::memcpy(&name_len, data.data() + offset, sizeof(name_len)); offset += sizeof(name_len);
-  if (offset + name_len > data.size()) return;
-  name_.assign(reinterpret_cast<const char*>(data.data() + offset), name_len); offset += name_len;
+  // Read object metadata
+  if (!snapshot::read_string(data, offset, prefab_type_id_)) return;
+  if (!snapshot::read_string(data, offset, name_)) return;
+  if (!snapshot::read_string(data, offset, tag_)) return;
 
-  // read tag
-  if (offset + sizeof(uint16_t) > data.size()) return;
-  uint16_t tag_len = 0;
-  std::memcpy(&tag_len, data.data() + offset, sizeof(tag_len)); offset += sizeof(tag_len);
-  if (offset + tag_len > data.size()) return;
-  tag_.assign(reinterpret_cast<const char*>(data.data() + offset), tag_len); offset += tag_len;
-
-  // is_active
-  if (offset + sizeof(uint8_t) > data.size()) return;
-  uint8_t active = 0; std::memcpy(&active, data.data() + offset, sizeof(active)); offset += sizeof(active);
+  uint8_t active = 0;
+  if (!snapshot::read_bytes(data, offset, &active, sizeof(active))) return;
   is_active_ = (active != 0);
 
-  // layer
-  if (offset + sizeof(int32_t) > data.size()) return;
-  int32_t layer = 0; std::memcpy(&layer, data.data() + offset, sizeof(layer)); offset += sizeof(layer);
+  int32_t layer = 0;
+  if (!snapshot::read_bytes(data, offset, &layer, sizeof(layer))) return;
   layer_ = static_cast<int>(layer);
 
-  // transform: local position (3 floats), rotation (1 float), scale (3 floats)
-  if (offset + sizeof(float) * 7 > data.size()) return;
+  // Read transform: position (3 floats), rotation (1 float), scale (3 floats)
   float px = 0.0f, py = 0.0f, pz = 0.0f;
-  std::memcpy(&px, data.data() + offset, sizeof(float)); offset += sizeof(float);
-  std::memcpy(&py, data.data() + offset, sizeof(float)); offset += sizeof(float);
-  std::memcpy(&pz, data.data() + offset, sizeof(float)); offset += sizeof(float);
-  float rot = 0.0f; std::memcpy(&rot, data.data() + offset, sizeof(float)); offset += sizeof(float);
+  if (!snapshot::read_bytes(data, offset, &px, sizeof(float))) return;
+  if (!snapshot::read_bytes(data, offset, &py, sizeof(float))) return;
+  if (!snapshot::read_bytes(data, offset, &pz, sizeof(float))) return;
+
+  float rot = 0.0f;
+  if (!snapshot::read_bytes(data, offset, &rot, sizeof(float))) return;
+
   float sx = 1.0f, sy = 1.0f, sz = 1.0f;
-  std::memcpy(&sx, data.data() + offset, sizeof(float)); offset += sizeof(float);
-  std::memcpy(&sy, data.data() + offset, sizeof(float)); offset += sizeof(float);
-  std::memcpy(&sz, data.data() + offset, sizeof(float)); offset += sizeof(float);
+  if (!snapshot::read_bytes(data, offset, &sx, sizeof(float))) return;
+  if (!snapshot::read_bytes(data, offset, &sy, sizeof(float))) return;
+  if (!snapshot::read_bytes(data, offset, &sz, sizeof(float))) return;
+
   transform_.position({px, py, pz});
   transform_.rotation(rot);
   transform_.scale({sx, sy, sz});
 
-  // components
-  if (offset + sizeof(uint16_t) > data.size()) return;
-  uint16_t comp_count = 0; std::memcpy(&comp_count, data.data() + offset, sizeof(comp_count)); offset += sizeof(comp_count);
+  // Deserialize components
+  uint16_t comp_count = 0;
+  if (!snapshot::read_bytes(data, offset, &comp_count, sizeof(comp_count))) return;
 
   for (uint16_t i = 0; i < comp_count; ++i) {
-    if (offset + sizeof(uint16_t) > data.size()) { offset = data.size(); break; }
-    uint16_t tlen = 0; std::memcpy(&tlen, data.data() + offset, sizeof(tlen)); offset += sizeof(tlen);
-    if (offset + tlen > data.size()) { offset = data.size(); break; }
     std::string tname;
-    if (tlen > 0) { tname.assign(reinterpret_cast<const char*>(data.data() + offset), tlen); offset += tlen; }
+    if (!snapshot::read_string(data, offset, tname)) break;
 
-    if (offset + sizeof(uint32_t) > data.size()) { offset = data.size(); break; }
-    uint32_t plen = 0; std::memcpy(&plen, data.data() + offset, sizeof(plen)); offset += sizeof(plen);
-    if (offset + plen > data.size()) { offset = data.size(); break; }
+    uint32_t plen = 0;
+    if (!snapshot::read_bytes(data, offset, &plen, sizeof(plen))) break;
 
-    // dispatch payload to matching component if present
+    // Dispatch payload to matching component
     bool applied = false;
     for (auto& comp_ref : get_components_all()) {
       if (comp_ref.get().type_name() == tname) {
         size_t inner_off = offset;
         comp_ref.get().on_deserialize(data, inner_off);
-        // advance offset to end of this component payload regardless
-        offset = offset + plen;
         applied = true;
         break;
       }
     }
-    if (!applied) {
-      // skip unknown component payload
-      offset += plen;
-    }
+
+    // Advance offset past this component's payload regardless
+    offset += plen;
   }
 }
 // NOLINTEND

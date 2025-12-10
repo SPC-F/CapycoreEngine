@@ -30,6 +30,7 @@ class GameObject {
 
   bool marked_for_deletion_{false};
   bool dont_destroy_on_load_{false};
+  std::string prefab_type_id_{};  // Identifier for prefab type used during network replication
 
  public:
   explicit GameObject(Scene& scene);
@@ -67,6 +68,9 @@ class GameObject {
 
   GameObject& tag(const std::string& tag);
   [[nodiscard]] const std::string& tag() const;
+
+  GameObject& prefab_type_id(const std::string& id);
+  [[nodiscard]] const std::string& prefab_type_id() const;
 
   GameObject& layer(int layer);
   [[nodiscard]] int layer() const;

@@ -232,7 +232,7 @@ void MultiplayerService::enable_snapshots(class Scene& scene)
             struct MsgConnect { char uuid[37]; } data{};
             if (msg.payload.size() >= sizeof(data)) {
                 std::memcpy(&data, msg.payload.data(), sizeof(data));
-                
+
                 Message snapshot_msg = snapshot::create_full_snapshot(*snapshot_scene_, DefaultMessageTypes::SNAPSHOT_FULL);
                 host_->send_to_uuid(std::string(data.uuid), snapshot_msg);
             }

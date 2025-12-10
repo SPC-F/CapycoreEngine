@@ -24,6 +24,12 @@
  */
 namespace snapshot {
 
+// Serialization helpers
+void write_string(std::vector<uint8_t>& out, const std::string& str);
+bool read_string(const std::vector<uint8_t>& data, size_t& offset, std::string& out);
+void write_bytes(std::vector<uint8_t>& out, const void* data, size_t size);
+bool read_bytes(const std::vector<uint8_t>& data, size_t& offset, void* out, size_t size);
+
 /**
  * @brief Builds a full snapshot message containing all networked GameObjects in a scene.
  * @param scene The scene to snapshot.
