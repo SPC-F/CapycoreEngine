@@ -2,3 +2,7 @@
 
 Point::Point() : x(0.0f), y(0.0f) {}
 Point::Point(const float x, const float y) : x(x), y(y) {}
+
+Point Point::distance_to(const Point& other) const {
+  return Point(other.x - x, other.y - y);
+}

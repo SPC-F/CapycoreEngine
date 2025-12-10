@@ -50,9 +50,13 @@ class NavigationNode : public Renderable {
   std::optional<std::reference_wrapper<Edge>> get_edge_to(
       const NavigationNode& neighbor) const;
 
+  GraphPosition position() const noexcept;
+  NavigationNode& position(const GraphPosition& position);
+
   void on_serialize() override{};
   void on_deserialize() override{};
 
  private:
+  GraphPosition position_;
   std::vector<Edge> edges_;
 };

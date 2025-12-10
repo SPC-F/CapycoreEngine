@@ -37,6 +37,10 @@ class NavigationGraph : public Component {
    */
   NavigationGraph& clear();
 
+  std::unordered_map<GraphPosition, std::reference_wrapper<NavigationNode>,
+                     GraphPositionHash>&
+  get_nodes();
+
   /**
    * @brief Retrieves a navigation node at the specified position.
    * @param position The position to query for a navigation node.
@@ -45,6 +49,11 @@ class NavigationGraph : public Component {
    */
   std::optional<std::reference_wrapper<NavigationNode>> get_node(
       const GraphPosition& position) const;
+
+  std::optional<GraphPosition> get_position_of_node(
+      const NavigationNode& node) const;
+
+  GraphPosition world_to_graph_position(const Vector3& world_position) const;
 
   /**
    * @brief Adds a navigation node at the specified position.
@@ -69,6 +78,13 @@ class NavigationGraph : public Component {
    */
   std::optional<std::reference_wrapper<NavigationNode>> get_closest_node(
       const GraphPosition& position) const;
+
+  std::optional<std::reference_wrapper<NavigationNode>> get_closest_node(
+      const Vector3& world_position) const;
+
+  int get_grid_size() const noexcept;
+  int get_grid_max_x() const noexcept;
+  int get_grid_max_y() const noexcept;
 
   void on_serialize() override{};
   void on_deserialize() override{};

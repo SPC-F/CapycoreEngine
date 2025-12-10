@@ -108,6 +108,7 @@ void NavigationGraph::generate_nodes() {
         node_obj.transform().local_position(node_local);
 
         NavigationNode& nav_node = node_obj.add_component<NavigationNode>();
+        nav_node.position(pos);
         nodes_.emplace(pos, nav_node);
         node_tile_map_[pos] = &nav_node;
       };
@@ -172,6 +173,12 @@ NavigationGraph& NavigationGraph::clear() {
   return *this;
 }
 
+std::unordered_map<GraphPosition, std::reference_wrapper<NavigationNode>,
+                   GraphPositionHash>&
+NavigationGraph::get_nodes() {
+  return nodes_;
+}
+
 std::optional<std::reference_wrapper<NavigationNode>> NavigationGraph::get_node(
     const GraphPosition& position) const {
   auto it = nodes_.find(position);
@@ -181,6 +188,26 @@ std::optional<std::reference_wrapper<NavigationNode>> NavigationGraph::get_node(
   }
 
   return std::nullopt;
+}
+
+std::optional<GraphPosition> NavigationGraph::get_position_of_node(
+    const NavigationNode& node) const {
+  for (const auto& [pos, node_ref] : nodes_) {
+    if (&node_ref.get() == &node) {
+      return pos;
+    }
+  }
+
+  return std::nullopt;
+}
+
+GraphPosition NavigationGraph::world_to_graph_position(
+    const Vector3& world_position) const {
+  int gx = static_cast<int>(
+      std::lround(world_position.x / static_cast<float>(grid_size_)));
+  int gy = static_cast<int>(
+      std::lround(world_position.y / static_cast<float>(grid_size_)));
+  return GraphPosition{gx, gy};
 }
 
 NavigationGraph& NavigationGraph::add_node(const GraphPosition& position,
@@ -216,3 +243,20 @@ NavigationGraph::get_closest_node(const GraphPosition& position) const {
 
   return std::nullopt;
 }
+
+std::optional<std::reference_wrapper<NavigationNode>>
+NavigationGraph::get_closest_node(const Vector3& world_position) const {
+  int gx = static_cast<int>(
+      std::lround(world_position.x / static_cast<float>(grid_size_)));
+  int gy = static_cast<int>(
+      std::lround(world_position.y / static_cast<float>(grid_size_)));
+  GraphPosition gpos{gx, gy};
+
+  return get_closest_node(gpos);
+}
+
+int NavigationGraph::get_grid_size() const noexcept { return grid_size_; }
+
+int NavigationGraph::get_grid_max_x() const noexcept { return grid_max_x_; }
+
+int NavigationGraph::get_grid_max_y() const noexcept { return grid_max_y_; }
