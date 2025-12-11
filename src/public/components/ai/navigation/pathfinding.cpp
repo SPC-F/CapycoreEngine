@@ -29,6 +29,8 @@ Pathfinding::get_navigation_graph_component() const {
 Pathfinding::Pathfinding() {
   add_on_attach([this](Component& comp) {
     get_navigation_graph_component();
+
+    this->disable_draw();
     this->set_render_strategy(comp);
   });
 }
