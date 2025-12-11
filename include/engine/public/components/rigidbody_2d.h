@@ -23,9 +23,6 @@ class Rigidbody2D : public Component {
   ~Rigidbody2D() override;
 
   void update(float dt) override;
-  void on_serialize(std::vector<uint8_t>& /*out*/) const override;
-  void on_deserialize(const std::vector<uint8_t>& /*data*/,
-                                       size_t& /*offset*/) override;
 
   [[nodiscard]] BodyType2D::Type type() const noexcept;
   Rigidbody2D& type(BodyType2D::Type value) noexcept;

@@ -22,10 +22,6 @@ class CircleCollider2D : public Collider2D {
 
   void update(float dt) override;
 
-  void on_serialize(std::vector<uint8_t>& /*out*/) const override;
-  void on_deserialize(const std::vector<uint8_t>& /*data*/,
-                                       size_t& /*offset*/) override;
-
   [[nodiscard]] float radius() const noexcept;
   CircleCollider2D& radius(float value) noexcept;
 

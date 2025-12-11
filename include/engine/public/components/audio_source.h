@@ -29,9 +29,6 @@ class AudioSource : public Component {
   void update(float dt) override;
   void on_attach() override;
   void on_detach() override;
-  void on_serialize(std::vector<uint8_t>& /*out*/) const override;
-  void on_deserialize(const std::vector<uint8_t>& /*data*/,
-                                       size_t& /*offset*/) override;
 
   void play(bool loop = false);
   void stop();
