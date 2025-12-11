@@ -46,3 +46,15 @@ Window& Window::set_window_height(unsigned height) {
   SDL_SetWindowSize(window_, current_width, static_cast<int>(height));
   return *this;
 }
+
+int Window::get_window_width() const {
+  int width{};
+  SDL_GetWindowSize(window_, &width, nullptr);
+  return width;
+}
+
+int Window::get_window_height() const {
+  int height{};
+  SDL_GetWindowSize(window_, nullptr, &height);
+  return height;
+}

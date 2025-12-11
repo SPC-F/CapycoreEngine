@@ -21,4 +21,7 @@ class Camera final : public GameObject {
   void set_main();
   void set_not_main();
   [[nodiscard]] bool is_main() const;
+
+  [[nodiscard]] int get_screen_width() const;
+  [[nodiscard]] int get_screen_height() const;
 };

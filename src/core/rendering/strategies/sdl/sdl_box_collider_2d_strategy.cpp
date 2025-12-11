@@ -28,23 +28,26 @@ void SdlBoxCollider2DStrategy::draw(Component& component, Camera& camera) {
   const auto& position = transform.position();
   const auto& rotation = transform.rotation();
 
-  const auto& camera_position = camera.transform().position();
   const auto& box_collider = dynamic_cast<const BoxCollider2D&>(component);
 
   const auto& body_tf = Body2D::get_pixel_transform(
       parent_opt->get().get_component<Rigidbody2D>().value().get().body());
 
-  float world_x = body_tf.position.x + box_collider.offset().x;
-  float world_y = body_tf.position.y + box_collider.offset().y;
+  const auto& camera_position = camera.transform().position();
+  float zoom = camera.zoom();
 
-  float w = box_collider.width();
-  float h = box_collider.height();
+  float half_screen_width = camera.get_screen_width() * 0.5f;
+  float half_screen_height = camera.get_screen_height() * 0.5f;
 
-  float cx = world_x + w * 0.5f;
-  float cy = world_y + h * 0.5f;
+  const auto& box = dynamic_cast<const BoxCollider2D&>(component);
 
-  float angleDegrees = rotation;
-  float rad = angleDegrees * (PhysicsMath::pi / PhysicsMath::circle_divisor);
+  float cx = body_tf.position.x + box.offset().x + box.width() * 0.5f;
+  float cy = body_tf.position.y + box.offset().y + box.height() * 0.5f;
+
+  float w = box.width();
+  float h = box.height();
+
+  float rad = rotation * (PhysicsMath::pi / PhysicsMath::circle_divisor);
   float cosA = std::cos(rad);
   float sinA = std::sin(rad);
 
@@ -55,29 +58,35 @@ void SdlBoxCollider2DStrategy::draw(Component& component, Camera& camera) {
       {-w * 0.5f, h * 0.5f},
   };
 
-  for (auto& p : corners) {
-    float rx = p.x * cosA - p.y * sinA;
-    float ry = p.x * sinA + p.y * cosA;
+  SDL_FPoint screen_corners[4];
 
-    p.x = rx + cx - camera_position.x;
-    p.y = ry + cy - camera_position.y;
+  for (int i = 0; i < 4; i++) {
+    float rx = corners[i].x * cosA - corners[i].y * sinA;
+    float ry = corners[i].x * sinA + corners[i].y * cosA;
+
+    float wx = cx + rx;
+    float wy = cy + ry;
+
+    screen_corners[i].x = (wx - camera_position.x) * zoom + half_screen_width;
+    screen_corners[i].y = (wy - camera_position.y) * zoom + half_screen_height;
   }
 
   SDL_SetRenderDrawColor(&sdl_renderer_, 0, 255, 0, 255);
 
-  SDL_RenderLine(&sdl_renderer_, corners[0].x, corners[0].y, corners[1].x,
-                 corners[1].y);
-  SDL_RenderLine(&sdl_renderer_, corners[1].x, corners[1].y, corners[2].x,
-                 corners[2].y);
-  SDL_RenderLine(&sdl_renderer_, corners[2].x, corners[2].y, corners[3].x,
-                 corners[3].y);
-  SDL_RenderLine(&sdl_renderer_, corners[3].x, corners[3].y, corners[0].x,
-                 corners[0].y);
+  SDL_RenderLine(&sdl_renderer_, screen_corners[0].x, screen_corners[0].y,
+                 screen_corners[1].x, screen_corners[1].y);
+  SDL_RenderLine(&sdl_renderer_, screen_corners[1].x, screen_corners[1].y,
+                 screen_corners[2].x, screen_corners[2].y);
+  SDL_RenderLine(&sdl_renderer_, screen_corners[2].x, screen_corners[2].y,
+                 screen_corners[3].x, screen_corners[3].y);
+  SDL_RenderLine(&sdl_renderer_, screen_corners[3].x, screen_corners[3].y,
+                 screen_corners[0].x, screen_corners[0].y);
 
-  SDL_RenderLine(&sdl_renderer_, corners[0].x, corners[0].y, corners[2].x,
-                 corners[2].y);
-  SDL_RenderLine(&sdl_renderer_, corners[1].x, corners[1].y, corners[3].x,
-                 corners[3].y);
+  // diagonals for debug
+  SDL_RenderLine(&sdl_renderer_, screen_corners[0].x, screen_corners[0].y,
+                 screen_corners[2].x, screen_corners[2].y);
+  SDL_RenderLine(&sdl_renderer_, screen_corners[1].x, screen_corners[1].y,
+                 screen_corners[3].x, screen_corners[3].y);
 
   SDL_SetRenderDrawColor(&sdl_renderer_, 0, 0, 0, 255);
 }

@@ -1,3 +1,6 @@
+#include <engine/core/engine.h>
+#include <engine/core/rendering/renderingService.h>
+#include <engine/core/rendering/window.h>
 #include <engine/public/camera.h>
 #include <engine/public/scene.h>
 
@@ -37,3 +40,21 @@ void Camera::set_main() {
 void Camera::set_not_main() { isMain_ = false; }
 
 bool Camera::is_main() const { return isMain_; }
+
+int Camera::get_screen_width() const {
+  auto& window = Engine::instance()
+                     .services->get_service<RenderingService>()
+                     .get()
+                     .window();
+
+  return window.get_window_width();
+}
+
+int Camera::get_screen_height() const {
+  auto& window = Engine::instance()
+                     .services->get_service<RenderingService>()
+                     .get()
+                     .window();
+
+  return window.get_window_height();
+}
