@@ -84,7 +84,9 @@ void SdlCircleCollider2DStrategy::draw(Component& component, Camera& camera) {
   SDL_RenderLine(&sdl_renderer_, H1.x, H1.y, H2.x, H2.y);
   SDL_RenderLine(&sdl_renderer_, V1.x, V1.y, V2.x, V2.y);
 
-  SDL_SetRenderDrawColor(&sdl_renderer_, 0, 0, 0, 255);
+  Color original_color = camera.background_color();
+  SDL_SetRenderDrawColor(&sdl_renderer_, original_color.r, original_color.g,
+                         original_color.b, original_color.a);
 }
 
 void SdlCircleCollider2DStrategy::draw_circle(int cx, int cy, int radius) {

@@ -82,11 +82,12 @@ void SdlBoxCollider2DStrategy::draw(Component& component, Camera& camera) {
   SDL_RenderLine(&sdl_renderer_, screen_corners[3].x, screen_corners[3].y,
                  screen_corners[0].x, screen_corners[0].y);
 
-  // diagonals for debug
   SDL_RenderLine(&sdl_renderer_, screen_corners[0].x, screen_corners[0].y,
                  screen_corners[2].x, screen_corners[2].y);
   SDL_RenderLine(&sdl_renderer_, screen_corners[1].x, screen_corners[1].y,
                  screen_corners[3].x, screen_corners[3].y);
 
-  SDL_SetRenderDrawColor(&sdl_renderer_, 0, 0, 0, 255);
+  Color original_color = camera.background_color();
+  SDL_SetRenderDrawColor(&sdl_renderer_, original_color.r, original_color.g,
+                         original_color.b, original_color.a);
 }
