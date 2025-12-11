@@ -50,9 +50,25 @@ class NavigationNode : public Renderable {
   std::optional<std::reference_wrapper<Edge>> get_edge_to(
       const NavigationNode& neighbor) const;
 
+  /**
+   * @brief Gets the graph position of this navigation node.
+   *
+   * @return The GraphPosition of the navigation node.
+   */
+  GraphPosition position() const noexcept;
+
+  /**
+   * @brief Sets the graph position of this navigation node.
+   *
+   * @param position The GraphPosition to set.
+   * @return Reference to the NavigationNode instance for method chaining.
+   */
+  NavigationNode& position(const GraphPosition& position);
+
   void on_serialize() override{};
   void on_deserialize() override{};
 
  private:
+  GraphPosition position_;
   std::vector<Edge> edges_;
 };

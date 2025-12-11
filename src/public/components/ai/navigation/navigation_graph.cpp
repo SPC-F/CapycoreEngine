@@ -108,6 +108,7 @@ void NavigationGraph::generate_nodes() {
         node_obj.transform().local_position(node_local);
 
         NavigationNode& nav_node = node_obj.add_component<NavigationNode>();
+        nav_node.position(pos);
         nodes_.emplace(pos, nav_node);
         node_tile_map_[pos] = &nav_node;
       };
@@ -135,6 +136,8 @@ void NavigationGraph::link_nodes() {
     for (int dx : horiz_offsets) {
       int step = 1;
       while (true) {
+        /// Check left/right from the current tile to see if a connection is
+        /// possible
         GraphPosition check_pos{gpos.x + dx * step, gpos.y};
 
         if (node_tile_map_.find(check_pos) == node_tile_map_.end()) break;
@@ -152,11 +155,34 @@ void NavigationGraph::link_nodes() {
     }
 
     for (int dy = 1; dy <= max_drop_distance_; ++dy) {
+      /// Check below the current tile to see if a drop is possible
       GraphPosition check_pos{gpos.x, gpos.y + dy};  // +y => down
 
       if (node_tile_map_.find(check_pos) == node_tile_map_.end()) break;
       if (tile_map_.find(check_pos) != tile_map_.end() &&
           tile_map_[check_pos] != nullptr)
+        break;
+
+      if (node_tile_map_[check_pos] != nullptr) {
+        node.add_edge(*node_tile_map_[check_pos], 1.0f + dy * 0.8f);
+        break;
+      }
+    }
+
+    for (int dy = 1; dy <= max_jump_distance_; ++dy) {
+      /// Check above the current tile to see if a jump is possible
+      GraphPosition check_pos{gpos.x, gpos.y - dy};  // -y => up
+      /// Check below the current tile to ensure there's ground to jump from
+      GraphPosition below_pos{gpos.x, gpos.y + 1};  // +y => down
+
+      if (node_tile_map_.find(check_pos) == node_tile_map_.end()) break;
+      if (tile_map_.find(check_pos) != tile_map_.end() &&
+          tile_map_[check_pos] != nullptr)
+        break;
+
+      /// If there's no ground below, can't jump
+      if (tile_map_.find(below_pos) != tile_map_.end() &&
+          tile_map_[below_pos] == nullptr)
         break;
 
       if (node_tile_map_[check_pos] != nullptr) {
@@ -172,6 +198,12 @@ NavigationGraph& NavigationGraph::clear() {
   return *this;
 }
 
+std::unordered_map<GraphPosition, std::reference_wrapper<NavigationNode>,
+                   GraphPositionHash>&
+NavigationGraph::get_nodes() {
+  return nodes_;
+}
+
 std::optional<std::reference_wrapper<NavigationNode>> NavigationGraph::get_node(
     const GraphPosition& position) const {
   auto it = nodes_.find(position);
@@ -181,6 +213,26 @@ std::optional<std::reference_wrapper<NavigationNode>> NavigationGraph::get_node(
   }
 
   return std::nullopt;
+}
+
+std::optional<GraphPosition> NavigationGraph::get_position_of_node(
+    const NavigationNode& node) const {
+  for (const auto& [pos, node_ref] : nodes_) {
+    if (&node_ref.get() == &node) {
+      return pos;
+    }
+  }
+
+  return std::nullopt;
+}
+
+GraphPosition NavigationGraph::world_to_graph_position(
+    const Vector3& world_position) const {
+  int gx = static_cast<int>(
+      std::lround(world_position.x / static_cast<float>(grid_size_)));
+  int gy = static_cast<int>(
+      std::lround(world_position.y / static_cast<float>(grid_size_)));
+  return GraphPosition{gx, gy};
 }
 
 NavigationGraph& NavigationGraph::add_node(const GraphPosition& position,
@@ -215,4 +267,46 @@ NavigationGraph::get_closest_node(const GraphPosition& position) const {
   }
 
   return std::nullopt;
+}
+
+std::optional<std::reference_wrapper<NavigationNode>>
+NavigationGraph::get_closest_node(const Vector3& world_position) const {
+  int gx = static_cast<int>(
+      std::lround(world_position.x / static_cast<float>(grid_size_)));
+  int gy = static_cast<int>(
+      std::lround(world_position.y / static_cast<float>(grid_size_)));
+  GraphPosition gpos{gx, gy};
+
+  return get_closest_node(gpos);
+}
+
+int NavigationGraph::get_grid_size() const noexcept { return grid_size_; }
+
+int NavigationGraph::get_grid_max_x() const noexcept { return grid_max_x_; }
+
+int NavigationGraph::get_grid_max_y() const noexcept { return grid_max_y_; }
+
+int NavigationGraph::get_stride() const noexcept { return stride_; }
+
+NavigationGraph& NavigationGraph::stride(int stride) noexcept {
+  stride_ = stride;
+  return *this;
+}
+
+int NavigationGraph::max_drop_distance() const noexcept {
+  return max_drop_distance_;
+}
+
+NavigationGraph& NavigationGraph::max_drop_distance(int distance) noexcept {
+  max_drop_distance_ = distance;
+  return *this;
+}
+
+int NavigationGraph::max_jump_distance() const noexcept {
+  return max_jump_distance_;
+}
+
+NavigationGraph& NavigationGraph::max_jump_distance(int distance) noexcept {
+  max_jump_distance_ = distance;
+  return *this;
 }

@@ -34,3 +34,10 @@ NavigationNode::get_edge_to(const NavigationNode& neighbor) const {
 
   return std::nullopt;
 }
+
+GraphPosition NavigationNode::position() const noexcept { return position_; }
+
+NavigationNode& NavigationNode::position(const GraphPosition& position) {
+  position_ = position;
+  return *this;
+}
