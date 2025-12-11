@@ -1,7 +1,17 @@
 #include "engine/core/rendering/renderable.h"
-
+#include <engine/public/util/layers.h>
 #include "engine/core/engine.h"
 #include "engine/core/rendering/renderingService.h"
+
+Renderable::Renderable() : ordering_layer_{Layers::Default} {}
+Renderable::Renderable(const int layer) : ordering_layer_{layer} {}
+
+Renderable& Renderable::order_in_layer(int layer) {
+  ordering_layer_ = layer;
+  return *this;
+}
+
+[[nodiscard]] int Renderable::order_in_layer() const { return ordering_layer_; }
 
 void Renderable::set_render_strategy(Component& component) {
   auto strateg = Engine::instance()

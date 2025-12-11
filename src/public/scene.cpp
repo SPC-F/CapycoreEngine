@@ -1,6 +1,7 @@
 #include <SDL3/SDL.h>
 #include <engine/audio/audio_service.h>
 #include <engine/core/engine.h>
+#include <engine/core/rendering/renderable.h>
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/system/system_service.h>
 #include <engine/input/input_manager.h>
@@ -9,6 +10,7 @@
 #include <engine/physics/physics_service.h>
 #include <engine/public/component.h>
 #include <engine/public/gameObject.h>
+#include <engine/public/gameplay_speed_service.h>
 #include <engine/public/scene.h>
 #include <engine/public/ui/ui_object.h>
 #include <engine/util/memory.h>
@@ -61,14 +63,19 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       Engine::instance().services->get_service<RenderingService>().get();
   auto& multiplayer_service =
       Engine::instance().services->get_service<MultiplayerService>().get();
+  auto& gameplay_speed_service =
+      Engine::instance().services->get_service<GameplaySpeedService>().get();
 
   system_service.init_frame_timer();
 
   while (is_running()) {
-    system_service.update_frame_time(time_scale_);
+    // 1. update frame time
+    system_service.update_frame_time(time_scale_ *
+                                     gameplay_speed_service.speed());
     float frame_dt = system_service.delta_time();
     accumulator += frame_dt;
 
+    // 2. handle input & system events
     run_without_tracy([&]() {
       input_manager.update();
       system_service.update();
@@ -76,47 +83,67 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       multiplayer_service.poll();
     });
 
-    auto game_objects = this->game_objects();
-    for (auto game_object : game_objects) {
-      for (auto component : game_object.get().get_components<Component>()) {
-        component.get().update(frame_dt);
-      }
-    }
+    std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>
+        layered_renderables{};
+    auto game_objects = this->active_game_objects();
 
+    // 3. fixed update for physics and other fixed-timestep systems
     while (accumulator >= fixed_step) {
-      // creates a fixed step for input handling and physics updates
+      run_without_tracy([this, &game_objects, &physics_service]() {
+        physics_service.update(fixed_step, game_objects);
+      });
+
       accumulator -= fixed_step;
     }
 
+    // 4. update game objects & components, collect renderables
     // So tracy logs all allocations, even the past ones in previous frames
     // It does this to build a complete timeline of allocations for profiling
     // We don't want that overhead during normal frame rendering as clearing is
     // buggy here due to the stack So we run the rendering without tracy
     // tracking (if tracy is enabled)
     run_without_tracy([&]() {
-      auto game_objects = this->game_objects();
-      rendering_service.draw(game_objects);
-
       audio_service.update();
-      physics_service.update(fixed_step, game_objects);
+      gameplay_speed_service.update();
 
       for (auto& game_object_ref : game_objects) {
         auto& game_object = game_object_ref.get();
+        if (!game_object.is_active_in_world() || !game_object.is_active()) {
+          continue;
+        }
+
+        // add game-object layer
+        if (!layered_renderables.contains(game_object.layer())) {
+          layered_renderables.try_emplace(game_object.layer());
+        }
+
+        auto& obj_layer = layered_renderables.at(game_object.layer());
 
         if (auto* ui_object_opt = dynamic_cast<UIObject*>(&game_object)) {
           ui_object_opt->update(frame_dt);
         }
 
         auto components = game_object.get_components<Component>();
+
         for (auto& component_ref : components) {
           auto& component = component_ref.get();
+          if (!component.active()) {
+            continue;
+          }
+
           component.update(frame_dt);
+
+          if (auto* const renderable = dynamic_cast<Renderable*>(&component)) {
+            obj_layer.emplace(renderable->order_in_layer(), *renderable);
+          }
         }
 
         if (game_object.marked_for_deletion()) {
           remove_game_object(game_object);
         }
       }
+
+      rendering_service.draw(layered_renderables, *this);
     });
   }
 }
@@ -171,6 +198,19 @@ std::vector<std::reference_wrapper<GameObject>> Scene::game_objects() const {
   refs.reserve(game_objects_.size());
   for (const auto& game_object : game_objects_) {
     refs.emplace_back(*game_object);
+  }
+  return refs;
+}
+
+std::vector<std::reference_wrapper<GameObject>> Scene::active_game_objects()
+    const {
+  std::vector<std::reference_wrapper<GameObject>> refs;
+  refs.reserve(game_objects_.size());
+  for (const auto& game_object : game_objects_) {
+    auto& game_object_ref = *game_object;
+    if (game_object_ref.is_active() && game_object_ref.is_active_in_world()) {
+      refs.emplace_back(*game_object);
+    }
   }
   return refs;
 }

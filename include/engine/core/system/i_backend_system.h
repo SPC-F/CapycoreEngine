@@ -57,7 +57,14 @@ class IBackendSystem {
    * @brief Retrieves the time elapsed since the last frame.
    * @return The delta time in seconds.
    */
-  [[nodiscard]] virtual float delta_time() = 0;
+  [[nodiscard]] virtual float delta_time() const = 0;
+
+  /**
+   * @brief Retrieves the frames per second (FPS) based on the updated frame
+   * time.
+   * @return The current frames per second.
+   */
+  [[nodiscard]] virtual float frames_per_second() const = 0;
 
   /**
    * @brief Sets the current text to the system clipboard.
@@ -92,6 +99,10 @@ class IBackendSystem {
 
  protected:
   uint64_t last_{0};
-  float freq_{0.0f};
+  double freq_{0.0f};
   float delta_time_{0.0f};
+
+  int frame_count_{0};
+  float fps_{0.0f};
+  float accumulated_time_{0.0f};
 };

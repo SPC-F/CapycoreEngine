@@ -3,6 +3,7 @@
 #include <box2d/box2d.h>
 #include <engine/physics/world/body/body_type_2d.h>
 #include <engine/physics/world/body/shape_type_2d.h>
+#include <engine/public/util/point.h>
 #include <engine/public/util/vector3.h>
 
 #include <vector>
@@ -35,12 +36,23 @@ struct Body2D {
   static struct Body2DTransform get_body_transform(const Body2D& body);
 
   /**
+   * @brief Retrieves the pixel transform of the specified body.
+   *
+   * @param body The Body2D instance to get the local transform for.
+   * @return Body2DTransform The local transform of the body.
+   */
+  static struct Body2DTransform get_pixel_transform(const Body2D& body);
+
+  /**
    * @brief Sets the transform of the specified body.
    *
    * @param transform The Body2DTransform instance containing the new transform
    * data.
+   * @param in_pixels Whether the provided transform is in pixels (true) or
+   * Box2D units (false).
    */
-  static void set_body_transform(const struct Body2DTransform& transform);
+  static void set_body_transform(const struct Body2DTransform& transform,
+                                 bool in_pixels = false);
 
   /** @brief Sets the type of the specified body.
    *
@@ -68,14 +80,15 @@ struct Body2D {
    * @param body The Body2D instance to set the size for.
    * @param size The new size as a Vector3.
    */
-  static void set_body_size(const Body2D& body, const Vector3& size);
+  static void set_body_size(const Body2D& body, const Vector3& size,
+                            Point offset);
 
   /** @brief Sets the radius of the specified body.
    *
    * @param body The Body2D instance to set the radius for.
    * @param radius The new radius value.
    */
-  static void set_body_radius(const Body2D& body, float radius);
+  static void set_body_radius(const Body2D& body, float radius, Point offset);
 
   /** @brief Sets the bounciness of the specified body for a given shape type.
    *
@@ -135,4 +148,5 @@ struct Body2DTransform {
   Body2D body;
   Vector3 position;
   float rotation{0.0f};
+  Vector3 center_of_mass{0.0f, 0.0f, 0.0f};
 };

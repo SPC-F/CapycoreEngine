@@ -1,5 +1,7 @@
 #pragma once
 
+#include <engine/core/rendering/renderable.h>
+#include <engine/core/rendering/strategies/irendering_strategy.h>
 #include <engine/physics/creation/physics_creation_flags.h>
 #include <engine/physics/raycast/physics_raycaster.h>
 #include <engine/physics/world/physics_world.h>
@@ -23,7 +25,7 @@ constexpr float default_bounciness_2d = 0.5f;
  * response within the physics engine. It provides methods for handling
  * collision events and querying collision information.
  */
-class Collider2D : public Component {
+class Collider2D : public Renderable {
  public:
   Collider2D(float friction = default_friction_2d,
              float bounciness = default_bounciness_2d,
@@ -38,14 +40,10 @@ class Collider2D : public Component {
    * enter events.
    * @param other The other collider that entered the trigger.
    */
-  virtual void on_trigger_enter(Collider2D& other);
-  /**
-   * @brief Called when another collider exits this collider's trigger area.
-   * @note This method can be overridden to implement custom behavior on trigger
-   * exit events.
-   * @param other The other collider that exited the trigger.
-   */
-  virtual void on_trigger_exit(Collider2D& other);
+  void on_trigger_enter(Collider2D& other);
+  size_t add_on_trigger_enter(
+      const std::function<void(Collider2D&, Collider2D&)>& action);
+  void remove_on_trigger_enter(int index);
 
   /**
    * @brief Called when another collider exits this collider's trigger area.
@@ -53,14 +51,31 @@ class Collider2D : public Component {
    * exit events.
    * @param other The other collider that exited the trigger.
    */
-  virtual void on_collision_enter(Collider2D& other);
+  void on_trigger_exit(Collider2D& other);
+  size_t add_on_trigger_exit(
+      const std::function<void(Collider2D&, Collider2D&)>& action);
+  void remove_on_trigger_exit(int index);
   /**
    * @brief Called when another collider exits this collider's trigger area.
    * @note This method can be overridden to implement custom behavior on trigger
    * exit events.
    * @param other The other collider that exited the trigger.
    */
-  virtual void on_collision_exit(Collider2D& other);
+  void on_collision_enter(Collider2D& other);
+  size_t add_on_collision_enter(
+      const std::function<void(Collider2D&, Collider2D&)>& action);
+  void remove_on_collision_enter(int index);
+
+  /**
+   * @brief Called when another collider exits this collider's trigger area.
+   * @note This method can be overridden to implement custom behavior on trigger
+   * exit events.
+   * @param other The other collider that exited the trigger.
+   */
+  void on_collision_exit(Collider2D& other);
+  size_t add_on_collision_exit(
+      const std::function<void(Collider2D&, Collider2D&)>& action);
+  void remove_on_collision_exit(int index);
 
   /**
    * @brief Calculate the distance to another collider.

@@ -68,10 +68,20 @@ void GameObject::set_inactive_in_world() noexcept {
 }
 
 bool GameObject::is_active_in_world() const noexcept {
+  if (parent_.has_value()) {
+    return is_active_in_world_ && parent_->get().is_active_in_world();
+  }
+
   return is_active_in_world_;
 }
 
-bool GameObject::is_active() const noexcept { return is_active_; }
+bool GameObject::is_active() const noexcept {
+  if (parent_.has_value()) {
+    return is_active_ && parent_->get().is_active();
+  }
+
+  return is_active_;
+}
 
 bool GameObject::marked_for_deletion() const noexcept {
   return marked_for_deletion_;
@@ -135,11 +145,13 @@ std::vector<std::reference_wrapper<Component>> GameObject::get_components_all() 
 GameObject& GameObject::add_child(GameObject& child) {
   children_.emplace_back(child);
   child.parent(*this);
+  child.transform().parent(std::ref(this->transform()));
   return *this;
 }
 
 GameObject& GameObject::remove_child(GameObject& child) {
   std::erase_if(children_, [&](auto& ref) { return &ref.get() == &child; });
+  child.transform().parent(std::nullopt);
   child.parent(std::nullopt);
   return *this;
 }

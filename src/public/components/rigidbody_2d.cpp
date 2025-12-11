@@ -48,8 +48,9 @@ void Rigidbody2D::update(float dt) {
 
   if (auto parent_opt = parent(); parent_opt.has_value()) {
     auto& gameobject = parent_opt->get();
-    Body2DTransform transform = Body2D::get_body_transform(body_);
-
+    Body2DTransform transform = Body2D::get_pixel_transform(body_);
+    transform.position = PhysicsMath::physics_vec3_to_transform_pixel_vec3(
+        transform.position, 0, 0);
     gameobject.transform().position(transform.position);
     gameobject.transform().rotation(transform.rotation);
   }

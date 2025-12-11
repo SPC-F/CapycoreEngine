@@ -64,6 +64,52 @@ Renderer::Renderer(int min_aspect_width, int min_aspect_height,
   window_->init(window);
 }
 
+void Renderer::render(
+    const std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>&
+        objects,
+    const Scene& scene) {
+  if (objects.empty()) {
+    return;
+  }
+
+  const auto camera_opt = scene.main_camera();
+
+  if (!camera_opt.has_value() || !camera_opt->get().is_active() ||
+      !camera_opt->get().is_main()) {
+    return;
+  }
+
+  Camera& camera = camera_opt->get();
+  const Color bg_color = camera.background_color();
+
+  SDL_RenderClear(sdl_renderer_.get());
+
+  SDL_SetRenderDrawColor(sdl_renderer_.get(), bg_color.r, bg_color.g,
+                         bg_color.b, bg_color.a);
+
+  // Since we do not act on the layers, we do not mention them. An alternative
+  // here is just accepting the tuple...
+  for (auto& renderables_list : objects | std::views::values) {
+    for (auto& renderable_wrapper : renderables_list | std::views::values) {
+      auto& renderable = renderable_wrapper.get();
+      renderable.render_strategy().draw(renderable, camera);
+    }
+  }
+
+  SDL_RenderPresent(sdl_renderer_.get());
+}
+
+bool Renderer::vsync() const { return vsync_enabled_; }
+
+void Renderer::vsync(bool enabled) {
+  if (vsync_enabled_ == enabled) {
+    return;
+  }
+
+  vsync_enabled_ = enabled;
+  SDL_SetRenderVSync(sdl_renderer_.get(), vsync_enabled_);
+}
+
 Window& Renderer::window() {
   if (!window_.has_value()) {
     throw std::runtime_error("Window is not initialized in Renderer.");
@@ -72,36 +118,3 @@ Window& Renderer::window() {
 }
 
 void Renderer::clear() const { SDL_RenderClear(sdl_renderer_.get()); }
-
-void Renderer::render(
-    std::vector<std::reference_wrapper<GameObject>>& objects) {
-  if (objects.empty()) {
-    return;
-  }
-
-  const Scene& current_scene = objects.front().get().scene();
-  const auto camera_opt = current_scene.main_camera();
-
-  if (!camera_opt.has_value() || !camera_opt->get().is_active() ||
-      !camera_opt->get().is_main()) {
-    return;
-  }
-
-  Camera& camera = camera_opt->get();
-
-  SDL_RenderClear(sdl_renderer_.get());
-
-  for (auto game_obj_wrapper : objects) {
-    auto& game_obj = game_obj_wrapper.get();
-
-    for (auto renderables = game_obj.get_components<Renderable>();
-         auto renderable_wrapper : renderables) {
-      auto& renderable = renderable_wrapper.get();
-      auto& strategy = renderable.render_strategy();
-
-      strategy.draw(renderable, camera);
-    }
-  }
-
-  SDL_RenderPresent(sdl_renderer_.get());
-}

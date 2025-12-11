@@ -1,4 +1,5 @@
 #include <engine/physics/creation/physics_creation_factory.h>
+#include <engine/physics/physics_math.h>
 #include <engine/physics/world/physics_world.h>
 #include <engine/public/component.h>
 #include <engine/public/gameObject.h>
@@ -77,8 +78,8 @@ TEST_CASE("physics_creation_factory_creates_box_fixture",
   // assert
   REQUIRE(b2Body_IsValid(body.id));
   b2Vec2 pos = b2Body_GetPosition(body.id);
-  REQUIRE(pos.x == position.x);
-  REQUIRE(pos.y == position.y);
+  REQUIRE(pos.x == PhysicsMath::pixels_to_box2d(position.x));
+  REQUIRE(pos.y == PhysicsMath::pixels_to_box2d(position.y));
   REQUIRE(b2Body_GetType(body.id) == b2BodyType::b2_dynamicBody);
 }
 

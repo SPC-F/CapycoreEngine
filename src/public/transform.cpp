@@ -25,6 +25,11 @@ Transform& Transform::position(const Vector3& pos) noexcept {
 
 Vector3 Transform::local_position() const noexcept { return local_position_; }
 
+Transform& Transform::local_position(const Vector3& pos) noexcept {
+  local_position_ = pos;
+  return *this;
+}
+
 Vector3 Transform::position() const noexcept {
   if (!parent_.has_value()) {
     return local_position_;

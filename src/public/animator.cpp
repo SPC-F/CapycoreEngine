@@ -33,6 +33,12 @@ void Animator::play(const bool is_looping) {
   is_looping_ = is_looping;
 }
 
+void Animator::play(const std::string& animation_name, const bool is_looping) {
+  set_animation(animation_name);
+  play(is_looping);
+}
+
+
 void Animator::pause() { is_playing_ = false; }
 
 void Animator::reset() {
@@ -127,4 +133,25 @@ void Animator::update(const float dt_seconds) {
   if (!is_looping_ && new_frame_index == frames_.size() - 1) {
     is_playing_ = false;
   }
+}
+
+void Animator::set_animation(const std::string& animation_name) {
+  const AssetService& service = Engine::instance().services->get_service<AssetService>().get();
+  const auto sprite_sheet = service.try_get_spritesheet(animation_name);
+  if (!sprite_sheet.has_value()) {
+    throw std::runtime_error("Animator: Sprite sheet not found: " +
+                             animation_name);
+  }
+  set_animation(sprite_sheet.value());
+}
+
+void Animator::set_animation(
+    const std::vector<std::reference_wrapper<Texture>>& frames) {
+
+  if (frames.empty()) {
+    throw std::invalid_argument("Animator: frames cannot be empty.");
+  }
+
+  frames_ = frames;
+  reset();
 }

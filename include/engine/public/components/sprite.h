@@ -28,14 +28,14 @@ class Sprite final : public Renderable {
   std::reference_wrapper<Texture> get_texture_for(const std::string& sprite);
 
  public:
-  Sprite(const std::string& sprite, Color color, int flip_x, int flip_y,
+  Sprite(const std::string& sprite, Color color, bool flip_x, bool flip_y,
          int sorting_layer, int ordering_layer);
 
-  [[nodiscard]] int flip_x() const;
-  Sprite& flip_x(int val);
+  [[nodiscard]] bool flip_x() const;
+  Sprite& flip_x(bool val);
 
-  [[nodiscard]] int flip_y() const;
-  Sprite& flip_y(int val);
+  [[nodiscard]] bool flip_y() const;
+  Sprite& flip_y(bool val);
 
   [[nodiscard]] int sorting_layer() const;
   Sprite& sorting_layer(int val);

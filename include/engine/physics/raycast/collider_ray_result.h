@@ -1,6 +1,7 @@
 #pragma once
 
 #include <box2d/box2d.h>
+#include <engine/public/gameObject.h>
 #include <engine/public/util/point.h>
 
 /**
@@ -11,6 +12,7 @@
  */
 struct ColliderRayResult {
   b2ShapeId shape_id{};
+  std::optional<std::reference_wrapper<GameObject>> game_object{std::nullopt};
   float fraction{0.0f};
   bool is_valid{false};
 
