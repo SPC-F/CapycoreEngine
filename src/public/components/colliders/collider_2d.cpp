@@ -24,6 +24,8 @@ Collider2D::Collider2D(float friction, float bounciness, Point offset)
             "GameObject.");
       }
     }
+
+    this->set_render_strategy(comp);
   });
 }
 
@@ -37,9 +39,35 @@ void Collider2D::on_trigger_enter(Collider2D& other) {
   }
 }
 
+size_t Collider2D::add_on_trigger_enter(
+    const std::function<void(Collider2D&, Collider2D&)>& action) {
+  on_trigger_enter_actions_.push_back(action);
+  return on_trigger_enter_actions_.size() - 1;
+}
+
+void Collider2D::remove_on_trigger_enter(int index) {
+  if (index >= 0 &&
+      static_cast<size_t>(index) < on_trigger_enter_actions_.size()) {
+    on_trigger_enter_actions_.erase(on_trigger_enter_actions_.begin() + index);
+  }
+}
+
 void Collider2D::on_trigger_exit(Collider2D& other) {
   for (auto& action : on_trigger_exit_actions_) {
     action(*this, other);
+  }
+}
+
+size_t Collider2D::add_on_trigger_exit(
+    const std::function<void(Collider2D&, Collider2D&)>& action) {
+  on_trigger_exit_actions_.push_back(action);
+  return on_trigger_exit_actions_.size() - 1;
+}
+
+void Collider2D::remove_on_trigger_exit(int index) {
+  if (index >= 0 &&
+      static_cast<size_t>(index) < on_trigger_exit_actions_.size()) {
+    on_trigger_exit_actions_.erase(on_trigger_exit_actions_.begin() + index);
   }
 }
 
@@ -49,9 +77,37 @@ void Collider2D::on_collision_enter(Collider2D& other) {
   }
 }
 
+size_t Collider2D::add_on_collision_enter(
+    const std::function<void(Collider2D&, Collider2D&)>& action) {
+  on_collision_enter_actions_.push_back(action);
+  return on_collision_enter_actions_.size() - 1;
+}
+
+void Collider2D::remove_on_collision_enter(int index) {
+  if (index >= 0 &&
+      static_cast<size_t>(index) < on_collision_enter_actions_.size()) {
+    on_collision_enter_actions_.erase(on_collision_enter_actions_.begin() +
+                                      index);
+  }
+}
+
 void Collider2D::on_collision_exit(Collider2D& other) {
   for (auto& action : on_collision_exit_actions_) {
     action(*this, other);
+  }
+}
+
+size_t Collider2D::add_on_collision_exit(
+    const std::function<void(Collider2D&, Collider2D&)>& action) {
+  on_collision_exit_actions_.push_back(action);
+  return on_collision_exit_actions_.size() - 1;
+}
+
+void Collider2D::remove_on_collision_exit(int index) {
+  if (index >= 0 &&
+      static_cast<size_t>(index) < on_collision_exit_actions_.size()) {
+    on_collision_exit_actions_.erase(on_collision_exit_actions_.begin() +
+                                     index);
   }
 }
 

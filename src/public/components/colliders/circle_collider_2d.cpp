@@ -6,7 +6,7 @@
 CircleCollider2D::CircleCollider2D(float friction, float bounciness,
                                    float radius, Point offset)
     : Collider2D(friction, bounciness, offset), radius_(radius) {
-  auto on_awake = [this, offset](Component& comp) {
+  auto on_awake = [this, offset, friction, bounciness](Component& comp) {
     if (!parent().has_value()) {
       throw std::runtime_error("CircleCollider2D has no parent GameObject.");
     }
@@ -30,8 +30,14 @@ CircleCollider2D::CircleCollider2D(float friction, float bounciness,
 
       auto& rigidbody = rigidbody_opt->get();
       auto body = rigidbody.body();
+
+      auto flags = Collider2D::creation_flags();
+      flags.desired_mass = rigidbody.mass();
+      flags.bounciness = bounciness;
+      flags.friction = friction;
+
       rigidbody.body(PhysicsCreationFactory::create_circle_fixture(
-          body, offset, radius_, Collider2D::creation_flags()));
+          body, offset, radius_, flags));
     }
   };
 
@@ -48,6 +54,10 @@ float CircleCollider2D::radius() const noexcept { return radius_; }
 
 CircleCollider2D& CircleCollider2D::radius(float value) noexcept {
   radius_ = value;
+
+  auto& rigidbody = get_rigidbody().get();
+  Body2D::set_body_radius(rigidbody.body(), radius_, offset());
+
   return *this;
 }
 

@@ -19,6 +19,7 @@ class Transform {
             std::optional<std::reference_wrapper<Transform>> parent);
 
   [[nodiscard]] Vector3 local_position() const noexcept;
+  Transform& local_position(const Vector3& pos) noexcept;
 
   [[nodiscard]] Vector3 position() const noexcept;
   Transform& position(const Vector3& pos) noexcept;

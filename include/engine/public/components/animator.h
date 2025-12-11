@@ -6,9 +6,9 @@
 
 #include <vector>
 
-class Animator final : public Component {
+class Animator : public Component {
  private:
-  const std::vector<std::reference_wrapper<Texture>> frames_;
+  std::vector<std::reference_wrapper<Texture>> frames_;
   const int interval_ms_;
 
   int current_texture_index_;
@@ -24,6 +24,8 @@ class Animator final : public Component {
   explicit Animator(const std::string& sprite_sheet_name, int interval_ms);
 
   void play(bool is_looping);
+  void play(const std::string& animation_name, bool is_looping);
+
   void pause();
   void reset();
   [[nodiscard]] bool is_playing() const noexcept;
@@ -32,4 +34,8 @@ class Animator final : public Component {
   void update(float dt_seconds) override;
   void on_serialize() override;
   void on_deserialize() override;
+
+  void set_animation(const std::string& animation_name);
+  void set_animation(
+      const std::vector<std::reference_wrapper<Texture>>& frames_);
 };

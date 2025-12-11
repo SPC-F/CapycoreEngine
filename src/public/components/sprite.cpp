@@ -18,8 +18,8 @@ std::reference_wrapper<Texture> Sprite::get_texture_for(
   return maybe_texture->get();
 }
 
-Sprite::Sprite(const std::string& sprite, const Color color, const int flip_x,
-               const int flip_y, const int sorting_layer,
+Sprite::Sprite(const std::string& sprite, const Color color, const bool flip_x,
+               const bool flip_y, const int sorting_layer,
                const int ordering_layer)
     : texture_(get_texture_for(sprite)),
       flip_x_(flip_x),
@@ -30,14 +30,14 @@ Sprite::Sprite(const std::string& sprite, const Color color, const int flip_x,
   add_on_attach([this](Component& comp) { this->set_render_strategy(comp); });
 }
 
-int Sprite::flip_x() const { return flip_x_; }
-Sprite& Sprite::flip_x(const int val) {
+bool Sprite::flip_x() const { return flip_x_; }
+Sprite& Sprite::flip_x(const bool val) {
   flip_x_ = val;
   return *this;
 }
 
-int Sprite::flip_y() const { return flip_y_; }
-Sprite& Sprite::flip_y(const int val) {
+bool Sprite::flip_y() const { return flip_y_; }
+Sprite& Sprite::flip_y(const bool val) {
   flip_y_ = val;
   return *this;
 }

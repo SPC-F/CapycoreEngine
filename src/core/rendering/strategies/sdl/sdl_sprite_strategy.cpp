@@ -64,10 +64,19 @@ void SdlSpriteStrategy::draw(Component& component, Camera& camera) {
   const Color original_color = get_default_sprite_color(texture_ptr);
   set_sprite_color(sprite.color(), texture_ptr);
 
+  SDL_FlipMode flip_mode = SDL_FLIP_NONE;
+  if (sprite.flip_x() && sprite.flip_y())
+    flip_mode =
+        static_cast<SDL_FlipMode>(SDL_FLIP_HORIZONTAL | SDL_FLIP_VERTICAL);
+  else if (sprite.flip_x())
+    flip_mode = SDL_FLIP_HORIZONTAL;
+  else if (sprite.flip_y())
+    flip_mode = SDL_FLIP_VERTICAL;
+
   SDL_RenderTextureRotated(&sdl_renderer_, texture_ptr, &source, &target,
                            transform.rotation(),
                            nullptr,  // pivot = center
-                           SDL_FLIP_NONE);
+                           flip_mode);
 
   set_sprite_color(original_color, texture_ptr);
 }

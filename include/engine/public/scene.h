@@ -48,6 +48,8 @@ class Scene {
       const std::string& id) const;
   [[nodiscard]] std::vector<std::reference_wrapper<GameObject>> game_objects()
       const;
+  [[nodiscard]] std::vector<std::reference_wrapper<GameObject>>
+  active_game_objects() const;
 
   template <typename T, typename... Args>
   T& add_game_object(Args&&... args) {

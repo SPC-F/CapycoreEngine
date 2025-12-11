@@ -1,8 +1,14 @@
 #pragma once
 
+#include <map>
+#include <memory>
+
+#include <engine/core/rendering/rendererFlags.h>
+#include <engine/public/gameObject.h>
 #include <engine/core/iEngineService.h>
 #include <engine/core/rendering/rendererFlags.h>
 #include <engine/core/rendering/window.h>
+#include <engine/core/rendering/renderable.h>
 #include <engine/public/gameObject.h>
 
 #include <memory>
@@ -32,20 +38,35 @@ class Renderer final : public IEngineService {
   // never be a proper init value...
   std::optional<Window> window_;
 
+  bool vsync_enabled_{false};
+
  public:
   explicit Renderer();
   explicit Renderer(int min_aspect_width, int min_aspect_height,
                     const std::string& title, RendererFlags flags);
 
+    /**
+     * @brief Renders a collection of game objects to the screen.
+     * Renders a given collection of game objects to the screen. Each game object is expected to have its own sprite, or it will be skipped. <br>
+     * <br>
+     * Mind that this method clears the entire screen and renders immediately on finish. If you want to batch multiple calls, fuse them into one.
+     * @param objects A map of renderable objects grouped by their rendering layer
+     * @param scene The current scene being rendered
+     */
+    void render(const std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>& objects,
+      const Scene& scene) ;
+
   /**
-   * @brief Renders a collection of game objects to the screen.
-   * Renders a given collection of game objects to the screen. Each game object
-   * is expected to have its own sprite, or it will be skipped. <br> <br> Mind
-   * that this method clears the entire screen and renders immediately on
-   * finish. If you want to batch multiple calls, fuse them into one.
-   * @param objects
+   * @brief Checks if vertical synchronization (VSync) is enabled.
+   * @return true if VSync is enabled, false otherwise.
    */
-  void render(std::vector<std::reference_wrapper<GameObject>>& objects);
+  [[nodiscard]] bool vsync() const;
+
+  /**
+   * @brief Toggles vertical synchronization (VSync) which limits fps to the
+   * monitor's refresh rate.
+   */
+  void vsync(bool enabled);
 
   /**
    * @brief Clears the rendering target with the drawing color.
