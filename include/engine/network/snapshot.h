@@ -25,9 +25,54 @@
 namespace snapshot {
 
 // Serialization helpers
+/**
+ * @brief Writes a length-prefixed string to a binary buffer.
+ *
+ * Encodes the string length as a uint16_t followed by the string data.
+ * Used for compact serialization of variable-length strings.
+ *
+ * @param out Output buffer to write to.
+ * @param str String to serialize.
+ */
 void write_string(std::vector<uint8_t>& out, const std::string& str);
+
+/**
+ * @brief Reads a length-prefixed string from a binary buffer.
+ *
+ * Decodes a uint16_t length prefix and reads the corresponding string data.
+ * Advances the offset past the read data.
+ *
+ * @param data Input buffer to read from.
+ * @param offset Current read position; updated to point past the string.
+ * @param out Output string to store the deserialized value.
+ * @return true if read succeeded, false if buffer bounds exceeded.
+ */
 bool read_string(const std::vector<uint8_t>& data, size_t& offset, std::string& out);
+
+/**
+ * @brief Writes raw bytes to a binary buffer.
+ *
+ * Appends the specified data to the buffer without any encoding.
+ * Used for serializing fixed-size types (floats, ints, etc.).
+ *
+ * @param out Output buffer to write to.
+ * @param data Pointer to data to serialize.
+ * @param size Number of bytes to write.
+ */
 void write_bytes(std::vector<uint8_t>& out, const void* data, size_t size);
+
+/**
+ * @brief Reads raw bytes from a binary buffer.
+ *
+ * Copies the specified number of bytes from the buffer.
+ * Advances the offset past the read data.
+ *
+ * @param data Input buffer to read from.
+ * @param offset Current read position; updated to point past the bytes.
+ * @param out Output buffer to store the deserialized data.
+ * @param size Number of bytes to read.
+ * @return true if read succeeded, false if buffer bounds exceeded.
+ */
 bool read_bytes(const std::vector<uint8_t>& data, size_t& offset, void* out, size_t size);
 
 /**

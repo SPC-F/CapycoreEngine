@@ -26,8 +26,7 @@ GameObject& PrefabRegistry::instantiate(const std::string& prefab_type_id,
                                         const std::string& name) {
   auto it = prefab_factories_.find(prefab_type_id);
   if (it == prefab_factories_.end()) {
-    throw std::runtime_error(
-        "PrefabRegistry: Unknown prefab type: " + prefab_type_id);
+    throw std::runtime_error("PrefabRegistry: Unknown prefab type: " + prefab_type_id);
   }
 
   return it->second(scene, name);

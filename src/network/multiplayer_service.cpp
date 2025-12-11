@@ -65,9 +65,11 @@ PeerType MultiplayerService::get_peer_type() const
 {
     if (host_) {
         return PeerType::HOST;
-    } else if (client_) {
+    }
+    else if (client_) {
         return PeerType::CLIENT;
-    } else {
+    }
+    else {
         return PeerType::NONE;
     }
 }
@@ -146,42 +148,52 @@ void MultiplayerService::disconnect()
 
 ConnectionState MultiplayerService::get_connection_state() const noexcept
 {
-    if (host_)
+    if (host_) {
         return host_->get_connection_state();
-    if (client_)
+    }
+    else if (client_) {
         return client_->get_connection_state();
-    return ConnectionState::NONE;
+    }
+    else {
+        return ConnectionState::NONE;
+    }
 }
 
 std::string MultiplayerService::get_uuid() const noexcept
 {
-    if (host_)
+    if (host_) {
         return host_->get_uuid();
-    if (client_)
+    }
+    else if (client_) {
         return client_->get_uuid();
-    else
+    }
+    else {
         throw std::runtime_error("Cannot get uuid: must be a host or connected client first.");
+    }
 }
 
 void MultiplayerService::set_max_clients(int amount) noexcept
 {
     max_clients_ = amount;
-    if (host_)
+    if (host_) {
         host_->set_max_clients(amount);
+    }
 }
 
 int MultiplayerService::get_client_amount() const noexcept
 {
-    if (host_)
+    if (host_){
         return host_->get_client_amount();
+    }
     return 0;
 }
 
 void MultiplayerService::set_connection_port(int port) noexcept
 {
     connection_port_ = port;
-    if (host_)
+    if (host_) {
         host_->set_connection_port(port);
+    }
 }
 
 int MultiplayerService::get_connection_port() const noexcept

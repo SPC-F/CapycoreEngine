@@ -88,7 +88,7 @@ public:
     void send_to_uuid(const std::string& uuid, const Message& message) noexcept;
 
     /**
-     * 
+     * @brief Broadcasts delta snapshots of the scene to all connected clients.
      */
     void sync() noexcept;
 
