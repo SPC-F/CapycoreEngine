@@ -61,7 +61,7 @@ class Pathfinding : public Renderable {
    * representing the path. These game objects are children of tiles in the
    * NavigationGraph and have NavigationNode components.
    */
-  const std::vector<std::reference_wrapper<GameObject>>& get_path() const;
+  std::vector<std::reference_wrapper<GameObject>>& get_path();
 
   /**
    * @brief Finds the closest navigation node to the specified world position.

@@ -30,7 +30,7 @@ Pathfinding::Pathfinding() {
   add_on_attach([this](Component& comp) {
     get_navigation_graph_component();
 
-    this->disable_draw();
+    // this->disable_draw();
     this->set_render_strategy(comp);
   });
 }
@@ -113,8 +113,7 @@ Pathfinding& Pathfinding::generate_path_to_target_game_object() {
   return *this;
 }
 
-const std::vector<std::reference_wrapper<GameObject>>& Pathfinding::get_path()
-    const {
+std::vector<std::reference_wrapper<GameObject>>& Pathfinding::get_path() {
   return path_;
 }
 
