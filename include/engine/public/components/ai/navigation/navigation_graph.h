@@ -12,6 +12,11 @@
  *
  * This component manages a collection of navigation nodes, allowing for the
  * generation, clearing, and querying of the navigation graph.
+ *
+ * NOTE: This component should be placed on a GameObject that serves as the
+ * parent for all the tiles. NOTHING ELSE should be a child of this GameObject
+ * except the tiles, which automatically get assigned navigation nodes as
+ * children when generating the graph.
  */
 class NavigationGraph : public Component {
  public:

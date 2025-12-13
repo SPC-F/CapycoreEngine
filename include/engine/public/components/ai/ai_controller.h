@@ -31,6 +31,10 @@ enum AIControllerMode : uint8_t {
  * obstacles depending on the navigation graph and collider setup. It has
  * some basic stuck detection and will try to recalculate the path
  * if it detects that it's not moving.
+ *
+ * NOTE: for this to work you need to set up a proper navigation graph using
+ * the Pathfinding component and ensure that the AI GameObject has appropriate
+ * colliders (and Rigidbody2D if using physics-based movement).
  */
 class AIController : public Component {
  public:

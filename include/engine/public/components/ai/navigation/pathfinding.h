@@ -11,6 +11,9 @@
  *
  * This component generates paths for AI-controlled GameObjects to navigate
  * through the environment based on a NavigationGraph.
+ *
+ * NOTE: This component requires a NavigationGraph component to be present
+ * on the same GameObject to function correctly.
  */
 class Pathfinding : public Renderable {
  public:
