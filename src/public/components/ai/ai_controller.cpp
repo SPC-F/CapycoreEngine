@@ -1,5 +1,6 @@
 #include <engine/public/components/ai/ai_controller.h>
 
+#include <algorithm>
 #include <stdexcept>
 
 std::reference_wrapper<Pathfinding> AIController::get_pathfinding_component() {
@@ -29,6 +30,7 @@ AIController::AIController(GameObject& pathfinding_game_object)
     : pathfinding_game_object_(pathfinding_game_object) {
   add_on_attach([this](Component& comp) {
     rigidbody_ = parent().value().get().get_component<Rigidbody2D>();
+    initial_transform = parent().value().get().transform();
 
     get_pathfinding_component();
   });
@@ -53,6 +55,7 @@ void AIController::chase(float dt) {
   auto& current_transform = parent().value().get().transform();
   auto& target_transform = chase_target_.value().get().transform();
 
+  /// Use thee graph or ignore and fly directly towards target
   if (use_graph_traversal_)
     try_traverse_graph(current_transform, target_transform, dt);
   else {
@@ -74,6 +77,7 @@ void AIController::chase(float dt) {
       Vector3 velocity(direction.x * speed_, direction.y * speed_,
                        direction.z * speed_);
       rb.velocity(velocity);
+
       return;
     }
   }
@@ -84,6 +88,11 @@ void AIController::patrol(float dt) {
 
   auto& current_transform = parent().value().get().transform();
   auto& target_transform = patrol_target_.value().get().transform();
+
+  if (returning_to_start_) {
+    try_traverse_graph(current_transform, initial_transform, dt);
+    return;
+  }
 
   try_traverse_graph(current_transform, target_transform, dt);
 }
@@ -102,35 +111,25 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
   float dist_to_target = (source_center - target_center).length();
   if (dist_to_target < arrival_threshold_) {
     path.clear();
+
+    if (mode_ == AIControllerMode::PATROL)
+      returning_to_start_ = !returning_to_start_;
+
     return;
   }
 
   if (path.empty()) {
     pathfinding.set_origin(source.position());
-    switch (mode_) {
-      case AIControllerMode::CHASE:
-        pathfinding.set_target_game_object(chase_target_.value().get());
-        break;
-      case AIControllerMode::PATROL:
-        pathfinding.set_target_game_object(patrol_target_.value().get());
-        break;
-      default:
-        throw std::runtime_error(
-            "Unknown AIControllerMode in try_traverse_graph.");
-    }
-    pathfinding.generate_path_to_target_game_object();
+    pathfinding.set_target(target.position());
 
-    if (!path.empty()) {
-      auto& first_node = path.front().get();
-      Vector3 first_node_pos = first_node.transform().position();
-
-      if ((first_node_pos - source_center).length() > arrival_threshold_) {
-        std::reverse(path.begin(), path.end());
-      }
+    if (mode_ == AIControllerMode::PATROL && returning_to_start_) {
+      pathfinding.set_target(initial_transform.position());
     }
 
-    return;
+    pathfinding.generate_path_to_target();
   }
+
+  if (path.empty()) return;
 
   auto& next_node = path.front().get();
   Vector3 next_center = next_node.transform().position();
@@ -138,7 +137,7 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
   Vector3 delta = next_center - source_center;
   float dist = delta.length();
 
-  if (dist < 1.0f) {
+  if (dist < node_distance_threshold_) {
     path.erase(path.begin());
     return;
   }
@@ -150,7 +149,7 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
 
     if ((source_center - last_position_).length() < 0.1f) {
       stuck_timer_ += dt;
-      if (stuck_timer_ > 1.0f) {
+      if (stuck_timer_ > stuck_threshold_) {
         path.clear();
         stuck_timer_ = 0.0f;
       }
@@ -232,15 +231,6 @@ AIController& AIController::set_speed(float speed) {
   return *this;
 }
 
-float AIController::get_path_recalculation_interval() const {
-  return path_recalculation_interval_;
-}
-
-AIController& AIController::set_path_recalculation_interval(float interval) {
-  path_recalculation_interval_ = interval;
-  return *this;
-}
-
 float AIController::get_width() const { return width_; }
 
 AIController& AIController::set_width(float width) {
@@ -255,12 +245,12 @@ AIController& AIController::set_height(float height) {
   return *this;
 }
 
-bool AIController::enable_graph_traversal() {
+bool AIController::enable_graph_traversal() noexcept {
   use_graph_traversal_ = true;
   return use_graph_traversal_;
 }
 
-bool AIController::disable_graph_traversal() {
+bool AIController::disable_graph_traversal() noexcept {
   use_graph_traversal_ = false;
   return use_graph_traversal_;
 }

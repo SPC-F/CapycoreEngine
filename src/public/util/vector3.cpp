@@ -84,3 +84,7 @@ void Vector3::normalize() noexcept {
     z /= len;
   }
 }
+
+bool Vector3::equals(const Vector3& other) const noexcept {
+  return x == other.x && y == other.y && z == other.z;
+}

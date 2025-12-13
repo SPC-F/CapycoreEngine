@@ -30,4 +30,6 @@ class Vector3 {
 
   /// Normalize the vector to a unit vector
   void normalize() noexcept;
+
+  bool equals(const Vector3& other) const noexcept;
 };
