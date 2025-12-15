@@ -1,25 +1,33 @@
 <map id="Component" name="Component">
-<area shape="rect" id="Node000001" title=" " alt="" coords="250,5,347,31"/>
-<area shape="rect" id="Node000002" href="$class_animator.html" title=" " alt="" coords="5,79,88,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,37,88,81,87,76,244,32"/>
-<area shape="rect" id="Node000003" href="$class_audio_source.html" title="Component that plays audio using the AudioService." alt="" coords="113,79,215,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="266,39,187,81,185,76,264,35"/>
-<area shape="rect" id="Node000004" href="$class_behavior_script.html" title="Component that hosts a Behavior." alt="" coords="240,79,357,104"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="301,44,301,79,296,79,296,44"/>
-<area shape="rect" id="Node000005" href="$class_renderable.html" title="Base class for renderable components in the engine." alt="" coords="381,79,477,104"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="333,35,409,76,407,81,331,40"/>
-<area shape="rect" id="Node000012" href="$class_rigidbody2_d.html" title="A 2D rigidbody component that adds physics properties to a GameObject." alt="" coords="502,79,607,104"/>
-<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="353,32,514,76,513,81,352,37"/>
-<area shape="rect" id="Node000006" href="$class_collider2_d.html" title="A 2D collider base that defines the shape and physical properties of a GameObject for collision detec..." alt="" coords="240,152,331,177"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="395,112,310,154,308,149,393,108"/>
-<area shape="rect" id="Node000009" href="$class_image.html" title=" " alt="" coords="355,152,418,177"/>
-<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="418,117,396,153,391,151,413,114"/>
-<area shape="rect" id="Node000010" href="$class_sprite.html" title="Component that represents a 2D sprite to be rendered. The Sprite component holds a reference to a Tex..." alt="" coords="442,152,502,177"/>
-<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="446,114,467,151,463,153,441,117"/>
-<area shape="rect" id="Node000011" href="$class_text.html" title="UI Text Component." alt="" coords="526,152,575,177"/>
-<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="462,109,532,149,529,154,460,113"/>
-<area shape="rect" id="Node000007" href="$class_box_collider2_d.html" title="A 2D box collider component that defines a rectangular collision shape for a GameObject." alt="" coords="156,225,271,251"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="265,189,227,227,223,223,262,185"/>
-<area shape="rect" id="Node000008" href="$class_circle_collider2_d.html" title="A 2D circle collider component that defines a circular collision shape for a GameObject." alt="" coords="295,225,422,251"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="309,185,349,223,345,227,305,189"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,153,103,179"/>
+<area shape="rect" id="Node000002" href="$class_a_i_controller.html" title="Component responsible for controlling AI behavior." alt="" coords="167,5,266,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,140,100,90,123,63,149,40,170,28,172,33,152,44,127,67,104,93,71,143"/>
+<area shape="rect" id="Node000003" href="$class_animator.html" title=" " alt="" coords="175,55,258,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="78,142,111,115,149,89,174,78,176,82,152,94,114,119,81,146"/>
+<area shape="rect" id="Node000004" href="$class_audio_source.html" title="Component that plays audio using the AudioService." alt="" coords="165,104,268,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="109,147,173,127,174,132,111,152"/>
+<area shape="rect" id="Node000005" href="$class_behavior_script.html" title="Component that hosts a Behavior." alt="" coords="158,153,275,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="117,163,157,163,157,169,117,169"/>
+<area shape="rect" id="Node000006" href="$class_navigation_graph.html" title="Component representing a navigation graph for AI pathfinding." alt="" coords="151,203,283,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="111,180,174,200,173,205,109,185"/>
+<area shape="rect" id="Node000007" href="$class_renderable.html" title="Base class for renderable components in the engine." alt="" coords="169,252,265,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="81,186,114,212,152,237,179,250,176,254,149,242,111,216,78,190"/>
+<area shape="rect" id="Node000016" href="$class_rigidbody2_d.html" title="A 2D rigidbody component that adds physics properties to a GameObject." alt="" coords="164,301,269,327"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="71,189,104,238,127,264,152,286,175,299,172,304,149,291,123,268,100,241,67,192"/>
+<area shape="rect" id="Node000008" href="$class_collider2_d.html" title="A 2D collider base that defines the shape and physical properties of a GameObject for collision detec..." alt="" coords="349,128,439,153"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="272,243,281,237,296,219,304,201,312,182,329,163,347,151,350,156,332,167,317,185,309,203,301,222,284,241,276,248"/>
+<area shape="rect" id="Node000011" href="$class_image.html" title=" " alt="" coords="363,177,425,203"/>
+<area shape="poly" id="edge10_Node000007_Node000011" title=" " alt="" coords="264,244,282,237,330,212,361,199,363,203,332,216,284,242,266,249"/>
+<area shape="rect" id="Node000012" href="$class_navigation_node.html" title="Component representing a navigation node in a navigation graph." alt="" coords="331,227,457,252"/>
+<area shape="poly" id="edge11_Node000007_Node000012" title=" " alt="" coords="278,253,330,246,331,251,278,259"/>
+<area shape="rect" id="Node000013" href="$class_pathfinding.html" title="Component responsible for AI pathfinding using a navigation graph." alt="" coords="347,276,441,301"/>
+<area shape="poly" id="edge12_Node000007_Node000013" title=" " alt="" coords="279,270,347,280,346,285,278,276"/>
+<area shape="rect" id="Node000014" href="$class_sprite.html" title="Component that represents a 2D sprite to be rendered. The Sprite component holds a reference to a Tex..." alt="" coords="364,325,424,351"/>
+<area shape="poly" id="edge13_Node000007_Node000014" title=" " alt="" coords="268,280,284,286,332,310,364,324,362,329,330,315,282,291,266,285"/>
+<area shape="rect" id="Node000015" href="$class_text.html" title="UI Text Component." alt="" coords="369,375,419,400"/>
+<area shape="poly" id="edge14_Node000007_Node000015" title=" " alt="" coords="278,282,284,287,301,305,309,324,317,342,332,360,351,371,370,379,368,384,348,376,329,364,313,345,304,326,297,308,281,291,274,286"/>
+<area shape="rect" id="Node000009" href="$class_box_collider2_d.html" title="A 2D box collider component that defines a rectangular collision shape for a GameObject." alt="" coords="511,104,626,129"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="453,130,510,122,511,127,454,135"/>
+<area shape="rect" id="Node000010" href="$class_circle_collider2_d.html" title="A 2D circle collider component that defines a circular collision shape for a GameObject." alt="" coords="505,153,632,179"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="454,147,505,154,505,159,453,152"/>
 </map>

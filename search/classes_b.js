@@ -1,24 +1,7 @@
 var searchData=
 [
-  ['scene_0',['Scene',['../class_scene.html',1,'']]],
-  ['sceneservice_1',['SceneService',['../class_scene_service.html',1,'']]],
-  ['sdlbackendsystem_2',['SDLBackendSystem',['../class_s_d_l_backend_system.html',1,'']]],
-  ['sdlboxcollider2dstrategy_3',['SdlBoxCollider2DStrategy',['../class_sdl_box_collider2_d_strategy.html',1,'']]],
-  ['sdlcirclecollider2dstrategy_4',['SdlCircleCollider2DStrategy',['../class_sdl_circle_collider2_d_strategy.html',1,'']]],
-  ['sdlimagestrategy_5',['SdlImageStrategy',['../class_sdl_image_strategy.html',1,'']]],
-  ['sdlinputstrategy_6',['SDLInputStrategy',['../class_s_d_l_input_strategy.html',1,'']]],
-  ['sdlsoundinstance_7',['SDLSoundInstance',['../class_s_d_l_sound_instance.html',1,'']]],
-  ['sdlsoundresource_8',['SDLSoundResource',['../class_s_d_l_sound_resource.html',1,'']]],
-  ['sdlspritestrategy_9',['SdlSpriteStrategy',['../class_sdl_sprite_strategy.html',1,'']]],
-  ['sdlstrategyfactory_10',['SdlStrategyFactory',['../class_sdl_strategy_factory.html',1,'']]],
-  ['sdltextstrategy_11',['SdlTextStrategy',['../class_sdl_text_strategy.html',1,'']]],
-  ['servicecontainer_12',['ServiceContainer',['../class_service_container.html',1,'']]],
-  ['shape2d_13',['Shape2D',['../struct_shape2_d.html',1,'']]],
-  ['shapetype2d_14',['ShapeType2D',['../struct_shape_type2_d.html',1,'']]],
-  ['simplestorage_15',['SimpleStorage',['../class_simple_storage.html',1,'']]],
-  ['soundfactory_16',['SoundFactory',['../class_sound_factory.html',1,'']]],
-  ['soundinstance_17',['SoundInstance',['../class_sound_instance.html',1,'']]],
-  ['soundresource_18',['SoundResource',['../class_sound_resource.html',1,'']]],
-  ['sprite_19',['Sprite',['../class_sprite.html',1,'']]],
-  ['systemservice_20',['SystemService',['../class_system_service.html',1,'']]]
+  ['renderable_0',['Renderable',['../class_renderable.html',1,'']]],
+  ['renderer_1',['Renderer',['../class_renderer.html',1,'']]],
+  ['renderingservice_2',['RenderingService',['../class_rendering_service.html',1,'']]],
+  ['rigidbody2d_3',['Rigidbody2D',['../class_rigidbody2_d.html',1,'']]]
 ];

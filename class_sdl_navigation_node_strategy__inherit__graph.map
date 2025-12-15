@@ -1,0 +1,5 @@
+<map id="SdlNavigationNodeStrategy" name="SdlNavigationNodeStrategy">
+<area shape="rect" id="Node000001" title="SDL implementation of the navigation node rendering strategy." alt="" coords="5,79,208,104"/>
+<area shape="rect" id="Node000002" href="$class_i_rendering_strategy.html" title="Interface for rendering strategies used by renderable components." alt="" coords="33,5,180,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,44,109,79,104,79,104,44"/>
+</map>

@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('class_renderable.html',''); initResiza
 <div class="dynheader">
 Inheritance diagram for Renderable:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_renderable__inherit__graph.svg" width="431" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_renderable__inherit__graph.svg" width="700" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -158,6 +158,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a70972d056585f61a2213eb234255c5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a810422a6208a7552e6b3f56ca7699ae4" id="r_a810422a6208a7552e6b3f56ca7699ae4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_i_rendering_strategy.html">IRenderingStrategy</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a810422a6208a7552e6b3f56ca7699ae4">render_strategy</a> () const</td></tr>
 <tr class="separator:a810422a6208a7552e6b3f56ca7699ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac60ab2ac3f6e7b7b7389d1cba8f88944" id="r_ac60ab2ac3f6e7b7b7389d1cba8f88944"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_renderable.html">Renderable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#ac60ab2ac3f6e7b7b7389d1cba8f88944">disable_draw</a> () noexcept</td></tr>
+<tr class="separator:ac60ab2ac3f6e7b7b7389d1cba8f88944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a870bd29e2a9f6d8400290d229f2ca1c1" id="r_a870bd29e2a9f6d8400290d229f2ca1c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_renderable.html">Renderable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a870bd29e2a9f6d8400290d229f2ca1c1">enable_draw</a> () noexcept</td></tr>
+<tr class="separator:a870bd29e2a9f6d8400290d229f2ca1c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ea5c2b28723ed913afe75cad2abe397" id="r_a7ea5c2b28723ed913afe75cad2abe397"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a7ea5c2b28723ed913afe75cad2abe397">should_draw</a> () const noexcept</td></tr>
+<tr class="separator:a7ea5c2b28723ed913afe75cad2abe397"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_component.html">Component</a></td></tr>
 <tr class="memitem:a8775db6d1a2c1afc2e77cd3c8f39da6f inherit pub_methods_class_component" id="r_a8775db6d1a2c1afc2e77cd3c8f39da6f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a8775db6d1a2c1afc2e77cd3c8f39da6f">Component</a> ()</td></tr>
 <tr class="separator:a8775db6d1a2c1afc2e77cd3c8f39da6f inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,6 +210,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a487c853faff4489e006918af1d82f513"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef090f5a51d638953bc251e7b687023f" id="r_aef090f5a51d638953bc251e7b687023f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#aef090f5a51d638953bc251e7b687023f">ordering_layer_</a> = 0</td></tr>
 <tr class="separator:aef090f5a51d638953bc251e7b687023f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae0c0f6a26f1ee23b5cdd6a9c7dd7e96" id="r_aae0c0f6a26f1ee23b5cdd6a9c7dd7e96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#aae0c0f6a26f1ee23b5cdd6a9c7dd7e96">draw</a> {true}</td></tr>
+<tr class="separator:aae0c0f6a26f1ee23b5cdd6a9c7dd7e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for renderable components in the engine. </p>
@@ -286,6 +294,56 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac60ab2ac3f6e7b7b7389d1cba8f88944" name="ac60ab2ac3f6e7b7b7389d1cba8f88944"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac60ab2ac3f6e7b7b7389d1cba8f88944">&#9670;&#160;</a></span>disable_draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_renderable.html">Renderable</a> &amp; Renderable::disable_draw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a870bd29e2a9f6d8400290d229f2ca1c1" name="a870bd29e2a9f6d8400290d229f2ca1c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a870bd29e2a9f6d8400290d229f2ca1c1">&#9670;&#160;</a></span>enable_draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_renderable.html">Renderable</a> &amp; Renderable::enable_draw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a891039d412aa3a3ef49e2a88b64829d6" name="a891039d412aa3a3ef49e2a88b64829d6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a891039d412aa3a3ef49e2a88b64829d6">&#9670;&#160;</a></span>order_in_layer() <span class="overload">[1/2]</span></h2>
 
@@ -364,7 +422,54 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a7ea5c2b28723ed913afe75cad2abe397" name="a7ea5c2b28723ed913afe75cad2abe397"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ea5c2b28723ed913afe75cad2abe397">&#9670;&#160;</a></span>should_draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Renderable::should_draw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="aae0c0f6a26f1ee23b5cdd6a9c7dd7e96" name="aae0c0f6a26f1ee23b5cdd6a9c7dd7e96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae0c0f6a26f1ee23b5cdd6a9c7dd7e96">&#9670;&#160;</a></span>draw</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Renderable::draw {true}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aef090f5a51d638953bc251e7b687023f" name="aef090f5a51d638953bc251e7b687023f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aef090f5a51d638953bc251e7b687023f">&#9670;&#160;</a></span>ordering_layer_</h2>
 

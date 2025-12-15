@@ -1,0 +1,26 @@
+var class_navigation_graph =
+[
+    [ "NavigationGraph", "class_navigation_graph.html#a7e9c21bc6ff11927bf75a84e67810dc4", null ],
+    [ "add_node", "class_navigation_graph.html#a5fb10eec3f7e2e67d6ebdd21ebdbef3a", null ],
+    [ "clear", "class_navigation_graph.html#ab414711fec5ee08c72a6a9ed59aab045", null ],
+    [ "generate_graph", "class_navigation_graph.html#a1fa5087c03153e2c821ee2a7d5dad6f6", null ],
+    [ "get_closest_node", "class_navigation_graph.html#a3cf2f76a7819cbb20b9a4c036eec1825", null ],
+    [ "get_closest_node", "class_navigation_graph.html#a92eb185193de145b44566866e0add5bb", null ],
+    [ "get_grid_max_x", "class_navigation_graph.html#a9fee821325b07fab526079e30b13dea2", null ],
+    [ "get_grid_max_y", "class_navigation_graph.html#ae00aec8f640a3845e2317f559b563a89", null ],
+    [ "get_grid_size", "class_navigation_graph.html#aad1677d429c467d82f0fa8998052ee1f", null ],
+    [ "get_node", "class_navigation_graph.html#a3136a4e675ff6e9d85b7e1b0946836f4", null ],
+    [ "get_nodes", "class_navigation_graph.html#abde63f49554c2d0ea90cc625adced007", null ],
+    [ "get_position_of_node", "class_navigation_graph.html#a27e91c18af0f247362f21db4e7d622d1", null ],
+    [ "get_stride", "class_navigation_graph.html#a91a6c2e8c96664033a0adb210def9b97", null ],
+    [ "max_drop_distance", "class_navigation_graph.html#a01494e9216a7fc641759da7fd79933da", null ],
+    [ "max_drop_distance", "class_navigation_graph.html#a0010dd887785b0aef0ff3ab7570d54a1", null ],
+    [ "max_jump_distance", "class_navigation_graph.html#a513e3c005644147b39bf85e9bdc4ebe3", null ],
+    [ "max_jump_distance", "class_navigation_graph.html#a37d9d464fb08b3ef704fc182821e881c", null ],
+    [ "on_deserialize", "class_navigation_graph.html#ad28af37b30f0bed94ebb1eb5c81c0dcd", null ],
+    [ "on_serialize", "class_navigation_graph.html#a80c8585d0c43c394bf1c7746f3f3f75b", null ],
+    [ "remove_node", "class_navigation_graph.html#a3be33bbf348ce373860dc751cc8465a7", null ],
+    [ "stride", "class_navigation_graph.html#a6538d0b21b6016df01686ca6c7dd6304", null ],
+    [ "update", "class_navigation_graph.html#a2adcc074b41a2a6f6139ed0870102b7b", null ],
+    [ "world_to_graph_position", "class_navigation_graph.html#a304f2c28778de15f789094aff0c53f7a", null ]
+];

@@ -3,10 +3,14 @@ var class_renderable =
     [ "Renderable", "class_renderable.html#a97a0f6efd2a058dfb003e64e63bdb255", null ],
     [ "Renderable", "class_renderable.html#a753bb158e031d0f1d592aea8b95cf67c", null ],
     [ "~Renderable", "class_renderable.html#a6ad7e7920790f289c376edde7e495290", null ],
+    [ "disable_draw", "class_renderable.html#ac60ab2ac3f6e7b7b7389d1cba8f88944", null ],
+    [ "enable_draw", "class_renderable.html#a870bd29e2a9f6d8400290d229f2ca1c1", null ],
     [ "order_in_layer", "class_renderable.html#a891039d412aa3a3ef49e2a88b64829d6", null ],
     [ "order_in_layer", "class_renderable.html#a2dff5810d7689b48586a1a8e8491e03e", null ],
     [ "render_strategy", "class_renderable.html#a810422a6208a7552e6b3f56ca7699ae4", null ],
     [ "set_render_strategy", "class_renderable.html#a70972d056585f61a2213eb234255c5e3", null ],
+    [ "should_draw", "class_renderable.html#a7ea5c2b28723ed913afe75cad2abe397", null ],
+    [ "draw", "class_renderable.html#aae0c0f6a26f1ee23b5cdd6a9c7dd7e96", null ],
     [ "ordering_layer_", "class_renderable.html#aef090f5a51d638953bc251e7b687023f", null ],
     [ "render_strategy_", "class_renderable.html#a487c853faff4489e006918af1d82f513", null ]
 ];

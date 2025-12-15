@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['textalignment_0',['TextAlignment',['../text_8h.html#adfc22542e72607021f066578c0fcc252',1,'text.h']]],
-  ['type_1',['type',['../struct_body_type2_d.html#ab1c7b696dcdfcd93b525330436ad8f3a',1,'BodyType2D::Type'],['../struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47',1,'ShapeType2D::Type']]]
+  ['soundtype_0',['SoundType',['../sound__type_8h.html#ae1b5d244e51a186490107bd5850d1753',1,'sound_type.h']]],
+  ['systemevent_1',['SystemEvent',['../system__event_8h.html#a77219d2f280eaad8c79825f50cf78785',1,'system_event.h']]]
 ];

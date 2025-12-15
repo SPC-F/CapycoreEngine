@@ -1,9 +1,11 @@
 <map id="include/engine/public/components/rigidbody_2d.h" name="include/engine/public/components/rigidbody_2d.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="79,5,286,45"/>
-<area shape="rect" id="Node000002" href="$collider__2d_8h.html" title=" " alt="" coords="100,93,265,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,59,185,93,180,93,180,59"/>
-<area shape="rect" id="Node000003" href="$box__collider__2d_8h.html" title=" " alt="" coords="5,196,171,251"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="151,160,115,198,111,194,147,156"/>
-<area shape="rect" id="Node000004" href="$circle__collider__2d_8h.html" title=" " alt="" coords="195,196,360,251"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="219,156,255,194,251,198,215,160"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="119,5,326,45"/>
+<area shape="rect" id="Node000002" href="$ai__controller_8h.html" title=" " alt="" coords="5,101,224,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,56,138,103,135,99,189,52"/>
+<area shape="rect" id="Node000003" href="$collider__2d_8h.html" title=" " alt="" coords="248,93,413,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="257,52,302,91,299,95,253,56"/>
+<area shape="rect" id="Node000004" href="$box__collider__2d_8h.html" title=" " alt="" coords="153,196,319,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="299,160,263,198,259,194,295,156"/>
+<area shape="rect" id="Node000005" href="$circle__collider__2d_8h.html" title=" " alt="" coords="343,196,508,251"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="367,156,403,194,399,198,363,160"/>
 </map>

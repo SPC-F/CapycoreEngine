@@ -2,6 +2,9 @@ var class_vector3 =
 [
     [ "Vector3", "class_vector3.html#a0f49191f7e001e7f7ae1cb49522118b4", null ],
     [ "Vector3", "class_vector3.html#ad53e22b52babdb90d423601f72467590", null ],
+    [ "equals", "class_vector3.html#aeeb19bd3c3896250fcba1d5e0e3a856c", null ],
+    [ "length", "class_vector3.html#ab000ae2d76cbca7087a28eb4fce926da", null ],
+    [ "normalize", "class_vector3.html#a8ae6892a009f50cf7a6e5a9db5e265ca", null ],
     [ "operator*", "class_vector3.html#abaeb4593c38a3d63afad7f1911297250", null ],
     [ "operator*", "class_vector3.html#aab07a7a65a21ffaa8ccb8034d96f7968", null ],
     [ "operator*=", "class_vector3.html#a3d4f181bee36499b2debbe0306339590", null ],

@@ -1,0 +1,5 @@
+<map id="SdlPathFindingStrategy" name="SdlPathFindingStrategy">
+<area shape="rect" id="Node000001" title="SDL implementation of the pathfinding rendering strategy." alt="" coords="5,79,177,104"/>
+<area shape="rect" id="Node000002" href="$class_i_rendering_strategy.html" title="Interface for rendering strategies used by renderable components." alt="" coords="18,5,165,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,44,94,79,89,79,89,44"/>
+</map>
