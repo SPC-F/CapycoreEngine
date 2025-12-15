@@ -44,7 +44,7 @@ Transform& GameObject::transform() { return transform_; }
 
 const Transform& GameObject::transform() const { return transform_; }
 
-const Scene& GameObject::scene() const noexcept { return scene_; }
+Scene& GameObject::scene() const noexcept { return scene_; }
 
 void GameObject::scene(Scene& scene) noexcept { scene_ = scene; }
 
