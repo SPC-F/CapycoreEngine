@@ -3,7 +3,7 @@ var searchData=
   ['s_0',['s',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a03c7c0ace395d80182db07ae2c30f034',1,'key_code.h']]],
   ['save_1',['save',['../class_simple_storage.html#a4794718313092efc10e60a6ebb7c247d',1,'SimpleStorage']]],
   ['scale_2',['scale',['../class_transform.html#a819d2db2c59e95f64e0990880daed47a',1,'Transform::scale() const noexcept'],['../class_transform.html#a40a9ab54c04146731f3c164b82a4464e',1,'Transform::scale(Vector3 scale) noexcept']]],
-  ['scene_3',['scene',['../class_scene.html',1,'Scene'],['../class_game_object.html#a57618477cb24abfe206c42322d544fea',1,'GameObject::scene(Scene &amp;scene) noexcept'],['../class_game_object.html#a2289c71a95125871640a379f9afb7a3d',1,'GameObject::scene() const noexcept']]],
+  ['scene_3',['scene',['../class_scene.html',1,'Scene'],['../class_game_object.html#a57618477cb24abfe206c42322d544fea',1,'GameObject::scene(Scene &amp;scene) noexcept'],['../class_game_object.html#ad6474404ddd35a85ae45f8e0ad261c72',1,'GameObject::scene() const noexcept']]],
   ['scene_2eh_4',['scene.h',['../scene_8h.html',1,'']]],
   ['scene_5fservice_2eh_5',['scene_service.h',['../scene__service_8h.html',1,'']]],
   ['sceneservice_6',['sceneservice',['../class_scene_service.html',1,'SceneService'],['../class_scene.html#a9f15f4ca687cd9b8327dfbf94165b86f',1,'Scene::SceneService'],['../class_scene_service.html#ab85cdba5c4952f201e692b525c3f50a8',1,'SceneService::SceneService()'],['../class_scene_service.html#a856bac582e5b02d628896e2fb81cada3',1,'SceneService::SceneService(const SceneService &amp;)=delete'],['../class_scene_service.html#a6c15c95c32703e4315769dd90175d3ff',1,'SceneService::SceneService(const std::string &amp;initial_scene_name)']]],
