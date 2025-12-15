@@ -24,4 +24,12 @@ class Vector3 {
 
   Vector3& operator*=(float value) noexcept;
   Vector3& operator/=(float value) noexcept;
+
+  /// Calculate the length (magnitude) of the vector
+  float length() const noexcept;
+
+  /// Normalize the vector to a unit vector
+  void normalize() noexcept;
+
+  bool equals(const Vector3& other) const noexcept;
 };
