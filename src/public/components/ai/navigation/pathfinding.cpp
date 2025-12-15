@@ -137,8 +137,8 @@ void Pathfinding::generate_path_a_star(GraphPosition origin,
 
   NodeRecord start;
   start.pos = origin;
-  start.g = 0.f;
-  start.h = heuristic(origin, target);
+  start.cost_from_start = 0.f;
+  start.heuristic = heuristic(origin, target);
   start.has_parent = false;
 
   open.emplace(origin, start);
@@ -146,9 +146,10 @@ void Pathfinding::generate_path_a_star(GraphPosition origin,
 
   while (!open.empty()) {
     /// Pick node with lowest f()
-    auto current_it = std::min_element(
-        open.begin(), open.end(),
-        [](auto& a, auto& b) { return a.second.f() < b.second.f(); });
+    auto current_it =
+        std::min_element(open.begin(), open.end(), [](auto& a, auto& b) {
+          return a.second.total_cost() < b.second.total_cost();
+        });
 
     NodeRecord current = current_it->second;
 
@@ -192,23 +193,23 @@ void Pathfinding::generate_path_a_star(GraphPosition origin,
 
       if (closed.count(neigh_pos)) continue;
 
-      float new_g = current.g + edge.cost;
+      float new_cost_from_start = current.cost_from_start + edge.cost;
       auto open_it = open.find(neigh_pos);
 
       /// Not in open set yet or found a better path
       if (open_it == open.end()) {
         NodeRecord rec;
         rec.pos = neigh_pos;
-        rec.g = new_g;
-        rec.h = heuristic(neigh_pos, target);
+        rec.cost_from_start = new_cost_from_start;
+        rec.heuristic = heuristic(neigh_pos, target);
         rec.parent = current.pos;
         rec.has_parent = true;
 
         open.emplace(neigh_pos, rec);
         all_records[neigh_pos] = rec;
       } else {
-        if (new_g < open_it->second.g) {
-          open_it->second.g = new_g;
+        if (new_cost_from_start < open_it->second.cost_from_start) {
+          open_it->second.cost_from_start = new_cost_from_start;
           open_it->second.parent = current.pos;
           open_it->second.has_parent = true;
 

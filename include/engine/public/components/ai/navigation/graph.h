@@ -58,10 +58,10 @@ struct GraphPositionHash {
  */
 struct NodeRecord {
   GraphPosition pos;
-  float g = FLT_MAX;
-  float h = 0.f;
+  float cost_from_start = FLT_MAX;
+  float heuristic = 0.f;
   GraphPosition parent;
   bool has_parent = false;
 
-  float f() const { return g + h; }
+  float total_cost() const noexcept { return cost_from_start + heuristic; }
 };
