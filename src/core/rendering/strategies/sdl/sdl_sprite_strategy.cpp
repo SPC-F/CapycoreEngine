@@ -40,7 +40,12 @@ void SdlSpriteStrategy::draw(Component& component, Camera& camera) {
 
   const auto& transform = parent_opt->get().transform();
   const auto& position = transform.position();
+
   const auto& camera_position = camera.transform().position();
+  const auto zoom = camera.zoom();
+
+  const auto half_screen_width = camera.get_screen_width() * 0.5f;
+  const auto half_screen_height = camera.get_screen_height() * 0.5f;
 
   const auto& sprite = dynamic_cast<const Sprite&>(component);
   const Texture& texture = sprite.texture();
@@ -56,10 +61,15 @@ void SdlSpriteStrategy::draw(Component& component, Camera& camera) {
 
   auto const source = SDL_FRect{.x = 0, .y = 0, .w = width, .h = height};
 
-  auto const target = SDL_FRect{.x = position.x - camera_position.x,
-                                .y = position.y - camera_position.y,
-                                .w = width * transform.scale().x,
-                                .h = height * transform.scale().y};
+  /// We need to convert world coordinates to screen coordinates, taking
+  /// into account the camera position, zoom level and screen center offset.
+  /// Note that I made the camera's position at the center of the screen to copy
+  /// Unity in that aspect.
+  auto const target = SDL_FRect{
+      .x = (position.x - camera_position.x) * zoom + half_screen_width,
+      .y = (position.y - camera_position.y) * zoom + half_screen_height,
+      .w = width * transform.scale().x * zoom,
+      .h = height * transform.scale().y * zoom};
 
   const Color original_color = get_default_sprite_color(texture_ptr);
   set_sprite_color(sprite.color(), texture_ptr);
