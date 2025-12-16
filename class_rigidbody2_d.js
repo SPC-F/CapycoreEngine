@@ -12,6 +12,7 @@ var class_rigidbody2_d =
     [ "mass", "class_rigidbody2_d.html#a876fbae7d2f6e732c704dc1b96dbafbd", null ],
     [ "on_deserialize", "class_rigidbody2_d.html#a7730df3f74b0dcbbe18e46136cdb03c3", null ],
     [ "on_serialize", "class_rigidbody2_d.html#aaa7e025b10a7235ee0d87b1b3bee6e19", null ],
+    [ "teleport", "class_rigidbody2_d.html#ab5d14ff648e11d3b00f7b5e66cbfebc3", null ],
     [ "type", "class_rigidbody2_d.html#abd2afecd96cb5536f89eb8faf0e4bab6", null ],
     [ "type", "class_rigidbody2_d.html#ae22edd28e8415090a66e0646af0c7050", null ],
     [ "update", "class_rigidbody2_d.html#a34f02b96dc80cc761762bc58fbbcdfbe", null ],

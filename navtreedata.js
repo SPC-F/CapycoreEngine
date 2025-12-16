@@ -67,9 +67,9 @@ var NAVTREEINDEX =
 "ai__controller_8h.html",
 "class_game_object.html#a0ed7c62875e7dd6c83fb1c78f4ba373f",
 "class_physics_world.html#ae42f6df177998535486454b347a103f0",
-"class_text.html#a2c6397b04f6453004f4ab47875d8c84f",
-"functions_func_r.html",
-"physics__math_8h.html#a5dbef262e155ac3eab6a03abcae0c045"
+"class_text.html#a139e6cd186845df975c995be5087cd2b",
+"functions_func_q.html",
+"physics__math_8h.html#a56c2ad928f1306ea59540790fb0604e3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

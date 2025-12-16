@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"functions_func_q.html":[3,3,1,14],
 "functions_func_r.html":[3,3,1,15],
 "functions_func_s.html":[3,3,1,16],
 "functions_func_t.html":[3,3,1,17],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "physics__math_8h.html":[4,0,0,0,3,3],
 "physics__math_8h.html#a123bb5ac70b0e7d7e02e15d2baeee793":[4,0,0,0,3,3,11],
 "physics__math_8h.html#a2529f79ad0f1215b032cc8d0d6604a55":[4,0,0,0,3,3,2],
-"physics__math_8h.html#a2b04ce04d6a1aa333fccfa3230715c5a":[4,0,0,0,3,3,13],
-"physics__math_8h.html#a56c2ad928f1306ea59540790fb0604e3":[4,0,0,0,3,3,10]
+"physics__math_8h.html#a2b04ce04d6a1aa333fccfa3230715c5a":[4,0,0,0,3,3,13]
 };
