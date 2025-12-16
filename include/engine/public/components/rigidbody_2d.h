@@ -26,6 +26,8 @@ class Rigidbody2D : public Component {
   void on_serialize() override;
   void on_deserialize() override;
 
+  Rigidbody2D& teleport(const Vector3& position) noexcept;
+
   [[nodiscard]] BodyType2D::Type type() const noexcept;
   Rigidbody2D& type(BodyType2D::Type value) noexcept;
 

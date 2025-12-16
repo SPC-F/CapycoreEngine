@@ -64,6 +64,18 @@ void Rigidbody2D::on_deserialize() {
   // TODO: Implement after network...
 }
 
+Rigidbody2D& Rigidbody2D::teleport(const Vector3& position) noexcept {
+  if (const auto parent_opt = parent(); parent_opt.has_value()) {
+    Body2DTransform b_transform = Body2D::get_pixel_transform(body_);
+    b_transform.position = position;
+    Body2D::set_body_transform(b_transform, true);
+
+    parent_opt->get().transform().position(b_transform.position);
+  }
+
+  return *this;
+}
+
 BodyType2D::Type Rigidbody2D::type() const noexcept { return type_; }
 
 Rigidbody2D& Rigidbody2D::type(BodyType2D::Type value) noexcept {
