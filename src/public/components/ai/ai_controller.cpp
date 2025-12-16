@@ -55,7 +55,7 @@ void AIController::chase(float dt) {
   auto& current_transform = parent().value().get().transform();
   auto& target_transform = chase_target_.value().get().transform();
 
-  /// Use thee graph or ignore and fly directly towards target
+  /// Use the graph or ignore and fly directly towards target
   if (use_graph_traversal_)
     try_traverse_graph(current_transform, target_transform, dt);
   else {
@@ -102,28 +102,49 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
   auto& pathfinding = get_pathfinding_component().get();
   auto& path = pathfinding.get_path();
 
-  /// Apply some offset to center the AI when navigating
-  Vector3 half_size(width_ * 0.5f, height_ * 0.5f, 0.0f);
+  const Vector3 half_size(width_ * 0.5f, height_ * 0.5f, 0.0f);
 
-  Vector3 source_center = source.position() + half_size;
-  Vector3 target_center = target.position();
+  /// We should operate in center-space
+  const Vector3 source_center = source.position() + half_size;
+  const Vector3 target_center = target.position();
 
-  float dist_to_target = (source_center - target_center).length();
-  if (dist_to_target < arrival_threshold_) {
+  bool reached_destination = false;
+
+  if (!path.empty()) {
+    auto& last_node = path.back().get();
+    Vector3 last_node_center = last_node.transform().position();
+    last_node_center.y -= half_size.y;
+
+    reached_destination =
+        (source_center - last_node_center).length() < arrival_threshold_;
+  } else {
+    reached_destination =
+        (source_center - target_center).length() < arrival_threshold_;
+  }
+
+  if (reached_destination) {
     path.clear();
 
-    if (mode_ == AIControllerMode::PATROL)
+    if (mode_ == AIControllerMode::PATROL) {
       returning_to_start_ = !returning_to_start_;
+
+      if (!returning_to_start_) {
+        for (auto& action : on_patrol_complete_actions_) {
+          action(*this);
+        }
+      }
+    }
 
     return;
   }
 
   if (path.empty()) {
     pathfinding.set_origin(source.position());
-    pathfinding.set_target(target.position());
 
     if (mode_ == AIControllerMode::PATROL && returning_to_start_) {
       pathfinding.set_target(initial_transform.position());
+    } else {
+      pathfinding.set_target(target.position());
     }
 
     pathfinding.generate_path_to_target();
@@ -132,13 +153,21 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
   if (path.empty()) return;
 
   auto& next_node = path.front().get();
-  Vector3 next_center = next_node.transform().position();
 
-  Vector3 delta = next_center - source_center;
+  Vector3 node_center = next_node.transform().position();
+  node_center.y -= half_size.y;
+
+  Vector3 delta = node_center - source_center;
   float dist = delta.length();
 
+  // Node reached
   if (dist < node_distance_threshold_) {
     path.erase(path.begin());
+
+    if (path.empty() && rigidbody_.has_value()) {
+      rigidbody_->get().velocity(Vector3(0.0f, 0.0f, 0.0f));
+    }
+
     return;
   }
 
@@ -147,11 +176,14 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
   if (rigidbody_.has_value()) {
     auto& rb = rigidbody_->get();
 
+    /// If we are stuck, clear path to recalculate and try to get unstuck
     if ((source_center - last_position_).length() < 0.1f) {
       stuck_timer_ += dt;
       if (stuck_timer_ > stuck_threshold_) {
         path.clear();
         stuck_timer_ = 0.0f;
+        rb.velocity(Vector3(0.0f, 0.0f, 0.0f));
+        return;
       }
     } else {
       stuck_timer_ = 0.0f;
@@ -159,25 +191,15 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
 
     last_position_ = source_center;
 
-    Vector3 node_pos = next_node.transform().position();
-    Vector3 delta = node_pos - source_center;
-
-    Vector3 direction = delta;
-    direction.normalize();
-
     float effective_speed = speed_;
     if (dist < 0.4f) effective_speed *= dist;
 
-    Vector3 velocity(direction.x * effective_speed,
-                     direction.y * effective_speed,
-                     direction.z * effective_speed);
-    rb.velocity(velocity);
-
+    rb.velocity(direction * effective_speed);
     return;
   }
 
-  source_center += direction * speed_ * dt;
-  source.position(source_center - half_size);
+  Vector3 new_center = source_center + direction * speed_ * dt;
+  source.position(new_center - half_size);
 }
 
 AIControllerMode AIController::get_mode() const { return mode_; }
@@ -253,4 +275,17 @@ bool AIController::enable_graph_traversal() noexcept {
 bool AIController::disable_graph_traversal() noexcept {
   use_graph_traversal_ = false;
   return use_graph_traversal_;
+}
+
+size_t AIController::add_on_patrol_complete_action(
+    std::function<void(AIController&)> action) {
+  on_patrol_complete_actions_.push_back(action);
+  return on_patrol_complete_actions_.size() - 1;
+}
+
+void AIController::remove_on_patrol_complete_action(size_t index) {
+  if (index < on_patrol_complete_actions_.size()) {
+    on_patrol_complete_actions_.erase(on_patrol_complete_actions_.begin() +
+                                      index);
+  }
 }
