@@ -87,6 +87,10 @@ class AIController : public Component {
   bool enable_graph_traversal() noexcept;
   bool disable_graph_traversal() noexcept;
 
+  size_t add_on_patrol_complete_action(
+      std::function<void(AIController&)> action);
+  void remove_on_patrol_complete_action(size_t index);
+
   void on_serialize() override{};
   void on_deserialize() override{};
 
@@ -122,4 +126,6 @@ class AIController : public Component {
   float height_{10.0f};
 
   std::reference_wrapper<Pathfinding> get_pathfinding_component();
+
+  std::vector<std::function<void(AIController&)>> on_patrol_complete_actions_;
 };

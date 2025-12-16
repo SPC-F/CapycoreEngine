@@ -30,7 +30,7 @@ Pathfinding::Pathfinding() {
   add_on_attach([this](Component& comp) {
     get_navigation_graph_component();
 
-    // this->disable_draw();
+    this->disable_draw();
     this->set_render_strategy(comp);
   });
 }
@@ -132,7 +132,9 @@ void Pathfinding::generate_path_a_star(GraphPosition origin,
   std::unordered_map<GraphPosition, NodeRecord, GraphPositionHash> all_records;
 
   auto heuristic = [&](const GraphPosition& a, const GraphPosition& b) {
-    return Point(a.x, a.y).distance_to(Point(b.x, b.y)).x;
+    float dx = float(a.x - b.x);
+    float dy = float(a.y - b.y);
+    return dx * dx + dy * dy;
   };
 
   NodeRecord start;

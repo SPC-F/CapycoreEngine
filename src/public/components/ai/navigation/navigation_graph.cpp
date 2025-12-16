@@ -145,6 +145,12 @@ void NavigationGraph::link_nodes() {
             tile_map_[check_pos] != nullptr)
           break;
 
+        /// If no tile found, then its not walkable so we stop
+        if (node_tile_map_.find(check_pos) != node_tile_map_.end() &&
+            node_tile_map_[check_pos] == nullptr) {
+          break;
+        }
+
         if (node_tile_map_[check_pos] != nullptr) {
           node.add_edge(*node_tile_map_[check_pos], 1.0f);
           break;
