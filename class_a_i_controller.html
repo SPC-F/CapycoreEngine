@@ -192,6 +192,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:afbe3b70055fe4c384ef9bdcaa63674a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71677fce99f5abffa48161b43ed5a3ab" id="r_a71677fce99f5abffa48161b43ed5a3ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i_controller.html#a71677fce99f5abffa48161b43ed5a3ab">disable_graph_traversal</a> () noexcept</td></tr>
 <tr class="separator:a71677fce99f5abffa48161b43ed5a3ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e811d9adc0fc89e30b32ee6df53380d" id="r_a1e811d9adc0fc89e30b32ee6df53380d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i_controller.html#a1e811d9adc0fc89e30b32ee6df53380d">add_on_patrol_complete_action</a> (std::function&lt; void(<a class="el" href="class_a_i_controller.html">AIController</a> &amp;)&gt; action)</td></tr>
+<tr class="separator:a1e811d9adc0fc89e30b32ee6df53380d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25da3870472d1ec5a92725a5cadc6daa" id="r_a25da3870472d1ec5a92725a5cadc6daa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i_controller.html#a25da3870472d1ec5a92725a5cadc6daa">remove_on_patrol_complete_action</a> (size_t index)</td></tr>
+<tr class="separator:a25da3870472d1ec5a92725a5cadc6daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b1754f25545f0d197b24a191d2bbf85" id="r_a9b1754f25545f0d197b24a191d2bbf85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i_controller.html#a9b1754f25545f0d197b24a191d2bbf85">on_serialize</a> () override</td></tr>
 <tr class="separator:a9b1754f25545f0d197b24a191d2bbf85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae94d38581b025122610f2ab854532244" id="r_ae94d38581b025122610f2ab854532244"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i_controller.html#ae94d38581b025122610f2ab854532244">on_deserialize</a> () override</td></tr>
@@ -256,6 +260,24 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1e811d9adc0fc89e30b32ee6df53380d" name="a1e811d9adc0fc89e30b32ee6df53380d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e811d9adc0fc89e30b32ee6df53380d">&#9670;&#160;</a></span>add_on_patrol_complete_action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t AIController::add_on_patrol_complete_action </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(<a class="el" href="class_a_i_controller.html">AIController</a> &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>action</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a1cc51ce9e3330c98cd8c056dcd183840" name="a1cc51ce9e3330c98cd8c056dcd183840"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1cc51ce9e3330c98cd8c056dcd183840">&#9670;&#160;</a></span>chase()</h2>
 
@@ -550,6 +572,24 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Handles patrolling behavior between patrol points. </p>
+
+</div>
+</div>
+<a id="a25da3870472d1ec5a92725a5cadc6daa" name="a25da3870472d1ec5a92725a5cadc6daa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25da3870472d1ec5a92725a5cadc6daa">&#9670;&#160;</a></span>remove_on_patrol_complete_action()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AIController::remove_on_patrol_complete_action </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -1,6 +1,7 @@
 var class_a_i_controller =
 [
     [ "AIController", "class_a_i_controller.html#ad5e74a0a40121701410e083ec41c2911", null ],
+    [ "add_on_patrol_complete_action", "class_a_i_controller.html#a1e811d9adc0fc89e30b32ee6df53380d", null ],
     [ "chase", "class_a_i_controller.html#a1cc51ce9e3330c98cd8c056dcd183840", null ],
     [ "clear_chase_target", "class_a_i_controller.html#a08aeee57a92f3047fdb3f62ea735c2eb", null ],
     [ "clear_patrol_target", "class_a_i_controller.html#a1fb660a73a2665bf50466fdcd0d449c2", null ],
@@ -16,6 +17,7 @@ var class_a_i_controller =
     [ "on_deserialize", "class_a_i_controller.html#ae94d38581b025122610f2ab854532244", null ],
     [ "on_serialize", "class_a_i_controller.html#a9b1754f25545f0d197b24a191d2bbf85", null ],
     [ "patrol", "class_a_i_controller.html#ad3d2dda67e08afdb8096e4899b2386ae", null ],
+    [ "remove_on_patrol_complete_action", "class_a_i_controller.html#a25da3870472d1ec5a92725a5cadc6daa", null ],
     [ "set_arrival_threshold", "class_a_i_controller.html#a39a98231e8e36be55ad941e5874521e6", null ],
     [ "set_chase_target", "class_a_i_controller.html#aee64805177ae64a3f0641b32f1d2560d", null ],
     [ "set_height", "class_a_i_controller.html#a793e33feff13f7e0eb4c93cfaa0c6d07", null ],
