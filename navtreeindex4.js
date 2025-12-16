@@ -1,5 +1,9 @@
 var NAVTREEINDEX4 =
 {
+"functions_func_r.html":[3,3,1,15],
+"functions_func_s.html":[3,3,1,16],
+"functions_func_t.html":[3,3,1,17],
+"functions_func_u.html":[3,3,1,18],
 "functions_func_v.html":[3,3,1,19],
 "functions_func_w.html":[3,3,1,20],
 "functions_func_z.html":[3,3,1,21],
@@ -245,9 +249,5 @@ var NAVTREEINDEX4 =
 "physics__math_8h.html#a123bb5ac70b0e7d7e02e15d2baeee793":[4,0,0,0,3,3,11],
 "physics__math_8h.html#a2529f79ad0f1215b032cc8d0d6604a55":[4,0,0,0,3,3,2],
 "physics__math_8h.html#a2b04ce04d6a1aa333fccfa3230715c5a":[4,0,0,0,3,3,13],
-"physics__math_8h.html#a56c2ad928f1306ea59540790fb0604e3":[4,0,0,0,3,3,10],
-"physics__math_8h.html#a5dbef262e155ac3eab6a03abcae0c045":[4,0,0,0,3,3,7],
-"physics__math_8h.html#a806143848a9483ae9bc5a25e20388b89":[4,0,0,0,3,3,9],
-"physics__math_8h.html#a89bf695eadce5092299a33612ee03825":[4,0,0,0,3,3,1],
-"physics__math_8h.html#a956062e71dba22ff2ccfd0a983931b3d":[4,0,0,0,3,3,3]
+"physics__math_8h.html#a56c2ad928f1306ea59540790fb0604e3":[4,0,0,0,3,3,10]
 };

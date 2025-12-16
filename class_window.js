@@ -1,6 +1,8 @@
 var class_window =
 [
     [ "Window", "class_window.html#a2786c2808ad53b91c74fe54ce08aa8d7", null ],
+    [ "get_window_height", "class_window.html#afa8d9bcd0c56e235405af9021f6ebde9", null ],
+    [ "get_window_width", "class_window.html#a0b314510d45e094498b819aac867ea30", null ],
     [ "set_window_bordered", "class_window.html#aaa1a58c66a030c44c6774d6f95a8ec84", null ],
     [ "set_window_borderless", "class_window.html#ae054ed188cf7ebe78f7da3d65967055a", null ],
     [ "set_window_fullscreen", "class_window.html#abd38cc1183bbd5086442b3ccaaf3ba90", null ],
