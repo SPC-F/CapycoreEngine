@@ -4,11 +4,8 @@
 #include <optional>
 #include <string>
 #include <typeinfo>
-#include <vector>
-
 #include <cstddef>
-
-namespace std { class type_info; }
+#include <vector>
 
 class GameObject;
 
