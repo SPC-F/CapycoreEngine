@@ -66,7 +66,7 @@ class PrefabRegistry {
    * @return Reference to the created GameObject
    * @throws std::runtime_error if prefab_type_id is not registered
    */
-  GameObject& instantiate(const std::string& prefab_type_id, Scene& scene,
+  std::reference_wrapper<GameObject> instantiate(const std::string& prefab_type_id, Scene& scene,
                           const std::string& name);
 
   /**

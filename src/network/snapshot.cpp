@@ -123,20 +123,20 @@ static Message create_snapshot(const Scene& scene, DefaultMessageTypes messageTy
 }
 
 // Helper: Find or create GameObject by UUID
-static GameObject* find_or_create_object(Scene& scene, const std::string& uuid_str, 
+static std::optional<std::reference_wrapper<GameObject>> find_or_create_object(Scene& scene, const std::string& uuid_str,
                                          const std::vector<uint8_t>& payload, size_t offset)
 {
     // Find existing object
     for (auto& go_ref : scene.game_objects()) {
         auto comp_opt = go_ref.get().get_component<NetworkIdentity>();
         if (comp_opt && comp_opt->get().uuid() == uuid_str) {
-            return &go_ref.get();
+            return go_ref;
         }
     }
 
     // Create new object from prefab
     if (offset + sizeof(uint16_t) > payload.size())
-        return nullptr;
+        return std::nullopt;
 
     size_t peek_off = offset;
     uint16_t prefab_id_len = 0;
@@ -144,23 +144,23 @@ static GameObject* find_or_create_object(Scene& scene, const std::string& uuid_s
     peek_off += sizeof(prefab_id_len);
 
     if (peek_off + prefab_id_len > payload.size())
-        return nullptr;
+        return std::nullopt;
 
     std::string prefab_type_id(reinterpret_cast<const char*>(
         payload.data() + peek_off), prefab_id_len);
 
     auto& registry = PrefabRegistry::instance();
     if (!registry.has_prefab(prefab_type_id))
-        return nullptr;
+        return std::nullopt;
 
     try {
-        auto* obj = &registry.instantiate(prefab_type_id, scene, uuid_str);
-        if (!obj->get_component<NetworkIdentity>()) {
-            obj->add_component<NetworkIdentity>(uuid_str);
+        auto obj_ref = registry.instantiate(prefab_type_id, scene, uuid_str);
+        if (!obj_ref.get().get_component<NetworkIdentity>()) {
+            obj_ref.get().add_component<NetworkIdentity>(uuid_str);
         }
-        return obj;
+        return obj_ref;
     } catch (const std::exception&) {
-        return nullptr;
+        return std::nullopt;
     }
 }
 
@@ -255,10 +255,10 @@ void apply_delta_snapshot(Scene& scene, const Message& msg)
         std::memcpy(uuidbuf, payload.data() + offset, UUID_LEN);
         offset += UUID_LEN;
 
-        GameObject* obj = find_or_create_object(scene, std::string(uuidbuf), payload, offset);
+        auto obj_opt = find_or_create_object(scene, std::string(uuidbuf), payload, offset);
 
-        if (obj) {
-            obj->deserialize(payload, offset);
+        if (obj_opt) {
+            obj_opt->get().deserialize(payload, offset);
         } else {
             skip_gameobject_payload(payload, offset);
         }

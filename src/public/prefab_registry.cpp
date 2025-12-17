@@ -21,7 +21,7 @@ bool PrefabRegistry::has_prefab(const std::string& prefab_type_id) const {
   return prefab_factories_.find(prefab_type_id) != prefab_factories_.end();
 }
 
-GameObject& PrefabRegistry::instantiate(const std::string& prefab_type_id,
+std::reference_wrapper<GameObject> PrefabRegistry::instantiate(const std::string& prefab_type_id,
                                         Scene& scene,
                                         const std::string& name) {
   auto it = prefab_factories_.find(prefab_type_id);
@@ -29,7 +29,7 @@ GameObject& PrefabRegistry::instantiate(const std::string& prefab_type_id,
     throw std::runtime_error("PrefabRegistry: Unknown prefab type: " + prefab_type_id);
   }
 
-  return it->second(scene, name);
+  return std::ref(it->second(scene, name));
 }
 
 std::vector<std::string> PrefabRegistry::get_registered_prefabs() const {
