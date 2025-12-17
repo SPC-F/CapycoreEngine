@@ -75,6 +75,7 @@ Body2D PhysicsCreationFactory::create_box_fixture(Body2D body, Point offset,
 
   b2ShapeDef shape_def = b2DefaultShapeDef();
   shape_def.enableContactEvents = flags.enable_contact_events;
+  shape_def.enableSensorEvents = flags.enable_sensor_events;
   shape_def.isSensor = flags.sensor;
 
   float density = 0.0f;
@@ -106,6 +107,10 @@ Body2D PhysicsCreationFactory::create_box_fixture(Body2D body, Point offset,
     b2Shape_EnableContactEvents(shape_id, true);
   }
 
+  if (flags.enable_sensor_events) {
+    b2Shape_EnableSensorEvents(shape_id, true);
+  }
+
   if (flags.is_bullet) {
     b2MassData mass_data;
     mass_data.mass = base_mass;
@@ -133,6 +138,7 @@ Body2D PhysicsCreationFactory::create_circle_fixture(
   b2ShapeDef shape_def = b2DefaultShapeDef();
 
   shape_def.enableContactEvents = flags.enable_contact_events;
+  shape_def.enableSensorEvents = flags.enable_sensor_events;
   shape_def.isSensor = flags.sensor;
   float density = 0.0f;
 
@@ -164,6 +170,10 @@ Body2D PhysicsCreationFactory::create_circle_fixture(
 
   if (flags.enable_contact_events) {
     b2Shape_EnableContactEvents(shape_id, true);
+  }
+
+  if (flags.enable_sensor_events) {
+    b2Shape_EnableSensorEvents(shape_id, true);
   }
 
   if (flags.is_bullet) {

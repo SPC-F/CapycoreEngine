@@ -43,17 +43,30 @@ Rigidbody2D::Rigidbody2D(BodyType2D::Type type, float mass, bool use_gravity,
 Rigidbody2D::~Rigidbody2D() = default;
 
 void Rigidbody2D::update(float dt) {
-  auto& physics_service =
-      Engine::instance().services->get_service<PhysicsService>().get();
+  auto& gameobject = parent()->get();
+  auto& tf = gameobject.transform();
 
-  if (auto parent_opt = parent(); parent_opt.has_value()) {
-    auto& gameobject = parent_opt->get();
-    Body2DTransform transform = Body2D::get_pixel_transform(body_);
-    transform.position = PhysicsMath::physics_vec3_to_transform_pixel_vec3(
-        transform.position, 0, 0);
-    gameobject.transform().position(transform.position);
-    gameobject.transform().rotation(transform.rotation);
+  /// Dynamic bodies: Update GameObject transform from physics body
+  if (type_ == BodyType2D::Dynamic) {
+    Body2DTransform body_tf = Body2D::get_pixel_transform(body_);
+    body_tf.position = PhysicsMath::physics_vec3_to_transform_pixel_vec3(
+        body_tf.position, 0, 0);
+
+    tf.position(body_tf.position);
+    tf.rotation(body_tf.rotation);
   }
+  /// Kinematic bodies: Update physics body from GameObject transform
+  else if (type_ == BodyType2D::Kinematic) {
+    Vector3 world_pos = tf.position();
+    float world_rot = tf.rotation();
+
+    Body2DTransform body_tf = Body2D::get_pixel_transform(body_);
+    body_tf.position = world_pos;
+    body_tf.rotation = world_rot;
+
+    Body2D::set_body_transform(body_tf, true);
+  }
+  /// Static bodies: Do nothing
 }
 
 void Rigidbody2D::on_serialize() {

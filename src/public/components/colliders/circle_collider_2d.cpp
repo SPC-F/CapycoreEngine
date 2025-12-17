@@ -78,3 +78,14 @@ CircleCollider2D& CircleCollider2D::bounciness(float value) noexcept {
 
   return *this;
 }
+
+Point CircleCollider2D::offset() const noexcept { return Collider2D::offset(); }
+
+CircleCollider2D& CircleCollider2D::offset(Point value) noexcept {
+  Collider2D::offset(value);
+
+  auto& rigidbody = get_rigidbody().get();
+  Body2D::set_body_radius(rigidbody.body(), radius_, offset());
+
+  return *this;
+}

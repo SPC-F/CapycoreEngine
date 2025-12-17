@@ -43,6 +43,19 @@ struct PhysicsCreationFlags {
   bool enable_contact_events{true};
 
   /**
+   * @brief Whether to enable sensor events for the body
+   *
+   * Default is true.
+   * If true, the body will generate events when other bodies enter/exit the
+   * sensor.
+   *
+   * @note: This is an optimization flag but a TRICKY one.
+   * Sensors need this, aswell as their collidable objects.
+   * Supports: kinematic, dynamic and static.
+   */
+  bool enable_sensor_events{true};
+
+  /**
    * @brief Whether the body is treated as a bullet
    *
    * Default is false.
