@@ -239,16 +239,16 @@ void GameObject::deserialize(const std::vector<uint8_t>& data, size_t& offset) {
   if (!snapshot::read_bytes(data, offset, &comp_count, sizeof(comp_count))) return;
 
   for (uint16_t i = 0; i < comp_count; ++i) {
-    std::string tname;
-    if (!snapshot::read_string(data, offset, tname)) break;
+    std::string type_name;
+    if (!snapshot::read_string(data, offset, type_name)) break;
 
-    uint32_t plen = 0;
-    if (!snapshot::read_bytes(data, offset, &plen, sizeof(plen))) break;
+    uint32_t payload_length = 0;
+    if (!snapshot::read_bytes(data, offset, &payload_length, sizeof(payload_length))) break;
 
     // Dispatch payload to matching component
     bool applied = false;
     for (auto& comp_ref : get_components_all()) {
-      if (comp_ref.get().type_name() == tname) {
+      if (comp_ref.get().type_name() == type_name) {
         size_t inner_off = offset;
         comp_ref.get().on_deserialize(data, inner_off);
         applied = true;
@@ -257,7 +257,7 @@ void GameObject::deserialize(const std::vector<uint8_t>& data, size_t& offset) {
     }
 
     // Advance offset past this component's payload regardless
-    offset += plen;
+    offset += payload_length;
   }
 }
 // NOLINTEND
