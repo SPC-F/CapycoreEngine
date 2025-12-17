@@ -155,3 +155,5 @@ void Animator::set_animation(
   frames_ = frames;
   reset();
 }
+
+std::string Animator::type_name() const { return "Animator"; }

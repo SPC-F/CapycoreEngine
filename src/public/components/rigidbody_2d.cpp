@@ -114,3 +114,5 @@ Vector3 Rigidbody2D::velocity() const noexcept {
   Vector3 v = Body2D::get_body_velocity(body_);
   return {v.x, v.y, 0.0f};
 }
+
+std::string Rigidbody2D::type_name() const { return "Rigidbody2D"; }

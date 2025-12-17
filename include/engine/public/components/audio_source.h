@@ -50,6 +50,8 @@ class AudioSource : public Component {
   [[nodiscard]] std::optional<std::reference_wrapper<SoundInstance>> instance()
       const noexcept;
 
+  std::string type_name() const override;
+
  private:
   std::shared_ptr<SoundResource> get_or_register_resource();
   std::optional<std::reference_wrapper<SoundInstance>> instance_opt_;

@@ -36,4 +36,6 @@ class Animator : public Component {
   void set_animation(const std::string& animation_name);
   void set_animation(
       const std::vector<std::reference_wrapper<Texture>>& frames_);
+
+  std::string type_name() const override;
 };

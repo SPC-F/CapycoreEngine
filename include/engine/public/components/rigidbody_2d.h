@@ -63,6 +63,8 @@ class Rigidbody2D : public Component {
    */
   [[nodiscard]] Vector3 velocity() const noexcept;
 
+  std::string type_name() const override;
+
  private:
   Body2D body_{};
   BodyType2D::Type type_;

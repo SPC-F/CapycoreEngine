@@ -31,6 +31,8 @@ class BehaviorScript : public Component {
   BehaviorScript& enable();
   BehaviorScript& disable();
 
+  std::string type_name() const override;
+
  private:
   bool started_{false};
   std::unique_ptr<Behavior> behavior_;

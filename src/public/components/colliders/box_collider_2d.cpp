@@ -86,3 +86,5 @@ BoxCollider2D& BoxCollider2D::bounciness(float value) noexcept {
 
   return *this;
 }
+
+std::string BoxCollider2D::type_name() const { return "BoxCollider2D"; }

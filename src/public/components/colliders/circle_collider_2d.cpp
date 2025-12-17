@@ -74,3 +74,5 @@ CircleCollider2D& CircleCollider2D::bounciness(float value) noexcept {
 
   return *this;
 }
+
+std::string CircleCollider2D::type_name() const { return "CircleCollider2D"; }

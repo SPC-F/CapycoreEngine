@@ -51,3 +51,5 @@ BehaviorScript& BehaviorScript::disable() {
   behavior_->disable();
   return *this;
 }
+
+std::string BehaviorScript::type_name() const { return "BehaviorScript"; }

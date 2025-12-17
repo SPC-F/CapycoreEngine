@@ -74,3 +74,5 @@ Image& Image::texture(Texture& texture) {
   texture_ = texture;
   return *this;
 }
+
+std::string Image::type_name() const { return "Image"; }

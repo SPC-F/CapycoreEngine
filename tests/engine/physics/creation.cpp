@@ -19,6 +19,7 @@ struct DummyComponent : public Component {
   void on_detach() override {}
   void on_serialize(std::vector<uint8_t>&) const {}
   void on_deserialize(const std::vector<uint8_t>&, size_t&) {}
+  std::string type_name() const override { return ""; }
 };
 
 TEST_CASE("physics_creation_factory_creates_body", "[PhysicsCreationFactory]") {

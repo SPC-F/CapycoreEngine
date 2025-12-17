@@ -47,6 +47,8 @@ class Text : public Renderable {
   [[nodiscard]] bool dirty() const;
   void mark_dirty(bool dirty = true);
 
+  std::string type_name() const override;
+
   [[nodiscard]] TextAlignment alignment() const;
   Text& alignment(TextAlignment alignment);
 

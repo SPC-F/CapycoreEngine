@@ -117,3 +117,5 @@ std::optional<std::reference_wrapper<SoundInstance>> AudioSource::instance()
     const noexcept {
   return instance_opt_;
 }
+
+std::string AudioSource::type_name() const { return "AudioSource"; }

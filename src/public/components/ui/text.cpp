@@ -70,3 +70,5 @@ Text& Text::offset(Point offset) {
 bool Text::dirty() const { return dirty_; }
 
 void Text::mark_dirty(bool dirty) { dirty_ = dirty; }
+
+std::string Text::type_name() const { return "Text"; }

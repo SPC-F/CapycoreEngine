@@ -26,3 +26,5 @@ void Renderable::set_render_strategy(Component& component) {
 [[nodiscard]] IRenderingStrategy& Renderable::render_strategy() const {
   return *render_strategy_;
 }
+
+std::string Renderable::type_name() const { return "Renderable"; }

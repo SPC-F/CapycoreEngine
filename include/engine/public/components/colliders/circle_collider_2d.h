@@ -28,6 +28,8 @@ class CircleCollider2D : public Collider2D {
   CircleCollider2D& friction(float value) noexcept override;
   CircleCollider2D& bounciness(float value) noexcept override;
 
+  std::string type_name() const override;
+
  private:
   float radius_;
 };

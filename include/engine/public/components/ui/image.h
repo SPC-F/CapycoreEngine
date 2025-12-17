@@ -31,6 +31,8 @@ class Image : public Renderable {
   Image& texture(const std::string& name);
   Image& texture(Texture& texture);
 
+  std::string type_name() const override;
+
  private:
   std::reference_wrapper<Texture> texture_;
   int flip_x_;

@@ -74,3 +74,5 @@ Sprite& Sprite::texture(Texture& texture) {
 }
 
 void Sprite::update(float dt) {}
+
+std::string Sprite::type_name() const { return "Sprite"; }

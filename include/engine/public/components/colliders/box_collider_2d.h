@@ -33,6 +33,8 @@ class BoxCollider2D : public Collider2D {
   BoxCollider2D& friction(float value) noexcept override;
   BoxCollider2D& bounciness(float value) noexcept override;
 
+  std::string type_name() const override;
+
  private:
   float width_;
   float height_;

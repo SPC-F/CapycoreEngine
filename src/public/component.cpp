@@ -84,5 +84,3 @@ void Component::on_serialize(std::vector<uint8_t>& /*out*/) const {}
 
 void Component::on_deserialize(const std::vector<uint8_t>& /*data*/,
                                        size_t& /*offset*/) {}
-
-std::string Component::type_name() const { return std::string(typeid(*this).name()); }

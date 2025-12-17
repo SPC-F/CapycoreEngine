@@ -37,9 +37,10 @@ class Component {
   virtual void on_deserialize(const std::vector<uint8_t>& /*data*/,
                                        size_t& /*offset*/);
 
-  // A stable-ish textual identifier for the component type. By default this
-  // returns the RTTI name; components may override to provide nicer names.
-  virtual std::string type_name() const;
+  // A textual identifier for the component type.
+  // All components must implement this to provide consistent, portable type names
+  // for serialization across different compilers and platforms.
+  virtual std::string type_name() const = 0;
 
   const std::optional<std::reference_wrapper<GameObject>>& parent()
       const noexcept;  // NOLINT
