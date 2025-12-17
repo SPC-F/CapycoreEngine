@@ -72,7 +72,22 @@ static void serialize_object(const GameObject& go, const NetworkIdentity& net, s
     }
 }
 
-// Helper: Create snapshot message with a filter predicate
+/**
+ * @brief Create snapshot message with a filter predicate.
+ *
+ * Iterates through all game objects in the scene, filters them using the provided predicate,
+ * and serializes those that pass the filter into a single message payload.
+ *
+ * @tparam FilterFunc A callable type (lambda, function pointer, functor) that filters NetworkIdentity objects.
+ *                    Expected signature: bool(const NetworkIdentity&)
+ *                    Return true to include an object in the snapshot, false to exclude it.
+ *
+ * @param scene The scene containing game objects to snapshot.
+ * @param messageType The type of message to create (e.g., FULL_SNAPSHOT or DELTA_SNAPSHOT).
+ * @param filter A callable that determines which NetworkIdentity objects to include in the snapshot.
+ *
+ * @return A Message containing the serialized snapshot of all objects that pass the filter predicate.
+ */
 template<typename FilterFunc>
 static Message create_snapshot(const Scene& scene, DefaultMessageTypes messageType, FilterFunc&& filter)
 {
