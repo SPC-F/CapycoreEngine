@@ -1,7 +1,7 @@
 #pragma once
 
 #include <engine/public/gameObject.h>
-#include <engine/core/IEngineService.h>
+#include <engine/core/iEngineService.h>
 
 #include <functional>
 #include <map>
