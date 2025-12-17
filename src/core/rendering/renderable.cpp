@@ -1,5 +1,7 @@
 #include "engine/core/rendering/renderable.h"
+
 #include <engine/public/util/layers.h>
+
 #include "engine/core/engine.h"
 #include "engine/core/rendering/renderingService.h"
 
@@ -28,3 +30,15 @@ void Renderable::set_render_strategy(Component& component) {
 }
 
 std::string Renderable::type_name() const { return "Renderable"; }
+
+Renderable& Renderable::disable_draw() noexcept {
+  draw = false;
+  return *this;
+}
+
+Renderable& Renderable::enable_draw() noexcept {
+  draw = true;
+  return *this;
+}
+
+bool Renderable::should_draw() const noexcept { return draw; }

@@ -24,6 +24,8 @@ class Rigidbody2D : public Component {
 
   void update(float dt) override;
 
+  Rigidbody2D& teleport(const Vector3& position) noexcept;
+
   [[nodiscard]] BodyType2D::Type type() const noexcept;
   Rigidbody2D& type(BodyType2D::Type value) noexcept;
 

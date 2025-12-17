@@ -6,8 +6,8 @@
 #include <engine/core/rendering/texture.h>
 #include <engine/public/scene_service.h>
 
-constexpr int default_min_aspect_width = 800;
-constexpr int default_min_aspect_height = 600;
+constexpr int default_min_aspect_width = 1920;
+constexpr int default_min_aspect_height = 1080;
 
 Renderer::Renderer()
     : Renderer(default_min_aspect_width, default_min_aspect_height, "CapyCore",

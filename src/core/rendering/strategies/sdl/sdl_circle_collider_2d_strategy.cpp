@@ -27,6 +27,11 @@ void SdlCircleCollider2DStrategy::draw(Component& component, Camera& camera) {
 
   const auto& transform = parent_opt->get().transform();
   const auto& camera_position = camera.transform().position();
+  float zoom = camera.zoom();
+
+  float half_screen_width = camera.get_screen_width() * 0.5f;
+  float half_screen_height = camera.get_screen_height() * 0.5f;
+
   const auto& circle_collider =
       dynamic_cast<const CircleCollider2D&>(component);
 
@@ -46,12 +51,17 @@ void SdlCircleCollider2DStrategy::draw(Component& component, Camera& camera) {
   float rx = ox * cosA - oy * sinA;
   float ry = ox * sinA + oy * cosA;
 
-  Point center{body_tf.position.x + rx - camera_position.x,
-               body_tf.position.y + ry - camera_position.y};
+  float world_cx = body_tf.position.x + rx;
+  float world_cy = body_tf.position.y + ry;
+
+  Point center{(world_cx - camera_position.x) * zoom + half_screen_width,
+               (world_cy - camera_position.y) * zoom + half_screen_height};
+
+  float screen_radius = radius_px * zoom;
 
   SDL_SetRenderDrawColor(&sdl_renderer_, 255, 0, 0, 255);
 
-  draw_circle((int)center.x, (int)center.y, (int)radius_px);
+  draw_circle((int)center.x, (int)center.y, (int)screen_radius);
 
   auto rotate_local = [&](float lx, float ly) -> SDL_FPoint {
     return {lx * cosA - ly * sinA, lx * sinA + ly * cosA};
@@ -74,7 +84,9 @@ void SdlCircleCollider2DStrategy::draw(Component& component, Camera& camera) {
   SDL_RenderLine(&sdl_renderer_, H1.x, H1.y, H2.x, H2.y);
   SDL_RenderLine(&sdl_renderer_, V1.x, V1.y, V2.x, V2.y);
 
-  SDL_SetRenderDrawColor(&sdl_renderer_, 0, 0, 0, 255);
+  Color original_color = camera.background_color();
+  SDL_SetRenderDrawColor(&sdl_renderer_, original_color.r, original_color.g,
+                         original_color.b, original_color.a);
 }
 
 void SdlCircleCollider2DStrategy::draw_circle(int cx, int cy, int radius) {

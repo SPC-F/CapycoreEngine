@@ -37,4 +37,10 @@ class Window {
   Window& set_window_resizable();
   Window& set_window_width(unsigned width);
   Window& set_window_height(unsigned height);
+
+  /** @brief Gets the current width of the window. */
+  int get_window_width() const;
+
+  /** @brief Gets the current height of the window. */
+  int get_window_height() const;
 };
