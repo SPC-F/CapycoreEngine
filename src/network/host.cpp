@@ -207,7 +207,7 @@ void Host::send_to_peer(const Message& message, ENetPeer* peer) noexcept
     enet_peer_send(peer, 0, packet);
 }
 
-void Host::send_to_uuid(const std::string& uuid, const Message& message) noexcept
+void Host::send_to_peer_via_uuid(const std::string& uuid, const Message& message) noexcept
 {
     auto it = clients_.find(uuid);
     if (it == clients_.end())
@@ -287,7 +287,7 @@ void Host::set_client_connect_handler() noexcept
             auto& scene_service = engine.services->get_service<SceneService>().get();
 
             Message snapshot_msg = snapshot::create_full_snapshot(scene_service.current_scene().value(), DefaultMessageTypes::SNAPSHOT_FULL);
-            send_to_uuid(std::string(data.uuid), snapshot_msg);
+            send_to_peer_via_uuid(std::string(data.uuid), snapshot_msg);
         }
     };
 

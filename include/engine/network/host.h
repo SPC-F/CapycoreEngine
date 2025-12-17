@@ -85,7 +85,7 @@ public:
      * @param uuid Target client's UUID.
      * @param message Message to send.
      */
-    void send_to_uuid(const std::string& uuid, const Message& message) noexcept;
+    void send_to_peer_via_uuid(const std::string& uuid, const Message& message) noexcept;
 
     /**
      * @brief Broadcasts delta snapshots of the scene to all connected clients.

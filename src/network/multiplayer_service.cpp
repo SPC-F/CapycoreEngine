@@ -98,13 +98,13 @@ void MultiplayerService::send(const Message& message)
     }
 }
 
-void MultiplayerService::send_to_uuid(const std::string& uuid, const Message& message)
+void MultiplayerService::send_to_peer_via_uuid(const std::string& uuid, const Message& message)
 {
     if (!host_) {
-        throw std::runtime_error("send_to_uuid is only available in host mode.");
+        throw std::runtime_error("send_to_peer_via_uuid is only available in host mode.");
     }
 
-    host_->send_to_uuid(uuid, message);
+    host_->send_to_peer_via_uuid(uuid, message);
 }
 
 void MultiplayerService::start_server()

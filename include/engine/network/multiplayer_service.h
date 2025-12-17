@@ -77,12 +77,13 @@ public:
      * @brief Sends a message. Host broadcasts; client sends to server.
      */
     void send(const Message& message);
+
     /**
      * @brief Sends a message to a specific connected client (host mode only).
      * @param uuid Target client's UUID.
      * @param message Message to send.
      */
-    void send_to_uuid(const std::string& uuid, const Message& message);
+    void send_to_peer_via_uuid(const std::string& uuid, const Message& message);
 
     /**
      * @brief Starts the host server. Only valid in host-mode.
