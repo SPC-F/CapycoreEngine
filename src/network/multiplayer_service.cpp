@@ -159,7 +159,7 @@ ConnectionState MultiplayerService::get_connection_state() const noexcept
     }
 }
 
-std::string MultiplayerService::get_uuid() const noexcept
+std::string MultiplayerService::get_uuid() const
 {
     if (host_) {
         return host_->get_uuid();

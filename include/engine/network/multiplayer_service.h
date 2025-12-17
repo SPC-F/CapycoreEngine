@@ -106,7 +106,7 @@ public:
      */
     [[nodiscard]] ConnectionState get_connection_state() const noexcept;
 
-    [[nodiscard]] std::string get_uuid() const noexcept;
+    [[nodiscard]] std::string get_uuid() const;
 
     void set_max_clients(int amount) noexcept;
     [[nodiscard]] int get_client_amount() const noexcept;
