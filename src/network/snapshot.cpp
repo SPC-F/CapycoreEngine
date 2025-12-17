@@ -2,7 +2,8 @@
 #include <engine/public/components/sprite.h>
 #include <engine/public/components/network_identity.h>
 #include <engine/public/util/vector3.h>
-#include <engine/public/prefab_registry.h>
+#include <engine/public/prefab_service.h>
+#include <engine/core/engine.h>
 
 #include <cstring>
 #include <string>
@@ -149,12 +150,13 @@ static std::optional<std::reference_wrapper<GameObject>> find_or_create_object(S
     std::string prefab_type_id(reinterpret_cast<const char*>(
         payload.data() + peek_off), prefab_id_len);
 
-    auto& registry = PrefabRegistry::instance();
-    if (!registry.has_prefab(prefab_type_id))
+    auto& engine = Engine::instance();
+    auto& prefab_service = engine.services->get_service<PrefabService>().get();
+    if (!prefab_service.has_prefab(prefab_type_id))
         return std::nullopt;
 
     try {
-        auto obj_ref = registry.instantiate(prefab_type_id, scene, uuid_str);
+        auto obj_ref = prefab_service.instantiate(prefab_type_id, scene, uuid_str);
         if (!obj_ref.get().get_component<NetworkIdentity>()) {
             obj_ref.get().add_component<NetworkIdentity>(uuid_str);
         }

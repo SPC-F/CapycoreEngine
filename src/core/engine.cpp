@@ -10,6 +10,7 @@
 #include <engine/physics/physics_service.h>
 #include <engine/public/scene_service.h>
 #include <engine/network/multiplayer_service.h>
+#include <engine/public/prefab_service.h>
 
 #include <memory>
 
@@ -22,6 +23,7 @@ Engine::Engine() : services(std::make_unique<ServiceContainer>()) {
   services->register_service<AudioService>();
   services->register_service<AssetService>();
   services->register_service<MultiplayerService>();
+  services->register_service<PrefabService>();
 }
 
 Engine& Engine::instance() {

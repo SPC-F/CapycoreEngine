@@ -1,6 +1,7 @@
 #pragma once
 
 #include <engine/public/gameObject.h>
+#include <engine/core/IEngineService.h>
 
 #include <functional>
 #include <map>
@@ -18,24 +19,21 @@ class Scene;
 using PrefabFactory = std::function<GameObject&(Scene&, const std::string&)>;
 
 /**
- * @class PrefabRegistry
- * @brief Global registry for managing prefab factories and component creation.
+ * @class PrefabService
+ * @brief Global service for managing prefab factories and component creation.
  *
  * This is a singleton that maintains a mapping of prefab type IDs to factory functions.
- * When a network snapshot arrives with an object of an unknown type, the registry
+ * When a network snapshot arrives with an object of an unknown type, the service
  * can instantiate it with the correct components.
  */
-class PrefabRegistry {
+class PrefabService : public IEngineService {
  public:
-  /**
-   * @brief Get the singleton instance of the PrefabRegistry.
-   */
-  static PrefabRegistry& instance();
+  PrefabService() = default;
 
-  PrefabRegistry(const PrefabRegistry&) = delete;
-  PrefabRegistry& operator=(const PrefabRegistry&) = delete;
-  PrefabRegistry(PrefabRegistry&&) = delete;
-  PrefabRegistry& operator=(PrefabRegistry&&) = delete;
+  PrefabService(const PrefabService&) = delete;
+  PrefabService& operator=(const PrefabService&) = delete;
+  PrefabService(PrefabService&&) = delete;
+  PrefabService& operator=(PrefabService&&) = delete;
 
   /**
    * @brief Register a prefab factory for a given type ID.
@@ -80,7 +78,5 @@ class PrefabRegistry {
   void clear_all();
 
  private:
-  PrefabRegistry() = default;
-
   std::map<std::string, PrefabFactory> prefab_factories_;
 };
