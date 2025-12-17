@@ -86,8 +86,8 @@ void PhysicsWorld::check_collision(
         Collider2D& colA = collider_a_opt->get();
         Collider2D& colB = collider_b_opt->get();
 
-        colA.on_collision_enter(colB);
-        colB.on_collision_enter(colA);
+        if (colA.active()) colA.on_collision_enter(colB);
+        if (colB.active()) colB.on_collision_enter(colA);
       }
     }
   }
@@ -117,8 +117,10 @@ void PhysicsWorld::check_collision(
         Collider2D& colA = collider_a_opt->get();
         Collider2D& colB = collider_b_opt->get();
 
-        if (colA.creation_flags().sensor) colA.on_trigger_enter(colB);
-        if (colB.creation_flags().sensor) colB.on_trigger_enter(colA);
+        if (colA.creation_flags().sensor && colA.active())
+          colA.on_trigger_enter(colB);
+        if (colB.creation_flags().sensor && colB.active())
+          colB.on_trigger_enter(colA);
       }
     }
   }
