@@ -194,10 +194,10 @@ void GameObject::serialize(std::vector<uint8_t>& out) const {
 
   for (const auto& e : comp_entries) {
     snapshot::write_string(out, e.first);
-    uint32_t plen = static_cast<uint32_t>(e.second.size());
-    snapshot::write_bytes(out, &plen, sizeof(plen));
-    if (plen > 0) {
-      snapshot::write_bytes(out, e.second.data(), plen);
+    uint32_t payload_length = static_cast<uint32_t>(e.second.size());
+    snapshot::write_bytes(out, &payload_length, sizeof(payload_length));
+    if (payload_length > 0) {
+      snapshot::write_bytes(out, e.second.data(), payload_length);
     }
   }
 }

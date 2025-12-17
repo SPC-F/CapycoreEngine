@@ -208,11 +208,11 @@ static void skip_gameobject_payload(const std::vector<uint8_t>& data, size_t& of
         if (!skip_string()) break;  // component type name
 
         if (offset + sizeof(uint32_t) > data.size()) break;
-        uint32_t plen = 0;
-        std::memcpy(&plen, data.data() + offset, sizeof(plen));
-        offset += sizeof(plen);
+        uint32_t payload_length = 0;
+        std::memcpy(&payload_length, data.data() + offset, sizeof(payload_length));
+        offset += sizeof(payload_length);
 
-        if (!skip_bytes(plen)) break; // component payload
+        if (!skip_bytes(payload_length)) break; // component payload
     }
 }
 
