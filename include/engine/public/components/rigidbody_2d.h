@@ -23,8 +23,6 @@ class Rigidbody2D : public Component {
   ~Rigidbody2D() override;
 
   void update(float dt) override;
-  void on_serialize() override;
-  void on_deserialize() override;
 
   [[nodiscard]] BodyType2D::Type type() const noexcept;
   Rigidbody2D& type(BodyType2D::Type value) noexcept;
@@ -64,6 +62,8 @@ class Rigidbody2D : public Component {
    * @return Vector3 The current velocity vector.
    */
   [[nodiscard]] Vector3 velocity() const noexcept;
+
+  std::string type_name() const override;
 
  private:
   Body2D body_{};

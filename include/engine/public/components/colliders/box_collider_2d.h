@@ -24,9 +24,6 @@ class BoxCollider2D : public Collider2D {
 
   void update(float dt) override;
 
-  void on_serialize() override;
-  void on_deserialize() override;
-
   [[nodiscard]] float width() const noexcept;
   BoxCollider2D& width(float value) noexcept;
 
@@ -35,6 +32,8 @@ class BoxCollider2D : public Collider2D {
 
   BoxCollider2D& friction(float value) noexcept override;
   BoxCollider2D& bounciness(float value) noexcept override;
+
+  std::string type_name() const override;
 
  private:
   float width_;

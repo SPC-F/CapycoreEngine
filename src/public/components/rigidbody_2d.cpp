@@ -56,14 +56,6 @@ void Rigidbody2D::update(float dt) {
   }
 }
 
-void Rigidbody2D::on_serialize() {
-  // TODO: Implement after network...
-}
-
-void Rigidbody2D::on_deserialize() {
-  // TODO: Implement after network...
-}
-
 BodyType2D::Type Rigidbody2D::type() const noexcept { return type_; }
 
 Rigidbody2D& Rigidbody2D::type(BodyType2D::Type value) noexcept {
@@ -122,3 +114,5 @@ Vector3 Rigidbody2D::velocity() const noexcept {
   Vector3 v = Body2D::get_body_velocity(body_);
   return {v.x, v.y, 0.0f};
 }
+
+std::string Rigidbody2D::type_name() const { return "Rigidbody2D"; }

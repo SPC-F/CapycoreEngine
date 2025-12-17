@@ -22,14 +22,13 @@ class CircleCollider2D : public Collider2D {
 
   void update(float dt) override;
 
-  void on_serialize() override;
-  void on_deserialize() override;
-
   [[nodiscard]] float radius() const noexcept;
   CircleCollider2D& radius(float value) noexcept;
 
   CircleCollider2D& friction(float value) noexcept override;
   CircleCollider2D& bounciness(float value) noexcept override;
+
+  std::string type_name() const override;
 
  private:
   float radius_;

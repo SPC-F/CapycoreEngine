@@ -25,14 +25,13 @@ class BehaviorScript : public Component {
   void update(float dt) override;
   void on_detach() override;
 
-  void on_serialize() override;
-  void on_deserialize() override;
-
   Behavior& behavior();
 
   [[nodiscard]] bool enabled() const;
   BehaviorScript& enable();
   BehaviorScript& disable();
+
+  std::string type_name() const override;
 
  private:
   bool started_{false};

@@ -28,10 +28,6 @@ Image::Image(const std::string& image, int flip_x, int flip_y, int width,
 
 void Image::update(float dt) {}
 
-void Image::on_serialize() {}
-
-void Image::on_deserialize() {}
-
 int Image::flip_x() const { return flip_x_; }
 
 Image& Image::flip_x(int val) {
@@ -78,3 +74,5 @@ Image& Image::texture(Texture& texture) {
   texture_ = texture;
   return *this;
 }
+
+std::string Image::type_name() const { return "Image"; }

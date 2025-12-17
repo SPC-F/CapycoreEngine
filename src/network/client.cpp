@@ -1,5 +1,8 @@
 #include <engine/network/client.h>
 #include <engine/network/host.h>
+#include <engine/network/snapshot.h>
+#include <engine/core/engine.h>
+#include <engine/public/scene_service.h>
 
 #include <cstring>
 #include <stdexcept>
@@ -25,6 +28,8 @@ Client::Client(std::reference_wrapper<Router> router)
 
     register_on_connect_handler();
     register_on_disconnect_handler();
+    register_on_snapshot_full_handler();
+    register_on_snapshot_delta_handler();
 }
 
 Client::~Client() noexcept
@@ -42,6 +47,8 @@ Client::~Client() noexcept
 
     router_.get().unregister_handler(DefaultMessageTypes::HOST_DISCONNECT);
     router_.get().unregister_handler(DefaultMessageTypes::CONNECT);
+    router_.get().unregister_handler(DefaultMessageTypes::SNAPSHOT_FULL);
+    router_.get().unregister_handler(DefaultMessageTypes::SNAPSHOT_DELTA);
 }
 
 void Client::poll() noexcept
@@ -194,4 +201,28 @@ void Client::register_on_disconnect_handler() noexcept
     };
 
     router_.get().register_handler(DefaultMessageTypes::HOST_DISCONNECT, std::move(handler));
+}
+
+void Client::register_on_snapshot_full_handler() noexcept
+{
+    auto handler = [this](const Message& msg) {
+        auto& engine = Engine::instance();
+        auto& scene_service = engine.services->get_service<SceneService>().get();
+
+        snapshot::apply_full_snapshot(scene_service.current_scene().value(), msg);
+    };
+
+    router_.get().register_handler(MessageType(DefaultMessageTypes::SNAPSHOT_FULL), std::move(handler));
+}
+
+void Client::register_on_snapshot_delta_handler() noexcept
+{
+    auto handler = [this](const Message& msg) {
+        auto& engine = Engine::instance();
+        auto& scene_service = engine.services->get_service<SceneService>().get();
+
+        snapshot::apply_delta_snapshot(scene_service.current_scene().value(), msg);
+    };
+
+    router_.get().register_handler(MessageType(DefaultMessageTypes::SNAPSHOT_DELTA), std::move(handler));
 }

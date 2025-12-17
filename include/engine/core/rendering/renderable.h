@@ -27,4 +27,6 @@ public:
 
   void set_render_strategy(Component& component);
   [[nodiscard]] virtual IRenderingStrategy& render_strategy() const;
+
+  std::string type_name() const override;
 };

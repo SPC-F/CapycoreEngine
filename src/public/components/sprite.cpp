@@ -75,6 +75,4 @@ Sprite& Sprite::texture(Texture& texture) {
 
 void Sprite::update(float dt) {}
 
-void Sprite::on_serialize() {}
-
-void Sprite::on_deserialize() {}
+std::string Sprite::type_name() const { return "Sprite"; }

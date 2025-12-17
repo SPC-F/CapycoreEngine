@@ -11,6 +11,12 @@
 #include <engine/network/router.h>
 #include <engine/network/connection_state.h>
 
+enum class PeerType : uint16_t {
+    HOST,
+    CLIENT,
+    NONE
+};
+
 /**
  * @class MultiplayerService
  * @brief High-level peer-to-peer networking service managing host/client mode,
@@ -57,6 +63,12 @@ public:
     void set_client();
 
     /**
+     * @brief Returns the current peer type (host, client, or none).
+     * @return PeerType indicating the current mode of operation.
+     */
+    PeerType get_peer_type() const;
+
+    /**
      * @brief Polls the network. Behavior depends on host/client mode.
      */
     void poll();
@@ -65,6 +77,13 @@ public:
      * @brief Sends a message. Host broadcasts; client sends to server.
      */
     void send(const Message& message);
+
+    /**
+     * @brief Sends a message to a specific connected client (host mode only).
+     * @param uuid Target client's UUID.
+     * @param message Message to send.
+     */
+    void send_to_peer_via_uuid(const std::string& uuid, const Message& message);
 
     /**
      * @brief Starts the host server. Only valid in host-mode.
@@ -88,7 +107,7 @@ public:
      */
     [[nodiscard]] ConnectionState get_connection_state() const noexcept;
 
-    [[nodiscard]] std::string get_uuid() const noexcept;
+    [[nodiscard]] std::string get_uuid() const;
 
     void set_max_clients(int amount) noexcept;
     [[nodiscard]] int get_client_amount() const noexcept;

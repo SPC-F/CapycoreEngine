@@ -46,10 +46,6 @@ CircleCollider2D::CircleCollider2D(float friction, float bounciness,
 
 void CircleCollider2D::update(float dt) { Collider2D::update(dt); }
 
-void CircleCollider2D::on_serialize() {}
-
-void CircleCollider2D::on_deserialize() {}
-
 float CircleCollider2D::radius() const noexcept { return radius_; }
 
 CircleCollider2D& CircleCollider2D::radius(float value) noexcept {
@@ -78,3 +74,5 @@ CircleCollider2D& CircleCollider2D::bounciness(float value) noexcept {
 
   return *this;
 }
+
+std::string CircleCollider2D::type_name() const { return "CircleCollider2D"; }

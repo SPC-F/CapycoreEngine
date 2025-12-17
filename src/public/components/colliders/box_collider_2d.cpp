@@ -47,10 +47,6 @@ BoxCollider2D::BoxCollider2D(float friction, float bounciness, float width,
 
 void BoxCollider2D::update(float dt) { Collider2D::update(dt); }
 
-void BoxCollider2D::on_serialize() {}
-
-void BoxCollider2D::on_deserialize() {}
-
 float BoxCollider2D::width() const noexcept { return width_; }
 
 BoxCollider2D& BoxCollider2D::width(float value) noexcept {
@@ -90,3 +86,5 @@ BoxCollider2D& BoxCollider2D::bounciness(float value) noexcept {
 
   return *this;
 }
+
+std::string BoxCollider2D::type_name() const { return "BoxCollider2D"; }

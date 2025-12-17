@@ -1,4 +1,6 @@
 #include <engine/network/multiplayer_service.h>
+#include <engine/network/snapshot.h>
+#include <chrono>
 
 #include <stdexcept>
 
@@ -59,10 +61,24 @@ void MultiplayerService::set_client()
     client_ = std::make_unique<Client>(std::ref(*router_));
 }
 
+PeerType MultiplayerService::get_peer_type() const
+{
+    if (host_) {
+        return PeerType::HOST;
+    }
+    else if (client_) {
+        return PeerType::CLIENT;
+    }
+    else {
+        return PeerType::NONE;
+    }
+}
+
 void MultiplayerService::poll()
 {
     if (host_) {
         host_->poll();
+        host_->sync();
     }
     else if (client_) {
         client_->poll();
@@ -80,6 +96,15 @@ void MultiplayerService::send(const Message& message)
     else {
         throw std::runtime_error("Cannot send: service is neither client nor host.");
     }
+}
+
+void MultiplayerService::send_to_peer_via_uuid(const std::string& uuid, const Message& message)
+{
+    if (!host_) {
+        throw std::runtime_error("send_to_peer_via_uuid is only available in host mode.");
+    }
+
+    host_->send_to_peer_via_uuid(uuid, message);
 }
 
 void MultiplayerService::start_server()
@@ -123,42 +148,52 @@ void MultiplayerService::disconnect()
 
 ConnectionState MultiplayerService::get_connection_state() const noexcept
 {
-    if (host_)
+    if (host_) {
         return host_->get_connection_state();
-    if (client_)
+    }
+    else if (client_) {
         return client_->get_connection_state();
-    return ConnectionState::NONE;
+    }
+    else {
+        return ConnectionState::NONE;
+    }
 }
 
-std::string MultiplayerService::get_uuid() const noexcept
+std::string MultiplayerService::get_uuid() const
 {
-    if (host_)
+    if (host_) {
         return host_->get_uuid();
-    if (client_)
+    }
+    else if (client_) {
         return client_->get_uuid();
-    else
+    }
+    else {
         throw std::runtime_error("Cannot get uuid: must be a host or connected client first.");
+    }
 }
 
 void MultiplayerService::set_max_clients(int amount) noexcept
 {
     max_clients_ = amount;
-    if (host_)
+    if (host_) {
         host_->set_max_clients(amount);
+    }
 }
 
 int MultiplayerService::get_client_amount() const noexcept
 {
-    if (host_)
+    if (host_){
         return host_->get_client_amount();
+    }
     return 0;
 }
 
 void MultiplayerService::set_connection_port(int port) noexcept
 {
     connection_port_ = port;
-    if (host_)
+    if (host_) {
         host_->set_connection_port(port);
+    }
 }
 
 int MultiplayerService::get_connection_port() const noexcept

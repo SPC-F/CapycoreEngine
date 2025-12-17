@@ -135,10 +135,6 @@ void Animator::update(const float dt_seconds) {
   }
 }
 
-void Animator::on_serialize() {}
-
-void Animator::on_deserialize() {}
-
 void Animator::set_animation(const std::string& animation_name) {
   const AssetService& service = Engine::instance().services->get_service<AssetService>().get();
   const auto sprite_sheet = service.try_get_spritesheet(animation_name);
@@ -159,3 +155,5 @@ void Animator::set_animation(
   frames_ = frames;
   reset();
 }
+
+std::string Animator::type_name() const { return "Animator"; }

@@ -24,14 +24,6 @@ void AudioSource::on_attach() {
 
 void AudioSource::on_detach() { stop(); }
 
-void AudioSource::on_serialize() {
-  // TODO: after networking
-}
-
-void AudioSource::on_deserialize() {
-  // TODO: after networking
-}
-
 std::shared_ptr<SoundResource> AudioSource::get_or_register_resource() {
   auto& audio_service =
       Engine::instance().services->get_service<AudioService>().get();
@@ -125,3 +117,5 @@ std::optional<std::reference_wrapper<SoundInstance>> AudioSource::instance()
     const noexcept {
   return instance_opt_;
 }
+
+std::string AudioSource::type_name() const { return "AudioSource"; }
