@@ -27,63 +27,55 @@ void PhysicsWorld::step(float dt) {
 
 void PhysicsWorld::check_collision(
     const std::vector<std::reference_wrapper<GameObject>>& objects) {
+  auto find_collider_in_objects = [&](Component* comp, b2ShapeId shape_id)
+      -> std::optional<std::reference_wrapper<Collider2D>> {
+    for (const auto& obj_ref : objects) {
+      GameObject& obj = obj_ref.get();
+      auto collider_opts = obj.get_components<Collider2D>();
+
+      for (auto& collider_opt : collider_opts) {
+        Collider2D& collider = collider_opt.get();
+        auto shapes = collider.get_rigidbody().get().body().shapes;
+
+        for (const auto& shape : shapes) {
+          if (shape.id.index1 == shape_id.index1 &&
+              shape.id.generation == shape_id.generation) {
+            // Match shape type
+            b2ShapeType collider_shape_type;
+            if (dynamic_cast<BoxCollider2D*>(&collider)) {
+              collider_shape_type = b2ShapeType::b2_polygonShape;
+            } else if (dynamic_cast<CircleCollider2D*>(&collider)) {
+              collider_shape_type = b2ShapeType::b2_circleShape;
+            } else {
+              continue;
+            }
+
+            if (collider.parent()->get().id() == comp->parent()->get().id() &&
+                collider_shape_type == shape.type) {
+              return std::ref(collider);
+            }
+          }
+        }
+      }
+    }
+    return std::nullopt;
+  };
+
+  /// Check contact (collision) events
   b2ContactEvents contact_events = b2World_GetContactEvents(world_id_);
   for (int i = 0; i < contact_events.beginCount; ++i) {
     b2ContactBeginTouchEvent* touch_event = contact_events.beginEvents + i;
 
     if (!b2Shape_IsValid(touch_event->shapeIdA) ||
-        !b2Shape_IsValid(touch_event->shapeIdB)) {
+        !b2Shape_IsValid(touch_event->shapeIdB))
       continue;
-    }
 
-    // Get the bodies associated with the shapes
     b2BodyId body_a = b2Shape_GetBody(touch_event->shapeIdA);
     b2BodyId body_b = b2Shape_GetBody(touch_event->shapeIdB);
     auto* comp_a = static_cast<Component*>(b2Body_GetUserData(body_a));
     auto* comp_b = static_cast<Component*>(b2Body_GetUserData(body_b));
 
-    auto find_collider_in_objects = [&](Component* comp, b2ShapeId shape_id)
-        -> std::optional<std::reference_wrapper<Collider2D>> {
-      for (const auto& obj_ref : objects) {
-        GameObject& obj = obj_ref.get();
-        auto collider_opt = obj.get_component<Collider2D>();
-        auto collider_opts = obj.get_components<Collider2D>();
-
-        for (auto& collider_opt : collider_opts) {
-          Collider2D& collider = collider_opt.get();
-
-          auto shapes = collider.get_rigidbody().get().body().shapes;
-          bool shape_found = false;
-          b2ShapeType shape_type;
-
-          for (const auto& shape : shapes) {
-            if (shape.id.index1 == shape_id.index1 &&
-                shape.id.generation == shape_id.generation) {
-              shape_found = true;
-              shape_type = shape.type;
-              break;
-            }
-          }
-
-          // Check for the collider type currently in the loop
-          b2ShapeType collider_shape_type;
-          if (auto box = dynamic_cast<BoxCollider2D*>(&collider)) {
-            collider_shape_type = b2ShapeType::b2_polygonShape;
-          } else if (auto circle = dynamic_cast<CircleCollider2D*>(&collider)) {
-            collider_shape_type = b2ShapeType::b2_circleShape;
-          } else {
-            return std::nullopt;
-          }
-
-          if (collider.parent()->get().id() == comp->parent()->get().id() &&
-              collider_shape_type == shape_type && shape_found) {
-            return std::ref(collider);
-          }
-        }
-      }
-
-      return std::nullopt;
-    };
+    if (!comp_a || !comp_b) continue;
 
     if (auto collider_a_opt =
             find_collider_in_objects(comp_a, touch_event->shapeIdA);
@@ -94,16 +86,41 @@ void PhysicsWorld::check_collision(
         Collider2D& colA = collider_a_opt->get();
         Collider2D& colB = collider_b_opt->get();
 
-        bool aTrigger = colA.creation_flags().sensor;
-        bool bTrigger = colB.creation_flags().sensor;
+        if (colA.active()) colA.on_collision_enter(colB);
+        if (colB.active()) colB.on_collision_enter(colA);
+      }
+    }
+  }
 
-        if (!aTrigger && !bTrigger) {
-          colA.on_collision_enter(colB);
-          colB.on_collision_enter(colA);
-        } else {
+  /// Check sensor (trigger) events
+  b2SensorEvents sensor_events = b2World_GetSensorEvents(world_id_);
+  for (int i = 0; i < sensor_events.beginCount; ++i) {
+    b2SensorBeginTouchEvent* touch_event = sensor_events.beginEvents + i;
+
+    if (!b2Shape_IsValid(touch_event->sensorShapeId) ||
+        !b2Shape_IsValid(touch_event->visitorShapeId))
+      continue;
+
+    b2BodyId body_a = b2Shape_GetBody(touch_event->sensorShapeId);
+    b2BodyId body_b = b2Shape_GetBody(touch_event->visitorShapeId);
+    auto* comp_a = static_cast<Component*>(b2Body_GetUserData(body_a));
+    auto* comp_b = static_cast<Component*>(b2Body_GetUserData(body_b));
+
+    if (!comp_a || !comp_b) continue;
+
+    if (auto collider_a_opt =
+            find_collider_in_objects(comp_a, touch_event->sensorShapeId);
+        collider_a_opt.has_value()) {
+      if (auto collider_b_opt =
+              find_collider_in_objects(comp_b, touch_event->visitorShapeId);
+          collider_b_opt.has_value()) {
+        Collider2D& colA = collider_a_opt->get();
+        Collider2D& colB = collider_b_opt->get();
+
+        if (colA.creation_flags().sensor && colA.active())
           colA.on_trigger_enter(colB);
+        if (colB.creation_flags().sensor && colB.active())
           colB.on_trigger_enter(colA);
-        }
       }
     }
   }

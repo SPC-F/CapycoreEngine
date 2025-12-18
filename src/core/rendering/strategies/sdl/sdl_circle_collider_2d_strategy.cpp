@@ -32,8 +32,7 @@ void SdlCircleCollider2DStrategy::draw(Component& component, Camera& camera) {
   float half_screen_width = camera.get_screen_width() * 0.5f;
   float half_screen_height = camera.get_screen_height() * 0.5f;
 
-  const auto& circle_collider =
-      dynamic_cast<const CircleCollider2D&>(component);
+  auto& circle_collider = dynamic_cast<CircleCollider2D&>(component);
 
   const auto& body_tf = Body2D::get_pixel_transform(
       parent_opt->get().get_component<Rigidbody2D>().value().get().body());
@@ -59,7 +58,19 @@ void SdlCircleCollider2DStrategy::draw(Component& component, Camera& camera) {
 
   float screen_radius = radius_px * zoom;
 
-  SDL_SetRenderDrawColor(&sdl_renderer_, 255, 0, 0, 255);
+  BodyType2D::Type body_type = circle_collider.get_rigidbody().get().type();
+
+  switch (body_type) {
+    case BodyType2D::Static:
+      SDL_SetRenderDrawColor(&sdl_renderer_, 255, 0, 0, 255);
+      break;
+    case BodyType2D::Kinematic:
+      SDL_SetRenderDrawColor(&sdl_renderer_, 0, 0, 255, 255);
+      break;
+    case BodyType2D::Dynamic:
+      SDL_SetRenderDrawColor(&sdl_renderer_, 0, 255, 0, 255);
+      break;
+  }
 
   draw_circle((int)center.x, (int)center.y, (int)screen_radius);
 

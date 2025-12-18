@@ -31,6 +31,9 @@ class CircleCollider2D : public Collider2D {
   CircleCollider2D& friction(float value) noexcept override;
   CircleCollider2D& bounciness(float value) noexcept override;
 
+  [[nodiscard]] Point offset() const noexcept override;
+  CircleCollider2D& offset(Point value) noexcept override;
+
  private:
   float radius_;
 };

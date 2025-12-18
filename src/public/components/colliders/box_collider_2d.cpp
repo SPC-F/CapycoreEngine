@@ -4,9 +4,11 @@
 #include <stdexcept>
 
 BoxCollider2D::BoxCollider2D(float friction, float bounciness, float width,
-                             float height, Point offset)
+                             float height, Point offset, bool is_sensor,
+                             bool is_bullet)
     : Collider2D(friction, bounciness, offset), width_(width), height_(height) {
-  auto on_awake = [this, offset, friction, bounciness](Component& comp) {
+  auto on_awake = [this, offset, friction, bounciness, is_sensor,
+                   is_bullet](Component& comp) {
     if (!parent().has_value()) {
       throw std::runtime_error("BoxCollider2D has no parent GameObject.");
     }
@@ -35,6 +37,8 @@ BoxCollider2D::BoxCollider2D(float friction, float bounciness, float width,
       flags.desired_mass = rigidbody.mass();
       flags.bounciness = bounciness;
       flags.friction = friction;
+      flags.sensor = is_sensor;
+      flags.is_bullet = is_bullet;
 
       auto transform = gameobject.transform();
       rigidbody.body(PhysicsCreationFactory::create_box_fixture(
@@ -57,7 +61,8 @@ BoxCollider2D& BoxCollider2D::width(float value) noexcept {
   width_ = value;
 
   auto& rigidbody = get_rigidbody().get();
-  Body2D::set_body_size(rigidbody.body(), {width_, height_, 0.0f}, offset());
+  Body2D::set_body_size(rigidbody.body(), {width_, height_, 0.0f},
+                        Collider2D::offset());
 
   return *this;
 }
@@ -68,7 +73,8 @@ BoxCollider2D& BoxCollider2D::height(float value) noexcept {
   height_ = value;
 
   auto& rigidbody = get_rigidbody().get();
-  Body2D::set_body_size(rigidbody.body(), {width_, height_, 0.0f}, offset());
+  Body2D::set_body_size(rigidbody.body(), {width_, height_, 0.0f},
+                        Collider2D::offset());
 
   return *this;
 }
@@ -87,6 +93,17 @@ BoxCollider2D& BoxCollider2D::bounciness(float value) noexcept {
 
   auto& rigidbody = get_rigidbody().get();
   Body2D::set_body_bounciness(rigidbody.body(), value, ShapeType2D::Polygon);
+
+  return *this;
+}
+
+Point BoxCollider2D::offset() const noexcept { return Collider2D::offset(); }
+
+BoxCollider2D& BoxCollider2D::offset(Point value) noexcept {
+  Collider2D::offset(value);
+
+  auto& rigidbody = get_rigidbody().get();
+  Body2D::set_body_size(rigidbody.body(), {width_, height_, 0.0f}, value);
 
   return *this;
 }

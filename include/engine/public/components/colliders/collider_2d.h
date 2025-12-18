@@ -107,15 +107,16 @@ class Collider2D : public Renderable {
   PhysicsCreationFlags& creation_flags() noexcept;
   Collider2D& creation_flags(PhysicsCreationFlags value) noexcept;
 
-  [[nodiscard]] Point offset() const noexcept;
-  Collider2D& offset(Point value) noexcept;
+  [[nodiscard]] virtual Point offset() const noexcept;
+  virtual Collider2D& offset(Point value) noexcept;
 
- private:
+ protected:
   PhysicsCreationFlags creation_flags_{};
   float friction_;
   float bounciness_;
   Point offset_;
 
+ private:
   std::vector<std::function<void(Collider2D&, Collider2D&)>>
       on_trigger_enter_actions_;
   std::vector<std::function<void(Collider2D&, Collider2D&)>>
