@@ -41,3 +41,5 @@ NavigationNode& NavigationNode::position(const GraphPosition& position) {
   position_ = position;
   return *this;
 }
+
+std::string NavigationNode::type_name() const { return "NavigationNode"; }

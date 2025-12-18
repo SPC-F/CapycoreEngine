@@ -289,3 +289,5 @@ void AIController::remove_on_patrol_complete_action(size_t index) {
                                       index);
   }
 }
+
+std::string AIController::type_name() const { return "AIController"; }

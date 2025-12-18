@@ -90,6 +90,8 @@ class Pathfinding : public Renderable {
       const;
   Pathfinding& set_target_game_object(GameObject& target);
 
+  std::string type_name() const override;
+
  private:
   std::vector<std::reference_wrapper<GameObject>> path_;
   std::optional<Vector3> origin_;

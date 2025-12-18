@@ -316,3 +316,5 @@ NavigationGraph& NavigationGraph::max_jump_distance(int distance) noexcept {
   max_jump_distance_ = distance;
   return *this;
 }
+
+std::string NavigationGraph::type_name() const { return "NavigationGraph"; }

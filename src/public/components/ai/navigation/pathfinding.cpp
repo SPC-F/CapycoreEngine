@@ -270,3 +270,5 @@ Pathfinding& Pathfinding::set_target_game_object(GameObject& target) {
   target_game_object_ = std::ref(target);
   return *this;
 }
+
+std::string Pathfinding::type_name() const { return "Pathfinding"; }
