@@ -14,5 +14,6 @@ var class_pathfinding =
     [ "set_origin", "class_pathfinding.html#a26340975872305785de5ef3d5a0e550e", null ],
     [ "set_target", "class_pathfinding.html#ab3406f2cab9d6f78117c8c1017e0ae6e", null ],
     [ "set_target_game_object", "class_pathfinding.html#a8aa2c3f6ed724622a9485bc689551594", null ],
+    [ "type_name", "class_pathfinding.html#a5527d1ea78a6b27fa86dce23d038a11e", null ],
     [ "update", "class_pathfinding.html#a14e54a3aa9246f6019ac2a82903f3914", null ]
 ];

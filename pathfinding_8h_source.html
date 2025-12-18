@@ -170,16 +170,18 @@ $(document).ready(function(){initNavTree('pathfinding_8h_source.html',''); initR
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>      <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="class_pathfinding.html#a8aa2c3f6ed724622a9485bc689551594">   91</a></span>  <a class="code hl_class" href="class_pathfinding.html">Pathfinding</a>&amp; <a class="code hl_function" href="class_pathfinding.html#a8aa2c3f6ed724622a9485bc689551594">set_target_game_object</a>(<a class="code hl_class" href="class_game_object.html">GameObject</a>&amp; target);</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  std::vector&lt;std::reference_wrapper&lt;GameObject&gt;&gt; path_;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  std::optional&lt;Vector3&gt; origin_;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  std::optional&lt;Vector3&gt; target_;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  std::optional&lt;std::reference_wrapper&lt;GameObject&gt;&gt; target_game_object_;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  std::reference_wrapper&lt;NavigationGraph&gt; get_navigation_graph_component()</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>      <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  <span class="keywordtype">void</span> generate_path_a_star(<a class="code hl_struct" href="struct_graph_position.html">GraphPosition</a> origin, <a class="code hl_struct" href="struct_graph_position.html">GraphPosition</a> target);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>};</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="class_pathfinding.html#a5527d1ea78a6b27fa86dce23d038a11e">   93</a></span>  std::string <a class="code hl_function" href="class_pathfinding.html#a5527d1ea78a6b27fa86dce23d038a11e">type_name</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  std::vector&lt;std::reference_wrapper&lt;GameObject&gt;&gt; path_;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  std::optional&lt;Vector3&gt; origin_;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  std::optional&lt;Vector3&gt; target_;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  std::optional&lt;std::reference_wrapper&lt;GameObject&gt;&gt; target_game_object_;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  std::reference_wrapper&lt;NavigationGraph&gt; get_navigation_graph_component()</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>      <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  <span class="keywordtype">void</span> generate_path_a_star(<a class="code hl_struct" href="struct_graph_position.html">GraphPosition</a> origin, <a class="code hl_struct" href="struct_graph_position.html">GraphPosition</a> target);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>};</div>
 </div>
 <div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdef"><b>Definition</b> gameObject.h:14</div></div>
 <div class="ttc" id="aclass_pathfinding_html"><div class="ttname"><a href="class_pathfinding.html">Pathfinding</a></div><div class="ttdoc">Component responsible for AI pathfinding using a navigation graph.</div><div class="ttdef"><b>Definition</b> pathfinding.h:18</div></div>
@@ -188,6 +190,7 @@ $(document).ready(function(){initNavTree('pathfinding_8h_source.html',''); initR
 <div class="ttc" id="aclass_pathfinding_html_a17a3e9d334d408db1e5fb9b03895e17c"><div class="ttname"><a href="class_pathfinding.html#a17a3e9d334d408db1e5fb9b03895e17c">Pathfinding::generate_path_to_target</a></div><div class="ttdeci">Pathfinding &amp; generate_path_to_target()</div></div>
 <div class="ttc" id="aclass_pathfinding_html_a26340975872305785de5ef3d5a0e550e"><div class="ttname"><a href="class_pathfinding.html#a26340975872305785de5ef3d5a0e550e">Pathfinding::set_origin</a></div><div class="ttdeci">Pathfinding &amp; set_origin(Vector3 origin)</div></div>
 <div class="ttc" id="aclass_pathfinding_html_a3411607fd24393fdb4d54e2795a27e42"><div class="ttname"><a href="class_pathfinding.html#a3411607fd24393fdb4d54e2795a27e42">Pathfinding::get_path</a></div><div class="ttdeci">std::vector&lt; std::reference_wrapper&lt; GameObject &gt; &gt; &amp; get_path()</div><div class="ttdoc">Retrieves the current path of the AI agent.</div></div>
+<div class="ttc" id="aclass_pathfinding_html_a5527d1ea78a6b27fa86dce23d038a11e"><div class="ttname"><a href="class_pathfinding.html#a5527d1ea78a6b27fa86dce23d038a11e">Pathfinding::type_name</a></div><div class="ttdeci">std::string type_name() const override</div></div>
 <div class="ttc" id="aclass_pathfinding_html_a73df5e8bfcd171c55b56b79b60f62f6e"><div class="ttname"><a href="class_pathfinding.html#a73df5e8bfcd171c55b56b79b60f62f6e">Pathfinding::generate_path_to_position</a></div><div class="ttdeci">Pathfinding &amp; generate_path_to_position()</div></div>
 <div class="ttc" id="aclass_pathfinding_html_a7fd4f49f4e0c05666bd613149bd24d9f"><div class="ttname"><a href="class_pathfinding.html#a7fd4f49f4e0c05666bd613149bd24d9f">Pathfinding::find_closest_node</a></div><div class="ttdeci">std::optional&lt; GraphPosition &gt; find_closest_node(const Vector3 &amp;world_position) const</div><div class="ttdoc">Finds the closest navigation node to the specified world position.</div></div>
 <div class="ttc" id="aclass_pathfinding_html_a8aa2c3f6ed724622a9485bc689551594"><div class="ttname"><a href="class_pathfinding.html#a8aa2c3f6ed724622a9485bc689551594">Pathfinding::set_target_game_object</a></div><div class="ttdeci">Pathfinding &amp; set_target_game_object(GameObject &amp;target)</div></div>

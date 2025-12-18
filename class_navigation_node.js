@@ -6,5 +6,6 @@ var class_navigation_node =
     [ "get_edges", "class_navigation_node.html#a5f768d71e2397196bb7eaf9b6305ef9b", null ],
     [ "position", "class_navigation_node.html#a01cdc4572dabc4feb185e02dea57c5d4", null ],
     [ "position", "class_navigation_node.html#a50f9938d0f2cdb1a572bc132a839c61a", null ],
+    [ "type_name", "class_navigation_node.html#af9db60e414226854aab15a4a4b5a66f0", null ],
     [ "update", "class_navigation_node.html#ac29b5711e64a67bef6ed79c283818568", null ]
 ];

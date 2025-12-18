@@ -19,6 +19,7 @@ var class_navigation_graph =
     [ "max_jump_distance", "class_navigation_graph.html#a37d9d464fb08b3ef704fc182821e881c", null ],
     [ "remove_node", "class_navigation_graph.html#a3be33bbf348ce373860dc751cc8465a7", null ],
     [ "stride", "class_navigation_graph.html#a6538d0b21b6016df01686ca6c7dd6304", null ],
+    [ "type_name", "class_navigation_graph.html#ad3165a5fdbecb56f02378ac5b463d741", null ],
     [ "update", "class_navigation_graph.html#a2adcc074b41a2a6f6139ed0870102b7b", null ],
     [ "world_to_graph_position", "class_navigation_graph.html#a304f2c28778de15f789094aff0c53f7a", null ]
 ];

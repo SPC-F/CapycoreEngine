@@ -1,5 +1,9 @@
 var NAVTREEINDEX6 =
 {
+"struct_graph_edge.html":[3,0,24],
+"struct_graph_edge.html#a1e43cbf2cee130386f8673650b6d9eb1":[3,0,24,0],
+"struct_graph_edge.html#a3d6ec7a59194980c57492df5234b02fa":[3,0,24,1],
+"struct_graph_edge.html#ad246d018361e992b1505464025c0c77a":[3,0,24,2],
 "struct_graph_position.html":[3,0,25],
 "struct_graph_position.html#a56630325a92a59098592411f22d0df90":[3,0,25,1],
 "struct_graph_position.html#aaab6e279577f9ce3a2ff247f0d52b892":[3,0,25,0],

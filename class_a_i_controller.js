@@ -24,5 +24,6 @@ var class_a_i_controller =
     [ "set_speed", "class_a_i_controller.html#afdf332f47d939e752c3dd0a5811efc18", null ],
     [ "set_width", "class_a_i_controller.html#a87aa881d2b6b1f0189334d0cc37c52cf", null ],
     [ "try_traverse_graph", "class_a_i_controller.html#a3145f3bc9caaab260b883bd35862385b", null ],
+    [ "type_name", "class_a_i_controller.html#a9df747fdee8a52a29ad23ec11c274eb6", null ],
     [ "update", "class_a_i_controller.html#af3df1888ecc4358b170ee98961a75498", null ]
 ];

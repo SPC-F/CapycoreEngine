@@ -188,32 +188,34 @@ $(document).ready(function(){initNavTree('navigation__graph_8h_source.html','');
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="class_navigation_graph.html#a513e3c005644147b39bf85e9bdc4ebe3">  100</a></span>  <span class="keywordtype">int</span> <a class="code hl_function" href="class_navigation_graph.html#a513e3c005644147b39bf85e9bdc4ebe3">max_jump_distance</a>() const noexcept;</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="class_navigation_graph.html#a37d9d464fb08b3ef704fc182821e881c">  101</a></span>  <a class="code hl_class" href="class_navigation_graph.html">NavigationGraph</a>&amp; <a class="code hl_function" href="class_navigation_graph.html#a513e3c005644147b39bf85e9bdc4ebe3">max_jump_distance</a>(<span class="keywordtype">int</span> distance) noexcept;</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> private:</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  std::unordered_map&lt;<a class="code hl_struct" href="struct_graph_position.html">GraphPosition</a>, std::reference_wrapper&lt;<a class="code hl_class" href="class_navigation_node.html">NavigationNode</a>&gt;,</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                     <a class="code hl_struct" href="struct_graph_position_hash.html">GraphPositionHash</a>&gt;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>      nodes_;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  std::unordered_map&lt;<a class="code hl_struct" href="struct_graph_position.html">GraphPosition</a>, <a class="code hl_class" href="class_game_object.html">GameObject</a>*, <a class="code hl_struct" href="struct_graph_position_hash.html">GraphPositionHash</a>&gt; tile_map_;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  std::unordered_map&lt;<a class="code hl_struct" href="struct_graph_position.html">GraphPosition</a>, <a class="code hl_class" href="class_navigation_node.html">NavigationNode</a>*, <a class="code hl_struct" href="struct_graph_position_hash.html">GraphPositionHash</a>&gt;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>      node_tile_map_;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  <span class="keywordtype">int</span> stride_{10};</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  <span class="keywordtype">int</span> max_drop_distance_{10};</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  <span class="keywordtype">int</span> max_jump_distance_{4};</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  <span class="keywordtype">float</span> node_vertical_offset_{16.0f};</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>  <span class="keywordtype">int</span> grid_size_{16};</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  <span class="keywordtype">int</span> grid_max_x_{0};</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  <span class="keywordtype">int</span> grid_max_y_{0};</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  <span class="keywordtype">void</span> set_tile_maps(<a class="code hl_class" href="class_game_object.html">GameObject</a>&amp; <a class="code hl_function" href="class_component.html#a0a363868b322b05e49780ee8d82aae4e">parent</a>);</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  <span class="keywordtype">void</span> generate_nodes();</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="keywordtype">void</span> link_nodes();</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  std::optional&lt;std::reference_wrapper&lt;NavigationNode&gt;&gt; find_node_in_children(</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>      <a class="code hl_class" href="class_game_object.html">GameObject</a>&amp; <a class="code hl_function" href="class_component.html#a0a363868b322b05e49780ee8d82aae4e">parent</a>) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>};</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="class_navigation_graph.html#ad3165a5fdbecb56f02378ac5b463d741">  103</a></span>  std::<span class="keywordtype">string</span> <a class="code hl_function" href="class_navigation_graph.html#ad3165a5fdbecb56f02378ac5b463d741">type_name</a>() const override;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> private:</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  std::unordered_map&lt;<a class="code hl_struct" href="struct_graph_position.html">GraphPosition</a>, std::reference_wrapper&lt;<a class="code hl_class" href="class_navigation_node.html">NavigationNode</a>&gt;,</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                     <a class="code hl_struct" href="struct_graph_position_hash.html">GraphPositionHash</a>&gt;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>      nodes_;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  std::unordered_map&lt;<a class="code hl_struct" href="struct_graph_position.html">GraphPosition</a>, <a class="code hl_class" href="class_game_object.html">GameObject</a>*, <a class="code hl_struct" href="struct_graph_position_hash.html">GraphPositionHash</a>&gt; tile_map_;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  std::unordered_map&lt;<a class="code hl_struct" href="struct_graph_position.html">GraphPosition</a>, <a class="code hl_class" href="class_navigation_node.html">NavigationNode</a>*, <a class="code hl_struct" href="struct_graph_position_hash.html">GraphPositionHash</a>&gt;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>      node_tile_map_;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  <span class="keywordtype">int</span> stride_{10};</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  <span class="keywordtype">int</span> max_drop_distance_{10};</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>  <span class="keywordtype">int</span> max_jump_distance_{4};</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>  <span class="keywordtype">float</span> node_vertical_offset_{16.0f};</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  <span class="keywordtype">int</span> grid_size_{16};</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  <span class="keywordtype">int</span> grid_max_x_{0};</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  <span class="keywordtype">int</span> grid_max_y_{0};</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="keywordtype">void</span> set_tile_maps(<a class="code hl_class" href="class_game_object.html">GameObject</a>&amp; <a class="code hl_function" href="class_component.html#a0a363868b322b05e49780ee8d82aae4e">parent</a>);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="keywordtype">void</span> generate_nodes();</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  <span class="keywordtype">void</span> link_nodes();</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>  std::optional&lt;std::reference_wrapper&lt;NavigationNode&gt;&gt; find_node_in_children(</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>      <a class="code hl_class" href="class_game_object.html">GameObject</a>&amp; <a class="code hl_function" href="class_component.html#a0a363868b322b05e49780ee8d82aae4e">parent</a>) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>};</div>
 </div>
 <div class="ttc" id="aclass_component_html"><div class="ttname"><a href="class_component.html">Component</a></div><div class="ttdef"><b>Definition</b> component.h:12</div></div>
 <div class="ttc" id="aclass_component_html_a0a363868b322b05e49780ee8d82aae4e"><div class="ttname"><a href="class_component.html#a0a363868b322b05e49780ee8d82aae4e">Component::parent</a></div><div class="ttdeci">const std::optional&lt; std::reference_wrapper&lt; GameObject &gt; &gt; &amp; parent() const noexcept</div></div>
@@ -237,6 +239,7 @@ $(document).ready(function(){initNavTree('navigation__graph_8h_source.html','');
 <div class="ttc" id="aclass_navigation_graph_html_aad1677d429c467d82f0fa8998052ee1f"><div class="ttname"><a href="class_navigation_graph.html#aad1677d429c467d82f0fa8998052ee1f">NavigationGraph::get_grid_size</a></div><div class="ttdeci">int get_grid_size() const noexcept</div></div>
 <div class="ttc" id="aclass_navigation_graph_html_ab414711fec5ee08c72a6a9ed59aab045"><div class="ttname"><a href="class_navigation_graph.html#ab414711fec5ee08c72a6a9ed59aab045">NavigationGraph::clear</a></div><div class="ttdeci">NavigationGraph &amp; clear()</div><div class="ttdoc">Clears all nodes from the navigation graph.</div></div>
 <div class="ttc" id="aclass_navigation_graph_html_abde63f49554c2d0ea90cc625adced007"><div class="ttname"><a href="class_navigation_graph.html#abde63f49554c2d0ea90cc625adced007">NavigationGraph::get_nodes</a></div><div class="ttdeci">std::unordered_map&lt; GraphPosition, std::reference_wrapper&lt; NavigationNode &gt;, GraphPositionHash &gt; &amp; get_nodes()</div></div>
+<div class="ttc" id="aclass_navigation_graph_html_ad3165a5fdbecb56f02378ac5b463d741"><div class="ttname"><a href="class_navigation_graph.html#ad3165a5fdbecb56f02378ac5b463d741">NavigationGraph::type_name</a></div><div class="ttdeci">std::string type_name() const override</div></div>
 <div class="ttc" id="aclass_navigation_graph_html_ae00aec8f640a3845e2317f559b563a89"><div class="ttname"><a href="class_navigation_graph.html#ae00aec8f640a3845e2317f559b563a89">NavigationGraph::get_grid_max_y</a></div><div class="ttdeci">int get_grid_max_y() const noexcept</div></div>
 <div class="ttc" id="aclass_navigation_node_html"><div class="ttname"><a href="class_navigation_node.html">NavigationNode</a></div><div class="ttdoc">Component representing a navigation node in a navigation graph.</div><div class="ttdef"><b>Definition</b> navigation_node.h:17</div></div>
 <div class="ttc" id="aclass_vector3_html"><div class="ttname"><a href="class_vector3.html">Vector3</a></div><div class="ttdef"><b>Definition</b> vector3.h:3</div></div>
