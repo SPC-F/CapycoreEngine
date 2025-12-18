@@ -143,8 +143,8 @@ Inheritance diagram for CircleCollider2D:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a23949bc26b5a1076ac6824b7f438acab" id="r_a23949bc26b5a1076ac6824b7f438acab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_circle_collider2_d.html#a23949bc26b5a1076ac6824b7f438acab">CircleCollider2D</a> (float <a class="el" href="class_circle_collider2_d.html#ac8873bf7adb9e66ce1631c1459f12e5f">friction</a>, float <a class="el" href="class_circle_collider2_d.html#a78913b8e769a74b6f58f025ce8b9fd12">bounciness</a>, float <a class="el" href="class_circle_collider2_d.html#ab2e889f4893ffc302c6eb5609dc76fda">radius</a>=<a class="el" href="circle__collider__2d_8h.html#a5fce9b6519cf123f8c8534c5bb62f2e4">default_circle_collider_radius</a>, <a class="el" href="class_point.html">Point</a> <a class="el" href="class_circle_collider2_d.html#a4521ee6b832071f8c8ba1aa793970e81">offset</a>={0.0f, 0.0f})</td></tr>
-<tr class="separator:a23949bc26b5a1076ac6824b7f438acab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af296a55192ea28de40af634c0f909a29" id="r_af296a55192ea28de40af634c0f909a29"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_circle_collider2_d.html#af296a55192ea28de40af634c0f909a29">CircleCollider2D</a> (float <a class="el" href="class_circle_collider2_d.html#ac8873bf7adb9e66ce1631c1459f12e5f">friction</a>, float <a class="el" href="class_circle_collider2_d.html#a78913b8e769a74b6f58f025ce8b9fd12">bounciness</a>, float <a class="el" href="class_circle_collider2_d.html#ab2e889f4893ffc302c6eb5609dc76fda">radius</a>=<a class="el" href="circle__collider__2d_8h.html#a5fce9b6519cf123f8c8534c5bb62f2e4">default_circle_collider_radius</a>, <a class="el" href="class_point.html">Point</a> <a class="el" href="class_circle_collider2_d.html#a4521ee6b832071f8c8ba1aa793970e81">offset</a>={0.0f, 0.0f}, bool is_sensor=false, bool is_bullet=false)</td></tr>
+<tr class="separator:af296a55192ea28de40af634c0f909a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade51349e8074ae8772375ee44c0c9985" id="r_ade51349e8074ae8772375ee44c0c9985"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_circle_collider2_d.html#ade51349e8074ae8772375ee44c0c9985">~CircleCollider2D</a> () override=default</td></tr>
 <tr class="separator:ade51349e8074ae8772375ee44c0c9985"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a853a49cee7bd8b3f3b7ebb479d98fdba" id="r_a853a49cee7bd8b3f3b7ebb479d98fdba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_circle_collider2_d.html#a853a49cee7bd8b3f3b7ebb479d98fdba">update</a> (float dt) override</td></tr>
@@ -300,8 +300,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>A 2D circle collider component that defines a circular collision shape for a <a class="el" href="class_game_object.html">GameObject</a>. </p>
 <p>This component extends the <a class="el" href="class_collider2_d.html" title="A 2D collider base that defines the shape and physical properties of a GameObject for collision detec...">Collider2D</a> class to provide a circle-shaped collider, enabling circular collision detection and response within the physics engine. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a23949bc26b5a1076ac6824b7f438acab" name="a23949bc26b5a1076ac6824b7f438acab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23949bc26b5a1076ac6824b7f438acab">&#9670;&#160;</a></span>CircleCollider2D()</h2>
+<a id="af296a55192ea28de40af634c0f909a29" name="af296a55192ea28de40af634c0f909a29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af296a55192ea28de40af634c0f909a29">&#9670;&#160;</a></span>CircleCollider2D()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -328,7 +328,19 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_point.html">Point</a>&#160;</td>
-          <td class="paramname"><em>offset</em> = <code>{0.0f,&#160;0.0f}</code>&#160;</td>
+          <td class="paramname"><em>offset</em> = <code>{0.0f,&#160;0.0f}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_sensor</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_bullet</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
