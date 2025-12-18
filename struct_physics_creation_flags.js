@@ -6,6 +6,7 @@ var struct_physics_creation_flags =
     [ "dynamic", "struct_physics_creation_flags.html#a1d88ccbfad081f9471155c930fd46e90", null ],
     [ "enable_contact_events", "struct_physics_creation_flags.html#acb6b1acfeb240a1e6c4216042daeb948", null ],
     [ "enable_rotation", "struct_physics_creation_flags.html#a2bcea44d0ff88083af67cd2d7f611038", null ],
+    [ "enable_sensor_events", "struct_physics_creation_flags.html#a195a81adc7fedf8c35e9cd8e5b2a4c10", null ],
     [ "friction", "struct_physics_creation_flags.html#a40b469e413a11c0f1d83057fc425df4d", null ],
     [ "is_bullet", "struct_physics_creation_flags.html#ac321755ab6d03148127170833516fcae", null ],
     [ "mask", "struct_physics_creation_flags.html#a5fbdfb193ea1a113cba0334034622835", null ],

@@ -150,6 +150,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:acb6b1acfeb240a1e6c4216042daeb948" id="r_acb6b1acfeb240a1e6c4216042daeb948"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_physics_creation_flags.html#acb6b1acfeb240a1e6c4216042daeb948">enable_contact_events</a> {true}</td></tr>
 <tr class="memdesc:acb6b1acfeb240a1e6c4216042daeb948"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to enable contact events for the body.  <br /></td></tr>
 <tr class="separator:acb6b1acfeb240a1e6c4216042daeb948"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a195a81adc7fedf8c35e9cd8e5b2a4c10" id="r_a195a81adc7fedf8c35e9cd8e5b2a4c10"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_physics_creation_flags.html#a195a81adc7fedf8c35e9cd8e5b2a4c10">enable_sensor_events</a> {true}</td></tr>
+<tr class="memdesc:a195a81adc7fedf8c35e9cd8e5b2a4c10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to enable sensor events for the body.  <br /></td></tr>
+<tr class="separator:a195a81adc7fedf8c35e9cd8e5b2a4c10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac321755ab6d03148127170833516fcae" id="r_ac321755ab6d03148127170833516fcae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_physics_creation_flags.html#ac321755ab6d03148127170833516fcae">is_bullet</a> {false}</td></tr>
 <tr class="memdesc:ac321755ab6d03148127170833516fcae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the body is treated as a bullet.  <br /></td></tr>
 <tr class="separator:ac321755ab6d03148127170833516fcae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -272,6 +275,24 @@ Public Attributes</h2></td></tr>
 
 <p>Whether to enable rotation for the body. </p>
 <p>Default is false. </p>
+
+</div>
+</div>
+<a id="a195a81adc7fedf8c35e9cd8e5b2a4c10" name="a195a81adc7fedf8c35e9cd8e5b2a4c10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a195a81adc7fedf8c35e9cd8e5b2a4c10">&#9670;&#160;</a></span>enable_sensor_events</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PhysicsCreationFlags::enable_sensor_events {true}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether to enable sensor events for the body. </p>
+<p>Default is true. If true, the body will generate events when other bodies enter/exit the sensor.</p>
+<dl class="section note"><dt>Note</dt><dd>: This is an optimization flag but a TRICKY one. Sensors need this, aswell as their collidable objects. Supports: kinematic, dynamic and static. </dd></dl>
 
 </div>
 </div>

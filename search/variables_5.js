@@ -7,5 +7,6 @@ var searchData=
   ['fraction_4',['fraction',['../struct_collider_ray_result.html#a6656a71509418846fcfbf3c4af392551',1,'ColliderRayResult']]],
   ['frame_5fcount_5f_5',['frame_count_',['../class_i_backend_system.html#aa276b2f613fa403ceca800b5baa1ccef',1,'IBackendSystem']]],
   ['freq_5f_6',['freq_',['../class_i_backend_system.html#a2817c1e257cb2f64538ec6f78e030269',1,'IBackendSystem']]],
-  ['friction_7',['friction',['../struct_physics_creation_flags.html#a40b469e413a11c0f1d83057fc425df4d',1,'PhysicsCreationFlags']]]
+  ['friction_7',['friction',['../struct_physics_creation_flags.html#a40b469e413a11c0f1d83057fc425df4d',1,'PhysicsCreationFlags']]],
+  ['friction_5f_8',['friction_',['../class_collider2_d.html#a6a82fffb093830889a0b879940029329',1,'Collider2D']]]
 ];

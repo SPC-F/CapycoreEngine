@@ -14,8 +14,8 @@ var class_collider2_d =
     [ "friction", "class_collider2_d.html#a4f3fcf48b33f6c7a8339a14e3455e378", null ],
     [ "friction", "class_collider2_d.html#a058fa64b1992f1e78ce5a90c28f42111", null ],
     [ "get_rigidbody", "class_collider2_d.html#a0230d0acd5bd86ff302ac5485b840e7e", null ],
-    [ "offset", "class_collider2_d.html#a2fd7a7b0b37036246ac49d39a17b4605", null ],
-    [ "offset", "class_collider2_d.html#aaeb2d02c56c8b2c140a7816014cf8890", null ],
+    [ "offset", "class_collider2_d.html#a80df0579c26aee8cb4fbc956c2649b53", null ],
+    [ "offset", "class_collider2_d.html#ae5f1b2b9a22a7f2e2190354105356464", null ],
     [ "on_collision_enter", "class_collider2_d.html#a878d8ee32c4be5aaf8c289c0ca36c057", null ],
     [ "on_collision_exit", "class_collider2_d.html#ad6c99f40d7dbceeddae2dd92b3cf5742", null ],
     [ "on_trigger_enter", "class_collider2_d.html#ab9e0ac687397efe72fea2991d3d092d1", null ],
@@ -25,5 +25,9 @@ var class_collider2_d =
     [ "remove_on_collision_exit", "class_collider2_d.html#a7211c524d3603b1570b6cd3b2795d74f", null ],
     [ "remove_on_trigger_enter", "class_collider2_d.html#a21e5442e9b80d0d2fa5c0532233498ff", null ],
     [ "remove_on_trigger_exit", "class_collider2_d.html#a4c1459d35259c6bf25495c32790486a7", null ],
-    [ "update", "class_collider2_d.html#a9478b49125e4817177576cf6bc1e18b7", null ]
+    [ "update", "class_collider2_d.html#a9478b49125e4817177576cf6bc1e18b7", null ],
+    [ "bounciness_", "class_collider2_d.html#ae05a6684d662ec72bcf1398e9bd8163e", null ],
+    [ "creation_flags_", "class_collider2_d.html#ac434705cef42a5b65423c43017f5d6d0", null ],
+    [ "friction_", "class_collider2_d.html#a6a82fffb093830889a0b879940029329", null ],
+    [ "offset_", "class_collider2_d.html#ad2e8d0785a1989be2fab5b15eb786e83", null ]
 ];

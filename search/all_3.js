@@ -41,6 +41,7 @@ var searchData=
   ['create_5fspritesheet_5ffor_38',['create_spritesheet_for',['../class_asset_service.html#aff8dfa617b79f3d082db0519a925cd5d',1,'AssetService']]],
   ['create_5fstrategy_39',['create_strategy',['../class_sdl_strategy_factory.html#a5644c3f44edd587dbea693c417ab5a89',1,'SdlStrategyFactory::create_strategy()'],['../class_i_rendering_strategy_factory.html#ae28c076356a1a3c2fcf0977c1f87ca2a',1,'IRenderingStrategyFactory::create_strategy()']]],
   ['creation_5fflags_40',['creation_flags',['../class_collider2_d.html#aade9fc87e5a1d28c553327677bd4e5d3',1,'Collider2D::creation_flags(PhysicsCreationFlags value) noexcept'],['../class_collider2_d.html#a4fe126eab52b330f738d757a1eef5c76',1,'Collider2D::creation_flags() noexcept']]],
-  ['current_41',['current',['../struct_key_state.html#acc422cc40f6d391ff01de0f458c7e53f',1,'KeyState::current'],['../struct_mouse_button_state.html#aa62593b07641cef3ff46ba88e3c85b93',1,'MouseButtonState::current']]],
-  ['current_5fscene_42',['current_scene',['../class_scene_service.html#a4c3429ea82d84e6f16ff4c260bde8b1e',1,'SceneService']]]
+  ['creation_5fflags_5f_41',['creation_flags_',['../class_collider2_d.html#ac434705cef42a5b65423c43017f5d6d0',1,'Collider2D']]],
+  ['current_42',['current',['../struct_key_state.html#acc422cc40f6d391ff01de0f458c7e53f',1,'KeyState::current'],['../struct_mouse_button_state.html#aa62593b07641cef3ff46ba88e3c85b93',1,'MouseButtonState::current']]],
+  ['current_5fscene_43',['current_scene',['../class_scene_service.html#a4c3429ea82d84e6f16ff4c260bde8b1e',1,'SceneService']]]
 ];

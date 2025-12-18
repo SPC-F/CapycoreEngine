@@ -4,6 +4,8 @@ var class_circle_collider2_d =
     [ "~CircleCollider2D", "class_circle_collider2_d.html#ade51349e8074ae8772375ee44c0c9985", null ],
     [ "bounciness", "class_circle_collider2_d.html#a78913b8e769a74b6f58f025ce8b9fd12", null ],
     [ "friction", "class_circle_collider2_d.html#ac8873bf7adb9e66ce1631c1459f12e5f", null ],
+    [ "offset", "class_circle_collider2_d.html#a4521ee6b832071f8c8ba1aa793970e81", null ],
+    [ "offset", "class_circle_collider2_d.html#a19044771cf379bbb1c76e43f03b7dbbf", null ],
     [ "on_deserialize", "class_circle_collider2_d.html#acf839b2bf9ada296992282e928e5d25f", null ],
     [ "on_serialize", "class_circle_collider2_d.html#a704fd310cfa2a23f54301bde476fcf70", null ],
     [ "radius", "class_circle_collider2_d.html#ab2e889f4893ffc302c6eb5609dc76fda", null ],
