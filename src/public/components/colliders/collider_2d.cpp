@@ -183,6 +183,8 @@ Collider2D& Collider2D::creation_flags(PhysicsCreationFlags value) noexcept {
 
 Point Collider2D::offset() const noexcept { return offset_; }
 
+std::string Collider2D::type_name() const { return "Collider2D"; }
+
 Collider2D& Collider2D::offset(Point value) noexcept {
   offset_ = value;
   return *this;

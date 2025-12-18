@@ -100,9 +100,6 @@ class NavigationGraph : public Component {
   int max_jump_distance() const noexcept;
   NavigationGraph& max_jump_distance(int distance) noexcept;
 
-  void on_serialize() override{};
-  void on_deserialize() override{};
-
  private:
   /// Mapping of graph positions to navigation nodes
   std::unordered_map<GraphPosition, std::reference_wrapper<NavigationNode>,

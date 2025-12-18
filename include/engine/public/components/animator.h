@@ -32,10 +32,10 @@ class Animator : public Component {
 
   // Component overrides
   void update(float dt_seconds) override;
-  void on_serialize() override;
-  void on_deserialize() override;
 
   void set_animation(const std::string& animation_name);
   void set_animation(
       const std::vector<std::reference_wrapper<Texture>>& frames_);
+
+  std::string type_name() const override;
 };

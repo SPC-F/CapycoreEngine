@@ -30,6 +30,7 @@ class GameObject {
 
   bool marked_for_deletion_{false};
   bool dont_destroy_on_load_{false};
+  std::string prefab_type_id_{};  // Identifier for prefab type used during network replication
 
  public:
   explicit GameObject(Scene& scene);
@@ -67,6 +68,9 @@ class GameObject {
 
   GameObject& tag(const std::string& tag);
   [[nodiscard]] const std::string& tag() const;
+
+  GameObject& prefab_type_id(const std::string& id);
+  [[nodiscard]] const std::string& prefab_type_id() const;
 
   GameObject& layer(int layer);
   [[nodiscard]] int layer() const;
@@ -110,6 +114,10 @@ class GameObject {
                                                   filtered.end());
   }
 
+  /** Get all components (non-templated) attached to this GameObject. */
+  [[nodiscard]] std::vector<std::reference_wrapper<Component>>
+  get_components_all() const;
+
   template <IsComponent T>
   std::vector<std::reference_wrapper<T>> get_components_from_children() const {
     std::vector<std::reference_wrapper<T>> result{};
@@ -148,6 +156,25 @@ class GameObject {
         components_.end());
   }
 
-  void serialize() const;
-  void deserialize() const;
+  /**
+   * Serialize this GameObject's own state and its components into `out`.
+   * The format produced is:
+   *   uint16_t name_len, name bytes
+   *   uint16_t tag_len, tag bytes
+   *   uint8_t is_active
+   *   int32_t layer
+   *   uint16_t component_count
+   *   for each component:
+   *     uint16_t type_name_len, type_name bytes
+   *     uint32_t payload_len, payload bytes
+   */
+  void serialize(std::vector<uint8_t>& out) const;
+
+  /**
+   * Deserialize this GameObject's state and dispatch component payloads from
+   * `data` starting at `offset`. Implementations should advance `offset`
+   * by the number of bytes consumed. Subclasses overriding this method should
+   * call `GameObject::deserialize` first to keep base behavior.
+   */
+  void deserialize(const std::vector<uint8_t>& data, size_t& offset);
 };

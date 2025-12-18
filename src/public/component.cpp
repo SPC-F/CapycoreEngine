@@ -2,6 +2,9 @@
 #include <engine/public/gameObject.h>
 
 #include <iterator>
+#include <vector>
+#include <string>
+#include <cstddef>
 
 Component::Component() : parent_(std::nullopt) {}
 
@@ -76,3 +79,8 @@ void Component::remove_on_detach(size_t index) {
                                        static_cast<std::ptrdiff_t>(index)));
   }
 }
+
+void Component::on_serialize(std::vector<uint8_t>& /*out*/) const {}
+
+void Component::on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                       size_t& /*offset*/) {}

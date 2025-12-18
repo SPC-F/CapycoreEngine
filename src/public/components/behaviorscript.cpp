@@ -38,14 +38,6 @@ void BehaviorScript::on_detach() {
   behavior_->on_destroy();
 }
 
-void BehaviorScript::on_serialize() {
-  // TODO: implement after networking is done
-}
-
-void BehaviorScript::on_deserialize() {
-  // TODO: implement after networking is done
-}
-
 Behavior& BehaviorScript::behavior() { return *behavior_; }
 
 bool BehaviorScript::enabled() const { return behavior_->enabled(); }
@@ -59,3 +51,5 @@ BehaviorScript& BehaviorScript::disable() {
   behavior_->disable();
   return *this;
 }
+
+std::string BehaviorScript::type_name() const { return "BehaviorScript"; }

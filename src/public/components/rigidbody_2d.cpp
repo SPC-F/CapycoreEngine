@@ -69,14 +69,6 @@ void Rigidbody2D::update(float dt) {
   /// Static bodies: Do nothing
 }
 
-void Rigidbody2D::on_serialize() {
-  // TODO: Implement after network...
-}
-
-void Rigidbody2D::on_deserialize() {
-  // TODO: Implement after network...
-}
-
 Rigidbody2D& Rigidbody2D::teleport(const Vector3& position) noexcept {
   if (const auto parent_opt = parent(); parent_opt.has_value()) {
     Body2DTransform b_transform = Body2D::get_pixel_transform(body_);
@@ -147,3 +139,5 @@ Vector3 Rigidbody2D::velocity() const noexcept {
   Vector3 v = Body2D::get_body_velocity(body_);
   return {v.x, v.y, 0.0f};
 }
+
+std::string Rigidbody2D::type_name() const { return "Rigidbody2D"; }

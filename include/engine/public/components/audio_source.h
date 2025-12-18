@@ -29,8 +29,6 @@ class AudioSource : public Component {
   void update(float dt) override;
   void on_attach() override;
   void on_detach() override;
-  void on_serialize() override;
-  void on_deserialize() override;
 
   void play(bool loop = false);
   void stop();
@@ -51,6 +49,8 @@ class AudioSource : public Component {
 
   [[nodiscard]] std::optional<std::reference_wrapper<SoundInstance>> instance()
       const noexcept;
+
+  std::string type_name() const override;
 
  private:
   std::shared_ptr<SoundResource> get_or_register_resource();

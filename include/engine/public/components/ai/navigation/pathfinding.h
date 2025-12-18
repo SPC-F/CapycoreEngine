@@ -90,9 +90,6 @@ class Pathfinding : public Renderable {
       const;
   Pathfinding& set_target_game_object(GameObject& target);
 
-  void on_serialize() override{};
-  void on_deserialize() override{};
-
  private:
   std::vector<std::reference_wrapper<GameObject>> path_;
   std::optional<Vector3> origin_;

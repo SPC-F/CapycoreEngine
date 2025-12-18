@@ -30,6 +30,8 @@ class Renderable : public Component {  // NOLINT
   void set_render_strategy(Component& component);
   [[nodiscard]] virtual IRenderingStrategy& render_strategy() const;
 
+  std::string type_name() const override;
+
   Renderable& disable_draw() noexcept;
   Renderable& enable_draw() noexcept;
   [[nodiscard]] bool should_draw() const noexcept;

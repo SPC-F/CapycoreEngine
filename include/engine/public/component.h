@@ -2,6 +2,9 @@
 #include <functional>
 #include <memory>
 #include <optional>
+#include <string>
+#include <typeinfo>
+#include <cstddef>
 #include <vector>
 
 class GameObject;
@@ -30,8 +33,14 @@ class Component {
   virtual void on_attach();
   virtual void on_detach();
 
-  virtual void on_serialize() = 0;
-  virtual void on_deserialize() = 0;
+  virtual void on_serialize(std::vector<uint8_t>& /*out*/) const;
+  virtual void on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                       size_t& /*offset*/);
+
+  // A textual identifier for the component type.
+  // All components must implement this to provide consistent, portable type names
+  // for serialization across different compilers and platforms.
+  virtual std::string type_name() const = 0;
 
   const std::optional<std::reference_wrapper<GameObject>>& parent()
       const noexcept;  // NOLINT

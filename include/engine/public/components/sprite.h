@@ -51,6 +51,6 @@ class Sprite final : public Renderable {
   Sprite& texture(Texture& texture);
 
   void update(float dt) override;
-  void on_serialize() override;
-  void on_deserialize() override;
+
+  std::string type_name() const override;
 };

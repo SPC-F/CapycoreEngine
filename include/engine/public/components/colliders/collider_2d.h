@@ -110,6 +110,8 @@ class Collider2D : public Renderable {
   [[nodiscard]] virtual Point offset() const noexcept;
   virtual Collider2D& offset(Point value) noexcept;
 
+  std::string type_name() const override;
+
  protected:
   PhysicsCreationFlags creation_flags_{};
   float friction_;

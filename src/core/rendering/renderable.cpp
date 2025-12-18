@@ -29,6 +29,8 @@ void Renderable::set_render_strategy(Component& component) {
   return *render_strategy_;
 }
 
+std::string Renderable::type_name() const { return "Renderable"; }
+
 Renderable& Renderable::disable_draw() noexcept {
   draw = false;
   return *this;

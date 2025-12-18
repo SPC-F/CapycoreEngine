@@ -2,6 +2,12 @@
 #include <engine/public/gameObject.h>
 #include <engine/public/scene.h>
 #include <engine/util/uuid.h>
+#include <engine/network/snapshot.h>
+
+#include <stdexcept>
+#include <vector>
+#include <cstring>
+#include <cstdint>
 
 GameObject::GameObject(Scene& scene)
     : id_(uuid::generate_uuid_v4()), scene_(scene) {}
@@ -29,6 +35,12 @@ GameObject& GameObject::tag(const std::string& tag) {
   return *this;
 }
 const std::string& GameObject::tag() const { return tag_; }
+
+GameObject& GameObject::prefab_type_id(const std::string& id) {
+  prefab_type_id_ = id;
+  return *this;
+}
+const std::string& GameObject::prefab_type_id() const { return prefab_type_id_; }
 
 GameObject& GameObject::layer(const int layer) {
   layer_ = layer;
@@ -121,6 +133,15 @@ std::vector<std::reference_wrapper<GameObject>>& GameObject::children() {
   return children_;
 }
 
+std::vector<std::reference_wrapper<Component>> GameObject::get_components_all() const {
+  std::vector<std::reference_wrapper<Component>> result;
+  result.reserve(components_.size());
+  for (const auto& c : components_) {
+    result.emplace_back(*c);
+  }
+  return result;
+}
+
 GameObject& GameObject::add_child(GameObject& child) {
   children_.emplace_back(child);
   child.parent(*this);
@@ -135,11 +156,108 @@ GameObject& GameObject::remove_child(GameObject& child) {
   return *this;
 }
 
-// NOLINTBEGIN
-void GameObject::serialize() const {
-  throw std::runtime_error("Not implemented");
+void GameObject::serialize(std::vector<uint8_t>& out) const {
+  // Write object metadata
+  snapshot::write_string(out, prefab_type_id_);
+  snapshot::write_string(out, name_);
+  snapshot::write_string(out, tag_);
+
+  uint8_t active = is_active_ ? 1 : 0;
+  snapshot::write_bytes(out, &active, sizeof(active));
+
+  int32_t layer = static_cast<int32_t>(layer_);
+  snapshot::write_bytes(out, &layer, sizeof(layer));
+
+  // Write transform: position (3 floats), rotation (1 float), scale (3 floats)
+  auto pos = transform_.position();
+  float rot = transform_.rotation();
+  auto sc = transform_.scale();
+  snapshot::write_bytes(out, &pos.x, sizeof(float));
+  snapshot::write_bytes(out, &pos.y, sizeof(float));
+  snapshot::write_bytes(out, &pos.z, sizeof(float));
+  snapshot::write_bytes(out, &rot, sizeof(float));
+  snapshot::write_bytes(out, &sc.x, sizeof(float));
+  snapshot::write_bytes(out, &sc.y, sizeof(float));
+  snapshot::write_bytes(out, &sc.z, sizeof(float));
+
+  // Serialize components
+  auto comps = get_components_all();
+  std::vector<std::pair<std::string, std::vector<uint8_t>>> comp_entries;
+  for (auto& c : comps) {
+    std::vector<uint8_t> cp;
+    c.get().on_serialize(cp);
+    if (!cp.empty()) comp_entries.emplace_back(c.get().type_name(), std::move(cp));
+  }
+
+  uint16_t comp_count = static_cast<uint16_t>(comp_entries.size());
+  snapshot::write_bytes(out, &comp_count, sizeof(comp_count));
+
+  for (const auto& e : comp_entries) {
+    snapshot::write_string(out, e.first);
+    uint32_t payload_length = static_cast<uint32_t>(e.second.size());
+    snapshot::write_bytes(out, &payload_length, sizeof(payload_length));
+    if (payload_length > 0) {
+      snapshot::write_bytes(out, e.second.data(), payload_length);
+    }
+  }
 }
-void GameObject::deserialize() const {
-  throw std::runtime_error("Not implemented");
+
+void GameObject::deserialize(const std::vector<uint8_t>& data, size_t& offset) {
+  // Read object metadata
+  if (!snapshot::read_string(data, offset, prefab_type_id_)) return;
+  if (!snapshot::read_string(data, offset, name_)) return;
+  if (!snapshot::read_string(data, offset, tag_)) return;
+
+  uint8_t active = 0;
+  if (!snapshot::read_bytes(data, offset, &active, sizeof(active))) return;
+  is_active_ = (active != 0);
+
+  int32_t layer = 0;
+  if (!snapshot::read_bytes(data, offset, &layer, sizeof(layer))) return;
+  layer_ = static_cast<int>(layer);
+
+  // Read transform: position (3 floats), rotation (1 float), scale (3 floats)
+  float px = 0.0f, py = 0.0f, pz = 0.0f;
+  if (!snapshot::read_bytes(data, offset, &px, sizeof(float))) return;
+  if (!snapshot::read_bytes(data, offset, &py, sizeof(float))) return;
+  if (!snapshot::read_bytes(data, offset, &pz, sizeof(float))) return;
+
+  float rot = 0.0f;
+  if (!snapshot::read_bytes(data, offset, &rot, sizeof(float))) return;
+
+  float sx = 1.0f, sy = 1.0f, sz = 1.0f;
+  if (!snapshot::read_bytes(data, offset, &sx, sizeof(float))) return;
+  if (!snapshot::read_bytes(data, offset, &sy, sizeof(float))) return;
+  if (!snapshot::read_bytes(data, offset, &sz, sizeof(float))) return;
+
+  transform_.position({px, py, pz});
+  transform_.rotation(rot);
+  transform_.scale({sx, sy, sz});
+
+  // Deserialize components
+  uint16_t comp_count = 0;
+  if (!snapshot::read_bytes(data, offset, &comp_count, sizeof(comp_count))) return;
+
+  for (uint16_t i = 0; i < comp_count; ++i) {
+    std::string type_name;
+    if (!snapshot::read_string(data, offset, type_name)) break;
+
+    uint32_t payload_length = 0;
+    if (!snapshot::read_bytes(data, offset, &payload_length, sizeof(payload_length))) break;
+
+    // Dispatch payload to matching component
+    bool applied = false;
+    for (auto& comp_ref : get_components_all()) {
+      if (comp_ref.get().type_name() == type_name) {
+        size_t inner_off = offset;
+        comp_ref.get().on_deserialize(data, inner_off);
+        applied = true;
+        break;
+      }
+    }
+
+    // Advance offset past this component's payload regardless
+    offset += payload_length;
+  }
 }
 // NOLINTEND

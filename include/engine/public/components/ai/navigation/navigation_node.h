@@ -65,9 +65,6 @@ class NavigationNode : public Renderable {
    */
   NavigationNode& position(const GraphPosition& position);
 
-  void on_serialize() override{};
-  void on_deserialize() override{};
-
  private:
   GraphPosition position_;
   std::vector<Edge> edges_;

@@ -28,8 +28,6 @@ class Text : public Renderable {
        Color color);
 
   void update(float dt) override {}
-  void on_serialize() override {}
-  void on_deserialize() override {}
 
   [[nodiscard]] const std::string& text() const;
   Text& text(const std::string& text);
@@ -48,6 +46,8 @@ class Text : public Renderable {
 
   [[nodiscard]] bool dirty() const;
   void mark_dirty(bool dirty = true);
+
+  std::string type_name() const override;
 
   [[nodiscard]] TextAlignment alignment() const;
   Text& alignment(TextAlignment alignment);
