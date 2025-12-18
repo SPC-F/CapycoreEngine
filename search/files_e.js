@@ -1,6 +1,28 @@
 var searchData=
 [
-  ['text_2eh_0',['text.h',['../text_8h.html',1,'']]],
-  ['texture_2eh_1',['texture.h',['../texture_8h.html',1,'']]],
-  ['transform_2eh_2',['transform.h',['../transform_8h.html',1,'']]]
+  ['scene_2eh_0',['scene.h',['../scene_8h.html',1,'']]],
+  ['scene_5fservice_2eh_1',['scene_service.h',['../scene__service_8h.html',1,'']]],
+  ['sdl_5fbackend_5fsystem_2eh_2',['sdl_backend_system.h',['../sdl__backend__system_8h.html',1,'']]],
+  ['sdl_5fbox_5fcollider_5f2d_5fstrategy_2eh_3',['sdl_box_collider_2d_strategy.h',['../sdl__box__collider__2d__strategy_8h.html',1,'']]],
+  ['sdl_5fcircle_5fcollider_5f2d_5fstrategy_2eh_4',['sdl_circle_collider_2d_strategy.h',['../sdl__circle__collider__2d__strategy_8h.html',1,'']]],
+  ['sdl_5fimage_5fstrategy_2eh_5',['sdl_image_strategy.h',['../sdl__image__strategy_8h.html',1,'']]],
+  ['sdl_5finput_5fstrategy_2eh_6',['sdl_input_strategy.h',['../sdl__input__strategy_8h.html',1,'']]],
+  ['sdl_5fnavigation_5fnode_5fstrategy_2eh_7',['sdl_navigation_node_strategy.h',['../sdl__navigation__node__strategy_8h.html',1,'']]],
+  ['sdl_5fpathfinding_5fstrategy_2eh_8',['sdl_pathfinding_strategy.h',['../sdl__pathfinding__strategy_8h.html',1,'']]],
+  ['sdl_5fsound_5finstance_2eh_9',['sdl_sound_instance.h',['../sdl__sound__instance_8h.html',1,'']]],
+  ['sdl_5fsound_5fresource_2eh_10',['sdl_sound_resource.h',['../sdl__sound__resource_8h.html',1,'']]],
+  ['sdl_5fsprite_5fstrategy_2eh_11',['sdl_sprite_strategy.h',['../sdl__sprite__strategy_8h.html',1,'']]],
+  ['sdl_5fstrategy_5ffactory_2eh_12',['sdl_strategy_factory.h',['../sdl__strategy__factory_8h.html',1,'']]],
+  ['sdl_5ftext_5fstrategy_2eh_13',['sdl_text_strategy.h',['../sdl__text__strategy_8h.html',1,'']]],
+  ['servicecontainer_2eh_14',['serviceContainer.h',['../service_container_8h.html',1,'']]],
+  ['shape_5ftype_5f2d_2eh_15',['shape_type_2d.h',['../shape__type__2d_8h.html',1,'']]],
+  ['simple_5fstorage_2eh_16',['simple_storage.h',['../simple__storage_8h.html',1,'']]],
+  ['snapshot_2eh_17',['snapshot.h',['../snapshot_8h.html',1,'']]],
+  ['sound_5ffactory_2eh_18',['sound_factory.h',['../sound__factory_8h.html',1,'']]],
+  ['sound_5finstance_2eh_19',['sound_instance.h',['../sound__instance_8h.html',1,'']]],
+  ['sound_5fresource_2eh_20',['sound_resource.h',['../sound__resource_8h.html',1,'']]],
+  ['sound_5ftype_2eh_21',['sound_type.h',['../sound__type_8h.html',1,'']]],
+  ['sprite_2eh_22',['sprite.h',['../sprite_8h.html',1,'']]],
+  ['system_5fevent_2eh_23',['system_event.h',['../system__event_8h.html',1,'']]],
+  ['system_5fservice_2eh_24',['system_service.h',['../system__service_8h.html',1,'']]]
 ];

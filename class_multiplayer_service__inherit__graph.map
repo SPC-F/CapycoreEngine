@@ -1,0 +1,5 @@
+<map id="MultiplayerService" name="MultiplayerService">
+<area shape="rect" id="Node000001" title="High&#45;level peer&#45;to&#45;peer networking service managing host/client mode, message routing,..." alt="" coords="5,79,149,104"/>
+<area shape="rect" id="Node000002" href="$class_i_engine_service.html" title=" " alt="" coords="18,5,137,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,44,80,79,75,79,75,44"/>
+</map>

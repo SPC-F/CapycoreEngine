@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['mousebutton_0',['MouseButton',['../mouse__button_8h.html#addd443be3bdcc8c62df96178b7870b2b',1,'mouse_button.h']]],
-  ['mousedirection_1',['MouseDirection',['../mouse__state_8h.html#ad24c1433fc0344e2b220f3abc6da31cc',1,'mouse_state.h']]]
+  ['keycode_0',['KeyCode',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44',1,'key_code.h']]],
+  ['kind_1',['Kind',['../struct_message_type.html#a5b7a63d3f4918b16a3d960755798ba90',1,'MessageType']]]
 ];

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['x_0',['x',['../struct_graph_position.html#a56630325a92a59098592411f22d0df90',1,'GraphPosition::x'],['../class_point.html#a05dfe2dfbde813ad234b514f30e662f1',1,'Point::x'],['../class_vector3.html#a7e2d3237b29a2f29d7b3d8b2934e35f2',1,'Vector3::x']]],
-  ['x_5fdelta_1',['x_delta',['../struct_mouse_wheel_state.html#a8a48b2d0a0ee349b5b2aad0bad43efbd',1,'MouseWheelState']]],
-  ['x_5fscroll_2',['x_scroll',['../struct_mouse_wheel_state.html#a86c074d164df7dfcc71894694c8224cb',1,'MouseWheelState']]]
+  ['wheel_0',['wheel',['../struct_mouse_state.html#aa55cd0e5b66af47616728a6ea874f025',1,'MouseState']]],
+  ['width_5f_1',['width_',['../class_u_i_object.html#a711f68da4eb6ec811c63eceea6402872',1,'UIObject']]]
 ];

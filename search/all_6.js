@@ -36,5 +36,6 @@ var searchData=
   ['freq_5f_33',['freq_',['../class_i_backend_system.html#a2817c1e257cb2f64538ec6f78e030269',1,'IBackendSystem']]],
   ['friction_34',['friction',['../class_collider2_d.html#a058fa64b1992f1e78ce5a90c28f42111',1,'Collider2D::friction(float value) noexcept'],['../class_collider2_d.html#a4f3fcf48b33f6c7a8339a14e3455e378',1,'Collider2D::friction() const noexcept'],['../class_circle_collider2_d.html#ac8873bf7adb9e66ce1631c1459f12e5f',1,'CircleCollider2D::friction()'],['../class_box_collider2_d.html#a530ad414562f8d3c341d00cf6f303ef6',1,'BoxCollider2D::friction()'],['../struct_physics_creation_flags.html#a40b469e413a11c0f1d83057fc425df4d',1,'PhysicsCreationFlags::friction']]],
   ['friction_5f_35',['friction_',['../class_collider2_d.html#a6a82fffb093830889a0b879940029329',1,'Collider2D']]],
-  ['fullscreen_36',['Fullscreen',['../renderer_flags_8h.html#a360f88a51f469ff309df1e1e7cc2558ba442ecc88f57a81fcf5161137646b031f',1,'rendererFlags.h']]]
+  ['from_5fraw_36',['from_raw',['../struct_message_type.html#a0220b5b1e47a81670e000e42a043ecab',1,'MessageType']]],
+  ['fullscreen_37',['Fullscreen',['../renderer_flags_8h.html#a360f88a51f469ff309df1e1e7cc2558ba442ecc88f57a81fcf5161137646b031f',1,'rendererFlags.h']]]
 ];

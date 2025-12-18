@@ -158,6 +158,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a70972d056585f61a2213eb234255c5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a810422a6208a7552e6b3f56ca7699ae4" id="r_a810422a6208a7552e6b3f56ca7699ae4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_i_rendering_strategy.html">IRenderingStrategy</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a810422a6208a7552e6b3f56ca7699ae4">render_strategy</a> () const</td></tr>
 <tr class="separator:a810422a6208a7552e6b3f56ca7699ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19536e113537bb17851c646205d63b33" id="r_a19536e113537bb17851c646205d63b33"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a19536e113537bb17851c646205d63b33">type_name</a> () const override</td></tr>
+<tr class="separator:a19536e113537bb17851c646205d63b33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac60ab2ac3f6e7b7b7389d1cba8f88944" id="r_ac60ab2ac3f6e7b7b7389d1cba8f88944"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_renderable.html">Renderable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#ac60ab2ac3f6e7b7b7389d1cba8f88944">disable_draw</a> () noexcept</td></tr>
 <tr class="separator:ac60ab2ac3f6e7b7b7389d1cba8f88944"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a870bd29e2a9f6d8400290d229f2ca1c1" id="r_a870bd29e2a9f6d8400290d229f2ca1c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_renderable.html">Renderable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderable.html#a870bd29e2a9f6d8400290d229f2ca1c1">enable_draw</a> () noexcept</td></tr>
@@ -183,10 +185,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aac7d05319f6406574ef59a06a5fa2d76 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dadc6225e6e16f7684e2e121b0f8d18 inherit pub_methods_class_component" id="r_a4dadc6225e6e16f7684e2e121b0f8d18"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a4dadc6225e6e16f7684e2e121b0f8d18">on_detach</a> ()</td></tr>
 <tr class="separator:a4dadc6225e6e16f7684e2e121b0f8d18 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a431e94b7799fef4428fff6062f7d77aa inherit pub_methods_class_component" id="r_a431e94b7799fef4428fff6062f7d77aa"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a431e94b7799fef4428fff6062f7d77aa">on_serialize</a> ()=0</td></tr>
-<tr class="separator:a431e94b7799fef4428fff6062f7d77aa inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10c4042dfb9548ee865898eb55582f28 inherit pub_methods_class_component" id="r_a10c4042dfb9548ee865898eb55582f28"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a10c4042dfb9548ee865898eb55582f28">on_deserialize</a> ()=0</td></tr>
-<tr class="separator:a10c4042dfb9548ee865898eb55582f28 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42603d3b72bca611b7b4cd91481f70c3 inherit pub_methods_class_component" id="r_a42603d3b72bca611b7b4cd91481f70c3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a42603d3b72bca611b7b4cd91481f70c3">on_serialize</a> (std::vector&lt; uint8_t &gt; &amp;) const</td></tr>
+<tr class="separator:a42603d3b72bca611b7b4cd91481f70c3 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00fcf72aef0ded27c19ba37b196076b0 inherit pub_methods_class_component" id="r_a00fcf72aef0ded27c19ba37b196076b0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a00fcf72aef0ded27c19ba37b196076b0">on_deserialize</a> (const std::vector&lt; uint8_t &gt; &amp;, size_t &amp;)</td></tr>
+<tr class="separator:a00fcf72aef0ded27c19ba37b196076b0 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a363868b322b05e49780ee8d82aae4e inherit pub_methods_class_component" id="r_a0a363868b322b05e49780ee8d82aae4e"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a0a363868b322b05e49780ee8d82aae4e">parent</a> () const noexcept</td></tr>
 <tr class="separator:a0a363868b322b05e49780ee8d82aae4e inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dc87f909c6e96c688b295326c150660 inherit pub_methods_class_component" id="r_a1dc87f909c6e96c688b295326c150660"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a1dc87f909c6e96c688b295326c150660">parent</a> () noexcept</td></tr>
@@ -444,6 +446,35 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a19536e113537bb17851c646205d63b33" name="a19536e113537bb17851c646205d63b33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19536e113537bb17851c646205d63b33">&#9670;&#160;</a></span>type_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Renderable::type_name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="class_component.html#a249f073ebaac5db7eebd61541fcea962">Component</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_sprite.html#ac1f47c7eab423d8e14846ea959a861f7">Sprite</a>, and <a class="el" href="class_text.html#af726f4a40868ee569eec43e2da3e3521">Text</a>.</p>
 
 </div>
 </div>

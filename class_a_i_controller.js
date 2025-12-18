@@ -14,8 +14,6 @@ var class_a_i_controller =
     [ "get_patrol_target", "class_a_i_controller.html#a7493201a5649f4f0efb4afa248e15b8c", null ],
     [ "get_speed", "class_a_i_controller.html#a7fa898ee4a06d9b697898a76c78688d5", null ],
     [ "get_width", "class_a_i_controller.html#a02f31a50b33af72144a88db634312c2e", null ],
-    [ "on_deserialize", "class_a_i_controller.html#ae94d38581b025122610f2ab854532244", null ],
-    [ "on_serialize", "class_a_i_controller.html#a9b1754f25545f0d197b24a191d2bbf85", null ],
     [ "patrol", "class_a_i_controller.html#ad3d2dda67e08afdb8096e4899b2386ae", null ],
     [ "remove_on_patrol_complete_action", "class_a_i_controller.html#a25da3870472d1ec5a92725a5cadc6daa", null ],
     [ "set_arrival_threshold", "class_a_i_controller.html#a39a98231e8e36be55ad941e5874521e6", null ],

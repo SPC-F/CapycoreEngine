@@ -1,21 +1,25 @@
 <map id="IEngineService" name="IEngineService">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,203,124,228"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,252,124,277"/>
 <area shape="rect" id="Node000002" href="$class_asset_service.html" title="Service responsible for managing game assets such as textures and spritesheets." alt="" coords="207,5,314,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,189,86,155,107,115,135,74,170,40,206,23,208,28,174,44,139,78,112,117,91,157,77,191"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,238,80,195,100,141,129,87,148,62,170,40,187,29,206,22,208,27,190,34,174,44,152,65,134,90,104,144,85,196,74,239"/>
 <area shape="rect" id="Node000003" href="$class_audio_service.html" title="Manages audio playback and sound instances within the engine." alt="" coords="207,55,314,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="78,189,116,139,141,112,171,89,206,74,208,79,173,94,145,116,120,142,83,193"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="72,238,86,204,107,164,135,124,170,89,206,72,208,77,174,94,139,127,112,167,91,207,77,240"/>
 <area shape="rect" id="Node000004" href="$class_gameplay_speed_service.html" title="Service for managing and modifying the gameplay simulation speed." alt="" coords="172,104,349,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="89,192,127,164,171,138,201,127,203,132,173,143,130,169,93,196"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="78,239,116,188,141,161,171,138,194,127,197,132,173,143,145,165,120,191,83,242"/>
 <area shape="rect" id="Node000005" href="$class_input_manager.html" title="Centralized input manager that delegates to an external input provider." alt="" coords="205,153,317,179"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="128,197,209,176,210,181,130,202"/>
-<area shape="rect" id="Node000006" href="$class_physics_service.html" title="Service responsible for managing the physics world." alt="" coords="201,203,320,228"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="137,213,201,213,201,218,137,218"/>
-<area shape="rect" id="Node000007" href="$class_renderer.html" title="Service responsible for rendering game objects to the screen." alt="" coords="220,252,301,277"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="130,229,220,252,219,257,128,234"/>
-<area shape="rect" id="Node000008" href="$class_rendering_service.html" title="Service responsible for rendering game objects to the window. This service functions as a manager for..." alt="" coords="193,301,329,327"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="94,235,130,261,173,286,206,299,204,304,171,291,127,266,91,239"/>
-<area shape="rect" id="Node000009" href="$class_scene_service.html" title=" " alt="" coords="206,351,315,376"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="83,238,120,288,145,314,173,336,207,351,205,356,171,340,142,318,116,291,79,241"/>
-<area shape="rect" id="Node000010" href="$class_system_service.html" title=" " alt="" coords="201,400,320,425"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="77,240,92,273,112,313,140,352,174,385,202,400,200,405,170,389,136,355,108,315,87,276,73,242"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="89,241,127,213,171,188,203,176,205,181,173,192,130,218,93,245"/>
+<area shape="rect" id="Node000006" href="$class_multiplayer_service.html" title="High&#45;level peer&#45;to&#45;peer networking service managing host/client mode, message routing,..." alt="" coords="189,203,333,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="128,246,209,225,210,231,130,251"/>
+<area shape="rect" id="Node000007" href="$class_physics_service.html" title="Service responsible for managing the physics world." alt="" coords="201,252,320,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="137,262,201,262,201,267,137,267"/>
+<area shape="rect" id="Node000008" href="$class_prefab_service.html" title="Global service for managing prefab factories and component creation." alt="" coords="205,301,317,327"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="130,278,210,299,209,304,128,283"/>
+<area shape="rect" id="Node000009" href="$class_renderer.html" title="Service responsible for rendering game objects to the screen." alt="" coords="220,351,301,376"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="94,284,130,311,173,336,221,352,219,357,171,340,127,315,91,288"/>
+<area shape="rect" id="Node000010" href="$class_rendering_service.html" title="Service responsible for rendering game objects to the window. This service functions as a manager for..." alt="" coords="193,400,329,425"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="83,287,120,337,145,363,173,385,199,397,197,402,171,390,142,367,116,341,79,291"/>
+<area shape="rect" id="Node000011" href="$class_scene_service.html" title=" " alt="" coords="206,449,315,475"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="77,289,92,323,112,362,140,401,174,434,207,451,204,455,170,439,136,405,108,365,87,325,73,292"/>
+<area shape="rect" id="Node000012" href="$class_system_service.html" title=" " alt="" coords="201,499,320,524"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="74,290,85,332,105,385,134,438,152,463,174,484,202,499,200,504,170,488,148,466,129,441,100,387,80,334,69,291"/>
 </map>

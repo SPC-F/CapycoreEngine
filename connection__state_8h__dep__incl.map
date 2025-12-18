@@ -1,0 +1,11 @@
+<map id="include/engine/network/connection_state.h" name="include/engine/network/connection_state.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="131,5,305,45"/>
+<area shape="rect" id="Node000002" href="$client_8h.html" title=" " alt="" coords="5,93,180,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,56,122,95,119,91,177,51"/>
+<area shape="rect" id="Node000003" href="$multiplayer__service_8h.html" title=" " alt="" coords="131,181,305,221"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="221,59,221,181,215,181,215,59"/>
+<area shape="rect" id="Node000004" href="$host_8h.html" title=" " alt="" coords="256,93,431,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="259,51,317,91,314,95,256,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="133,139,192,179,189,183,130,144"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="306,144,247,183,244,179,303,139"/>
+</map>

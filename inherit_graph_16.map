@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_i_input.html" title=" " alt="" coords="5,5,64,31"/>
-<area shape="rect" id="Node000001" href="$class_s_d_l_input_strategy.html" title=" " alt="" coords="112,5,247,31"/>
-<area shape="poly" id="edge34_Node000000_Node000001" title=" " alt="" coords="77,15,112,15,112,21,77,21"/>
+<area shape="rect" id="Node000000" href="$class_i_backend_system.html" title="Interface for backend system implementations handling low&#45;level events." alt="" coords="5,5,136,31"/>
+<area shape="rect" id="Node000001" href="$class_s_d_l_backend_system.html" title="SDL&#45;based implementation of the backend system interface." alt="" coords="184,5,335,31"/>
+<area shape="poly" id="edge25_Node000000_Node000001" title=" " alt="" coords="150,15,184,15,184,21,150,21"/>
 </map>

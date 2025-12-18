@@ -135,7 +135,7 @@ $(document).ready(function(){initNavTree('class_component.html',''); initResizab
 <div class="dynheader">
 Inheritance diagram for Component:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_component__inherit__graph.svg" width="638" height="406"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_component__inherit__graph.svg" width="638" height="455"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -158,10 +158,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aac7d05319f6406574ef59a06a5fa2d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dadc6225e6e16f7684e2e121b0f8d18" id="r_a4dadc6225e6e16f7684e2e121b0f8d18"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a4dadc6225e6e16f7684e2e121b0f8d18">on_detach</a> ()</td></tr>
 <tr class="separator:a4dadc6225e6e16f7684e2e121b0f8d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a431e94b7799fef4428fff6062f7d77aa" id="r_a431e94b7799fef4428fff6062f7d77aa"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a431e94b7799fef4428fff6062f7d77aa">on_serialize</a> ()=0</td></tr>
-<tr class="separator:a431e94b7799fef4428fff6062f7d77aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10c4042dfb9548ee865898eb55582f28" id="r_a10c4042dfb9548ee865898eb55582f28"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a10c4042dfb9548ee865898eb55582f28">on_deserialize</a> ()=0</td></tr>
-<tr class="separator:a10c4042dfb9548ee865898eb55582f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42603d3b72bca611b7b4cd91481f70c3" id="r_a42603d3b72bca611b7b4cd91481f70c3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a42603d3b72bca611b7b4cd91481f70c3">on_serialize</a> (std::vector&lt; uint8_t &gt; &amp;) const</td></tr>
+<tr class="separator:a42603d3b72bca611b7b4cd91481f70c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00fcf72aef0ded27c19ba37b196076b0" id="r_a00fcf72aef0ded27c19ba37b196076b0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a00fcf72aef0ded27c19ba37b196076b0">on_deserialize</a> (const std::vector&lt; uint8_t &gt; &amp;, size_t &amp;)</td></tr>
+<tr class="separator:a00fcf72aef0ded27c19ba37b196076b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a249f073ebaac5db7eebd61541fcea962" id="r_a249f073ebaac5db7eebd61541fcea962"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a249f073ebaac5db7eebd61541fcea962">type_name</a> () const =0</td></tr>
+<tr class="separator:a249f073ebaac5db7eebd61541fcea962"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a363868b322b05e49780ee8d82aae4e" id="r_a0a363868b322b05e49780ee8d82aae4e"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a0a363868b322b05e49780ee8d82aae4e">parent</a> () const noexcept</td></tr>
 <tr class="separator:a0a363868b322b05e49780ee8d82aae4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dc87f909c6e96c688b295326c150660" id="r_a1dc87f909c6e96c688b295326c150660"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a1dc87f909c6e96c688b295326c150660">parent</a> () noexcept</td></tr>
@@ -395,8 +397,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a10c4042dfb9548ee865898eb55582f28" name="a10c4042dfb9548ee865898eb55582f28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10c4042dfb9548ee865898eb55582f28">&#9670;&#160;</a></span>on_deserialize()</h2>
+<a id="a00fcf72aef0ded27c19ba37b196076b0" name="a00fcf72aef0ded27c19ba37b196076b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00fcf72aef0ded27c19ba37b196076b0">&#9670;&#160;</a></span>on_deserialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -407,18 +409,29 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void Component::on_deserialize </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt; &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_a_i_controller.html#ae94d38581b025122610f2ab854532244">AIController</a>, <a class="el" href="class_navigation_graph.html#ad28af37b30f0bed94ebb1eb5c81c0dcd">NavigationGraph</a>, <a class="el" href="class_navigation_node.html#a30970c6f15ab1fcc89e3c22f3874f164">NavigationNode</a>, <a class="el" href="class_pathfinding.html#ab7506bcc4290a19da8f37e80be111bf6">Pathfinding</a>, <a class="el" href="class_animator.html#aba0f20488b0b09cf0919d502d212538a">Animator</a>, <a class="el" href="class_audio_source.html#a9fba7558de6e24ecad919b478b7d5ed7">AudioSource</a>, <a class="el" href="class_behavior_script.html#a5027cda53e0ada7ca93cb6b9cbe493a1">BehaviorScript</a>, <a class="el" href="class_box_collider2_d.html#a0d4a8ff702bbefc97f82d9047935a021">BoxCollider2D</a>, <a class="el" href="class_circle_collider2_d.html#acf839b2bf9ada296992282e928e5d25f">CircleCollider2D</a>, <a class="el" href="class_rigidbody2_d.html#a7730df3f74b0dcbbe18e46136cdb03c3">Rigidbody2D</a>, <a class="el" href="class_sprite.html#a2ab98c7e39e9fba5c7bc2e24a505c76a">Sprite</a>, <a class="el" href="class_image.html#aadae13ffa39763dd424b90b942edbaab">Image</a>, and <a class="el" href="class_text.html#a87b6fcb1b369189b725ecb97de9cb71b">Text</a>.</p>
+<p>Reimplemented in <a class="el" href="class_network_identity.html#a636a533f5a9ff9edbef97fccfd7fd701">NetworkIdentity</a>.</p>
 
 </div>
 </div>
@@ -449,8 +462,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a431e94b7799fef4428fff6062f7d77aa" name="a431e94b7799fef4428fff6062f7d77aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a431e94b7799fef4428fff6062f7d77aa">&#9670;&#160;</a></span>on_serialize()</h2>
+<a id="a42603d3b72bca611b7b4cd91481f70c3" name="a42603d3b72bca611b7b4cd91481f70c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42603d3b72bca611b7b4cd91481f70c3">&#9670;&#160;</a></span>on_serialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -461,18 +474,19 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void Component::on_serialize </td>
           <td>(</td>
+          <td class="paramtype">std::vector&lt; uint8_t &gt; &amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_a_i_controller.html#a9b1754f25545f0d197b24a191d2bbf85">AIController</a>, <a class="el" href="class_navigation_graph.html#a80c8585d0c43c394bf1c7746f3f3f75b">NavigationGraph</a>, <a class="el" href="class_navigation_node.html#a8eadb76c1baa7c3c83f4df79f77036f9">NavigationNode</a>, <a class="el" href="class_pathfinding.html#a75b585cf3e5c54470561a6f127a02c00">Pathfinding</a>, <a class="el" href="class_animator.html#a27155b2855273b5741fff32cead1aa6c">Animator</a>, <a class="el" href="class_audio_source.html#a1b495a1b83e3c4b69cea287455e1ef9b">AudioSource</a>, <a class="el" href="class_behavior_script.html#ad8a4c4c793696a261e943a4490d406f9">BehaviorScript</a>, <a class="el" href="class_box_collider2_d.html#a3b76647aef9774090aadbf8d0d5b81f5">BoxCollider2D</a>, <a class="el" href="class_circle_collider2_d.html#a704fd310cfa2a23f54301bde476fcf70">CircleCollider2D</a>, <a class="el" href="class_rigidbody2_d.html#aaa7e025b10a7235ee0d87b1b3bee6e19">Rigidbody2D</a>, <a class="el" href="class_sprite.html#a9f2f24d5294b669a6573a91cf0a8a84a">Sprite</a>, <a class="el" href="class_image.html#a8a79d1f25779d4911a61504018b38134">Image</a>, and <a class="el" href="class_text.html#a354f36f3bc499767c98931d09be83f6c">Text</a>.</p>
+<p>Reimplemented in <a class="el" href="class_network_identity.html#ab02a1fca0fa8e26c4bbf458a84f7d4ff">NetworkIdentity</a>.</p>
 
 </div>
 </div>
@@ -598,6 +612,33 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a249f073ebaac5db7eebd61541fcea962" name="a249f073ebaac5db7eebd61541fcea962"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a249f073ebaac5db7eebd61541fcea962">&#9670;&#160;</a></span>type_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string Component::type_name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_renderable.html#a19536e113537bb17851c646205d63b33">Renderable</a>, <a class="el" href="class_animator.html#a86779d8a75eb43e88b59d3971ce7c338">Animator</a>, <a class="el" href="class_audio_source.html#ae48b84395484896285d5b6ae8826e81d">AudioSource</a>, <a class="el" href="class_behavior_script.html#ad0f539850bad5c7c28d8d3a7ffdcdca0">BehaviorScript</a>, <a class="el" href="class_box_collider2_d.html#a2f396d25112f3778c5ec1b53e7d840b7">BoxCollider2D</a>, <a class="el" href="class_circle_collider2_d.html#a08c955de6ba611b8fccf14951769be1c">CircleCollider2D</a>, <a class="el" href="class_collider2_d.html#a8a79f11dcfe12cdd4ffdb621cd80ebd6">Collider2D</a>, <a class="el" href="class_network_identity.html#a837fadc70f33a0f1147f0c98c1974daf">NetworkIdentity</a>, <a class="el" href="class_rigidbody2_d.html#a9b6362a9d5d70f5ec0b5ce42e7382ac0">Rigidbody2D</a>, <a class="el" href="class_sprite.html#ac1f47c7eab423d8e14846ea959a861f7">Sprite</a>, <a class="el" href="class_image.html#a5c24a32e1c9c26a94e1c82ba8c0f49cc">Image</a>, and <a class="el" href="class_text.html#af726f4a40868ee569eec43e2da3e3521">Text</a>.</p>
+
+</div>
+</div>
 <a id="a9489bd7252be76f877a503dc291f1be7" name="a9489bd7252be76f877a503dc291f1be7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9489bd7252be76f877a503dc291f1be7">&#9670;&#160;</a></span>update()</h2>
 
@@ -622,7 +663,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_a_i_controller.html#af3df1888ecc4358b170ee98961a75498">AIController</a>, <a class="el" href="class_navigation_graph.html#a2adcc074b41a2a6f6139ed0870102b7b">NavigationGraph</a>, <a class="el" href="class_navigation_node.html#ac29b5711e64a67bef6ed79c283818568">NavigationNode</a>, <a class="el" href="class_pathfinding.html#a14e54a3aa9246f6019ac2a82903f3914">Pathfinding</a>, <a class="el" href="class_audio_source.html#ada5131f3fb0126566991ade609a96571">AudioSource</a>, <a class="el" href="class_behavior_script.html#afddcfd6846b87194e942111ee450959a">BehaviorScript</a>, <a class="el" href="class_box_collider2_d.html#a7b359b25a8f16cbd52b52591bb876718">BoxCollider2D</a>, <a class="el" href="class_circle_collider2_d.html#a853a49cee7bd8b3f3b7ebb479d98fdba">CircleCollider2D</a>, <a class="el" href="class_collider2_d.html#a9478b49125e4817177576cf6bc1e18b7">Collider2D</a>, <a class="el" href="class_rigidbody2_d.html#a34f02b96dc80cc761762bc58fbbcdfbe">Rigidbody2D</a>, <a class="el" href="class_sprite.html#a482749d1b2f41f0e8e035e0d740f80e9">Sprite</a>, <a class="el" href="class_image.html#aa6c9e8bea19b7b0b11d3b346b58498a6">Image</a>, <a class="el" href="class_text.html#a4493e30701483cd421d4cdb4cd8e0d09">Text</a>, and <a class="el" href="class_animator.html#a55208596a1d94eacd93e82767f0ba03d">Animator</a>.</p>
+<p>Implemented in <a class="el" href="class_a_i_controller.html#af3df1888ecc4358b170ee98961a75498">AIController</a>, <a class="el" href="class_navigation_graph.html#a2adcc074b41a2a6f6139ed0870102b7b">NavigationGraph</a>, <a class="el" href="class_navigation_node.html#ac29b5711e64a67bef6ed79c283818568">NavigationNode</a>, <a class="el" href="class_pathfinding.html#a14e54a3aa9246f6019ac2a82903f3914">Pathfinding</a>, <a class="el" href="class_audio_source.html#ada5131f3fb0126566991ade609a96571">AudioSource</a>, <a class="el" href="class_behavior_script.html#afddcfd6846b87194e942111ee450959a">BehaviorScript</a>, <a class="el" href="class_box_collider2_d.html#a7b359b25a8f16cbd52b52591bb876718">BoxCollider2D</a>, <a class="el" href="class_circle_collider2_d.html#a853a49cee7bd8b3f3b7ebb479d98fdba">CircleCollider2D</a>, <a class="el" href="class_collider2_d.html#a9478b49125e4817177576cf6bc1e18b7">Collider2D</a>, <a class="el" href="class_rigidbody2_d.html#a34f02b96dc80cc761762bc58fbbcdfbe">Rigidbody2D</a>, <a class="el" href="class_sprite.html#a482749d1b2f41f0e8e035e0d740f80e9">Sprite</a>, <a class="el" href="class_image.html#aa6c9e8bea19b7b0b11d3b346b58498a6">Image</a>, <a class="el" href="class_text.html#a4493e30701483cd421d4cdb4cd8e0d09">Text</a>, <a class="el" href="class_animator.html#a55208596a1d94eacd93e82767f0ba03d">Animator</a>, and <a class="el" href="class_network_identity.html#a7117046d542bc504ef7e9e0683cfe762">NetworkIdentity</a>.</p>
 
 </div>
 </div>

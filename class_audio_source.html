@@ -153,10 +153,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa1bc1be865174afa0eef3be9bf1f68dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c03665c2bca66864dc60efa4dfd7de5" id="r_a7c03665c2bca66864dc60efa4dfd7de5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_source.html#a7c03665c2bca66864dc60efa4dfd7de5">on_detach</a> () override</td></tr>
 <tr class="separator:a7c03665c2bca66864dc60efa4dfd7de5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b495a1b83e3c4b69cea287455e1ef9b" id="r_a1b495a1b83e3c4b69cea287455e1ef9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_source.html#a1b495a1b83e3c4b69cea287455e1ef9b">on_serialize</a> () override</td></tr>
-<tr class="separator:a1b495a1b83e3c4b69cea287455e1ef9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fba7558de6e24ecad919b478b7d5ed7" id="r_a9fba7558de6e24ecad919b478b7d5ed7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_source.html#a9fba7558de6e24ecad919b478b7d5ed7">on_deserialize</a> () override</td></tr>
-<tr class="separator:a9fba7558de6e24ecad919b478b7d5ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2b991afb9c7ccb6e670ac4a4789b0c0" id="r_ae2b991afb9c7ccb6e670ac4a4789b0c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_source.html#ae2b991afb9c7ccb6e670ac4a4789b0c0">play</a> (bool <a class="el" href="class_audio_source.html#aabddc493fde6be960f7d76b857b3f997">loop</a>=false)</td></tr>
 <tr class="separator:ae2b991afb9c7ccb6e670ac4a4789b0c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3449cc8a764c0d15e9453d52610475e" id="r_ab3449cc8a764c0d15e9453d52610475e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_source.html#ab3449cc8a764c0d15e9453d52610475e">stop</a> ()</td></tr>
@@ -181,6 +177,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acc4cc36e9ff1ea4d8ff3d47f78eb9beb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32f8b321701c00a75ba077b93dbc9641" id="r_a32f8b321701c00a75ba077b93dbc9641"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_sound_instance.html">SoundInstance</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_source.html#a32f8b321701c00a75ba077b93dbc9641">instance</a> () const noexcept</td></tr>
 <tr class="separator:a32f8b321701c00a75ba077b93dbc9641"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae48b84395484896285d5b6ae8826e81d" id="r_ae48b84395484896285d5b6ae8826e81d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_source.html#ae48b84395484896285d5b6ae8826e81d">type_name</a> () const override</td></tr>
+<tr class="separator:ae48b84395484896285d5b6ae8826e81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_component.html">Component</a></td></tr>
 <tr class="memitem:a8775db6d1a2c1afc2e77cd3c8f39da6f inherit pub_methods_class_component" id="r_a8775db6d1a2c1afc2e77cd3c8f39da6f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a8775db6d1a2c1afc2e77cd3c8f39da6f">Component</a> ()</td></tr>
 <tr class="separator:a8775db6d1a2c1afc2e77cd3c8f39da6f inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -194,6 +192,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5e648565a85f7c811e20766277e78c98 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a912dd977678759b8d1bd17d0d03bfcd8 inherit pub_methods_class_component" id="r_a912dd977678759b8d1bd17d0d03bfcd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a912dd977678759b8d1bd17d0d03bfcd8">mark_for_deletion</a> () noexcept</td></tr>
 <tr class="separator:a912dd977678759b8d1bd17d0d03bfcd8 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42603d3b72bca611b7b4cd91481f70c3 inherit pub_methods_class_component" id="r_a42603d3b72bca611b7b4cd91481f70c3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a42603d3b72bca611b7b4cd91481f70c3">on_serialize</a> (std::vector&lt; uint8_t &gt; &amp;) const</td></tr>
+<tr class="separator:a42603d3b72bca611b7b4cd91481f70c3 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00fcf72aef0ded27c19ba37b196076b0 inherit pub_methods_class_component" id="r_a00fcf72aef0ded27c19ba37b196076b0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a00fcf72aef0ded27c19ba37b196076b0">on_deserialize</a> (const std::vector&lt; uint8_t &gt; &amp;, size_t &amp;)</td></tr>
+<tr class="separator:a00fcf72aef0ded27c19ba37b196076b0 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a363868b322b05e49780ee8d82aae4e inherit pub_methods_class_component" id="r_a0a363868b322b05e49780ee8d82aae4e"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a0a363868b322b05e49780ee8d82aae4e">parent</a> () const noexcept</td></tr>
 <tr class="separator:a0a363868b322b05e49780ee8d82aae4e inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dc87f909c6e96c688b295326c150660 inherit pub_methods_class_component" id="r_a1dc87f909c6e96c688b295326c150660"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a1dc87f909c6e96c688b295326c150660">parent</a> () noexcept</td></tr>
@@ -477,33 +479,6 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9fba7558de6e24ecad919b478b7d5ed7" name="a9fba7558de6e24ecad919b478b7d5ed7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fba7558de6e24ecad919b478b7d5ed7">&#9670;&#160;</a></span>on_deserialize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AudioSource::on_deserialize </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="class_component.html#a10c4042dfb9548ee865898eb55582f28">Component</a>.</p>
-
-</div>
-</div>
 <a id="a7c03665c2bca66864dc60efa4dfd7de5" name="a7c03665c2bca66864dc60efa4dfd7de5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c03665c2bca66864dc60efa4dfd7de5">&#9670;&#160;</a></span>on_detach()</h2>
 
@@ -528,33 +503,6 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_component.html#a4dadc6225e6e16f7684e2e121b0f8d18">Component</a>.</p>
-
-</div>
-</div>
-<a id="a1b495a1b83e3c4b69cea287455e1ef9b" name="a1b495a1b83e3c4b69cea287455e1ef9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b495a1b83e3c4b69cea287455e1ef9b">&#9670;&#160;</a></span>on_serialize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AudioSource::on_serialize </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="class_component.html#a431e94b7799fef4428fff6062f7d77aa">Component</a>.</p>
 
 </div>
 </div>
@@ -641,6 +589,33 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae48b84395484896285d5b6ae8826e81d" name="ae48b84395484896285d5b6ae8826e81d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae48b84395484896285d5b6ae8826e81d">&#9670;&#160;</a></span>type_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string AudioSource::type_name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="class_component.html#a249f073ebaac5db7eebd61541fcea962">Component</a>.</p>
 
 </div>
 </div>

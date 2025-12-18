@@ -10,6 +10,7 @@ var class_renderable =
     [ "render_strategy", "class_renderable.html#a810422a6208a7552e6b3f56ca7699ae4", null ],
     [ "set_render_strategy", "class_renderable.html#a70972d056585f61a2213eb234255c5e3", null ],
     [ "should_draw", "class_renderable.html#a7ea5c2b28723ed913afe75cad2abe397", null ],
+    [ "type_name", "class_renderable.html#a19536e113537bb17851c646205d63b33", null ],
     [ "draw", "class_renderable.html#aae0c0f6a26f1ee23b5cdd6a9c7dd7e96", null ],
     [ "ordering_layer_", "class_renderable.html#aef090f5a51d638953bc251e7b687023f", null ],
     [ "render_strategy_", "class_renderable.html#a487c853faff4489e006918af1d82f513", null ]

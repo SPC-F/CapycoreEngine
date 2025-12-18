@@ -17,8 +17,6 @@ var class_navigation_graph =
     [ "max_drop_distance", "class_navigation_graph.html#a0010dd887785b0aef0ff3ab7570d54a1", null ],
     [ "max_jump_distance", "class_navigation_graph.html#a513e3c005644147b39bf85e9bdc4ebe3", null ],
     [ "max_jump_distance", "class_navigation_graph.html#a37d9d464fb08b3ef704fc182821e881c", null ],
-    [ "on_deserialize", "class_navigation_graph.html#ad28af37b30f0bed94ebb1eb5c81c0dcd", null ],
-    [ "on_serialize", "class_navigation_graph.html#a80c8585d0c43c394bf1c7746f3f3f75b", null ],
     [ "remove_node", "class_navigation_graph.html#a3be33bbf348ce373860dc751cc8465a7", null ],
     [ "stride", "class_navigation_graph.html#a6538d0b21b6016df01686ca6c7dd6304", null ],
     [ "update", "class_navigation_graph.html#a2adcc074b41a2a6f6139ed0870102b7b", null ],

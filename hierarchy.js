@@ -5,6 +5,7 @@ var hierarchy =
     [ "Body2DTransform", "struct_body2_d_transform.html", null ],
     [ "BodyDistance2D", "struct_body_distance2_d.html", null ],
     [ "BodyType2D", "struct_body_type2_d.html", null ],
+    [ "Client", "class_client.html", null ],
     [ "ColliderRayResult", "struct_collider_ray_result.html", null ],
     [ "Color", "class_color.html", null ],
     [ "Component", "class_component.html", [
@@ -13,6 +14,7 @@ var hierarchy =
       [ "AudioSource", "class_audio_source.html", null ],
       [ "BehaviorScript", "class_behavior_script.html", null ],
       [ "NavigationGraph", "class_navigation_graph.html", null ],
+      [ "NetworkIdentity", "class_network_identity.html", null ],
       [ "Renderable", "class_renderable.html", [
         [ "Collider2D", "class_collider2_d.html", [
           [ "BoxCollider2D", "class_box_collider2_d.html", null ],
@@ -43,6 +45,7 @@ var hierarchy =
     [ "GraphEdge< T >", "struct_graph_edge.html", null ],
     [ "GraphPosition", "struct_graph_position.html", null ],
     [ "GraphPositionHash", "struct_graph_position_hash.html", null ],
+    [ "Host", "class_host.html", null ],
     [ "IBackendSystem", "class_i_backend_system.html", [
       [ "SDLBackendSystem", "class_s_d_l_backend_system.html", null ]
     ] ],
@@ -51,7 +54,9 @@ var hierarchy =
       [ "AudioService", "class_audio_service.html", null ],
       [ "GameplaySpeedService", "class_gameplay_speed_service.html", null ],
       [ "InputManager", "class_input_manager.html", null ],
+      [ "MultiplayerService", "class_multiplayer_service.html", null ],
       [ "PhysicsService", "class_physics_service.html", null ],
+      [ "PrefabService", "class_prefab_service.html", null ],
       [ "Renderer", "class_renderer.html", null ],
       [ "RenderingService", "class_rendering_service.html", null ],
       [ "SceneService", "class_scene_service.html", null ],
@@ -76,15 +81,21 @@ var hierarchy =
       [ "SdlStrategyFactory", "class_sdl_strategy_factory.html", null ]
     ] ],
     [ "KeyState", "struct_key_state.html", null ],
+    [ "Message", "struct_message.html", null ],
+    [ "MessageHeader", "struct_message_header.html", null ],
+    [ "MessageType", "struct_message_type.html", null ],
     [ "MouseButtonState", "struct_mouse_button_state.html", null ],
     [ "MouseState", "struct_mouse_state.html", null ],
     [ "MouseWheelState", "struct_mouse_wheel_state.html", null ],
+    [ "MsgConnect", "struct_msg_connect.html", null ],
+    [ "MsgDisconnect", "struct_msg_disconnect.html", null ],
     [ "NodeRecord", "struct_node_record.html", null ],
     [ "PhysicsCreationFactory", "class_physics_creation_factory.html", null ],
     [ "PhysicsCreationFlags", "struct_physics_creation_flags.html", null ],
     [ "PhysicsRaycaster", "class_physics_raycaster.html", null ],
     [ "PhysicsWorld", "class_physics_world.html", null ],
     [ "Point", "class_point.html", null ],
+    [ "Router", "class_router.html", null ],
     [ "Scene", "class_scene.html", null ],
     [ "ServiceContainer", "class_service_container.html", null ],
     [ "Shape2D", "struct_shape2_d.html", null ],

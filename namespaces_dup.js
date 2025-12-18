@@ -17,6 +17,16 @@ var namespaces_dup =
       [ "to_radians", "namespace_physics_math.html#a2b04ce04d6a1aa333fccfa3230715c5a", null ],
       [ "vec3_to_box2d_vec3", "namespace_physics_math.html#ac2542a1b756eea9ef291434554affd5b", null ]
     ] ],
+    [ "snapshot", "namespacesnapshot.html", [
+      [ "apply_delta_snapshot", "namespacesnapshot.html#a75e5446d3da632801c055d7145fe385e", null ],
+      [ "apply_full_snapshot", "namespacesnapshot.html#a5041d90c4abfa27221a073d8db87f48d", null ],
+      [ "create_delta_snapshot", "namespacesnapshot.html#a6e0ebcb088a27e2ed2c037a0b7ba178e", null ],
+      [ "create_full_snapshot", "namespacesnapshot.html#ad7dfe946c6b6a4285a881a09fc5fd589", null ],
+      [ "read_bytes", "namespacesnapshot.html#a79b91878619ab018bdc3ca935dac2e14", null ],
+      [ "read_string", "namespacesnapshot.html#a3405d0af336e7cb0d61fadefefc4aeba", null ],
+      [ "write_bytes", "namespacesnapshot.html#a3addef40cf431f17b0d505596d9e1f33", null ],
+      [ "write_string", "namespacesnapshot.html#a4e4251efe1df7a5a77bb047bc002741a", null ]
+    ] ],
     [ "uuid", "namespaceuuid.html", [
       [ "generate_uuid_v4", "namespaceuuid.html#a9a1420474ea2cd2392dfc8703b0ab281", null ]
     ] ]

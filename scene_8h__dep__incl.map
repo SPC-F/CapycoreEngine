@@ -1,5 +1,7 @@
 <map id="include/engine/public/scene.h" name="include/engine/public/scene.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,165,45"/>
-<area shape="rect" id="Node000002" href="$scene__service_8h.html" title=" " alt="" coords="5,93,165,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,59,88,93,83,93,83,59"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="109,5,269,45"/>
+<area shape="rect" id="Node000002" href="$snapshot_8h.html" title=" " alt="" coords="5,93,180,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,57,116,95,112,91,155,53"/>
+<area shape="rect" id="Node000003" href="$scene__service_8h.html" title=" " alt="" coords="205,93,365,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="222,53,265,91,262,95,219,57"/>
 </map>

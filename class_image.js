@@ -9,11 +9,10 @@ var class_image =
     [ "flip_y", "class_image.html#a037e69f847ff392a630bc3c7c8ebe899", null ],
     [ "height", "class_image.html#a000645ffdca3b8260ddda3932b56b9d4", null ],
     [ "height", "class_image.html#ade6cab7c94f46f3df202bbea1f73e3ca", null ],
-    [ "on_deserialize", "class_image.html#aadae13ffa39763dd424b90b942edbaab", null ],
-    [ "on_serialize", "class_image.html#a8a79d1f25779d4911a61504018b38134", null ],
     [ "texture", "class_image.html#abd346ad6e37d4f3b2b61cd501b4e1388", null ],
     [ "texture", "class_image.html#a0b78404d41a0c9299177ea343aab5f5a", null ],
     [ "texture", "class_image.html#af76d679537de7fbedcb20840fb0adb71", null ],
+    [ "type_name", "class_image.html#a5c24a32e1c9c26a94e1c82ba8c0f49cc", null ],
     [ "update", "class_image.html#aa6c9e8bea19b7b0b11d3b346b58498a6", null ],
     [ "width", "class_image.html#ae533bfa2a8ddf6719e227c68bfcaa42e", null ],
     [ "width", "class_image.html#af8fb6568cc75b8ff0eaa101fe763703f", null ]

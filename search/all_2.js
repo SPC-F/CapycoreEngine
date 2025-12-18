@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['b_0',['b',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a92eb5ffee6ae2fec3ad71c777531578f',1,'b:&#160;key_code.h'],['../class_color.html#a1d6f0a12fe329282a21e348304e747fc',1,'Color::b']]],
+  ['b_0',['b',['../class_color.html#a1d6f0a12fe329282a21e348304e747fc',1,'Color::b'],['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a92eb5ffee6ae2fec3ad71c777531578f',1,'b:&#160;key_code.h']]],
   ['backendcallback_1',['BackendCallback',['../i__backend__system_8h.html#a17abe60de012a34f5cf1e604152319a5',1,'i_backend_system.h']]],
   ['background_2',['Background',['../layers_8h.html#a98569f5f22d83e369a3097537c8d87bda49b67fba8870b2cddbd025273ceb87ff',1,'layers.h']]],
   ['background_5fcolor_3',['background_color',['../class_camera.html#ae82e3a9d229646263ffa318fb128d8fe',1,'Camera']]],
   ['backslash_4',['backslash',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44ac57aeddaffce62fead6be61022eb1340',1,'key_code.h']]],
   ['backspace_5',['backspace',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a5528770f4bce9c9b0ce9bbb8645aef45',1,'key_code.h']]],
-  ['behavior_6',['behavior',['../class_behavior.html#a14c66859a6cf9447914bb882e0c957ea',1,'Behavior::Behavior()'],['../class_behavior.html',1,'Behavior'],['../class_behavior_script.html#acf0f90119b55a3aded57ec721217e51e',1,'BehaviorScript::behavior()']]],
+  ['behavior_6',['behavior',['../class_behavior.html',1,'Behavior'],['../class_behavior_script.html#acf0f90119b55a3aded57ec721217e51e',1,'BehaviorScript::behavior()'],['../class_behavior.html#a14c66859a6cf9447914bb882e0c957ea',1,'Behavior::Behavior()']]],
   ['behavior_2eh_7',['behavior.h',['../behavior_8h.html',1,'']]],
   ['behaviorscript_8',['behaviorscript',['../class_behavior_script.html',1,'BehaviorScript'],['../class_behavior_script.html#af00d61b319aa41a4d828d3f3ac7326c0',1,'BehaviorScript::BehaviorScript()']]],
   ['behaviorscript_2eh_9',['behaviorscript.h',['../behaviorscript_8h.html',1,'']]],
@@ -19,14 +19,15 @@ var searchData=
   ['bodydistance2d_16',['BodyDistance2D',['../struct_body_distance2_d.html',1,'']]],
   ['bodytype2d_17',['BodyType2D',['../struct_body_type2_d.html',1,'']]],
   ['borderless_18',['Borderless',['../renderer_flags_8h.html#a360f88a51f469ff309df1e1e7cc2558ba366ce330ee2b16fe09f49c5b937dc307',1,'rendererFlags.h']]],
-  ['bounciness_19',['bounciness',['../struct_physics_creation_flags.html#abb195cf83f192a4aeba7bc144b65f7fd',1,'PhysicsCreationFlags::bounciness'],['../class_box_collider2_d.html#adc83a89ab09bcb848023be63379f391c',1,'BoxCollider2D::bounciness()'],['../class_circle_collider2_d.html#a78913b8e769a74b6f58f025ce8b9fd12',1,'CircleCollider2D::bounciness()'],['../class_collider2_d.html#aa71c77e260d44aebc617ef6945225327',1,'Collider2D::bounciness() const noexcept'],['../class_collider2_d.html#a1772f27a22652004faa1f5bfd85a99c1',1,'Collider2D::bounciness(float value) noexcept']]],
+  ['bounciness_19',['bounciness',['../struct_physics_creation_flags.html#abb195cf83f192a4aeba7bc144b65f7fd',1,'PhysicsCreationFlags::bounciness'],['../class_collider2_d.html#a1772f27a22652004faa1f5bfd85a99c1',1,'Collider2D::bounciness(float value) noexcept'],['../class_collider2_d.html#aa71c77e260d44aebc617ef6945225327',1,'Collider2D::bounciness() const noexcept'],['../class_circle_collider2_d.html#a78913b8e769a74b6f58f025ce8b9fd12',1,'CircleCollider2D::bounciness()'],['../class_box_collider2_d.html#adc83a89ab09bcb848023be63379f391c',1,'BoxCollider2D::bounciness()']]],
   ['bounciness_5f_20',['bounciness_',['../class_collider2_d.html#ae05a6684d662ec72bcf1398e9bd8163e',1,'Collider2D']]],
   ['box2d_5fto_5fpixels_21',['box2d_to_pixels',['../namespace_physics_math.html#a9f045a5c6cea6b03310a8dbfa7e0feda',1,'PhysicsMath']]],
   ['box2d_5fvec_5fto_5fpixel_5fvec3_22',['box2d_vec_to_pixel_vec3',['../namespace_physics_math.html#a89bf695eadce5092299a33612ee03825',1,'PhysicsMath']]],
   ['box_5fcollider_5f2d_2eh_23',['box_collider_2d.h',['../box__collider__2d_8h.html',1,'']]],
-  ['boxcollider2d_24',['boxcollider2d',['../class_box_collider2_d.html',1,'BoxCollider2D'],['../class_box_collider2_d.html#a184a6f9bae6ba95e89310f2ae0c18270',1,'BoxCollider2D::BoxCollider2D()']]],
-  ['button_5f4_25',['button_4',['../mouse__button_8h.html#addd443be3bdcc8c62df96178b7870b2baed8284b788e0da783848c1060b0a7d48',1,'mouse_button.h']]],
-  ['button_5f5_26',['button_5',['../mouse__button_8h.html#addd443be3bdcc8c62df96178b7870b2ba0d5753d0c633a7e55d3f6bbf4b2e271a',1,'mouse_button.h']]],
-  ['button_5fcolor_27',['button_color',['../class_u_i_button.html#aa1e0b3c06a16d1eb662e576198f679c4',1,'UIButton::button_color(const Color &amp;color)'],['../class_u_i_button.html#a1ea59a077869b19525a17139a108eea8',1,'UIButton::button_color() const']]],
-  ['buttons_28',['buttons',['../struct_mouse_state.html#a42cd0aa1778ef8888254e1568bf3fd1d',1,'MouseState']]]
+  ['boxcollider2d_24',['boxcollider2d',['../class_box_collider2_d.html#a184a6f9bae6ba95e89310f2ae0c18270',1,'BoxCollider2D::BoxCollider2D()'],['../class_box_collider2_d.html',1,'BoxCollider2D']]],
+  ['broadcast_25',['broadcast',['../class_host.html#ae0b6f3a411b0a3111f2d08b65c0b29ba',1,'Host']]],
+  ['button_5f4_26',['button_4',['../mouse__button_8h.html#addd443be3bdcc8c62df96178b7870b2baed8284b788e0da783848c1060b0a7d48',1,'mouse_button.h']]],
+  ['button_5f5_27',['button_5',['../mouse__button_8h.html#addd443be3bdcc8c62df96178b7870b2ba0d5753d0c633a7e55d3f6bbf4b2e271a',1,'mouse_button.h']]],
+  ['button_5fcolor_28',['button_color',['../class_u_i_button.html#a1ea59a077869b19525a17139a108eea8',1,'UIButton::button_color() const'],['../class_u_i_button.html#aa1e0b3c06a16d1eb662e576198f679c4',1,'UIButton::button_color(const Color &amp;color)']]],
+  ['buttons_29',['buttons',['../struct_mouse_state.html#a42cd0aa1778ef8888254e1568bf3fd1d',1,'MouseState']]]
 ];

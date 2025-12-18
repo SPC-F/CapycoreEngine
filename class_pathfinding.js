@@ -11,8 +11,6 @@ var class_pathfinding =
     [ "get_path", "class_pathfinding.html#a3411607fd24393fdb4d54e2795a27e42", null ],
     [ "get_target", "class_pathfinding.html#ac46c47bbf2ca91fc7560b0f71e8119c6", null ],
     [ "get_target_game_object", "class_pathfinding.html#a9742c539631bbe39958272c408a44e11", null ],
-    [ "on_deserialize", "class_pathfinding.html#ab7506bcc4290a19da8f37e80be111bf6", null ],
-    [ "on_serialize", "class_pathfinding.html#a75b585cf3e5c54470561a6f127a02c00", null ],
     [ "set_origin", "class_pathfinding.html#a26340975872305785de5ef3d5a0e550e", null ],
     [ "set_target", "class_pathfinding.html#ab3406f2cab9d6f78117c8c1017e0ae6e", null ],
     [ "set_target_game_object", "class_pathfinding.html#a8aa2c3f6ed724622a9485bc689551594", null ],

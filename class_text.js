@@ -15,9 +15,8 @@ var class_text =
     [ "mark_dirty", "class_text.html#acb91465ac1d027bff7169c79ef6d6139", null ],
     [ "offset", "class_text.html#ab37f50078a2bce4a76ef0185940b4b30", null ],
     [ "offset", "class_text.html#a3e30202aee038e2b6ec6258b9a0fa573", null ],
-    [ "on_deserialize", "class_text.html#a87b6fcb1b369189b725ecb97de9cb71b", null ],
-    [ "on_serialize", "class_text.html#a354f36f3bc499767c98931d09be83f6c", null ],
     [ "text", "class_text.html#a2c6397b04f6453004f4ab47875d8c84f", null ],
     [ "text", "class_text.html#af8f9e9098a8ee95c98dc4ade5d9965a1", null ],
+    [ "type_name", "class_text.html#af726f4a40868ee569eec43e2da3e3521", null ],
     [ "update", "class_text.html#a4493e30701483cd421d4cdb4cd8e0d09", null ]
 ];

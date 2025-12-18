@@ -25,6 +25,7 @@ var class_collider2_d =
     [ "remove_on_collision_exit", "class_collider2_d.html#a7211c524d3603b1570b6cd3b2795d74f", null ],
     [ "remove_on_trigger_enter", "class_collider2_d.html#a21e5442e9b80d0d2fa5c0532233498ff", null ],
     [ "remove_on_trigger_exit", "class_collider2_d.html#a4c1459d35259c6bf25495c32790486a7", null ],
+    [ "type_name", "class_collider2_d.html#a8a79f11dcfe12cdd4ffdb621cd80ebd6", null ],
     [ "update", "class_collider2_d.html#a9478b49125e4817177576cf6bc1e18b7", null ],
     [ "bounciness_", "class_collider2_d.html#ae05a6684d662ec72bcf1398e9bd8163e", null ],
     [ "creation_flags_", "class_collider2_d.html#ac434705cef42a5b65423c43017f5d6d0", null ],
