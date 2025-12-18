@@ -91,6 +91,8 @@ class AIController : public Component {
       std::function<void(AIController&)> action);
   void remove_on_patrol_complete_action(size_t index);
 
+  std::string type_name() const override;
+
  private:
   std::optional<std::reference_wrapper<GameObject>> pathfinding_game_object_;
   std::optional<std::reference_wrapper<GameObject>> chase_target_;
