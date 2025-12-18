@@ -19,7 +19,8 @@ class BoxCollider2D : public Collider2D {
   BoxCollider2D(float friction, float bounciness,
                 float width = default_box_collider_width,
                 float height = default_box_collider_height,
-                Point offset = {0.0f, 0.0f});
+                Point offset = {0.0f, 0.0f}, bool is_sensor = false,
+                bool is_bullet = false);
   ~BoxCollider2D() override = default;
 
   void update(float dt) override;
@@ -34,6 +35,9 @@ class BoxCollider2D : public Collider2D {
   BoxCollider2D& bounciness(float value) noexcept override;
 
   std::string type_name() const override;
+  
+  [[nodiscard]] Point offset() const noexcept override;
+  BoxCollider2D& offset(Point value) noexcept override;
 
  private:
   float width_;

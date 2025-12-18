@@ -1,6 +1,7 @@
 #include <engine/core/engine.h>
 #include <engine/core/rendering/assetService.h>
 #include <engine/core/rendering/strategies/sdl/sdl_box_collider_2d_strategy.h>
+#include <engine/physics/creation/physics_creation_flags.h>
 #include <engine/physics/physics_math.h>
 #include <engine/physics/physics_service.h>
 #include <engine/public/components/colliders/box_collider_2d.h>
@@ -28,7 +29,7 @@ void SdlBoxCollider2DStrategy::draw(Component& component, Camera& camera) {
   const auto& position = transform.position();
   const auto& rotation = transform.rotation();
 
-  const auto& box_collider = dynamic_cast<const BoxCollider2D&>(component);
+  auto& box_collider = dynamic_cast<BoxCollider2D&>(component);
 
   const auto& body_tf = Body2D::get_pixel_transform(
       parent_opt->get().get_component<Rigidbody2D>().value().get().body());
@@ -71,7 +72,19 @@ void SdlBoxCollider2DStrategy::draw(Component& component, Camera& camera) {
     screen_corners[i].y = (wy - camera_position.y) * zoom + half_screen_height;
   }
 
-  SDL_SetRenderDrawColor(&sdl_renderer_, 0, 255, 0, 255);
+  BodyType2D::Type body_type = box_collider.get_rigidbody().get().type();
+
+  switch (body_type) {
+    case BodyType2D::Static:
+      SDL_SetRenderDrawColor(&sdl_renderer_, 255, 0, 0, 255);
+      break;
+    case BodyType2D::Kinematic:
+      SDL_SetRenderDrawColor(&sdl_renderer_, 0, 0, 255, 255);
+      break;
+    case BodyType2D::Dynamic:
+      SDL_SetRenderDrawColor(&sdl_renderer_, 0, 255, 0, 255);
+      break;
+  }
 
   SDL_RenderLine(&sdl_renderer_, screen_corners[0].x, screen_corners[0].y,
                  screen_corners[1].x, screen_corners[1].y);
