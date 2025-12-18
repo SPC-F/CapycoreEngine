@@ -39,6 +39,7 @@ BoxCollider2D::BoxCollider2D(float friction, float bounciness, float width,
       flags.friction = friction;
       flags.sensor = is_sensor;
       flags.is_bullet = is_bullet;
+      creation_flags_ = flags;
 
       auto transform = gameobject.transform();
       rigidbody.body(PhysicsCreationFactory::create_box_fixture(

@@ -4,9 +4,11 @@
 #include <stdexcept>
 
 CircleCollider2D::CircleCollider2D(float friction, float bounciness,
-                                   float radius, Point offset)
+                                   float radius, Point offset, bool is_sensor,
+                                   bool is_bullet)
     : Collider2D(friction, bounciness, offset), radius_(radius) {
-  auto on_awake = [this, offset, friction, bounciness](Component& comp) {
+  auto on_awake = [this, offset, friction, bounciness, is_sensor,
+                   is_bullet](Component& comp) {
     if (!parent().has_value()) {
       throw std::runtime_error("CircleCollider2D has no parent GameObject.");
     }
@@ -35,6 +37,9 @@ CircleCollider2D::CircleCollider2D(float friction, float bounciness,
       flags.desired_mass = rigidbody.mass();
       flags.bounciness = bounciness;
       flags.friction = friction;
+      flags.sensor = is_sensor;
+      flags.is_bullet = is_bullet;
+      creation_flags_ = flags;
 
       rigidbody.body(PhysicsCreationFactory::create_circle_fixture(
           body, offset, radius_, flags));
