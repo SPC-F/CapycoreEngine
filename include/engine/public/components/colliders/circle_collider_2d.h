@@ -17,7 +17,8 @@ class CircleCollider2D : public Collider2D {
  public:
   CircleCollider2D(float friction, float bounciness,
                    float radius = default_circle_collider_radius,
-                   Point offset = {0.0f, 0.0f});
+                   Point offset = {0.0f, 0.0f}, bool is_sensor = false,
+                   bool is_bullet = false);
   ~CircleCollider2D() override = default;
 
   void update(float dt) override;
