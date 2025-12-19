@@ -96,6 +96,8 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       accumulator -= fixed_step;
     }
 
+    std::vector<std::reference_wrapper<GameObject>> marked_for_deletion{};
+
     // 4. update game objects & components, collect renderables
     // So tracy logs all allocations, even the past ones in previous frames
     // It does this to build a complete timeline of allocations for profiling
@@ -139,11 +141,16 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
         }
 
         if (game_object.marked_for_deletion()) {
-          remove_game_object(game_object);
+          marked_for_deletion.push_back(game_object);
         }
       }
 
       rendering_service.draw(layered_renderables, *this);
+
+      // 5. cleanup marked for deletion game objects AFTER rendering
+      for (auto& game_object_ref : marked_for_deletion) {
+        remove_game_object(game_object_ref.get());
+      }
     });
   }
 }
