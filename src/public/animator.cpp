@@ -38,7 +38,6 @@ void Animator::play(const std::string& animation_name, const bool is_looping) {
   play(is_looping);
 }
 
-
 void Animator::pause() { is_playing_ = false; }
 
 void Animator::reset() {
@@ -106,37 +105,34 @@ void Animator::update_sprite_texture(const int new_frame_index) {
 }
 
 // Component overrides
-void Animator::update(const float dt_seconds) {
-  if (!is_playing_ || frames_.empty() || interval_ms_ <= 0) {
-    return;
-  }
+void Animator::update(float dt) {
+  if (!is_playing_ || frames_.empty() || interval_ms_ <= 0) return;
 
-  const int actual_dt_ms =
-      static_cast<int>(dt_seconds * 1000.0f) + accumulator_time_ms_;
+  /// Cap dt at 60 FPS to avoid huge jumps
+  dt = std::min(dt, 1.0f / 60.0f);
 
-  if (actual_dt_ms < interval_ms_) {
-    this->accumulator_time_ms_ = static_cast<int>(actual_dt_ms);
-    return;
-  }
+  accumulator_time_ms_ += static_cast<int>(dt * 1000.0f);
 
-  this->accumulator_time_ms_ = actual_dt_ms % interval_ms_;
+  int frames_to_advance = accumulator_time_ms_ / interval_ms_;
+  accumulator_time_ms_ %= interval_ms_;
 
-  // How many frames have we advanced? Take of the excess time if any, be left
-  // with only an exact number of frames.
-  const int intervals_advanced =
-      static_cast<int>((actual_dt_ms - accumulator_time_ms_) / interval_ms_);
-  const int new_frame_index = calculate_next_frame_index(intervals_advanced);
+  if (frames_to_advance > 0) {
+    const int new_frame = calculate_next_frame_index(frames_to_advance);
 
-  update_sprite_texture(new_frame_index);
-  current_texture_index_ = new_frame_index;
+    if (new_frame != current_texture_index_) {
+      current_texture_index_ = new_frame;
+      update_sprite_texture(current_texture_index_);
+    }
 
-  if (!is_looping_ && new_frame_index == frames_.size() - 1) {
-    is_playing_ = false;
+    if (!is_looping_ && current_texture_index_ == frames_.size() - 1) {
+      is_playing_ = false;
+    }
   }
 }
 
 void Animator::set_animation(const std::string& animation_name) {
-  const AssetService& service = Engine::instance().services->get_service<AssetService>().get();
+  const AssetService& service =
+      Engine::instance().services->get_service<AssetService>().get();
   const auto sprite_sheet = service.try_get_spritesheet(animation_name);
   if (!sprite_sheet.has_value()) {
     throw std::runtime_error("Animator: Sprite sheet not found: " +
@@ -147,7 +143,6 @@ void Animator::set_animation(const std::string& animation_name) {
 
 void Animator::set_animation(
     const std::vector<std::reference_wrapper<Texture>>& frames) {
-
   if (frames.empty()) {
     throw std::invalid_argument("Animator: frames cannot be empty.");
   }
