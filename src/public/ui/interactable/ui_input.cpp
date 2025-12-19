@@ -97,6 +97,16 @@ void UIInput::update(float dt) {
 
     return;
   }
+
+  if (key == KeyCode::period) {
+    char c = '.';
+    content_ += c;
+
+    text(content_);
+    trigger_on_text_changed();
+
+    return;
+  }
 }
 
 void UIInput::on_hover() {
