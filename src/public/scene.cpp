@@ -269,16 +269,19 @@ std::unique_ptr<GameObject> Scene::extract_game_object(
 }
 
 bool Scene::remove_game_object(GameObject& game_object) {
-  auto found_object = std::find_if(game_objects_.begin(), game_objects_.end(),
-                                   [&game_object](const auto& param) {
-                                     return param.get() == &game_object;
-                                   });
+  auto found_object = std::find_if(
+      game_objects_.begin(), game_objects_.end(),
+      [&game_object](const auto& obj) { return obj.get() == &game_object; });
 
   if (found_object == game_objects_.end()) {
-    return false;  // not found
+    return false;
   }
 
   found_object->get()->mark_for_deletion();
+
+  for (auto& child_ref : found_object->get()->children()) {
+    child_ref.get().mark_for_deletion();
+  }
 
   return true;
 }
