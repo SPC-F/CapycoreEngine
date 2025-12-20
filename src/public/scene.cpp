@@ -278,7 +278,6 @@ bool Scene::remove_game_object(GameObject& game_object) {
     return false;  // not found
   }
 
-  found_object->get()->remove_all_components();
   found_object->get()->mark_for_deletion();
 
   return true;
