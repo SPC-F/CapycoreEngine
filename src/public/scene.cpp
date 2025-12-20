@@ -288,28 +288,23 @@ void Scene::cleanup_destroyed_game_objects() {
   /// all its children and their components are also properly marked and
   /// detached. We can't do this in loop as we would modify the children vector
   /// while iterating it.
-  auto mark_and_detach_recursive = [](GameObject& obj,
-                                      auto& mark_and_detach_ref) -> void {
-    std::vector<std::reference_wrapper<GameObject>> to_detach;
-
+  auto mark_detach_recursive = [](GameObject& obj, auto& self) -> void {
+    std::vector<std::reference_wrapper<GameObject>> children_to_process;
     for (auto& child_ref : obj.children()) {
-      auto& child = child_ref.get();
-      mark_and_detach_ref(child, mark_and_detach_ref);
-
-      child.mark_for_deletion();
-      to_detach.push_back(child);
+      children_to_process.push_back(child_ref.get());
     }
 
-    for (auto& child : to_detach) {
-      obj.remove_child(child);
+    for (auto& child : children_to_process) {
+      obj.remove_child(child.get());
+      self(child.get(), self);
+      child.get().mark_for_deletion();
     }
-
-    obj.remove_all_components();
   };
 
   for (auto& obj : game_objects_) {
     if (obj->marked_for_deletion()) {
-      mark_and_detach_recursive(*obj, mark_and_detach_recursive);
+      mark_detach_recursive(*obj, mark_detach_recursive);
+      obj->remove_all_components();
     }
   }
 
