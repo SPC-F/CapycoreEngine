@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"struct_collider_ray_result.html#ae5a17eea2f62bffcd483c4d1d42dcb40":[3,0,16,4],
+"struct_collider_ray_result.html#aff7a80427bfa8caeeb7020f8ae399172":[3,0,16,6],
 "struct_graph_edge.html":[3,0,24],
 "struct_graph_edge.html#a1e43cbf2cee130386f8673650b6d9eb1":[3,0,24,0],
 "struct_graph_edge.html#a3d6ec7a59194980c57492df5234b02fa":[3,0,24,1],
