@@ -30,7 +30,8 @@ class GameObject {
 
   bool marked_for_deletion_{false};
   bool dont_destroy_on_load_{false};
-  std::string prefab_type_id_{};  // Identifier for prefab type used during network replication
+  std::string prefab_type_id_{};  // Identifier for prefab type used during
+                                  // network replication
 
  public:
   explicit GameObject(Scene& scene);
@@ -60,7 +61,7 @@ class GameObject {
   [[nodiscard]] bool marked_for_deletion() const noexcept;
 
   /* Only applicable for parent objects. Child objects are unaffected */
-  void mark_dont_destroy_on_load(bool destroy) noexcept;
+  void mark_dont_destroy_on_load(bool dont_destroy) noexcept;
   bool dont_destroy_on_load() const noexcept;
 
   GameObject& name(const std::string& name);
@@ -155,6 +156,8 @@ class GameObject {
                        }),
         components_.end());
   }
+
+  void remove_all_components();
 
   /**
    * Serialize this GameObject's own state and its components into `out`.

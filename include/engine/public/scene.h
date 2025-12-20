@@ -69,6 +69,7 @@ class Scene {
 
   std::unique_ptr<GameObject> extract_game_object(GameObject& game_object);
   bool remove_game_object(GameObject& game_object);
+  void cleanup_destroyed_game_objects();
 
   [[nodiscard]] std::optional<std::reference_wrapper<Camera>> main_camera()
       const;

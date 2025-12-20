@@ -148,9 +148,7 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       rendering_service.draw(layered_renderables, *this);
 
       // 5. cleanup marked for deletion game objects AFTER rendering
-      for (auto& game_object_ref : marked_for_deletion) {
-        remove_game_object(game_object_ref.get());
-      }
+      cleanup_destroyed_game_objects();
     });
   }
 }
@@ -280,9 +278,22 @@ bool Scene::remove_game_object(GameObject& game_object) {
     return false;  // not found
   }
 
+  found_object->get()->remove_all_components();
   game_objects_.erase(found_object);
 
   return true;
+}
+
+void Scene::cleanup_destroyed_game_objects() {
+  for (auto& obj : game_objects_) {
+    if (obj->marked_for_deletion()) {
+      obj->remove_all_components();
+    }
+  }
+
+  std::erase_if(game_objects_, [](const std::unique_ptr<GameObject>& obj) {
+    return obj->marked_for_deletion();
+  });
 }
 
 std::optional<std::reference_wrapper<Camera>> Scene::main_camera() const {
