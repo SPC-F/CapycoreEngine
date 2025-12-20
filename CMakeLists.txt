@@ -139,8 +139,8 @@ add_library(engine ${ENGINE_SOURCES} ${IMGUI_SOURCES})
 target_include_directories(engine
     PUBLIC 
         ${CMAKE_CURRENT_SOURCE_DIR}/include
-    PRIVATE 
         ${enet_SOURCE_DIR}/include
+    PRIVATE 
         ${imgui_SOURCE_DIR} 
         ${imgui_SOURCE_DIR}/backends
 )
