@@ -269,24 +269,41 @@ std::unique_ptr<GameObject> Scene::extract_game_object(
 }
 
 bool Scene::remove_game_object(GameObject& game_object) {
-  auto found_object = std::find_if(game_objects_.begin(), game_objects_.end(),
-                                   [&game_object](const auto& param) {
-                                     return param.get() == &game_object;
-                                   });
+  auto found_object = std::find_if(
+      game_objects_.begin(), game_objects_.end(),
+      [&game_object](const auto& obj) { return obj.get() == &game_object; });
 
   if (found_object == game_objects_.end()) {
-    return false;  // not found
+    return false;
   }
 
-  found_object->get()->remove_all_components();
-  game_objects_.erase(found_object);
+  found_object->get()->mark_for_deletion();
 
   return true;
 }
 
 void Scene::cleanup_destroyed_game_objects() {
+  /// Recursively mark and detach all children and components of the game object
+  /// for deletion. This ensures that when a parent game object is deleted,
+  /// all its children and their components are also properly marked and
+  /// detached. We can't do this in loop as we would modify the children vector
+  /// while iterating it.
+  auto mark_detach_recursive = [](GameObject& obj, auto& self) -> void {
+    std::vector<std::reference_wrapper<GameObject>> children_to_process;
+    for (auto& child_ref : obj.children()) {
+      children_to_process.push_back(child_ref.get());
+    }
+
+    for (auto& child : children_to_process) {
+      self(child.get(), self);        // Recurse first
+      obj.remove_child(child.get());  // Then detach
+      child.get().mark_for_deletion();
+    }
+  };
+
   for (auto& obj : game_objects_) {
     if (obj->marked_for_deletion()) {
+      mark_detach_recursive(*obj, mark_detach_recursive);
       obj->remove_all_components();
     }
   }

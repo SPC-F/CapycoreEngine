@@ -35,7 +35,7 @@ class GameObject {
 
  public:
   explicit GameObject(Scene& scene);
-  virtual ~GameObject();
+  virtual ~GameObject() = default;
 
   GameObject(const GameObject&) = delete;
   GameObject& operator=(const GameObject&) = delete;

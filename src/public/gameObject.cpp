@@ -12,16 +12,6 @@
 GameObject::GameObject(Scene& scene)
     : id_(uuid::generate_uuid_v4()), scene_(scene) {}
 
-GameObject::~GameObject() {
-  if (parent_.has_value()) {
-    parent_->get().remove_child(*this);
-  }
-
-  for (auto child : children_) {
-    scene_.get().remove_game_object(child);
-  }
-}
-
 std::string GameObject::id() const noexcept { return id_; }
 
 GameObject& GameObject::name(const std::string& name) {

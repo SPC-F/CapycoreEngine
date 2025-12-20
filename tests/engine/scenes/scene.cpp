@@ -95,6 +95,7 @@ TEST_CASE("RemoveGameObject_RemovesRightGameObjectFromScene", "[Scene]") {
 
   // act
   scene.remove_game_object(obj1);
+  scene.cleanup_destroyed_game_objects();
 
   // assert
   REQUIRE(scene.game_objects().size() == 1);
@@ -116,6 +117,7 @@ TEST_CASE("RemoveGameObject_RemovesGameObjectWithAllChildObjects", "[Scene]") {
 
   // act
   scene.remove_game_object(parent);
+  scene.cleanup_destroyed_game_objects();
 
   // assert
   REQUIRE(scene.game_objects().empty());
