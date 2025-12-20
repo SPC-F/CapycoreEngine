@@ -1,7 +1,7 @@
 var class_game_object =
 [
     [ "GameObject", "class_game_object.html#ab2c6683579548906dc8432bbd823fd76", null ],
-    [ "~GameObject", "class_game_object.html#a224d4f6d9dd75c8a6f9d022eaf586fd9", null ],
+    [ "~GameObject", "class_game_object.html#a67ae2fa6e7916c799700cd659975d8ea", null ],
     [ "GameObject", "class_game_object.html#aae3335f16f4c318950ef8b9b5fd1d368", null ],
     [ "GameObject", "class_game_object.html#aec073a2a8dd3d4874540cb8b650ff1e4", null ],
     [ "add_child", "class_game_object.html#a578a85d302051c29389c4a17babe8254", null ],
