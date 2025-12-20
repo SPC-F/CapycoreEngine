@@ -1,13 +1,13 @@
+#include <engine/network/snapshot.h>
 #include <engine/public/component.h>
 #include <engine/public/gameObject.h>
 #include <engine/public/scene.h>
 #include <engine/util/uuid.h>
-#include <engine/network/snapshot.h>
 
+#include <cstdint>
+#include <cstring>
 #include <stdexcept>
 #include <vector>
-#include <cstring>
-#include <cstdint>
 
 GameObject::GameObject(Scene& scene)
     : id_(uuid::generate_uuid_v4()), scene_(scene) {}
@@ -40,7 +40,9 @@ GameObject& GameObject::prefab_type_id(const std::string& id) {
   prefab_type_id_ = id;
   return *this;
 }
-const std::string& GameObject::prefab_type_id() const { return prefab_type_id_; }
+const std::string& GameObject::prefab_type_id() const {
+  return prefab_type_id_;
+}
 
 GameObject& GameObject::layer(const int layer) {
   layer_ = layer;
@@ -92,9 +94,9 @@ GameObject& GameObject::mark_for_deletion() noexcept {
   return *this;
 }
 
-void GameObject::mark_dont_destroy_on_load(const bool destroy) noexcept {
+void GameObject::mark_dont_destroy_on_load(const bool dont_destroy) noexcept {
   if (!parent().has_value()) {
-    dont_destroy_on_load_ = destroy;
+    dont_destroy_on_load_ = dont_destroy;
   }
 }
 
@@ -133,13 +135,22 @@ std::vector<std::reference_wrapper<GameObject>>& GameObject::children() {
   return children_;
 }
 
-std::vector<std::reference_wrapper<Component>> GameObject::get_components_all() const {
+std::vector<std::reference_wrapper<Component>> GameObject::get_components_all()
+    const {
   std::vector<std::reference_wrapper<Component>> result;
   result.reserve(components_.size());
   for (const auto& c : components_) {
     result.emplace_back(*c);
   }
   return result;
+}
+
+void GameObject::remove_all_components() {
+  for (auto& component : components_) {
+    component->on_detach();
+    component->parent(std::nullopt);
+  }
+  components_.clear();
 }
 
 GameObject& GameObject::add_child(GameObject& child) {
@@ -186,7 +197,8 @@ void GameObject::serialize(std::vector<uint8_t>& out) const {
   for (auto& c : comps) {
     std::vector<uint8_t> cp;
     c.get().on_serialize(cp);
-    if (!cp.empty()) comp_entries.emplace_back(c.get().type_name(), std::move(cp));
+    if (!cp.empty())
+      comp_entries.emplace_back(c.get().type_name(), std::move(cp));
   }
 
   uint16_t comp_count = static_cast<uint16_t>(comp_entries.size());
@@ -236,14 +248,17 @@ void GameObject::deserialize(const std::vector<uint8_t>& data, size_t& offset) {
 
   // Deserialize components
   uint16_t comp_count = 0;
-  if (!snapshot::read_bytes(data, offset, &comp_count, sizeof(comp_count))) return;
+  if (!snapshot::read_bytes(data, offset, &comp_count, sizeof(comp_count)))
+    return;
 
   for (uint16_t i = 0; i < comp_count; ++i) {
     std::string type_name;
     if (!snapshot::read_string(data, offset, type_name)) break;
 
     uint32_t payload_length = 0;
-    if (!snapshot::read_bytes(data, offset, &payload_length, sizeof(payload_length))) break;
+    if (!snapshot::read_bytes(data, offset, &payload_length,
+                              sizeof(payload_length)))
+      break;
 
     // Dispatch payload to matching component
     bool applied = false;
