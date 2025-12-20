@@ -295,8 +295,8 @@ void Scene::cleanup_destroyed_game_objects() {
     }
 
     for (auto& child : children_to_process) {
-      obj.remove_child(child.get());
-      self(child.get(), self);
+      self(child.get(), self);        // Recurse first
+      obj.remove_child(child.get());  // Then detach
       child.get().mark_for_deletion();
     }
   };
