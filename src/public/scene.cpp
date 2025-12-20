@@ -279,7 +279,7 @@ bool Scene::remove_game_object(GameObject& game_object) {
   }
 
   found_object->get()->remove_all_components();
-  game_objects_.erase(found_object);
+  found_object->get()->mark_for_deletion();
 
   return true;
 }
