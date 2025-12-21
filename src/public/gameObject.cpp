@@ -266,3 +266,11 @@ void GameObject::deserialize(const std::vector<uint8_t>& data, size_t& offset) {
   }
 }
 // NOLINTEND
+
+std::unique_ptr<GameObject> GameObject::clone() const {
+  // Cloning a complex object is.. well.. complex. Please avoid, since
+  // there's little time to implement that. The goal of the clone is to
+  // assist with the ItemDropper feature.
+  // Sincerely, Lars :)
+  return std::make_unique<GameObject>(scene());
+}

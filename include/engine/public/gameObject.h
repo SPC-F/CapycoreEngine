@@ -87,6 +87,8 @@ class GameObject {
   GameObject& add_child(GameObject& child);
   GameObject& remove_child(GameObject& child);
 
+  [[nodiscard]] virtual std::unique_ptr<GameObject> clone() const;
+
   template <IsComponent T>
   [[nodiscard]] std::optional<std::reference_wrapper<T>> get_component()
       const noexcept {

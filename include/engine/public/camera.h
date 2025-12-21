@@ -24,4 +24,9 @@ class Camera final : public GameObject {
 
   [[nodiscard]] int get_screen_width() const;
   [[nodiscard]] int get_screen_height() const;
+
+  [[nodiscard]] std::unique_ptr<GameObject> clone() const override {
+    return std::make_unique<Camera>(scene(), background_color(), zoom(),
+                                    is_main());
+  }
 };
