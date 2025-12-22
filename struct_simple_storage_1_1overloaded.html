@@ -10,7 +10,7 @@
 <meta property="og:description" content="A simple game engine written in C++ based on the Unity API architecture." />
 <meta property="og:url" content="https://spc-f.github.io/CapycoreEngine/index.html" />
 <!-- END opengraph metadata -->
-<title>Capycore Engine: include/engine/storage/simple_storage.h File Reference</title>
+<title>Capycore Engine: SimpleStorage::overloaded&lt; TSelector &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -98,7 +98,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('simple__storage_8h.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('struct_simple_storage_1_1overloaded.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -124,37 +124,31 @@ $(document).ready(function(){initNavTree('simple__storage_8h.html',''); initResi
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
-  <div class="headertitle"><div class="title">simple_storage.h File Reference</div></div>
+  <div class="headertitle"><div class="title">SimpleStorage::overloaded&lt; TSelector &gt; Struct Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;map&gt;</code><br />
-<code>#include &lt;optional&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
-<code>#include &lt;variant&gt;</code><br />
-<code>#include &lt;stdexcept&gt;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for simple_storage.h:</div>
+
+<p><code>#include &lt;<a class="el" href="simple__storage_8h_source.html">simple_storage.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for SimpleStorage::overloaded&lt; TSelector &gt;:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="simple__storage_8h__incl.svg" width="447" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div>
-<p><a href="simple__storage_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_simple_storage.html">SimpleStorage</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_simple_storage_1_1overloaded.html">SimpleStorage::overloaded&lt; TSelector &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
+<div class="center"><iframe scrolling="no" frameborder="0" src="struct_simple_storage_1_1overloaded__inherit__graph.svg" width="210" height="124"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;class... TSelector&gt;<br />
+struct SimpleStorage::overloaded&lt; TSelector &gt;</div><p>So usually I would not include comments about this. But this is some more complex stuff here be dragons, so I will be very explicit about what is going on here.</p>
+<p>Our storage is working with something called an invariant. An invariant is something we can see as a tagged union of sorts but a bit different. An invariant is essentially a type that says "I can be any of the following types". We know this from discriminated unions used in F# or free unions from TypeScript.</p>
+<p>The overloaded struct is a trick that basically boils down to the following: "Be a structure that overloads the call type for anything that is inside of you".</p>
+<p>In our case, its type may as well just be: struct overloaded { int operator()(int); bool operator()(bool); std::string operator()(std::string); } We just use templates to generate this type for us based on the shape of the invariant passed, that is all. In C++ 26 we have this type included in the base library. We have to write it manually here. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<li>include/engine/storage/<a class="el" href="simple__storage_8h_source.html">simple_storage.h</a></li>
+</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_a7f531b1c37460085cedd304cb8df01d.html">engine</a></li><li class="navelem"><a class="el" href="dir_8b11a1212dbde7bdde850e03babc5120.html">storage</a></li><li class="navelem"><a class="el" href="simple__storage_8h.html">simple_storage.h</a></li>
+    <li class="navelem"><a class="el" href="class_simple_storage.html">SimpleStorage</a></li><li class="navelem"><a class="el" href="struct_simple_storage_1_1overloaded.html">overloaded</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

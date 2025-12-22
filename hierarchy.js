@@ -113,5 +113,8 @@ var hierarchy =
     [ "Transform", "class_transform.html", null ],
     [ "UIInteractionState", "struct_u_i_interaction_state.html", null ],
     [ "Vector3", "class_vector3.html", null ],
-    [ "Window", "class_window.html", null ]
+    [ "Window", "class_window.html", null ],
+    [ "SimpleStorage::TSelector", null, [
+      [ "SimpleStorage::overloaded< TSelector >", "struct_simple_storage_1_1overloaded.html", null ]
+    ] ]
 ];

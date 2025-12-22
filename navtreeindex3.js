@@ -1,15 +1,16 @@
 var NAVTREEINDEX3 =
 {
-"class_simple_storage.html#a284071a747404fbfd575a8d71b9e3276":[3,0,81,8],
-"class_simple_storage.html#a3e1914489e4bed4f9f23cdeab34a43dc":[3,0,81,9],
-"class_simple_storage.html#a4794718313092efc10e60a6ebb7c247d":[3,0,81,6],
-"class_simple_storage.html#a68df54d0e58c9e4865f89511f4f2bc1a":[3,0,81,0],
-"class_simple_storage.html#a6dc5374386d4efd8e8371e29ff67fc98":[3,0,81,7],
-"class_simple_storage.html#a7ca51903f837d62ed5e79b0e600c1fa6":[3,0,81,1],
-"class_simple_storage.html#a8669c39e22ad42878103e4166b0276b0":[3,0,81,3],
-"class_simple_storage.html#a966fd369a81908f6d046675d6ea704e5":[3,0,81,10],
-"class_simple_storage.html#aa5e695544d92d87b7a91cd6793c7ec38":[3,0,81,2],
-"class_simple_storage.html#ac45fd953ab33d5f90ac86a9bfe4c7dc1":[3,0,81,5],
+"class_simple_storage.html#a1d78952a866a4376e49be129817ea391":[3,0,81,5],
+"class_simple_storage.html#a284071a747404fbfd575a8d71b9e3276":[3,0,81,10],
+"class_simple_storage.html#a3e1914489e4bed4f9f23cdeab34a43dc":[3,0,81,11],
+"class_simple_storage.html#a4794718313092efc10e60a6ebb7c247d":[3,0,81,8],
+"class_simple_storage.html#a68df54d0e58c9e4865f89511f4f2bc1a":[3,0,81,1],
+"class_simple_storage.html#a6dc5374386d4efd8e8371e29ff67fc98":[3,0,81,9],
+"class_simple_storage.html#a7ca51903f837d62ed5e79b0e600c1fa6":[3,0,81,2],
+"class_simple_storage.html#a8669c39e22ad42878103e4166b0276b0":[3,0,81,4],
+"class_simple_storage.html#a966fd369a81908f6d046675d6ea704e5":[3,0,81,12],
+"class_simple_storage.html#aa5e695544d92d87b7a91cd6793c7ec38":[3,0,81,3],
+"class_simple_storage.html#ac45fd953ab33d5f90ac86a9bfe4c7dc1":[3,0,81,7],
 "class_sound_factory.html":[3,0,82],
 "class_sound_factory.html#abd32f31d14df855cfea7b1417a61ebe3":[3,0,82,1],
 "class_sound_factory.html#ae7c7e608a726c110af1c7632fd8d1705":[3,0,82,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "class_window.html#a18eb614bee69dfdc31df4e405abb9524":[3,0,99,9],
 "class_window.html#a2786c2808ad53b91c74fe54ce08aa8d7":[3,0,99,0],
 "class_window.html#a527335d9133a96ad796539a41113b360":[3,0,99,10],
-"class_window.html#a70538530bc36e033e360880ef311df61":[3,0,99,11],
-"class_window.html#aa67dcaae197312c4120e0aebeee944fe":[3,0,99,7]
+"class_window.html#a70538530bc36e033e360880ef311df61":[3,0,99,11]
 };

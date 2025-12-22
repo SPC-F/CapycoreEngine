@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"struct_collider_ray_result.html#a4d3eb25137a6a12543046f66a072a8c5":[3,0,16,2],
 "struct_collider_ray_result.html#a5a9338c5be3d647023d56e7dbfd4bbf2":[3,0,16,5],
 "struct_collider_ray_result.html#a61ed3d024608ab82eea4699009805b95":[3,0,16,3],
 "struct_collider_ray_result.html#a6656a71509418846fcfbf3c4af392551":[3,0,16,1],
@@ -84,6 +85,7 @@ var NAVTREEINDEX6 =
 "struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47":[3,0,80,0],
 "struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a2ee3216db6a833c2e2c867f7265a2408":[3,0,80,0,0],
 "struct_shape_type2_d.html#a116a281cc3f93d18a172102463499a47a970a51fce6262f8bb23c7a4ceccb22b3":[3,0,80,0,1],
+"struct_simple_storage_1_1overloaded.html":[3,0,81,0],
 "struct_u_i_interaction_state.html":[3,0,95],
 "struct_u_i_interaction_state.html#a61c423f8cf896fa0c1b17250b7b8f19f":[3,0,95,2],
 "struct_u_i_interaction_state.html#aa52b4db62317fba264e540f394ed0777":[3,0,95,4],

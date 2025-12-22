@@ -1,6 +1,26 @@
 var searchData=
 [
-  ['text_0',['Text',['../class_text.html',1,'']]],
-  ['texture_1',['Texture',['../class_texture.html',1,'']]],
-  ['transform_2',['Transform',['../class_transform.html',1,'']]]
+  ['scene_0',['Scene',['../class_scene.html',1,'']]],
+  ['sceneservice_1',['SceneService',['../class_scene_service.html',1,'']]],
+  ['sdlbackendsystem_2',['SDLBackendSystem',['../class_s_d_l_backend_system.html',1,'']]],
+  ['sdlboxcollider2dstrategy_3',['SdlBoxCollider2DStrategy',['../class_sdl_box_collider2_d_strategy.html',1,'']]],
+  ['sdlcirclecollider2dstrategy_4',['SdlCircleCollider2DStrategy',['../class_sdl_circle_collider2_d_strategy.html',1,'']]],
+  ['sdlimagestrategy_5',['SdlImageStrategy',['../class_sdl_image_strategy.html',1,'']]],
+  ['sdlinputstrategy_6',['SDLInputStrategy',['../class_s_d_l_input_strategy.html',1,'']]],
+  ['sdlnavigationnodestrategy_7',['SdlNavigationNodeStrategy',['../class_sdl_navigation_node_strategy.html',1,'']]],
+  ['sdlpathfindingstrategy_8',['SdlPathFindingStrategy',['../class_sdl_path_finding_strategy.html',1,'']]],
+  ['sdlsoundinstance_9',['SDLSoundInstance',['../class_s_d_l_sound_instance.html',1,'']]],
+  ['sdlsoundresource_10',['SDLSoundResource',['../class_s_d_l_sound_resource.html',1,'']]],
+  ['sdlspritestrategy_11',['SdlSpriteStrategy',['../class_sdl_sprite_strategy.html',1,'']]],
+  ['sdlstrategyfactory_12',['SdlStrategyFactory',['../class_sdl_strategy_factory.html',1,'']]],
+  ['sdltextstrategy_13',['SdlTextStrategy',['../class_sdl_text_strategy.html',1,'']]],
+  ['servicecontainer_14',['ServiceContainer',['../class_service_container.html',1,'']]],
+  ['shape2d_15',['Shape2D',['../struct_shape2_d.html',1,'']]],
+  ['shapetype2d_16',['ShapeType2D',['../struct_shape_type2_d.html',1,'']]],
+  ['simplestorage_17',['SimpleStorage',['../class_simple_storage.html',1,'']]],
+  ['soundfactory_18',['SoundFactory',['../class_sound_factory.html',1,'']]],
+  ['soundinstance_19',['SoundInstance',['../class_sound_instance.html',1,'']]],
+  ['soundresource_20',['SoundResource',['../class_sound_resource.html',1,'']]],
+  ['sprite_21',['Sprite',['../class_sprite.html',1,'']]],
+  ['systemservice_22',['SystemService',['../class_system_service.html',1,'']]]
 ];

@@ -125,6 +125,7 @@ $(document).ready(function(){initNavTree('class_simple_storage.html',''); initRe
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
@@ -138,6 +139,11 @@ $(document).ready(function(){initNavTree('class_simple_storage.html',''); initRe
 
 <p><code>#include &lt;<a class="el" href="simple__storage_8h_source.html">simple_storage.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_simple_storage_1_1overloaded.html">overloaded</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a68df54d0e58c9e4865f89511f4f2bc1a" id="r_a68df54d0e58c9e4865f89511f4f2bc1a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_simple_storage.html#a68df54d0e58c9e4865f89511f4f2bc1a">StorageKey</a> = std::string</td></tr>
@@ -147,6 +153,9 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a0ce743817a8e3188f38eba7b125d8207" id="r_a0ce743817a8e3188f38eba7b125d8207"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a0ce743817a8e3188f38eba7b125d8207"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_simple_storage.html#a0ce743817a8e3188f38eba7b125d8207">get_value_or_default</a> (const std::string &amp;key, T default_value)</td></tr>
+<tr class="separator:a0ce743817a8e3188f38eba7b125d8207"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a284071a747404fbfd575a8d71b9e3276" id="r_a284071a747404fbfd575a8d71b9e3276"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="class_simple_storage.html#a7ca51903f837d62ed5e79b0e600c1fa6">StorageValue</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_simple_storage.html#a284071a747404fbfd575a8d71b9e3276">try_get</a> (const <a class="el" href="class_simple_storage.html#a68df54d0e58c9e4865f89511f4f2bc1a">StorageKey</a> &amp;key_name)</td></tr>
 <tr class="memdesc:a284071a747404fbfd575a8d71b9e3276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempt to retrieve a stored value.  <br /></td></tr>
 <tr class="separator:a284071a747404fbfd575a8d71b9e3276"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -282,6 +291,58 @@ Friends</h2></td></tr>
 
 <p>Remove a specific stored entry. </p>
 <p>Deletes the value associated with the given key without affecting other entries. Safe to call even when the key does not exist. </p>
+
+</div>
+</div>
+<a id="a0ce743817a8e3188f38eba7b125d8207" name="a0ce743817a8e3188f38eba7b125d8207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ce743817a8e3188f38eba7b125d8207">&#9670;&#160;</a></span>get_value_or_default()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T SimpleStorage::get_value_or_default </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>default_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>expected_type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>storage key= </td></tr>
+    <tr><td class="paramname">default_value</td><td>the default value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the value contained inside the variant </dd></dl>
 
 </div>
 </div>

@@ -60,10 +60,11 @@ var searchData=
   ['get_5ftarget_5fgame_5fobject_57',['get_target_game_object',['../class_pathfinding.html#a9742c539631bbe39958272c408a44e11',1,'Pathfinding']]],
   ['get_5fttf_5ffont_58',['get_ttf_font',['../class_font.html#a44a96d4c08c3244fde2ee047214292d9',1,'Font']]],
   ['get_5fuuid_59',['get_uuid',['../class_client.html#a4edb3c1a68fc90c9fc8327cbf861baf8',1,'Client::get_uuid()'],['../class_host.html#a1930ef2b8ff4fb05b6442722db680ef2',1,'Host::get_uuid()'],['../class_multiplayer_service.html#a589c07b7da4533858d3ee649f439e9c3',1,'MultiplayerService::get_uuid()']]],
-  ['get_5fwidth_60',['get_width',['../class_a_i_controller.html#a02f31a50b33af72144a88db634312c2e',1,'AIController']]],
-  ['get_5fwindow_5fheight_61',['get_window_height',['../class_window.html#afa8d9bcd0c56e235405af9021f6ebde9',1,'Window']]],
-  ['get_5fwindow_5fwidth_62',['get_window_width',['../class_window.html#a0b314510d45e094498b819aac867ea30',1,'Window']]],
-  ['gravity_5fscale_63',['gravity_scale',['../class_rigidbody2_d.html#ae164bca3fdc43f62c96c58cd7966446b',1,'Rigidbody2D::gravity_scale() const noexcept'],['../class_rigidbody2_d.html#a64b4fad914381025089d94ad4cd2e28b',1,'Rigidbody2D::gravity_scale(float value) noexcept']]],
-  ['gravity_5fx_64',['gravity_x',['../class_physics_world.html#a5763183d7f2c57ddfa12d171e0052585',1,'PhysicsWorld::gravity_x() const noexcept'],['../class_physics_world.html#a4eea68f69a725e5b94dea83c073e3d22',1,'PhysicsWorld::gravity_x(float gx) noexcept']]],
-  ['gravity_5fy_65',['gravity_y',['../class_physics_world.html#ab5fa8faad554bf39a00393a1c49de57e',1,'PhysicsWorld::gravity_y() const noexcept'],['../class_physics_world.html#a494fa3f3ccb8210dae83e85d0cb7e1e1',1,'PhysicsWorld::gravity_y(float gy) noexcept']]]
+  ['get_5fvalue_5for_5fdefault_60',['get_value_or_default',['../class_simple_storage.html#a0ce743817a8e3188f38eba7b125d8207',1,'SimpleStorage']]],
+  ['get_5fwidth_61',['get_width',['../class_a_i_controller.html#a02f31a50b33af72144a88db634312c2e',1,'AIController']]],
+  ['get_5fwindow_5fheight_62',['get_window_height',['../class_window.html#afa8d9bcd0c56e235405af9021f6ebde9',1,'Window']]],
+  ['get_5fwindow_5fwidth_63',['get_window_width',['../class_window.html#a0b314510d45e094498b819aac867ea30',1,'Window']]],
+  ['gravity_5fscale_64',['gravity_scale',['../class_rigidbody2_d.html#ae164bca3fdc43f62c96c58cd7966446b',1,'Rigidbody2D::gravity_scale() const noexcept'],['../class_rigidbody2_d.html#a64b4fad914381025089d94ad4cd2e28b',1,'Rigidbody2D::gravity_scale(float value) noexcept']]],
+  ['gravity_5fx_65',['gravity_x',['../class_physics_world.html#a5763183d7f2c57ddfa12d171e0052585',1,'PhysicsWorld::gravity_x() const noexcept'],['../class_physics_world.html#a4eea68f69a725e5b94dea83c073e3d22',1,'PhysicsWorld::gravity_x(float gx) noexcept']]],
+  ['gravity_5fy_66',['gravity_y',['../class_physics_world.html#ab5fa8faad554bf39a00393a1c49de57e',1,'PhysicsWorld::gravity_y() const noexcept'],['../class_physics_world.html#a494fa3f3ccb8210dae83e85d0cb7e1e1',1,'PhysicsWorld::gravity_y(float gy) noexcept']]]
 ];
