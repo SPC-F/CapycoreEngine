@@ -11,7 +11,10 @@ class Scene {
  private:
   int stop_event_listener_id_;
   const std::string name_;
+
+  bool is_stopping_;
   bool is_running_;
+
   float time_scale_;
 
   std::vector<std::unique_ptr<GameObject>> game_objects_;
@@ -37,6 +40,9 @@ class Scene {
   void on_destroy(listener_function_t&& listener);
 
   void stop();
+
+  bool marked_for_stopping() const;
+  void mark_for_stopping() noexcept;
 
   Scene& time_scale(float modifier);
   [[nodiscard]] float time_scale() const;
