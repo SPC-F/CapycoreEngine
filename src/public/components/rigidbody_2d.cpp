@@ -3,6 +3,8 @@
 #include <engine/physics/physics_service.h>
 #include <engine/public/components/rigidbody_2d.h>
 #include <engine/public/gameObject.h>
+#include <engine/network/snapshot.h>
+#include <engine/public/components/network_identity.h>
 
 #include <stdexcept>
 
@@ -76,6 +78,8 @@ Rigidbody2D& Rigidbody2D::teleport(const Vector3& position) noexcept {
     Body2D::set_body_transform(b_transform, true);
 
     parent_opt->get().transform().position(b_transform.position);
+
+    mark_network_dirty();
   }
 
   return *this;
@@ -86,6 +90,9 @@ BodyType2D::Type Rigidbody2D::type() const noexcept { return type_; }
 Rigidbody2D& Rigidbody2D::type(BodyType2D::Type value) noexcept {
   type_ = value;
   Body2D::set_body_type(body_, type_);
+
+  mark_network_dirty();
+
   return *this;
 }
 
@@ -94,6 +101,9 @@ float Rigidbody2D::mass() const noexcept { return mass_; }
 Rigidbody2D& Rigidbody2D::mass(float value) noexcept {
   mass_ = value;
   Body2D::set_body_mass(body_, mass_);
+
+  mark_network_dirty();
+
   return *this;
 }
 
@@ -102,6 +112,9 @@ bool Rigidbody2D::use_gravity() const noexcept { return use_gravity_; }
 Rigidbody2D& Rigidbody2D::use_gravity(bool value) noexcept {
   use_gravity_ = value;
   Body2D::set_body_gravity_scale(body_, use_gravity_ ? gravity_scale_ : 0.0f);
+
+  mark_network_dirty();
+
   return *this;
 }
 
@@ -110,6 +123,9 @@ float Rigidbody2D::gravity_scale() const noexcept { return gravity_scale_; }
 Rigidbody2D& Rigidbody2D::gravity_scale(float value) noexcept {
   gravity_scale_ = value;
   Body2D::set_body_gravity_scale(body_, gravity_scale_);
+
+  mark_network_dirty();
+
   return *this;
 }
 
@@ -125,19 +141,93 @@ void Rigidbody2D::body(const Body2D& value) noexcept {
 
 void Rigidbody2D::apply_force(const Vector3& force) noexcept {
   Body2D::apply_force(body_, force);
+
+  mark_network_dirty();
 }
 
 void Rigidbody2D::apply_impulse(const Vector3& impulse) noexcept {
   Body2D::apply_impulse(body_, impulse);
+
+  mark_network_dirty();
 }
 
 void Rigidbody2D::velocity(const Vector3& value) noexcept {
   Body2D::set_body_velocity(body_, value);
+
+  mark_network_dirty();
 }
 
 Vector3 Rigidbody2D::velocity() const noexcept {
   Vector3 v = Body2D::get_body_velocity(body_);
   return {v.x, v.y, 0.0f};
 }
+
+void Rigidbody2D::mark_network_dirty() noexcept {
+  if (auto parent_opt = parent(); parent_opt.has_value()) {
+    if (auto network_id = parent_opt->get().get_component<NetworkIdentity>()) {
+      network_id.value().get().mark_dirty();
+    }
+  }
+}
+
+void Rigidbody2D::on_serialize(std::vector<uint8_t>& out) const {
+  Vector3 pos = Body2D::get_pixel_transform(body_).position;
+  snapshot::write_bytes(out, &pos, sizeof(Vector3));
+
+  Vector3 vel = velocity();
+  snapshot::write_bytes(out, &vel, sizeof(Vector3));
+
+  float rot = Body2D::get_pixel_transform(body_).rotation;
+  snapshot::write_bytes(out, &rot, sizeof(float));
+
+  uint32_t type_val = static_cast<uint32_t>(type_);
+  snapshot::write_bytes(out, &type_val, sizeof(uint32_t));
+
+  snapshot::write_bytes(out, &mass_, sizeof(float));
+
+  uint8_t use_gravity_val = use_gravity_ ? 1 : 0;
+  snapshot::write_bytes(out, &use_gravity_val, sizeof(uint8_t));
+
+  snapshot::write_bytes(out, &gravity_scale_, sizeof(float));
+}
+
+void Rigidbody2D::on_deserialize(const std::vector<uint8_t>& data, size_t& offset) {
+  Vector3 pos;
+  if (!snapshot::read_bytes(data, offset, &pos, sizeof(Vector3))) return;
+
+  Vector3 vel;
+  if (!snapshot::read_bytes(data, offset, &vel, sizeof(Vector3))) return;
+
+  float rot;
+  if (!snapshot::read_bytes(data, offset, &rot, sizeof(float))) return;
+
+  uint32_t type_val;
+  if (!snapshot::read_bytes(data, offset, &type_val, sizeof(uint32_t))) return;
+  BodyType2D::Type type = static_cast<BodyType2D::Type>(type_val);
+
+  float mass;
+  if (!snapshot::read_bytes(data, offset, &mass, sizeof(float))) return;
+
+  uint8_t use_gravity_val;
+  if (!snapshot::read_bytes(data, offset, &use_gravity_val, sizeof(uint8_t))) return;
+  bool use_gravity = use_gravity_val != 0;
+
+  float gravity_scale;
+  if (!snapshot::read_bytes(data, offset, &gravity_scale, sizeof(float))) return;
+
+  teleport(pos);
+  velocity(vel);
+
+  if (type != type_) {
+    type_ = type;
+  }
+
+  mass_ = mass;
+  use_gravity_ = use_gravity;
+  gravity_scale_ = gravity_scale;
+
+  // Mark the network identity as dirty since we've updated the rigidbody
+  mark_network_dirty();
+};
 
 std::string Rigidbody2D::type_name() const { return "Rigidbody2D"; }
