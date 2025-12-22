@@ -12,6 +12,8 @@ var class_scene =
     [ "get_game_object", "class_scene.html#a5fd424c55ac36c17a8f48d7b74007cf6", null ],
     [ "is_running", "class_scene.html#a74bfdea2518df4875a58763dd88c0838", null ],
     [ "main_camera", "class_scene.html#ae54608fc5565fd41349e188a1656d961", null ],
+    [ "mark_for_stopping", "class_scene.html#afaa471dd7da4d78995993e61ebb22013", null ],
+    [ "marked_for_stopping", "class_scene.html#a53fbe219e59ce50dbb91a523c4066def", null ],
     [ "name", "class_scene.html#ade337ad27cf632bc8f5a40fed26bc1f8", null ],
     [ "on_destroy", "class_scene.html#a8542660c9a9da97a909568c5480bc66c", null ],
     [ "on_run", "class_scene.html#a5ab065ddb792e992d9a01d6a0d8b34b5", null ],
