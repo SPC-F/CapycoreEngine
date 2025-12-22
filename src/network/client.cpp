@@ -115,7 +115,7 @@ void Client::send(const Message& message) noexcept
     ENetPacket* packet = enet_packet_create(
         nullptr,
         packet_size,
-        ENET_PACKET_FLAG_RELIABLE
+        0
     );
 
     if (!packet)
