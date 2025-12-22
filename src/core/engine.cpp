@@ -9,6 +9,7 @@
 #include <engine/input/strategy/sdl_input_strategy.h>
 #include <engine/physics/physics_service.h>
 #include <engine/public/scene_service.h>
+#include <engine/storage/simple_storage.h>
 #include <engine/network/multiplayer_service.h>
 #include <engine/public/prefab_service.h>
 
@@ -48,6 +49,7 @@ void Engine::initialize() {
   input_manager.set_provider(std::move(input_system));
 
   services->register_service<GameplaySpeedService>(input_manager.provider());
+  SimpleStorage::instance().load();
 }
 
 void Engine::quit() {
