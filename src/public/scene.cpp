@@ -21,7 +21,7 @@ constexpr float accumulator_default_value = 0.0f;
 constexpr float fixed_step = 1.0f / 60.0f;  // ~60 fps
 
 Scene::Scene(const std::string& name)  // NOLINT
-    : name_{name}, is_running_{false}, time_scale_{1.0f} {}
+    : name_{name}, is_running_{false}, is_stopping_{false}, time_scale_{1.0f} {}
 
 Scene::~Scene() { execute_listeners(destroy_listeners_); }
 
