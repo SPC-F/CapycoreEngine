@@ -128,7 +128,7 @@ void Host::broadcast(const Message& message) noexcept
     ENetPacket* packet = enet_packet_create(
         nullptr,
         packet_size,
-        ENET_PACKET_FLAG_RELIABLE
+        0
     );
 
     if (!packet)
@@ -190,7 +190,7 @@ void Host::send_to_peer(const Message& message, ENetPeer* peer) noexcept
     ENetPacket* packet = enet_packet_create(
         nullptr,
         packet_size,
-        ENET_PACKET_FLAG_RELIABLE
+        0
     );
 
     if (!packet)
