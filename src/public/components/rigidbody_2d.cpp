@@ -1,10 +1,10 @@
 #include <engine/core/engine.h>
+#include <engine/network/snapshot.h>
 #include <engine/physics/creation/physics_creation_factory.h>
 #include <engine/physics/physics_service.h>
+#include <engine/public/components/network_identity.h>
 #include <engine/public/components/rigidbody_2d.h>
 #include <engine/public/gameObject.h>
-#include <engine/network/snapshot.h>
-#include <engine/public/components/network_identity.h>
 
 #include <stdexcept>
 
@@ -30,6 +30,8 @@ Rigidbody2D::Rigidbody2D(BodyType2D::Type type, float mass, bool use_gravity,
       if (body_.id.index1 == -1) {
         throw std::runtime_error("Failed to create Rigidbody2D body.");
       }
+
+      if (use_gravity_) Body2D::set_body_gravity_scale(body_, gravity_scale_);
     }
   };
 
@@ -191,7 +193,8 @@ void Rigidbody2D::on_serialize(std::vector<uint8_t>& out) const {
   snapshot::write_bytes(out, &gravity_scale_, sizeof(float));
 }
 
-void Rigidbody2D::on_deserialize(const std::vector<uint8_t>& data, size_t& offset) {
+void Rigidbody2D::on_deserialize(const std::vector<uint8_t>& data,
+                                 size_t& offset) {
   Vector3 pos;
   if (!snapshot::read_bytes(data, offset, &pos, sizeof(Vector3))) return;
 
@@ -209,11 +212,13 @@ void Rigidbody2D::on_deserialize(const std::vector<uint8_t>& data, size_t& offse
   if (!snapshot::read_bytes(data, offset, &mass, sizeof(float))) return;
 
   uint8_t use_gravity_val;
-  if (!snapshot::read_bytes(data, offset, &use_gravity_val, sizeof(uint8_t))) return;
+  if (!snapshot::read_bytes(data, offset, &use_gravity_val, sizeof(uint8_t)))
+    return;
   bool use_gravity = use_gravity_val != 0;
 
   float gravity_scale;
-  if (!snapshot::read_bytes(data, offset, &gravity_scale, sizeof(float))) return;
+  if (!snapshot::read_bytes(data, offset, &gravity_scale, sizeof(float)))
+    return;
 
   teleport(pos);
   velocity(vel);
