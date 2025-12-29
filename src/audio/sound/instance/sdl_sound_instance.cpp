@@ -55,7 +55,7 @@ void SDLSoundInstance::play() {
 }
 
 void SDLSoundInstance::pause() {
-  if (!paused_) {
+  if (paused_) {
     return;
   }
 
