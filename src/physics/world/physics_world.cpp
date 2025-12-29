@@ -75,11 +75,12 @@ void PhysicsWorld::check_contact_touch_begin_events(
   for (int i = 0; i < contact_events.beginCount; ++i) {
     b2ContactBeginTouchEvent* touch_event = contact_events.beginEvents + i;
 
-    if_valid_then_execute(objects, touch_event->shapeIdA, touch_event->shapeIdB,
-                          [](Collider2D& colA, Collider2D& colB) {
-                            if (colA.active()) colA.on_collision_enter(colB);
-                            if (colB.active()) colB.on_collision_enter(colA);
-                          });
+    execute_valid_collider(objects, touch_event->shapeIdA,
+                           touch_event->shapeIdB,
+                           [](Collider2D& colA, Collider2D& colB) {
+                             if (colA.active()) colA.on_collision_enter(colB);
+                             if (colB.active()) colB.on_collision_enter(colA);
+                           });
   }
 }
 
@@ -89,11 +90,12 @@ void PhysicsWorld::check_contact_touch_end_events(
   for (int i = 0; i < contact_events.endCount; ++i) {
     b2ContactEndTouchEvent* touch_event = contact_events.endEvents + i;
 
-    if_valid_then_execute(objects, touch_event->shapeIdA, touch_event->shapeIdB,
-                          [](Collider2D& colA, Collider2D& colB) {
-                            if (colA.active()) colA.on_collision_exit(colB);
-                            if (colB.active()) colB.on_collision_exit(colA);
-                          });
+    execute_valid_collider(objects, touch_event->shapeIdA,
+                           touch_event->shapeIdB,
+                           [](Collider2D& colA, Collider2D& colB) {
+                             if (colA.active()) colA.on_collision_exit(colB);
+                             if (colB.active()) colB.on_collision_exit(colA);
+                           });
   }
 }
 
@@ -103,14 +105,14 @@ void PhysicsWorld::check_sensor_touch_begin_events(
   for (int i = 0; i < sensor_events.beginCount; ++i) {
     b2SensorBeginTouchEvent* touch_event = sensor_events.beginEvents + i;
 
-    if_valid_then_execute(objects, touch_event->sensorShapeId,
-                          touch_event->visitorShapeId,
-                          [](Collider2D& colA, Collider2D& colB) {
-                            if (colA.creation_flags().sensor && colA.active())
-                              colA.on_trigger_enter(colB);
-                            if (colB.creation_flags().sensor && colB.active())
-                              colB.on_trigger_enter(colA);
-                          });
+    execute_valid_collider(objects, touch_event->sensorShapeId,
+                           touch_event->visitorShapeId,
+                           [](Collider2D& colA, Collider2D& colB) {
+                             if (colA.creation_flags().sensor && colA.active())
+                               colA.on_trigger_enter(colB);
+                             if (colB.creation_flags().sensor && colB.active())
+                               colB.on_trigger_enter(colA);
+                           });
   }
 }
 
@@ -120,18 +122,18 @@ void PhysicsWorld::check_sensor_touch_end_events(
   for (int i = 0; i < sensor_events.endCount; ++i) {
     b2SensorEndTouchEvent* touch_event = sensor_events.endEvents + i;
 
-    if_valid_then_execute(objects, touch_event->sensorShapeId,
-                          touch_event->visitorShapeId,
-                          [](Collider2D& colA, Collider2D& colB) {
-                            if (colA.creation_flags().sensor && colA.active())
-                              colA.on_trigger_exit(colB);
-                            if (colB.creation_flags().sensor && colB.active())
-                              colB.on_trigger_exit(colA);
-                          });
+    execute_valid_collider(objects, touch_event->sensorShapeId,
+                           touch_event->visitorShapeId,
+                           [](Collider2D& colA, Collider2D& colB) {
+                             if (colA.creation_flags().sensor && colA.active())
+                               colA.on_trigger_exit(colB);
+                             if (colB.creation_flags().sensor && colB.active())
+                               colB.on_trigger_exit(colA);
+                           });
   }
 }
 
-void PhysicsWorld::if_valid_then_execute(
+void PhysicsWorld::execute_valid_collider(
     const std::vector<std::reference_wrapper<GameObject>>& objects, b2ShapeId a,
     b2ShapeId b,
     const std::function<void(Collider2D&, Collider2D&)>& callback) {

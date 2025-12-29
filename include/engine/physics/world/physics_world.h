@@ -76,7 +76,7 @@ class PhysicsWorld {
       const std::vector<std::reference_wrapper<GameObject>>& objects);
 
   /** @brief Executes a callback if the given shape IDs are valid. */
-  void if_valid_then_execute(
+  void execute_valid_collider(
       const std::vector<std::reference_wrapper<GameObject>>& objects,
       b2ShapeId a, b2ShapeId b,
       const std::function<void(Collider2D&, Collider2D&)>& callback);
