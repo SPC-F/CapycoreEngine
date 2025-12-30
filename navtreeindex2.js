@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"class_navigation_node.html#a5f768d71e2397196bb7eaf9b6305ef9b":[3,0,48,3],
+"class_navigation_node.html#ab49ae51383d7919582f736ffbff26488":[3,0,48,0],
 "class_navigation_node.html#ac29b5711e64a67bef6ed79c283818568":[3,0,48,7],
 "class_navigation_node.html#add1a01c56ea1e80f1ef04fe1cf1f0ebe":[3,0,48,1],
 "class_navigation_node.html#af9db60e414226854aab15a4a4b5a66f0":[3,0,48,6],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "class_sdl_sprite_strategy.html#a31207a25e575c7c35a0aceb72fb272c7":[3,0,75,1],
 "class_sdl_sprite_strategy.html#a467aa1344c9621521fa052ef62a07313":[3,0,75,0],
 "class_sdl_sprite_strategy.html#ac46cd785da66579ccbe639aa0e2d5d51":[3,0,75,2],
-"class_sdl_strategy_factory.html":[3,0,76],
-"class_sdl_strategy_factory.html#a5644c3f44edd587dbea693c417ab5a89":[3,0,76,1],
-"class_sdl_strategy_factory.html#a6cc2b5f8814552cb5a381cc27edd2176":[3,0,76,0]
+"class_sdl_strategy_factory.html":[3,0,76]
 };

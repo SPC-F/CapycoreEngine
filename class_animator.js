@@ -1,6 +1,8 @@
 var class_animator =
 [
     [ "Animator", "class_animator.html#a84919c8020af822d3fa7df2d68e4e456", null ],
+    [ "is_non_interruptible", "class_animator.html#ade5a8966df7f1679cc4f4eb25308c229", null ],
+    [ "is_non_interruptible", "class_animator.html#ace484f2e9d46af2a3b4717eb59cba484", null ],
     [ "is_playing", "class_animator.html#abf6aeab627419e5bbc20a267d69f8a31", null ],
     [ "pause", "class_animator.html#a5eeaa2f921685aad765badce30ee8c13", null ],
     [ "play", "class_animator.html#aba29f7221a3740a7807f6212a2406349", null ],
