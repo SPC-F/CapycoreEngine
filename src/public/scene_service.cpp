@@ -1,57 +1,71 @@
 #include <engine/public/scene_service.h>
 
-SceneService::SceneService() = default;
-SceneService::SceneService(const std::string& name) {
-  auto* scene = new Scene(name);
-  scene->run();
-  scenes_.try_emplace(name, std::move(std::unique_ptr<Scene>(scene)));
+SceneService::SceneService() : SceneService(DEFAULT_SCENE_NAME) {}
+SceneService::SceneService(const std::string& initial_scene_name)
+    : is_running_(true) {
+  auto* scene = new Scene(initial_scene_name);
+  scenes_.try_emplace(initial_scene_name,
+                      std::move(std::unique_ptr<Scene>(scene)));
 }
 
 SceneService::~SceneService() = default;
 
+void SceneService::run_current() {
+  is_running_ = true;
+
+  // ReSharper disable once CppDFAEndlessLoop
+  while (is_running_) {
+    current_scene_->get().run();
+    // At this point the current scene has stopped running
+    // We set the new scene to load here...
+    Scene& new_scene = *scenes_.at(next_scene_name_
+      .value_or(fallback_scene_name_));
+    move_dont_destroy_on_load_objects(new_scene);
+    current_scene_ = new_scene;
+  }
+  current_scene_->get().stop();
+}
+bool SceneService::is_running() const { return is_running_; }
+void SceneService::stop() {
+  is_running_ = false;
+}
+
 Scene& SceneService::add_scene(const std::string& name) {
-  auto it = scenes_.find(name);
+  if (name == DEFAULT_SCENE_NAME) {
+    throw std::runtime_error("Cannot add scene with reserved name '" +
+                             std::string(DEFAULT_SCENE_NAME) + "'");
+  }
+  const auto new_scene = scenes_.find(name);
 
   // Scene not found
-  if (it == scenes_.end()) {
+  if (new_scene == scenes_.end()) {
     auto* scene = new Scene(name);
     scenes_.try_emplace(name, std::move(std::unique_ptr<Scene>(scene)));
     return *scene;
   }
 
-  return *(it->second);
+  return *(new_scene->second);
 }
 
 SceneService& SceneService::load_scene(const std::string& name) {
-  auto current_scene_opt = this->current_scene();
-
-  auto it = scenes_.find(name);
-  if (it == scenes_.end()) {
+  const auto new_scene = scenes_.find(name);
+  if (new_scene == scenes_.end()) {
     throw std::runtime_error("Scene with name '" + name + "' not found");
   }
 
-  if (!current_scene_opt.has_value()) {
-    it->second->run();
-    return *this;
-  }
-
-  Scene& current_scene = current_scene_opt.value().get();
+  Scene& current_scene = current_scene_.value();
 
   if (current_scene.name() == name) {
     return *this;  // Scene is already loaded
   }
 
-  Scene& next_scene = *it->second;
-  move_dont_destroy_on_load_objects(current_scene, next_scene);
-  current_scene.stop();
-  it->second->run();
-
   return *this;
 }
 
-void SceneService::move_dont_destroy_on_load_objects(Scene& current_scene,
-                                                     Scene& next_scene) {
+void SceneService::move_dont_destroy_on_load_objects(Scene& next_scene) const {
   std::vector<std::reference_wrapper<GameObject>> objects_to_move;
+  Scene& current_scene = current_scene_.value();
+
   for (auto obj : current_scene.game_objects()) {
     // Only move root objects, hierarchy is preserved by moving the root
     if (obj.get().dont_destroy_on_load() && !obj.get().parent().has_value()) {
@@ -86,7 +100,12 @@ SceneService& SceneService::add_scene_and_load(const std::string& name) {
 }
 
 SceneService& SceneService::remove_scene(const std::string& name) {
-  auto it = scenes_.find(name);
+  if (name == DEFAULT_SCENE_NAME) {
+    throw std::runtime_error("Cannot remove scene with reserved name '" +
+                             std::string(DEFAULT_SCENE_NAME) + "'");
+  }
+
+  const auto it = scenes_.find(name);
   if (it == scenes_.end()) {
     throw std::runtime_error("Scene with name '" + name + "' not found");
   }
@@ -104,13 +123,16 @@ std::set<std::string> SceneService::contained_scene_names() const {
   return names;
 }
 
-std::optional<std::reference_wrapper<Scene>> SceneService::current_scene()
-    const {
-  for (const auto& scene_pair : scenes_) {
-    if (scene_pair.second->is_running()) {
-      return *(scene_pair.second);
-    }
-  }
+Scene& SceneService::current_scene() const { return current_scene_.value(); }
 
-  return std::nullopt;
+SceneService& SceneService::set_fallback_scene(const std::string& name) {
+  if (const auto it = scenes_.find(name); it == scenes_.end()) {
+    throw std::runtime_error("Scene with name '" + name + "' not found");
+  }
+  fallback_scene_name_ = name;
+  return *this;
+}
+
+const std::string& SceneService::fallback_scene() const {
+  return fallback_scene_name_;
 }

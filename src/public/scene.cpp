@@ -147,9 +147,12 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
         if (is_stopping_ || !is_running_) break;
       }
 
-      rendering_service.draw(layered_renderables, *this);
+      if (is_stopping_ || !is_running_) {
+        cleanup_destroyed_game_objects();
+        return;
+      }
 
-      // 5. cleanup marked for deletion game objects AFTER rendering
+      rendering_service.draw(layered_renderables, *this);
       cleanup_destroyed_game_objects();
     });
 
@@ -158,6 +161,9 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
       is_running_ = false;
     }
   }
+
+  execute_listeners(stop_listeners_);
+  system_service.remove_listener(EVENT_QUIT, stop_event_listener_id_);
 }
 
 void Scene::run() {
@@ -176,11 +182,6 @@ void Scene::run() {
 
 void Scene::stop() {
   is_running_ = false;
-  execute_listeners(stop_listeners_);
-
-  auto& system_service =
-      Engine::instance().services->get_service<SystemService>().get();
-  system_service.remove_listener(EVENT_QUIT, stop_event_listener_id_);
 }
 
 bool Scene::marked_for_stopping() const { return is_stopping_; }

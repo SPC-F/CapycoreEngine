@@ -209,7 +209,7 @@ void Client::register_on_snapshot_full_handler() noexcept
         auto& engine = Engine::instance();
         auto& scene_service = engine.services->get_service<SceneService>().get();
 
-        snapshot::apply_full_snapshot(scene_service.current_scene().value(), msg);
+        snapshot::apply_full_snapshot(scene_service.current_scene(), msg);
     };
 
     router_.get().register_handler(MessageType(DefaultMessageTypes::SNAPSHOT_FULL), std::move(handler));
@@ -221,7 +221,7 @@ void Client::register_on_snapshot_delta_handler() noexcept
         auto& engine = Engine::instance();
         auto& scene_service = engine.services->get_service<SceneService>().get();
 
-        snapshot::apply_delta_snapshot(scene_service.current_scene().value(), msg);
+        snapshot::apply_delta_snapshot(scene_service.current_scene(), msg);
     };
 
     router_.get().register_handler(MessageType(DefaultMessageTypes::SNAPSHOT_DELTA), std::move(handler));
