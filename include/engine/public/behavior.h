@@ -72,6 +72,10 @@ class Behavior {
   /// Disables the behavior.
   Behavior& disable();
 
+  virtual void on_serialize(std::vector<uint8_t>& /*out*/) const {};
+  virtual void on_deserialize(const std::vector<uint8_t>& /*data*/,
+                                       size_t& /*offset*/) {};
+
   template <typename T>
   std::optional<std::reference_wrapper<T>> get_component() {
     if (!attached_component_) {
