@@ -6,6 +6,8 @@ SceneService::SceneService(const std::string& initial_scene_name)
   auto* scene = new Scene(initial_scene_name);
   scenes_.try_emplace(initial_scene_name,
                       std::move(std::unique_ptr<Scene>(scene)));
+
+  current_scene_ = *scenes_.at(initial_scene_name);
 }
 
 SceneService::~SceneService() = default;
@@ -13,13 +15,17 @@ SceneService::~SceneService() = default;
 void SceneService::run_current() {
   is_running_ = true;
 
-  // ReSharper disable once CppDFAEndlessLoop
+  current_scene_ = *scenes_.at(
+    next_scene_name_.value_or(fallback_scene_name_));
+
   while (is_running_) {
     current_scene_->get().run();
+
     // At this point the current scene has stopped running
     // We set the new scene to load here...
     Scene& new_scene = *scenes_.at(next_scene_name_
       .value_or(fallback_scene_name_));
+    next_scene_name_ = fallback_scene_name_;
     move_dont_destroy_on_load_objects(new_scene);
     current_scene_ = new_scene;
   }
@@ -48,16 +54,17 @@ Scene& SceneService::add_scene(const std::string& name) {
 }
 
 SceneService& SceneService::load_scene(const std::string& name) {
-  const auto new_scene = scenes_.find(name);
-  if (new_scene == scenes_.end()) {
+  if (!scenes_.contains(name)) {
     throw std::runtime_error("Scene with name '" + name + "' not found");
   }
 
-  Scene& current_scene = current_scene_.value();
-
-  if (current_scene.name() == name) {
+  if (current_scene_->get().name() == name) {
     return *this;  // Scene is already loaded
   }
+
+  next_scene_name_ = name;
+  current_scene_->get()
+    .mark_for_stopping();
 
   return *this;
 }
@@ -103,6 +110,11 @@ SceneService& SceneService::remove_scene(const std::string& name) {
   if (name == DEFAULT_SCENE_NAME) {
     throw std::runtime_error("Cannot remove scene with reserved name '" +
                              std::string(DEFAULT_SCENE_NAME) + "'");
+  }
+  if (name == fallback_scene_name_) {
+    throw std::runtime_error("Scene with name '" + name + "' can not be removed "
+                             "as it is set as the fallback scene. Please select a different "
+                             "fallback scene before removing scene " + name);
   }
 
   const auto it = scenes_.find(name);

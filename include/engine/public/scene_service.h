@@ -13,7 +13,7 @@ class SceneService final : public IEngineService {
   void move_dont_destroy_on_load_objects(Scene& next_scene) const;
 
   std::optional<std::reference_wrapper<Scene>> current_scene_;
-  std::optional<const std::string> next_scene_name_;
+  std::optional<std::string> next_scene_name_;
   std::string fallback_scene_name_ = DEFAULT_SCENE_NAME;
   bool is_running_;
 
