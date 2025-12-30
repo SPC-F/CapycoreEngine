@@ -1,5 +1,11 @@
 var NAVTREEINDEX6 =
 {
+"struct_body_distance2_d.html#a65dadf7bfec630d77f96d95f5199be9e":[3,0,9,3],
+"struct_body_type2_d.html":[3,0,10],
+"struct_body_type2_d.html#ab1c7b696dcdfcd93b525330436ad8f3a":[3,0,10,0],
+"struct_body_type2_d.html#ab1c7b696dcdfcd93b525330436ad8f3aa1c28cbb95b65b1cd9eaa30a22d0cc233":[3,0,10,0,2],
+"struct_body_type2_d.html#ab1c7b696dcdfcd93b525330436ad8f3aa411011e3c68c9731c5fc7c02938956f5":[3,0,10,0,1],
+"struct_body_type2_d.html#ab1c7b696dcdfcd93b525330436ad8f3aa5e32ca611a9fa2a64c8aca6e31eec81b":[3,0,10,0,0],
 "struct_collider_ray_result.html":[3,0,16],
 "struct_collider_ray_result.html#a27cbda395e061c5f975875ec284196b2":[3,0,16,0],
 "struct_collider_ray_result.html#a4d3eb25137a6a12543046f66a072a8c5":[3,0,16,2],

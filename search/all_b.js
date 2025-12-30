@@ -8,7 +8,7 @@ var searchData=
   ['key_5fup_5',['KEY_UP',['../system__event_8h.html#a77219d2f280eaad8c79825f50cf78785a0848a442d907968b211b97bc2bd88acd',1,'system_event.h']]],
   ['keycode_6',['KeyCode',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44',1,'key_code.h']]],
   ['keystate_7',['KeyState',['../struct_key_state.html',1,'']]],
-  ['kind_8',['kind',['../struct_message_type.html#a5b7a63d3f4918b16a3d960755798ba90',1,'MessageType::Kind'],['../struct_message_type.html#af5c1e28668bc73251feb0d0e55fcff96',1,'MessageType::kind']]],
+  ['kind_8',['kind',['../struct_message_type.html#af5c1e28668bc73251feb0d0e55fcff96',1,'MessageType::kind'],['../struct_message_type.html#a5b7a63d3f4918b16a3d960755798ba90',1,'MessageType::Kind']]],
   ['kinematic_9',['Kinematic',['../struct_body_type2_d.html#ab1c7b696dcdfcd93b525330436ad8f3aa1c28cbb95b65b1cd9eaa30a22d0cc233',1,'BodyType2D']]],
   ['kp_5f0_10',['kp_0',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44a63cc83b4935eba67fbc8e45cd1c3b780',1,'key_code.h']]],
   ['kp_5f1_11',['kp_1',['../key__code_8h.html#a9f6df2a5c85bb933f82d88a19f3d8c44aa8cddb313644d2651ef4bb2600a71909',1,'key_code.h']]],
