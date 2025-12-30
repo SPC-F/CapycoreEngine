@@ -9,6 +9,10 @@
 #include <engine/public/util/vector3.h>
 
 #include <memory>
+#include <set>
+
+class Component;
+class Collider2D;
 
 constexpr int32_t default_velocity_iterations = 6;
 constexpr float default_gravity_x = 0.0f;
@@ -51,6 +55,31 @@ class PhysicsWorld {
    */
   void check_collision(
       const std::vector<std::reference_wrapper<GameObject>>& objects);
+
+  /** @brief Finds a collider in the given objects based on the component and
+   * shape ID. */
+  std::optional<std::reference_wrapper<Collider2D>> find_collider_in_objects(
+      const std::vector<std::reference_wrapper<GameObject>>& objects,
+      Component* comp, b2ShapeId shape_id);
+
+  /** @brief Checks for the beginning of contact touch events. */
+  void check_contact_touch_begin_events(
+      const std::vector<std::reference_wrapper<GameObject>>& objects);
+  /** @brief Checks for the ending of contact touch events. */
+  void check_contact_touch_end_events(
+      const std::vector<std::reference_wrapper<GameObject>>& objects);
+  /** @brief Checks for the beginning of sensor touch events. */
+  void check_sensor_touch_begin_events(
+      const std::vector<std::reference_wrapper<GameObject>>& objects);
+  /** @brief Checks for the ending of sensor touch events. */
+  void check_sensor_touch_end_events(
+      const std::vector<std::reference_wrapper<GameObject>>& objects);
+
+  /** @brief Executes a callback if the given shape IDs are valid. */
+  void execute_valid_collider(
+      const std::vector<std::reference_wrapper<GameObject>>& objects,
+      b2ShapeId a, b2ShapeId b,
+      const std::function<void(Collider2D&, Collider2D&)>& callback);
 
   /**
    * @brief Calculate the distance between two bodies
