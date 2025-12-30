@@ -17,7 +17,9 @@ var class_behavior =
     [ "get_components_from_children", "class_behavior.html#ab6dd445cb82a7694f20cdfcd54615156", null ],
     [ "get_components_in_parent", "class_behavior.html#a44d8a7c9bc89e30d5f53d345798dff50", null ],
     [ "on_awake", "class_behavior.html#a7fbab8ff46c037928a0c5e80be144e2c", null ],
+    [ "on_deserialize", "class_behavior.html#ae479cdadb4e80830edcc2bdaded36c8a", null ],
     [ "on_destroy", "class_behavior.html#a528d9d6895737f5ce5ad3bc90a071e5f", null ],
+    [ "on_serialize", "class_behavior.html#a12beb4643596031cd82f5f7c5be85946", null ],
     [ "on_start", "class_behavior.html#a59f09bf66bafff928cfd20d68cd09b5c", null ],
     [ "on_update", "class_behavior.html#a37032ee85e5a6c5d384056fd1b7d3ca9", null ],
     [ "transform", "class_behavior.html#aea1b793f37a7d3b96b652e4058b71e15", null ]

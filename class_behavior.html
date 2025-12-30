@@ -169,6 +169,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c1360ffa98badaa29dd2aaf1649c231" id="r_a1c1360ffa98badaa29dd2aaf1649c231"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html">Behavior</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a1c1360ffa98badaa29dd2aaf1649c231">disable</a> ()</td></tr>
 <tr class="memdesc:a1c1360ffa98badaa29dd2aaf1649c231"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the behavior.  <br /></td></tr>
 <tr class="separator:a1c1360ffa98badaa29dd2aaf1649c231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12beb4643596031cd82f5f7c5be85946" id="r_a12beb4643596031cd82f5f7c5be85946"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">virtual</a> <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#a12beb4643596031cd82f5f7c5be85946">on_serialize</a> (std::vector&lt; <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">uint8_t</a> &gt; &amp;) <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">const</a></td></tr>
+<tr class="separator:a12beb4643596031cd82f5f7c5be85946"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae479cdadb4e80830edcc2bdaded36c8a" id="r_ae479cdadb4e80830edcc2bdaded36c8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">virtual</a> <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior.html#ae479cdadb4e80830edcc2bdaded36c8a">on_deserialize</a> (<a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">const</a> std::vector&lt; <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">uint8_t</a> &gt; &amp;, <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">size_t</a> &amp;)</td></tr>
+<tr class="separator:ae479cdadb4e80830edcc2bdaded36c8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a024cf1e2006a8833d6e15183339584a3" id="r_a024cf1e2006a8833d6e15183339584a3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a024cf1e2006a8833d6e15183339584a3"><td class="memTemplItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; T &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">get_component</a> ()</td></tr>
 <tr class="separator:a024cf1e2006a8833d6e15183339584a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -612,6 +616,42 @@ template&lt;<a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339
 
 </div>
 </div>
+<a id="ae479cdadb4e80830edcc2bdaded36c8a" name="ae479cdadb4e80830edcc2bdaded36c8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae479cdadb4e80830edcc2bdaded36c8a">&#9670;&#160;</a></span>on_deserialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">virtual</a> <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">void</a> Behavior::on_deserialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">const</a> std::vector&lt; <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">uint8_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">size_t</a> &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a528d9d6895737f5ce5ad3bc90a071e5f" name="a528d9d6895737f5ce5ad3bc90a071e5f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a528d9d6895737f5ce5ad3bc90a071e5f">&#9670;&#160;</a></span>on_destroy()</h2>
 
@@ -636,6 +676,32 @@ template&lt;<a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339
 </div><div class="memdoc">
 
 <p>Called when the <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a> or associated <a class="el" href="class_game_object.html">GameObject</a> is destroyed. </p>
+
+</div>
+</div>
+<a id="a12beb4643596031cd82f5f7c5be85946" name="a12beb4643596031cd82f5f7c5be85946"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12beb4643596031cd82f5f7c5be85946">&#9670;&#160;</a></span>on_serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">virtual</a> <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">void</a> Behavior::on_serialize </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_behavior.html#a024cf1e2006a8833d6e15183339584a3">uint8_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
