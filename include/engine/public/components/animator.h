@@ -16,6 +16,7 @@ class Animator : public Component {
 
   bool is_playing_;
   bool is_looping_;
+  bool is_non_interruptible_{false};
 
   [[nodiscard]] int calculate_next_frame_index(int intervals_advanced) const;
   void update_sprite_texture(int new_frame_index);
@@ -29,6 +30,9 @@ class Animator : public Component {
   void pause();
   void reset();
   [[nodiscard]] bool is_playing() const noexcept;
+
+  [[nodiscard]] bool is_non_interruptible() const noexcept;
+  void is_non_interruptible(bool value) noexcept;
 
   // Component overrides
   void update(float dt_seconds) override;
