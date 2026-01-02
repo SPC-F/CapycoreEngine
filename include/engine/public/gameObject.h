@@ -115,6 +115,23 @@ class GameObject {
                                                   filtered.end());
   }
 
+  /** Get the first Behavior of type B attached to this GameObject's
+      BehaviorScript components. */
+  template <IsComponent BS, typename B>
+  [[nodiscard]] std::optional<std::reference_wrapper<B>> get_script()
+      const noexcept {
+    auto scripts = get_components<BS>();
+
+    for (const auto& script : scripts) {
+      if (auto& behavior = script.get().behavior();
+          dynamic_cast<B*>(&behavior)) {
+        return std::ref(static_cast<B&>(behavior));
+      }
+    }
+
+    return std::nullopt;
+  }
+
   /** Get all components (non-templated) attached to this GameObject. */
   [[nodiscard]] std::vector<std::reference_wrapper<Component>>
   get_components_all() const;
