@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"class_sdl_strategy_factory.html":[3,0,76],
 "class_sdl_strategy_factory.html#a5644c3f44edd587dbea693c417ab5a89":[3,0,76,1],
 "class_sdl_strategy_factory.html#a6cc2b5f8814552cb5a381cc27edd2176":[3,0,76,0],
 "class_sdl_text_strategy.html":[3,0,77],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "class_vector3.html#a5ceb28fc3b8073a434c01d76eb681dde":[3,0,98,12],
 "class_vector3.html#a7e2d3237b29a2f29d7b3d8b2934e35f2":[3,0,98,17],
 "class_vector3.html#a86eb35a9fa2d5a49e7fad66a35fa9c13":[3,0,98,18],
-"class_vector3.html#a8ae6892a009f50cf7a6e5a9db5e265ca":[3,0,98,4],
-"class_vector3.html#a9d6c85aa632a11d2035a6092a32ebdf9":[3,0,98,13]
+"class_vector3.html#a8ae6892a009f50cf7a6e5a9db5e265ca":[3,0,98,4]
 };

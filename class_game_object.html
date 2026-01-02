@@ -218,6 +218,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aef31e6fca036256ac8eee5cc1b0963c4" id="r_aef31e6fca036256ac8eee5cc1b0963c4"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="concept_is_component.html">IsComponent</a> T&gt; </td></tr>
 <tr class="memitem:aef31e6fca036256ac8eee5cc1b0963c4"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">T</a> &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_game_object.html#aef31e6fca036256ac8eee5cc1b0963c4">get_components</a> () <a class="el" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">const</a></td></tr>
 <tr class="separator:aef31e6fca036256ac8eee5cc1b0963c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb39834f5a99d1f6e0c8d1be03790746" id="r_abb39834f5a99d1f6e0c8d1be03790746"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="concept_is_component.html">IsComponent</a> BS, <a class="el" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">typename</a> <a class="el" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">B</a> &gt; </td></tr>
+<tr class="memitem:abb39834f5a99d1f6e0c8d1be03790746"><td class="memTemplItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">B</a> &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_game_object.html#abb39834f5a99d1f6e0c8d1be03790746">get_script</a> () <a class="el" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">const</a> <a class="el" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">noexcept</a></td></tr>
+<tr class="separator:abb39834f5a99d1f6e0c8d1be03790746"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea7ceba812de0d4a849b1c8e884be5ec" id="r_aea7ceba812de0d4a849b1c8e884be5ec"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_component.html">Component</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#aea7ceba812de0d4a849b1c8e884be5ec">get_components_all</a> () <a class="el" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">const</a></td></tr>
 <tr class="separator:aea7ceba812de0d4a849b1c8e884be5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa58c30b6156e37604a5e318b728a22e5" id="r_aa58c30b6156e37604a5e318b728a22e5"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="concept_is_component.html">IsComponent</a> T&gt; </td></tr>
@@ -555,6 +558,34 @@ template&lt;<a class="el" href="concept_is_component.html">IsComponent</a> T&gt;
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="abb39834f5a99d1f6e0c8d1be03790746" name="abb39834f5a99d1f6e0c8d1be03790746"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb39834f5a99d1f6e0c8d1be03790746">&#9670;&#160;</a></span>get_script()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="concept_is_component.html">IsComponent</a> BS, <a class="el" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">typename</a> <a class="el" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">B</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html#ad2dd34468bb631e7fb291fec0f2d39fc">B</a> &gt; &gt; GameObject::get_script </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get the first <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a> of type B attached to this <a class="el" href="class_game_object.html">GameObject</a>'s <a class="el" href="class_behavior_script.html" title="Component that hosts a Behavior.">BehaviorScript</a> components. </p>
 
 </div>
 </div>
