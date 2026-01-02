@@ -15,26 +15,32 @@ SceneService::~SceneService() = default;
 void SceneService::run_current() {
   is_running_ = true;
 
-  current_scene_ = *scenes_.at(
-    next_scene_name_.value_or(fallback_scene_name_));
+  current_scene_ = *scenes_.at(next_scene_name_.value_or(fallback_scene_name_));
 
   while (is_running_) {
     current_scene_->get().run();
 
-    // At this point the current scene has stopped running
-    // We set the new scene to load here...
-    Scene& new_scene = *scenes_.at(next_scene_name_
-      .value_or(fallback_scene_name_));
-    next_scene_name_ = fallback_scene_name_;
+    // Adding a check for is_running_ immediately after
+    // current_scene_->get().run() to break the loop if the service is stopping
+    // (scene swap).
+    if (!is_running_) {
+      break;
+    }
+
+    // Using next_scene_name_.reset() instead of blindly setting it to the
+    // fallback scene name and correctly determining the target scene name
+    // before resetting the optional.
+    std::string to_load = next_scene_name_.value_or(fallback_scene_name_);
+    next_scene_name_.reset();
+
+    Scene& new_scene = *scenes_.at(to_load);
     move_dont_destroy_on_load_objects(new_scene);
     current_scene_ = new_scene;
   }
   current_scene_->get().stop();
 }
 bool SceneService::is_running() const { return is_running_; }
-void SceneService::stop() {
-  is_running_ = false;
-}
+void SceneService::stop() { is_running_ = false; }
 
 Scene& SceneService::add_scene(const std::string& name) {
   if (name == DEFAULT_SCENE_NAME) {
@@ -63,8 +69,7 @@ SceneService& SceneService::load_scene(const std::string& name) {
   }
 
   next_scene_name_ = name;
-  current_scene_->get()
-    .mark_for_stopping();
+  current_scene_->get().mark_for_stopping();
 
   return *this;
 }
@@ -112,9 +117,12 @@ SceneService& SceneService::remove_scene(const std::string& name) {
                              std::string(DEFAULT_SCENE_NAME) + "'");
   }
   if (name == fallback_scene_name_) {
-    throw std::runtime_error("Scene with name '" + name + "' can not be removed "
-                             "as it is set as the fallback scene. Please select a different "
-                             "fallback scene before removing scene " + name);
+    throw std::runtime_error(
+        "Scene with name '" + name +
+        "' can not be removed "
+        "as it is set as the fallback scene. Please select a different "
+        "fallback scene before removing scene " +
+        name);
   }
 
   const auto it = scenes_.find(name);
