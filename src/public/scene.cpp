@@ -164,6 +164,7 @@ void Scene::game_loop() {  // NOLINT [readability-make-member-function-const]
 
   execute_listeners(stop_listeners_);
   system_service.remove_listener(EVENT_QUIT, stop_event_listener_id_);
+  is_stopping_ = false;
 }
 
 void Scene::run() {

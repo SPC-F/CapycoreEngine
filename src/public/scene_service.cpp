@@ -40,7 +40,13 @@ void SceneService::run_current() {
   current_scene_->get().stop();
 }
 bool SceneService::is_running() const { return is_running_; }
-void SceneService::stop() { is_running_ = false; }
+void SceneService::stop() {
+  is_running_ = false;
+
+  if (current_scene_.has_value()) {
+    current_scene_->get().mark_for_stopping();
+  }
+}
 
 Scene& SceneService::add_scene(const std::string& name) {
   if (name == DEFAULT_SCENE_NAME) {
