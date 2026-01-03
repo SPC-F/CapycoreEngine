@@ -47,6 +47,13 @@ void Animator::reset() {
 
 bool Animator::is_playing() const noexcept { return is_playing_; }
 
+bool Animator::is_non_interruptible() const noexcept {
+  return is_non_interruptible_;
+}
+void Animator::is_non_interruptible(bool value) noexcept {
+  is_non_interruptible_ = value;
+}
+
 /**
  * So the C++ modulo works crappy with negative numbers.
  * Imagine current_frame_index = 2, frame_count = 5, frames_advanced = -3
@@ -126,6 +133,7 @@ void Animator::update(float dt) {
 
     if (!is_looping_ && current_texture_index_ == frames_.size() - 1) {
       is_playing_ = false;
+      if (is_non_interruptible_) is_non_interruptible_ = false;
     }
   }
 }
