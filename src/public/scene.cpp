@@ -314,8 +314,14 @@ void Scene::cleanup_destroyed_game_objects() {
 
   for (auto& obj : game_objects_) {
     if (obj->marked_for_deletion()) {
+      /// First mark and detach all children and their components
       mark_detach_recursive(*obj, mark_detach_recursive);
       obj->remove_all_components();
+
+      /// If we have a parent, detach from it
+      if (obj->parent().has_value()) {
+        obj->parent()->get().remove_child(*obj);
+      }
     }
   }
 
