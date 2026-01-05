@@ -14,6 +14,7 @@
 #include <engine/public/scene.h>
 #include <engine/public/ui/ui_object.h>
 #include <engine/util/memory.h>
+#include <engine/public/scene_service.h>
 
 #include <algorithm>
 
@@ -175,7 +176,9 @@ void Scene::run() {
       Engine::instance().services->get_service<SystemService>().get();
   stop_event_listener_id_ = system_service.add_listener(
       EVENT_QUIT, [&](void* /*event*/) {  // register per scene
-        stop();
+        Engine::instance().services
+          ->get_service<SceneService>().get()
+          .stop();
       });
 
   game_loop();
