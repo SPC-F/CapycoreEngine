@@ -224,7 +224,7 @@ void Host::sync() noexcept
         auto& scene_service = engine.services->get_service<SceneService>().get();
 
         last_snapshot_time_ = now;
-        Message delta = snapshot::create_delta_snapshot(scene_service.current_scene().value(), DefaultMessageTypes::SNAPSHOT_DELTA);
+        Message delta = snapshot::create_delta_snapshot(scene_service.current_scene(), DefaultMessageTypes::SNAPSHOT_DELTA);
         // Only broadcast if there is payload beyond the count header
         if (delta.header.size > sizeof(uint16_t)) {
             broadcast(delta);
@@ -286,7 +286,7 @@ void Host::set_client_connect_handler() noexcept
             auto& engine = Engine::instance();
             auto& scene_service = engine.services->get_service<SceneService>().get();
 
-            Message snapshot_msg = snapshot::create_full_snapshot(scene_service.current_scene().value(), DefaultMessageTypes::SNAPSHOT_FULL);
+            Message snapshot_msg = snapshot::create_full_snapshot(scene_service.current_scene(), DefaultMessageTypes::SNAPSHOT_FULL);
             send_to_peer_via_uuid(std::string(data.uuid), snapshot_msg);
         }
     };

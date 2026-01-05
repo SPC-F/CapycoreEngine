@@ -3,7 +3,6 @@
 
 #include <catch2/catch_test_macros.hpp>
 #include <iostream>
-#include <memory>
 #include <string>
 
 TEST_CASE("AddScene_WhenSceneDoesNotExist_AddsSceneToSceneService",
@@ -11,7 +10,7 @@ TEST_CASE("AddScene_WhenSceneDoesNotExist_AddsSceneToSceneService",
   // arrange & act
   const std::string& name = "Test Scene";
   auto scene_service = SceneService();
-  Scene& scene = scene_service.add_scene(name);
+  const Scene& scene = scene_service.add_scene(name);
 
   // assert
   REQUIRE(scene.name() == name);
@@ -64,7 +63,7 @@ TEST_CASE("ContainedSceneNames_ReturnsAllSceneNames", "[SceneService]") {
   auto scene_names = scene_service.contained_scene_names();
 
   // assert
-  REQUIRE(scene_names.size() == 2);
+  REQUIRE(scene_names.size() == 3);  // Including default scene
   REQUIRE(scene_names.find(name1) != scene_names.end());
   REQUIRE(scene_names.find(name2) != scene_names.end());
 }
@@ -82,15 +81,22 @@ TEST_CASE("LoadScene_MovesDontDestroyOnLoadObjects_ToNewScene",
 
   // Set up Scene 2 to stop immediately when run, returning control to the
   // caller
-  scene2.on_run([](Scene& s) { s.stop(); });
+  scene2.on_run([&scene_service](Scene& s) {
+    s.stop();
+    scene_service.stop();
+  });
 
   // Trigger the load of Scene 2 from within Scene 1
   // This ensures Scene 1 is marked as 'running' when the transition logic
   // executes
-  scene1.on_run([&](Scene& s) { scene_service.load_scene("Scene2"); });
+  scene1.on_run([&](Scene& s) {
+    scene_service.load_scene("Scene2");
+    s.stop();
+  });
 
   // act
   scene_service.load_scene("Scene1");
+  scene_service.run_current();
 
   // assert
   REQUIRE(scene2.game_objects().size() == 1);
@@ -107,12 +113,19 @@ TEST_CASE("LoadScene_DoesNotMoveNormalObjects_ToNewScene", "[SceneService]") {
   scene1.add_game_object("NormalObject");
   // Not marking the object as dont_destroy_on_load
 
-  scene2.on_run([](Scene& s) { s.stop(); });
+  scene2.on_run([&scene_service](Scene& s) {
+    s.stop();
+    scene_service.stop();
+  });
 
-  scene1.on_run([&](Scene& s) { scene_service.load_scene("Scene2"); });
+  scene1.on_run([&](Scene& s) {
+    s.stop();
+    scene_service.load_scene("Scene2");
+  });
 
   // act
   scene_service.load_scene("Scene1");
+  scene_service.run_current();
 
   // assert
   REQUIRE(scene2.game_objects().empty());
@@ -133,18 +146,26 @@ TEST_CASE("LoadScene_MovesDontDestroyOnLoadObject_WithChildren",
   parent.add_child(child);
   std::string child_id = child.id();
 
-  scene2.on_run([](Scene& s) { s.stop(); });
+  scene2.on_run([&scene_service](Scene& s) {
+    s.stop();
+    scene_service.stop();
+  });
 
-  scene1.on_run([&](Scene& s) { scene_service.load_scene("Scene2"); });
+  scene1.on_run([&](Scene& s) {
+    s.stop();
+    scene_service.load_scene("Scene2");
+  });
 
   // act
   scene_service.load_scene("Scene1");
+  scene_service.run_current();
 
   // assert
   auto scene2_objects = scene2.game_objects();
   auto found_parent_it = std::ranges::find_if(
       scene2_objects,
       [&](const auto& obj) { return obj.get().id() == parent_id; });
+
   REQUIRE(found_parent_it != scene2_objects.end());
 
   GameObject& moved_parent = found_parent_it->get();
@@ -171,12 +192,19 @@ TEST_CASE("LoadScene_DoesNotMoveChildMarkedDontDestroy_IfParentIsNotMarked",
   child.mark_dont_destroy_on_load(true);
   parent.add_child(child);
 
-  scene2.on_run([](Scene& s) { s.stop(); });
+  scene2.on_run([&scene_service](Scene& s) {
+    s.stop();
+    scene_service.stop();
+  });
 
-  scene1.on_run([&](Scene& s) { scene_service.load_scene("Scene2"); });
+  scene1.on_run([&](Scene& s) {
+    scene_service.load_scene("Scene2");
+    s.stop();
+  });
 
   // act
   scene_service.load_scene("Scene1");
+  scene_service.run_current();
 
   // assert
   REQUIRE(scene2.game_objects().empty());
