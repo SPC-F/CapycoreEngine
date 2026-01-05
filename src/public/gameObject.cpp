@@ -91,9 +91,14 @@ void GameObject::mark_dont_destroy_on_load(const bool dont_destroy) noexcept {
 }
 
 bool GameObject::dont_destroy_on_load() const noexcept {
-  return dont_destroy_on_load_;
-}
+  if (dont_destroy_on_load_) return true;
 
+  if (parent().has_value()) {
+    return parent_->get().dont_destroy_on_load();
+  }
+
+  return false;
+}
 std::optional<std::reference_wrapper<GameObject>> GameObject::parent() const {
   return parent_;
 }
