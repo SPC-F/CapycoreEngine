@@ -109,6 +109,8 @@ GameObject& GameObject::parent(GameObject& parent) {
     parent.add_child(*this);
   }
 
+  transform_.parent(std::ref(parent.transform()));
+
   return *this;
 }
 
