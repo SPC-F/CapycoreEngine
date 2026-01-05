@@ -48,7 +48,7 @@ var searchData=
   ['renderingservice_45',['renderingservice',['../class_rendering_service.html#a09d2372dad15d3aab269e00cbc74005f',1,'RenderingService::RenderingService()'],['../class_rendering_service.html#ace36317c9854be3e5ad5e5c812a2c4d1',1,'RenderingService::RenderingService(Renderer *renderer)'],['../class_rendering_service.html',1,'RenderingService']]],
   ['renderingservice_2eh_46',['renderingService.h',['../rendering_service_8h.html',1,'']]],
   ['reset_47',['reset',['../struct_key_state.html#a8eae29523da7329a4802edd894065fef',1,'KeyState::reset()'],['../struct_mouse_button_state.html#a97f2f4b1943b3db9fca13b15d61a977e',1,'MouseButtonState::reset()'],['../struct_mouse_wheel_state.html#a6f8a46808d00f972daa835f5e00664fd',1,'MouseWheelState::reset()'],['../struct_mouse_state.html#a934473a0251bf14edfa70c27ded70784',1,'MouseState::reset()'],['../class_animator.html#a2d63cba9e9f75b5ba813ec1e619fa328',1,'Animator::reset()']]],
-  ['reset_5fstate_48',['reset_state',['../class_input_system.html#a081d0f26090f8f33a05e1a1fdce9aa11',1,'InputSystem::reset_state()'],['../class_i_input_provider.html#a87a6c1ecc8e5259edc2206088874049d',1,'IInputProvider::reset_state()']]],
+  ['reset_5fstate_48',['reset_state',['../class_i_input_provider.html#a87a6c1ecc8e5259edc2206088874049d',1,'IInputProvider::reset_state()'],['../class_input_system.html#a081d0f26090f8f33a05e1a1fdce9aa11',1,'InputSystem::reset_state()']]],
   ['resizable_49',['Resizable',['../renderer_flags_8h.html#a360f88a51f469ff309df1e1e7cc2558ba57b4630ff86ef47d62820a950beaf5c9',1,'rendererFlags.h']]],
   ['resource_50',['resource',['../class_sound_instance.html#a814b69df625d2961766159e28782d5bf',1,'SoundInstance']]],
   ['resource_5f_51',['resource_',['../class_sound_instance.html#ad9e446d5a32791f91847f2ebb9d72191',1,'SoundInstance']]],
@@ -66,5 +66,6 @@ var searchData=
   ['router_63',['Router',['../class_router.html',1,'']]],
   ['router_2eh_64',['router.h',['../router_8h.html',1,'']]],
   ['run_65',['How-to-run',['../index.html#autotoc_md1',1,'']]],
-  ['run_5fwithout_5ftracy_66',['run_without_tracy',['../memory_8h.html#aa49efe42bb4e5937f1bd60c9f63a04e7',1,'memory.h']]]
+  ['run_5fcurrent_66',['run_current',['../class_scene_service.html#ad7a93ea70af8255460bb391b3a8a1a32',1,'SceneService']]],
+  ['run_5fwithout_5ftracy_67',['run_without_tracy',['../memory_8h.html#aa49efe42bb4e5937f1bd60c9f63a04e7',1,'memory.h']]]
 ];

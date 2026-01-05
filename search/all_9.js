@@ -47,7 +47,7 @@ var searchData=
   ['is_5fnon_5finterruptible_44',['is_non_interruptible',['../class_animator.html#ade5a8966df7f1679cc4f4eb25308c229',1,'Animator::is_non_interruptible() const noexcept'],['../class_animator.html#ace484f2e9d46af2a3b4717eb59cba484',1,'Animator::is_non_interruptible(bool value) noexcept']]],
   ['is_5fpaused_45',['is_paused',['../class_generic_sound_instance.html#a91c5685bbd5d4fb7d16512ec35a5b1f7',1,'GenericSoundInstance::is_paused()'],['../class_s_d_l_sound_instance.html#a4e7441ca5d870615728bb1484619660f',1,'SDLSoundInstance::is_paused()'],['../class_sound_instance.html#afd6f97cdca9f4676bf67f747094406a5',1,'SoundInstance::is_paused()']]],
   ['is_5fplaying_46',['is_playing',['../class_generic_sound_instance.html#a7c366e56e5009e25bd5ee61ae783846b',1,'GenericSoundInstance::is_playing()'],['../class_s_d_l_sound_instance.html#a4122bf9d127af59b5c8ff79b6f175184',1,'SDLSoundInstance::is_playing()'],['../class_sound_instance.html#adf8680c7da38360c77040f323cecab48',1,'SoundInstance::is_playing()'],['../class_animator.html#abf6aeab627419e5bbc20a267d69f8a31',1,'Animator::is_playing()']]],
-  ['is_5frunning_47',['is_running',['../class_scene.html#a74bfdea2518df4875a58763dd88c0838',1,'Scene']]],
+  ['is_5frunning_47',['is_running',['../class_scene.html#a74bfdea2518df4875a58763dd88c0838',1,'Scene::is_running()'],['../class_scene_service.html#a09b4dd2634fdf97f1edd39797dd0ee44',1,'SceneService::is_running()']]],
   ['is_5fvalid_48',['is_valid',['../struct_collider_ray_result.html#a61ed3d024608ab82eea4699009805b95',1,'ColliderRayResult']]],
   ['iscomponent_49',['IsComponent',['../concept_is_component.html',1,'']]]
 ];
