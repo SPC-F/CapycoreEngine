@@ -18,6 +18,21 @@ struct Shape2D {
   b2ShapeType type{};
 };
 
+struct Vec2f {
+  float x, y;
+};
+
+constexpr int MAX_POLY_VERTS = 8;
+/**
+ * @brief Structure representing polygon vertices.
+ *
+ * Includes an array of vertices and the count of vertices.
+ */
+struct PolygonVerts {
+  Vec2f verts[MAX_POLY_VERTS];
+  int count = 0;
+};
+
 /**
  * @brief Structure representing a 2D physics body.
  *
@@ -137,6 +152,44 @@ struct Body2D {
    * @return Vector3 The current velocity vector.
    */
   static Vector3 get_body_velocity(const Body2D& body) noexcept;
+
+  /** @brief Retrieves the current angular velocity of the specified body.
+   *
+   * @param body The Body2D instance to get the angular velocity for.
+   * @return float The current angular velocity.
+   */
+  static float get_body_angular_velocity(const Body2D& body) noexcept;
+
+  /** @brief Sets the angular velocity of the specified body.
+   *
+   * @param body The Body2D instance to set the angular velocity for.
+   * @param angular_velocity The new angular velocity value.
+   */
+  static void set_body_angular_velocity(const Body2D& body,
+                                        float angular_velocity) noexcept;
+
+  /**
+   * @brief Retrieves the polygon vertices of the specified body shape.
+   *
+   * @param body The Body2D instance to get the polygon vertices for.
+   * @param shape_id The b2ShapeId of the shape to retrieve vertices from.
+   */
+  static PolygonVerts get_body_polygon_verts(const Body2D& body,
+                                             b2ShapeId shape_id);
+
+  /** @brief Retrieves the world position of the specified body.
+   *
+   * @param body The Body2D instance to get the world position for.
+   * @return Vec2f The world position of the body.
+   */
+  static Vec2f get_body_world_position(const Body2D& body);
+
+  /** @brief Retrieves the world rotation of the specified body in degrees.
+   *
+   * @param body The Body2D instance to get the world rotation for.
+   * @return float The world rotation in degrees.
+   */
+  static float get_body_world_rotation(const Body2D& body);
 };
 
 /**

@@ -18,7 +18,7 @@ class CircleCollider2D : public Collider2D {
   CircleCollider2D(float friction, float bounciness,
                    float radius = default_circle_collider_radius,
                    Point offset = {0.0f, 0.0f}, bool is_sensor = false,
-                   bool is_bullet = false);
+                   bool can_rotate = false, bool is_bullet = false);
   ~CircleCollider2D() override = default;
 
   void update(float dt) override;
@@ -30,7 +30,7 @@ class CircleCollider2D : public Collider2D {
   CircleCollider2D& bounciness(float value) noexcept override;
 
   std::string type_name() const override;
-  
+
   [[nodiscard]] Point offset() const noexcept override;
   CircleCollider2D& offset(Point value) noexcept override;
 

@@ -65,10 +65,15 @@ class Rigidbody2D : public Component {
    */
   [[nodiscard]] Vector3 velocity() const noexcept;
 
+  void angular_velocity(float value) noexcept;
+
+  [[nodiscard]] float angular_velocity() const noexcept;
+
   void mark_network_dirty() noexcept;
 
   void on_serialize(std::vector<uint8_t>& out) const override;
-  void on_deserialize(const std::vector<uint8_t>& data, size_t& offset) override;
+  void on_deserialize(const std::vector<uint8_t>& data,
+                      size_t& offset) override;
 
   std::string type_name() const override;
 

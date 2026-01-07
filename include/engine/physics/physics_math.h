@@ -60,6 +60,7 @@ float box2d_to_pixels(float length) noexcept;
 float pixels_to_box2d(float length) noexcept;
 
 /** @brief Convert physics Vector3 to transform pixel Vector3 */
-Vector3 physics_vec3_to_transform_pixel_vec3(const Vector3& v, float width,
-                                             float height) noexcept;
+Vector3 physics_vec3_to_transform_pixel_vec3(
+    const Vector3& v,
+    float pixels_per_meter = PhysicsWorld::pixels_per_meters) noexcept;
 };  // namespace PhysicsMath

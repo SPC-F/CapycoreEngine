@@ -14,66 +14,37 @@ SdlBoxCollider2DStrategy::SdlBoxCollider2DStrategy(SDL_Renderer& sdl_renderer)
 
 void SdlBoxCollider2DStrategy::draw(Component& component, Camera& camera) {
   auto parent_opt = component.parent();
-  if (!parent_opt.has_value()) {
-    throw std::runtime_error(
-        "Cannot draw BoxCollider2D component without a parent GameObject");
-  }
-
-  auto& physics_service =
-      Engine::instance().services->get_service<PhysicsService>().get();
-  if (!physics_service.debug_mode()) {
-    return;
-  }
-
-  const auto& transform = parent_opt->get().transform();
-  const auto& position = transform.position();
-  const auto& rotation = transform.rotation();
+  if (!parent_opt.has_value()) return;
 
   auto& box_collider = dynamic_cast<BoxCollider2D&>(component);
 
-  const auto& body_tf = Body2D::get_pixel_transform(
-      parent_opt->get().get_component<Rigidbody2D>().value().get().body());
+  /// Get the Rigidbody2D to access the physics body
+  auto& rb = parent_opt->get().get_component<Rigidbody2D>().value().get();
+  auto body = rb.body();
+  b2ShapeId shape_id = body.shapes[0].id;
 
-  const auto& camera_position = camera.transform().position();
+  /// We directly request the box corners from the Body2D utility
+  /// which computes them based on the body's transform and shape.
+  ///
+  /// The reason we do not use the GameObject's transform is that
+  /// the Rigidbody2D position/rotation might differ due to
+  /// shape size, offset, and physics simulation.
+  PolygonVerts corners = Body2D::get_body_polygon_verts(body, shape_id);
+
+  /// Set up screen coordinates
+  SDL_FPoint screenVerts[4];
+  auto cam = camera.transform().position();
   float zoom = camera.zoom();
+  float half_screen_w = camera.get_screen_width() * 0.5f;
+  float half_screen_h = camera.get_screen_height() * 0.5f;
 
-  float half_screen_width = camera.get_screen_width() * 0.5f;
-  float half_screen_height = camera.get_screen_height() * 0.5f;
-
-  const auto& box = dynamic_cast<const BoxCollider2D&>(component);
-
-  float cx = body_tf.position.x + box.offset().x + box.width() * 0.5f;
-  float cy = body_tf.position.y + box.offset().y + box.height() * 0.5f;
-
-  float w = box.width();
-  float h = box.height();
-
-  float rad = rotation * (PhysicsMath::pi / PhysicsMath::circle_divisor);
-  float cosA = std::cos(rad);
-  float sinA = std::sin(rad);
-
-  SDL_FPoint corners[4] = {
-      {-w * 0.5f, -h * 0.5f},
-      {w * 0.5f, -h * 0.5f},
-      {w * 0.5f, h * 0.5f},
-      {-w * 0.5f, h * 0.5f},
-  };
-
-  SDL_FPoint screen_corners[4];
-
+  /// Transform physics world coordinates to screen coordinates
   for (int i = 0; i < 4; i++) {
-    float rx = corners[i].x * cosA - corners[i].y * sinA;
-    float ry = corners[i].x * sinA + corners[i].y * cosA;
-
-    float wx = cx + rx;
-    float wy = cy + ry;
-
-    screen_corners[i].x = (wx - camera_position.x) * zoom + half_screen_width;
-    screen_corners[i].y = (wy - camera_position.y) * zoom + half_screen_height;
+    screenVerts[i].x = (corners.verts[i].x - cam.x) * zoom + half_screen_w;
+    screenVerts[i].y = (corners.verts[i].y - cam.y) * zoom + half_screen_h;
   }
 
   BodyType2D::Type body_type = box_collider.get_rigidbody().get().type();
-
   switch (body_type) {
     case BodyType2D::Static:
       SDL_SetRenderDrawColor(&sdl_renderer_, 255, 0, 0, 255);
@@ -86,19 +57,11 @@ void SdlBoxCollider2DStrategy::draw(Component& component, Camera& camera) {
       break;
   }
 
-  SDL_RenderLine(&sdl_renderer_, screen_corners[0].x, screen_corners[0].y,
-                 screen_corners[1].x, screen_corners[1].y);
-  SDL_RenderLine(&sdl_renderer_, screen_corners[1].x, screen_corners[1].y,
-                 screen_corners[2].x, screen_corners[2].y);
-  SDL_RenderLine(&sdl_renderer_, screen_corners[2].x, screen_corners[2].y,
-                 screen_corners[3].x, screen_corners[3].y);
-  SDL_RenderLine(&sdl_renderer_, screen_corners[3].x, screen_corners[3].y,
-                 screen_corners[0].x, screen_corners[0].y);
-
-  SDL_RenderLine(&sdl_renderer_, screen_corners[0].x, screen_corners[0].y,
-                 screen_corners[2].x, screen_corners[2].y);
-  SDL_RenderLine(&sdl_renderer_, screen_corners[1].x, screen_corners[1].y,
-                 screen_corners[3].x, screen_corners[3].y);
+  for (int i = 0; i < 4; i++) {
+    int j = (i + 1) % 4;
+    SDL_RenderLine(&sdl_renderer_, screenVerts[i].x, screenVerts[i].y,
+                   screenVerts[j].x, screenVerts[j].y);
+  }
 
   Color original_color = camera.background_color();
   SDL_SetRenderDrawColor(&sdl_renderer_, original_color.r, original_color.g,

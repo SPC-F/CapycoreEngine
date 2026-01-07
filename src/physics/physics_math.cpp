@@ -58,10 +58,8 @@ float pixels_to_box2d(float length) noexcept {
   return length * PhysicsWorld::meters_per_pixels;
 }
 
-Vector3 physics_vec3_to_transform_pixel_vec3(const Vector3& v, float width_px,
-                                             float height_px) noexcept {
-  float x = v.x + (width_px / 2.0f);
-  float y = v.y + (height_px / 2.0f);
-  return Vector3{x, y, 0.0f};
+Vector3 physics_vec3_to_transform_pixel_vec3(const Vector3& v,
+                                             float pixels_per_meter) noexcept {
+  return Vector3{v.x * pixels_per_meter, v.y * pixels_per_meter, 0.0f};
 }
 }  // namespace PhysicsMath

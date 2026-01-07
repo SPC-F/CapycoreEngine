@@ -102,10 +102,8 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
   auto& pathfinding = get_pathfinding_component().get();
   auto& path = pathfinding.get_path();
 
-  const Vector3 half_size(width_ * 0.5f, height_ * 0.5f, 0.0f);
-
   /// We should operate in center-space
-  const Vector3 source_center = source.position() + half_size;
+  const Vector3 source_center = source.position();
   const Vector3 target_center = target.position();
 
   bool reached_destination = false;
@@ -113,7 +111,6 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
   if (!path.empty()) {
     auto& last_node = path.back().get();
     Vector3 last_node_center = last_node.transform().position();
-    last_node_center.y -= half_size.y;
 
     reached_destination =
         (source_center - last_node_center).length() < arrival_threshold_;
@@ -155,7 +152,6 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
   auto& next_node = path.front().get();
 
   Vector3 node_center = next_node.transform().position();
-  node_center.y -= half_size.y;
 
   Vector3 delta = node_center - source_center;
   float dist = delta.length();
@@ -199,7 +195,7 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
   }
 
   Vector3 new_center = source_center + direction * speed_ * dt;
-  source.position(new_center - half_size);
+  source.position(new_center);
 }
 
 AIControllerMode AIController::get_mode() const { return mode_; }

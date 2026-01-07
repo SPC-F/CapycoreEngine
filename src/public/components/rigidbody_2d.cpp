@@ -53,8 +53,6 @@ void Rigidbody2D::update(float dt) {
   /// Dynamic bodies: Update GameObject transform from physics body
   if (type_ == BodyType2D::Dynamic) {
     Body2DTransform body_tf = Body2D::get_pixel_transform(body_);
-    body_tf.position = PhysicsMath::physics_vec3_to_transform_pixel_vec3(
-        body_tf.position, 0, 0);
 
     tf.position(body_tf.position);
     tf.rotation(body_tf.rotation);
@@ -162,6 +160,16 @@ void Rigidbody2D::velocity(const Vector3& value) noexcept {
 Vector3 Rigidbody2D::velocity() const noexcept {
   Vector3 v = Body2D::get_body_velocity(body_);
   return {v.x, v.y, 0.0f};
+}
+
+void Rigidbody2D::angular_velocity(float value) noexcept {
+  Body2D::set_body_angular_velocity(body_, value);
+
+  mark_network_dirty();
+}
+
+float Rigidbody2D::angular_velocity() const noexcept {
+  return Body2D::get_body_angular_velocity(body_);
 }
 
 void Rigidbody2D::mark_network_dirty() noexcept {

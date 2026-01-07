@@ -2,6 +2,8 @@
 #include <engine/physics/world/body/body_2d.h>
 #include <engine/physics/world/physics_world.h>
 
+#include <iostream>
+
 constexpr float force_multiplier = 100000.0f;
 constexpr float default_box_divisor = 2.0f;
 
@@ -15,7 +17,7 @@ Body2DTransform Body2D::get_body_transform(const Body2D& body) {
   transform.body = body;
   transform.position =
       PhysicsMath::box2d_vec_to_pixel_vec3({pos.x, pos.y, 0.0f}, false);
-  transform.rotation = angle;
+  transform.rotation = PhysicsMath::to_degrees(angle);
 
   b2Vec2 com = b2Body_GetWorldCenterOfMass(body.id);
   transform.center_of_mass =
@@ -25,20 +27,26 @@ Body2DTransform Body2D::get_body_transform(const Body2D& body) {
 }
 
 Body2DTransform Body2D::get_pixel_transform(const Body2D& body) {
-  b2Vec2 pos = b2Body_GetPosition(body.id);
-  b2Rot rotation = b2Body_GetRotation(body.id);
-  float angle =
-      PhysicsMath::convert_box2d_angle_to_radians(rotation.s, rotation.c);
+  b2Vec2 pos = b2Body_GetPosition(body.id);      // center of body
+  b2Rot rotation = b2Body_GetRotation(body.id);  // radians
 
   Body2DTransform transform{};
   transform.body = body;
-  transform.position = PhysicsMath::box2d_vec_to_pixel_vec3(
-      {pos.x, pos.y, 0.0f}, true);  // pixels
-  transform.rotation = angle;
 
+  // Convert Box2D position (meters) to pixels
+  transform.position =
+      PhysicsMath::box2d_vec_to_pixel_vec3({pos.x, pos.y, 0.0f});
+
+  // Convert rotation to degrees for engine transform
+  float angle_rad =
+      PhysicsMath::convert_box2d_angle_to_radians(rotation.s, rotation.c);
+  transform.rotation = PhysicsMath::to_degrees(angle_rad);
+
+  // Center of mass (optional)
   b2Vec2 com = b2Body_GetWorldCenterOfMass(body.id);
   transform.center_of_mass =
-      PhysicsMath::box2d_vec_to_pixel_vec3({com.x, com.y, 0.0f}, true);
+      PhysicsMath::box2d_vec_to_pixel_vec3({com.x, com.y, 0.0f});
+
   return transform;
 }
 
@@ -159,4 +167,47 @@ void Body2D::set_body_velocity(const Body2D& body,
 Vector3 Body2D::get_body_velocity(const Body2D& body) noexcept {
   b2Vec2 vel = b2Body_GetLinearVelocity(body.id);
   return Vector3{vel.x, vel.y, 0.0f};
+}
+
+float Body2D::get_body_angular_velocity(const Body2D& body) noexcept {
+  return b2Body_GetAngularVelocity(body.id);
+}
+
+void Body2D::set_body_angular_velocity(const Body2D& body,
+                                       float angular_velocity) noexcept {
+  b2Body_SetAngularVelocity(body.id, angular_velocity);
+}
+
+PolygonVerts Body2D::get_body_polygon_verts(const Body2D& body,
+                                            b2ShapeId shape_id) {
+  PolygonVerts verts{};
+  b2Polygon poly = b2Shape_GetPolygon(shape_id);
+  b2Transform xf = b2Body_GetTransform(body.id);
+
+  int n = (poly.count < MAX_POLY_VERTS) ? poly.count : MAX_POLY_VERTS;
+  verts.count = n;
+
+  for (int i = 0; i < n; i++) {
+    b2Vec2 worldV = b2TransformPoint(xf, poly.vertices[i]);
+    float px = PhysicsMath::box2d_to_pixels(worldV.x);
+    float py = PhysicsMath::box2d_to_pixels(worldV.y);
+    verts.verts[i] = {px, py};
+  }
+
+  return verts;
+}
+
+Vec2f Body2D::get_body_world_position(const Body2D& body) {
+  b2Transform xf = b2Body_GetTransform(body.id);
+  b2Vec2 pos = xf.p;
+
+  return {PhysicsMath::box2d_to_pixels(pos.x),
+          PhysicsMath::box2d_to_pixels(pos.y)};
+}
+
+float Body2D::get_body_world_rotation(const Body2D& body) {
+  b2Transform xf = b2Body_GetTransform(body.id);
+
+  return PhysicsMath::to_degrees(
+      PhysicsMath::convert_box2d_angle_to_radians(xf.q.s, xf.q.c));
 }

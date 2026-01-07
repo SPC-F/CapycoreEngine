@@ -113,12 +113,9 @@ void NavigationGraph::generate_nodes() {
         node_tile_map_[pos] = &nav_node;
       };
 
-      if (above)
-        create_node(above_pos, grid_size_ * 0.5f, -node_vertical_offset_);
-      if (above && left)
-        create_node(left_pos, -grid_size_ * 0.5f, -node_vertical_offset_);
-      if (above && right)
-        create_node(right_pos, grid_size_ * 1.5f, -node_vertical_offset_);
+      if (above) create_node(above_pos, 0.0f, -grid_size_);
+      if (above && left) create_node(left_pos, -grid_size_, -grid_size_);
+      if (above && right) create_node(right_pos, grid_size_, -grid_size_);
     }
   }
 }

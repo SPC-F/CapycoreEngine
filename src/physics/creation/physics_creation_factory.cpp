@@ -50,26 +50,21 @@ Body2D PhysicsCreationFactory::create_body(Vector3 position,
 Body2D PhysicsCreationFactory::create_box_fixture(Body2D body, Point offset,
                                                   float width, float height,
                                                   PhysicsCreationFlags flags) {
-  if (width <= 0.0f || height <= 0.0f) {
-    throw std::invalid_argument("Width and height must be positive values.");
-  }
+  if (width <= 0.0f || height <= 0.0f)
+    throw std::invalid_argument("Width and height must be positive.");
 
-  // Box2D works in meters, so we need to convert from pixels to meters
+  // Convert width/height from pixels to meters
   float width_m = PhysicsMath::pixels_to_box2d(width);
   float height_m = PhysicsMath::pixels_to_box2d(height);
 
-  // The box constructor takes half-width and half-height
-  // Don't ask me why, I know its stupid
   float half_width = width_m / 2.0f;
   float half_height = height_m / 2.0f;
 
-  // Offset takes the converted offset plus half the width and height to center
-  // the box back to the desired position. Otherwise the box would be offset
-  // from the position by half its size.
-  b2Vec2 converted_offset = {
-      PhysicsMath::pixels_to_box2d(offset.x + width * 0.5f),
-      PhysicsMath::pixels_to_box2d(offset.y + height * 0.5f)};
+  // Offset is only needed if you want the shape to be off-center
+  b2Vec2 converted_offset = {PhysicsMath::pixels_to_box2d(offset.x),
+                             PhysicsMath::pixels_to_box2d(offset.y)};
 
+  // Make a Box2D box centered on the body
   b2Polygon box = b2MakeOffsetBox(half_width, half_height, converted_offset,
                                   b2MakeRot(0.0f));
 
@@ -163,6 +158,8 @@ Body2D PhysicsCreationFactory::create_circle_fixture(
   b2Shape_SetFilter(shape_id, filter);
   b2Shape_SetFriction(shape_id, flags.friction);
   b2Shape_SetRestitution(shape_id, flags.bounciness);
+
+  b2Body_SetFixedRotation(body.id, !flags.enable_rotation);
 
   if (!b2Shape_IsValid(shape_id)) {
     throw std::runtime_error("Failed to create shape for body in Box2D world.");

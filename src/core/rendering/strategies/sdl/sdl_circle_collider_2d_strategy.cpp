@@ -19,47 +19,61 @@ void SdlCircleCollider2DStrategy::draw(Component& component, Camera& camera) {
         "Cannot draw CircleCollider2D component without a parent GameObject");
   }
 
+  auto& circle_collider = dynamic_cast<CircleCollider2D&>(component);
+
+  /// Only draw in debug mode
   auto& physics_service =
       Engine::instance().services->get_service<PhysicsService>().get();
-  if (!physics_service.debug_mode()) {
-    return;
-  }
+  if (!physics_service.debug_mode()) return;
 
-  const auto& transform = parent_opt->get().transform();
   const auto& camera_position = camera.transform().position();
   float zoom = camera.zoom();
-
   float half_screen_width = camera.get_screen_width() * 0.5f;
   float half_screen_height = camera.get_screen_height() * 0.5f;
 
-  auto& circle_collider = dynamic_cast<CircleCollider2D&>(component);
+  float radius_px =
+      circle_collider.radius() * parent_opt->get().transform().scale().x;
 
-  const auto& body_tf = Body2D::get_pixel_transform(
-      parent_opt->get().get_component<Rigidbody2D>().value().get().body());
+  /// Get body position and rotation
+  Vec2f body_pos{0, 0};
+  float body_rot = 0.0f;
 
-  float radius_px = circle_collider.radius() * transform.scale().x;
+  /// If there's a Rigidbody2D, use its body transform
+  /// Here we can use the body transform directly instead of GameObject
+  /// transform because circles are symmetric and rotation does not affect their
+  /// shape so there is no account to be taken for collider offset rotation as
+  /// with polygons
+  if (parent_opt->get().get_component<Rigidbody2D>()) {
+    auto& rb = parent_opt->get().get_component<Rigidbody2D>().value().get();
+    auto body = rb.body();
+    auto pt = Body2D::get_pixel_transform(body);
 
+    body_pos = {pt.position.x, pt.position.y};
+    body_rot = pt.rotation;
+  } else {
+    const auto& t = parent_opt->get().transform();
+    body_pos = {t.position().x, t.position().y};
+    body_rot = t.rotation();
+  }
+
+  /// Apply collider offset (rotated by body rotation)
+  float rad = body_rot * (PhysicsMath::pi / 180.0f);
+  float cosA = std::cos(rad);
+  float sinA = std::sin(rad);
   float ox = circle_collider.offset().x;
   float oy = circle_collider.offset().y;
 
-  float angle = transform.rotation();
-  float rad = angle * (PhysicsMath::pi / PhysicsMath::circle_divisor);
-  float cosA = std::cos(rad);
-  float sinA = std::sin(rad);
+  float center_x = body_pos.x + (ox * cosA - oy * sinA);
+  float center_y = body_pos.y + (ox * sinA + oy * cosA);
 
-  float rx = ox * cosA - oy * sinA;
-  float ry = ox * sinA + oy * cosA;
-
-  float world_cx = body_tf.position.x + rx;
-  float world_cy = body_tf.position.y + ry;
-
-  Point center{(world_cx - camera_position.x) * zoom + half_screen_width,
-               (world_cy - camera_position.y) * zoom + half_screen_height};
-
-  float screen_radius = radius_px * zoom;
+  /// Transform to screen coordinates
+  int cx = static_cast<int>((center_x - camera_position.x) * zoom +
+                            half_screen_width);
+  int cy = static_cast<int>((center_y - camera_position.y) * zoom +
+                            half_screen_height);
+  int screen_radius = static_cast<int>(radius_px * zoom);
 
   BodyType2D::Type body_type = circle_collider.get_rigidbody().get().type();
-
   switch (body_type) {
     case BodyType2D::Static:
       SDL_SetRenderDrawColor(&sdl_renderer_, 255, 0, 0, 255);
@@ -72,8 +86,9 @@ void SdlCircleCollider2DStrategy::draw(Component& component, Camera& camera) {
       break;
   }
 
-  draw_circle((int)center.x, (int)center.y, (int)screen_radius);
+  draw_circle(cx, cy, screen_radius);
 
+  // Draw local axes for debug
   auto rotate_local = [&](float lx, float ly) -> SDL_FPoint {
     return {lx * cosA - ly * sinA, lx * sinA + ly * cosA};
   };
@@ -84,7 +99,7 @@ void SdlCircleCollider2DStrategy::draw(Component& component, Camera& camera) {
   SDL_FPoint vertB = rotate_local(0, radius_px);
 
   auto to_screen = [&](SDL_FPoint p) -> SDL_FPoint {
-    return {p.x + center.x, p.y + center.y};
+    return {p.x + cx, p.y + cy};
   };
 
   SDL_FPoint H1 = to_screen(horizL);
@@ -95,6 +110,7 @@ void SdlCircleCollider2DStrategy::draw(Component& component, Camera& camera) {
   SDL_RenderLine(&sdl_renderer_, H1.x, H1.y, H2.x, H2.y);
   SDL_RenderLine(&sdl_renderer_, V1.x, V1.y, V2.x, V2.y);
 
+  // Restore color
   Color original_color = camera.background_color();
   SDL_SetRenderDrawColor(&sdl_renderer_, original_color.r, original_color.g,
                          original_color.b, original_color.a);

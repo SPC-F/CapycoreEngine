@@ -5,9 +5,9 @@
 
 BoxCollider2D::BoxCollider2D(float friction, float bounciness, float width,
                              float height, Point offset, bool is_sensor,
-                             bool is_bullet)
+                             bool can_rotate, bool is_bullet)
     : Collider2D(friction, bounciness, offset), width_(width), height_(height) {
-  auto on_awake = [this, offset, friction, bounciness, is_sensor,
+  auto on_awake = [this, offset, friction, bounciness, is_sensor, can_rotate,
                    is_bullet](Component& comp) {
     if (!parent().has_value()) {
       throw std::runtime_error("BoxCollider2D has no parent GameObject.");
@@ -34,6 +34,7 @@ BoxCollider2D::BoxCollider2D(float friction, float bounciness, float width,
       auto body = rigidbody.body();
 
       auto flags = Collider2D::creation_flags();
+      flags.enable_rotation = can_rotate;
       flags.desired_mass = rigidbody.mass();
       flags.bounciness = bounciness;
       flags.friction = friction;

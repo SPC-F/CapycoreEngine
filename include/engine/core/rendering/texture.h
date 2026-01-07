@@ -16,6 +16,7 @@ class Texture final {
   friend class RenderingManager;
   friend class AssetService;
   friend class SdlSpriteStrategy;
+  friend class SdlBoxCollider2DStrategy;
   friend class SdlImageStrategy;
 
   std::unique_ptr<SDL_Texture, void (*)(SDL_Texture*)>
