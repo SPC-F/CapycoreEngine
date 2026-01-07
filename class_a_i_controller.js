@@ -11,6 +11,7 @@ var class_a_i_controller =
     [ "get_chase_target", "class_a_i_controller.html#a5f167eccde860d9bf9300fbdcee347f9", null ],
     [ "get_height", "class_a_i_controller.html#a546a3f676cd71c7068f16d74e60707ee", null ],
     [ "get_mode", "class_a_i_controller.html#a2a006e166d528f685d5578207b9a15dd", null ],
+    [ "get_path", "class_a_i_controller.html#a76f652613e27318781ce3f200990627a", null ],
     [ "get_patrol_target", "class_a_i_controller.html#a7493201a5649f4f0efb4afa248e15b8c", null ],
     [ "get_speed", "class_a_i_controller.html#a7fa898ee4a06d9b697898a76c78688d5", null ],
     [ "get_width", "class_a_i_controller.html#a02f31a50b33af72144a88db634312c2e", null ],

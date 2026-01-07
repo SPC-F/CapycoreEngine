@@ -9,20 +9,20 @@ var hierarchy =
     [ "ColliderRayResult", "struct_collider_ray_result.html", null ],
     [ "Color", "class_color.html", null ],
     [ "Component", "class_component.html", [
-      [ "AIController", "class_a_i_controller.html", null ],
       [ "Animator", "class_animator.html", null ],
       [ "AudioSource", "class_audio_source.html", null ],
       [ "BehaviorScript", "class_behavior_script.html", null ],
       [ "NavigationGraph", "class_navigation_graph.html", null ],
       [ "NetworkIdentity", "class_network_identity.html", null ],
+      [ "Pathfinding", "class_pathfinding.html", null ],
       [ "Renderable", "class_renderable.html", [
+        [ "AIController", "class_a_i_controller.html", null ],
         [ "Collider2D", "class_collider2_d.html", [
           [ "BoxCollider2D", "class_box_collider2_d.html", null ],
           [ "CircleCollider2D", "class_circle_collider2_d.html", null ]
         ] ],
         [ "Image", "class_image.html", null ],
         [ "NavigationNode", "class_navigation_node.html", null ],
-        [ "Pathfinding", "class_pathfinding.html", null ],
         [ "Sprite", "class_sprite.html", null ],
         [ "Text", "class_text.html", null ]
       ] ],
@@ -69,11 +69,11 @@ var hierarchy =
       [ "InputSystem", "class_input_system.html", null ]
     ] ],
     [ "IRenderingStrategy", "class_i_rendering_strategy.html", [
+      [ "SdlAIControllerStrategy", "class_sdl_a_i_controller_strategy.html", null ],
       [ "SdlBoxCollider2DStrategy", "class_sdl_box_collider2_d_strategy.html", null ],
       [ "SdlCircleCollider2DStrategy", "class_sdl_circle_collider2_d_strategy.html", null ],
       [ "SdlImageStrategy", "class_sdl_image_strategy.html", null ],
       [ "SdlNavigationNodeStrategy", "class_sdl_navigation_node_strategy.html", null ],
-      [ "SdlPathFindingStrategy", "class_sdl_path_finding_strategy.html", null ],
       [ "SdlSpriteStrategy", "class_sdl_sprite_strategy.html", null ],
       [ "SdlTextStrategy", "class_sdl_text_strategy.html", null ]
     ] ],

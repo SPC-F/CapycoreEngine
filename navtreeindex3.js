@@ -1,9 +1,10 @@
 var NAVTREEINDEX3 =
 {
-"class_sdl_path_finding_strategy.html":[3,0,72],
-"class_sdl_path_finding_strategy.html#a52cad0b695bad2d172577ebe86cdbec6":[3,0,72,2],
-"class_sdl_path_finding_strategy.html#a974f7cc05944954ae723e8a2d4964e06":[3,0,72,1],
-"class_sdl_path_finding_strategy.html#ac360abc6a80622e73c440bf7853e109b":[3,0,72,0],
+"class_sdl_image_strategy.html#aa4547c777192cedbc9693f87b10d5dca":[3,0,70,1],
+"class_sdl_navigation_node_strategy.html":[3,0,72],
+"class_sdl_navigation_node_strategy.html#a6c72e6866998c07c717694e05bf697c0":[3,0,72,1],
+"class_sdl_navigation_node_strategy.html#ad400ed8b01be8a1aeede6facac358121":[3,0,72,2],
+"class_sdl_navigation_node_strategy.html#af2c6e7f047046485b5eb56ea2cb38397":[3,0,72,0],
 "class_sdl_sprite_strategy.html":[3,0,75],
 "class_sdl_sprite_strategy.html#a31207a25e575c7c35a0aceb72fb272c7":[3,0,75,1],
 "class_sdl_sprite_strategy.html#a467aa1344c9621521fa052ef62a07313":[3,0,75,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "class_u_i_text.html#af897ba527b2ebeea974e245b0c64938d":[3,0,97,1],
 "class_vector3.html":[3,0,98],
 "class_vector3.html#a0f49191f7e001e7f7ae1cb49522118b4":[3,0,98,0],
-"class_vector3.html#a11ce237fdb550df8204bb6a9d264f92a":[3,0,98,11],
-"class_vector3.html#a1793fd437116e8c241e952c959bfd40a":[3,0,98,8]
+"class_vector3.html#a11ce237fdb550df8204bb6a9d264f92a":[3,0,98,11]
 };

@@ -42,7 +42,7 @@ var searchData=
   ['get_5fnode_39',['get_node',['../class_navigation_graph.html#a3136a4e675ff6e9d85b7e1b0946836f4',1,'NavigationGraph']]],
   ['get_5fnodes_40',['get_nodes',['../class_navigation_graph.html#abde63f49554c2d0ea90cc625adced007',1,'NavigationGraph']]],
   ['get_5forigin_41',['get_origin',['../class_pathfinding.html#a12229ce59d7067a15593b6196c256c11',1,'Pathfinding']]],
-  ['get_5fpath_42',['get_path',['../class_pathfinding.html#a3411607fd24393fdb4d54e2795a27e42',1,'Pathfinding']]],
+  ['get_5fpath_42',['get_path',['../class_a_i_controller.html#a76f652613e27318781ce3f200990627a',1,'AIController::get_path()'],['../class_pathfinding.html#a3411607fd24393fdb4d54e2795a27e42',1,'Pathfinding::get_path()']]],
   ['get_5fpatrol_5ftarget_43',['get_patrol_target',['../class_a_i_controller.html#a7493201a5649f4f0efb4afa248e15b8c',1,'AIController']]],
   ['get_5fpeer_5ftype_44',['get_peer_type',['../class_multiplayer_service.html#a0ef28ec1f6d8a182509006e9214fb759',1,'MultiplayerService']]],
   ['get_5fpixel_5ftransform_45',['get_pixel_transform',['../struct_body2_d.html#ad89aa50c9ea10de1f3e345429d7a062c',1,'Body2D']]],

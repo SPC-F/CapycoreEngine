@@ -1,35 +1,35 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="Node000000" href="$class_component.html" title=" " alt="" coords="5,179,103,204"/>
-<area shape="rect" id="Node000001" href="$class_a_i_controller.html" title="Component responsible for controlling AI behavior." alt="" coords="167,5,266,31"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="63,165,95,103,120,69,149,40,168,28,171,33,152,44,124,73,100,106,68,167"/>
-<area shape="rect" id="Node000002" href="$class_animator.html" title=" " alt="" coords="175,55,258,80"/>
-<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="71,166,105,127,149,89,174,77,177,81,152,94,108,131,75,169"/>
-<area shape="rect" id="Node000003" href="$class_audio_source.html" title="Component that plays audio using the AudioService." alt="" coords="165,104,268,129"/>
+<area shape="rect" id="Node000001" href="$class_animator.html" title=" " alt="" coords="175,5,258,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="63,165,95,103,120,69,149,40,174,26,177,31,152,44,124,73,100,106,68,167"/>
+<area shape="rect" id="Node000002" href="$class_audio_source.html" title="Component that plays audio using the AudioService." alt="" coords="165,55,268,80"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="71,166,105,127,149,89,171,78,174,82,152,94,108,131,75,169"/>
+<area shape="rect" id="Node000003" href="$class_behavior_script.html" title="Component that hosts a Behavior." alt="" coords="158,104,275,129"/>
 <area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="88,170,150,138,177,127,179,132,152,143,90,174"/>
-<area shape="rect" id="Node000004" href="$class_behavior_script.html" title="Component that hosts a Behavior." alt="" coords="158,153,275,179"/>
-<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="116,179,157,173,158,178,117,184"/>
-<area shape="rect" id="Node000005" href="$class_navigation_graph.html" title="Component representing a navigation graph for AI pathfinding." alt="" coords="151,203,283,228"/>
-<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="117,198,151,203,150,208,116,203"/>
-<area shape="rect" id="Node000006" href="$class_network_identity.html" title="Component that gives a GameObject a network identity (UUID) and dirty flag." alt="" coords="153,252,280,277"/>
+<area shape="rect" id="Node000004" href="$class_navigation_graph.html" title="Component representing a navigation graph for AI pathfinding." alt="" coords="151,153,283,179"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="116,179,150,174,151,179,117,184"/>
+<area shape="rect" id="Node000005" href="$class_network_identity.html" title="Component that gives a GameObject a network identity (UUID) and dirty flag." alt="" coords="153,203,280,228"/>
+<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="117,198,153,203,152,209,116,203"/>
+<area shape="rect" id="Node000006" href="$class_pathfinding.html" title="Component responsible for AI pathfinding using a navigation graph." alt="" coords="169,252,264,277"/>
 <area shape="poly" id="edge6_Node000000_Node000006" title=" " alt="" coords="93,208,152,237,182,249,180,254,150,242,90,213"/>
 <area shape="rect" id="Node000007" href="$class_renderable.html" title="Base class for renderable components in the engine." alt="" coords="169,301,265,327"/>
 <area shape="poly" id="edge7_Node000000_Node000007" title=" " alt="" coords="76,213,109,251,152,286,176,299,174,304,149,291,106,254,72,217"/>
 <area shape="rect" id="Node000016" href="$class_rigidbody2_d.html" title="A 2D rigidbody component that adds physics properties to a GameObject." alt="" coords="164,351,269,376"/>
 <area shape="poly" id="edge16_Node000000_Node000016" title=" " alt="" coords="68,215,101,275,124,308,152,336,173,348,171,353,149,340,120,311,96,278,63,218"/>
-<area shape="rect" id="Node000008" href="$class_collider2_d.html" title="A 2D collider base that defines the shape and physical properties of a GameObject for collision detec..." alt="" coords="349,177,439,203"/>
+<area shape="rect" id="Node000008" href="$class_a_i_controller.html" title="Component responsible for controlling AI behavior." alt="" coords="345,177,443,203"/>
 <area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="272,293,281,287,296,269,304,250,312,231,329,212,347,201,350,205,332,216,317,234,309,252,301,271,284,291,276,297"/>
-<area shape="rect" id="Node000011" href="$class_image.html" title=" " alt="" coords="363,227,425,252"/>
-<area shape="poly" id="edge11_Node000007_Node000011" title=" " alt="" coords="264,294,282,286,330,261,361,248,363,253,332,266,284,291,266,299"/>
-<area shape="rect" id="Node000012" href="$class_navigation_node.html" title="Component representing a navigation node in a navigation graph." alt="" coords="331,276,457,301"/>
-<area shape="poly" id="edge12_Node000007_Node000012" title=" " alt="" coords="278,303,330,295,331,300,278,308"/>
-<area shape="rect" id="Node000013" href="$class_pathfinding.html" title="Component responsible for AI pathfinding using a navigation graph." alt="" coords="347,325,441,351"/>
-<area shape="poly" id="edge13_Node000007_Node000013" title=" " alt="" coords="279,320,347,329,346,334,278,325"/>
+<area shape="rect" id="Node000009" href="$class_collider2_d.html" title="A 2D collider base that defines the shape and physical properties of a GameObject for collision detec..." alt="" coords="349,227,439,252"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="264,294,282,286,330,261,357,250,359,255,332,266,284,291,266,299"/>
+<area shape="rect" id="Node000012" href="$class_image.html" title=" " alt="" coords="363,276,425,301"/>
+<area shape="poly" id="edge12_Node000007_Node000012" title=" " alt="" coords="278,303,362,290,363,296,279,308"/>
+<area shape="rect" id="Node000013" href="$class_navigation_node.html" title="Component representing a navigation node in a navigation graph." alt="" coords="331,325,457,351"/>
+<area shape="poly" id="edge13_Node000007_Node000013" title=" " alt="" coords="278,320,331,327,330,332,278,325"/>
 <area shape="rect" id="Node000014" href="$class_sprite.html" title="Component that represents a 2D sprite to be rendered. The Sprite component holds a reference to a Tex..." alt="" coords="364,375,424,400"/>
 <area shape="poly" id="edge14_Node000007_Node000014" title=" " alt="" coords="268,329,284,336,332,360,364,373,362,378,330,364,282,340,266,334"/>
 <area shape="rect" id="Node000015" href="$class_text.html" title="UI Text Component." alt="" coords="369,424,419,449"/>
 <area shape="poly" id="edge15_Node000007_Node000015" title=" " alt="" coords="278,331,284,336,301,355,309,373,317,391,332,409,351,421,370,428,368,433,348,425,329,413,313,394,304,376,297,358,281,340,274,335"/>
-<area shape="rect" id="Node000009" href="$class_box_collider2_d.html" title="A 2D box collider component that defines a rectangular collision shape for a GameObject." alt="" coords="511,153,626,179"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="453,179,510,171,511,177,454,185"/>
-<area shape="rect" id="Node000010" href="$class_circle_collider2_d.html" title="A 2D circle collider component that defines a circular collision shape for a GameObject." alt="" coords="505,203,632,228"/>
-<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="454,196,505,204,505,209,453,201"/>
+<area shape="rect" id="Node000010" href="$class_box_collider2_d.html" title="A 2D box collider component that defines a rectangular collision shape for a GameObject." alt="" coords="511,203,626,228"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="453,229,510,221,511,226,454,234"/>
+<area shape="rect" id="Node000011" href="$class_circle_collider2_d.html" title="A 2D circle collider component that defines a circular collision shape for a GameObject." alt="" coords="505,252,632,277"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="454,245,505,253,505,258,453,250"/>
 </map>
