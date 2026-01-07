@@ -6,6 +6,7 @@ var class_multiplayer_service =
     [ "get_client_amount", "class_multiplayer_service.html#a23ea3d7388fa2aa392c3f9dc3a1abfab", null ],
     [ "get_connection_port", "class_multiplayer_service.html#afa20fba79397693c1acd4e2f1120f4e0", null ],
     [ "get_connection_state", "class_multiplayer_service.html#ab0265f3b0ff1e1b82699f9135c66512a", null ],
+    [ "get_host_ip", "class_multiplayer_service.html#aadd53b9521532b79001894ffd340eacc", null ],
     [ "get_peer_type", "class_multiplayer_service.html#a0ef28ec1f6d8a182509006e9214fb759", null ],
     [ "get_uuid", "class_multiplayer_service.html#a589c07b7da4533858d3ee649f439e9c3", null ],
     [ "poll", "class_multiplayer_service.html#a329a6dffbe6adad8a7f021b63f24f147", null ],

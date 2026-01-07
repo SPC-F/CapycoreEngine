@@ -1,5 +1,8 @@
 var NAVTREEINDEX3 =
 {
+"class_sdl_path_finding_strategy.html":[3,0,72],
+"class_sdl_path_finding_strategy.html#a52cad0b695bad2d172577ebe86cdbec6":[3,0,72,2],
+"class_sdl_path_finding_strategy.html#a974f7cc05944954ae723e8a2d4964e06":[3,0,72,1],
 "class_sdl_path_finding_strategy.html#ac360abc6a80622e73c440bf7853e109b":[3,0,72,0],
 "class_sdl_sprite_strategy.html":[3,0,75],
 "class_sdl_sprite_strategy.html#a31207a25e575c7c35a0aceb72fb272c7":[3,0,75,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX3 =
 "class_vector3.html":[3,0,98],
 "class_vector3.html#a0f49191f7e001e7f7ae1cb49522118b4":[3,0,98,0],
 "class_vector3.html#a11ce237fdb550df8204bb6a9d264f92a":[3,0,98,11],
-"class_vector3.html#a1793fd437116e8c241e952c959bfd40a":[3,0,98,8],
-"class_vector3.html#a19bc2d328bdb91a42e717652dff476a0":[3,0,98,9],
-"class_vector3.html#a246a7450fb5b1d71a30d6de46253bf6f":[3,0,98,14],
-"class_vector3.html#a2ca0b6fdf9c26be60b459d7d0b16e528":[3,0,98,16]
+"class_vector3.html#a1793fd437116e8c241e952c959bfd40a":[3,0,98,8]
 };

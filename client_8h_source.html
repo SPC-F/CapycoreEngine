@@ -160,18 +160,21 @@ $(document).ready(function(){initNavTree('client_8h_source.html',''); initResiza
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="class_client.html#a4edb3c1a68fc90c9fc8327cbf861baf8">   64</a></span>    [[nodiscard]] std::<span class="keywordtype">string</span> <a class="code hl_function" href="class_client.html#a4edb3c1a68fc90c9fc8327cbf861baf8">get_uuid</a>() const noexcept;</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>private:</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    std::<span class="keywordtype">string</span> local_uuid_;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    std::reference_wrapper&lt;<a class="code hl_class" href="class_router.html">Router</a>&gt; router_;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    ENetPeer* server_peer_{<span class="keyword">nullptr</span>};</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    ENetHost* client_{<span class="keyword">nullptr</span>};</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_enumeration" href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4">ConnectionState</a> connection_state_{<a class="code hl_enumvalue" href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4ab50339a10e1de285ac99d4c3990b8693">ConnectionState::NONE</a>};</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> register_on_connect_handler() noexcept;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">void</span> register_on_disconnect_handler() noexcept;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> register_on_snapshot_full_handler() noexcept;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> register_on_snapshot_delta_handler() noexcept;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>};</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="class_client.html#afca2c88bf229c384751b31a36dba0f23">   66</a></span>    [[nodiscard]] std::<span class="keywordtype">string</span> <a class="code hl_function" href="class_client.html#afca2c88bf229c384751b31a36dba0f23">get_host_ip</a>() const noexcept;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>private:</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    std::<span class="keywordtype">string</span> local_uuid_;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    std::<span class="keywordtype">string</span> host_ip_{<span class="stringliteral">&quot;0.0.0.0&quot;</span>};</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    std::reference_wrapper&lt;Router&gt; router_;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    ENetPeer* server_peer_{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    ENetHost* client_{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_enumeration" href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4">ConnectionState</a> connection_state_{<a class="code hl_enumvalue" href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4ab50339a10e1de285ac99d4c3990b8693">ConnectionState::NONE</a>};</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> register_on_connect_handler() noexcept;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">void</span> register_on_disconnect_handler() noexcept;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">void</span> register_on_snapshot_full_handler() noexcept;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">void</span> register_on_snapshot_delta_handler() noexcept;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>};</div>
 </div>
 <div class="ttc" id="aclass_client_html"><div class="ttname"><a href="class_client.html">Client</a></div><div class="ttdoc">High-level ENet-based network client. Handles connecting, disconnecting, sending messages,...</div><div class="ttdef"><b>Definition</b> client.h:18</div></div>
 <div class="ttc" id="aclass_client_html_a1aabddf45c5be30676a0b00b690d5e59"><div class="ttname"><a href="class_client.html#a1aabddf45c5be30676a0b00b690d5e59">Client::Client</a></div><div class="ttdeci">Client(std::reference_wrapper&lt; Router &gt; router)</div><div class="ttdoc">Construct a Client with a shared Router.</div></div>
@@ -181,8 +184,8 @@ $(document).ready(function(){initNavTree('client_8h_source.html',''); initResiza
 <div class="ttc" id="aclass_client_html_a841e86d45a84a2929e5c82755a861bde"><div class="ttname"><a href="class_client.html#a841e86d45a84a2929e5c82755a861bde">Client::~Client</a></div><div class="ttdeci">~Client() noexcept</div><div class="ttdoc">Safely destroys the client, unregisters handlers and frees ENet resources.</div></div>
 <div class="ttc" id="aclass_client_html_aac399708c3878c9efe53717f1dad2e21"><div class="ttname"><a href="class_client.html#aac399708c3878c9efe53717f1dad2e21">Client::send</a></div><div class="ttdeci">void send(const Message &amp;message) noexcept</div><div class="ttdoc">Sends a message to the connected server peer.</div></div>
 <div class="ttc" id="aclass_client_html_ab6caae9e27d67caf9a353128d75ce1bd"><div class="ttname"><a href="class_client.html#ab6caae9e27d67caf9a353128d75ce1bd">Client::disconnect</a></div><div class="ttdeci">void disconnect() noexcept</div><div class="ttdoc">Begins a clean disconnect by sending a disconnect message.</div></div>
+<div class="ttc" id="aclass_client_html_afca2c88bf229c384751b31a36dba0f23"><div class="ttname"><a href="class_client.html#afca2c88bf229c384751b31a36dba0f23">Client::get_host_ip</a></div><div class="ttdeci">std::string get_host_ip() const noexcept</div></div>
 <div class="ttc" id="aclass_client_html_afe456da1114eed976aff00204cca45bb"><div class="ttname"><a href="class_client.html#afe456da1114eed976aff00204cca45bb">Client::get_connection_state</a></div><div class="ttdeci">ConnectionState get_connection_state() const noexcept</div><div class="ttdoc">Returns current connection state.</div></div>
-<div class="ttc" id="aclass_router_html"><div class="ttname"><a href="class_router.html">Router</a></div><div class="ttdoc">Routes incoming network messages to registered handlers.</div><div class="ttdef"><b>Definition</b> router.h:11</div></div>
 <div class="ttc" id="aconnection__state_8h_html"><div class="ttname"><a href="connection__state_8h.html">connection_state.h</a></div></div>
 <div class="ttc" id="aconnection__state_8h_html_a737210072f638038f5ccbeebb671dea4"><div class="ttname"><a href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4">ConnectionState</a></div><div class="ttdeci">ConnectionState</div><div class="ttdef"><b>Definition</b> connection_state.h:3</div></div>
 <div class="ttc" id="aconnection__state_8h_html_a737210072f638038f5ccbeebb671dea4ab50339a10e1de285ac99d4c3990b8693"><div class="ttname"><a href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4ab50339a10e1de285ac99d4c3990b8693">ConnectionState::NONE</a></div><div class="ttdeci">@ NONE</div></div>
