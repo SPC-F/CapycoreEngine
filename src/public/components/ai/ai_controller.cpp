@@ -32,6 +32,9 @@ AIController::AIController(GameObject& pathfinding_game_object)
     rigidbody_ = parent().value().get().get_component<Rigidbody2D>();
     initial_transform = parent().value().get().transform();
 
+    this->disable_draw();
+    this->set_render_strategy(comp);
+
     get_pathfinding_component();
   });
 }
@@ -100,7 +103,6 @@ void AIController::patrol(float dt) {
 void AIController::try_traverse_graph(Transform& source, Transform& target,
                                       float dt) {
   auto& pathfinding = get_pathfinding_component().get();
-  auto& path = pathfinding.get_path();
 
   const Vector3 half_size(width_ * 0.5f, height_ * 0.5f, 0.0f);
 
@@ -110,8 +112,8 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
 
   bool reached_destination = false;
 
-  if (!path.empty()) {
-    auto& last_node = path.back().get();
+  if (!path_.empty()) {
+    auto& last_node = path_.back().get();
     Vector3 last_node_center = last_node.transform().position();
     last_node_center.y -= half_size.y;
 
@@ -123,7 +125,7 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
   }
 
   if (reached_destination) {
-    path.clear();
+    path_.clear();
 
     if (mode_ == AIControllerMode::PATROL) {
       returning_to_start_ = !returning_to_start_;
@@ -138,7 +140,7 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
     return;
   }
 
-  if (path.empty()) {
+  if (path_.empty()) {
     pathfinding.set_origin(source.position());
 
     if (mode_ == AIControllerMode::PATROL && returning_to_start_) {
@@ -148,11 +150,12 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
     }
 
     pathfinding.generate_path_to_target();
+    path_ = std::move(pathfinding.get_path());
   }
 
-  if (path.empty()) return;
+  if (path_.empty()) return;
 
-  auto& next_node = path.front().get();
+  auto& next_node = path_.front().get();
 
   Vector3 node_center = next_node.transform().position();
   node_center.y -= half_size.y;
@@ -162,9 +165,9 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
 
   // Node reached
   if (dist < node_distance_threshold_) {
-    path.erase(path.begin());
+    path_.erase(path_.begin());
 
-    if (path.empty() && rigidbody_.has_value()) {
+    if (path_.empty() && rigidbody_.has_value()) {
       rigidbody_->get().velocity(Vector3(0.0f, 0.0f, 0.0f));
     }
 
@@ -180,7 +183,7 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
     if ((source_center - last_position_).length() < 0.1f) {
       stuck_timer_ += dt;
       if (stuck_timer_ > stuck_threshold_) {
-        path.clear();
+        path_.clear();
         stuck_timer_ = 0.0f;
         rb.velocity(Vector3(0.0f, 0.0f, 0.0f));
         return;
@@ -265,6 +268,10 @@ float AIController::get_height() const { return height_; }
 AIController& AIController::set_height(float height) {
   height_ = height;
   return *this;
+}
+
+std::vector<std::reference_wrapper<GameObject>>& AIController::get_path() {
+  return path_;
 }
 
 bool AIController::enable_graph_traversal() noexcept {

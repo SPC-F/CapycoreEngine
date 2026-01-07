@@ -1,13 +1,13 @@
+#include <engine/core/rendering/strategies/sdl/sdl_ai_controller_strategy.h>
 #include <engine/core/rendering/strategies/sdl/sdl_box_collider_2d_strategy.h>
 #include <engine/core/rendering/strategies/sdl/sdl_circle_collider_2d_strategy.h>
 #include <engine/core/rendering/strategies/sdl/sdl_image_strategy.h>
 #include <engine/core/rendering/strategies/sdl/sdl_navigation_node_strategy.h>
-#include <engine/core/rendering/strategies/sdl/sdl_pathfinding_strategy.h>
 #include <engine/core/rendering/strategies/sdl/sdl_sprite_strategy.h>
 #include <engine/core/rendering/strategies/sdl/sdl_strategy_factory.h>
 #include <engine/core/rendering/strategies/sdl/sdl_text_strategy.h>
+#include <engine/public/components/ai/ai_controller.h>
 #include <engine/public/components/ai/navigation/navigation_node.h>
-#include <engine/public/components/ai/navigation/pathfinding.h>
 #include <engine/public/components/colliders/box_collider_2d.h>
 #include <engine/public/components/colliders/circle_collider_2d.h>
 #include <engine/public/components/sprite.h>
@@ -46,8 +46,8 @@ std::unique_ptr<IRenderingStrategy> SdlStrategyFactory::create_strategy(
         *renderer_.sdl_renderer_);
   }
 
-  if (auto const* pathfinding = dynamic_cast<Pathfinding*>(&component)) {
-    return std::make_unique<SdlPathFindingStrategy>(*renderer_.sdl_renderer_);
+  if (auto const* ai_controller = dynamic_cast<AIController*>(&component)) {
+    return std::make_unique<SdlAIControllerStrategy>(*renderer_.sdl_renderer_);
   }
 
   return {};

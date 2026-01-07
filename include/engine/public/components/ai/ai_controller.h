@@ -1,5 +1,6 @@
 #pragma once
 
+#include <engine/core/rendering/renderable.h>
 #include <engine/public/component.h>
 #include <engine/public/components/ai/navigation/pathfinding.h>
 #include <engine/public/components/rigidbody_2d.h>
@@ -36,7 +37,7 @@ enum AIControllerMode : uint8_t {
  * the Pathfinding component and ensure that the AI GameObject has appropriate
  * colliders (and Rigidbody2D if using physics-based movement).
  */
-class AIController : public Component {
+class AIController : public Renderable {
  public:
   AIController(GameObject& pathfinding_game_object);
 
@@ -84,6 +85,8 @@ class AIController : public Component {
   float get_height() const;
   AIController& set_height(float height);
 
+  std::vector<std::reference_wrapper<GameObject>>& get_path();
+
   bool enable_graph_traversal() noexcept;
   bool disable_graph_traversal() noexcept;
 
@@ -94,6 +97,7 @@ class AIController : public Component {
   std::string type_name() const override;
 
  private:
+  std::vector<std::reference_wrapper<GameObject>> path_;
   std::optional<std::reference_wrapper<GameObject>> pathfinding_game_object_;
   std::optional<std::reference_wrapper<GameObject>> chase_target_;
   std::optional<std::reference_wrapper<GameObject>> patrol_target_;

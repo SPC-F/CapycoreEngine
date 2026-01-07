@@ -1,6 +1,5 @@
 #pragma once
 
-#include <engine/core/rendering/renderable.h>
 #include <engine/public/component.h>
 #include <engine/public/components/ai/navigation/graph.h>
 #include <engine/public/components/ai/navigation/navigation_graph.h>
@@ -15,7 +14,7 @@
  * NOTE: This component requires a NavigationGraph component to be present
  * on the same GameObject to function correctly.
  */
-class Pathfinding : public Renderable {
+class Pathfinding : public Component {
  public:
   Pathfinding();
 
