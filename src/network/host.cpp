@@ -33,6 +33,28 @@ Host::~Host() noexcept
 
 void Host::start_server()
 {
+    // Find local IP address
+    ENetAddress addr{};
+    addr.host = ENET_HOST_ANY;
+    
+    ENetHost* host = enet_host_create(&addr, 1, 2, 0, 0);
+    if (!host)
+        throw std::runtime_error("Failed to create ENet host");
+
+    ENetAddress remote{};
+    enet_address_set_host(&remote, "8.8.8.8");
+    remote.port = 1;
+    enet_socket_connect(host->socket, &remote);
+
+    ENetAddress local{};
+    enet_socket_get_address(host->socket, &local);
+    
+    char ip[32];
+    enet_address_get_host_ip(&local, ip, sizeof(ip));
+    ip_ = ip;
+    enet_host_destroy(host);
+
+    // Start server
     ENetAddress address{};
     address.host = ENET_HOST_ANY;
     address.port = connection_port_;
@@ -250,6 +272,11 @@ void Host::set_max_clients(int amount) noexcept
 int Host::get_client_amount() const noexcept
 {
     return static_cast<int>(clients_.size());
+}
+
+std::string Host::get_ip() const noexcept
+{
+    return ip_;
 }
 
 void Host::set_connection_port(int port) noexcept

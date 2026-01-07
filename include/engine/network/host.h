@@ -75,6 +75,8 @@ public:
      */
     [[nodiscard]] int get_client_amount() const noexcept;
 
+    [[nodiscard]] std::string get_ip() const noexcept;
+
     /**
      * @brief Sets the server port. Only effective before start_server().
      */
@@ -98,6 +100,7 @@ private:
     int max_clients_{0};
     ConnectionState connection_state_{ConnectionState::NONE};
 
+    std::string ip_;
     std::string local_uuid_;
     std::reference_wrapper<Router> router_;
 

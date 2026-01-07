@@ -200,3 +200,16 @@ int MultiplayerService::get_connection_port() const noexcept
 {
     return connection_port_;
 }
+
+std::string MultiplayerService::get_host_ip() const
+{
+    if (host_) {
+        return host_->get_ip();
+    }
+    else if (client_) {
+        return client_->get_host_ip();
+    }
+    else {
+        throw std::runtime_error("Cannot get host ip: must be a host or connected client first.");
+    }
+}

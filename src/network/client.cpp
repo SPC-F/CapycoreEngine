@@ -153,6 +153,10 @@ void Client::connect(const std::string& host_ip, int connection_port)
     if (server_peer_ == nullptr)
         throw std::runtime_error("ENet could not create a peer for connection attempt.");
 
+        
+    char ip[32];
+    enet_address_get_host_ip(&server_peer_->address, ip, sizeof(ip));
+    host_ip_ = ip;
     // A timed connection attempt could be implemented here.
 }
 
@@ -179,6 +183,11 @@ ConnectionState Client::get_connection_state() const noexcept
 std::string Client::get_uuid() const noexcept
 {
     return local_uuid_;
+}
+
+std::string Client::get_host_ip() const noexcept
+{
+    return host_ip_;
 }
 
 void Client::register_on_connect_handler() noexcept
