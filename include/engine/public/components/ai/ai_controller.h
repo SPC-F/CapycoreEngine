@@ -115,7 +115,7 @@ class AIController : public Renderable {
   float stuck_threshold_{1.0f};
 
   float node_distance_threshold_{2.0f};
-  float arrival_threshold_{16.0f};
+  float arrival_threshold_{24.0f};
 
   /// Speed is different for kinematic and physics-based movement
   /// A good default for kinematic is 100.0f
