@@ -115,6 +115,8 @@ public:
     void set_connection_port(int port) noexcept;
     [[nodiscard]] int get_connection_port() const noexcept;
 
+    [[nodiscard]] std::string get_host_ip() const;
+
 private:
     std::unique_ptr<Router> router_{nullptr};
     std::unique_ptr<Client> client_{nullptr};

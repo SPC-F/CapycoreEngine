@@ -63,8 +63,11 @@ public:
 
     [[nodiscard]] std::string get_uuid() const noexcept;
 
+    [[nodiscard]] std::string get_host_ip() const noexcept;
+
 private:
     std::string local_uuid_;
+    std::string host_ip_{"0.0.0.0"};
     std::reference_wrapper<Router> router_;
     ENetPeer* server_peer_{nullptr};
     ENetHost* client_{nullptr};
