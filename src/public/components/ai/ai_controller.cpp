@@ -62,9 +62,9 @@ void AIController::chase(float dt) {
   if (use_graph_traversal_)
     try_traverse_graph(current_transform, target_transform, dt);
   else {
-    // Vector3 half_size(width_ * 0.5f, height_ * 0.5f, 0.0f);
+    Vector3 half_size(width_ * 0.5f, height_ * 0.5f, 0.0f);
 
-    Vector3 source_center = current_transform.position();
+    Vector3 source_center = current_transform.position() + half_size;
     Vector3 target_center = target_transform.position();
 
     Vector3 delta = target_center - source_center;
