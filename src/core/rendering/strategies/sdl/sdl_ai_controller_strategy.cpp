@@ -1,19 +1,19 @@
 #include <engine/core/engine.h>
-#include <engine/core/rendering/strategies/sdl/sdl_pathfinding_strategy.h>
-#include <engine/public/components/ai/navigation/pathfinding.h>
+#include <engine/core/rendering/strategies/sdl/sdl_ai_controller_strategy.h>
+#include <engine/public/components/ai/ai_controller.h>
 
-SdlPathFindingStrategy::SdlPathFindingStrategy(SDL_Renderer& sdl_renderer)
+SdlAIControllerStrategy::SdlAIControllerStrategy(SDL_Renderer& sdl_renderer)
     : sdl_renderer_(sdl_renderer) {}
 
-void SdlPathFindingStrategy::draw(Component& component, Camera& camera) {
+void SdlAIControllerStrategy::draw(Component& component, Camera& camera) {
   auto parent_opt = component.parent();
   if (!parent_opt.has_value()) return;
-  if (!dynamic_cast<Pathfinding*>(&component)) return;
+  if (!dynamic_cast<AIController*>(&component)) return;
 
-  Pathfinding& pathfinding = dynamic_cast<Pathfinding&>(component);
-  if (!pathfinding.should_draw()) return;
+  AIController& ai_controller = dynamic_cast<AIController&>(component);
+  if (!ai_controller.should_draw()) return;
 
-  const auto& path = pathfinding.get_path();
+  const auto& path = ai_controller.get_path();
 
   for (size_t i = 0; i < path.size(); ++i) {
     GameObject& node = path[i].get();
