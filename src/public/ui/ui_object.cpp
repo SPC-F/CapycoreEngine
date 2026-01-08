@@ -1,4 +1,5 @@
 #include <engine/public/ui/ui_object.h>
+#include <engine/public/util/layers.h>
 
 UIObject::UIObject(Scene& scene, float width, float height, Point pivot,
                    Point anchor)
@@ -6,7 +7,9 @@ UIObject::UIObject(Scene& scene, float width, float height, Point pivot,
       width_(width),
       height_(height),
       pivot_(pivot),
-      anchor_(anchor) {}
+      anchor_(anchor) {
+  layer(Layers::UI);
+}
 
 float UIObject::width() const { return width_; }
 
