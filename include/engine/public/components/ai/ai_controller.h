@@ -76,6 +76,9 @@ class AIController : public Renderable {
   float get_arrival_threshold() const;
   AIController& set_arrival_threshold(float threshold);
 
+  float get_attack_distance() const;
+  AIController& set_attack_distance(float distance);
+
   float get_speed() const;
   AIController& set_speed(float speed);
 
@@ -87,12 +90,19 @@ class AIController : public Renderable {
 
   std::vector<std::reference_wrapper<GameObject>>& get_path();
 
+  void chase_closest_player(bool enable);
+  bool is_chasing_closest_player() const;
+
   bool enable_graph_traversal() noexcept;
   bool disable_graph_traversal() noexcept;
 
   size_t add_on_patrol_complete_action(
       std::function<void(AIController&)> action);
   void remove_on_patrol_complete_action(size_t index);
+
+  size_t add_on_chase_threshold_reached_action(
+      std::function<void(AIController&)> action);
+  void remove_on_chase_threshold_reached_action(size_t index);
 
   std::string type_name() const override;
 
@@ -106,6 +116,8 @@ class AIController : public Renderable {
 
   AIControllerMode mode_{AIControllerMode::PATROL};
   bool use_graph_traversal_{true};
+  bool chase_closest_player_{false};
+  float closest_player_search_timer_{0.0f};
 
   Transform initial_transform;
   bool returning_to_start_{false};
@@ -123,6 +135,10 @@ class AIController : public Renderable {
   /// Faster speeds are more likely to cause visual jittering
   float speed_{10.0f};
 
+  float attack_timer_{1.5f};
+  float attack_distance_{0.0f};
+  float attack_cooldown_{1.5f};
+
   /// Used to check the center of the object which is needed
   /// for accurate pathfinding and not getting stuck on corners
   float width_{10.0f};
@@ -131,4 +147,6 @@ class AIController : public Renderable {
   std::reference_wrapper<Pathfinding> get_pathfinding_component();
 
   std::vector<std::function<void(AIController&)>> on_patrol_complete_actions_;
+  std::vector<std::function<void(AIController&)>>
+      on_chase_threshold_reached_actions_;
 };

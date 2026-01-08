@@ -1,6 +1,12 @@
+#include <engine/public/behavior.h>
 #include <engine/public/components/ai/ai_controller.h>
+#include <engine/public/gameObject.h>
+#include <engine/public/scene.h>
+#include <engine/public/transform.h>
+#include <engine/public/util/vector3.h>
 
 #include <algorithm>
+#include <iostream>
 #include <stdexcept>
 
 std::reference_wrapper<Pathfinding> AIController::get_pathfinding_component() {
@@ -40,6 +46,39 @@ AIController::AIController(GameObject& pathfinding_game_object)
 }
 
 void AIController::update(float dt) {
+  if (attack_timer_ > 0) attack_timer_ -= dt;
+
+  if (chase_closest_player_) {
+    closest_player_search_timer_ -= dt;
+    if (closest_player_search_timer_ <= 0.0f) {
+      closest_player_search_timer_ = 1.0f;  // Check every 1 second
+
+      auto& scene = parent().value().get().scene();
+      auto game_objects = scene.active_game_objects();
+
+      float closest_dist = std::numeric_limits<float>::max();
+      GameObject* closest_player = nullptr;
+
+      Vector3 my_pos = parent().value().get().transform().position();
+
+      for (auto& obj_ref : game_objects) {
+        auto& obj = obj_ref.get();
+        if (obj.tag() == "Player") {
+          float dist = (obj.transform().position() - my_pos).length();
+          if (dist < closest_dist) {
+            closest_dist = dist;
+            closest_player = &obj;
+          }
+        }
+      }
+
+      if (closest_player) {
+        set_chase_target(*closest_player);
+        set_mode(AIControllerMode::CHASE);
+      }
+    }
+  }
+
   switch (mode_) {
     case AIControllerMode::CHASE:
       chase(dt);
@@ -70,7 +109,14 @@ void AIController::chase(float dt) {
     Vector3 delta = target_center - source_center;
     float dist = delta.length();
 
-    if (dist < arrival_threshold_) return;
+    if (dist < attack_distance_) {
+      if (attack_timer_ <= 0) {
+        for (auto& action : on_chase_threshold_reached_actions_) {
+          action(*this);
+        }
+        attack_timer_ = attack_cooldown_;
+      }
+    }
 
     Vector3 direction = delta / dist;
 
@@ -133,6 +179,20 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
       if (!returning_to_start_) {
         for (auto& action : on_patrol_complete_actions_) {
           action(*this);
+        }
+      }
+    } else if (mode_ == AIControllerMode::CHASE) {
+      float dist_to_target = (source_center - target_center).length();
+      std::cout << "CHASE1 dist: " << dist_to_target
+                << " (attack_dist: " << attack_distance_ << ")" << std::endl;
+      if (dist_to_target < attack_distance_) {
+        std::cout << "CHASE2 dist: " << dist_to_target
+                  << " (attack_dist: " << attack_distance_ << ")" << std::endl;
+        if (attack_timer_ <= 0) {
+          for (auto& action : on_chase_threshold_reached_actions_) {
+            action(*this);
+          }
+          attack_timer_ = attack_cooldown_;
         }
       }
     }
@@ -249,6 +309,13 @@ AIController& AIController::set_arrival_threshold(float threshold) {
   return *this;
 }
 
+float AIController::get_attack_distance() const { return attack_distance_; }
+
+AIController& AIController::set_attack_distance(float distance) {
+  attack_distance_ = distance;
+  return *this;
+}
+
 float AIController::get_speed() const { return speed_; }
 
 AIController& AIController::set_speed(float speed) {
@@ -295,6 +362,30 @@ void AIController::remove_on_patrol_complete_action(size_t index) {
     on_patrol_complete_actions_.erase(on_patrol_complete_actions_.begin() +
                                       index);
   }
+}
+
+size_t AIController::add_on_chase_threshold_reached_action(
+    std::function<void(AIController&)> action) {
+  on_chase_threshold_reached_actions_.push_back(action);
+  return on_chase_threshold_reached_actions_.size() - 1;
+}
+
+void AIController::remove_on_chase_threshold_reached_action(size_t index) {
+  if (index < on_chase_threshold_reached_actions_.size()) {
+    on_chase_threshold_reached_actions_.erase(
+        on_chase_threshold_reached_actions_.begin() + index);
+  }
+}
+
+void AIController::chase_closest_player(bool enable) {
+  chase_closest_player_ = enable;
+  if (enable) {
+    closest_player_search_timer_ = 0.0f;  // Start searching immediately
+  }
+}
+
+bool AIController::is_chasing_closest_player() const {
+  return chase_closest_player_;
 }
 
 std::string AIController::type_name() const { return "AIController"; }
