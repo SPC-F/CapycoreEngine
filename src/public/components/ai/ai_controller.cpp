@@ -153,7 +153,13 @@ void AIController::try_traverse_graph(Transform& source, Transform& target,
     path_ = std::move(pathfinding.get_path());
   }
 
-  if (path_.empty()) return;
+  if (path_.empty()) {
+    if (rigidbody_.has_value()) {
+      rigidbody_->get().velocity(Vector3(0.0f, 0.0f, 0.0f));
+    }
+
+    return;
+  }
 
   auto& next_node = path_.front().get();
 
