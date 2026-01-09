@@ -1,217 +1,197 @@
 #include <engine/network/multiplayer_service.h>
 #include <engine/network/snapshot.h>
-#include <chrono>
 
+#include <chrono>
 #include <stdexcept>
 
-MultiplayerService::MultiplayerService()
-{
-    if (enet_initialize() != 0) { // 0 on succes, < 0 on failure
-        throw std::runtime_error("Failed to initialize ENet.");
-    }
+MultiplayerService::MultiplayerService() {
+  if (enet_initialize() != 0) {  // 0 on succes, < 0 on failure
+    throw std::runtime_error("Failed to initialize ENet.");
+  }
 
-    atexit(enet_deinitialize);
+  atexit(enet_deinitialize);
 
-    router_ = std::make_unique<Router>();
+  router_ = std::make_unique<Router>();
 }
 
 void MultiplayerService::register_handler(
-    MessageType type,
-    const std::function<void(const Message&)>& handler)
-{
-    router_->register_handler(type, handler);
+    MessageType type, const std::function<void(const Message&)>& handler) {
+  router_->register_handler(type, handler);
 }
 
-void MultiplayerService::unregister_handler(MessageType type)
-{
-    router_->unregister_handler(type);
+void MultiplayerService::unregister_handler(MessageType type) {
+  router_->unregister_handler(type);
 }
 
-void MultiplayerService::set_host()
-{
-    // If currently client, ensure it isn't connected
-    if (client_) {
-        const auto state = client_->get_connection_state();
-        if (state != ConnectionState::DISCONNECTED &&
-            state != ConnectionState::NONE)
-        {
-            throw std::runtime_error("Cannot switch to host mode: client still connected.");
-        }
-
-        client_.reset();
+void MultiplayerService::set_host() {
+  // If currently client, ensure it isn't connected
+  if (client_) {
+    const auto state = client_->get_connection_state();
+    if (state != ConnectionState::DISCONNECTED &&
+        state != ConnectionState::NONE) {
+      throw std::runtime_error(
+          "Cannot switch to host mode: client still connected.");
     }
 
-    host_ = std::make_unique<Host>(std::ref(*router_), connection_port_, max_clients_);
+    client_.reset();
+  }
+
+  host_ = std::make_unique<Host>(std::ref(*router_), connection_port_,
+                                 max_clients_);
 }
 
-void MultiplayerService::set_client()
-{
-    // If currently host, ensure server isn't running
-    if (host_) {
-        const auto state = host_->get_connection_state();
-        if (state != ConnectionState::DISCONNECTED &&
-            state != ConnectionState::NONE)
-        {
-            throw std::runtime_error("Cannot switch to client mode: host server still active.");
-        }
-
-        host_.reset();
+void MultiplayerService::set_client() {
+  // If currently host, ensure server isn't running
+  if (host_) {
+    const auto state = host_->get_connection_state();
+    if (state != ConnectionState::DISCONNECTED &&
+        state != ConnectionState::NONE) {
+      throw std::runtime_error(
+          "Cannot switch to client mode: host server still active.");
     }
 
-    client_ = std::make_unique<Client>(std::ref(*router_));
+    host_.reset();
+  }
+
+  client_ = std::make_unique<Client>(std::ref(*router_));
 }
 
-PeerType MultiplayerService::get_peer_type() const
-{
-    if (host_) {
-        return PeerType::HOST;
-    }
-    else if (client_) {
-        return PeerType::CLIENT;
-    }
-    else {
-        return PeerType::NONE;
-    }
+PeerType MultiplayerService::get_peer_type() const {
+  if (host_) {
+    return PeerType::HOST;
+  } else if (client_) {
+    return PeerType::CLIENT;
+  } else {
+    return PeerType::NONE;
+  }
 }
 
-void MultiplayerService::poll()
-{
-    if (host_) {
-        host_->poll();
-        host_->sync();
-    }
-    else if (client_) {
-        client_->poll();
-    }
+void MultiplayerService::poll() {
+  if (host_) {
+    host_->poll();
+    host_->sync();
+  } else if (client_) {
+    client_->poll();
+  }
 }
 
-void MultiplayerService::send(const Message& message)
-{
-    if (host_) {
-        host_->broadcast(message);
-    }
-    else if (client_) {
-        client_->send(message);
-    }
-    else {
-        throw std::runtime_error("Cannot send: service is neither client nor host.");
-    }
+void MultiplayerService::send(const Message& message) {
+  if (host_) {
+    host_->broadcast(message);
+  } else if (client_) {
+    client_->send(message);
+  } else {
+    throw std::runtime_error(
+        "Cannot send: service is neither client nor host.");
+  }
 }
 
-void MultiplayerService::send_to_peer_via_uuid(const std::string& uuid, const Message& message)
-{
-    if (!host_) {
-        throw std::runtime_error("send_to_peer_via_uuid is only available in host mode.");
-    }
+void MultiplayerService::send_to_peer_via_uuid(const std::string& uuid,
+                                               const Message& message) {
+  if (!host_) {
+    throw std::runtime_error(
+        "send_to_peer_via_uuid is only available in host mode.");
+  }
 
-    host_->send_to_peer_via_uuid(uuid, message);
+  host_->send_to_peer_via_uuid(uuid, message);
 }
 
-void MultiplayerService::start_server()
-{
-    if (client_) {
-        throw std::runtime_error("Cannot start server while acting as client.");
-    }
+void MultiplayerService::start_server() {
+  if (client_) {
+    throw std::runtime_error("Cannot start server while acting as client.");
+  }
 
-    if (!host_) {
-        throw std::runtime_error("Host instance not initialized. Call set_host() first.");
-    }
+  if (!host_) {
+    throw std::runtime_error(
+        "Host instance not initialized. Call set_host() first.");
+  }
 
-    host_->start_server();
+  host_->start_server();
 }
 
-void MultiplayerService::connect(const std::string& address)
-{
-    if (host_) {
-        throw std::runtime_error("Cannot connect while acting as host.");
-    }
+void MultiplayerService::connect(const std::string& address) {
+  if (host_) {
+    throw std::runtime_error("Cannot connect while acting as host.");
+  }
 
-    if (!client_) {
-        throw std::runtime_error("Client instance not initialized. Call set_client() first.");
-    }
+  if (!client_) {
+    throw std::runtime_error(
+        "Client instance not initialized. Call set_client() first.");
+  }
 
-    client_->connect(address, connection_port_);
+  client_->connect(address, connection_port_);
 }
 
-void MultiplayerService::disconnect()
-{
-    if (host_) {
-        host_->disconnect();
-        host_.reset();
-    }
-    else if (client_) {
-        client_->disconnect();
-        client_.reset();
-    }
-    else {
-        throw std::runtime_error("Cannot disconnect: service is neither client nor host.");
-    }
+void MultiplayerService::disconnect(std::function<void()> on_disconnected) {
+  if (host_)
+    host_->disconnect();
+  else if (client_)
+    client_->disconnect();
+
+  if (on_disconnected) on_disconnected();
+
+  if (host_)
+    host_.reset();
+  else if (client_)
+    client_.reset();
+  else
+    throw std::runtime_error(
+        "Cannot disconnect: service is neither client nor host.");
 }
 
-ConnectionState MultiplayerService::get_connection_state() const noexcept
-{
-    if (host_) {
-        return host_->get_connection_state();
-    }
-    else if (client_) {
-        return client_->get_connection_state();
-    }
-    else {
-        return ConnectionState::NONE;
-    }
+ConnectionState MultiplayerService::get_connection_state() const noexcept {
+  if (host_) {
+    return host_->get_connection_state();
+  } else if (client_) {
+    return client_->get_connection_state();
+  } else {
+    return ConnectionState::NONE;
+  }
 }
 
-std::string MultiplayerService::get_uuid() const
-{
-    if (host_) {
-        return host_->get_uuid();
-    }
-    else if (client_) {
-        return client_->get_uuid();
-    }
-    else {
-        throw std::runtime_error("Cannot get uuid: must be a host or connected client first.");
-    }
+std::string MultiplayerService::get_uuid() const {
+  if (host_) {
+    return host_->get_uuid();
+  } else if (client_) {
+    return client_->get_uuid();
+  } else {
+    throw std::runtime_error(
+        "Cannot get uuid: must be a host or connected client first.");
+  }
 }
 
-void MultiplayerService::set_max_clients(int amount) noexcept
-{
-    max_clients_ = amount;
-    if (host_) {
-        host_->set_max_clients(amount);
-    }
+void MultiplayerService::set_max_clients(int amount) noexcept {
+  max_clients_ = amount;
+  if (host_) {
+    host_->set_max_clients(amount);
+  }
 }
 
-int MultiplayerService::get_client_amount() const noexcept
-{
-    if (host_){
-        return host_->get_client_amount();
-    }
-    return 0;
+int MultiplayerService::get_client_amount() const noexcept {
+  if (host_) {
+    return host_->get_client_amount();
+  }
+  return 0;
 }
 
-void MultiplayerService::set_connection_port(int port) noexcept
-{
-    connection_port_ = port;
-    if (host_) {
-        host_->set_connection_port(port);
-    }
+void MultiplayerService::set_connection_port(int port) noexcept {
+  connection_port_ = port;
+  if (host_) {
+    host_->set_connection_port(port);
+  }
 }
 
-int MultiplayerService::get_connection_port() const noexcept
-{
-    return connection_port_;
+int MultiplayerService::get_connection_port() const noexcept {
+  return connection_port_;
 }
 
-std::string MultiplayerService::get_host_ip() const
-{
-    if (host_) {
-        return host_->get_ip();
-    }
-    else if (client_) {
-        return client_->get_host_ip();
-    }
-    else {
-        throw std::runtime_error("Cannot get host ip: must be a host or connected client first.");
-    }
+std::string MultiplayerService::get_host_ip() const {
+  if (host_) {
+    return host_->get_ip();
+  } else if (client_) {
+    return client_->get_host_ip();
+  } else {
+    throw std::runtime_error(
+        "Cannot get host ip: must be a host or connected client first.");
+  }
 }
