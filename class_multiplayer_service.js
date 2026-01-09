@@ -2,7 +2,7 @@ var class_multiplayer_service =
 [
     [ "MultiplayerService", "class_multiplayer_service.html#a61ccfdefe3cce6532c5ffa8905d6a31f", null ],
     [ "connect", "class_multiplayer_service.html#a9aaf2b61a5ccbd426b5ff3dc5c7e039f", null ],
-    [ "disconnect", "class_multiplayer_service.html#adde3ffec518e180985c280440bec103c", null ],
+    [ "disconnect", "class_multiplayer_service.html#a2265f77850ecd2f18df1e7c17f49e651", null ],
     [ "get_client_amount", "class_multiplayer_service.html#a23ea3d7388fa2aa392c3f9dc3a1abfab", null ],
     [ "get_connection_port", "class_multiplayer_service.html#afa20fba79397693c1acd4e2f1120f4e0", null ],
     [ "get_connection_state", "class_multiplayer_service.html#ab0265f3b0ff1e1b82699f9135c66512a", null ],

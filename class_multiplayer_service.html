@@ -177,9 +177,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9aaf2b61a5ccbd426b5ff3dc5c7e039f" id="r_a9aaf2b61a5ccbd426b5ff3dc5c7e039f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multiplayer_service.html#a9aaf2b61a5ccbd426b5ff3dc5c7e039f">connect</a> (const std::string &amp;address)</td></tr>
 <tr class="memdesc:a9aaf2b61a5ccbd426b5ff3dc5c7e039f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to a remote server. Only valid in client-mode.  <br /></td></tr>
 <tr class="separator:a9aaf2b61a5ccbd426b5ff3dc5c7e039f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adde3ffec518e180985c280440bec103c" id="r_adde3ffec518e180985c280440bec103c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multiplayer_service.html#adde3ffec518e180985c280440bec103c">disconnect</a> ()</td></tr>
-<tr class="memdesc:adde3ffec518e180985c280440bec103c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the active host or client gracefully.  <br /></td></tr>
-<tr class="separator:adde3ffec518e180985c280440bec103c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2265f77850ecd2f18df1e7c17f49e651" id="r_a2265f77850ecd2f18df1e7c17f49e651"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multiplayer_service.html#a2265f77850ecd2f18df1e7c17f49e651">disconnect</a> (std::function&lt; void()&gt; on_disconnected=nullptr)</td></tr>
+<tr class="memdesc:a2265f77850ecd2f18df1e7c17f49e651"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the active host or client gracefully.  <br /></td></tr>
+<tr class="separator:a2265f77850ecd2f18df1e7c17f49e651"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0265f3b0ff1e1b82699f9135c66512a" id="r_ab0265f3b0ff1e1b82699f9135c66512a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4">ConnectionState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multiplayer_service.html#ab0265f3b0ff1e1b82699f9135c66512a">get_connection_state</a> () const noexcept</td></tr>
 <tr class="memdesc:ab0265f3b0ff1e1b82699f9135c66512a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns connection state of the current mode.  <br /></td></tr>
 <tr class="separator:ab0265f3b0ff1e1b82699f9135c66512a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -256,8 +256,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="adde3ffec518e180985c280440bec103c" name="adde3ffec518e180985c280440bec103c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adde3ffec518e180985c280440bec103c">&#9670;&#160;</a></span>disconnect()</h2>
+<a id="a2265f77850ecd2f18df1e7c17f49e651" name="a2265f77850ecd2f18df1e7c17f49e651"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2265f77850ecd2f18df1e7c17f49e651">&#9670;&#160;</a></span>disconnect()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -265,7 +265,8 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">void MultiplayerService::disconnect </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::function&lt; void()&gt;&#160;</td>
+          <td class="paramname"><em>on_disconnected</em> = <code>nullptr</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
