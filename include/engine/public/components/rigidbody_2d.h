@@ -68,7 +68,8 @@ class Rigidbody2D : public Component {
   void mark_network_dirty() noexcept;
 
   void on_serialize(std::vector<uint8_t>& out) const override;
-  void on_deserialize(const std::vector<uint8_t>& data, size_t& offset) override;
+  void on_deserialize(const std::vector<uint8_t>& data,
+                      size_t& offset) override;
 
   std::string type_name() const override;
 
@@ -79,4 +80,5 @@ class Rigidbody2D : public Component {
 
   bool use_gravity_;
   float gravity_scale_;
+  bool fresh_spawned_{true};
 };
