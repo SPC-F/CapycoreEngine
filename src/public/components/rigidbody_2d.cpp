@@ -195,11 +195,11 @@ void Rigidbody2D::on_serialize(std::vector<uint8_t>& out) const {
 
 void Rigidbody2D::on_deserialize(const std::vector<uint8_t>& data,
                                  size_t& offset) {
-  Vector3 pos;
-  if (!snapshot::read_bytes(data, offset, &pos, sizeof(Vector3))) return;
+  Vector3 net_pos;
+  if (!snapshot::read_bytes(data, offset, &net_pos, sizeof(Vector3))) return;
 
-  Vector3 vel;
-  if (!snapshot::read_bytes(data, offset, &vel, sizeof(Vector3))) return;
+  Vector3 net_vel;
+  if (!snapshot::read_bytes(data, offset, &net_vel, sizeof(Vector3))) return;
 
   float rot;
   if (!snapshot::read_bytes(data, offset, &rot, sizeof(float))) return;
@@ -220,19 +220,53 @@ void Rigidbody2D::on_deserialize(const std::vector<uint8_t>& data,
   if (!snapshot::read_bytes(data, offset, &gravity_scale, sizeof(float)))
     return;
 
-  teleport(pos);
-  velocity(vel);
+  Vector3 cur_pos = Body2D::get_pixel_transform(body_).position;
+  Vector3 cur_vel = velocity();
 
-  if (type != type_) {
-    type_ = type;
+  Vector3 delta = net_pos - cur_pos;
+
+  /// If freshly spawned, teleport directly to position
+  /// that way we avoid massive rubberbanding as an object
+  /// would be catapulted from (0,0,0) to the correct position
+  if (fresh_spawned_) {
+    teleport(net_pos);
+    velocity(net_vel);
+    fresh_spawned_ = false;
+  }
+  /// Otherwise, smoothly correct position and velocity
+  /// using a simple lerp: linear interpolation
+  ///
+  /// The lerp works by moving a fraction of the distance
+  /// between the current position and the target position
+  /// each update, resulting in a smooth transition.
+  ///
+  /// This helps to reduce sudden jumps or rubberbanding
+  /// effects in networked physics simulations.
+  else {
+    const float POSITION_CORRECTION_THRESHOLD = 0.2f;
+    const float lerpFactor = 0.4f;
+
+    if (fabs(delta.x) > POSITION_CORRECTION_THRESHOLD ||
+        fabs(delta.y) > POSITION_CORRECTION_THRESHOLD) {
+      Vector3 corrected = cur_pos + delta * lerpFactor;
+      teleport(corrected);
+    }
+
+    /// Smoothly interpolate velocity to avoid sudden changes.
+    /// The calculation is similar to position correction =>
+    /// current velocity + (target velocity - current velocity) * lerpFactor
+    Vector3 smoothedVel;
+    smoothedVel.x = cur_vel.x + (net_vel.x - cur_vel.x) * lerpFactor;
+    smoothedVel.y = cur_vel.y + (net_vel.y - cur_vel.y) * lerpFactor;
+
+    velocity(smoothedVel);
   }
 
   mass_ = mass;
   use_gravity_ = use_gravity;
   gravity_scale_ = gravity_scale;
 
-  // Mark the network identity as dirty since we've updated the rigidbody
   mark_network_dirty();
-};
+}
 
 std::string Rigidbody2D::type_name() const { return "Rigidbody2D"; }
