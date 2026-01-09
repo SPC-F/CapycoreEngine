@@ -33,7 +33,7 @@ var searchData=
   ['play_5fon_5fawake_30',['play_on_awake',['../class_audio_source.html#a37c096aa53e344a8d4c3d8b289176741',1,'AudioSource::play_on_awake() const noexcept'],['../class_audio_source.html#aa110019af2a8e2e4fec5c04af1948423',1,'AudioSource::play_on_awake(bool value) noexcept']]],
   ['play_5fsound_31',['play_sound',['../class_audio_service.html#a68a73f1f576b09a6db54b0f732c5ef12',1,'AudioService::play_sound(std::shared_ptr&lt; SoundResource &gt; sound_resource, float volume=1.0f, bool loop=false)'],['../class_audio_service.html#ace34d0a4d554875dbdbe679eb7033492',1,'AudioService::play_sound(const std::string &amp;name, float volume=1.0f, bool loop=false)']]],
   ['playing_5f_32',['playing_',['../class_sound_instance.html#a8b154235f4a9a36866751a92c90ef5ee',1,'SoundInstance']]],
-  ['point_33',['point',['../class_point.html#a30bc8409287de4f43e160664be834636',1,'Point::Point()'],['../struct_collider_ray_result.html#a5a9338c5be3d647023d56e7dbfd4bbf2',1,'ColliderRayResult::point'],['../class_point.html#ad92f2337b839a94ce97dcdb439b4325a',1,'Point::Point()'],['../class_point.html',1,'Point']]],
+  ['point_33',['point',['../class_point.html#ad92f2337b839a94ce97dcdb439b4325a',1,'Point::Point()'],['../class_point.html#a30bc8409287de4f43e160664be834636',1,'Point::Point(float x, float y)'],['../struct_collider_ray_result.html#a5a9338c5be3d647023d56e7dbfd4bbf2',1,'ColliderRayResult::point'],['../class_point.html',1,'Point']]],
   ['point_2eh_34',['point.h',['../point_8h.html',1,'']]],
   ['point_5fa_35',['point_a',['../struct_body_distance2_d.html#a5938dc8cae3f12fbd06dffe728921761',1,'BodyDistance2D']]],
   ['point_5fb_36',['point_b',['../struct_body_distance2_d.html#a65dadf7bfec630d77f96d95f5199be9e',1,'BodyDistance2D']]],
