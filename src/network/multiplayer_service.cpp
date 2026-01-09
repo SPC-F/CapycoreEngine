@@ -137,9 +137,11 @@ void MultiplayerService::disconnect()
 {
     if (host_) {
         host_->disconnect();
+        host_.reset();
     }
     else if (client_) {
         client_->disconnect();
+        client_.reset();
     }
     else {
         throw std::runtime_error("Cannot disconnect: service is neither client nor host.");
