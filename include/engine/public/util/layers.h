@@ -1,7 +1,13 @@
 #pragma once
 
-// We explicitly use an enum here instead of an enum class, because we want the ability to
-// automagically convert from enum values to integers.
+/**
+ * @brief Predefined layers for GameObjects.
+ * Layers are used to categorize GameObjects for rendering and collision
+ * detection.
+ *
+ * @note The Default layer is set to Foreground.
+ * @note This enum is not an enum class to allow implicit conversion to int.
+ */
 enum Layers : int {
   Background = 0,
   Foreground = 10,

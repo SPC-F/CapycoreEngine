@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * @brief Represents a 3D vector with x, y, and z components.
+ * This class provides basic vector operations such as addition,
+ * subtraction, multiplication, division, normalization, and length calculation.
+ */
 class Vector3 {
  public:
   float x;
@@ -25,11 +30,22 @@ class Vector3 {
   Vector3& operator*=(float value) noexcept;
   Vector3& operator/=(float value) noexcept;
 
-  /// Calculate the length (magnitude) of the vector
+  /**
+   * @brief Calculates the length (magnitude) of the vector.
+   * @return The length of the vector as a float.
+   */
   float length() const noexcept;
 
-  /// Normalize the vector to a unit vector
+  /**
+   * @brief Normalizes the vector to have a length of 1.
+   * @return void
+   */
   void normalize() noexcept;
 
+  /**
+   * @brief Checks if this vector is equal to another vector.
+   * @param other The other vector to compare with.
+   * @return true if the vectors are equal, false otherwise.
+   */
   bool equals(const Vector3& other) const noexcept;
 };

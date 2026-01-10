@@ -72,10 +72,30 @@ class Behavior {
   /// Disables the behavior.
   Behavior& disable();
 
+  /**
+   * @brief Serializes the behavior's state into a byte array.
+   * @param out A vector to which the serialized bytes will be appended.
+   * @return void
+   */
   virtual void on_serialize(std::vector<uint8_t>& /*out*/) const {};
-  virtual void on_deserialize(const std::vector<uint8_t>& /*data*/,
-                                       size_t& /*offset*/) {};
 
+  /**
+   * @brief Deserializes the behavior's state from a byte array.
+   * @param data The byte array containing the serialized state.
+   * @param offset The current offset in the byte array from which to start
+   * reading. This offset will be updated as bytes are read.
+   * @return void
+   */
+  virtual void on_deserialize(const std::vector<uint8_t>& /*data*/,
+                              size_t& /*offset*/){};
+
+  /**
+   * @brief Retrieves a component of type T attached to the same GameObject.
+   * @tparam T The type of the component to retrieve.
+   * @return An optional reference to the component if found, std::nullopt
+   * otherwise.
+   * @throws std::runtime_error if not attached.
+   */
   template <typename T>
   std::optional<std::reference_wrapper<T>> get_component() {
     if (!attached_component_) {
@@ -85,6 +105,12 @@ class Behavior {
     return game_object().template get_component<T>();
   }
 
+  /**
+   * @brief Retrieves all components of type T attached to the same GameObject.
+   * @tparam T The type of the components to retrieve.
+   * @return A vector of references to the components found.
+   * @throws std::runtime_error if not attached.
+   */
   template <typename T>
   std::vector<std::reference_wrapper<T>> get_components() {
     if (!attached_component_) {
@@ -94,6 +120,12 @@ class Behavior {
     return game_object().template get_components<T>();
   }
 
+  /**
+   * @brief Get a component of type T attached to this GameObject's children.
+   * @tparam T The type of the component to get.
+   * @return An optional reference to the component if found, std::nullopt
+   * otherwise.
+   */
   template <typename T>
   std::optional<std::reference_wrapper<T>> get_component_from_children() {
     if (!attached_component_) {
@@ -110,6 +142,11 @@ class Behavior {
     return std::nullopt;
   }
 
+  /**
+   * @brief Get all components of type T attached to this GameObject's children.
+   * @tparam T The type of the component to get.
+   * @return A vector of references to the components found.
+   */
   template <typename T>
   std::vector<std::reference_wrapper<T>> get_components_from_children() {
     if (!attached_component_) {
@@ -119,6 +156,12 @@ class Behavior {
     return game_object().template get_components_from_children<T>();
   }
 
+  /**
+   * @brief Get a component of type T attached to this GameObject's parents.
+   * @tparam T The type of the component to get.
+   * @return An optional reference to the component if found, std::nullopt
+   * otherwise.
+   */
   template <typename T>
   std::optional<std::reference_wrapper<T>> get_component_in_parent() {
     if (!attached_component_) {
@@ -138,6 +181,11 @@ class Behavior {
     return std::nullopt;
   }
 
+  /**
+   * @brief Get all components of type T attached to this GameObject's parents.
+   * @tparam T The type of the component to get.
+   * @return A vector of references to the components found.
+   */
   template <typename T>
   std::vector<std::reference_wrapper<T>> get_components_in_parent() {
     if (!attached_component_) {
