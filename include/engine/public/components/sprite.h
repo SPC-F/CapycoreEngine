@@ -15,6 +15,14 @@
  * for flipping, sorting, ordering, and color modulation. It can be treated as a
  * wrapper around a texture with additional rendering properties that go beyond
  * just the texture itself.
+ *
+ *
+ * Usage:
+ * - Create a Sprite component with a texture name and desired properties.
+ * - Attach the Sprite to a GameObject to have it rendered.
+ * - Modify properties such as flip_x, flip_y, sorting_layer, ordering_layer,
+ *   and color as needed.
+ * @note Ensure the specified texture exists in the asset resource.
  */
 class Sprite final : public Renderable {
  private:

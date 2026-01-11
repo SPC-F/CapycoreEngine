@@ -5,6 +5,18 @@
 #include <engine/public/component.h>
 #include <engine/public/util/color.h>
 
+/**
+ * @brief A UI component for displaying images.
+ *
+ * The Image component allows you to display images in the UI. You can set
+ * various properties such as flipping, size, and color tinting.
+ *
+ * Usage:
+ * - Create an Image component with the desired image and properties.
+ * - Attach the Image component to a GameObject to display it in the UI.
+ * - Modify properties such as flip_x, flip_y, width, height, and color as
+ *   needed.
+ */
 class Image : public Renderable {
  public:
   Image(const std::string& image, int flip_x, int flip_y, int width, int height,
