@@ -9,6 +9,11 @@
  * A scene requires at least one camera to render the view and can have multiple
  * cameras. However, only one camera can be designated as the main camera at a
  * time.
+ *
+ * Usage:
+ * - Create a Camera object and attach it to a Scene.
+ * - Configure properties such as background color, zoom level, and main camera
+ *   status.
  */
 class Camera final : public GameObject {
  private:
