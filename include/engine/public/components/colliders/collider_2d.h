@@ -24,6 +24,9 @@ constexpr float default_bounciness_2d = 0.5f;
  * This component allows a GameObject to participate in collision detection and
  * response within the physics engine. It provides methods for handling
  * collision events and querying collision information.
+ *
+ * @note Users should derive from this class to implement specific collider
+ * shapes.
  */
 class Collider2D : public Renderable {
  public:

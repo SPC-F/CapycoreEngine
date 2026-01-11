@@ -6,6 +6,19 @@
 
 #include <vector>
 
+/**
+ * @brief Component that handles sprite sheet animations.
+ *
+ * The Animator component allows you to create frame-by-frame animations
+ * using a sprite sheet. You can control playback, looping, and frame timing.
+ *
+ * Usage:
+ * - Create an Animator with a sprite sheet and frame interval.
+ * - Use play(), pause(), and reset() to control animation playback.
+ * - Set specific animations using set_animation().
+ * - The component updates the sprite texture based on the current frame.
+ * @note Ensure the parent GameObject has a Sprite component to display frames.
+ */
 class Animator : public Component {
  private:
   std::vector<std::reference_wrapper<Texture>> frames_;

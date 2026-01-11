@@ -36,6 +36,14 @@ enum AIControllerMode : uint8_t {
  * NOTE: for this to work you need to set up a proper navigation graph using
  * the Pathfinding component and ensure that the AI GameObject has appropriate
  * colliders (and Rigidbody2D if using physics-based movement).
+ *
+ * Usage:
+ * - Create an AIController component and attach it to a GameObject.
+ * - Set the desired mode (PATROL or CHASE) and configure targets.
+ * - Adjust properties such as speed, arrival threshold, and dimensions.
+ * - The AIController will automatically handle movement and pathfinding
+ *   during the update cycle.
+ * @note Ensure the GameObject has a Pathfinding component and appropriate
  */
 class AIController : public Renderable {
  public:

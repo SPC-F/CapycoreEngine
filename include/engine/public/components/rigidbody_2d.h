@@ -13,6 +13,12 @@ constexpr float default_rigidbody_gravity_scale = 1.0f;
  * This component allows a GameObject to interact with the physics engine,
  * enabling features such as gravity, collisions, and movement based on physical
  * forces.
+ *
+ * Usage:
+ * - Create a Rigidbody2D component and attach it to a GameObject.
+ * - Configure properties such as mass, gravity usage, and body type.
+ * - Use methods like apply_force() and apply_impulse() to influence movement.
+ * @note Ensure the GameObject has a Collider2D component for proper physics
  */
 class Rigidbody2D : public Component {
  public:

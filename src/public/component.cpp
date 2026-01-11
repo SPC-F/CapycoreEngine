@@ -1,10 +1,10 @@
 #include <engine/public/component.h>
 #include <engine/public/gameObject.h>
 
-#include <iterator>
-#include <vector>
-#include <string>
 #include <cstddef>
+#include <iterator>
+#include <string>
+#include <vector>
 
 Component::Component() : parent_(std::nullopt) {}
 
@@ -83,4 +83,4 @@ void Component::remove_on_detach(size_t index) {
 void Component::on_serialize(std::vector<uint8_t>& /*out*/) const {}
 
 void Component::on_deserialize(const std::vector<uint8_t>& /*data*/,
-                                       size_t& /*offset*/) {}
+                               size_t& /*offset*/) {}

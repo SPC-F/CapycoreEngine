@@ -12,9 +12,9 @@
 #include <engine/public/gameObject.h>
 #include <engine/public/gameplay_speed_service.h>
 #include <engine/public/scene.h>
+#include <engine/public/scene_service.h>
 #include <engine/public/ui/ui_object.h>
 #include <engine/util/memory.h>
-#include <engine/public/scene_service.h>
 
 #include <algorithm>
 
@@ -175,19 +175,15 @@ void Scene::run() {
   auto& system_service =
       Engine::instance().services->get_service<SystemService>().get();
   stop_event_listener_id_ = system_service.add_listener(
-  EVENT_QUIT, [&](void* /*event*/) {  // register per scene
-    stop();
-    Engine::instance().services
-      ->get_service<SceneService>().get()
-      .stop();
-  });
+      EVENT_QUIT, [&](void* /*event*/) {  // register per scene
+        stop();
+        Engine::instance().services->get_service<SceneService>().get().stop();
+      });
 
   game_loop();
 }
 
-void Scene::stop() {
-  is_running_ = false;
-}
+void Scene::stop() { is_running_ = false; }
 
 bool Scene::marked_for_stopping() const { return is_stopping_; }
 

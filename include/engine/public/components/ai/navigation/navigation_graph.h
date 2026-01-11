@@ -17,6 +17,14 @@
  * parent for all the tiles. NOTHING ELSE should be a child of this GameObject
  * except the tiles, which automatically get assigned navigation nodes as
  * children when generating the graph.
+ *
+ * Usage:
+ * - Create a NavigationGraph component and attach it to a GameObject.
+ * - Use generate_graph() to populate the graph with nodes based on child
+ *   GameObjects.
+ * - Use clear() to remove all nodes from the graph.
+ * - Query nodes and positions using provided methods.
+ * @note Ensure that child GameObjects are properly set up to represent
  */
 class NavigationGraph : public Component {
  public:

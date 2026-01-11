@@ -21,6 +21,13 @@ enum TextAlignment : uint8_t {
  *
  * Represents a text element in the UI with customizable font, size, color, and
  * content. Inherits from Renderable to allow rendering strategies.
+ *
+ * Usage:
+ * - Create a Text component with desired properties.
+ * - Attach the Text component to a GameObject to display text in the UI.
+ * - Modify properties such as text content, font, size, color, alignment, and
+ *   offset as needed.
+ * @note Ensure the specified font is available in the assets.
  */
 class Text : public Renderable {
  public:
