@@ -1,16 +1,12 @@
 #pragma once
 
-#include <map>
-#include <memory>
-
-#include <engine/core/rendering/rendererFlags.h>
-#include <engine/public/gameObject.h>
 #include <engine/core/iEngineService.h>
+#include <engine/core/rendering/renderable.h>
 #include <engine/core/rendering/rendererFlags.h>
 #include <engine/core/rendering/window.h>
-#include <engine/core/rendering/renderable.h>
 #include <engine/public/gameObject.h>
 
+#include <map>
 #include <memory>
 
 class SDL_Renderer;  // NOLINT
@@ -45,16 +41,19 @@ class Renderer final : public IEngineService {
   explicit Renderer(int min_aspect_width, int min_aspect_height,
                     const std::string& title, RendererFlags flags);
 
-    /**
-     * @brief Renders a collection of game objects to the screen.
-     * Renders a given collection of game objects to the screen. Each game object is expected to have its own sprite, or it will be skipped. <br>
-     * <br>
-     * Mind that this method clears the entire screen and renders immediately on finish. If you want to batch multiple calls, fuse them into one.
-     * @param objects A map of renderable objects grouped by their rendering layer
-     * @param scene The current scene being rendered
-     */
-    void render(const std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>& objects,
-      const Scene& scene) ;
+  /**
+   * @brief Renders a collection of game objects to the screen.
+   * Renders a given collection of game objects to the screen. Each game object
+   * is expected to have its own sprite, or it will be skipped. <br> <br> Mind
+   * that this method clears the entire screen and renders immediately on
+   * finish. If you want to batch multiple calls, fuse them into one.
+   * @param objects A map of renderable objects grouped by their rendering layer
+   * @param scene The current scene being rendered
+   */
+  void render(
+      const std::map<
+          int, std::multimap<int, std::reference_wrapper<Renderable>>>& objects,
+      const Scene& scene);
 
   /**
    * @brief Checks if vertical synchronization (VSync) is enabled.

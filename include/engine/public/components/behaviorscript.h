@@ -33,9 +33,13 @@ class BehaviorScript : public Component {
 
   std::string type_name() const override;
 
-  virtual void on_serialize(std::vector<uint8_t>& out) const { behavior_->on_serialize(out); };
+  virtual void on_serialize(std::vector<uint8_t>& out) const {
+    behavior_->on_serialize(out);
+  };
   virtual void on_deserialize(const std::vector<uint8_t>& data,
-                                       size_t& offset) { behavior_->on_deserialize(data, offset); };
+                              size_t& offset) {
+    behavior_->on_deserialize(data, offset);
+  };
 
  private:
   bool started_{false};

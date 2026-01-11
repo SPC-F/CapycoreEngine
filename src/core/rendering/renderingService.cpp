@@ -1,8 +1,8 @@
-#include <map>
-
 #include <engine/core/rendering/renderable.h>
 #include <engine/core/rendering/renderingService.h>
 #include <engine/core/rendering/strategies/sdl/sdl_strategy_factory.h>
+
+#include <map>
 
 RenderingService::RenderingService()
     : renderer_{new Renderer()},
@@ -10,7 +10,8 @@ RenderingService::RenderingService()
 RenderingService::RenderingService(Renderer* renderer) : renderer_{renderer} {}
 
 void RenderingService::draw(
-    std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>& objects,
+    std::map<int, std::multimap<int, std::reference_wrapper<Renderable>>>&
+        objects,
     Scene& scene) {
   renderer_->render(objects, scene);
 }

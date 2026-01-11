@@ -35,7 +35,7 @@ class BoxCollider2D : public Collider2D {
   BoxCollider2D& bounciness(float value) noexcept override;
 
   std::string type_name() const override;
-  
+
   [[nodiscard]] Point offset() const noexcept override;
   BoxCollider2D& offset(Point value) noexcept override;
 
