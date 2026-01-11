@@ -24,6 +24,12 @@
  *
  * @note Users should derive from this class to implement custom behavior.
  * @warning on_update() must be overridden.
+ *
+ * Usage:
+ * - Create a class that inherits from Behavior.
+ * - Override lifecycle methods (on_awake, on_start, on_update, on_destroy).
+ * - Attach the Behavior to a Component via a BehaviorScript.
+ * @see BehaviorScript
  */
 class Behavior {
  public:
