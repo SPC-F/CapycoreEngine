@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 
 enum class ConnectionState : uint16_t {
   NONE,
