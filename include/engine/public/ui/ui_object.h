@@ -9,6 +9,9 @@
  * UIObject represents a user interface element in the scene. It inherits from
  * GameObject and adds properties specific to UI elements, such as width,
  * height, pivot, and anchor points.
+ *
+ * @note UIObjects are intended to be used within a UI system and may have
+ * specific rendering and update logic.
  */
 class UIObject : public GameObject {
  public:

@@ -14,6 +14,12 @@
  * reason for this class is to encapsulate text-specific functionality and state
  * management, making it easier to create and manage text elements within the UI
  * system.
+ *
+ * Usage:
+ * - Create a UIText component with desired properties.
+ * - Attach the UIText component to a GameObject to display text in the UI.
+ * - Modify properties such as text content, font, size, color as needed.
+ * @note Ensure the specified font is available in the assets.
  */
 class UIText : public UIObject {
  public:
