@@ -13,6 +13,15 @@
  *
  * NOTE: This component requires a NavigationGraph component to be present
  * on the same GameObject to function correctly.
+ *
+ *
+ * Usage:
+ * - Create a Pathfinding component and attach it to a GameObject with a
+ *   NavigationGraph.
+ * - Use generate_path_to_position() or generate_path_to_target_game_object()
+ *   to create paths.
+ * - Retrieve the generated path using get_path().
+ * @note Ensure the NavigationGraph is properly set up with navigation nodes.
  */
 class Pathfinding : public Component {
  public:

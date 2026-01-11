@@ -13,6 +13,14 @@
  *
  * This component holds references to neighboring nodes and associated movement
  * costs. It is used in AI pathfinding to navigate through a graph of nodes.
+ *
+ *
+ * Usage:
+ * - Create NavigationNode components and attach them to GameObjects.
+ * - Use add_edge() to connect nodes and define movement costs.
+ * - Retrieve edges and positions for pathfinding algorithms.
+ * @note NavigationNode components are typically used in conjunction with the
+ * the NavigationGraph.
  */
 class NavigationNode : public Renderable {
   using Edge = GraphEdge<NavigationNode>;

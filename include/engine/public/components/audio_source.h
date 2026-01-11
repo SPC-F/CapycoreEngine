@@ -19,6 +19,12 @@
  * component is attached.
  * @param loop Whether the audio should loop after finishing.
  * @param volume The volume level of the audio (0.0 to 1.0).
+ *
+ * Usage:
+ * - Create an AudioSource with the desired audio file and settings.
+ * - Call play() to start playback, and stop() to halt it.
+ * - Adjust volume and looping settings as needed.
+ * @note Ensure the audio file exists and is in a supported format.
  */
 class AudioSource : public Component {
  public:

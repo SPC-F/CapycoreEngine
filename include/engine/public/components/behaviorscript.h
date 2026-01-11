@@ -16,6 +16,13 @@
  *       they create custom Behaviors and attach them to GameObjects via
  *       Components.
  * @see Behavior
+ *
+ *
+ * Usage:
+ * - Create a BehaviorScript with a specific Behavior.
+ * - Attach the BehaviorScript to a GameObject.
+ * The Behavior's lifecycle methods (on_awake, on_start, on_update, on_destroy)
+ * will be called automatically by the engine.
  */
 class BehaviorScript : public Component {
  public:

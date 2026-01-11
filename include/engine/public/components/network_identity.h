@@ -10,6 +10,16 @@
  *
  * Attach this to any GameObject that should be replicated. Systems or user code
  * should call `mark_dirty()` when the object's networked state changes.
+ *
+ *
+ * Usage:
+ * - Create a NetworkIdentity component and attach it to a GameObject.
+ * - Use set_uuid() to assign a unique identifier.
+ * - Use set_owner_uuid() to assign ownership if applicable.
+ * - Call mark_dirty() whenever the object's state changes to flag it for
+ *   network synchronization.
+ * @note Ensure that each NetworkIdentity has a unique UUID for proper
+ * identification.
  */
 class NetworkIdentity : public Component {
  private:
