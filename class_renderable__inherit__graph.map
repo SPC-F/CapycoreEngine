@@ -4,7 +4,7 @@
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="276,110,100,154,99,149,275,105"/>
 <area shape="rect" id="Node000004" href="$class_collider2_d.html" title="A 2D collider base that defines the shape and physical properties of a GameObject for collision detec..." alt="" coords="128,152,219,177"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="296,112,201,154,198,149,294,107"/>
-<area shape="rect" id="Node000007" href="$class_image.html" title=" " alt="" coords="243,152,306,177"/>
+<area shape="rect" id="Node000007" href="$class_image.html" title="A UI component for displaying images." alt="" coords="243,152,306,177"/>
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="317,116,286,154,282,150,313,113"/>
 <area shape="rect" id="Node000008" href="$class_navigation_node.html" title="Component representing a navigation node in a navigation graph." alt="" coords="330,152,457,177"/>
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="354,113,386,150,382,154,350,116"/>
@@ -12,7 +12,7 @@
 <area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="376,107,483,149,481,154,374,112"/>
 <area shape="rect" id="Node000010" href="$class_text.html" title="UI Text Component." alt="" coords="565,152,614,177"/>
 <area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="392,105,554,149,565,153,564,158,553,155,390,110"/>
-<area shape="rect" id="Node000002" href="$class_component.html" title=" " alt="" coords="285,5,382,31"/>
+<area shape="rect" id="Node000002" href="$class_component.html" title="Base class for all components that can be attached to GameObjects." alt="" coords="285,5,382,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="336,44,336,79,331,79,331,44"/>
 <area shape="rect" id="Node000005" href="$class_box_collider2_d.html" title="A 2D box collider component that defines a rectangular collision shape for a GameObject." alt="" coords="44,225,159,251"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="153,189,115,227,111,223,150,185"/>

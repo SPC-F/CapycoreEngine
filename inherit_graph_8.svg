@@ -11,7 +11,7 @@
 <!-- Node0 -->
 <g id="Node000000" class="node">
 <title>Node0</title>
-<g id="a_Node000000"><a xlink:href="class_component.html" target="_top" xlink:title=" ">
+<g id="a_Node000000"><a xlink:href="class_component.html" target="_top" xlink:title="Base class for all components that can be attached to GameObjects.">
 <polygon fill="white" stroke="#666666" points="73,-203 0,-203 0,-184 73,-184 73,-203"/>
 <text text-anchor="middle" x="36.5" y="-191" font-family="Helvetica,sans-Serif" font-size="10.00">Component</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:href="class_animator.html" target="_top" xlink:title=" ">
+<g id="a_Node000001"><a xlink:href="class_animator.html" target="_top" xlink:title="Component that handles sprite sheet animations.">
 <polygon fill="white" stroke="#666666" points="189.5,-333 127.5,-333 127.5,-314 189.5,-314 189.5,-333"/>
 <text text-anchor="middle" x="158.5" y="-321" font-family="Helvetica,sans-Serif" font-size="10.00">Animator</text>
 </a>
@@ -200,7 +200,7 @@
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="class_image.html" target="_top" xlink:title=" ">
+<g id="a_Node000012"><a xlink:href="class_image.html" target="_top" xlink:title="A UI component for displaying images.">
 <polygon fill="white" stroke="#666666" points="315,-130 268,-130 268,-111 315,-111 315,-130"/>
 <text text-anchor="middle" x="291.5" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">Image</text>
 </a>

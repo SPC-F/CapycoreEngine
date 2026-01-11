@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="class_component.html" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="class_component.html" target="_top" xlink:title="Base class for all components that can be attached to GameObjects.">
 <polygon fill="white" stroke="#666666" points="76,-74 3,-74 3,-55 76,-55 76,-74"/>
 <text text-anchor="middle" x="39.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">Component</text>
 </a>

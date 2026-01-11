@@ -1,6 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_component.html" title=" " alt="" coords="5,179,103,204"/>
-<area shape="rect" id="Node000001" href="$class_animator.html" title=" " alt="" coords="175,5,258,31"/>
+<area shape="rect" id="Node000000" href="$class_component.html" title="Base class for all components that can be attached to GameObjects." alt="" coords="5,179,103,204"/>
+<area shape="rect" id="Node000001" href="$class_animator.html" title="Component that handles sprite sheet animations." alt="" coords="175,5,258,31"/>
 <area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="63,165,95,103,120,69,149,40,174,26,177,31,152,44,124,73,100,106,68,167"/>
 <area shape="rect" id="Node000002" href="$class_audio_source.html" title="Component that plays audio using the AudioService." alt="" coords="165,55,268,80"/>
 <area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="71,166,105,127,149,89,171,78,174,82,152,94,108,131,75,169"/>
@@ -20,7 +20,7 @@
 <area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="272,293,281,287,296,269,304,250,312,231,329,212,347,201,350,205,332,216,317,234,309,252,301,271,284,291,276,297"/>
 <area shape="rect" id="Node000009" href="$class_collider2_d.html" title="A 2D collider base that defines the shape and physical properties of a GameObject for collision detec..." alt="" coords="349,227,439,252"/>
 <area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="264,294,282,286,330,261,357,250,359,255,332,266,284,291,266,299"/>
-<area shape="rect" id="Node000012" href="$class_image.html" title=" " alt="" coords="363,276,425,301"/>
+<area shape="rect" id="Node000012" href="$class_image.html" title="A UI component for displaying images." alt="" coords="363,276,425,301"/>
 <area shape="poly" id="edge12_Node000007_Node000012" title=" " alt="" coords="278,303,362,290,363,296,279,308"/>
 <area shape="rect" id="Node000013" href="$class_navigation_node.html" title="Component representing a navigation node in a navigation graph." alt="" coords="331,325,457,351"/>
 <area shape="poly" id="edge13_Node000007_Node000013" title=" " alt="" coords="278,320,331,327,330,332,278,325"/>

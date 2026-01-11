@@ -1,5 +1,5 @@
 <map id="Camera" name="Camera">
-<area shape="rect" id="Node000001" title=" " alt="" coords="20,79,93,104"/>
-<area shape="rect" id="Node000002" href="$class_game_object.html" title=" " alt="" coords="5,5,108,31"/>
+<area shape="rect" id="Node000001" title="Camera GameObject class Inherits from GameObject class and represents a camera in the scene...." alt="" coords="20,79,93,104"/>
+<area shape="rect" id="Node000002" href="$class_game_object.html" title="Concept to constrain types to be derived from Component." alt="" coords="5,5,108,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,44,59,79,54,79,54,44"/>
 </map>

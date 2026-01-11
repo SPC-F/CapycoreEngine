@@ -131,6 +131,9 @@ $(document).ready(function(){initNavTree('class_transform.html',''); initResizab
 </div><!--header-->
 <div class="contents">
 
+<p>Represents the position, rotation, and scale of a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> in 3D space. The <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a> class encapsulates the local and world transformations of a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>, including its position, rotation, and scale. It also supports hierarchical relationships through parent-child transforms.  
+ <a href="class_transform.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="transform_8h_source.html">transform.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -144,27 +147,46 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a44161a6135af0e513cb9f46eeabdd796" id="r_a44161a6135af0e513cb9f46eeabdd796"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_transform.html#a44161a6135af0e513cb9f46eeabdd796">Transform</a> (<a class="el" href="class_vector3.html">Vector3</a> <a class="el" href="class_transform.html#aa889afe47b5ff11cc4af8b95a7fa3d9e">position</a>, float <a class="el" href="class_transform.html#aab172a3345eb5c13ecea1c8530f85b86">rotation</a>, <a class="el" href="class_vector3.html">Vector3</a> <a class="el" href="class_transform.html#a40a9ab54c04146731f3c164b82a4464e">scale</a>, std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_transform.html">Transform</a> &gt; &gt; <a class="el" href="class_transform.html#a9f035a1c9b2afaf102f30f9c1c9fb28e">parent</a>)</td></tr>
 <tr class="separator:a44161a6135af0e513cb9f46eeabdd796"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a999b79d44bccd02f597938b330184540" id="r_a999b79d44bccd02f597938b330184540"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_transform.html#a999b79d44bccd02f597938b330184540">local_position</a> () const noexcept</td></tr>
+<tr class="memdesc:a999b79d44bccd02f597938b330184540"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the local position of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>.  <br /></td></tr>
 <tr class="separator:a999b79d44bccd02f597938b330184540"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b574cbdcff5693ab7bff5ff68337057" id="r_a4b574cbdcff5693ab7bff5ff68337057"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_transform.html">Transform</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_transform.html#a4b574cbdcff5693ab7bff5ff68337057">local_position</a> (const <a class="el" href="class_vector3.html">Vector3</a> &amp;pos) noexcept</td></tr>
+<tr class="memdesc:a4b574cbdcff5693ab7bff5ff68337057"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the local position of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>.  <br /></td></tr>
 <tr class="separator:a4b574cbdcff5693ab7bff5ff68337057"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa889afe47b5ff11cc4af8b95a7fa3d9e" id="r_aa889afe47b5ff11cc4af8b95a7fa3d9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_transform.html#aa889afe47b5ff11cc4af8b95a7fa3d9e">position</a> () const noexcept</td></tr>
+<tr class="memdesc:aa889afe47b5ff11cc4af8b95a7fa3d9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the world position of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>.  <br /></td></tr>
 <tr class="separator:aa889afe47b5ff11cc4af8b95a7fa3d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f46b8e0af4e2faca3d8bada8d871a43" id="r_a0f46b8e0af4e2faca3d8bada8d871a43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_transform.html">Transform</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_transform.html#a0f46b8e0af4e2faca3d8bada8d871a43">position</a> (const <a class="el" href="class_vector3.html">Vector3</a> &amp;pos) noexcept</td></tr>
+<tr class="memdesc:a0f46b8e0af4e2faca3d8bada8d871a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the world position of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>.  <br /></td></tr>
 <tr class="separator:a0f46b8e0af4e2faca3d8bada8d871a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab172a3345eb5c13ecea1c8530f85b86" id="r_aab172a3345eb5c13ecea1c8530f85b86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_transform.html">Transform</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_transform.html#aab172a3345eb5c13ecea1c8530f85b86">rotation</a> (float rot) noexcept</td></tr>
+<tr class="memdesc:aab172a3345eb5c13ecea1c8530f85b86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the rotation of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a> in degrees.  <br /></td></tr>
 <tr class="separator:aab172a3345eb5c13ecea1c8530f85b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0211949d7def7f9d7294bb3f012e5fc9" id="r_a0211949d7def7f9d7294bb3f012e5fc9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_transform.html#a0211949d7def7f9d7294bb3f012e5fc9">rotation</a> () const noexcept</td></tr>
+<tr class="memdesc:a0211949d7def7f9d7294bb3f012e5fc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the rotation of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a> in degrees.  <br /></td></tr>
 <tr class="separator:a0211949d7def7f9d7294bb3f012e5fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40a9ab54c04146731f3c164b82a4464e" id="r_a40a9ab54c04146731f3c164b82a4464e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_transform.html">Transform</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_transform.html#a40a9ab54c04146731f3c164b82a4464e">scale</a> (<a class="el" href="class_vector3.html">Vector3</a> scale) noexcept</td></tr>
+<tr class="memdesc:a40a9ab54c04146731f3c164b82a4464e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the scale of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>.  <br /></td></tr>
 <tr class="separator:a40a9ab54c04146731f3c164b82a4464e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a819d2db2c59e95f64e0990880daed47a" id="r_a819d2db2c59e95f64e0990880daed47a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_transform.html#a819d2db2c59e95f64e0990880daed47a">scale</a> () const noexcept</td></tr>
+<tr class="memdesc:a819d2db2c59e95f64e0990880daed47a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the scale of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>.  <br /></td></tr>
 <tr class="separator:a819d2db2c59e95f64e0990880daed47a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f035a1c9b2afaf102f30f9c1c9fb28e" id="r_a9f035a1c9b2afaf102f30f9c1c9fb28e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_transform.html">Transform</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_transform.html#a9f035a1c9b2afaf102f30f9c1c9fb28e">parent</a> (std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_transform.html">Transform</a> &gt; &gt; parent) noexcept</td></tr>
+<tr class="memdesc:a9f035a1c9b2afaf102f30f9c1c9fb28e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the parent <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>.  <br /></td></tr>
 <tr class="separator:a9f035a1c9b2afaf102f30f9c1c9fb28e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3c74efb26546e811931b41728f924ba" id="r_ac3c74efb26546e811931b41728f924ba"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_transform.html">Transform</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_transform.html#ac3c74efb26546e811931b41728f924ba">parent</a> () const noexcept</td></tr>
+<tr class="memdesc:ac3c74efb26546e811931b41728f924ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parent <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>.  <br /></td></tr>
 <tr class="separator:ac3c74efb26546e811931b41728f924ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents the position, rotation, and scale of a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> in 3D space. The <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a> class encapsulates the local and world transformations of a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>, including its position, rotation, and scale. It also supports hierarchical relationships through parent-child transforms. </p>
+<dl class="section note"><dt>Note</dt><dd>The position is represented as a <a class="el" href="class_vector3.html" title="Represents a 3D vector with x, y, and z components. This class provides basic vector operations such ...">Vector3</a>, the rotation as a float (in degrees), and the scale as a <a class="el" href="class_vector3.html" title="Represents a 3D vector with x, y, and z components. This class provides basic vector operations such ...">Vector3</a>. </dd>
+<dd>
+The parent transform is optional, allowing for both root and child transforms. </dd>
+<dd>
+Modifying the local position, rotation, or scale will affect the world transformation based on the parent's transformation. </dd>
+<dd>
+This class does not handle matrix transformations; it focuses on the basic representation of position, rotation, and scale. </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa08ca4266efabc768973cdeea51945ab" name="aa08ca4266efabc768973cdeea51945ab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa08ca4266efabc768973cdeea51945ab">&#9670;&#160;</a></span>Transform() <span class="overload">[1/4]</span></h2>
 
@@ -306,6 +328,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get the local position of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>The local position as a <a class="el" href="class_vector3.html" title="Represents a 3D vector with x, y, and z components. This class provides basic vector operations such ...">Vector3</a>. </dd></dl>
+
 </div>
 </div>
 <a id="a4b574cbdcff5693ab7bff5ff68337057" name="a4b574cbdcff5693ab7bff5ff68337057"></a>
@@ -332,6 +357,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the local position of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The new local position as a <a class="el" href="class_vector3.html" title="Represents a 3D vector with x, y, and z components. This class provides basic vector operations such ...">Vector3</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a> for chaining. </dd></dl>
+
 </div>
 </div>
 <a id="ac3c74efb26546e811931b41728f924ba" name="ac3c74efb26546e811931b41728f924ba"></a>
@@ -356,6 +390,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the parent <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>An optional reference to the parent <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>. </dd></dl>
 
 </div>
 </div>
@@ -383,6 +420,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the parent <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>An optional reference to the new parent <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a> for chaining. </dd></dl>
+
 </div>
 </div>
 <a id="aa889afe47b5ff11cc4af8b95a7fa3d9e" name="aa889afe47b5ff11cc4af8b95a7fa3d9e"></a>
@@ -407,6 +453,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the world position of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>The world position as a <a class="el" href="class_vector3.html" title="Represents a 3D vector with x, y, and z components. This class provides basic vector operations such ...">Vector3</a>. </dd></dl>
 
 </div>
 </div>
@@ -434,6 +483,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the world position of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The new world position as a <a class="el" href="class_vector3.html" title="Represents a 3D vector with x, y, and z components. This class provides basic vector operations such ...">Vector3</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a> for chaining. </dd></dl>
+
 </div>
 </div>
 <a id="a0211949d7def7f9d7294bb3f012e5fc9" name="a0211949d7def7f9d7294bb3f012e5fc9"></a>
@@ -458,6 +516,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the rotation of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a> in degrees. </p>
+<dl class="section return"><dt>Returns</dt><dd>The rotation in degrees. </dd></dl>
 
 </div>
 </div>
@@ -485,6 +546,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the rotation of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a> in degrees. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rot</td><td>The new rotation in degrees. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a> for chaining. </dd></dl>
+
 </div>
 </div>
 <a id="a819d2db2c59e95f64e0990880daed47a" name="a819d2db2c59e95f64e0990880daed47a"></a>
@@ -509,6 +579,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get the scale of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>The scale as a <a class="el" href="class_vector3.html" title="Represents a 3D vector with x, y, and z components. This class provides basic vector operations such ...">Vector3</a>. </dd></dl>
 
 </div>
 </div>
@@ -535,6 +608,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Set the scale of the <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scale</td><td>The new scale as a <a class="el" href="class_vector3.html" title="Represents a 3D vector with x, y, and z components. This class provides basic vector operations such ...">Vector3</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="class_transform.html" title="Represents the position, rotation, and scale of a GameObject in 3D space. The Transform class encapsu...">Transform</a> for chaining. </dd></dl>
 
 </div>
 </div>

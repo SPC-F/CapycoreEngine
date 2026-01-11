@@ -18,7 +18,7 @@
 <area shape="poly" id="edge33_Node000000_Node000008" title=" " alt="" coords="94,284,130,311,173,336,221,352,219,357,171,340,127,315,91,288"/>
 <area shape="rect" id="Node000009" href="$class_rendering_service.html" title="Service responsible for rendering game objects to the window. This service functions as a manager for..." alt="" coords="193,400,329,425"/>
 <area shape="poly" id="edge34_Node000000_Node000009" title=" " alt="" coords="83,287,120,337,145,363,173,385,199,397,197,402,171,390,142,367,116,341,79,291"/>
-<area shape="rect" id="Node000010" href="$class_scene_service.html" title=" " alt="" coords="206,449,315,475"/>
+<area shape="rect" id="Node000010" href="$class_scene_service.html" title="Service responsible for managing scenes within the engine. This service allows for adding,..." alt="" coords="206,449,315,475"/>
 <area shape="poly" id="edge35_Node000000_Node000010" title=" " alt="" coords="77,289,92,323,112,362,140,401,174,434,207,451,204,455,170,439,136,405,108,365,87,325,73,292"/>
 <area shape="rect" id="Node000011" href="$class_system_service.html" title=" " alt="" coords="201,499,320,524"/>
 <area shape="poly" id="edge36_Node000000_Node000011" title=" " alt="" coords="74,290,85,332,105,385,134,438,152,463,174,484,202,499,200,504,170,488,148,466,129,441,100,387,80,334,69,291"/>

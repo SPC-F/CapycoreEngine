@@ -20,7 +20,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="class_u_i_f_p_s.html" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="class_u_i_f_p_s.html" target="_top" xlink:title="UI Component that displays the current frames per second (FPS).">
 <polygon fill="white" stroke="#666666" points="45,-74 0,-74 0,-55 45,-55 45,-74"/>
 <text text-anchor="middle" x="22.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">UIFPS</text>
 </a>
@@ -92,7 +92,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="class_game_object.html" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="class_game_object.html" target="_top" xlink:title="Concept to constrain types to be derived from Component.">
 <polygon fill="white" stroke="#666666" points="176,-184 99,-184 99,-165 176,-165 176,-184"/>
 <text text-anchor="middle" x="137.5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">GameObject</text>
 </a>

@@ -163,7 +163,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af3ea4a1d51a9db059b84fc81b98a853a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a prefab type is registered.  <br /></td></tr>
 <tr class="separator:af3ea4a1d51a9db059b84fc81b98a853a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc66995bca01d12bc5e9a6036c89e601" id="r_afc66995bca01d12bc5e9a6036c89e601"><td class="memItemLeft" align="right" valign="top">std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_prefab_service.html#afc66995bca01d12bc5e9a6036c89e601">instantiate</a> (const std::string &amp;prefab_type_id, <a class="el" href="class_scene.html">Scene</a> &amp;scene, const std::string &amp;name)</td></tr>
-<tr class="memdesc:afc66995bca01d12bc5e9a6036c89e601"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiate a <a class="el" href="class_game_object.html">GameObject</a> from a registered prefab.  <br /></td></tr>
+<tr class="memdesc:afc66995bca01d12bc5e9a6036c89e601"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiate a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> from a registered prefab.  <br /></td></tr>
 <tr class="separator:afc66995bca01d12bc5e9a6036c89e601"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad18e9ec4f39a0f188336033919e822f9" id="r_ad18e9ec4f39a0f188336033919e822f9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_prefab_service.html#ad18e9ec4f39a0f188336033919e822f9">get_registered_prefabs</a> () const</td></tr>
 <tr class="memdesc:ad18e9ec4f39a0f188336033919e822f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all registered prefab type IDs.  <br /></td></tr>
@@ -177,7 +177,16 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Global service for managing prefab factories and component creation. </p>
-<p>This is a singleton that maintains a mapping of prefab type IDs to factory functions. When a network snapshot arrives with an object of an unknown type, the service can instantiate it with the correct components. </p>
+<p>This is a singleton that maintains a mapping of prefab type IDs to factory functions. When a network snapshot arrives with an object of an unknown type, the service can instantiate it with the correct components.</p>
+<p>Usage:</p><ul>
+<li>Register prefab factories with unique type IDs using <a class="el" href="class_prefab_service.html#a8ba9597b86b3e231ed3b755b2ce6506e" title="Register a prefab factory for a given type ID.">register_prefab()</a>.</li>
+<li>Instantiate GameObjects from prefabs using <a class="el" href="class_prefab_service.html#afc66995bca01d12bc5e9a6036c89e601" title="Instantiate a GameObject from a registered prefab.">instantiate()</a>.</li>
+<li>Check for registered prefabs with <a class="el" href="class_prefab_service.html#af3ea4a1d51a9db059b84fc81b98a853a" title="Check if a prefab type is registered.">has_prefab()</a>.</li>
+<li>Unregister prefabs with <a class="el" href="class_prefab_service.html#ac6b07e3fc53c5344bb1a1f6d96d72061" title="Unregister a previously registered prefab factory.">unregister_prefab()</a>.</li>
+<li>Retrieve all registered prefab type IDs with <a class="el" href="class_prefab_service.html#ad18e9ec4f39a0f188336033919e822f9" title="Get all registered prefab type IDs.">get_registered_prefabs()</a>.</li>
+<li>Clear all registered prefabs with <a class="el" href="class_prefab_service.html#a31ee41505e30346681d3037f34ddb7da" title="Clear all registered prefabs.">clear_all()</a>. <dl class="section note"><dt>Note</dt><dd>Prefab factories should create and return GameObjects with all necessary components attached. </dd></dl>
+</li>
+</ul>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae5b3d01c36907cdfa77a0515d6195732" name="ae5b3d01c36907cdfa77a0515d6195732"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae5b3d01c36907cdfa77a0515d6195732">&#9670;&#160;</a></span>PrefabService() <span class="overload">[1/3]</span></h2>
@@ -354,16 +363,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Instantiate a <a class="el" href="class_game_object.html">GameObject</a> from a registered prefab. </p>
+<p>Instantiate a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> from a registered prefab. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prefab_type_id</td><td>Type ID of the prefab to instantiate </td></tr>
-    <tr><td class="paramname">scene</td><td><a class="el" href="class_scene.html">Scene</a> to add the object to </td></tr>
-    <tr><td class="paramname">name</td><td>Name to assign to the created <a class="el" href="class_game_object.html">GameObject</a> </td></tr>
+    <tr><td class="paramname">scene</td><td><a class="el" href="class_scene.html" title="Represents a scene within the engine. A scene contains multiple GameObjects and manages their lifecyc...">Scene</a> to add the object to </td></tr>
+    <tr><td class="paramname">name</td><td>Name to assign to the created <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the created <a class="el" href="class_game_object.html">GameObject</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the created <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">std::runtime_error</td><td>if prefab_type_id is not registered </td></tr>
@@ -455,7 +464,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prefab_type_id</td><td>Unique identifier for this prefab type </td></tr>
-    <tr><td class="paramname">factory</td><td>Factory function that creates the <a class="el" href="class_game_object.html">GameObject</a> with components </td></tr>
+    <tr><td class="paramname">factory</td><td>Factory function that creates the <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> with components </td></tr>
   </table>
   </dd>
 </dl>

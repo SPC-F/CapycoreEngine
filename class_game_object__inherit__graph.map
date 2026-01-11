@@ -1,10 +1,10 @@
 <map id="GameObject" name="GameObject">
-<area shape="rect" id="Node000001" title=" " alt="" coords="87,5,189,31"/>
-<area shape="rect" id="Node000002" href="$class_camera.html" title=" " alt="" coords="52,79,125,104"/>
+<area shape="rect" id="Node000001" title="Concept to constrain types to be derived from Component." alt="" coords="87,5,189,31"/>
+<area shape="rect" id="Node000002" href="$class_camera.html" title="Camera GameObject class Inherits from GameObject class and represents a camera in the scene...." alt="" coords="52,79,125,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,44,99,80,94,77,120,41"/>
 <area shape="rect" id="Node000003" href="$class_u_i_object.html" title="Base class for all UI objects." alt="" coords="149,79,228,104"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="157,41,183,77,178,80,152,44"/>
-<area shape="rect" id="Node000004" href="$class_u_i_f_p_s.html" title=" " alt="" coords="5,152,65,177"/>
+<area shape="rect" id="Node000004" href="$class_u_i_f_p_s.html" title="UI Component that displays the current frames per second (FPS)." alt="" coords="5,152,65,177"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="153,112,62,154,59,149,151,107"/>
 <area shape="rect" id="Node000005" href="$class_u_i_image.html" title=" " alt="" coords="90,152,167,177"/>
 <area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="172,116,140,154,136,150,168,113"/>

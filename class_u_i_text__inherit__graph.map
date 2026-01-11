@@ -2,6 +2,6 @@
 <area shape="rect" id="Node000001" title="A UI text element." alt="" coords="25,152,88,177"/>
 <area shape="rect" id="Node000002" href="$class_u_i_object.html" title="Base class for all UI objects." alt="" coords="17,79,96,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,118,59,152,54,152,54,118"/>
-<area shape="rect" id="Node000003" href="$class_game_object.html" title=" " alt="" coords="5,5,108,31"/>
+<area shape="rect" id="Node000003" href="$class_game_object.html" title="Concept to constrain types to be derived from Component." alt="" coords="5,5,108,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="59,44,59,79,54,79,54,44"/>
 </map>

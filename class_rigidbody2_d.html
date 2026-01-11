@@ -131,7 +131,7 @@ $(document).ready(function(){initNavTree('class_rigidbody2_d.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
-<p>A 2D rigidbody component that adds physics properties to a <a class="el" href="class_game_object.html">GameObject</a>.  
+<p>A 2D rigidbody component that adds physics properties to a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>.  
  <a href="class_rigidbody2_d.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="rigidbody__2d_8h_source.html">rigidbody_2d.h</a>&gt;</code></p>
@@ -186,10 +186,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6f1f2136915f9037839e03e9109ddee1" id="r_a6f1f2136915f9037839e03e9109ddee1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rigidbody2_d.html#a6f1f2136915f9037839e03e9109ddee1">mark_network_dirty</a> () noexcept</td></tr>
 <tr class="separator:a6f1f2136915f9037839e03e9109ddee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21b3bff8230bb6f096f833072bf4b9d9" id="r_a21b3bff8230bb6f096f833072bf4b9d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rigidbody2_d.html#a21b3bff8230bb6f096f833072bf4b9d9">on_serialize</a> (std::vector&lt; uint8_t &gt; &amp;out) const override</td></tr>
+<tr class="memdesc:a21b3bff8230bb6f096f833072bf4b9d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes the component's state into a byte array.  <br /></td></tr>
 <tr class="separator:a21b3bff8230bb6f096f833072bf4b9d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a101e4a15a031a6f3d1b228d852669d98" id="r_a101e4a15a031a6f3d1b228d852669d98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rigidbody2_d.html#a101e4a15a031a6f3d1b228d852669d98">on_deserialize</a> (const std::vector&lt; uint8_t &gt; &amp;data, size_t &amp;offset) override</td></tr>
+<tr class="memdesc:a101e4a15a031a6f3d1b228d852669d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializes the component's state from a byte array.  <br /></td></tr>
 <tr class="separator:a101e4a15a031a6f3d1b228d852669d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b6362a9d5d70f5ec0b5ce42e7382ac0" id="r_a9b6362a9d5d70f5ec0b5ce42e7382ac0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rigidbody2_d.html#a9b6362a9d5d70f5ec0b5ce42e7382ac0">type_name</a> () const override</td></tr>
+<tr class="memdesc:a9b6362a9d5d70f5ec0b5ce42e7382ac0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a consistent type name for the component.  <br /></td></tr>
 <tr class="separator:a9b6362a9d5d70f5ec0b5ce42e7382ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_component.html">Component</a></td></tr>
 <tr class="memitem:a8775db6d1a2c1afc2e77cd3c8f39da6f inherit pub_methods_class_component" id="r_a8775db6d1a2c1afc2e77cd3c8f39da6f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a8775db6d1a2c1afc2e77cd3c8f39da6f">Component</a> ()</td></tr>
@@ -197,37 +200,51 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad82d7393e339c1b19cc17a0d55b5674d inherit pub_methods_class_component" id="r_ad82d7393e339c1b19cc17a0d55b5674d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#ad82d7393e339c1b19cc17a0d55b5674d">~Component</a> ()=default</td></tr>
 <tr class="separator:ad82d7393e339c1b19cc17a0d55b5674d inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97339c448c3c161d3f794f9a2fd5f37a inherit pub_methods_class_component" id="r_a97339c448c3c161d3f794f9a2fd5f37a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a97339c448c3c161d3f794f9a2fd5f37a">active</a> () const noexcept</td></tr>
+<tr class="memdesc:a97339c448c3c161d3f794f9a2fd5f37a inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the component is active.  <br /></td></tr>
 <tr class="separator:a97339c448c3c161d3f794f9a2fd5f37a inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7969827fc57812e0f33941e51d671e7 inherit pub_methods_class_component" id="r_af7969827fc57812e0f33941e51d671e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#af7969827fc57812e0f33941e51d671e7">active</a> (bool value) noexcept</td></tr>
 <tr class="separator:af7969827fc57812e0f33941e51d671e7 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e648565a85f7c811e20766277e78c98 inherit pub_methods_class_component" id="r_a5e648565a85f7c811e20766277e78c98"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a5e648565a85f7c811e20766277e78c98">marked_for_deletion</a> () const noexcept</td></tr>
+<tr class="memdesc:a5e648565a85f7c811e20766277e78c98 inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activates the component.  <br /></td></tr>
 <tr class="separator:a5e648565a85f7c811e20766277e78c98 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a912dd977678759b8d1bd17d0d03bfcd8 inherit pub_methods_class_component" id="r_a912dd977678759b8d1bd17d0d03bfcd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a912dd977678759b8d1bd17d0d03bfcd8">mark_for_deletion</a> () noexcept</td></tr>
 <tr class="separator:a912dd977678759b8d1bd17d0d03bfcd8 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac7d05319f6406574ef59a06a5fa2d76 inherit pub_methods_class_component" id="r_aac7d05319f6406574ef59a06a5fa2d76"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#aac7d05319f6406574ef59a06a5fa2d76">on_attach</a> ()</td></tr>
+<tr class="memdesc:aac7d05319f6406574ef59a06a5fa2d76 inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the component is attached to a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>.  <br /></td></tr>
 <tr class="separator:aac7d05319f6406574ef59a06a5fa2d76 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dadc6225e6e16f7684e2e121b0f8d18 inherit pub_methods_class_component" id="r_a4dadc6225e6e16f7684e2e121b0f8d18"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a4dadc6225e6e16f7684e2e121b0f8d18">on_detach</a> ()</td></tr>
+<tr class="memdesc:a4dadc6225e6e16f7684e2e121b0f8d18 inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the component is detached from a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>.  <br /></td></tr>
 <tr class="separator:a4dadc6225e6e16f7684e2e121b0f8d18 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a363868b322b05e49780ee8d82aae4e inherit pub_methods_class_component" id="r_a0a363868b322b05e49780ee8d82aae4e"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a0a363868b322b05e49780ee8d82aae4e">parent</a> () const noexcept</td></tr>
+<tr class="memdesc:a0a363868b322b05e49780ee8d82aae4e inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the parent <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> of this component.  <br /></td></tr>
 <tr class="separator:a0a363868b322b05e49780ee8d82aae4e inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dc87f909c6e96c688b295326c150660 inherit pub_methods_class_component" id="r_a1dc87f909c6e96c688b295326c150660"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a1dc87f909c6e96c688b295326c150660">parent</a> () noexcept</td></tr>
+<tr class="memdesc:a1dc87f909c6e96c688b295326c150660 inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the parent <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> of this component.  <br /></td></tr>
 <tr class="separator:a1dc87f909c6e96c688b295326c150660 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a525447471b46be8dd692f876371d31a3 inherit pub_methods_class_component" id="r_a525447471b46be8dd692f876371d31a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a525447471b46be8dd692f876371d31a3">parent</a> (<a class="el" href="class_game_object.html">GameObject</a> &amp;parent)</td></tr>
 <tr class="separator:a525447471b46be8dd692f876371d31a3 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1d2a538172d9c631e61b70395f99a70 inherit pub_methods_class_component" id="r_aa1d2a538172d9c631e61b70395f99a70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#aa1d2a538172d9c631e61b70395f99a70">parent</a> (std::nullopt_t nullopt)</td></tr>
 <tr class="separator:aa1d2a538172d9c631e61b70395f99a70 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81ee55887d718fd34edf7c246fbab86c inherit pub_methods_class_component" id="r_a81ee55887d718fd34edf7c246fbab86c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a81ee55887d718fd34edf7c246fbab86c">add_on_attach</a> (const std::function&lt; void(<a class="el" href="class_component.html">Component</a> &amp;)&gt; &amp;action)</td></tr>
+<tr class="memdesc:a81ee55887d718fd34edf7c246fbab86c inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the type information of the component.  <br /></td></tr>
 <tr class="separator:a81ee55887d718fd34edf7c246fbab86c inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1888d36eea572c402996dad0bf4e0cc0 inherit pub_methods_class_component" id="r_a1888d36eea572c402996dad0bf4e0cc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a1888d36eea572c402996dad0bf4e0cc0">remove_on_attach</a> (size_t index)</td></tr>
 <tr class="separator:a1888d36eea572c402996dad0bf4e0cc0 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b35426126ad66dd63dd8e79875c6b55 inherit pub_methods_class_component" id="r_a4b35426126ad66dd63dd8e79875c6b55"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a4b35426126ad66dd63dd8e79875c6b55">add_on_detach</a> (const std::function&lt; void(<a class="el" href="class_component.html">Component</a> &amp;)&gt; &amp;action)</td></tr>
+<tr class="memdesc:a4b35426126ad66dd63dd8e79875c6b55 inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an action to be performed when the component is attached.  <br /></td></tr>
 <tr class="separator:a4b35426126ad66dd63dd8e79875c6b55 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7edd46feca5ccc65be205350dacee236 inherit pub_methods_class_component" id="r_a7edd46feca5ccc65be205350dacee236"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a7edd46feca5ccc65be205350dacee236">remove_on_detach</a> (size_t index)</td></tr>
 <tr class="separator:a7edd46feca5ccc65be205350dacee236 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A 2D rigidbody component that adds physics properties to a <a class="el" href="class_game_object.html">GameObject</a>. </p>
-<p>This component allows a <a class="el" href="class_game_object.html">GameObject</a> to interact with the physics engine, enabling features such as gravity, collisions, and movement based on physical forces. </p>
+<div class="textblock"><p>A 2D rigidbody component that adds physics properties to a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>. </p>
+<p>This component allows a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> to interact with the physics engine, enabling features such as gravity, collisions, and movement based on physical forces.</p>
+<p>Usage:</p><ul>
+<li>Create a <a class="el" href="class_rigidbody2_d.html" title="A 2D rigidbody component that adds physics properties to a GameObject.">Rigidbody2D</a> component and attach it to a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>.</li>
+<li>Configure properties such as mass, gravity usage, and body type.</li>
+<li>Use methods like <a class="el" href="class_rigidbody2_d.html#afd395407202d7dad0a86cf37e8762380" title="Applies a force to the rigidbody.">apply_force()</a> and <a class="el" href="class_rigidbody2_d.html#ac2baee5480a3f1cfc867c99bf497210b" title="Applies an impulse to the rigidbody.">apply_impulse()</a> to influence movement. <dl class="section note"><dt>Note</dt><dd>Ensure the <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> has a <a class="el" href="class_collider2_d.html" title="A 2D collider base that defines the shape and physical properties of a GameObject for collision detec...">Collider2D</a> component for proper physics </dd></dl>
+</li>
+</ul>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3a3854bd5fef02d2f6891ffd197c2885" name="a3a3854bd5fef02d2f6891ffd197c2885"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3a3854bd5fef02d2f6891ffd197c2885">&#9670;&#160;</a></span>Rigidbody2D()</h2>
@@ -554,13 +571,13 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void Rigidbody2D::on_deserialize </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; uint8_t &gt; &amp;&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t &amp;&#160;</td>
-          <td class="paramname"><em>offset</em>&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -574,6 +591,16 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Deserializes the component's state from a byte array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The byte array containing the serialized state. </td></tr>
+    <tr><td class="paramname">offset</td><td>The current offset in the byte array from which to start reading. This offset will be updated as bytes are read. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_component.html#a00fcf72aef0ded27c19ba37b196076b0">Component</a>.</p>
 
@@ -592,7 +619,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void Rigidbody2D::on_serialize </td>
           <td>(</td>
           <td class="paramtype">std::vector&lt; uint8_t &gt; &amp;&#160;</td>
-          <td class="paramname"><em>out</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -602,6 +629,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Serializes the component's state into a byte array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>A vector to which the serialized bytes will be appended. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of bytes representing the serialized state of the component. </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_component.html#a42603d3b72bca611b7b4cd91481f70c3">Component</a>.</p>
 
@@ -706,6 +742,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Provides a consistent type name for the component. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string representing the type name of the component. @CAUTION: All derived components must implement this method to ensure consistent serialization across different compilers and platforms. </dd></dl>
 
 <p>Implements <a class="el" href="class_component.html#a249f073ebaac5db7eebd61541fcea962">Component</a>.</p>
 
@@ -814,7 +853,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Retrieves the current velocity of the rigidbody. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_vector3.html">Vector3</a> The current velocity vector. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_vector3.html" title="Represents a 3D vector with x, y, and z components. This class provides basic vector operations such ...">Vector3</a> The current velocity vector. </dd></dl>
 
 </div>
 </div>
@@ -843,7 +882,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Retrieves the current velocity of the rigidbody. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_vector3.html">Vector3</a> The current velocity vector. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_vector3.html" title="Represents a 3D vector with x, y, and z components. This class provides basic vector operations such ...">Vector3</a> The current velocity vector. </dd></dl>
 
 </div>
 </div>

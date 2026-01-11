@@ -132,6 +132,9 @@ $(document).ready(function(){initNavTree('class_vector3.html',''); initResizable
 </div><!--header-->
 <div class="contents">
 
+<p>Represents a 3D vector with x, y, and z components. This class provides basic vector operations such as addition, subtraction, multiplication, division, normalization, and length calculation.  
+ <a href="class_vector3.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="vector3_8h_source.html">vector3.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -165,12 +168,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2ca0b6fdf9c26be60b459d7d0b16e528" id="r_a2ca0b6fdf9c26be60b459d7d0b16e528"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3.html">Vector3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3.html#a2ca0b6fdf9c26be60b459d7d0b16e528">operator/=</a> (float value) noexcept</td></tr>
 <tr class="separator:a2ca0b6fdf9c26be60b459d7d0b16e528"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab000ae2d76cbca7087a28eb4fce926da" id="r_ab000ae2d76cbca7087a28eb4fce926da"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3.html#ab000ae2d76cbca7087a28eb4fce926da">length</a> () const noexcept</td></tr>
-<tr class="memdesc:ab000ae2d76cbca7087a28eb4fce926da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the length (magnitude) of the vector.  <br /></td></tr>
+<tr class="memdesc:ab000ae2d76cbca7087a28eb4fce926da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the length (magnitude) of the vector.  <br /></td></tr>
 <tr class="separator:ab000ae2d76cbca7087a28eb4fce926da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ae6892a009f50cf7a6e5a9db5e265ca" id="r_a8ae6892a009f50cf7a6e5a9db5e265ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3.html#a8ae6892a009f50cf7a6e5a9db5e265ca">normalize</a> () noexcept</td></tr>
-<tr class="memdesc:a8ae6892a009f50cf7a6e5a9db5e265ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalize the vector to a unit vector.  <br /></td></tr>
+<tr class="memdesc:a8ae6892a009f50cf7a6e5a9db5e265ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalizes the vector to have a length of 1.  <br /></td></tr>
 <tr class="separator:a8ae6892a009f50cf7a6e5a9db5e265ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeb19bd3c3896250fcba1d5e0e3a856c" id="r_aeeb19bd3c3896250fcba1d5e0e3a856c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3.html#aeeb19bd3c3896250fcba1d5e0e3a856c">equals</a> (const <a class="el" href="class_vector3.html">Vector3</a> &amp;other) const noexcept</td></tr>
+<tr class="memdesc:aeeb19bd3c3896250fcba1d5e0e3a856c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if this vector is equal to another vector.  <br /></td></tr>
 <tr class="separator:aeeb19bd3c3896250fcba1d5e0e3a856c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -182,7 +186,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aa8c9461eb24bd2c364258078811a3e9d" id="r_aa8c9461eb24bd2c364258078811a3e9d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3.html#aa8c9461eb24bd2c364258078811a3e9d">z</a></td></tr>
 <tr class="separator:aa8c9461eb24bd2c364258078811a3e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a 3D vector with x, y, and z components. This class provides basic vector operations such as addition, subtraction, multiplication, division, normalization, and length calculation. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0f49191f7e001e7f7ae1cb49522118b4" name="a0f49191f7e001e7f7ae1cb49522118b4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0f49191f7e001e7f7ae1cb49522118b4">&#9670;&#160;</a></span>Vector3() <span class="overload">[1/2]</span></h2>
 
@@ -259,6 +265,15 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Checks if this vector is equal to another vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The other vector to compare with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the vectors are equal, false otherwise. </dd></dl>
+
 </div>
 </div>
 <a id="ab000ae2d76cbca7087a28eb4fce926da" name="ab000ae2d76cbca7087a28eb4fce926da"></a>
@@ -284,7 +299,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Calculate the length (magnitude) of the vector. </p>
+<p>Calculates the length (magnitude) of the vector. </p>
+<dl class="section return"><dt>Returns</dt><dd>The length of the vector as a float. </dd></dl>
 
 </div>
 </div>
@@ -311,7 +327,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Normalize the vector to a unit vector. </p>
+<p>Normalizes the vector to have a length of 1. </p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>

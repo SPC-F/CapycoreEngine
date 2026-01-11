@@ -132,6 +132,10 @@ $(document).ready(function(){initNavTree('class_scene_service.html',''); initRes
 </div><!--header-->
 <div class="contents">
 
+<p>Service responsible for managing scenes within the engine. This service allows for adding, removing, loading, and running scenes. It also handles the transition of GameObjects marked as "don't destroy on
+load" between scenes.  
+ <a href="class_scene_service.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="scene__service_8h_source.html">scene_service.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SceneService:</div>
@@ -155,26 +159,34 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ad7a93ea70af8255460bb391b3a8a1a32"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method runs the current scene its game loop directly.  <br /></td></tr>
 <tr class="separator:ad7a93ea70af8255460bb391b3a8a1a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09b4dd2634fdf97f1edd39797dd0ee44" id="r_a09b4dd2634fdf97f1edd39797dd0ee44"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_service.html#a09b4dd2634fdf97f1edd39797dd0ee44">is_running</a> () const</td></tr>
-<tr class="memdesc:a09b4dd2634fdf97f1edd39797dd0ee44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shows if the <a class="el" href="class_scene_service.html">SceneService</a> is currently running scenes.  <br /></td></tr>
+<tr class="memdesc:a09b4dd2634fdf97f1edd39797dd0ee44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shows if the <a class="el" href="class_scene_service.html" title="Service responsible for managing scenes within the engine. This service allows for adding,...">SceneService</a> is currently running scenes.  <br /></td></tr>
 <tr class="separator:a09b4dd2634fdf97f1edd39797dd0ee44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3fe008d2402d85393b6e761034d33cf" id="r_ac3fe008d2402d85393b6e761034d33cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_service.html#ac3fe008d2402d85393b6e761034d33cf">stop</a> ()</td></tr>
-<tr class="memdesc:ac3fe008d2402d85393b6e761034d33cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the <a class="el" href="class_scene_service.html">SceneService</a> and the current scene.  <br /></td></tr>
+<tr class="memdesc:ac3fe008d2402d85393b6e761034d33cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the <a class="el" href="class_scene_service.html" title="Service responsible for managing scenes within the engine. This service allows for adding,...">SceneService</a> and the current scene.  <br /></td></tr>
 <tr class="separator:ac3fe008d2402d85393b6e761034d33cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18650a7d8a7c58028c29af3f58d22d31" id="r_a18650a7d8a7c58028c29af3f58d22d31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene.html">Scene</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_service.html#a18650a7d8a7c58028c29af3f58d22d31">add_scene</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a18650a7d8a7c58028c29af3f58d22d31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new scene with the given name.  <br /></td></tr>
 <tr class="separator:a18650a7d8a7c58028c29af3f58d22d31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af87da60544d478a9cb5201540039ca86" id="r_af87da60544d478a9cb5201540039ca86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene_service.html">SceneService</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_service.html#af87da60544d478a9cb5201540039ca86">load_scene</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:af87da60544d478a9cb5201540039ca86"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the scene with the given name as the next scene to load. The scene will be loaded at the end of the current scene's game loop.  <br /></td></tr>
 <tr class="separator:af87da60544d478a9cb5201540039ca86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75ff14b6e78e84b387924c587ffcd7e2" id="r_a75ff14b6e78e84b387924c587ffcd7e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene_service.html">SceneService</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_service.html#a75ff14b6e78e84b387924c587ffcd7e2">add_scene_and_load</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a75ff14b6e78e84b387924c587ffcd7e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new scene with the given name and sets it as the next scene to load. The scene will be loaded at the end of the current scene's game loop.  <br /></td></tr>
 <tr class="separator:a75ff14b6e78e84b387924c587ffcd7e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70fb6d59b2638453cc8c496f6a44f8d4" id="r_a70fb6d59b2638453cc8c496f6a44f8d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene_service.html">SceneService</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_service.html#a70fb6d59b2638453cc8c496f6a44f8d4">remove_scene</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a70fb6d59b2638453cc8c496f6a44f8d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the scene with the given name.  <br /></td></tr>
 <tr class="separator:a70fb6d59b2638453cc8c496f6a44f8d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29ac879ac89dcc39f68d436b2a0869d8" id="r_a29ac879ac89dcc39f68d436b2a0869d8"><td class="memItemLeft" align="right" valign="top">std::set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_service.html#a29ac879ac89dcc39f68d436b2a0869d8">contained_scene_names</a> () const</td></tr>
+<tr class="memdesc:a29ac879ac89dcc39f68d436b2a0869d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a scene with the given name exists.  <br /></td></tr>
 <tr class="separator:a29ac879ac89dcc39f68d436b2a0869d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d710d00b409f6f867293767c7d4f9a8" id="r_a3d710d00b409f6f867293767c7d4f9a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene.html">Scene</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_service.html#a3d710d00b409f6f867293767c7d4f9a8">current_scene</a> () const</td></tr>
+<tr class="memdesc:a3d710d00b409f6f867293767c7d4f9a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current active scene.  <br /></td></tr>
 <tr class="separator:a3d710d00b409f6f867293767c7d4f9a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac259f8fe8fffd7fd7325856065a1663d" id="r_ac259f8fe8fffd7fd7325856065a1663d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene_service.html">SceneService</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_service.html#ac259f8fe8fffd7fd7325856065a1663d">set_fallback_scene</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:ac259f8fe8fffd7fd7325856065a1663d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the fallback scene name. The fallback scene is loaded if the requested scene to load does not exist.  <br /></td></tr>
 <tr class="separator:ac259f8fe8fffd7fd7325856065a1663d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b584f3a746b05667a62abbda0157d4c" id="r_a3b584f3a746b05667a62abbda0157d4c"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_service.html#a3b584f3a746b05667a62abbda0157d4c">fallback_scene</a> () const</td></tr>
+<tr class="memdesc:a3b584f3a746b05667a62abbda0157d4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the fallback scene name.  <br /></td></tr>
 <tr class="separator:a3b584f3a746b05667a62abbda0157d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_i_engine_service"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_i_engine_service')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_i_engine_service.html">IEngineService</a></td></tr>
 <tr class="memitem:abf066771b0c8c59c4e6be6beedb669c3 inherit pub_methods_class_i_engine_service" id="r_abf066771b0c8c59c4e6be6beedb669c3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_engine_service.html#abf066771b0c8c59c4e6be6beedb669c3">~IEngineService</a> ()=default</td></tr>
@@ -185,7 +197,15 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:a48f59333f52064ae0accbaba98bc5f85" id="r_a48f59333f52064ae0accbaba98bc5f85"><td class="memItemLeft" align="right" valign="top">static constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_service.html#a48f59333f52064ae0accbaba98bc5f85">DEFAULT_SCENE_NAME</a> = &quot;DefaultScene&quot;</td></tr>
 <tr class="separator:a48f59333f52064ae0accbaba98bc5f85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Service responsible for managing scenes within the engine. This service allows for adding, removing, loading, and running scenes. It also handles the transition of GameObjects marked as "don't destroy on
+load" between scenes. </p>
+<dl class="section note"><dt>Note</dt><dd>Only one scene can be active and running at a time. </dd>
+<dd>
+The <a class="el" href="class_scene_service.html" title="Service responsible for managing scenes within the engine. This service allows for adding,...">SceneService</a> must be started by calling <a class="el" href="class_scene_service.html#ad7a93ea70af8255460bb391b3a8a1a32" title="This method runs the current scene its game loop directly.">run_current()</a> to begin the game loop of the current scene. </dd>
+<dd>
+The <a class="el" href="class_scene_service.html" title="Service responsible for managing scenes within the engine. This service allows for adding,...">SceneService</a> can be stopped by calling <a class="el" href="class_scene_service.html#ac3fe008d2402d85393b6e761034d33cf" title="Stops the SceneService and the current scene.">stop()</a>, which will stop the current scene and exit the game loop. </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab85cdba5c4952f201e692b525c3f50a8" name="ab85cdba5c4952f201e692b525c3f50a8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab85cdba5c4952f201e692b525c3f50a8">&#9670;&#160;</a></span>SceneService() <span class="overload">[1/3]</span></h2>
 
@@ -297,6 +317,15 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Adds a new scene with the given name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the scene to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the newly added <a class="el" href="class_scene.html" title="Represents a scene within the engine. A scene contains multiple GameObjects and manages their lifecyc...">Scene</a>. </dd></dl>
+
 </div>
 </div>
 <a id="a75ff14b6e78e84b387924c587ffcd7e2" name="a75ff14b6e78e84b387924c587ffcd7e2"></a>
@@ -315,6 +344,15 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Adds a new scene with the given name and sets it as the next scene to load. The scene will be loaded at the end of the current scene's game loop. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the scene to add and load. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="class_scene_service.html" title="Service responsible for managing scenes within the engine. This service allows for adding,...">SceneService</a> for chaining. </dd></dl>
+
 </div>
 </div>
 <a id="a29ac879ac89dcc39f68d436b2a0869d8" name="a29ac879ac89dcc39f68d436b2a0869d8"></a>
@@ -331,6 +369,15 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks if a scene with the given name exists. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the scene to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the scene exists, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -349,6 +396,15 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the current active scene. </p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the current <a class="el" href="class_scene.html" title="Represents a scene within the engine. A scene contains multiple GameObjects and manages their lifecyc...">Scene</a>. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if no scene is currently active. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a3b584f3a746b05667a62abbda0157d4c" name="a3b584f3a746b05667a62abbda0157d4c"></a>
@@ -365,6 +421,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Gets the fallback scene name. </p>
+<dl class="section return"><dt>Returns</dt><dd>The name of the fallback scene. </dd></dl>
 
 </div>
 </div>
@@ -383,7 +442,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Shows if the <a class="el" href="class_scene_service.html">SceneService</a> is currently running scenes. </p>
+<p>Shows if the <a class="el" href="class_scene_service.html" title="Service responsible for managing scenes within the engine. This service allows for adding,...">SceneService</a> is currently running scenes. </p>
 
 </div>
 </div>
@@ -402,6 +461,15 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>set the scene with the given name as the next scene to load. The scene will be loaded at the end of the current scene's game loop. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the scene to load. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="class_scene_service.html" title="Service responsible for managing scenes within the engine. This service allows for adding,...">SceneService</a> for chaining. </dd></dl>
 
 </div>
 </div>
@@ -447,6 +515,15 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Removes the scene with the given name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the scene to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="class_scene_service.html" title="Service responsible for managing scenes within the engine. This service allows for adding,...">SceneService</a> for chaining. </dd></dl>
+
 </div>
 </div>
 <a id="ad7a93ea70af8255460bb391b3a8a1a32" name="ad7a93ea70af8255460bb391b3a8a1a32"></a>
@@ -465,7 +542,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This method runs the current scene its game loop directly. </p>
-<dl class="section remark"><dt>Remarks</dt><dd>Only call this function when selecting an initial scene to run. Use <a class="el" href="class_scene_service.html#af87da60544d478a9cb5201540039ca86">SceneService::load_scene</a> and <a class="el" href="class_scene_service.html#a75ff14b6e78e84b387924c587ffcd7e2">SceneService::add_scene_and_load</a> to switch between active scenes.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Only call this function when selecting an initial scene to run. Use <a class="el" href="class_scene_service.html#af87da60544d478a9cb5201540039ca86" title="set the scene with the given name as the next scene to load. The scene will be loaded at the end of t...">SceneService::load_scene</a> and <a class="el" href="class_scene_service.html#a75ff14b6e78e84b387924c587ffcd7e2" title="Adds a new scene with the given name and sets it as the next scene to load. The scene will be loaded ...">SceneService::add_scene_and_load</a> to switch between active scenes.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Never call this method more than once, and never call it from within another scene's game loop. This method runs a new game loop directly on the thread where it's called from, meaning it is blocking and stack-frames will pile up if called recursively. </dd></dl>
 
 </div>
@@ -486,6 +563,15 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sets the fallback scene name. The fallback scene is loaded if the requested scene to load does not exist. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the fallback scene. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="class_scene_service.html" title="Service responsible for managing scenes within the engine. This service allows for adding,...">SceneService</a> for chaining. </dd></dl>
+
 </div>
 </div>
 <a id="ac3fe008d2402d85393b6e761034d33cf" name="ac3fe008d2402d85393b6e761034d33cf"></a>
@@ -503,7 +589,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Stops the <a class="el" href="class_scene_service.html">SceneService</a> and the current scene. </p>
+<p>Stops the <a class="el" href="class_scene_service.html" title="Service responsible for managing scenes within the engine. This service allows for adding,...">SceneService</a> and the current scene. </p>
 
 </div>
 </div>

@@ -131,6 +131,9 @@ $(document).ready(function(){initNavTree('class_component.html',''); initResizab
 </div><!--header-->
 <div class="contents">
 
+<p>Base class for all components that can be attached to GameObjects.  
+ <a href="class_component.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="component_8h_source.html">component.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Component:</div>
@@ -145,43 +148,59 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad82d7393e339c1b19cc17a0d55b5674d" id="r_ad82d7393e339c1b19cc17a0d55b5674d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#ad82d7393e339c1b19cc17a0d55b5674d">~Component</a> ()=default</td></tr>
 <tr class="separator:ad82d7393e339c1b19cc17a0d55b5674d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97339c448c3c161d3f794f9a2fd5f37a" id="r_a97339c448c3c161d3f794f9a2fd5f37a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a97339c448c3c161d3f794f9a2fd5f37a">active</a> () const noexcept</td></tr>
+<tr class="memdesc:a97339c448c3c161d3f794f9a2fd5f37a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the component is active.  <br /></td></tr>
 <tr class="separator:a97339c448c3c161d3f794f9a2fd5f37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7969827fc57812e0f33941e51d671e7" id="r_af7969827fc57812e0f33941e51d671e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#af7969827fc57812e0f33941e51d671e7">active</a> (bool value) noexcept</td></tr>
 <tr class="separator:af7969827fc57812e0f33941e51d671e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e648565a85f7c811e20766277e78c98" id="r_a5e648565a85f7c811e20766277e78c98"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a5e648565a85f7c811e20766277e78c98">marked_for_deletion</a> () const noexcept</td></tr>
+<tr class="memdesc:a5e648565a85f7c811e20766277e78c98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activates the component.  <br /></td></tr>
 <tr class="separator:a5e648565a85f7c811e20766277e78c98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a912dd977678759b8d1bd17d0d03bfcd8" id="r_a912dd977678759b8d1bd17d0d03bfcd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a912dd977678759b8d1bd17d0d03bfcd8">mark_for_deletion</a> () noexcept</td></tr>
 <tr class="separator:a912dd977678759b8d1bd17d0d03bfcd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9489bd7252be76f877a503dc291f1be7" id="r_a9489bd7252be76f877a503dc291f1be7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a9489bd7252be76f877a503dc291f1be7">update</a> (float dt)=0</td></tr>
 <tr class="separator:a9489bd7252be76f877a503dc291f1be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac7d05319f6406574ef59a06a5fa2d76" id="r_aac7d05319f6406574ef59a06a5fa2d76"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#aac7d05319f6406574ef59a06a5fa2d76">on_attach</a> ()</td></tr>
+<tr class="memdesc:aac7d05319f6406574ef59a06a5fa2d76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the component is attached to a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>.  <br /></td></tr>
 <tr class="separator:aac7d05319f6406574ef59a06a5fa2d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dadc6225e6e16f7684e2e121b0f8d18" id="r_a4dadc6225e6e16f7684e2e121b0f8d18"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a4dadc6225e6e16f7684e2e121b0f8d18">on_detach</a> ()</td></tr>
+<tr class="memdesc:a4dadc6225e6e16f7684e2e121b0f8d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the component is detached from a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>.  <br /></td></tr>
 <tr class="separator:a4dadc6225e6e16f7684e2e121b0f8d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42603d3b72bca611b7b4cd91481f70c3" id="r_a42603d3b72bca611b7b4cd91481f70c3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a42603d3b72bca611b7b4cd91481f70c3">on_serialize</a> (std::vector&lt; uint8_t &gt; &amp;) const</td></tr>
+<tr class="memdesc:a42603d3b72bca611b7b4cd91481f70c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes the component's state into a byte array.  <br /></td></tr>
 <tr class="separator:a42603d3b72bca611b7b4cd91481f70c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00fcf72aef0ded27c19ba37b196076b0" id="r_a00fcf72aef0ded27c19ba37b196076b0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a00fcf72aef0ded27c19ba37b196076b0">on_deserialize</a> (const std::vector&lt; uint8_t &gt; &amp;, size_t &amp;)</td></tr>
+<tr class="memdesc:a00fcf72aef0ded27c19ba37b196076b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializes the component's state from a byte array.  <br /></td></tr>
 <tr class="separator:a00fcf72aef0ded27c19ba37b196076b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a249f073ebaac5db7eebd61541fcea962" id="r_a249f073ebaac5db7eebd61541fcea962"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a249f073ebaac5db7eebd61541fcea962">type_name</a> () const =0</td></tr>
+<tr class="memdesc:a249f073ebaac5db7eebd61541fcea962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a consistent type name for the component.  <br /></td></tr>
 <tr class="separator:a249f073ebaac5db7eebd61541fcea962"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a363868b322b05e49780ee8d82aae4e" id="r_a0a363868b322b05e49780ee8d82aae4e"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a0a363868b322b05e49780ee8d82aae4e">parent</a> () const noexcept</td></tr>
+<tr class="memdesc:a0a363868b322b05e49780ee8d82aae4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the parent <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> of this component.  <br /></td></tr>
 <tr class="separator:a0a363868b322b05e49780ee8d82aae4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dc87f909c6e96c688b295326c150660" id="r_a1dc87f909c6e96c688b295326c150660"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a1dc87f909c6e96c688b295326c150660">parent</a> () noexcept</td></tr>
+<tr class="memdesc:a1dc87f909c6e96c688b295326c150660"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the parent <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> of this component.  <br /></td></tr>
 <tr class="separator:a1dc87f909c6e96c688b295326c150660"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a525447471b46be8dd692f876371d31a3" id="r_a525447471b46be8dd692f876371d31a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a525447471b46be8dd692f876371d31a3">parent</a> (<a class="el" href="class_game_object.html">GameObject</a> &amp;parent)</td></tr>
 <tr class="separator:a525447471b46be8dd692f876371d31a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1d2a538172d9c631e61b70395f99a70" id="r_aa1d2a538172d9c631e61b70395f99a70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#aa1d2a538172d9c631e61b70395f99a70">parent</a> (std::nullopt_t nullopt)</td></tr>
 <tr class="separator:aa1d2a538172d9c631e61b70395f99a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81ee55887d718fd34edf7c246fbab86c" id="r_a81ee55887d718fd34edf7c246fbab86c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a81ee55887d718fd34edf7c246fbab86c">add_on_attach</a> (const std::function&lt; void(<a class="el" href="class_component.html">Component</a> &amp;)&gt; &amp;action)</td></tr>
+<tr class="memdesc:a81ee55887d718fd34edf7c246fbab86c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the type information of the component.  <br /></td></tr>
 <tr class="separator:a81ee55887d718fd34edf7c246fbab86c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1888d36eea572c402996dad0bf4e0cc0" id="r_a1888d36eea572c402996dad0bf4e0cc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a1888d36eea572c402996dad0bf4e0cc0">remove_on_attach</a> (size_t index)</td></tr>
 <tr class="separator:a1888d36eea572c402996dad0bf4e0cc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b35426126ad66dd63dd8e79875c6b55" id="r_a4b35426126ad66dd63dd8e79875c6b55"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a4b35426126ad66dd63dd8e79875c6b55">add_on_detach</a> (const std::function&lt; void(<a class="el" href="class_component.html">Component</a> &amp;)&gt; &amp;action)</td></tr>
+<tr class="memdesc:a4b35426126ad66dd63dd8e79875c6b55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an action to be performed when the component is attached.  <br /></td></tr>
 <tr class="separator:a4b35426126ad66dd63dd8e79875c6b55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7edd46feca5ccc65be205350dacee236" id="r_a7edd46feca5ccc65be205350dacee236"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a7edd46feca5ccc65be205350dacee236">remove_on_detach</a> (size_t index)</td></tr>
 <tr class="separator:a7edd46feca5ccc65be205350dacee236"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base class for all components that can be attached to GameObjects. </p>
+<dl class="section warning"><dt>Warning</dt><dd>All derived components must implement the <a class="el" href="class_component.html#a249f073ebaac5db7eebd61541fcea962" title="Provides a consistent type name for the component.">type_name()</a> method to provide a consistent and portable type identifier for serialization purposes.</dd></dl>
+<p>This is crucial for ensuring that component types can be accurately identified across different compilers and platforms, as relying on typeid(T).name() can lead to inconsistencies.</p>
+<dl class="section note"><dt>Note</dt><dd>this class should not be used directly. Instead, create derived component classes that inherit from <a class="el" href="class_component.html" title="Base class for all components that can be attached to GameObjects.">Component</a>. </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8775db6d1a2c1afc2e77cd3c8f39da6f" name="a8775db6d1a2c1afc2e77cd3c8f39da6f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8775db6d1a2c1afc2e77cd3c8f39da6f">&#9670;&#160;</a></span>Component()</h2>
 
@@ -256,6 +275,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Checks if the component is active. </p>
+<dl class="section return"><dt>Returns</dt><dd>whether the component is active. </dd></dl>
+
 </div>
 </div>
 <a id="af7969827fc57812e0f33941e51d671e7" name="af7969827fc57812e0f33941e51d671e7"></a>
@@ -300,6 +322,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Retrieves the type information of the component. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>The action to be performed on attach. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the std::type_info object representing the component's type. </dd></dl>
+
 </div>
 </div>
 <a id="a4b35426126ad66dd63dd8e79875c6b55" name="a4b35426126ad66dd63dd8e79875c6b55"></a>
@@ -317,6 +348,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Adds an action to be performed when the component is attached. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>The action to be performed on attach. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the index of the added action, which can be used to remove it later. </dd></dl>
 
 </div>
 </div>
@@ -368,6 +408,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Activates the component. </p>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="class_component.html" title="Base class for all components that can be attached to GameObjects.">Component</a> for chaining. </dd></dl>
+
 </div>
 </div>
 <a id="aac7d05319f6406574ef59a06a5fa2d76" name="aac7d05319f6406574ef59a06a5fa2d76"></a>
@@ -392,6 +435,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Called when the component is attached to a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>. </p>
 
 <p>Reimplemented in <a class="el" href="class_audio_source.html#aa1bc1be865174afa0eef3be9bf1f68dc">AudioSource</a>, and <a class="el" href="class_behavior_script.html#af1eb792a529382659f75c30877f2f404">BehaviorScript</a>.</p>
 
@@ -431,6 +476,16 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Deserializes the component's state from a byte array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The byte array containing the serialized state. </td></tr>
+    <tr><td class="paramname">offset</td><td>The current offset in the byte array from which to start reading. This offset will be updated as bytes are read. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
 <p>Reimplemented in <a class="el" href="class_network_identity.html#a636a533f5a9ff9edbef97fccfd7fd701">NetworkIdentity</a>, <a class="el" href="class_behavior_script.html#ad06621d3da51fa7b2aa97ada40ca77f0">BehaviorScript</a>, and <a class="el" href="class_rigidbody2_d.html#a101e4a15a031a6f3d1b228d852669d98">Rigidbody2D</a>.</p>
 
 </div>
@@ -457,6 +512,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Called when the component is detached from a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>. </p>
 
 <p>Reimplemented in <a class="el" href="class_audio_source.html#a7c03665c2bca66864dc60efa4dfd7de5">AudioSource</a>, and <a class="el" href="class_behavior_script.html#ae420cefe7253e28aed489ef4561673d7">BehaviorScript</a>.</p>
 
@@ -486,6 +543,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Serializes the component's state into a byte array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>A vector to which the serialized bytes will be appended. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of bytes representing the serialized state of the component. </dd></dl>
+
 <p>Reimplemented in <a class="el" href="class_network_identity.html#ab02a1fca0fa8e26c4bbf458a84f7d4ff">NetworkIdentity</a>, <a class="el" href="class_behavior_script.html#ae4308fd6f90103c2555dadee73915611">BehaviorScript</a>, and <a class="el" href="class_rigidbody2_d.html#a21b3bff8230bb6f096f833072bf4b9d9">Rigidbody2D</a>.</p>
 
 </div>
@@ -513,6 +579,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Gets the parent <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> of this component. </p>
+<dl class="section return"><dt>Returns</dt><dd>An optional reference to the parent <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>, if it exists. </dd></dl>
+
 </div>
 </div>
 <a id="a1dc87f909c6e96c688b295326c150660" name="a1dc87f909c6e96c688b295326c150660"></a>
@@ -537,6 +606,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Gets the parent <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> of this component. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>The <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> to set as the parent. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An optional reference to the parent <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>, if it exists. </dd></dl>
 
 </div>
 </div>
@@ -634,6 +712,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Provides a consistent type name for the component. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string representing the type name of the component. @CAUTION: All derived components must implement this method to ensure consistent serialization across different compilers and platforms. </dd></dl>
 
 <p>Implemented in <a class="el" href="class_renderable.html#a19536e113537bb17851c646205d63b33">Renderable</a>, <a class="el" href="class_a_i_controller.html#a9df747fdee8a52a29ad23ec11c274eb6">AIController</a>, <a class="el" href="class_navigation_graph.html#ad3165a5fdbecb56f02378ac5b463d741">NavigationGraph</a>, <a class="el" href="class_navigation_node.html#af9db60e414226854aab15a4a4b5a66f0">NavigationNode</a>, <a class="el" href="class_pathfinding.html#a5527d1ea78a6b27fa86dce23d038a11e">Pathfinding</a>, <a class="el" href="class_animator.html#a86779d8a75eb43e88b59d3971ce7c338">Animator</a>, <a class="el" href="class_audio_source.html#ae48b84395484896285d5b6ae8826e81d">AudioSource</a>, <a class="el" href="class_behavior_script.html#ad0f539850bad5c7c28d8d3a7ffdcdca0">BehaviorScript</a>, <a class="el" href="class_box_collider2_d.html#a2f396d25112f3778c5ec1b53e7d840b7">BoxCollider2D</a>, <a class="el" href="class_circle_collider2_d.html#a08c955de6ba611b8fccf14951769be1c">CircleCollider2D</a>, <a class="el" href="class_collider2_d.html#a8a79f11dcfe12cdd4ffdb621cd80ebd6">Collider2D</a>, <a class="el" href="class_network_identity.html#a837fadc70f33a0f1147f0c98c1974daf">NetworkIdentity</a>, <a class="el" href="class_rigidbody2_d.html#a9b6362a9d5d70f5ec0b5ce42e7382ac0">Rigidbody2D</a>, <a class="el" href="class_sprite.html#ac1f47c7eab423d8e14846ea959a861f7">Sprite</a>, <a class="el" href="class_image.html#a5c24a32e1c9c26a94e1c82ba8c0f49cc">Image</a>, and <a class="el" href="class_text.html#af726f4a40868ee569eec43e2da3e3521">Text</a>.</p>
 

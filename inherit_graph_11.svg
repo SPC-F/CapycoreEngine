@@ -11,7 +11,7 @@
 <!-- Node0 -->
 <g id="Node000000" class="node">
 <title>Node0</title>
-<g id="a_Node000000"><a xlink:href="class_game_object.html" target="_top" xlink:title=" ">
+<g id="a_Node000000"><a xlink:href="class_game_object.html" target="_top" xlink:title="Concept to constrain types to be derived from Component.">
 <polygon fill="white" stroke="#666666" points="77,-92 0,-92 0,-73 77,-73 77,-92"/>
 <text text-anchor="middle" x="38.5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00">GameObject</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:href="class_camera.html" target="_top" xlink:title=" ">
+<g id="a_Node000001"><a xlink:href="class_camera.html" target="_top" xlink:title="Camera GameObject class Inherits from GameObject class and represents a camera in the scene....">
 <polygon fill="white" stroke="#666666" points="170,-111 115,-111 115,-92 170,-92 170,-111"/>
 <text text-anchor="middle" x="142.5" y="-99" font-family="Helvetica,sans-Serif" font-size="10.00">Camera</text>
 </a>
@@ -56,7 +56,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="class_u_i_f_p_s.html" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="class_u_i_f_p_s.html" target="_top" xlink:title="UI Component that displays the current frames per second (FPS).">
 <polygon fill="white" stroke="#666666" points="273.5,-130 228.5,-130 228.5,-111 273.5,-111 273.5,-130"/>
 <text text-anchor="middle" x="251" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">UIFPS</text>
 </a>

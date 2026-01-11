@@ -1,9 +1,9 @@
 <map id="include/engine/network/network_message.h" name="include/engine/network/network_message.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="41,5,215,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="42,5,217,45"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,93,72,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,48,64,86,60,82,105,44"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="97,93,159,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="131,46,131,79,125,79,125,46"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="184,93,251,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="151,44,196,82,192,86,148,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,48,64,86,61,82,106,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="96,93,163,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,46,132,79,127,79,127,46"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="187,93,250,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="153,44,197,82,193,86,149,48"/>
 </map>

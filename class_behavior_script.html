@@ -131,7 +131,7 @@ $(document).ready(function(){initNavTree('class_behavior_script.html',''); initR
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="class_component.html">Component</a> that hosts a <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a>.  
+<p><a class="el" href="class_component.html" title="Base class for all components that can be attached to GameObjects.">Component</a> that hosts a <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a>.  
  <a href="class_behavior_script.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="behaviorscript_8h_source.html">behaviorscript.h</a>&gt;</code></p>
@@ -146,10 +146,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af00d61b319aa41a4d828d3f3ac7326c0" id="r_af00d61b319aa41a4d828d3f3ac7326c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior_script.html#af00d61b319aa41a4d828d3f3ac7326c0">BehaviorScript</a> (std::unique_ptr&lt; <a class="el" href="class_behavior.html">Behavior</a> &gt; <a class="el" href="class_behavior_script.html#acf0f90119b55a3aded57ec721217e51e">behavior</a>)</td></tr>
 <tr class="separator:af00d61b319aa41a4d828d3f3ac7326c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1eb792a529382659f75c30877f2f404" id="r_af1eb792a529382659f75c30877f2f404"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior_script.html#af1eb792a529382659f75c30877f2f404">on_attach</a> () override</td></tr>
+<tr class="memdesc:af1eb792a529382659f75c30877f2f404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the component is attached to a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>.  <br /></td></tr>
 <tr class="separator:af1eb792a529382659f75c30877f2f404"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afddcfd6846b87194e942111ee450959a" id="r_afddcfd6846b87194e942111ee450959a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior_script.html#afddcfd6846b87194e942111ee450959a">update</a> (float dt) override</td></tr>
 <tr class="separator:afddcfd6846b87194e942111ee450959a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae420cefe7253e28aed489ef4561673d7" id="r_ae420cefe7253e28aed489ef4561673d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior_script.html#ae420cefe7253e28aed489ef4561673d7">on_detach</a> () override</td></tr>
+<tr class="memdesc:ae420cefe7253e28aed489ef4561673d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the component is detached from a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>.  <br /></td></tr>
 <tr class="separator:ae420cefe7253e28aed489ef4561673d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf0f90119b55a3aded57ec721217e51e" id="r_acf0f90119b55a3aded57ec721217e51e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior.html">Behavior</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior_script.html#acf0f90119b55a3aded57ec721217e51e">behavior</a> ()</td></tr>
 <tr class="separator:acf0f90119b55a3aded57ec721217e51e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,10 +162,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeeca12ff06df9bd04360b10022957ea4" id="r_aeeca12ff06df9bd04360b10022957ea4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_behavior_script.html">BehaviorScript</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior_script.html#aeeca12ff06df9bd04360b10022957ea4">disable</a> ()</td></tr>
 <tr class="separator:aeeca12ff06df9bd04360b10022957ea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0f539850bad5c7c28d8d3a7ffdcdca0" id="r_ad0f539850bad5c7c28d8d3a7ffdcdca0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior_script.html#ad0f539850bad5c7c28d8d3a7ffdcdca0">type_name</a> () const override</td></tr>
+<tr class="memdesc:ad0f539850bad5c7c28d8d3a7ffdcdca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a consistent type name for the component.  <br /></td></tr>
 <tr class="separator:ad0f539850bad5c7c28d8d3a7ffdcdca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4308fd6f90103c2555dadee73915611" id="r_ae4308fd6f90103c2555dadee73915611"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior_script.html#ae4308fd6f90103c2555dadee73915611">on_serialize</a> (std::vector&lt; uint8_t &gt; &amp;out) const</td></tr>
+<tr class="memdesc:ae4308fd6f90103c2555dadee73915611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes the component's state into a byte array.  <br /></td></tr>
 <tr class="separator:ae4308fd6f90103c2555dadee73915611"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad06621d3da51fa7b2aa97ada40ca77f0" id="r_ad06621d3da51fa7b2aa97ada40ca77f0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_behavior_script.html#ad06621d3da51fa7b2aa97ada40ca77f0">on_deserialize</a> (const std::vector&lt; uint8_t &gt; &amp;data, size_t &amp;offset)</td></tr>
+<tr class="memdesc:ad06621d3da51fa7b2aa97ada40ca77f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializes the component's state from a byte array.  <br /></td></tr>
 <tr class="separator:ad06621d3da51fa7b2aa97ada40ca77f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_component.html">Component</a></td></tr>
 <tr class="memitem:a8775db6d1a2c1afc2e77cd3c8f39da6f inherit pub_methods_class_component" id="r_a8775db6d1a2c1afc2e77cd3c8f39da6f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a8775db6d1a2c1afc2e77cd3c8f39da6f">Component</a> ()</td></tr>
@@ -171,35 +176,45 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad82d7393e339c1b19cc17a0d55b5674d inherit pub_methods_class_component" id="r_ad82d7393e339c1b19cc17a0d55b5674d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#ad82d7393e339c1b19cc17a0d55b5674d">~Component</a> ()=default</td></tr>
 <tr class="separator:ad82d7393e339c1b19cc17a0d55b5674d inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97339c448c3c161d3f794f9a2fd5f37a inherit pub_methods_class_component" id="r_a97339c448c3c161d3f794f9a2fd5f37a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a97339c448c3c161d3f794f9a2fd5f37a">active</a> () const noexcept</td></tr>
+<tr class="memdesc:a97339c448c3c161d3f794f9a2fd5f37a inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the component is active.  <br /></td></tr>
 <tr class="separator:a97339c448c3c161d3f794f9a2fd5f37a inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7969827fc57812e0f33941e51d671e7 inherit pub_methods_class_component" id="r_af7969827fc57812e0f33941e51d671e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#af7969827fc57812e0f33941e51d671e7">active</a> (bool value) noexcept</td></tr>
 <tr class="separator:af7969827fc57812e0f33941e51d671e7 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e648565a85f7c811e20766277e78c98 inherit pub_methods_class_component" id="r_a5e648565a85f7c811e20766277e78c98"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a5e648565a85f7c811e20766277e78c98">marked_for_deletion</a> () const noexcept</td></tr>
+<tr class="memdesc:a5e648565a85f7c811e20766277e78c98 inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activates the component.  <br /></td></tr>
 <tr class="separator:a5e648565a85f7c811e20766277e78c98 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a912dd977678759b8d1bd17d0d03bfcd8 inherit pub_methods_class_component" id="r_a912dd977678759b8d1bd17d0d03bfcd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a912dd977678759b8d1bd17d0d03bfcd8">mark_for_deletion</a> () noexcept</td></tr>
 <tr class="separator:a912dd977678759b8d1bd17d0d03bfcd8 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a363868b322b05e49780ee8d82aae4e inherit pub_methods_class_component" id="r_a0a363868b322b05e49780ee8d82aae4e"><td class="memItemLeft" align="right" valign="top">const std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a0a363868b322b05e49780ee8d82aae4e">parent</a> () const noexcept</td></tr>
+<tr class="memdesc:a0a363868b322b05e49780ee8d82aae4e inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the parent <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> of this component.  <br /></td></tr>
 <tr class="separator:a0a363868b322b05e49780ee8d82aae4e inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dc87f909c6e96c688b295326c150660 inherit pub_methods_class_component" id="r_a1dc87f909c6e96c688b295326c150660"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a1dc87f909c6e96c688b295326c150660">parent</a> () noexcept</td></tr>
+<tr class="memdesc:a1dc87f909c6e96c688b295326c150660 inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the parent <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> of this component.  <br /></td></tr>
 <tr class="separator:a1dc87f909c6e96c688b295326c150660 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a525447471b46be8dd692f876371d31a3 inherit pub_methods_class_component" id="r_a525447471b46be8dd692f876371d31a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a525447471b46be8dd692f876371d31a3">parent</a> (<a class="el" href="class_game_object.html">GameObject</a> &amp;parent)</td></tr>
 <tr class="separator:a525447471b46be8dd692f876371d31a3 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1d2a538172d9c631e61b70395f99a70 inherit pub_methods_class_component" id="r_aa1d2a538172d9c631e61b70395f99a70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_component.html">Component</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#aa1d2a538172d9c631e61b70395f99a70">parent</a> (std::nullopt_t nullopt)</td></tr>
 <tr class="separator:aa1d2a538172d9c631e61b70395f99a70 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81ee55887d718fd34edf7c246fbab86c inherit pub_methods_class_component" id="r_a81ee55887d718fd34edf7c246fbab86c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a81ee55887d718fd34edf7c246fbab86c">add_on_attach</a> (const std::function&lt; void(<a class="el" href="class_component.html">Component</a> &amp;)&gt; &amp;action)</td></tr>
+<tr class="memdesc:a81ee55887d718fd34edf7c246fbab86c inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the type information of the component.  <br /></td></tr>
 <tr class="separator:a81ee55887d718fd34edf7c246fbab86c inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1888d36eea572c402996dad0bf4e0cc0 inherit pub_methods_class_component" id="r_a1888d36eea572c402996dad0bf4e0cc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a1888d36eea572c402996dad0bf4e0cc0">remove_on_attach</a> (size_t index)</td></tr>
 <tr class="separator:a1888d36eea572c402996dad0bf4e0cc0 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b35426126ad66dd63dd8e79875c6b55 inherit pub_methods_class_component" id="r_a4b35426126ad66dd63dd8e79875c6b55"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a4b35426126ad66dd63dd8e79875c6b55">add_on_detach</a> (const std::function&lt; void(<a class="el" href="class_component.html">Component</a> &amp;)&gt; &amp;action)</td></tr>
+<tr class="memdesc:a4b35426126ad66dd63dd8e79875c6b55 inherit pub_methods_class_component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an action to be performed when the component is attached.  <br /></td></tr>
 <tr class="separator:a4b35426126ad66dd63dd8e79875c6b55 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7edd46feca5ccc65be205350dacee236 inherit pub_methods_class_component" id="r_a7edd46feca5ccc65be205350dacee236"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_component.html#a7edd46feca5ccc65be205350dacee236">remove_on_detach</a> (size_t index)</td></tr>
 <tr class="separator:a7edd46feca5ccc65be205350dacee236 inherit pub_methods_class_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="class_component.html">Component</a> that hosts a <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a>. </p>
-<p>This class acts as a bridge between the <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a> system and the <a class="el" href="class_component.html">Component</a> system, enabling Behaviors to be used as Components within the engine's architecture.</p>
+<div class="textblock"><p><a class="el" href="class_component.html" title="Base class for all components that can be attached to GameObjects.">Component</a> that hosts a <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a>. </p>
+<p>This class acts as a bridge between the <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a> system and the <a class="el" href="class_component.html" title="Base class for all components that can be attached to GameObjects.">Component</a> system, enabling Behaviors to be used as Components within the engine's architecture.</p>
 <dl class="section note"><dt>Note</dt><dd>Users typically do not interact with this class directly. Instead, they create custom Behaviors and attach them to GameObjects via Components. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a></dd></dl>
+<p>Usage:</p><ul>
+<li>Create a <a class="el" href="class_behavior_script.html" title="Component that hosts a Behavior.">BehaviorScript</a> with a specific <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a>.</li>
+<li>Attach the <a class="el" href="class_behavior_script.html" title="Component that hosts a Behavior.">BehaviorScript</a> to a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>. The <a class="el" href="class_behavior.html" title="Base class for defining logic that can be attached to Components, similar to Unity&#39;s MonoBehaviour.">Behavior</a>'s lifecycle methods (on_awake, on_start, on_update, on_destroy) will be called automatically by the engine. </li>
+</ul>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af00d61b319aa41a4d828d3f3ac7326c0" name="af00d61b319aa41a4d828d3f3ac7326c0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af00d61b319aa41a4d828d3f3ac7326c0">&#9670;&#160;</a></span>BehaviorScript()</h2>
@@ -311,6 +326,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Called when the component is attached to a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>. </p>
+
 <p>Reimplemented from <a class="el" href="class_component.html#aac7d05319f6406574ef59a06a5fa2d76">Component</a>.</p>
 
 </div>
@@ -328,13 +345,13 @@ Public Member Functions</h2></td></tr>
           <td class="memname">virtual void BehaviorScript::on_deserialize </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; uint8_t &gt; &amp;&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t &amp;&#160;</td>
-          <td class="paramname"><em>offset</em>&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -348,6 +365,16 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Deserializes the component's state from a byte array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The byte array containing the serialized state. </td></tr>
+    <tr><td class="paramname">offset</td><td>The current offset in the byte array from which to start reading. This offset will be updated as bytes are read. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_component.html#a00fcf72aef0ded27c19ba37b196076b0">Component</a>.</p>
 
@@ -376,6 +403,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Called when the component is detached from a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>. </p>
+
 <p>Reimplemented from <a class="el" href="class_component.html#a4dadc6225e6e16f7684e2e121b0f8d18">Component</a>.</p>
 
 </div>
@@ -393,7 +422,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">virtual void BehaviorScript::on_serialize </td>
           <td>(</td>
           <td class="paramtype">std::vector&lt; uint8_t &gt; &amp;&#160;</td>
-          <td class="paramname"><em>out</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -403,6 +432,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Serializes the component's state into a byte array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>A vector to which the serialized bytes will be appended. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of bytes representing the serialized state of the component. </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_component.html#a42603d3b72bca611b7b4cd91481f70c3">Component</a>.</p>
 
@@ -430,6 +468,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Provides a consistent type name for the component. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string representing the type name of the component. @CAUTION: All derived components must implement this method to ensure consistent serialization across different compilers and platforms. </dd></dl>
 
 <p>Implements <a class="el" href="class_component.html#a249f073ebaac5db7eebd61541fcea962">Component</a>.</p>
 

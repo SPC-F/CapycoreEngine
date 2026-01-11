@@ -132,6 +132,9 @@ $(document).ready(function(){initNavTree('class_scene.html',''); initResizable()
 </div><!--header-->
 <div class="contents">
 
+<p>Represents a scene within the engine. A scene contains multiple GameObjects and manages their lifecycle, including running the game loop, stopping, and destroying the scene.  
+ <a href="class_scene.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="scene_8h_source.html">scene.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -139,47 +142,68 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa0a5be58e2ee2d1fdafc5fb46b5e661e" id="r_aa0a5be58e2ee2d1fdafc5fb46b5e661e"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#aa0a5be58e2ee2d1fdafc5fb46b5e661e">~Scene</a> ()</td></tr>
 <tr class="separator:aa0a5be58e2ee2d1fdafc5fb46b5e661e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ab065ddb792e992d9a01d6a0d8b34b5" id="r_a5ab065ddb792e992d9a01d6a0d8b34b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a5ab065ddb792e992d9a01d6a0d8b34b5">on_run</a> (listener_function_t &amp;&amp;listener)</td></tr>
+<tr class="memdesc:a5ab065ddb792e992d9a01d6a0d8b34b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a listener function to be called when the scene starts running.  <br /></td></tr>
 <tr class="separator:a5ab065ddb792e992d9a01d6a0d8b34b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22610873bf88ec9c6f056f1e29f13282" id="r_a22610873bf88ec9c6f056f1e29f13282"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a22610873bf88ec9c6f056f1e29f13282">on_stop</a> (listener_function_t &amp;&amp;listener)</td></tr>
+<tr class="memdesc:a22610873bf88ec9c6f056f1e29f13282"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a listener function to be called when the scene stops.  <br /></td></tr>
 <tr class="separator:a22610873bf88ec9c6f056f1e29f13282"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8542660c9a9da97a909568c5480bc66c" id="r_a8542660c9a9da97a909568c5480bc66c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a8542660c9a9da97a909568c5480bc66c">on_destroy</a> (listener_function_t &amp;&amp;listener)</td></tr>
+<tr class="memdesc:a8542660c9a9da97a909568c5480bc66c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a listener function to be called when the scene is destroyed.  <br /></td></tr>
 <tr class="separator:a8542660c9a9da97a909568c5480bc66c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add01794b17df2030e961468fc88cf2e7" id="r_add01794b17df2030e961468fc88cf2e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#add01794b17df2030e961468fc88cf2e7">stop</a> ()</td></tr>
+<tr class="memdesc:add01794b17df2030e961468fc88cf2e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">marks the scene to be stopped.  <br /></td></tr>
 <tr class="separator:add01794b17df2030e961468fc88cf2e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53fbe219e59ce50dbb91a523c4066def" id="r_a53fbe219e59ce50dbb91a523c4066def"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a53fbe219e59ce50dbb91a523c4066def">marked_for_stopping</a> () const</td></tr>
+<tr class="memdesc:a53fbe219e59ce50dbb91a523c4066def"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the scene is marked for stopping.  <br /></td></tr>
 <tr class="separator:a53fbe219e59ce50dbb91a523c4066def"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afaa471dd7da4d78995993e61ebb22013" id="r_afaa471dd7da4d78995993e61ebb22013"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#afaa471dd7da4d78995993e61ebb22013">mark_for_stopping</a> () noexcept</td></tr>
+<tr class="memdesc:afaa471dd7da4d78995993e61ebb22013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks the scene to be stopped.  <br /></td></tr>
 <tr class="separator:afaa471dd7da4d78995993e61ebb22013"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a778f6ab604f061254971f77eab41d59b" id="r_a778f6ab604f061254971f77eab41d59b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene.html">Scene</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a778f6ab604f061254971f77eab41d59b">time_scale</a> (float modifier)</td></tr>
+<tr class="memdesc:a778f6ab604f061254971f77eab41d59b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the time scale modifier for the scene.  <br /></td></tr>
 <tr class="separator:a778f6ab604f061254971f77eab41d59b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a715de4c533d933f9bd47bb99ccb58251" id="r_a715de4c533d933f9bd47bb99ccb58251"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a715de4c533d933f9bd47bb99ccb58251">time_scale</a> () const</td></tr>
+<tr class="memdesc:a715de4c533d933f9bd47bb99ccb58251"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the current time scale modifier for the scene.  <br /></td></tr>
 <tr class="separator:a715de4c533d933f9bd47bb99ccb58251"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade337ad27cf632bc8f5a40fed26bc1f8" id="r_ade337ad27cf632bc8f5a40fed26bc1f8"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ade337ad27cf632bc8f5a40fed26bc1f8">name</a> () const</td></tr>
+<tr class="memdesc:ade337ad27cf632bc8f5a40fed26bc1f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the name of the scene.  <br /></td></tr>
 <tr class="separator:ade337ad27cf632bc8f5a40fed26bc1f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74bfdea2518df4875a58763dd88c0838" id="r_a74bfdea2518df4875a58763dd88c0838"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a74bfdea2518df4875a58763dd88c0838">is_running</a> () const</td></tr>
+<tr class="memdesc:a74bfdea2518df4875a58763dd88c0838"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the scene is currently running.  <br /></td></tr>
 <tr class="separator:a74bfdea2518df4875a58763dd88c0838"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fd424c55ac36c17a8f48d7b74007cf6" id="r_a5fd424c55ac36c17a8f48d7b74007cf6"><td class="memItemLeft" align="right" valign="top">std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a5fd424c55ac36c17a8f48d7b74007cf6">get_game_object</a> (const std::string &amp;id) const</td></tr>
+<tr class="memdesc:a5fd424c55ac36c17a8f48d7b74007cf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> by its unique identifier.  <br /></td></tr>
 <tr class="separator:a5fd424c55ac36c17a8f48d7b74007cf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a3c0c308ec7be21ed4bde91d5dc5be8" id="r_a7a3c0c308ec7be21ed4bde91d5dc5be8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a7a3c0c308ec7be21ed4bde91d5dc5be8">game_objects</a> () const</td></tr>
+<tr class="memdesc:a7a3c0c308ec7be21ed4bde91d5dc5be8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves all GameObjects in the scene.  <br /></td></tr>
 <tr class="separator:a7a3c0c308ec7be21ed4bde91d5dc5be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef29d2b54d4c55bc9dc9e6b3b6b8103d" id="r_aef29d2b54d4c55bc9dc9e6b3b6b8103d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::reference_wrapper&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#aef29d2b54d4c55bc9dc9e6b3b6b8103d">active_game_objects</a> () const</td></tr>
+<tr class="memdesc:aef29d2b54d4c55bc9dc9e6b3b6b8103d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves all active GameObjects in the scene.  <br /></td></tr>
 <tr class="separator:aef29d2b54d4c55bc9dc9e6b3b6b8103d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1d96a595a394958631767743c2f02c6" id="r_ab1d96a595a394958631767743c2f02c6"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
 <tr class="memitem:ab1d96a595a394958631767743c2f02c6"><td class="memTemplItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_scene.html#ab1d96a595a394958631767743c2f02c6">add_game_object</a> (Args &amp;&amp;... args)</td></tr>
+<tr class="memdesc:ab1d96a595a394958631767743c2f02c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> of type T to the scene.  <br /></td></tr>
 <tr class="separator:ab1d96a595a394958631767743c2f02c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91e548323c92cb525848ab006a0708f1" id="r_a91e548323c92cb525848ab006a0708f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_object.html">GameObject</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a91e548323c92cb525848ab006a0708f1">add_game_object</a> (const std::string &amp;<a class="el" href="class_scene.html#ade337ad27cf632bc8f5a40fed26bc1f8">name</a>)</td></tr>
+<tr class="memdesc:a91e548323c92cb525848ab006a0708f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> with the given name to the scene.  <br /></td></tr>
 <tr class="separator:a91e548323c92cb525848ab006a0708f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa055d631c9b184940e72c13fd2908fc8" id="r_aa055d631c9b184940e72c13fd2908fc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene.html">Scene</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#aa055d631c9b184940e72c13fd2908fc8">add_game_object</a> (std::unique_ptr&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; game_object)</td></tr>
+<tr class="memdesc:aa055d631c9b184940e72c13fd2908fc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an existing <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> to the scene.  <br /></td></tr>
 <tr class="separator:aa055d631c9b184940e72c13fd2908fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4b00720ca239a808fb60521e2915ec8" id="r_aa4b00720ca239a808fb60521e2915ec8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_scene.html">Scene</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#aa4b00720ca239a808fb60521e2915ec8">add_game_objects</a> (std::vector&lt; std::unique_ptr&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt; &gt; <a class="el" href="class_scene.html#a7a3c0c308ec7be21ed4bde91d5dc5be8">game_objects</a>)</td></tr>
+<tr class="memdesc:aa4b00720ca239a808fb60521e2915ec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds multiple existing GameObjects to the scene.  <br /></td></tr>
 <tr class="separator:aa4b00720ca239a808fb60521e2915ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2649e822c8853ea7bae2cc893b6a892" id="r_ab2649e822c8853ea7bae2cc893b6a892"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_game_object.html">GameObject</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ab2649e822c8853ea7bae2cc893b6a892">extract_game_object</a> (<a class="el" href="class_game_object.html">GameObject</a> &amp;game_object)</td></tr>
+<tr class="memdesc:ab2649e822c8853ea7bae2cc893b6a892"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> from the scene without deleting it.  <br /></td></tr>
 <tr class="separator:ab2649e822c8853ea7bae2cc893b6a892"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ce3a726f9bebd29f28b5d3311db877b" id="r_a2ce3a726f9bebd29f28b5d3311db877b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a2ce3a726f9bebd29f28b5d3311db877b">remove_game_object</a> (<a class="el" href="class_game_object.html">GameObject</a> &amp;game_object)</td></tr>
+<tr class="memdesc:a2ce3a726f9bebd29f28b5d3311db877b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> from the scene and deletes it.  <br /></td></tr>
 <tr class="separator:a2ce3a726f9bebd29f28b5d3311db877b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab71d7d2e8264081fee67fab639f1e88d" id="r_ab71d7d2e8264081fee67fab639f1e88d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ab71d7d2e8264081fee67fab639f1e88d">cleanup_destroyed_game_objects</a> ()</td></tr>
+<tr class="memdesc:ab71d7d2e8264081fee67fab639f1e88d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans up and deletes all GameObjects that are marked for deletion.  <br /></td></tr>
 <tr class="separator:ab71d7d2e8264081fee67fab639f1e88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae54608fc5565fd41349e188a1656d961" id="r_ae54608fc5565fd41349e188a1656d961"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::reference_wrapper&lt; <a class="el" href="class_camera.html">Camera</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ae54608fc5565fd41349e188a1656d961">main_camera</a> () const</td></tr>
+<tr class="memdesc:ae54608fc5565fd41349e188a1656d961"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the main camera of the scene.  <br /></td></tr>
 <tr class="separator:ae54608fc5565fd41349e188a1656d961"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
@@ -187,7 +211,12 @@ Friends</h2></td></tr>
 <tr class="memitem:a9f15f4ca687cd9b8327dfbf94165b86f" id="r_a9f15f4ca687cd9b8327dfbf94165b86f"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a9f15f4ca687cd9b8327dfbf94165b86f">SceneService</a></td></tr>
 <tr class="separator:a9f15f4ca687cd9b8327dfbf94165b86f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a scene within the engine. A scene contains multiple GameObjects and manages their lifecycle, including running the game loop, stopping, and destroying the scene. </p>
+<dl class="section note"><dt>Note</dt><dd>A scene can have multiple cameras, but only one main camera. </dd>
+<dd>
+GameObjects can be marked as "don't destroy on load" to persist between scene loads. </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa0a5be58e2ee2d1fdafc5fb46b5e661e" name="aa0a5be58e2ee2d1fdafc5fb46b5e661e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa0a5be58e2ee2d1fdafc5fb46b5e661e">&#9670;&#160;</a></span>~Scene()</h2>
 
@@ -229,6 +258,9 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Retrieves all active GameObjects in the scene. </p>
+<dl class="section return"><dt>Returns</dt><dd>A vector of references to all active GameObjects in the scene. </dd></dl>
+
 </div>
 </div>
 <a id="ab1d96a595a394958631767743c2f02c6" name="ab1d96a595a394958631767743c2f02c6"></a>
@@ -257,6 +289,21 @@ template&lt;typename T , typename... Args&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Adds a new <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> of type T to the scene. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of the <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> to add. Must be derived from <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>The arguments to forward to the <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>'s constructor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the added <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>. </dd></dl>
+
 </div>
 </div>
 <a id="a91e548323c92cb525848ab006a0708f1" name="a91e548323c92cb525848ab006a0708f1"></a>
@@ -274,6 +321,15 @@ template&lt;typename T , typename... Args&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Adds a new <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> with the given name to the scene. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the added <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>. </dd></dl>
 
 </div>
 </div>
@@ -293,6 +349,15 @@ template&lt;typename T , typename... Args&gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Adds an existing <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> to the scene. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game_object</td><td>The unique pointer to the <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the added <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>. </dd></dl>
+
 </div>
 </div>
 <a id="aa4b00720ca239a808fb60521e2915ec8" name="aa4b00720ca239a808fb60521e2915ec8"></a>
@@ -311,6 +376,15 @@ template&lt;typename T , typename... Args&gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Adds multiple existing GameObjects to the scene. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game_objects</td><td>A vector of unique pointers to the GameObjects to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the added GameObjects. </dd></dl>
+
 </div>
 </div>
 <a id="ab71d7d2e8264081fee67fab639f1e88d" name="ab71d7d2e8264081fee67fab639f1e88d"></a>
@@ -327,6 +401,8 @@ template&lt;typename T , typename... Args&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Cleans up and deletes all GameObjects that are marked for deletion. </p>
 
 </div>
 </div>
@@ -346,6 +422,15 @@ template&lt;typename T , typename... Args&gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Extracts a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> from the scene without deleting it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game_object</td><td>The <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> to extract. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A unique pointer to the extracted <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>. </dd></dl>
+
 </div>
 </div>
 <a id="a7a3c0c308ec7be21ed4bde91d5dc5be8" name="a7a3c0c308ec7be21ed4bde91d5dc5be8"></a>
@@ -362,6 +447,9 @@ template&lt;typename T , typename... Args&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Retrieves all GameObjects in the scene. </p>
+<dl class="section return"><dt>Returns</dt><dd>A vector of references to all GameObjects in the scene. </dd></dl>
 
 </div>
 </div>
@@ -381,6 +469,21 @@ template&lt;typename T , typename... Args&gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Retrieves a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> by its unique identifier. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The unique identifier of the <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> with the specified ID. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if no <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> with the given ID exists in the scene. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a74bfdea2518df4875a58763dd88c0838" name="a74bfdea2518df4875a58763dd88c0838"></a>
@@ -398,6 +501,9 @@ template&lt;typename T , typename... Args&gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Checks if the scene is currently running. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the scene is running, false otherwise. </dd></dl>
+
 </div>
 </div>
 <a id="ae54608fc5565fd41349e188a1656d961" name="ae54608fc5565fd41349e188a1656d961"></a>
@@ -414,6 +520,9 @@ template&lt;typename T , typename... Args&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Retrieves the main camera of the scene. </p>
+<dl class="section return"><dt>Returns</dt><dd>An optional reference to the main <a class="el" href="class_camera.html" title="Camera GameObject class Inherits from GameObject class and represents a camera in the scene....">Camera</a> if it exists, std::nullopt otherwise. </dd></dl>
 
 </div>
 </div>
@@ -440,6 +549,8 @@ template&lt;typename T , typename... Args&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Marks the scene to be stopped. </p>
+
 </div>
 </div>
 <a id="a53fbe219e59ce50dbb91a523c4066def" name="a53fbe219e59ce50dbb91a523c4066def"></a>
@@ -457,6 +568,9 @@ template&lt;typename T , typename... Args&gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Checks if the scene is marked for stopping. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the scene is marked for stopping, false otherwise. </dd></dl>
+
 </div>
 </div>
 <a id="ade337ad27cf632bc8f5a40fed26bc1f8" name="ade337ad27cf632bc8f5a40fed26bc1f8"></a>
@@ -473,6 +587,9 @@ template&lt;typename T , typename... Args&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Retrieves the name of the scene. </p>
+<dl class="section return"><dt>Returns</dt><dd>The name of the scene as a string. </dd></dl>
 
 </div>
 </div>
@@ -492,6 +609,14 @@ template&lt;typename T , typename... Args&gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Registers a listener function to be called when the scene is destroyed. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>The function to be called when the scene is destroyed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a5ab065ddb792e992d9a01d6a0d8b34b5" name="a5ab065ddb792e992d9a01d6a0d8b34b5"></a>
@@ -509,6 +634,14 @@ template&lt;typename T , typename... Args&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Registers a listener function to be called when the scene starts running. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>The function to be called when the scene starts. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -528,6 +661,14 @@ template&lt;typename T , typename... Args&gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Registers a listener function to be called when the scene stops. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>The function to be called when the scene stops. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a2ce3a726f9bebd29f28b5d3311db877b" name="a2ce3a726f9bebd29f28b5d3311db877b"></a>
@@ -546,6 +687,15 @@ template&lt;typename T , typename... Args&gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Removes a <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> from the scene and deletes it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game_object</td><td>The <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the <a class="el" href="class_game_object.html" title="Concept to constrain types to be derived from Component.">GameObject</a> was found and removed, false otherwise. </dd></dl>
+
 </div>
 </div>
 <a id="add01794b17df2030e961468fc88cf2e7" name="add01794b17df2030e961468fc88cf2e7"></a>
@@ -562,6 +712,8 @@ template&lt;typename T , typename... Args&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>marks the scene to be stopped. </p>
 
 </div>
 </div>
@@ -580,6 +732,9 @@ template&lt;typename T , typename... Args&gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Retrieves the current time scale modifier for the scene. </p>
+<dl class="section return"><dt>Returns</dt><dd>The time scale modifier. </dd></dl>
+
 </div>
 </div>
 <a id="a778f6ab604f061254971f77eab41d59b" name="a778f6ab604f061254971f77eab41d59b"></a>
@@ -597,6 +752,15 @@ template&lt;typename T , typename... Args&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets the time scale modifier for the scene. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">modifier</td><td>The time scale modifier. A value of 1.0 represents normal time, values greater than 1.0 speed up time, and values less than 1.0 slow down time. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to this <a class="el" href="class_scene.html" title="Represents a scene within the engine. A scene contains multiple GameObjects and manages their lifecyc...">Scene</a> for chaining. </dd></dl>
 
 </div>
 </div>

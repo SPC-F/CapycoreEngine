@@ -74,7 +74,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="class_game_object.html" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="class_game_object.html" target="_top" xlink:title="Concept to constrain types to be derived from Component.">
 <polygon fill="white" stroke="#666666" points="105,-184 28,-184 28,-165 105,-165 105,-184"/>
 <text text-anchor="middle" x="66.5" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">GameObject</text>
 </a>

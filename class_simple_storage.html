@@ -137,6 +137,9 @@ $(document).ready(function(){initNavTree('class_simple_storage.html',''); initRe
 </div><!--header-->
 <div class="contents">
 
+<p>Simple key–value storage system for persisting basic data types.  
+ <a href="class_simple_storage.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="simple__storage_8h_source.html">simple_storage.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -197,7 +200,17 @@ Friends</h2></td></tr>
 <tr class="memdesc:a3e1914489e4bed4f9f23cdeab34a43dc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_engine.html" title="Central engine class managing core services and lifecycle.">Engine</a> is the sole caller of <a class="el" href="class_simple_storage.html#ac45fd953ab33d5f90ac86a9bfe4c7dc1" title="Load stored data into memory.">load()</a>.  <br /></td></tr>
 <tr class="separator:a3e1914489e4bed4f9f23cdeab34a43dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Simple key–value storage system for persisting basic data types. </p>
+<p><a class="el" href="class_simple_storage.html" title="Simple key–value storage system for persisting basic data types.">SimpleStorage</a> provides a straightforward interface for storing and retrieving key–value pairs, where values can be of type int, float, or string. It supports loading from and saving to persistent storage, allowing data to persist across application runs.</p>
+<p>Usage:</p><ul>
+<li>Use <a class="el" href="class_simple_storage.html#a6dc5374386d4efd8e8371e29ff67fc98" title="Store or overwrite a value.">set_value()</a> to store values associated with string keys.</li>
+<li>Use <a class="el" href="class_simple_storage.html#a0ce743817a8e3188f38eba7b125d8207">get_value_or_default()</a> to retrieve values, providing a default if the key does not exist.</li>
+<li>Call <a class="el" href="class_simple_storage.html#a4794718313092efc10e60a6ebb7c247d" title="Persist current storage to disk or another backend.">save()</a> to persist the current state to disk.</li>
+<li>Call <a class="el" href="class_simple_storage.html#ac45fd953ab33d5f90ac86a9bfe4c7dc1" title="Load stored data into memory.">load()</a> during initialization to restore state from disk. <dl class="section note"><dt>Note</dt><dd>This class is designed for simple data storage needs and may not be suitable for complex data structures or high-performance requirements. </dd></dl>
+</li>
+</ul>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a68df54d0e58c9e4865f89511f4f2bc1a" name="a68df54d0e58c9e4865f89511f4f2bc1a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a68df54d0e58c9e4865f89511f4f2bc1a">&#9670;&#160;</a></span>StorageKey</h2>
 

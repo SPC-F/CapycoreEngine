@@ -136,10 +136,12 @@ Inheritance diagram for SimpleStorage::overloaded&lt; TSelector &gt;:</div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class... TSelector&gt;<br />
-struct SimpleStorage::overloaded&lt; TSelector &gt;</div><p>So usually I would not include comments about this. But this is some more complex stuff here be dragons, so I will be very explicit about what is going on here.</p>
-<p>Our storage is working with something called an invariant. An invariant is something we can see as a tagged union of sorts but a bit different. An invariant is essentially a type that says "I can be any of the following types". We know this from discriminated unions used in F# or free unions from TypeScript.</p>
-<p>The overloaded struct is a trick that basically boils down to the following: "Be a structure that overloads the call type for anything that is inside of you".</p>
-<p>In our case, its type may as well just be: struct overloaded { int operator()(int); bool operator()(bool); std::string operator()(std::string); } We just use templates to generate this type for us based on the shape of the invariant passed, that is all. In C++ 26 we have this type included in the base library. We have to write it manually here. </p>
+struct SimpleStorage::overloaded&lt; TSelector &gt;</div><p>The storage is working with something called an invariant. An invariant is something we can see as a tagged union of sorts but a bit different. An invariant is essentially a type that says "I can be any of the following
+types". We know this from discriminated unions used in F# or free unions from TypeScript.</p>
+<p>The overloaded struct is a trick that basically boils down to the following: "Be a structure that overloads the call type for anything that is inside
+of you".</p>
+<p>In our case, its type may as well just be: struct overloaded { int operator()(int); bool operator()(bool); std::string operator()(std::string); }</p>
+<p>We just use templates to generate this type for us based on the shape of the invariant passed, that is all. In C++ 26 we have this type included in the base library. We have to write it manually here. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/engine/storage/<a class="el" href="simple__storage_8h_source.html">simple_storage.h</a></li>
 </ul>

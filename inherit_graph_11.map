@@ -1,10 +1,10 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_game_object.html" title=" " alt="" coords="5,56,108,81"/>
-<area shape="rect" id="Node000001" href="$class_camera.html" title=" " alt="" coords="159,31,232,56"/>
+<area shape="rect" id="Node000000" href="$class_game_object.html" title="Concept to constrain types to be derived from Component." alt="" coords="5,56,108,81"/>
+<area shape="rect" id="Node000001" href="$class_camera.html" title="Camera GameObject class Inherits from GameObject class and represents a camera in the scene...." alt="" coords="159,31,232,56"/>
 <area shape="poly" id="edge17_Node000000_Node000001" title=" " alt="" coords="121,54,158,47,159,53,122,59"/>
 <area shape="rect" id="Node000002" href="$class_u_i_object.html" title="Base class for all UI objects." alt="" coords="156,80,235,105"/>
 <area shape="poly" id="edge18_Node000000_Node000002" title=" " alt="" coords="122,77,156,83,155,89,121,82"/>
-<area shape="rect" id="Node000003" href="$class_u_i_f_p_s.html" title=" " alt="" coords="310,5,370,31"/>
+<area shape="rect" id="Node000003" href="$class_u_i_f_p_s.html" title="UI Component that displays the current frames per second (FPS)." alt="" coords="310,5,370,31"/>
 <area shape="poly" id="edge19_Node000002_Node000003" title=" " alt="" coords="227,70,281,40,309,27,311,32,284,44,229,75"/>
 <area shape="rect" id="Node000004" href="$class_u_i_image.html" title=" " alt="" coords="301,55,379,80"/>
 <area shape="poly" id="edge20_Node000002_Node000004" title=" " alt="" coords="248,81,301,71,301,77,249,86"/>

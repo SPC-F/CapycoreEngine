@@ -134,67 +134,70 @@ $(document).ready(function(){initNavTree('host_8h_source.html',''); initResizabl
 <div class="contents">
 <a href="host_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;enet/enet.h&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;enet/enet.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="connection__state_8h.html">engine/network/connection_state.h</a>&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="router_8h.html">engine/network/router.h</a>&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;chrono&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="router_8h.html">engine/network/router.h</a>&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;<a class="code" href="connection__state_8h.html">engine/network/connection_state.h</a>&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="class_host.html">   21</a></span><span class="keyword">class </span><a class="code hl_class" href="class_host.html">Host</a> {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_host.html#ac5e88d4e889ff96ae1459dd0eeb1bc0d">   30</a></span>    <a class="code hl_function" href="class_host.html#ac5e88d4e889ff96ae1459dd0eeb1bc0d">Host</a>(std::reference_wrapper&lt;Router&gt; router, <span class="keywordtype">int</span> connection_port, <span class="keywordtype">int</span> max_clients);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="class_host.html#a71b6e23a33edf0297413361ed2155eba">   35</a></span>    <a class="code hl_function" href="class_host.html#a71b6e23a33edf0297413361ed2155eba">~Host</a>() noexcept;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="class_host.html#adfa80013971bc1b86b99b65881413dbb">   42</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#adfa80013971bc1b86b99b65881413dbb">start_server</a>();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="class_host.html#ae0695453b19b2dbf94ffa0dc817aa7f4">   48</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#ae0695453b19b2dbf94ffa0dc817aa7f4">poll</a>() noexcept;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="class_host.html#ae0b6f3a411b0a3111f2d08b65c0b29ba">   54</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#ae0b6f3a411b0a3111f2d08b65c0b29ba">broadcast</a>(const <a class="code hl_struct" href="struct_message.html">Message</a>&amp; message) noexcept;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="class_host.html#a213a8604b673bb6d1e785c057e8fbe73">   59</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#a213a8604b673bb6d1e785c057e8fbe73">disconnect</a>() noexcept;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="class_host.html#a3941596e3ed2d305e15570da382dc144">   64</a></span>    [[nodiscard]] <a class="code hl_enumeration" href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4">ConnectionState</a> <a class="code hl_function" href="class_host.html#a3941596e3ed2d305e15570da382dc144">get_connection_state</a>() const noexcept;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="class_host.html#a1930ef2b8ff4fb05b6442722db680ef2">   66</a></span>    [[nodiscard]] std::<span class="keywordtype">string</span> <a class="code hl_function" href="class_host.html#a1930ef2b8ff4fb05b6442722db680ef2">get_uuid</a>() const noexcept;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="class_host.html#ac5e88d4e889ff96ae1459dd0eeb1bc0d">   31</a></span>  <a class="code hl_function" href="class_host.html#ac5e88d4e889ff96ae1459dd0eeb1bc0d">Host</a>(std::reference_wrapper&lt;Router&gt; router, <span class="keywordtype">int</span> connection_port,</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>       <span class="keywordtype">int</span> max_clients);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_host.html#a71b6e23a33edf0297413361ed2155eba">   37</a></span>  <a class="code hl_function" href="class_host.html#a71b6e23a33edf0297413361ed2155eba">~Host</a>() noexcept;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="class_host.html#adfa80013971bc1b86b99b65881413dbb">   44</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#adfa80013971bc1b86b99b65881413dbb">start_server</a>();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="class_host.html#ae0695453b19b2dbf94ffa0dc817aa7f4">   50</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#ae0695453b19b2dbf94ffa0dc817aa7f4">poll</a>() noexcept;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="class_host.html#ae0b6f3a411b0a3111f2d08b65c0b29ba">   56</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#ae0b6f3a411b0a3111f2d08b65c0b29ba">broadcast</a>(const <a class="code hl_struct" href="struct_message.html">Message</a>&amp; message) noexcept;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="class_host.html#a213a8604b673bb6d1e785c057e8fbe73">   61</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#a213a8604b673bb6d1e785c057e8fbe73">disconnect</a>() noexcept;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="class_host.html#a3941596e3ed2d305e15570da382dc144">   66</a></span>  [[nodiscard]] <a class="code hl_enumeration" href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4">ConnectionState</a> <a class="code hl_function" href="class_host.html#a3941596e3ed2d305e15570da382dc144">get_connection_state</a>() const noexcept;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="class_host.html#a7f0bcef46b808cad3aa2100dcba14b6e">   71</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#a7f0bcef46b808cad3aa2100dcba14b6e">set_max_clients</a>(<span class="keywordtype">int</span> amount) noexcept;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="class_host.html#a74ef081c4a933c9a628fce1933ce5f59">   76</a></span>    [[nodiscard]] <span class="keywordtype">int</span> <a class="code hl_function" href="class_host.html#a74ef081c4a933c9a628fce1933ce5f59">get_client_amount</a>() const noexcept;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="class_host.html#a9da0d7657d45649a5f05d3ef169b6443">   78</a></span>    [[nodiscard]] std::<span class="keywordtype">string</span> <a class="code hl_function" href="class_host.html#a9da0d7657d45649a5f05d3ef169b6443">get_ip</a>() const noexcept;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="class_host.html#a1930ef2b8ff4fb05b6442722db680ef2">   68</a></span>  [[nodiscard]] std::<span class="keywordtype">string</span> <a class="code hl_function" href="class_host.html#a1930ef2b8ff4fb05b6442722db680ef2">get_uuid</a>() const noexcept;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="class_host.html#a7f0bcef46b808cad3aa2100dcba14b6e">   73</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#a7f0bcef46b808cad3aa2100dcba14b6e">set_max_clients</a>(<span class="keywordtype">int</span> amount) noexcept;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="class_host.html#a74ef081c4a933c9a628fce1933ce5f59">   78</a></span>  [[nodiscard]] <span class="keywordtype">int</span> <a class="code hl_function" href="class_host.html#a74ef081c4a933c9a628fce1933ce5f59">get_client_amount</a>() const noexcept;</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="class_host.html#a8b1a10a75aac00d80dbb6a47636f19af">   83</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#a8b1a10a75aac00d80dbb6a47636f19af">set_connection_port</a>(<span class="keywordtype">int</span> port) noexcept;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="class_host.html#a6f73653aba46c427d5acc9a22aa9c4b8">   90</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#a6f73653aba46c427d5acc9a22aa9c4b8">send_to_peer_via_uuid</a>(const std::<span class="keywordtype">string</span>&amp; <a class="code hl_namespace" href="namespaceuuid.html">uuid</a>, const <a class="code hl_struct" href="struct_message.html">Message</a>&amp; message) noexcept;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="class_host.html#aeb61d0285387b85153104633885ad3c7">   95</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#aeb61d0285387b85153104633885ad3c7">sync</a>() noexcept;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>private:</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    ENetHost* server_{<span class="keyword">nullptr</span>};</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">int</span> connection_port_{0};</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">int</span> max_clients_{0};</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <a class="code hl_enumeration" href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4">ConnectionState</a> connection_state_{<a class="code hl_enumvalue" href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4ab50339a10e1de285ac99d4c3990b8693">ConnectionState::NONE</a>};</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    std::string ip_;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    std::string local_uuid_;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    std::reference_wrapper&lt;Router&gt; router_;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="comment">// Maps client UUID to the peer object assigned by ENet.</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    std::unordered_map&lt;std::string, ENetPeer*&gt; clients_;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="class_host.html#a9da0d7657d45649a5f05d3ef169b6443">   80</a></span>  [[nodiscard]] std::<span class="keywordtype">string</span> <a class="code hl_function" href="class_host.html#a9da0d7657d45649a5f05d3ef169b6443">get_ip</a>() const noexcept;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="class_host.html#a8b1a10a75aac00d80dbb6a47636f19af">   85</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#a8b1a10a75aac00d80dbb6a47636f19af">set_connection_port</a>(<span class="keywordtype">int</span> port) noexcept;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="class_host.html#a6f73653aba46c427d5acc9a22aa9c4b8">   92</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#a6f73653aba46c427d5acc9a22aa9c4b8">send_to_peer_via_uuid</a>(const std::<span class="keywordtype">string</span>&amp; <a class="code hl_namespace" href="namespaceuuid.html">uuid</a>,</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                             const <a class="code hl_struct" href="struct_message.html">Message</a>&amp; message) noexcept;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="class_host.html#aeb61d0285387b85153104633885ad3c7">   98</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="class_host.html#aeb61d0285387b85153104633885ad3c7">sync</a>() noexcept;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> private:</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  ENetHost* server_{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  <span class="keywordtype">int</span> connection_port_{0};</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  <span class="keywordtype">int</span> max_clients_{0};</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  <a class="code hl_enumeration" href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4">ConnectionState</a> connection_state_{<a class="code hl_enumvalue" href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4ab50339a10e1de285ac99d4c3990b8693">ConnectionState::NONE</a>};</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  std::string ip_;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  std::string local_uuid_;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  std::reference_wrapper&lt;Router&gt; router_;</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    std::chrono::milliseconds snapshot_interval_{100};</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    std::chrono::steady_clock::time_point last_snapshot_time_{std::chrono::steady_clock::now()};</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  <span class="comment">// Maps client UUID to the peer object assigned by ENet.</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  std::unordered_map&lt;std::string, ENetPeer*&gt; clients_;</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">void</span> send_to_peer(<span class="keyword">const</span> <a class="code hl_struct" href="struct_message.html">Message</a>&amp; message, ENetPeer* peer) <span class="keyword">noexcept</span>;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">void</span> set_client_disconnect_handler() noexcept;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">void</span> set_client_connect_handler() noexcept;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>};</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  std::chrono::milliseconds snapshot_interval_{100};</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  std::chrono::steady_clock::time_point last_snapshot_time_{</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>      std::chrono::steady_clock::now()};</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>  <span class="keywordtype">void</span> send_to_peer(<span class="keyword">const</span> <a class="code hl_struct" href="struct_message.html">Message</a>&amp; message, ENetPeer* peer) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  <span class="keywordtype">void</span> set_client_disconnect_handler() noexcept;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  <span class="keywordtype">void</span> set_client_connect_handler() noexcept;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>};</div>
 </div>
 <div class="ttc" id="aclass_host_html"><div class="ttname"><a href="class_host.html">Host</a></div><div class="ttdoc">High-level ENet-based server host for handling multiple client connections, broadcasting messages,...</div><div class="ttdef"><b>Definition</b> host.h:21</div></div>
 <div class="ttc" id="aclass_host_html_a1930ef2b8ff4fb05b6442722db680ef2"><div class="ttname"><a href="class_host.html#a1930ef2b8ff4fb05b6442722db680ef2">Host::get_uuid</a></div><div class="ttdeci">std::string get_uuid() const noexcept</div></div>
@@ -216,7 +219,7 @@ $(document).ready(function(){initNavTree('host_8h_source.html',''); initResizabl
 <div class="ttc" id="aconnection__state_8h_html_a737210072f638038f5ccbeebb671dea4ab50339a10e1de285ac99d4c3990b8693"><div class="ttname"><a href="connection__state_8h.html#a737210072f638038f5ccbeebb671dea4ab50339a10e1de285ac99d4c3990b8693">ConnectionState::NONE</a></div><div class="ttdeci">@ NONE</div></div>
 <div class="ttc" id="anamespaceuuid_html"><div class="ttname"><a href="namespaceuuid.html">uuid</a></div><div class="ttdef"><b>Definition</b> uuid.h:4</div></div>
 <div class="ttc" id="arouter_8h_html"><div class="ttname"><a href="router_8h.html">router.h</a></div></div>
-<div class="ttc" id="astruct_message_html"><div class="ttname"><a href="struct_message.html">Message</a></div><div class="ttdoc">Represents a complete network message including type and payload.</div><div class="ttdef"><b>Definition</b> network_message.h:116</div></div>
+<div class="ttc" id="astruct_message_html"><div class="ttname"><a href="struct_message.html">Message</a></div><div class="ttdoc">Represents a complete network message including type and payload.</div><div class="ttdef"><b>Definition</b> network_message.h:105</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
