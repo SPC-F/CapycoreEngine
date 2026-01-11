@@ -6,17 +6,30 @@
 #include <string>
 #include <variant>
 
+/**
+ * @brief Simple key–value storage system for persisting basic data types.
+ *
+ * SimpleStorage provides a straightforward interface for storing and retrieving
+ * key–value pairs, where values can be of type int, float, or string. It
+ * supports loading from and saving to persistent storage, allowing data to
+ * persist across application runs.
+ *
+ * Usage:
+ * - Use set_value() to store values associated with string keys.
+ * - Use get_value_or_default() to retrieve values, providing a default if the
+ *   key does not exist.
+ * - Call save() to persist the current state to disk.
+ * - Call load() during initialization to restore state from disk.
+ * @note This class is designed for simple data storage needs and may not be
+ * suitable for complex data structures or high-performance requirements.
+ */
 class SimpleStorage {
  public:
   using StorageKey = std::string;
   using StorageValue = std::variant<int, float, std::string>;
 
   /**
-    So usually I would not include comments about this. But this is some more
-    complex stuff here be dragons, so I will be very explicit about what is
-    going on here.
-
-    Our storage is working with something called an invariant. An invariant is
+    The storage is working with something called an invariant. An invariant is
     something we can see as a tagged union of sorts but a bit different. An
     invariant is essentially a type that says "I can be any of the following
     types". We know this from discriminated unions used in F# or free unions
@@ -32,6 +45,7 @@ class SimpleStorage {
         bool operator()(bool);
         std::string operator()(std::string);
     }
+
     We just use templates to generate this type for us based on the shape of the
     invariant passed, that is all. In C++ 26 we have this type included in the
     base library. We have to write it manually here.

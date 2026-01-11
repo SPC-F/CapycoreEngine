@@ -26,6 +26,16 @@ using PrefabFactory = std::function<GameObject&(Scene&, const std::string&)>;
  * This is a singleton that maintains a mapping of prefab type IDs to factory
  * functions. When a network snapshot arrives with an object of an unknown type,
  * the service can instantiate it with the correct components.
+ *
+ * Usage:
+ * - Register prefab factories with unique type IDs using register_prefab().
+ * - Instantiate GameObjects from prefabs using instantiate().
+ * - Check for registered prefabs with has_prefab().
+ * - Unregister prefabs with unregister_prefab().
+ * - Retrieve all registered prefab type IDs with get_registered_prefabs().
+ * - Clear all registered prefabs with clear_all().
+ * @note Prefab factories should create and return GameObjects with all
+ * necessary components attached.
  */
 class PrefabService : public IEngineService {
  public:

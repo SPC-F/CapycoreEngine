@@ -12,6 +12,15 @@ constexpr float default_circle_collider_radius = 0.5f;
  * This component extends the Collider2D class to provide a circle-shaped
  * collider, enabling circular collision detection and response within the
  * physics engine.
+ *
+ * Usage:
+ * - Create a CircleCollider2D component with desired properties.
+ * - Attach the CircleCollider2D to a GameObject to enable circular collision
+ *   detection.
+ * - Modify properties such as radius, friction, bounciness, offset, sensor
+ *  status, and bullet status as needed.
+ * @note Ensure the GameObject has a Rigidbody2D component for proper physics
+ * interaction.
  */
 class CircleCollider2D : public Collider2D {
  public:

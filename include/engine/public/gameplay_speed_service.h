@@ -9,6 +9,10 @@
  *
  * Allows dynamic adjustment of the game's time scale, enabling features like
  * fast-forwarding, slowing down time, or resetting to default speed via input.
+ *
+ * Usage:
+ * - Use the set keys to increase, decrease, or reset the gameplay speed.
+ *   The default keys are Page Up, Page Down, and Home respectively.
  */
 class GameplaySpeedService final : public IEngineService {
   /**

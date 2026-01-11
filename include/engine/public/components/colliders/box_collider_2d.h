@@ -13,6 +13,14 @@ constexpr float default_box_collider_height = 1.0f;
  * This component extends the Collider2D class to provide a box-shaped collider,
  * enabling rectangular collision detection and response within the physics
  * engine.
+ *
+ * Usage:
+ * - Create a BoxCollider2D component with desired properties.
+ * - Attach the BoxCollider2D to a GameObject to enable rectangular collision
+ *   detection.
+ * - Modify properties such as width, height, friction, bounciness, offset,
+ *  sensor status, and bullet status as needed.
+ * @note Ensure the GameObject has a Rigidbody2D component for proper physics
  */
 class BoxCollider2D : public Collider2D {
  public:
